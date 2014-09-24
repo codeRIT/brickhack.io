@@ -1,6 +1,16 @@
 language: ruby
 rvm:
-  - 2.0.0
+- 2.0.0
 script:
-  - bundle exec rake db:migrate
-  - bundle exec rake
+- bundle exec rake db:migrate
+- bundle exec rake
+deploy:
+  provider: openshift
+  user: coldencullen@mail.rit.edu
+  password:
+    secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
+  app: rails
+  domain: coderit
+  on:
+    branch: master
+    repo: codeRIT/brickhack.io
