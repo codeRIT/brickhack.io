@@ -11,3 +11,17 @@
  *= require_self
  *= require_tree .
  */
+body {
+  background: #384859;
+  font-family: "Open Sans", sans-serif;
+  color: #f3852a;
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+a {
+  color: white;
+}
