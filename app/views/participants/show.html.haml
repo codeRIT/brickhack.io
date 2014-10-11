@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @participant.first_name
+%p
+  %b Last name:
+  = @participant.last_name
+%p
+  %b Email:
+  = @participant.email
+%p
+  %b City:
+  = @participant.city
+%p
+  %b State:
+  = @participant.state
+%p
+  %b Experience:
+  = @participant.experience
+%p
+  %b Year:
+  = @participant.year
+%p
+  %b Interest:
+  = @participant.interest
+
+= link_to 'Edit', edit_participant_path(@participant)
+\|
+= link_to 'Back', participants_path
