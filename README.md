@@ -6,7 +6,7 @@ The public facing site for Brick Hack.
 
 ## Mac OS X
 
-Install ruby, postgres, and other required development environment tools.
+Install ruby, sqlite, and other required development environment tools.
 ```bash
 $ brew install rbenv ruby-build rbenv-readline rbenv-gem-rehash rbenv-default-gems rbenv-binstubs
 $ brew install sqlite3
