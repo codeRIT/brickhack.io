@@ -1,0 +1,55 @@
+
+@mixin transition ( $duration, $property, $function, $delay )
+	-webkit-transition: $duration $property $function $delay
+	-moz-transition-duration: $duration
+	-moz-transtition-property: $property
+	-moz-transition-timing-function: $function
+	-moz-transition-delay: $delay
+	-o-transition: $duration $property $function $delay
+	transition: $duration $property $function $delay
+
+@mixin border-radius ( $radius )
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	-ms-border-radius: $radius
+	-o-border-radius: $radius
+	border-radius: $radius
+
+@mixin scale ( $args )
+	-webkit-transform: scale($args)
+	-o-transform: scale($args)
+	transform: scale($args)
+
+@mixin box-shadow ( $args )
+	-webkit-box-shadow: $args
+	-moz-box-shadow: $args
+	box-shadow: $args
+
+@mixin placeholder-color ($color)
+	&::-webkit-input-placeholder
+		color: $color
+	&:-moz-placeholder /* Firefox 18- */
+		color: $color
+	&::-moz-placeholder  /* Firefox 19+ */
+		color: $color
+	&:-ms-input-placeholder
+		color: $color
+
+@mixin box-sizing($box-model)
+	-webkit-box-sizing: $box-model
+	-moz-box-sizing: $box-model
+	box-sizing: $box-model
+
+@mixin appearance($appearance)
+	-webkit-appearance: $appearance
+	-moz-appearance: $appearance
+	appearance: $appearance
+	opacity: 0
+	width: 0
+	height: 0
+
+@mixin background-size ($arg)
+	-webkit-background-size: $arg
+	-moz-background-size: $arg
+	-o-background-size: $arg
+	background-size: $arg
