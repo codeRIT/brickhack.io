@@ -4,6 +4,10 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
+echo "****** STARTING BUILD SCRIPT *******"
+
+git stash
+
 BUNDLE_DIR="${OPENSHIFT_DATA_DIR}bundle"
 ASSETS_DIR="${OPENSHIFT_DATA_DIR}assets"
 
