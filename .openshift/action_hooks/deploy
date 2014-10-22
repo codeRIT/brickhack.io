@@ -9,6 +9,7 @@ cd $OPENSHIFT_REPO_DIR
 
 # bundle
 ln -sf $OPENSHIFT_DATA_DIR/bundle vendor/bundle
+gem uninstall rack
 bundle install --without test development --deployment
 
 # db migration
