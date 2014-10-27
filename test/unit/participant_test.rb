@@ -24,6 +24,12 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :state
   should allow_mass_assignment_of :year
 
+  should allow_value("design").for(:interest)
+  should allow_value("development").for(:interest)
+  should allow_value("hardware").for(:interest)
+  should_not allow_value(nil).for(:interest)
+  should_not allow_value("foo").for(:interest)
+
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")
     assert_equal "test@example.com", s.email

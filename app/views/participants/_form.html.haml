@@ -29,6 +29,6 @@
     = f.text_field :year
   .field
     = f.label :interest
-    = f.text_field :interest
+    = f.select :interest, Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)"
   .actions
     = f.submit 'Save'
