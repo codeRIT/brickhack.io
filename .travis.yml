@@ -1,4 +1,6 @@
 language: ruby
+cache: bundler
+bundler_args: --path vendor
 rvm:
 - 2.0.0
 script:
