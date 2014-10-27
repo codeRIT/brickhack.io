@@ -3,12 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2.16'
 gem 'rack', '~> 1.4.5'
 
-gem 'haml-rails'
-
-group :development do
-  gem 'sqlite3'
-end
-
 group :production, :mysql do
   gem 'mysql2'
 end
@@ -16,6 +10,12 @@ end
 group :production, :postgresql do
   gem 'pg'
 end
+
+gem 'haml-rails'
+
+gem 'strip_attributes'
+
+gem 'email_validator'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +27,25 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :developemnt do
+  gem 'sqlite3'
+  gem 'spring'
+  gem 'factory_girl_rails'
+  gem 'guard-minitest'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :test do
+  gem "shoulda"
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
+  gem 'valid_attribute'
+  gem 'ruby-prof'
+  gem 'spring-commands-testunit'
 end
 
 gem 'jquery-rails'

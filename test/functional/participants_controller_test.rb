@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ParticipantsControllerTest < ActionController::TestCase
   setup do
-    @participant = participants(:one)
+    @participant = create(:participant)
   end
 
   test "index should redirect to new" do
