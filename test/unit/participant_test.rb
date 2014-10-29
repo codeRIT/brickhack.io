@@ -7,7 +7,6 @@ class ParticipantTest < ActiveSupport::TestCase
   should strip_attribute :email
   should strip_attribute :city
   should strip_attribute :state
-  should strip_attribute :year
 
   should allow_value("email@addresse.foo").for(:email)
   should_not allow_value("email@addresse").for(:email)
@@ -36,6 +35,15 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_value("expert").for(:experience)
   should_not allow_value(nil).for(:experience)
   should_not allow_value("foo").for(:experience)
+
+  should allow_value("hs").for(:year)
+  should allow_value("1").for(:year)
+  should allow_value("2").for(:year)
+  should allow_value("3").for(:year)
+  should allow_value("4").for(:year)
+  should allow_value("5+").for(:year)
+  should_not allow_value(nil).for(:year)
+  should_not allow_value("foo").for(:year)
 
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")

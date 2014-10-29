@@ -7,7 +7,7 @@ FactoryGirl.define do
     city        "MyString"
     state       "MyString"
     experience  "first"
-    year        "MyString"
+    year        "1"
     interest    "development"
   end
 end
