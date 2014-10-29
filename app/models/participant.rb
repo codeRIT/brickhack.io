@@ -1,7 +1,7 @@
 class Participant < ActiveRecord::Base
-  attr_accessible :city, :email, :experience, :first_name, :interest, :experience, :last_name, :state, :year
+  attr_accessible :city, :email, :experience, :first_name, :interest, :experience, :last_name, :state, :year, :school_id
 
-  validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year
+  validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year, :school_id
 
   validates :email, email: true
 
@@ -21,8 +21,13 @@ class Participant < ActiveRecord::Base
   validates_inclusion_of :interest, :in => POSSIBLE_INTERESTS
   validates_inclusion_of :experience, :in => POSSIBLE_EXPERIENCES.invert
   validates_inclusion_of :year, :in => POSSIBLE_YEARS.invert
+  # validates_inclusion_of :school_id, :in => School.select(:id)
 
   def email=(value)
     super value.try(:downcase)
+  end
+
+  def school
+    School.find(school_id)
   end
 end

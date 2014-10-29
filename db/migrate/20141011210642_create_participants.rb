@@ -9,6 +9,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :experience
       t.string :year
       t.string :interest
+      t.string :school_id
 
       t.timestamps
     end

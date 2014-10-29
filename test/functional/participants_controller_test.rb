@@ -2,7 +2,8 @@ require 'test_helper'
 
 class ParticipantsControllerTest < ActionController::TestCase
   setup do
-    @participant = create(:participant)
+    @school = create(:school)
+    @participant = create(:participant, school_id: @school.id)
   end
 
   test "index should redirect to new" do
@@ -18,7 +19,7 @@ class ParticipantsControllerTest < ActionController::TestCase
 
   test "should create participant" do
     assert_difference('Participant.count') do
-      post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year }
+      post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, school_id: @school.id }
     end
 
     assert_redirected_to participant_path(assigns(:participant))
@@ -35,7 +36,7 @@ class ParticipantsControllerTest < ActionController::TestCase
   end
 
   test "should update participant" do
-    put :update, id: @participant, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year }
+    put :update, id: @participant, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, school_id: @school.id }
     assert_redirected_to participant_path(assigns(:participant))
   end
 

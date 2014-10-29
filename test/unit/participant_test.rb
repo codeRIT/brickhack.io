@@ -15,6 +15,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :last_name
   should validate_presence_of :city
   should validate_presence_of :state
+  should validate_presence_of :school_id
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -23,6 +24,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :state
   should allow_mass_assignment_of :year
   should allow_mass_assignment_of :experience
+  should allow_mass_assignment_of :school_id
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
@@ -48,6 +50,14 @@ class ParticipantTest < ActiveSupport::TestCase
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")
     assert_equal "test@example.com", s.email
+  end
+
+  context "#school" do
+    should "return the current school" do
+      school = create(:school, name: "My University")
+      participant = create(:participant, school_id: school.reload.id)
+      assert_equal "My University", participant.school.name
+    end
   end
 
 end

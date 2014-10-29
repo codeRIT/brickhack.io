@@ -9,5 +9,6 @@ FactoryGirl.define do
     experience  "first"
     year        "1"
     interest    "development"
+    school_id   "1"
   end
 end
