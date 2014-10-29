@@ -23,12 +23,19 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :city
   should allow_mass_assignment_of :state
   should allow_mass_assignment_of :year
+  should allow_mass_assignment_of :experience
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
   should allow_value("hardware").for(:interest)
   should_not allow_value(nil).for(:interest)
   should_not allow_value("foo").for(:interest)
+
+  should allow_value("first").for(:experience)
+  should allow_value("experienced").for(:experience)
+  should allow_value("expert").for(:experience)
+  should_not allow_value(nil).for(:experience)
+  should_not allow_value("foo").for(:experience)
 
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")

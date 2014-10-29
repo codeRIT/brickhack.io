@@ -23,7 +23,7 @@
     = f.text_field :state
   .field
     = f.label :experience
-    = f.text_field :experience
+    = f.select :experience, Participant::POSSIBLE_EXPERIENCES, include_blank: "(select one...)"
   .field
     = f.label :year
     = f.text_field :year
