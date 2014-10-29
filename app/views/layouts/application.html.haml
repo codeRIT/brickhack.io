@@ -13,8 +13,8 @@
     %meta{name:"twitter:description", content:"BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating."}
     %title BrickHack
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
     = yield
+    = javascript_include_tag "application"
