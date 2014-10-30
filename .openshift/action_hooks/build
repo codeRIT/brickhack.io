@@ -3,18 +3,3 @@
 # available.  Otherwise it will execute while your application is stopped
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
-
-echo "****** STARTING BUILD SCRIPT *******"
-
-git stash
-
-BUNDLE_DIR="${OPENSHIFT_DATA_DIR}bundle"
-ASSETS_DIR="${OPENSHIFT_DATA_DIR}assets"
-
-if [ ! -d $BUNDLE_DIR ]; then
-  mkdir $BUNDLE_DIR
-fi
-
-if [ ! -d $ASSETS_DIR ]; then
-  mkdir $ASSETS_DIR
-fi

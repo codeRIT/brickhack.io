@@ -1,13 +1,24 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '~> 3.2.16'
+gem 'rack', '~> 1.4.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'haml-rails'
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production, :mysql do
+  gem 'mysql2'
+end
+
+group :production, :postgresql do
+  gem 'pg'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
