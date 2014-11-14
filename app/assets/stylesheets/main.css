@@ -1,0 +1,231 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body, html {
+  height: 100%;
+  min-height: 250px; }
+
+body {
+  background: #FFFFFF;
+  color: #666666;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0; }
+
+h1, h2, h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  margin-top: 0; }
+  h1.subtitle, h2.subtitle, h3.subtitle {
+    color: #FFFFFF; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 2.5em; }
+
+h3 {
+  font-size: 2em;
+  margin-top: 0px; }
+
+img {
+  max-width: 100%;
+  width: auto; }
+
+a {
+  color: #384859;
+  text-decoration: none; }
+  a:hover {
+    color: #4c6178; }
+
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px; }
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-left: 8px;
+  padding-right: 8px; }
+
+.button {
+  border: 1px solid #FFFFFF;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  color: #FFFFFF;
+  display: inline-block;
+  font-weight: 700;
+  padding: 5px 25px 8px;
+  position: relative; }
+  .button:hover {
+    background: #FFFFFF;
+    color: #F36321; }
+  .button.orange {
+    color: #F36321;
+    border-color: #F36321; }
+    .button.orange:hover {
+      background: #F36321;
+      color: #FFFFFF; }
+  .button.blue {
+    color: #384859;
+    border-color: #384859; }
+    .button.blue:hover {
+      background: #384859;
+      color: #FFFFFF; }
+
+.grid-cta .col {
+  box-sizing: border-box;
+  float: left;
+  padding-right: 35px; }
+  .grid-cta .col:last-child {
+    padding-right: 0; }
+.grid-cta.two .col {
+  width: 50%; }
+.grid-cta.three .col {
+  width: 33.3333%; }
+.grid-cta:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+.center {
+  text-align: center; }
+
+.nav {
+  background: #F36321;
+  color: #FFFFFF;
+  height: auto; }
+  .nav h2 {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle; }
+
+.nav-list {
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  vertical-align: middle; }
+  .nav-list li {
+    display: inline-block; }
+  .nav-list .nav-link {
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 15px; }
+    .nav-list .nav-link:hover {
+      background: #d54b0c; }
+
+.banner {
+  background: #F36321;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 0;
+  position: relative;
+  width: 100%; }
+  .banner .inner {
+    left: 0;
+    right: 0; }
+  .banner.welcome {
+    background: url("rit_campus.jpg") center center fixed no-repeat;
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+    text-align: center; }
+    .banner.welcome:after {
+      background: #F36321;
+      bottom: 0;
+      content: "";
+      left: 0;
+      opacity: 0.5;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1; }
+    .banner.welcome .content {
+      border: 2px solid #FFFFFF;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      -ms-border-radius: 100%;
+      -o-border-radius: 100%;
+      border-radius: 100%;
+      height: 100%;
+      max-height: 375px;
+      left: 50%;
+      margin: 0 auto;
+      padding-top: 80px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      top: 50%;
+      max-width: 375px;
+      width: 100%;
+      z-index: 10; }
+
+.faq dt {
+  color: #384859;
+  font-weight: 700; }
+.faq dd {
+  font-size: 0.85rem;
+  margin-left: 15px;
+  padding: 5px 0; }
+
+#sponsors {
+  background: #333333;
+  color: #FCF7F2; }
+  #sponsors h3 {
+    color: #F36321; }
+
+#speakers {
+  background: #333333; }
+  #speakers h3 {
+    color: #F36321; }
+
+.footer {
+  background: #111;
+  color: #FCF7F2;
+  padding: 20px 0; }
+  .footer .coderit-logo {
+    background: url("coderit_logo.png") center center no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    color: #F36321;
+    display: inline-block;
+    opacity: 0.9;
+    text-indent: -9999px;
+    width: 100px; }
+    .footer .coderit-logo:hover, .footer .coderit-logo:focus {
+      opacity: 1; }
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px; }
+
+  .grid-cta .col {
+    clear: both;
+    float: none !important;
+    margin-top: 8px;
+    padding-right: 0;
+    width: 100% !important; }
+
+  .section {
+    padding-bottom: 15px;
+    padding-top: 15px; } }
+@media screen and (max-width: 400px) {
+  .grid-cta {
+    width: auto; } }
+
+/*# sourceMappingURL=main.css.map */

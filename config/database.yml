@@ -1,36 +1,25 @@
-sqlite: &sqlite
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
   adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
-
-mysql: &mysql
-  adapter: mysql2
-  database: "<%=ENV['OPENSHIFT_APP_NAME']%>"
-  username: "<%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>"
-  password: "<%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>"
-  host:     <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
-
-postgresql: &postgresql
-  adapter: postgresql
-  database: <%=ENV['OPENSHIFT_APP_NAME']%>
-  username: <%=ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD']%>
-  host:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_HOST']%>
-  port:     <%=ENV['OPENSHIFT_POSTGRESQL_DB_PORT']%>
-  min_messages: ERROR
-  reconnect: false
-
-defaults: &defaults
+  database: db/development.sqlite3
   pool: 5
   timeout: 5000
-  encoding: utf8
-  <<: *<%= ENV['RAILS_DB'] || "sqlite" %>
 
-development:
-  <<: *defaults
-
-test: &test
-  <<: *defaults
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
 
 production:
-  <<: *defaults
+  adapter: sqlite3
+  database: db/production.sqlite3
+  pool: 5
+  timeout: 5000
