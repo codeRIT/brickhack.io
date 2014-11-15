@@ -1,0 +1,1337 @@
+have_header: checking for ruby/thread.h... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return 0;
+8: }
+/* end */
+
+"gcc -E -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: #include <ruby/thread.h>
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_call_without_gvl() in ruby/thread.h... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <ruby/thread.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_call_without_gvl; return 0; }
+10: int main(int argc, char **argv)
+11: {
+12:   if (argc > 1000000) {
+13:     printf("%p", &t);
+14:   }
+15: 
+16:   return 0;
+17: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_blocking_region()... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: 'rb_thread_blocking_region' is deprecated (declared at C:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/intern.h:835)
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_blocking_region; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_wait_for_single_fd()... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_wait_for_single_fd' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_wait_for_single_fd; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_wait_for_single_fd'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_wait_for_single_fd(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_hash_dup()... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_hash_dup; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_func: checking for rb_intern3()... -------------------- yes
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'rb_intern3' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_intern3; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L.      -lmsvcrt-ruby200  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'rb_intern3'
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { rb_intern3(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lm... -------------------- yes
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lz... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lz  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'main' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lz  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'main'
+conftest.c:11:6: warning: 'argc' is used uninitialized in this function
+conftest.c:8:5: note: 'argc' was declared here
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lz
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { main(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lsocket... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lsocket  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'main' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lsocket  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'main'
+conftest.c:11:6: warning: 'argc' is used uninitialized in this function
+conftest.c:8:5: note: 'argc' was declared here
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lsocket
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { main(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lnsl... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lnsl  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'main' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lnsl  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'main'
+conftest.c:11:6: warning: 'argc' is used uninitialized in this function
+conftest.c:8:5: note: 'argc' was declared here
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lnsl
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { main(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lmygcc... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmygcc  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'main' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmygcc  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'main'
+conftest.c:11:6: warning: 'argc' is used uninitialized in this function
+conftest.c:8:5: note: 'argc' was declared here
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmygcc
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { main(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+
+find_library: checking for mysql_query() in -lmysqlclient... -------------------- no
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:57: error: 'mysql_query' undeclared (first use in this function)
+conftest.c:8:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { void ((*volatile p)()); p = (void ((*)()))mysql_query; return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+"gcc -o conftest.exe -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/i386-mingw32 -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0/ruby/backward -IC:/RailsInstaller/Ruby2.0.0/include/ruby-2.0.0 -I. -I/usr/local/include -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0501 -D_FILE_OFFSET_BITS=64   -O3 -fno-omit-frame-pointer -fno-fast-math -g -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -LC:/RailsInstaller/Ruby2.0.0/lib -L/usr/local/ -L/usr/local//mysql -L.      -lmsvcrt-ruby200 -lmysqlclient  -lshell32 -lws2_32 -limagehlp -lshlwapi  "
+conftest.c: In function 't':
+conftest.c:8:1: warning: implicit declaration of function 'mysql_query'
+c:/railsinstaller/devkit/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../../mingw32/bin/ld.exe: cannot find -lmysqlclient
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: 
+ 6: /*top*/
+ 7: extern int t(void);
+ 8: int t(void) { mysql_query(); return 0; }
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     printf("%p", &t);
+13:   }
+14: 
+15:   return 0;
+16: }
+/* end */
+
+--------------------
+

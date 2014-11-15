@@ -12,9 +12,9 @@ group :development do
   gem 'sqlite3'
 end
 
-group :production, :mysql do
-  gem 'mysql2'
-end
+#group :production, :mysql do
+#  gem 'mysql2'
+#end
 
 group :production, :postgresql do
   gem 'pg'
