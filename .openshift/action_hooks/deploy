@@ -9,17 +9,17 @@ cd $OPENSHIFT_REPO_DIR
 
 # bundle
 # ln -sf $OPENSHIFT_DATA_DIR/bundle vendor/bundle
-gem uninstall rack
-rm -rf vendor/cache # TODO: this is very bad. but seems to fix a bug with OpenShift
-bundle install --without test development --deployment
+# gem uninstall rack
+# rm -rf vendor/cache # TODO: this is very bad. but seems to fix a bug with OpenShift
+# bundle install --without test development --deployment
 
 # db migration
-bundle exec rake db:create
-bundle exec rake db:migrate
+# bundle exec rake db:create
+# bundle exec rake db:migrate
 
 # assets precompile
 # ln -sf $OPENSHIFT_DATA_DIR/assets public/assets
-bundle exec rake assets:precompile
+# bundle exec rake assets:precompile
 
 # OPENSHIFT EXAMPLE CONFIG BELOW
 
