@@ -7,12 +7,21 @@ script:
 - bundle exec rake db:migrate
 - bundle exec rake
 deploy:
-  provider: openshift
-  user: coldencullen@mail.rit.edu
-  password:
-    secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
-  app: rails
-  domain: coderit
-  on:
-    branch: master
-    repo: codeRIT/brickhack.io
+  - provider: openshift
+    user: coldencullen@mail.rit.edu
+    password:
+      secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
+    app: rails
+    domain: coderit
+    on:
+      branch: master
+      repo: codeRIT/brickhack.io
+  - provider: openshift
+    user: coldencullen@mail.rit.edu
+    password:
+      secure: ihiFWc7Bldo6DtTj1X7dqnN+pYka8mV0aB+gH4gUQpqdkjO2isMAEdOG0tyB1m937soh/JqhdxwjLfhKhSmPd67pQnQSMhM4J/D0N/lKYfeq3zph4gLvhCXpgXRmTD0Q7bfz46cWsIvfuYu0pdpNJk5VlHmCFF2o1V5EsAjPPE4=
+    app: staging
+    domain: coderit
+    on:
+      repo: codeRIT/brickhack.io
+      branch: develop
