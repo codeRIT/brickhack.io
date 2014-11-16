@@ -17,7 +17,7 @@ bundle install --without test development --deployment
 bundle exec rake db:create
 bundle exec rake db:migrate
 
-assets precompile
+# assets precompile
 # ln -sf $OPENSHIFT_DATA_DIR/assets public/assets
 bundle exec rake assets:precompile
 
