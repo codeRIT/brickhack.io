@@ -1,42 +1,16 @@
-.banner
-  background: $primary
-  box-sizing: border-box
-  color: $white
-  display: block
-  margin: 0 auto
-  padding: 10px 0
-  position: relative
-  width: 100%
-  .inner
-    left: 0
-    right: 0
-  &.welcome
-    background: url('rit_campus.jpg') center center fixed no-repeat
-    height: 100%
-    min-height: 400px
-    position: relative
-    text-align: center
-    &:after
-      background: $primary
-      bottom: 0
-      content: ''
-      left: 0
-      opacity: 0.5
-      position: absolute
-      right: 0
-      top: 0
-      z-index: 1
-    .content
-      border: 2px solid $white
-      @include border-radius (100%)
-      height: 100%
-      max-height: 375px
-      left: 50%
-      margin: 0 auto
-      padding-top: 80px
-      position: absolute
-      @include translate(-50%, -50%)
-      top: 50%
-      max-width: 375px
-      width: 100%
-      z-index: 10
+.welcome
+  color: $secondary
+  display: flex
+  flex-direction: column
+  height: 100%
+  justify-content: center
+  text-align: center
+  #logo-large
+    margin-bottom: 25px
+    width: 25vw
+  .grid-cta
+    margin-top: 20px
+    .col
+      padding: 0
+  h1
+    margin-bottom: 0

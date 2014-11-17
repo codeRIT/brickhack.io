@@ -1,6 +1,7 @@
 !!! 5
 %html
   %head
+    %title BrickHack
     %meta{charset: "utf-8" }
     %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
     %meta{name:"description", content:"BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating."}
@@ -11,13 +12,13 @@
     %meta{name:"twitter:url", content:"http://brickhak.io"}
     %meta{name:"twitter:title", content:"BrickHack"}
     %meta{name:"twitter:description", content:"BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating."}
-    %title BrickHack
+    %link{href:'//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css', rel:'stylesheet', type:'text/css'}
     %link{href:'http://fonts.googleapis.com/css?family=Roboto:400,900,300,100,500,700', rel:'stylesheet', type:'text/css'}
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
-    =render "layouts/sidebar"
+    = render "layouts/sidebar"
     %div{id:'main'}
-      =yield
+      = yield
+    = javascript_include_tag "application"

@@ -1,12 +1,16 @@
 %div{class: "banner welcome"}
   %div{class: "container"}
     %div{class: "content"}
-      %h1 BrickHack
-      %h3 April 18, 2015
-      %h4 @ RIT
-      -#%a{class: "button", href:"#signup"}Sign Up
-%section{class:"section container"}
-  %div{class:"grid-cta two",id:"about"}
+      = image_tag('brickhack_logo.png', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
+      %h1 Rochester Institute of Technology
+      %h1 April 18, 2015
+      %div{class:'grid-cta two'}
+        %div{class:'col'}
+          %a{class:'button'}Register
+        %div{class:'col'}
+          %a{class:'button'}Sponsors
+%section{class:"section container", id:"faq"}
+  %div{class:"grid-cta two"}
     %div{class:"col"}
       %h3 What is BrickHack?
       %p BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray to lend expertise, and share wisdom. The event will span 3 floors of the GCCIS’ atrium, for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
@@ -19,7 +23,7 @@
         Rochester, New York 14623
         %br
         Bldg 70 - Golisano
-    %div{class:"col", id:"faq"}
+    %div{class:"col"}
       %h3 Frequently Asked Questions
       %dl{class:"faq"}
         %dt When does registration open?
@@ -46,4 +50,3 @@
     %p If you would like to become a sponsor, you can talk to our sponsorship team to get more information.
     %p
       %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"} Become A Sponsor
-=render "layouts/footer"
