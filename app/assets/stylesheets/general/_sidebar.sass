@@ -1,0 +1,29 @@
+.sidebar
+  background: $primary
+  bottom: 0
+  left: 0
+  max-width: 185px
+  min-height: 100%
+  position: fixed
+  top: 0
+  width: 30%
+
+#logo-cta
+  background: $white
+  padding: 10px
+
+.nav-list
+  font-size: 1.125rem
+  list-style: none
+  margin: 0
+  padding: 0
+  .nav-link
+    color: $white
+    display: block
+    padding: 15px
+    @include transition(250ms, all, ease-in-out, 0ms)
+    width: 100%
+    &.active
+      color: $orange-dark
+    &:hover
+      background: darken($primary, 10%)

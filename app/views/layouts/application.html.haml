@@ -12,9 +12,12 @@
     %meta{name:"twitter:title", content:"BrickHack"}
     %meta{name:"twitter:description", content:"BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating."}
     %title BrickHack
+    %link{href:'http://fonts.googleapis.com/css?family=Roboto:400,900,300,100,500,700', rel:'stylesheet', type:'text/css'}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
-    = yield
+    =render "layouts/sidebar"
+    %div{id:'main'}
+      =yield
