@@ -11,9 +11,9 @@
           %a{class:'button'}Sponsors
 %section{class:"section", id:"faq"}
   %div{class:"container"}
+    %h2{class:'section-title white'}Frequently Asked Questions
     %div{class:"grid-cta two"}
       %div{class:"col"}
-        %h3 What is BrickHack?
         %p BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray to lend expertise, and share wisdom. The event will span 3 floors of the GCCIS’ atrium, for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
         %h4 Location
         %p
@@ -25,7 +25,6 @@
           %br
           Bldg 70 - Golisano
       %div{class:"col"}
-        %h3 Frequently Asked Questions
         %dl{class:"faq"}
           %dt When does registration open?
           %dd Registration will run from January 11, 2015 to February 28. Acceptance notifications will be sent out in March.
@@ -44,10 +43,8 @@
         -#%a{class:"button blue",href:"/faq"} More Questions
 %section{id:"sponsors", class:'section'}
   %div{class:"container"}
-    %h3 Our Sponsors
-    %a{href:"http://dattobackup.com/",target:"_blank"}
-      = image_tag("sponsors/datto.png", :class=>"sponsor", alt:"Datto", :title=>"Datto")
-    %p We are currently in the process of obtaining more sponsors for this event.
-    %p If you would like to become a sponsor, you can talk to our sponsorship team to get more information.
-    %p
-      %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"} Become A Sponsor
+    %h2{class:'section-title'} Sponsors
+    %a{href:"http://dattobackup.com/",class:'sponsor',target:"_blank"}
+      = image_tag("sponsors/datto.png", alt:"Datto", :title=>"Datto")
+    %div{class:'call-to-action'}
+      %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"}Become A Sponsor
