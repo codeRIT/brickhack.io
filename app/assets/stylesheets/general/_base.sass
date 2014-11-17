@@ -10,14 +10,13 @@ body
   color: $grey-med
   font-family: $font-body-family
   font-size: 16px
+  font-weight: $font-light
   margin: 0
   padding: 0
 
 h1, h2, h3
   font-family: $font-headlines-family
   margin-top: 0
-  &.subtitle
-    color: $white
 h1
   font-size: 2.250rem
   font-weight: $font-thin
@@ -25,8 +24,11 @@ h2
   font-size: 2rem
   font-weight: $font-thin
 h3
-  font-size: 2em
+  font-size: 1.750rem
+  font-weight: $font-thin
   margin-top: 0px
+h4
+  font-weight: $font-light
 
 img
   max-width: 100%
@@ -39,6 +41,7 @@ a
     color: lighten($secondary, 10%)
 
 .section
+  min-height: 100%
   padding-top: 80px
   padding-bottom: 80px
 
