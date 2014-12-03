@@ -31,7 +31,6 @@ end
 
 group :developemnt do
   gem 'sqlite3'
-  gem 'spring'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
 
@@ -45,7 +44,6 @@ group :test do
   gem 'minitest-reporters'
   gem 'valid_attribute'
   gem 'ruby-prof'
-  gem 'spring-commands-testunit'
 end
 
 gem 'jquery-rails'

@@ -158,9 +158,6 @@ GEM
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
     slop (3.6.0)
-    spring (1.1.3)
-    spring-commands-testunit (1.0.1)
-      spring (>= 0.9.1)
     sprockets (2.2.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -203,8 +200,6 @@ DEPENDENCIES
   ruby-prof
   sass-rails (~> 3.2.3)
   shoulda
-  spring
-  spring-commands-testunit
   sqlite3
   strip_attributes
   uglifier (>= 1.0.3)

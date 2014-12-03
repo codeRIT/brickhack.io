@@ -1,6 +1,6 @@
 # More info at https://github.com/guard/guard#readme
 
-guard :minitest, spring: true, all_on_start: false, all_after_pass: false do
+guard :minitest, all_on_start: false, all_after_pass: false do
   watch(%r{^app/(?:models|presenters|validators|lib)/(.+)\.rb$})  { |m| "test/unit/#{m[1]}_test.rb" }
   watch(%r{^app/helpers/(.+)\.rb$})                    { |m| "test/unit/helpers/#{m[1]}_test.rb" }
   watch(%r{^app/mailers/(.+)\.rb$})                    { |m| "test/functional/#{m[1]}_test.rb" }
