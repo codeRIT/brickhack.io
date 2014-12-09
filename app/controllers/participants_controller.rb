@@ -35,6 +35,7 @@ class ParticipantsController < ApplicationController
   # POST /participants
   # POST /participants.json
   def create
+    params[:participant] = convert_school_name_to_id params[:participant]
     @participant = Participant.new(params[:participant])
 
     respond_to do |format|
@@ -51,6 +52,7 @@ class ParticipantsController < ApplicationController
   # PUT /participants/1
   # PUT /participants/1.json
   def update
+    params[:participant] = convert_school_name_to_id params[:participant]
     @participant = Participant.find(params[:id])
 
     respond_to do |format|
@@ -74,5 +76,29 @@ class ParticipantsController < ApplicationController
       format.html { redirect_to participants_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /participants/schools
+  def schools
+    if params[:name].blank? || params[:name].length < 3
+      head 400
+      return
+    end
+    schools = School.where('name LIKE ?', "%#{params[:name]}%").limit(20).select(:name).all
+    render json: schools.map(&:name)
+  end
+
+  private
+
+  def convert_school_name_to_id(participant)
+    if participant[:school_name]
+      school = School.where(name: participant[:school_name]).first
+      if school.blank?
+        school = School.create(name: participant[:school_name])
+      end
+      participant[:school_id] = school.id
+      participant.delete :school_name
+    end
+    participant
   end
 end

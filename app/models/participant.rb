@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-  attr_accessible :city, :email, :experience, :first_name, :interest, :experience, :last_name, :state, :year, :school_id
+  attr_accessible :city, :email, :experience, :first_name, :interest, :experience, :last_name, :state, :year, :school_id, :school_name
 
   validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year, :school_id
 
@@ -29,5 +29,9 @@ class Participant < ActiveRecord::Base
 
   def school
     School.find(school_id)
+  end
+
+  def school_naem
+    school.name
   end
 end

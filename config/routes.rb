@@ -1,6 +1,8 @@
 BrickhackIo::Application.routes.draw do
 
-  resources :participants
+  resources :participants do
+    get :schools, on: :collection
+  end
 
   get "home/index"
 

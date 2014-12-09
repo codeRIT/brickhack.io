@@ -10,9 +10,8 @@ require 'csv'
 
 puts "Seeding school list..."
 
-School.delete_all
 csv_text = File.read('db/schools.csv')
 csv = CSV.parse(csv_text, headers: true)
 csv.each do |row|
-  School.create!(row.to_hash)
+  School.create(row.to_hash)
 end

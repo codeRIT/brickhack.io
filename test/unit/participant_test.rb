@@ -25,6 +25,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :year
   should allow_mass_assignment_of :experience
   should allow_mass_assignment_of :school_id
+  should allow_mass_assignment_of :school_name
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)

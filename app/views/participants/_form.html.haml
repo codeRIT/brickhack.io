@@ -1,37 +1,19 @@
-= form_for @participant do |f|
-  - if @participant.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@participant.errors.count, "error")} prohibited this participant from being saved:"
-      %ul
-        - @participant.errors.full_messages.each do |msg|
-          %li= msg
+= simple_form_for @participant do |f|
+  = f.error_notification
 
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :school_id
-    = f.text_field :school_id
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state
-    = f.text_field :state
-  .field
-    = f.label :experience
-    = f.select :experience, Participant::POSSIBLE_EXPERIENCES, include_blank: "(select one...)"
-  .field
-    = f.label :year
-    = f.select :year, Participant::POSSIBLE_YEARS, include_blank: "(select one...)"
-  .field
-    = f.label :interest
-    = f.select :interest, Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)"
-  .actions
-    = f.submit 'Save'
+  .form-inputs
+    = f.input :first_name
+    = f.input :last_name
+    = f.input :email
+
+    = f.input :school_id, as: :school_selection
+
+    = f.input :city
+    = f.input :state
+
+    = f.input :experience, as: :select, collection: Participant::POSSIBLE_EXPERIENCES, include_blank: "(select one...)"
+    = f.input :year, as: :select, collection: Participant::POSSIBLE_YEARS, include_blank: "(select one...)"
+
+    = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)"
+
+  = f.button :submit

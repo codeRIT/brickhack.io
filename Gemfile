@@ -12,6 +12,7 @@ group :production, :postgresql do
 end
 
 gem 'haml-rails'
+gem 'simple_form'
 
 gem 'strip_attributes'
 
@@ -22,6 +23,8 @@ gem 'email_validator'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+
+  gem 'jquery-ui-sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -39,7 +42,7 @@ group :development do
 end
 
 group :test do
-  gem "shoulda"
+  gem 'shoulda'
   gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'valid_attribute'
