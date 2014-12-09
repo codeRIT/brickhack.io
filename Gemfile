@@ -29,7 +29,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :developemnt do
+group :development do
   gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
