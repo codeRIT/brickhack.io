@@ -10,12 +10,12 @@ class Participant < ActiveRecord::Base
   POSSIBLE_INTERESTS   = %w(design development hardware)
   POSSIBLE_EXPERIENCES = { "This is my first" => "first", "1-10" => "experienced", "10+" => "expert" }
   POSSIBLE_YEARS       = {
-    "High School"       => "hs",
-    "College 1st Year"  => "1",
-    "College 2nd Year"  => "2",
-    "College 3rd Year"  => "3",
-    "College 4th Year"  => "4",
-    "College 5th+ Year" => "5+"
+    "High School" => "hs",
+    "1st Year"    => "1",
+    "2nd Year"    => "2",
+    "3rd Year"    => "3",
+    "4th Year"    => "4",
+    "5th+ Year"   => "5+"
   }
 
   validates_inclusion_of :interest, :in => POSSIBLE_INTERESTS
