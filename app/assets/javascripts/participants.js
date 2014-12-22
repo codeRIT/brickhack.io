@@ -3,7 +3,7 @@ $(document).ready(function () {
   $('[data-school-picker]').autocomplete({
       source: function( request, response ) {
         $.ajax({
-          url: '/participants/schools',
+          url: '/apply/schools',
           dataType: 'json',
           data: {
             name: request.term

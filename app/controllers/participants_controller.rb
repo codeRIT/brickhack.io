@@ -1,12 +1,11 @@
 class ParticipantsController < ApplicationController
-  # GET /participants
-  # GET /participants.json
+  # GET /apply
   def index
     redirect_to new_participant_path
   end
 
-  # GET /participants/1
-  # GET /participants/1.json
+  # GET /apply/1
+  # GET /apply/1.json
   def show
     @participant = Participant.find(params[:id])
 
@@ -16,8 +15,8 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  # GET /participants/new
-  # GET /participants/new.json
+  # GET /apply/new
+  # GET /apply/new.json
   def new
     @participant = Participant.new
 
@@ -27,13 +26,13 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  # GET /participants/1/edit
+  # GET /apply/1/edit
   def edit
     @participant = Participant.find(params[:id])
   end
 
-  # POST /participants
-  # POST /participants.json
+  # POST /apply
+  # POST /apply.json
   def create
     params[:participant] = convert_school_name_to_id params[:participant]
     @participant = Participant.new(params[:participant])
@@ -49,8 +48,8 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  # PUT /participants/1
-  # PUT /participants/1.json
+  # PUT /apply/1
+  # PUT /apply/1.json
   def update
     params[:participant] = convert_school_name_to_id params[:participant]
     @participant = Participant.find(params[:id])
@@ -66,8 +65,8 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  # DELETE /participants/1
-  # DELETE /participants/1.json
+  # DELETE /apply/1
+  # DELETE /apply/1.json
   def destroy
     @participant = Participant.find(params[:id])
     @participant.destroy
@@ -78,7 +77,7 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  # GET /participants/schools
+  # GET /apply/schools
   def schools
     if params[:name].blank? || params[:name].length < 3
       head 400

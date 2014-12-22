@@ -1,6 +1,6 @@
 BrickhackIo::Application.routes.draw do
 
-  resources :participants do
+  resources :participants, path: "apply" do
     get :schools, on: :collection
   end
 
