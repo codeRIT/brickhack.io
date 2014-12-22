@@ -6,8 +6,9 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :email
       t.string :city
       t.string :state
-      t.string :experience
       t.string :year
+      t.date :birthday
+      t.string :experience
       t.string :interest
       t.string :school_id
 

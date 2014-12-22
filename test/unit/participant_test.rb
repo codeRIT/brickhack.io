@@ -16,6 +16,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :city
   should validate_presence_of :state
   should validate_presence_of :year
+  should validate_presence_of :birthday
   should validate_presence_of :experience
   should validate_presence_of :interest
 
@@ -25,6 +26,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :city
   should allow_mass_assignment_of :state
   should allow_mass_assignment_of :year
+  should allow_mass_assignment_of :birthday
   should allow_mass_assignment_of :experience
   should allow_mass_assignment_of :interest
   should allow_mass_assignment_of :school_id

@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20141029055313) do
     t.string   "email"
     t.string   "city"
     t.string   "state"
-    t.string   "experience"
     t.string   "year"
+    t.date     "birthday"
+    t.string   "experience"
     t.string   "interest"
     t.string   "school_id"
     t.datetime "created_at", :null => false

@@ -12,6 +12,9 @@
   %b Email:
   = @participant.email
 %p
+  %b Birthday:
+  = @participant.birthday.strftime("%B %e, %Y")
+%p
   %b School:
   = @participant.school.full_name
 %p

@@ -6,8 +6,9 @@ FactoryGirl.define do
     email       "test@example.com"
     city        "MyString"
     state       "MyString"
-    experience  "first"
     year        "1"
+    birthday    20.years.ago
+    experience  "first"
     interest    "development"
     school_id   "1"
   end
