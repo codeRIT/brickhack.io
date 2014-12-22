@@ -15,7 +15,9 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :last_name
   should validate_presence_of :city
   should validate_presence_of :state
-  should validate_presence_of :school_id
+  should validate_presence_of :year
+  should validate_presence_of :experience
+  should validate_presence_of :interest
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -24,19 +26,18 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :state
   should allow_mass_assignment_of :year
   should allow_mass_assignment_of :experience
+  should allow_mass_assignment_of :interest
   should allow_mass_assignment_of :school_id
   should allow_mass_assignment_of :school_name
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
   should allow_value("hardware").for(:interest)
-  should_not allow_value(nil).for(:interest)
   should_not allow_value("foo").for(:interest)
 
   should allow_value("first").for(:experience)
   should allow_value("experienced").for(:experience)
   should allow_value("expert").for(:experience)
-  should_not allow_value(nil).for(:experience)
   should_not allow_value("foo").for(:experience)
 
   should allow_value("hs").for(:year)
