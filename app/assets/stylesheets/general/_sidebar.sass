@@ -2,10 +2,12 @@
   background: $primary
   bottom: 0
   left: 0
-  max-width: 200px
   min-height: 100%
   position: fixed
   top: 0
+  @include transition(200ms, left, ease-in-out, 0s)
+  width: $sidebar-width
+  z-index: 10001
   .pusher
     height: 100%
 

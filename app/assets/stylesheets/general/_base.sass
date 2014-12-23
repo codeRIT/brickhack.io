@@ -59,11 +59,14 @@ a
   padding-left: 8px
   padding-right: 8px
 
-.grid-cta
+.grid
   .col
-    box-sizing: border-box
-    float: left
+    @include box-sizing (border-box)
+    display: inline-block
+    margin-right: -4px
+    min-height: 1px
     padding-right: 35px
+    vertical-align: middle
     &:last-child
       padding-right: 0
   &.two
@@ -72,10 +75,12 @@ a
   &.three
     .col
       width: 33.3333%
-  &:after
-    content: ""
-    display: table
-    clear: both
 
 .center
   text-align: center
+
+.left
+  text-align: left
+
+.right
+  text-align: right

@@ -2,18 +2,27 @@
   body
     font-size: 14px
 
-  .grid-cta
+  #main
+    margin-left: 0
+
+  .sidebar
+    left: -$sidebar-width
+
+  .welcome #logo-large
+    width: 45vw
+
+  .grid
     .col
       clear: both
-      float: none !important
       margin-top: 8px
       padding-right: 0
-      width: 100% !important
 
   .section
     padding-bottom: 15px
     padding-top: 15px
 
-@media screen and (max-width: 400px)
-  .grid-cta
-    width: auto
+@media screen and (max-width: 550px)
+  .grid .col
+    display: block
+    padding: 0
+    width: auto !important

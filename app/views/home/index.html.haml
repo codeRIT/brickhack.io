@@ -1,10 +1,10 @@
 %div{class: "welcome"}
   %div{class: "container"}
     %div{class: "content"}
-      = image_tag('brickhack_logo.png', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
+      = image_tag('brickhack_logo.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
       %h1 Rochester Institute of Technology
       %h1 April 18, 2015
-      %div{class:'grid-cta two'}
+      %div{class:'grid two'}
         %div{class:'col'}
           %a{class:'button'}Register
         %div{class:'col'}
@@ -12,7 +12,7 @@
 %section{class:"section", id:"faq"}
   %div{class:"container"}
     %h2{class:'section-title white'}Frequently Asked Questions
-    %div{class:"grid-cta two"}
+    %div{class:"grid two"}
       %div{class:"col"}
         %p BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray to lend expertise, and share wisdom. The event will span 3 floors of the GCCIS’ atrium, for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
         %h4 Location
@@ -48,3 +48,10 @@
       = image_tag("sponsors/datto.png", alt:"Datto", :title=>"Datto")
     %div{class:'call-to-action'}
       %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"}Become A Sponsor
+%section{id:"contact", class:'section'}
+  %div{class:"container"}
+    %h2{class:'section-title'} Contact
+    %div{class:'grid two center'}
+      %div{class:'col'}
+        %p Have any questions or concerns? Please feel free to contact us. If you have not yet, please checkout out <a href="#faq">FAQ</a> setcion as your questions may already be answered.
+        %a{class:"button blue", href:"mailto:carl@coderit.org?subject=BrickHack Questions"}Get In Touch
