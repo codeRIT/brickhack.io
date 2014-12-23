@@ -1,0 +1,86 @@
+*
+  @include box-sizing (border-box)
+
+body, html
+  height: 100%
+  min-height: 250px
+
+body
+  background: $white
+  color: $grey-med
+  font-family: $font-body-family
+  font-size: 16px
+  font-weight: $font-light
+  margin: 0
+  padding: 0
+
+h1, h2, h3
+  font-family: $font-headlines-family
+  margin-top: 0
+h1
+  font-size: 2.250rem
+  font-weight: $font-thin
+h2
+  font-size: 2rem
+  font-weight: $font-thin
+h3
+  font-size: 1.750rem
+  font-weight: $font-thin
+  margin-top: 0px
+h4
+  font-weight: $font-light
+
+img
+  max-width: 100%
+  width: 100%
+
+a
+  color: $secondary
+  text-decoration: none
+  &:hover
+    color: lighten($secondary, 10%)
+
+.section
+  min-height: 100%
+  padding-top: 80px
+  padding-bottom: 80px
+  position: relative
+
+.section-title
+  color: $secondary
+  font-size: 3.000rem
+  text-align: center
+  &.white
+    color: $white
+
+.container
+  margin: 0 auto
+  max-width: 980px
+  padding-left: 8px
+  padding-right: 8px
+
+.grid
+  .col
+    @include box-sizing (border-box)
+    display: inline-block
+    margin-right: -4px
+    min-height: 1px
+    padding-right: 35px
+    vertical-align: middle
+    &:last-child
+      padding-right: 0
+  &.two
+    .col
+      width: 50%
+  &.three
+    .col
+      width: 33.3333%
+
+.center
+  text-align: center
+
+.left
+  text-align: left
+
+.right
+  text-align: right

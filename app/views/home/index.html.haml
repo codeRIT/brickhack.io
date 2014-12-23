@@ -1,50 +1,57 @@
-%div{class: "banner welcome"}
+%div{class: "welcome"}
   %div{class: "container"}
     %div{class: "content"}
-      %h1 BrickHack
-      %h3 April 18, 2015
-      %h4 @ RIT
-      -#%a{class: "button", href:"#signup"}Sign Up
-=render "layouts/navigation"
-%section{class:"section container"}
-  %div{class:"grid-cta two",id:"about"}
-    %div{class:"col"}
-      %h3 What is BrickHack?
-      %p BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray to lend expertise, and share wisdom. The event will span 3 floors of the GCCIS’ atrium, for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
-      %h4 Location
-      %p
-        Rochester Institute of Technology
-        %br
-        1 Lomb Memorial Drive
-        %br
-        Rochester, New York 14623
-        %br
-        Bldg 70 - Golisano
-    %div{class:"col", id:"faq"}
-      %h3 Frequently Asked Questions
-      %dl{class:"faq"}
-        %dt When does registration open?
-        %dd Registration will run from January 11, 2015 to February 28. Acceptance notifications will be sent out in March.
+      = image_tag('brickhack_logo.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
+      %h1 Rochester Institute of Technology
+      %h1 April 18, 2015
+      %div{class:'grid two'}
+        %div{class:'col'}
+          %a{class:'button'}Register
+        %div{class:'col'}
+          %a{class:'button'}Sponsors
+%section{class:"section", id:"faq"}
+  %div{class:"container"}
+    %h2{class:'section-title white'}Frequently Asked Questions
+    %div{class:"grid two"}
+      %div{class:"col"}
+        %p BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray to lend expertise, and share wisdom. The event will span 3 floors of the GCCIS’ atrium, for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
+        %h4 Location
+        %p
+          Rochester Institute of Technology
+          %br
+          1 Lomb Memorial Drive
+          %br
+          Rochester, New York 14623
+          %br
+          Bldg 70 - Golisano
+      %div{class:"col"}
+        %dl{class:"faq"}
+          %dt When does registration open?
+          %dd Registration will run from January 11, 2015 to February 28. Acceptance notifications will be sent out in March.
 
-        %dt I've never been to a hackathon before, can I still apply?
-        %dd Of course you can! Many of our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.
+          %dt I've never been to a hackathon before, can I still apply?
+          %dd Of course you can! Many of our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.
 
-        %dt I don't live near Rochester, can I still come?
-        %dd Definitely. We’re inviting hackers from all over the US and Canada. Travel reimbursement and busing will be provided to some participants to get you to Rochester. Expect more details soon.
+          %dt I don't live near Rochester, can I still come?
+          %dd Definitely. We’re inviting hackers from all over the US and Canada. Travel reimbursement and busing will be provided to some participants to get you to Rochester. Expect more details soon.
 
-        %dt Do I need a team to join?
-        %dd While teams are often recommended and sometimes more fun, they’re not required. Feel free to come with as few or as many comrades as you like.
+          %dt Do I need a team to join?
+          %dd While teams are often recommended and sometimes more fun, they’re not required. Feel free to come with as few or as many comrades as you like.
 
-        %dt Should I bring my own bricks?
-        %dd We’ve got you covered.
-      -#%a{class:"button blue",href:"/faq"} More Questions
-%section{id:"sponsors"}
-  %div{class:"section container"}
-    %h3 Our Sponsors
-    %a{href:"http://dattobackup.com/",target:"_blank"}
-      = image_tag("sponsors/datto.png", :class=>"sponsor", alt:"Datto", :title=>"Datto")
-    %p We are currently in the process of obtaining more sponsors for this event.
-    %p If you would like to become a sponsor, you can talk to our sponsorship team to get more information.
-    %p
-      %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"} Become A Sponsor
-=render "layouts/footer"
+          %dt Should I bring my own bricks?
+          %dd We’ve got you covered.
+        -#%a{class:"button blue",href:"/faq"} More Questions
+%section{id:"sponsors", class:'section'}
+  %div{class:"container"}
+    %h2{class:'section-title'} Sponsors
+    %a{href:"http://dattobackup.com/",class:'sponsor',target:"_blank"}
+      = image_tag("sponsors/datto.png", alt:"Datto", :title=>"Datto")
+    %div{class:'call-to-action'}
+      %a{class:"button blue", href:"mailto:sponorship@coderit.org?subject=BrickHack Sponsorship"}Become A Sponsor
+%section{id:"contact", class:'section'}
+  %div{class:"container"}
+    %h2{class:'section-title'} Contact
+    %div{class:'grid two center'}
+      %div{class:'col'}
+        %p Have any questions or concerns? Please feel free to contact us. If you have not yet, please checkout out <a href="#faq">FAQ</a> setcion as your questions may already be answered.
+        %a{class:"button blue", href:"mailto:carl@coderit.org?subject=BrickHack Questions"}Get In Touch

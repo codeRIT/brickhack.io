@@ -1,0 +1,14 @@
+a.button
+  background: $blue-light
+  border: 0
+  color: $white
+  cursor: pointer
+  display: inline-block
+  font-size: 1.500rem
+  min-width: 190px
+  padding: 13px 25px
+  text-align: center
+  @include transition(200ms, all, ease-in-out, 0ms)
+  &:hover
+    background: lighten($blue-light, 10%)
+    @include box-shadow(inset 0 0 10px 3px lighten($blue-light, 5%))
