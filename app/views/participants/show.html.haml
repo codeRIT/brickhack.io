@@ -1,0 +1,38 @@
+%p#notice= notice
+
+%p Thanks for applying! Acceptance notifications will be sent out in March.
+%p Below is a copy of your application.
+%p
+  %b First name:
+  = @participant.first_name
+%p
+  %b Last name:
+  = @participant.last_name
+%p
+  %b Email:
+  = @participant.email
+%p
+  %b Birthday:
+  = @participant.birthday.strftime("%B %e, %Y")
+%p
+  %b School:
+  = @participant.school.full_name
+%p
+  %b City:
+  = @participant.city
+%p
+  %b State:
+  = @participant.state
+%p
+  %b Experience:
+  = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
+%p
+  %b Year:
+  = Participant::POSSIBLE_YEARS.invert[@participant.year]
+%p
+  %b Interest:
+  = @participant.interest.titleize
+
+%p
+  Need to make changes?
+  = link_to 'Edit &raquo;'.html_safe, edit_participant_path(@participant)
