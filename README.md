@@ -6,7 +6,7 @@ The public facing site for Brick Hack.
 
 ## Mac OS X
 
-Install ruby, postgres, and other required development environment tools.
+Install ruby, sqlite, and other required development environment tools.
 ```bash
 $ brew install rbenv ruby-build rbenv-readline rbenv-gem-rehash rbenv-default-gems rbenv-binstubs
 $ brew install sqlite3
@@ -18,7 +18,7 @@ $ git clone git@github.com:codeRIT/brickhack.io.git
 $ cd brickhack.io
 $ rbenv install
 $ bundle install --path vendor --local
-$ bundle exec rake db:create
+$ bundle exec rake db:create db:migrate
 ```
 
 Optionally, you can use [Pow](http://pow.cx) to host your local development environment. With it, you can visit [http://brickhack.io.dev/](http://brickhack.io.dev/)
@@ -43,7 +43,7 @@ $ git clone git@github.com:codeRIT/brickhack.io.git
 $ cd brickhack.io
 $ gem install bundler
 $ bundle install --path vendor --local
-$ bundle exec rake db:create
+$ bundle exec rake db:create db:migrate
 ```
 
 Start your local environment: `bundle exec rails server`

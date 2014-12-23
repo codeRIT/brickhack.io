@@ -1,4 +1,9 @@
 BrickhackIo::Application.routes.draw do
+
+  resources :participants, path: "apply" do
+    get :schools, on: :collection
+  end
+
   get "home/index"
 
   # The priority is based upon order of creation:
