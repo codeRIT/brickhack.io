@@ -18,4 +18,4 @@
     = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)"
 
     %div{class:'center'}
-      = f.button :submit, class:"button", value:'Apply'
+      = f.button :submit, class:"button", value: ( @participant.new_record? ? 'Apply' : 'Save' )
