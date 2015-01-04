@@ -88,9 +88,10 @@ select
   color: $blue
   list-style: none
   padding: 0
-  .ui-menu-item
+  .ui-menu-item a
     padding: 2px 5px
-    &:hover
+    display: block
+    &:hover, &.ui-state-focus
       background: $orange-light
       color: $white
 
