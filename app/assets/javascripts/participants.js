@@ -19,7 +19,8 @@ $(document).ready(function () {
       results: function() {}
     },
     minLength: 3,
-    delay: 100
+    delay: 100,
+    autoFocus: true
   });
 
 });
