@@ -1,9 +1,10 @@
 class Participant < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
+  attr_accessible :shirt_size, :dietary_medical_notes
 
   validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year
-  validates_presence_of :birthday, :school_id, :interest, :experience
+  validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
 
   validates :email, email: true
 
@@ -19,11 +20,13 @@ class Participant < ActiveRecord::Base
     "4th Year"    => "4",
     "5th+ Year"   => "5+"
   }
+  POSSIBLE_SHIRT_SIZES = %w(S M L XL)
 
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
-  validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES.invert
-  validates_inclusion_of :year, in: POSSIBLE_YEARS.invert
+  validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES.invert # TODO: why .invert?
+  validates_inclusion_of :year, in: POSSIBLE_YEARS.invert # TODO: why .invert?
   # validates_inclusion_of :school_id, :in => School.select(:id)
+  validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
 
   def email=(value)
     super value.try(:downcase)
