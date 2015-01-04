@@ -11,5 +11,7 @@ FactoryGirl.define do
     experience  "first"
     interest    "development"
     school_id   "1"
+    shirt_size  "M"
+    dietary_medical_notes ""
   end
 end

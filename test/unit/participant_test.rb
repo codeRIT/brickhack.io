@@ -19,6 +19,7 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :birthday
   should validate_presence_of :experience
   should validate_presence_of :interest
+  should validate_presence_of :shirt_size
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -31,6 +32,8 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :interest
   should allow_mass_assignment_of :school_id
   should allow_mass_assignment_of :school_name
+  should allow_mass_assignment_of :shirt_size
+  should allow_mass_assignment_of :dietary_medical_notes
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
@@ -50,6 +53,12 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_value("5+").for(:year)
   should_not allow_value(nil).for(:year)
   should_not allow_value("foo").for(:year)
+
+  should allow_value("S").for(:shirt_size)
+  should allow_value("M").for(:shirt_size)
+  should allow_value("L").for(:shirt_size)
+  should allow_value("XL").for(:shirt_size)
+  should_not allow_value("foo").for(:shirt_size)
 
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")

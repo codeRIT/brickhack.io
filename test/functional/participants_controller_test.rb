@@ -19,7 +19,7 @@ class ParticipantsControllerTest < ActionController::TestCase
 
   test "should create participant" do
     assert_difference('Participant.count') do
-      post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, school_id: @school.id }
+      post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, shirt_size: @participant.shirt_size, school_id: @school.id }
     end
 
     assert_redirected_to participant_path(assigns(:participant))
@@ -36,7 +36,7 @@ class ParticipantsControllerTest < ActionController::TestCase
   end
 
   test "should update participant" do
-    put :update, id: @participant, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, school_id: @school.id }
+    put :update, id: @participant, participant: { email: "new@example.com" }
     assert_redirected_to participant_path(assigns(:participant))
   end
 
@@ -51,13 +51,13 @@ class ParticipantsControllerTest < ActionController::TestCase
   context "#school_name" do
     context "on create" do
       should "save existing school name" do
-        post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, school_name: @school.name }
+        post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, shirt_size: @participant.shirt_size, school_name: @school.name }
         assert_redirected_to participant_path(assigns(:participant))
         assert_equal 1, School.all.count
       end
 
       should "create a new school when unknown" do
-        post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, school_name: "New School" }
+        post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, shirt_size: @participant.shirt_size, school_name: "New School" }
         assert_redirected_to participant_path(assigns(:participant))
         assert_equal 2, School.all.count
       end
