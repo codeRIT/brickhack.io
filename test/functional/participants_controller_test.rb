@@ -36,7 +36,7 @@ class ParticipantsControllerTest < ActionController::TestCase
   end
 
   test "should update participant" do
-    put :update, id: @participant, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, school_id: @school.id }
+    put :update, id: @participant, participant: { email: "new@example.com" }
     assert_redirected_to participant_path(assigns(:participant))
   end
 
