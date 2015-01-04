@@ -23,8 +23,8 @@ class Participant < ActiveRecord::Base
   POSSIBLE_SHIRT_SIZES = %w(S M L XL)
 
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
-  validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES
-  validates_inclusion_of :year, in: POSSIBLE_YEARS
+  validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES.invert # TODO: why .invert?
+  validates_inclusion_of :year, in: POSSIBLE_YEARS.invert # TODO: why .invert?
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
 
