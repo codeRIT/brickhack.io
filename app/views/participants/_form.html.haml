@@ -18,5 +18,7 @@
     = f.input :shirt_size, as: :select, collection: Participant::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
     = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Dietary & medical notes"
 
+    = f.input :resume, as: :deletable_attachment, hint: "must be a PDF under 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }
+
     %div{class:'center'}
       = f.button :submit, class:"button", value: ( @participant.new_record? ? 'Apply' : 'Save' )

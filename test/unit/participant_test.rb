@@ -34,6 +34,8 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :school_name
   should allow_mass_assignment_of :shirt_size
   should allow_mass_assignment_of :dietary_medical_notes
+  should allow_mass_assignment_of :resume
+  should allow_mass_assignment_of :delete_resume
 
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
@@ -59,6 +61,12 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_value("L").for(:shirt_size)
   should allow_value("XL").for(:shirt_size)
   should_not allow_value("foo").for(:shirt_size)
+
+  should have_attached_file(:resume)
+  should validate_attachment_content_type(:resume)
+                .allowing('application/pdf')
+                .rejecting('text/plain', 'image/png', 'image/jpg', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+  should validate_attachment_size(:resume).less_than(2.megabytes)
 
   should "downcase emails" do
     s = build(:participant, email: "Test@ExAmPlE.cOm")
