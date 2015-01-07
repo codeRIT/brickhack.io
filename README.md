@@ -51,7 +51,7 @@ Start your local environment: `bundle exec rails server`
 ## Development Utilities
 
 * **Mail View** - Email templates can be previewed at http://localhost:3000/mail_view/
-* **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup.
+* **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup. **Note:** in order for mail to be sent, you must start a local Sidekiq worker using `bundle exec sidekiq`.
 
 ## Resume Setup
 
