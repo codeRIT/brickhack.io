@@ -11,7 +11,7 @@
     = f.input :year, as: :select, collection: Participant::POSSIBLE_YEARS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
     = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
-    = f.input :state, placeholder: "New York", input_html: { "data-validate" => "presence" }
+    = f.input :state, as: :select, collection: Participant::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
     = f.input :experience, as: :select, collection: Participant::POSSIBLE_EXPERIENCES, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
     = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }

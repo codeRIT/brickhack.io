@@ -37,6 +37,12 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :resume
   should allow_mass_assignment_of :delete_resume
 
+  should allow_value("VA").for(:state)
+  should allow_value("NY").for(:state)
+  should allow_value("PA").for(:state)
+  should_not allow_value("ZZ").for(:state)
+  should_not allow_value("New York").for(:state)
+
   should allow_value("design").for(:interest)
   should allow_value("development").for(:interest)
   should allow_value("hardware").for(:interest)
