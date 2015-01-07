@@ -7,8 +7,8 @@ class Participant < ActiveRecord::Base
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
 
   has_attached_file :resume
-  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "invalid file type"
-  validates_attachment_size :resume, in: 0..2.megabytes, message: "file size is too big"
+  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid File Type"
+  validates_attachment_size :resume, in: 0..2.megabytes, message: "File Too Large"
 
   include DeletableAttachment
 
@@ -17,7 +17,7 @@ class Participant < ActiveRecord::Base
   strip_attributes
 
   POSSIBLE_INTERESTS   = %w(design development hardware)
-  POSSIBLE_EXPERIENCES = { "This is my first" => "first", "1-10" => "experienced", "10+" => "expert" }
+  POSSIBLE_EXPERIENCES = { "This is my first hackathon" => "first", "Less than 10 hackathons" => "experienced", "More than 10 hackathons" => "expert" }
   POSSIBLE_YEARS       = {
     "High School" => "hs",
     "1st Year"    => "1",

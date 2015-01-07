@@ -1,9 +1,20 @@
+#disclaimer
+  background: lighten($blue, 10%)
+  color: $white_pure
+  margin: 0 auto 50px auto
+  max-width: 80%
+  padding: 25px 30px
+
 .form-container
+  margin: 0 auto
+  max-width: 650px
   padding-right: 100px
 
 // custom styles
 .simple_form
   color: $blue
+  abbr
+    display: none
   .error
     background: $red
     bottom: 1px
@@ -15,14 +26,11 @@
     padding: 3px 2px
     position: absolute
 
-  abbr
-    display: none
-
 div.input
   display: flex
   flex-direction: row
   flex-wrap: nowrap
-  margin-bottom: 10px
+  margin-bottom: 15px
   position: relative
   text-align: left
 
@@ -30,6 +38,9 @@ label
   font-weight: $font-reg
   margin-right: 10px
   min-width: 175px
+  padding-top: 3px
+  padding-right: 10px
+  text-align: right
 
 // all form input types
 input[type=text], input[type=email], input[type=date], textarea, select
@@ -81,10 +92,14 @@ select
     background: $white_pure
     padding: 3px auto
 
+.field_with_errors
+  color: $red !important
+
 
 //jquery ui override
 .ui-autocomplete
   background: $white_pure
+  border: 1px solid lighten($blue, 10%)
   color: $blue
   list-style: none
   padding: 0
@@ -95,6 +110,34 @@ select
       background: $orange-light
       color: $white
 
-@media screen and (max-width: 500px)
-  .input
+@media screen and (max-width: 600px)
+  #disclaimer
+    max-width: none
+    margin: 0 25px 25px 25px
+    ul
+      margin: 0
+      padding: 0
+
+  .form-container
+    padding: 0 25px
+  div.input
     display: block
+
+  label
+    display: block
+    font-size: 1.115rem
+    margin-bottom: 5px
+    margin-top: 15px
+    text-align: left
+
+  input[type=text], input[type=email], input[type=date], textarea, select, option
+    font-size: 1.115rem
+    padding: 12px 15px
+    width: 100%
+
+  .simple_form .error
+    display: block
+    left: 0
+    margin: 0
+    padding-left: 8px
+    position: relative
