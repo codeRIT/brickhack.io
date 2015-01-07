@@ -39,6 +39,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       if @participant.save
+        Mailer.application_confirmation_email(@participant).deliver
         format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
         format.json { render json: @participant, status: :created, location: @participant }
       else

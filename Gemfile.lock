@@ -135,6 +135,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_view (2.0.4)
+      tilt
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
@@ -257,6 +259,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   jquery-ui-sass-rails
+  mail_view (~> 2.0.4)
   minitest-rails
   minitest-reporters
   mysql2

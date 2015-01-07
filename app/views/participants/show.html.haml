@@ -37,7 +37,7 @@
   = @participant.shirt_size
 %p
   %b Dietary & medical notes:
-  = @participant.dietary_medical_notes
+  = @participant.dietary_medical_notes || "None"
 %p
   %b Resume:
   = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not provided'

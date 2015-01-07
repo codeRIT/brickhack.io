@@ -1,5 +1,9 @@
 BrickhackIo::Application.routes.draw do
 
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+  end
+
   resources :participants, path: "apply" do
     get :schools, on: :collection
   end
