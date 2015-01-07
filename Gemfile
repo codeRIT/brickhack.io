@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-deployment', groups: [:production]
+
 gem 'rails', '~> 3.2.16'
 gem 'rack', '~> 1.4.5'
 
@@ -15,6 +17,7 @@ gem 'haml-rails'
 gem 'simple_form'
 
 gem 'strip_attributes'
+gem 'paperclip-googledrive', git: 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
 
 gem 'email_validator'
 

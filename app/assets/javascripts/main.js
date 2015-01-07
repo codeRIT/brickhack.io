@@ -34,6 +34,18 @@ $(document).ready(function () {
               }
             }
           break;
+          case 'file-max-size':
+            if (this.files && this.files[0] && this.files[0].size > parseInt($(this).data('validate-file-max-size'))) {
+              notify(this, "file is too big");
+              success = false;
+            }
+          break;
+          case 'file-content-type':
+            if (this.files && this.files[0] && this.files[0].type != $(this).data('validate-file-content-type')) {
+              notify(this, "invalid file type");
+              success = false;
+            }
+          break;
         }
       }
       if (success) {

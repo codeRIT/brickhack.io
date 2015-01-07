@@ -65,4 +65,18 @@ BrickhackIo::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Store resumes on Google Drive when in production
+  config.paperclip_defaults = {
+    storage: :google_drive,
+    google_drive_credentials: {
+      client_id:     ENV["GOOGLE_DRIVE_CLIENT_ID"],
+      client_secret: ENV["GOOGLE_DRIVE_CLIENT_SECRET"],
+      access_token:  ENV["GOOGLE_DRIVE_ACCESS_TOKEN"],
+      refresh_token: ENV["GOOGLE_DRIVE_REFRESH_TOKEN"]
+    },
+    google_drive_options: {
+      public_folder_id: ENV["GOOGLE_DRIVE_PUBLIC_FOLDER_ID"]
+    }
+  }
 end

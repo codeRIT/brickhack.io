@@ -6,6 +6,7 @@ require "strip_attributes/matchers"
 require "minitest/reporters"
 require "valid_attribute"
 require "factory_girl_rails"
+require "paperclip/matchers"
 
 Minitest::Reporters.use!
 FactoryGirl.reload
@@ -25,6 +26,7 @@ class ActiveSupport::TestCase
   include StripAttributes::Matchers
   include ValidAttribute::Method
   include FactoryGirl::Syntax::Methods
+  extend Paperclip::Shoulda::Matchers
 
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #

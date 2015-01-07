@@ -48,6 +48,22 @@ $ bundle exec rake db:create db:migrate
 
 Start your local environment: `bundle exec rails server`
 
+## Resume Setup
+
+Resumes are stored locally in development and on Google Drive in production using the [paperclip-googledrive](https://github.com/evinsou/paperclip-googledrive) gem. The below is to authorize production environments only. *This is not required for local development.*
+
+1. Follow the instructions on [https://github.com/evinsou/paperclip-googledrive#google-drive-setup](https://github.com/evinsou/paperclip-googledrive#google-drive-setup) to retrieve the Client ID, Client Secret, Access Token, and Refresh Token.
+2. Retrieve the folder ID of the folder to upload resumes to, commonly found in the URL of Google Drive. Ensure this folder has public permissions set.
+3. Create the file `.env` in the root of the repository using the following template, filling in variables where appropriate:
+
+```bash
+GOOGLE_DRIVE_CLIENT_ID=""
+GOOGLE_DRIVE_CLIENT_SECRET=""
+GOOGLE_DRIVE_ACCESS_TOKEN=""
+GOOGLE_DRIVE_REFRESH_TOKEN=""
+GOOGLE_DRIVE_PUBLIC_FOLDER_ID=""
+```
+
 # Deployment
 
 Code pushed to the master branch will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io). Upon a successful build, Travis will deploy to [OpenShift](https://www.openshift.com).

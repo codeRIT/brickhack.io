@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/sman591/paperclip-googledrive/
+  revision: afc9915b774a4ede727e5598b9cfd15be6338854
+  specs:
+    paperclip-googledrive (0.1.3)
+      google-api-client (~> 0.5)
+      paperclip (~> 3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,8 +36,13 @@ GEM
     activesupport (3.2.20)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
+    addressable (2.3.6)
     ansi (1.4.3)
     arel (3.0.3)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -39,6 +52,10 @@ GEM
     builder (3.0.4)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.5)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -48,18 +65,34 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     debug_inspector (0.0.2)
+    dotenv (1.0.2)
+    dotenv-deployment (0.2.0)
+      dotenv (~> 1.0)
     email_validator (1.4.0)
       activemodel
     erubis (2.7.0)
     execjs (2.2.2)
+    extlib (0.9.16)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.6)
     ffi (1.9.6-x86-mingw32)
     formatador (0.2.5)
+    google-api-client (0.8.1.1)
+      activesupport (>= 3.2)
+      addressable (~> 2.3)
+      autoparse (~> 0.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      launchy (~> 2.4)
+      multi_json (~> 1.10)
+      retriable (~> 1.4)
+      signet (~> 0.6)
     guard (2.8.2)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -79,7 +112,7 @@ GEM
     hashie (3.3.1)
     hike (1.2.3)
     hitimes (1.2.2)
-    i18n (0.6.11)
+    i18n (0.7.0)
     journey (1.0.4)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
@@ -92,6 +125,9 @@ GEM
       jquery-ui-rails (= 4.0.3)
       railties (>= 3.1.0)
     json (1.8.1)
+    jwt (1.2.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (2.8.0)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
@@ -115,7 +151,13 @@ GEM
     minitest-test (1.1.0)
       minitest (~> 4.0)
     multi_json (1.10.1)
+    multipart-post (2.0.0)
     mysql2 (0.3.17)
+    paperclip (3.5.4)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     polyglot (0.3.5)
@@ -159,6 +201,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    retriable (1.4.1)
     ruby-prof (0.15.2)
     sass (3.4.8)
     sass-rails (3.2.6)
@@ -171,6 +214,12 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    signet (0.6.0)
+      addressable (~> 2.3)
+      extlib (~> 0.9)
+      faraday (~> 0.9)
+      jwt (~> 1.0)
+      multi_json (~> 1.10)
     simple_form (2.1.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -206,6 +255,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 3.2.1)
+  dotenv-deployment
   email_validator
   factory_girl_rails
   guard-minitest
@@ -215,6 +265,7 @@ DEPENDENCIES
   minitest-rails
   minitest-reporters
   mysql2
+  paperclip-googledrive!
   pg
   rack (~> 1.4.5)
   rails (~> 3.2.16)
