@@ -87,4 +87,25 @@ class ParticipantTest < ActiveSupport::TestCase
     end
   end
 
+  context "#full_name" do
+    should "concatenate first and last name" do
+      participant = create(:participant, first_name: "Foo", last_name: "Bar")
+      assert_equal "Foo Bar", participant.full_name
+    end
+  end
+
+  context "#full_location" do
+    should "concatenate city and state with a comma" do
+      participant = create(:participant, city: "Foo", state: "AZ")
+      assert_equal "Foo, AZ", participant.full_location
+    end
+  end
+
+  context "#birthday_formatted" do
+    should "format the birthday correctly" do
+      participant = create(:participant, birthday: Date.new(1995, 1, 5))
+      assert_equal "January 5, 1995", participant.birthday_formatted
+    end
+  end
+
 end

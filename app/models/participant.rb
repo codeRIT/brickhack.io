@@ -47,4 +47,16 @@ class Participant < ActiveRecord::Base
   def school
     School.find(school_id)
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  def full_location
+    "#{city}, #{state}"
+  end
+
+  def birthday_formatted
+    birthday.strftime("%B %-d, %Y")
+  end
 end
