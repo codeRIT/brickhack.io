@@ -8,13 +8,13 @@
     = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
     = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
-    = f.input :year, as: :select, collection: Participant::POSSIBLE_YEARS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+    = f.input :year, as: :select, collection: Participant::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
     = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
     = f.input :state, as: :select, collection: Participant::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
-    = f.input :experience, as: :select, collection: Participant::POSSIBLE_EXPERIENCES, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
-    = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS.map { |interest| [interest.titleize, interest] }, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+    = f.input :experience, as: :select, collection: Participant::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
+    = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
     = f.input :shirt_size, as: :select, collection: Participant::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
     = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Dietary & medical notes"
 

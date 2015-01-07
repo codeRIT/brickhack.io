@@ -9,7 +9,7 @@ FactoryGirl.define do
     year        "1"
     birthday    20.years.ago
     experience  "first"
-    interest    "development"
+    interest    "Development"
     school_id   "1"
     shirt_size  "M"
     dietary_medical_notes ""

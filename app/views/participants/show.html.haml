@@ -25,13 +25,13 @@
   = @participant.state
 %p
   %b Experience:
-  = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
+  = Participant::POSSIBLE_EXPERIENCES[@participant.experience]
 %p
   %b Year:
-  = Participant::POSSIBLE_YEARS.invert[@participant.year]
+  = Participant::POSSIBLE_YEARS[@participant.year]
 %p
   %b Interest:
-  = @participant.interest.titleize
+  = @participant.interest
 %p
   %b Shirt size:
   = @participant.shirt_size

@@ -43,9 +43,9 @@ class ParticipantTest < ActiveSupport::TestCase
   should_not allow_value("ZZ").for(:state)
   should_not allow_value("New York").for(:state)
 
-  should allow_value("design").for(:interest)
-  should allow_value("development").for(:interest)
-  should allow_value("hardware").for(:interest)
+  should allow_value("Design").for(:interest)
+  should allow_value("Development").for(:interest)
+  should allow_value("Hardware").for(:interest)
   should_not allow_value("foo").for(:interest)
 
   should allow_value("first").for(:experience)
