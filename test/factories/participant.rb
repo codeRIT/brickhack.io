@@ -4,8 +4,8 @@ FactoryGirl.define do
     first_name  "John"
     last_name   "Doe"
     email       "test@example.com"
-    city        "MyString"
-    state       "MyString"
+    city        "Rochester"
+    state       "NY"
     year        "1"
     birthday    20.years.ago
     experience  "first"
