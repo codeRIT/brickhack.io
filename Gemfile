@@ -7,7 +7,7 @@ gem 'mysql2', :group => :production
 
 gem 'rollbar', '~> 1.3.0'
 
-gem 'sidekiq'
+gem 'sidekiq', '< 3'
 
 gem 'haml-rails'
 gem 'simple_form'
