@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
 
-gem 'sqlite3', group: [:development, :test]
-gem 'mysql2', group: [:production]
+group :production do
+  gem 'mysql2'
+end
 
 gem 'rollbar', '~> 1.3.0'
 
@@ -11,7 +12,7 @@ gem 'haml-rails'
 gem 'simple_form'
 
 gem 'strip_attributes'
-gem 'paperclip-googledrive', git: 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
+gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
 
 gem 'email_validator'
 
@@ -30,6 +31,7 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
 
@@ -38,6 +40,7 @@ group :development do
 end
 
 group :test do
+
   gem 'shoulda'
   gem 'minitest-rails'
   gem 'minitest-reporters'
