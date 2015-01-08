@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class ParticipantsControllerTest < ActionController::TestCase
+
+  before do
+    ActionMailer::Base.deliveries = []
+    Sidekiq::Extensions::DelayedMailer.jobs.clear
+  end
+
   setup do
     @school = create(:school, name: "Another School")
     @participant = create(:participant, school_id: @school.id)
@@ -60,6 +66,12 @@ class ParticipantsControllerTest < ActionController::TestCase
         post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, shirt_size: @participant.shirt_size, school_name: "New School" }
         assert_redirected_to participant_path(assigns(:participant))
         assert_equal 2, School.all.count
+      end
+
+      should "send confirmation email to participant" do
+        assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be queued prior to participant creation"
+        post :create, participant: { city: @participant.city, email: @participant.email, experience: @participant.experience, first_name: @participant.first_name, interest: @participant.interest, last_name: @participant.last_name, state: @participant.state, year: @participant.year, birthday: @participant.birthday, shirt_size: @participant.shirt_size, school_name: @school.name }
+        assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "should email confirmation to participant"
       end
     end
 

@@ -13,7 +13,7 @@
   = @participant.email
 %p
   %b Birthday:
-  = @participant.birthday.strftime("%B %e, %Y")
+  = @participant.birthday_formatted
 %p
   %b School:
   = @participant.school.full_name
@@ -25,19 +25,19 @@
   = @participant.state
 %p
   %b Experience:
-  = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
+  = Participant::POSSIBLE_EXPERIENCES[@participant.experience]
 %p
   %b Year:
-  = Participant::POSSIBLE_YEARS.invert[@participant.year]
+  = Participant::POSSIBLE_YEARS[@participant.year]
 %p
   %b Interest:
-  = @participant.interest.titleize
+  = @participant.interest
 %p
   %b Shirt size:
   = @participant.shirt_size
 %p
   %b Dietary & medical notes:
-  = @participant.dietary_medical_notes
+  = @participant.dietary_medical_notes || "None"
 %p
   %b Resume:
   = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not provided'
