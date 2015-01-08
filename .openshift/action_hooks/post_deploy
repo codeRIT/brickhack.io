@@ -11,7 +11,7 @@ if [ $OPENSHIFT_GEAR_NAME == "rails" ]
 then
   ENVIRONMENT=production
 else
-  ENVIRONMENT=staging
+  ENVIRONMENT=$OPENSHIFT_GEAR_NAME
 fi
 
 curl https://api.rollbar.com/api/1/deploy/ \
