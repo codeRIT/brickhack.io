@@ -5,7 +5,7 @@
 
 ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
 LOCAL_USERNAME=`whoami`
-REVISION=`cat ~/git/staging.git/refs/heads/master`
+REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
 
 if [ $OPENSHIFT_GEAR_NAME == "rails" ]
 then
