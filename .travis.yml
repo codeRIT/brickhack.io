@@ -13,7 +13,7 @@ deploy:
     secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
   app:
     master: rails
-    develop: test
+    develop: staging
   domain: coderit
   on:
     all_branches: true
