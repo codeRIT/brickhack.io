@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 3.2.16'
+gem 'rails', '3.2.16'
 
-group :production do
-  gem 'mysql2'
-end
+gem 'sqlite3', group: [:development, :test]
+gem 'mysql2', group: [:production]
 
 gem 'rollbar', '~> 1.3.0'
 
@@ -31,7 +30,6 @@ group :assets do
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
 

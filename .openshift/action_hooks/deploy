@@ -4,7 +4,6 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-# application dir
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 function ruby_with_nodejs_context {

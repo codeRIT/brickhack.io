@@ -3,19 +3,19 @@
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
-ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
-LOCAL_USERNAME=`whoami`
-REVISION=`cat ~/git/staging.git/refs/heads/master`
+# ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
+# LOCAL_USERNAME=`whoami`
+# REVISION=`cat ~/git/staging.git/refs/heads/master`
 
-if [ $OPENSHIFT_GEAR_NAME == "rails" ]
-then
-  ENVIRONMENT=production
-else
-  ENVIRONMENT=staging
-fi
+# if [ $OPENSHIFT_GEAR_NAME == "rails" ]
+# then
+#   ENVIRONMENT=production
+# else
+#   ENVIRONMENT=staging
+# fi
 
-curl https://api.rollbar.com/api/1/deploy/ \
-  -F access_token=$ACCESS_TOKEN \
-  -F environment=$ENVIRONMENT \
-  -F revision=$REVISION \
-  -F local_username=$LOCAL_USERNAME
+# curl https://api.rollbar.com/api/1/deploy/ \
+#   -F access_token=$ACCESS_TOKEN \
+#   -F environment=$ENVIRONMENT \
+#   -F revision=$REVISION \
+#   -F local_username=$LOCAL_USERNAME
