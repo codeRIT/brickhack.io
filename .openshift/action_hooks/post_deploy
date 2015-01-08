@@ -3,21 +3,3 @@
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
-ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
-LOCAL_USERNAME=`whoami`
-REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
-
-if [ $OPENSHIFT_GEAR_NAME == "rails" ]
-then
-  ENVIRONMENT=production
-else
-  ENVIRONMENT=$OPENSHIFT_GEAR_NAME
-fi
-
-curl https://api.rollbar.com/api/1/deploy/ \
-  -F access_token=$ACCESS_TOKEN \
-  -F environment=$ENVIRONMENT \
-  -F revision=$REVISION \
-  -F local_username=$LOCAL_USERNAME
-
-gem install rack -v 1.4.5

@@ -6,6 +6,23 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
+ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
+LOCAL_USERNAME=`whoami`
+REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
+
+if [ $OPENSHIFT_GEAR_NAME == "rails" ]
+then
+  ENVIRONMENT=production
+else
+  ENVIRONMENT=$OPENSHIFT_GEAR_NAME
+fi
+
+curl https://api.rollbar.com/api/1/deploy/ \
+  -F access_token=$ACCESS_TOKEN \
+  -F environment=$ENVIRONMENT \
+  -F revision=$REVISION \
+  -F local_username=$LOCAL_USERNAME
+
 function ruby_with_nodejs_context {
   case $OPENSHIFT_RUBY_VERSION in
     1.8) /usr/bin/scl enable nodejs010 "$1" ;;
@@ -42,3 +59,5 @@ pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 popd > /dev/null
+
+gem install rack -v 1.4.5
