@@ -5,8 +5,14 @@
 # ruby, etc.
 
 # application dir
-cd $OPENSHIFT_REPO_DIR
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
+function ruby_with_nodejs_context {
+  case $OPENSHIFT_RUBY_VERSION in
+    1.8) /usr/bin/scl enable nodejs010 "$1" ;;
+    1.9) /usr/bin/scl enable nodejs010 ruby193 "$1" ;;
+  esac
+}
 
 set -e
 
@@ -32,3 +38,8 @@ else
     set_env_var 'RAILS_DB' $RAILS_DB $OPENSHIFT_HOMEDIR/.env/user_vars
   fi
 fi
+
+pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+popd > /dev/null

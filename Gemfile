@@ -1,16 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-deployment', groups: [:production]
-
 gem 'rails', '~> 3.2.16'
-gem 'rack', '~> 1.4.5'
 
-group :production, :mysql do
+group :production do
   gem 'mysql2'
-end
-
-group :production, :postgresql do
-  gem 'pg'
 end
 
 gem 'rollbar', '~> 1.3.0'
