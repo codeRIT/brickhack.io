@@ -13,6 +13,8 @@ group :production, :postgresql do
   gem 'pg'
 end
 
+gem 'rollbar', '~> 1.3.0'
+
 gem 'haml-rails'
 gem 'simple_form'
 
