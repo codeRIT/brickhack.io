@@ -1,48 +1,51 @@
 %div{class:'form-success'}
-  %p#notice= notice
+  %div{class:'success_message'}
+    %p#notice= notice
+    %p Thanks for applying! Acceptance notifications will be sent out in March.
 
-  %p Thanks for applying! Acceptance notifications will be sent out in March.
-  %p Below is a copy of your application.
-  %p
-    %b First Name:
-    = @participant.first_name
-  %p
-    %b Last Name:
-    = @participant.last_name
-  %p
-    %b Email:
-    = @participant.email
-  %p
-    %b Birthday:
-    = @participant.birthday.strftime("%B %e, %Y")
-  %p
-    %b School:
-    = @participant.school.full_name
-  %p
-    %b City:
-    = @participant.city
-  %p
-    %b State:
-    = @participant.state
-  %p
-    %b Experience:
-    = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
-  %p
-    %b Year:
-    = Participant::POSSIBLE_YEARS.invert[@participant.year]
-  %p
-    %b Interest:
-    = @participant.interest.titleize
-  %p
-    %b Shirt Size:
-    = @participant.shirt_size
-  %p
-    %b Dietary & Medical Needs:
-    = @participant.dietary_medical_notes
-  %p
-    %b Resume:
-    = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not Provided'
+  %div{class:'participant_info'}
+    %p Below is a copy of your application.
+    %div{class:'fields'}
+      %p
+        %b First Name:
+        = @participant.first_name
+      %p
+        %b Last Name:
+        = @participant.last_name
+      %p
+        %b Email:
+        = @participant.email
+      %p
+        %b Birthday:
+        = @participant.birthday.strftime("%B %e, %Y")
+      %p
+        %b School:
+        = @participant.school.full_name
+      %p
+        %b City:
+        = @participant.city
+      %p
+        %b State:
+        = @participant.state
+      %p
+        %b Experience:
+        = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
+      %p
+        %b Year:
+        = Participant::POSSIBLE_YEARS.invert[@participant.year]
+      %p
+        %b Interest:
+        = @participant.interest.titleize
+      %p
+        %b Shirt Size:
+        = @participant.shirt_size
+      %p
+        %b Dietary & Medical Needs:
+        = @participant.dietary_medical_notes
+      %p
+        %b Resume:
+        = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not Provided'
 
-  %p
-    Need to make changes?
-    = link_to 'Edit &raquo;'.html_safe, edit_participant_path(@participant)
+    %p{class:"edit_info"}
+      %br
+      = link_to 'Edit Information'.html_safe, edit_participant_path(@participant)
