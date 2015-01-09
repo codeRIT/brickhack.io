@@ -56,8 +56,8 @@ else
 fi
 
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
-ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+# echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+# ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 popd > /dev/null
 
-gem install rack -v 1.4.5
+# gem install rack -v 1.4.5    Not required for Ruby 1.9 apps
