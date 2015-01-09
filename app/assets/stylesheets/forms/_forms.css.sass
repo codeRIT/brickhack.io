@@ -7,8 +7,9 @@
 
 .form-container
   margin: 0 auto
-  max-width: 650px
+  max-width: 640px
   padding-right: 100px
+  padding-left: 40px
 
 // custom styles
 .simple_form
@@ -17,13 +18,13 @@
     display: none
   .error
     background: $red
-    bottom: 1px
+    //bottom: 1px
     color: $white
     display: table
     font-size: 0.875rem
     left: 100%
-    margin-left: 3px
-    padding: 3px 2px
+    margin-left: 5px
+    padding: 5px 2px
     position: absolute
 
 div.input
@@ -37,29 +38,29 @@ div.input
 label
   font-weight: $font-reg
   margin-right: 10px
-  min-width: 175px
+  min-width: 160px
   padding-top: 3px
   padding-right: 10px
-  text-align: right
+  text-align: left
 
 // all form input types
 input[type=text], input[type=email], input[type=date], textarea, select
   color: $grey-dark
   font-family: $font-body-family
   font-weight: $font-bold
+  font-size: 100%
   &:focus
     color: $black
     color: $primary
 
 // just inputs
 input[type=text], input[type=email], input[type=date], textarea
-  background: transparent
   border: 1px solid transparent
-  border-bottom-color: $blue
   outline: none
-  padding: 5px 8px
+  padding: 4px 8px
   @include transition (200ms, all, ease-in-out, 0)
   width: 100%
+  margin-bottom: 5px
   &:focus
     background: $white_pure
     border-color: lighten($blue, 10%)
@@ -67,16 +68,16 @@ input[type=text], input[type=email], input[type=date], textarea
 // just selects
 select
   @include appearance (none)
-  background: url("/assets/arrow_down.svg"), $white
+  background: url("/assets/arrow_down.svg"), #FFF
   background-repeat: no-repeat
   background-position: right
   background-size: auto 100%
-  border: 1px solid transparent
-  border-bottom-color: $blue
+  border: 1px solid $white
   outline: none
   padding: 5px 8px
   @include transition (200ms, border, ease-in-out, 0)
   width: 100%
+  font-size: 100%
   &:hover
     background: url("/assets/arrow_down_hover.svg")
     background-repeat: no-repeat
@@ -91,6 +92,14 @@ select
   option
     background: $white_pure
     padding: 3px auto
+
+//Submit
+input[type=submit]
+  margin: 10px 0
+
+//Resume Upload
+.participant_resume
+  margin-top: 20px
 
 .field_with_errors
   color: $red !important
@@ -138,6 +147,12 @@ select
     font-size: 1.115rem
     padding: 12px 15px
     width: 100%
+
+  .participant_resume
+    .hint 
+      display: block
+      margin-top: 5px
+      margin-left: 2px
 
   .simple_form .error
     display: block
