@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150104190233) do
+ActiveRecord::Schema.define(:version => 20150110020958) do
 
   create_table "participants", :force => true do |t|
     t.string   "first_name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20150104190233) do
     t.string   "resume_content_type"
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
+    t.boolean  "international"
   end
 
   create_table "schools", :force => true do |t|

@@ -20,6 +20,9 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :experience
   should validate_presence_of :interest
   should validate_presence_of :shirt_size
+  should_not validate_presence_of :dietary_medical_notes
+  should_not validate_presence_of :resume
+  should_not validate_presence_of :international
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -36,12 +39,18 @@ class ParticipantTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :dietary_medical_notes
   should allow_mass_assignment_of :resume
   should allow_mass_assignment_of :delete_resume
+  should allow_mass_assignment_of :international
 
   should allow_value("VA").for(:state)
   should allow_value("NY").for(:state)
   should allow_value("PA").for(:state)
   should_not allow_value("ZZ").for(:state)
   should_not allow_value("New York").for(:state)
+
+  should "allow for international locations" do
+    p = build(:participant, international: true, city: "Foo", state: "Bar")
+    assert p.valid?, "intl. participant should be valid with custom state"
+  end
 
   should allow_value("Design").for(:interest)
   should allow_value("Development").for(:interest)
