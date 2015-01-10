@@ -20,8 +20,8 @@ class Participant < ActiveRecord::Base
   POSSIBLE_INTERESTS   = %w(Design Development Hardware)
   POSSIBLE_EXPERIENCES = {
     "first"       => "This is my first",
-    "experienced" => "1-10",
-    "expert"      => "10+"
+    "experienced" => "1-5",
+    "expert"      => "6+"
   }
   POSSIBLE_YEARS       = {
     "hs" => "High School",
