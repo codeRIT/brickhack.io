@@ -23,7 +23,7 @@ $(document).ready(function () {
 
   $('[name="participant[international]"]').on('change', function() {
     var $select = $('.participant_state.select select'),
-        $text   = $('.participant_state.string input')
+        $text   = $('.participant_state.string input');
     if ($(this).is(':checked')) {
       $select.parent().hide();
       $select.prop('disabled', true);

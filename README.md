@@ -9,6 +9,7 @@ The public facing site for Brick Hack.
 Install ruby, sqlite, and other required development environment tools.
 ```bash
 $ brew install rbenv ruby-build rbenv-readline rbenv-gem-rehash rbenv-default-gems rbenv-binstubs
+$ brew install redis
 $ brew install sqlite3
 ```
 
@@ -36,6 +37,8 @@ If you choose not to use Pow, you can still initiate a local rails server with `
 Verify you have a unix console emulator. We recommend the full version of [cmder](http://bliker.github.io/cmder/).
 
 Download & install RailsInstaller 3.0 (alpha) from [http://railsinstaller.org/](http://railsinstaller.org/)
+
+Download & install redis from [https://github.com/rgl/redis/downloads](https://github.com/rgl/redis/downloads)
 
 Download & configure local environment, [vendor everything](http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/) style.
 ```bash

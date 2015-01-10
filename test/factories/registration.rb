@@ -1,6 +1,6 @@
 # This will guess the User class
 FactoryGirl.define do
-  factory :participant do
+  factory :registration do
     first_name            "John"
     last_name             "Doe"
     email                 "test@example.com"
