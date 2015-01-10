@@ -12,6 +12,15 @@ $(document).ready(function () {
     }, 1000);
   });
 
+  var $sidebar = $('.sidebar');
+
+  $('#sidebar-toggle').on('click', function () {
+    if ($sidebar.hasClass('open'))
+      $sidebar.removeClass('open');
+    else
+      $sidebar.addClass('open');
+  });
+
   $.fn.validate = function() {
     var previous_invalid_inputs = [];
 
