@@ -23,6 +23,8 @@ class RegistrationTest < ActiveSupport::TestCase
   should_not validate_presence_of :dietary_medical_notes
   should_not validate_presence_of :resume
   should_not validate_presence_of :international
+  should_not validate_presence_of :portfolio_url
+  should_not validate_presence_of :vcs_url
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -40,6 +42,8 @@ class RegistrationTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :resume
   should allow_mass_assignment_of :delete_resume
   should allow_mass_assignment_of :international
+  should allow_mass_assignment_of :portfolio_url
+  should allow_mass_assignment_of :vcs_url
 
   should allow_value("VA").for(:state)
   should allow_value("NY").for(:state)
@@ -87,6 +91,11 @@ class RegistrationTest < ActiveSupport::TestCase
     s = build(:registration, email: "Test@ExAmPlE.cOm")
     assert_equal "test@example.com", s.email
   end
+
+  should allow_value('foo.com').for(:portfolio_url)
+  should allow_value('github.com/foo', 'bitbucket.org/sman591').for(:vcs_url)
+  should allow_value('https://github.com/foo', 'https://bitbucket.org/sman591').for(:vcs_url)
+  should_not allow_value('http://foo.com', 'https://bar.com').for(:vcs_url)
 
   context "#school" do
     should "return the current school" do

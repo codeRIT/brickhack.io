@@ -16,6 +16,7 @@ gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
 
 gem 'email_validator'
+gem 'validate_url'
 
 # Gems used only for assets and not required
 # in production environments by default.
