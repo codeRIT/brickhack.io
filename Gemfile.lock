@@ -255,6 +255,9 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     valid_attribute (2.0.0)
+    validate_url (1.0.0)
+      activemodel (>= 3.0.0)
+      addressable
 
 PLATFORMS
   ruby
@@ -285,3 +288,4 @@ DEPENDENCIES
   strip_attributes
   uglifier (>= 1.0.3)
   valid_attribute
+  validate_url

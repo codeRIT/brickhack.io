@@ -41,6 +41,12 @@
 %p
   %b Resume:
   = @registration.resume? ? link_to("Download &raquo;".html_safe, @registration.resume.url) : 'Not provided'
+%p
+  %b Portfolio Link:
+  = @registration.portfolio_url? ? link_to(@registration.portfolio_url, @registration.portfolio_url, target: '_blank') : 'Not provided'
+%p
+  %b GitHub/BitBucket Link:
+  = @registration.vcs_url? ? link_to(@registration.vcs_url, @registration.vcs_url, target: '_blank') : 'Not provided'
 
 %p
   Need to make changes?
