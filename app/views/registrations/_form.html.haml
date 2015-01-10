@@ -1,5 +1,5 @@
 %div{class:'form-container'}
-  = simple_form_for @participant, html: { "data-validate" => "form" } do |f|
+  = simple_form_for @registration, html: { "data-validate" => "form" } do |f|
 
     .form-inputs
       = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }
@@ -8,22 +8,22 @@
       = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
       = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
-      = f.input :year, as: :select, collection: Participant::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+      = f.input :year, as: :select, collection: Registration::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
       = f.input :international, label: "International?"
 
       = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
 
-      - intl_state = !@participant.new_record? && @participant.international
-      = f.input :state, as: :select, collection: Participant::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
+      - intl_state = !@registration.new_record? && @registration.international
+      = f.input :state, as: :select, collection: Registration::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
       = f.input :state, input_html: { "data-validate" => "presence", disabled: !intl_state }, wrapper_html: { style: intl_state ? "" : "display: none" }, label: "State/Province"
 
-      = f.input :experience, as: :select, collection: Participant::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
-      = f.input :interest, as: :select, collection: Participant::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :shirt_size, as: :select, collection: Participant::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+      = f.input :experience, as: :select, collection: Registration::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
+      = f.input :interest, as: :select, collection: Registration::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+      = f.input :shirt_size, as: :select, collection: Registration::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
       = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Dietary & medical notes"
 
       = f.input :resume, as: :deletable_attachment, hint: "must be a PDF under 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }
 
     %div{class:'center'}
-      = f.button :submit, class:"button", value: ( @participant.new_record? ? 'Apply' : 'Save' )
+      = f.button :submit, class:"button", value: ( @registration.new_record? ? 'Apply' : 'Save' )
