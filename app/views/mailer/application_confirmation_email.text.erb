@@ -5,17 +5,17 @@ We've successfully received your application to BrickHack 2015. Below is a copy 
 
 Acceptance notifications will be sent out in March.
 
-Name: <%= @participant.full_name %>
-Email: <%= @participant.email %>
-Location: <%= @participant.full_location %>
-Birthday: <%= @participant.birthday_formatted %>
-School: <%= @participant.school.name %>
-Year: <%= Participant::POSSIBLE_YEARS[@participant.year] %>
-Interest: <%= @participant.interest %>
-Experience: <%= Participant::POSSIBLE_EXPERIENCES[@participant.experience] %>
-Shirt Size: <%= @participant.shirt_size %>
-Resume: <%= @participant.resume? ? "Provided" : "Not provided" %>
-Dietary & Medical Notes: <%= @participant.dietary_medical_notes || "None" %>
+Name: <%= @registration.full_name %>
+Email: <%= @registration.email %>
+Location: <%= @registration.full_location %>
+Birthday: <%= @registration.birthday_formatted %>
+School: <%= @registration.school.name %>
+Year: <%= Registration::POSSIBLE_YEARS[@registration.year] %>
+Interest: <%= @registration.interest %>
+Experience: <%= Registration::POSSIBLE_EXPERIENCES[@registration.experience] %>
+Shirt Size: <%= @registration.shirt_size %>
+Resume: <%= @registration.resume? ? "Provided" : "Not provided" %>
+Dietary & Medical Notes: <%= @registration.dietary_medical_notes || "None" %>
 
 --
 codeRIT | BrickHack

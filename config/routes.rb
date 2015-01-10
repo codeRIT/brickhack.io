@@ -4,7 +4,7 @@ BrickhackIo::Application.routes.draw do
     mount MailPreview => 'mail_view'
   end
 
-  resources :participants, path: "apply" do
+  resources :registrations, path: "apply" do
     get :schools, on: :collection
   end
 

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ParticipantTest < ActiveSupport::TestCase
+class RegistrationTest < ActiveSupport::TestCase
 
   should strip_attribute :first_name
   should strip_attribute :last_name
@@ -48,8 +48,8 @@ class ParticipantTest < ActiveSupport::TestCase
   should_not allow_value("New York").for(:state)
 
   should "allow for international locations" do
-    p = build(:participant, international: true, city: "Foo", state: "Bar")
-    assert p.valid?, "intl. participant should be valid with custom state"
+    p = build(:registration, international: true, city: "Foo", state: "Bar")
+    assert p.valid?, "intl. registration should be valid with custom state"
   end
 
   should allow_value("Design").for(:interest)
@@ -84,36 +84,36 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_attachment_size(:resume).less_than(2.megabytes)
 
   should "downcase emails" do
-    s = build(:participant, email: "Test@ExAmPlE.cOm")
+    s = build(:registration, email: "Test@ExAmPlE.cOm")
     assert_equal "test@example.com", s.email
   end
 
   context "#school" do
     should "return the current school" do
       school = create(:school, name: "My University")
-      participant = create(:participant, school_id: school.reload.id)
-      assert_equal "My University", participant.school.name
+      registration = create(:registration, school_id: school.reload.id)
+      assert_equal "My University", registration.school.name
     end
   end
 
   context "#full_name" do
     should "concatenate first and last name" do
-      participant = create(:participant, first_name: "Foo", last_name: "Bar")
-      assert_equal "Foo Bar", participant.full_name
+      registration = create(:registration, first_name: "Foo", last_name: "Bar")
+      assert_equal "Foo Bar", registration.full_name
     end
   end
 
   context "#full_location" do
     should "concatenate city and state with a comma" do
-      participant = create(:participant, city: "Foo", state: "AZ")
-      assert_equal "Foo, AZ", participant.full_location
+      registration = create(:registration, city: "Foo", state: "AZ")
+      assert_equal "Foo, AZ", registration.full_location
     end
   end
 
   context "#birthday_formatted" do
     should "format the birthday correctly" do
-      participant = create(:participant, birthday: Date.new(1995, 1, 5))
-      assert_equal "January 5, 1995", participant.birthday_formatted
+      registration = create(:registration, birthday: Date.new(1995, 1, 5))
+      assert_equal "January 5, 1995", registration.birthday_formatted
     end
   end
 

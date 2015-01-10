@@ -12,9 +12,9 @@ $(document).ready(function () {
     }, 1000);
   });
 
-  $('[name="participant[international]"]').on('change', function() {
-    var $select = $('.participant_state.select select'),
-        $text   = $('.participant_state.string input')
+  $('[name="registration[international]"]').on('change', function() {
+    var $select = $('.registration_state.select select'),
+        $text   = $('.registration_state.string input')
     if ($(this).is(':checked')) {
       $select.parent().hide();
       $select.prop('disabled', true);
