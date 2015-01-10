@@ -1,0 +1,23 @@
+Thanks for applying to BrickHack!
+=================================
+
+We've successfully received your application to BrickHack 2015. Below is a copy of your information.
+
+Acceptance notifications will be sent out in March.
+
+Name: <%= @participant.full_name %>
+Email: <%= @participant.email %>
+Location: <%= @participant.full_location %>
+Birthday: <%= @participant.birthday_formatted %>
+School: <%= @participant.school.name %>
+Year: <%= Participant::POSSIBLE_YEARS[@participant.year] %>
+Interest: <%= @participant.interest %>
+Experience: <%= Participant::POSSIBLE_EXPERIENCES[@participant.experience] %>
+Shirt Size: <%= @participant.shirt_size %>
+Resume: <%= @participant.resume? ? "Provided" : "Not provided" %>
+Dietary & Medical Notes: <%= @participant.dietary_medical_notes || "None" %>
+
+--
+codeRIT | BrickHack
+http://coderit.org
+http://brickhack.io

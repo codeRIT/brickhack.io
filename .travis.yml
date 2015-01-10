@@ -1,8 +1,8 @@
 language: ruby
 cache: bundler
-bundler_args: --path vendor
+bundler_args: --path vendor --without development
 rvm:
-- 2.0.0
+- 1.9.3
 script:
 - bundle exec rake db:migrate
 - bundle exec rake
@@ -11,8 +11,9 @@ deploy:
   user: coldencullen@mail.rit.edu
   password:
     secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
-  app: rails
+  app:
+    master: rails
+    develop: staging
   domain: coderit
   on:
-    branch: master
     repo: codeRIT/brickhack.io

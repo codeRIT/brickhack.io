@@ -1,23 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-deployment', groups: [:production]
+gem 'rails', '3.2.16'
 
-gem 'rails', '~> 3.2.16'
-gem 'rack', '~> 1.4.5'
+gem 'sqlite3', :group => [:development, :test]
+gem 'mysql2', :group => :production
 
-group :production, :mysql do
-  gem 'mysql2'
-end
+gem 'rollbar', '~> 1.3.0'
 
-group :production, :postgresql do
-  gem 'pg'
-end
+gem 'sidekiq', '< 3'
 
 gem 'haml-rails'
 gem 'simple_form'
 
 gem 'strip_attributes'
-gem 'paperclip-googledrive', git: 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
+gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
 
 gem 'email_validator'
 
@@ -29,19 +25,16 @@ group :assets do
 
   gem 'jquery-ui-sass-rails'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development do
-  gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
 
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'mail_view', '~> 2.0.4'
 end
 
 group :test do
@@ -53,18 +46,3 @@ group :test do
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

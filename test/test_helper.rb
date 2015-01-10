@@ -7,6 +7,7 @@ require "minitest/reporters"
 require "valid_attribute"
 require "factory_girl_rails"
 require "paperclip/matchers"
+require 'sidekiq/testing'
 
 Minitest::Reporters.use!
 FactoryGirl.reload

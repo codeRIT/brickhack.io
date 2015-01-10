@@ -1,23 +1,24 @@
 %div{class:'form-success'}
   %div{class:'success_message'}
     %p#notice= notice
-    %p Thanks for applying! Acceptance notifications will be sent out in March.
+    %p Thanks for applying! Acceptance notifications will be sent out in a few months.
+
 
   %div{class:'participant_info'}
     %p Below is a copy of your application.
     %div{class:'fields'}
       %p
-        %b First Name:
+        %b First name:
         = @participant.first_name
       %p
-        %b Last Name:
+        %b Last name:
         = @participant.last_name
       %p
         %b Email:
         = @participant.email
       %p
         %b Birthday:
-        = @participant.birthday.strftime("%B %e, %Y")
+        = @participant.birthday_formatted
       %p
         %b School:
         = @participant.school.full_name
@@ -29,22 +30,23 @@
         = @participant.state
       %p
         %b Experience:
-        = Participant::POSSIBLE_EXPERIENCES.invert[@participant.experience]
+        = Participant::POSSIBLE_EXPERIENCES[@participant.experience]
       %p
         %b Year:
-        = Participant::POSSIBLE_YEARS.invert[@participant.year]
+        = Participant::POSSIBLE_YEARS[@participant.year]
       %p
         %b Interest:
-        = @participant.interest.titleize
+        = @participant.interest
       %p
-        %b Shirt Size:
+        %b Shirt size:
         = @participant.shirt_size
       %p
-        %b Dietary & Medical Needs:
-        = @participant.dietary_medical_notes
+        %b Dietary & medical notes:
+        = @participant.dietary_medical_notes || "None"
       %p
         %b Resume:
-        = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not Provided'
+        = @participant.resume? ? link_to("Download &raquo;".html_safe, @participant.resume.url) : 'Not provided'
+
 
     %p{class:"edit_info"}
       %br

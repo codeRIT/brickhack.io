@@ -4,22 +4,31 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-# application dir
-cd $OPENSHIFT_REPO_DIR
+source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
-# bundle
-# ln -sf $OPENSHIFT_DATA_DIR/bundle vendor/bundle
-# gem uninstall rack
-# rm -rf vendor/cache # TODO: this is very bad. but seems to fix a bug with OpenShift
-# bundle install --without test development --deployment
+ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
+LOCAL_USERNAME=`whoami`
+REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
 
-# db migration
-# bundle exec rake db:create
-# bundle exec rake db:migrate
+if [ $OPENSHIFT_GEAR_NAME == "rails" ]
+then
+  ENVIRONMENT=production
+else
+  ENVIRONMENT=$OPENSHIFT_GEAR_NAME
+fi
 
-# assets precompile
-# ln -sf $OPENSHIFT_DATA_DIR/assets public/assets
-# bundle exec rake assets:precompile
+curl https://api.rollbar.com/api/1/deploy/ \
+  -F access_token=$ACCESS_TOKEN \
+  -F environment=$ENVIRONMENT \
+  -F revision=$REVISION \
+  -F local_username=$LOCAL_USERNAME
+
+function ruby_with_nodejs_context {
+  case $OPENSHIFT_RUBY_VERSION in
+    1.8) /usr/bin/scl enable nodejs010 "$1" ;;
+    1.9) /usr/bin/scl enable nodejs010 ruby193 "$1" ;;
+  esac
+}
 
 set -e
 
@@ -45,3 +54,10 @@ else
     set_env_var 'RAILS_DB' $RAILS_DB $OPENSHIFT_HOMEDIR/.env/user_vars
   fi
 fi
+
+pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+# echo "exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+# ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
+popd > /dev/null
+
+# gem install rack -v 1.4.5    Not required for Ruby 1.9 apps

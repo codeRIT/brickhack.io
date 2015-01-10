@@ -21,11 +21,31 @@ $(document).ready(function () {
       $sidebar.addClass('open');
   });
 
+  $('[name="participant[international]"]').on('change', function() {
+    var $select = $('.participant_state.select select'),
+        $text   = $('.participant_state.string input')
+    if ($(this).is(':checked')) {
+      $select.parent().hide();
+      $select.prop('disabled', true);
+      $text.parent().show();
+      $text.prop('disabled', false);
+    }
+    else {
+      $text.parent().hide();
+      $text.prop('disabled', true);
+      $select.parent().show();
+      $select.prop('disabled', false);
+    }
+  });
+
   $.fn.validate = function() {
     var previous_invalid_inputs = [];
 
     var validateInput = function() {
       var success = true, types = $(this).data('validate').split(/[ ,]+/), value = $(this).val();
+      if ($(this).is(':disabled')) {
+        return true;
+      }
       for (i = types.length-1; i >= 0; i--) {
         switch (types[i]) {
           case 'presence':
