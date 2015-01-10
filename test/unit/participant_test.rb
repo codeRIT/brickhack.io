@@ -20,6 +20,8 @@ class ParticipantTest < ActiveSupport::TestCase
   should validate_presence_of :experience
   should validate_presence_of :interest
   should validate_presence_of :shirt_size
+  should_not validate_presence_of :dietary_medical_notes
+  should_not validate_presence_of :resume
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
