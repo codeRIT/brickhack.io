@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Questionnaire < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
@@ -8,8 +8,8 @@ class Registration < ActiveRecord::Base
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
 
   has_attached_file :resume
-  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "invalid file type"
-  validates_attachment_size :resume, in: 0..2.megabytes, message: "file size is too big"
+  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid file type"
+  validates_attachment_size :resume, in: 0..2.megabytes, message: "File size is too big"
 
   include DeletableAttachment
 
@@ -17,7 +17,7 @@ class Registration < ActiveRecord::Base
 
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }
-  validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "must be a GitHub or BitBucket url"
+  validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "Must be a GitHub or BitBucket url"
 
   strip_attributes
 
@@ -36,7 +36,12 @@ class Registration < ActiveRecord::Base
     "4"  => "4th Year",
     "5+" => "5th+ Year"
   }
-  POSSIBLE_SHIRT_SIZES = %w(S M L XL)
+  POSSIBLE_SHIRT_SIZES = {
+    "S"  => "Small",
+    "M"  => "Medium",
+    "L"  => "Large",
+    "XL" => "X-Large"
+  }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
@@ -44,6 +49,8 @@ class Registration < ActiveRecord::Base
   validates_inclusion_of :year, in: POSSIBLE_YEARS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
+
+  belongs_to :user
 
   def portfolio_url=(value)
     value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")

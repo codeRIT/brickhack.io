@@ -1,9 +1,9 @@
 class Mailer < ActionMailer::Base
   default from: "\"codeRIT\" <noreply@coderit.org>"
 
-  def application_confirmation_email(registration_id)
-    @registration = Registration.find(registration_id)
-    mail(to: pretty_email(@registration.full_name, @registration.email), subject: "[BrickHack] Application Received")
+  def application_confirmation_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    mail(to: pretty_email(@questionnaire.full_name, @questionnaire.email), subject: "[BrickHack] Application Received")
   end
 
   private
