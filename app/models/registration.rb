@@ -36,7 +36,12 @@ class Registration < ActiveRecord::Base
     "4"  => "4th Year",
     "5+" => "5th+ Year"
   }
-  POSSIBLE_SHIRT_SIZES = %w(S M L XL)
+  POSSIBLE_SHIRT_SIZES = {
+    "S"  => "Small",
+    "M"  => "Medium",
+    "L"  => "Large",
+    "XL" => "X-Large"
+  }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS

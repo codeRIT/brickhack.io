@@ -39,7 +39,7 @@
       = @registration.interest
     %p
       %b Shirt size:
-      = @registration.shirt_size
+      = Registration::POSSIBLE_SHIRT_SIZES[@registration.shirt_size]
     %p
       %b Dietary & medical notes:
       = @registration.dietary_medical_notes || "None"
