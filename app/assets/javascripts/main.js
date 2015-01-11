@@ -143,23 +143,26 @@ $(document).ready(function () {
   $.fn.wizard = function() {
     var form = this;
 
+    var goToStage = function($newStage) {
+      $(form).find('.wizard-current').removeClass('wizard-current');
+      $newStage.addClass('wizard-current');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    }
+
     var nextStage = function() {
       if (!$(form).find('.wizard-current').validate('now')) {
         return false;
       }
-      $next = $(form).find('.wizard-current').next();
-      $(form).find('.wizard-current').removeClass('wizard-current');
-      $next.addClass('wizard-current');
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      goToStage($(form).find('.wizard-current').next());
     };
 
     var previousStage = function() {
-      $previous = $(form).find('.wizard-current').prev();
-      $(form).find('.wizard-current').removeClass('wizard-current');
-      $previous.addClass('wizard-current');
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      goToStage($(form).find('.wizard-current').prev());
     };
 
+    if ($(form).find('.field_with_errors')) {
+      goToStage($(form).find('.field_with_errors').first().parents('.wizard-stage'));
+    }
     $(this).find('[data-wizard=next]').each(function() {
       $(this).on('click', nextStage);
     });

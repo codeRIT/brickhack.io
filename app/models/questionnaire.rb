@@ -8,8 +8,8 @@ class Questionnaire < ActiveRecord::Base
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
 
   has_attached_file :resume
-  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "invalid file type"
-  validates_attachment_size :resume, in: 0..2.megabytes, message: "file size is too big"
+  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid file type"
+  validates_attachment_size :resume, in: 0..2.megabytes, message: "File size is too big"
 
   include DeletableAttachment
 
@@ -17,7 +17,7 @@ class Questionnaire < ActiveRecord::Base
 
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }
-  validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "must be a GitHub or BitBucket url"
+  validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "Must be a GitHub or BitBucket url"
 
   strip_attributes
 
