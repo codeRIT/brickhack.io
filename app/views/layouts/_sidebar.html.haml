@@ -6,11 +6,15 @@
       %a{href:"/"}
         = image_tag('brickhack_logo_white.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
     - if user_signed_in?
-      %a{href:'/users/sign_in', class:'button'}Review
-      = link_to "Sign Out", destroy_user_session_path, :method =>:delete, class: "button"
+      %div
+        %a{href:'/users/sign_in', class:'button'}Review
+      %div
+        = link_to "Sign Out", destroy_user_session_path, :method =>:delete, class: "button"
     - else
-      %a{href:'/users/sign_in', class:'button'}Login
-      %a{href:'/users/sign_up', class:'button'}Register
+      %div
+        %a{href:'/users/sign_in', class:'button'}Login
+      %div
+        %a{href:'/users/sign_up', class:'button'}Register
     %nav
       %ul{class:'nav-list'}
         %li
