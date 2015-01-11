@@ -4,7 +4,7 @@ class Questionnaire < ActiveRecord::Base
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
   attr_accessible :portfolio_url, :vcs_url
 
-  validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year
+  validates_presence_of :first_name, :last_name, :city, :city, :state, :year
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
 
   has_attached_file :resume
@@ -12,8 +12,6 @@ class Questionnaire < ActiveRecord::Base
   validates_attachment_size :resume, in: 0..2.megabytes, message: "File size is too big"
 
   include DeletableAttachment
-
-  validates :email, email: true
 
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }
@@ -60,10 +58,6 @@ class Questionnaire < ActiveRecord::Base
   def vcs_url=(value)
     value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")
     super value
-  end
-
-  def email=(value)
-    super value.try(:downcase)
   end
 
   def school
