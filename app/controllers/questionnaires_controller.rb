@@ -1,9 +1,9 @@
 class QuestionnairesController < ApplicationController
-  #before_filter :logged_in
+  before_filter :logged_in
 
-  #def logged_in
-  #  authenticate_user!
-  #end
+  def logged_in
+    authenticate_user!
+  end
 
   # GET /apply
   def index
@@ -13,6 +13,9 @@ class QuestionnairesController < ApplicationController
   # GET /apply/1
   # GET /apply/1.json
   def show
+    if (current_user.questionnaire().id != params[:id])
+      params[:id] = current_user.questionnaire().id
+    end
     @questionnaire = Questionnaire.find(params[:id])
 
     respond_to do |format|
@@ -45,6 +48,7 @@ class QuestionnairesController < ApplicationController
 
     respond_to do |format|
       if @questionnaire.save
+        current_user.questionnaire = @questionnaire
         Mailer.delay.application_confirmation_email(@questionnaire.id)
         format.html { redirect_to @questionnaire, notice: 'Questionnaire was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }

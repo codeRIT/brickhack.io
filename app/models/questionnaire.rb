@@ -40,6 +40,8 @@ class Questionnaire < ActiveRecord::Base
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
 
+  belongs_to :user
+
   def email=(value)
     super value.try(:downcase)
   end

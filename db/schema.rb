@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150111000224) do
+ActiveRecord::Schema.define(:version => 20150111012709) do
 
   create_table "questionnaires", :force => true do |t|
     t.string   "first_name"
@@ -33,7 +33,10 @@ ActiveRecord::Schema.define(:version => 20150111000224) do
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
     t.boolean  "international"
+    t.integer  "user_id"
   end
+
+  add_index "questionnaires", ["user_id"], :name => "index_questionnaires_on_user_id"
 
   create_table "schools", :force => true do |t|
     t.string   "name"
