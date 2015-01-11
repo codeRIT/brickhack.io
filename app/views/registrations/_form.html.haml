@@ -25,5 +25,8 @@
 
       = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
 
+      = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
+      = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"http://github.com/coderit"
+
     %div{class:'center'}
       = f.button :submit, class:"button", value: ( @registration.new_record? ? 'Apply' : 'Save' )

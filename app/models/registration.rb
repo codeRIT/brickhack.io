@@ -2,6 +2,7 @@ class Registration < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
+  attr_accessible :portfolio_url, :vcs_url
 
   validates_presence_of :first_name, :last_name, :city, :email, :city, :state, :year
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
@@ -13,6 +14,10 @@ class Registration < ActiveRecord::Base
   include DeletableAttachment
 
   validates :email, email: true
+
+  validates :portfolio_url, url: { allow_blank: true }
+  validates :vcs_url, url: { allow_blank: true }
+  validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "must be a GitHub or BitBucket url"
 
   strip_attributes
 
@@ -39,6 +44,16 @@ class Registration < ActiveRecord::Base
   validates_inclusion_of :year, in: POSSIBLE_YEARS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
+
+  def portfolio_url=(value)
+    value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")
+    super value
+  end
+
+  def vcs_url=(value)
+    value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")
+    super value
+  end
 
   def email=(value)
     super value.try(:downcase)
