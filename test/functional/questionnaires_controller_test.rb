@@ -44,7 +44,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
   context "while authenticated" do
     setup do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @user = create(:user)
+      @user = create(:user, questionnaire: @questionnaire)
       sign_in @user
     end
 
@@ -55,6 +55,8 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "get new" do
+      @user.questionnaire = nil
+      @user.save
       get :new
       assert_response :success
     end
