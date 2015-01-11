@@ -3,6 +3,7 @@ class Mailer < ActionMailer::Base
 
   def application_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
+    return unless @questionnaire.user.present?
     mail(to: pretty_email(@questionnaire.full_name, @questionnaire.user.email), subject: "[BrickHack] Application Received")
   end
 
