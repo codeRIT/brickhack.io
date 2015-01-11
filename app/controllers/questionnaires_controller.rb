@@ -50,7 +50,7 @@ class QuestionnairesController < ApplicationController
       if @questionnaire.save
         current_user.questionnaire = @questionnaire
         Mailer.delay.application_confirmation_email(@questionnaire.id)
-        format.html { redirect_to @questionnaire, notice: 'Questionnaire was successfully created.' }
+        format.html { redirect_to @questionnaire, notice: 'Application was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }
       else
         format.html { render action: "new" }
@@ -67,7 +67,7 @@ class QuestionnairesController < ApplicationController
 
     respond_to do |format|
       if @questionnaire.update_attributes(params[:questionnaire])
-        format.html { redirect_to @questionnaire, notice: 'Questionnaire was successfully updated.' }
+        format.html { redirect_to @questionnaire, notice: 'Application was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
