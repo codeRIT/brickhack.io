@@ -160,7 +160,7 @@ $(document).ready(function () {
       goToStage($(form).find('.wizard-current').prev());
     };
 
-    if ($(form).find('.field_with_errors')) {
+    if ($(form).find('.field_with_errors').length > 0) {
       goToStage($(form).find('.field_with_errors').first().parents('.wizard-stage'));
     }
     $(this).find('[data-wizard=next]').each(function() {
