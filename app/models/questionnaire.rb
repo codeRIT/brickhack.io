@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Questionnaire < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
+gem 'devise'
 
 gem 'sqlite3', :group => [:development, :test]
 gem 'mysql2', :group => :production
