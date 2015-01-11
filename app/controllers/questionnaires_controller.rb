@@ -13,9 +13,9 @@ class QuestionnairesController < ApplicationController
   # GET /apply/1
   # GET /apply/1.json
   def show
-    if (current_user.questionnaire().id != params[:id])
-      params[:id] = current_user.questionnaire().id
-    end
+    # if current_user.questionnaire.id != params[:id]
+    #   params[:id] = current_user.questionnaire.id
+    # end
     @questionnaire = Questionnaire.find(params[:id])
 
     respond_to do |format|
