@@ -2,15 +2,15 @@
   %div{class: "container"}
     %div{class: "content"}
       = image_tag('brickhack_logo.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
-      
+
       %div{class:"banner_text"}
         %h3 Rochester Institute of Technology
         %h3 April 18, 2015
 
       %div{class:'grid two'}
         %div{class:'col'}
-          %a{class:'button'}Register
-        %div{class:'col'}
+          %a{href:'/apply', class:'button'}Register
+        %div{href:'/#sponsors', class:'col'}
           %a{class:'button'}Sponsors
 %section{class:"section", id:"faq"}
   %div{class:"container"}
