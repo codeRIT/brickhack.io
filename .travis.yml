@@ -7,10 +7,11 @@ script:
 - bundle exec rake db:migrate
 - bundle exec rake
 before_deploy:
+- export RAILS_ENV=production
 - bundle install --deployment --without 'development test'
 - bundle exec rake db:migrate
 - bundle package
-- bundle exec rake assets:precompile:all RAILS_ENV=production RAILS_GROUPS=assets
+- bundle exec rake assets:precompile:all RAILS_GROUPS=assets
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
