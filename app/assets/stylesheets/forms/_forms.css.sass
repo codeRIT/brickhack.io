@@ -1,9 +1,12 @@
-#disclaimer
+#disclaimer, .alert
   background: lighten($blue, 10%)
   color: $white_pure
   margin: 0 auto 50px auto
   max-width: 80%
   padding: 25px 30px
+
+.alert
+  background: lighten($red, 10%)
 
 .form-container, .cancel_btn_wrap
   margin: 0 auto
@@ -128,7 +131,7 @@ input[type=submit]
     position: initial
 
 @media screen and (max-width: 600px)
-  #disclaimer
+  #disclaimer, .alert
     max-width: none
     margin: 0 25px 25px 25px
     ul
