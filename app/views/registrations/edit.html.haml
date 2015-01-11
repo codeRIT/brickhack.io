@@ -1,5 +1,7 @@
-%h1 Edit BrickHack Application
+%section{class:"section"}
+	%div{class:"container"}
+		%h1{class:"section-title"} Edit BrickHack Application
 
-= render 'form'
+		= render 'form'
 
-%p= link_to 'Cancel', @registration
+		%p{class:"cancel_btn_wrap"}= link_to 'Cancel', @registration

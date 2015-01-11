@@ -1,20 +1,38 @@
 $(document).ready(function () {
 
-  $('.nav-link, .scroll-to').on('click', function (e) {
-    e.preventDefault();
-    $('.active').removeClass('active');
-    $(e.currentTarget).addClass('active');
-    var id = $(e.currentTarget).attr('href');
-    var $target = $(id);
-    $target.addClass('active');
-    $('html,body').animate({
-      scrollTop: ($target.offset().top)
-    }, 1000);
-  });
+  var $sidebar = $('.sidebar');
+
+  if ( $sidebar.hasClass('home') ) {
+    $('.nav-link, .scroll-to').on('click', function (e) {
+      e.preventDefault();
+      $('.active').removeClass('active');
+      $(e.currentTarget).addClass('active');
+      var id = $(e.currentTarget).attr('href');
+      id = id.substring(1);
+      var $target = $(id);
+      $target.addClass('active');
+      $('html,body').animate({
+        scrollTop: ($target.offset().top)
+      }, 1000);
+    });
+  }
+
+  $('#sidebar-toggle').on('click', toggleSidebar);
+
+  function toggleSidebar (e) {
+    if ($sidebar.hasClass('open')) {
+      $('#main').off('click', toggleSidebar);
+      $sidebar.removeClass('open');
+    }
+    else {
+      $('#main').on('click', toggleSidebar);
+      $sidebar.addClass('open');
+    }
+  }
 
   $('[name="registration[international]"]').on('change', function() {
     var $select = $('.registration_state.select select'),
-        $text   = $('.registration_state.string input')
+        $text   = $('.registration_state.string input');
     if ($(this).is(':checked')) {
       $select.parent().hide();
       $select.prop('disabled', true);
@@ -41,7 +59,7 @@ $(document).ready(function () {
         switch (types[i]) {
           case 'presence':
             if (!value || $.trim(value).length < 1) {
-              notify(this, "can't be blank");
+              notify(this, "Missing Information");
               success = false;
             }
           break;
@@ -49,20 +67,20 @@ $(document).ready(function () {
             if (value) {
               var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
               if (!re.test(value)) {
-                notify(this, "is invalid");
+                notify(this, "Invalid Email");
                 success = false;
               }
             }
           break;
           case 'file-max-size':
             if (this.files && this.files[0] && this.files[0].size > parseInt($(this).data('validate-file-max-size'))) {
-              notify(this, "file is too big");
+              notify(this, "File Too Large");
               success = false;
             }
           break;
           case 'file-content-type':
             if (this.files && this.files[0] && this.files[0].type != $(this).data('validate-file-content-type')) {
-              notify(this, "invalid file type");
+              notify(this, "Invalid File Type");
               success = false;
             }
           break;

@@ -2,8 +2,8 @@
   = simple_form_for @registration, html: { "data-validate" => "form" } do |f|
 
     .form-inputs
-      = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }
-      = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }
+      = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
+      = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
       = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email" }
       = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
@@ -18,15 +18,15 @@
       = f.input :state, as: :select, collection: Registration::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
       = f.input :state, input_html: { "data-validate" => "presence", disabled: !intl_state }, wrapper_html: { style: intl_state ? "" : "display: none" }, label: "State/Province"
 
-      = f.input :experience, as: :select, collection: Registration::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
+      = f.input :experience, as: :select, collection: Registration::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
       = f.input :interest, as: :select, collection: Registration::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :shirt_size, as: :select, collection: Registration::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Dietary & medical notes"
+      = f.input :shirt_size, as: :select, collection: Registration::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }, label: "Shirt Size"
+      = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
 
-      = f.input :resume, as: :deletable_attachment, hint: "must be a PDF under 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }
+      = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
 
-      = f.input :portfolio_url, label: "Portfolio Link"
-      = f.input :vcs_url, label: "GitHub/BitBucket Link"
+      = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
+      = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"http://github.com/coderit"
 
     %div{class:'center'}
       = f.button :submit, class:"button", value: ( @registration.new_record? ? 'Apply' : 'Save' )

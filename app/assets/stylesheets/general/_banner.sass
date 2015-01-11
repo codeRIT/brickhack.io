@@ -1,7 +1,13 @@
 .welcome
   color: $secondary
+  display: -webkit-box
+  display: -moz-box
   display: flex
+  -webkit-flex-direction: column
+  -moz-flex-direction: column
   flex-direction: column
+  -webkit-justify-content: center
+  -moz-justify-content: center
   justify-content: center
   min-height: 100%
   padding-bottom: 50px
@@ -15,3 +21,8 @@
       padding: 0
   h1
     margin-bottom: 0
+
+  .banner_text 
+    h3
+      margin-bottom: 10px
+      font-size: 1.5em
