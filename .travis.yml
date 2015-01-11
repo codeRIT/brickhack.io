@@ -13,7 +13,6 @@ before_deploy:
 - bundle install --deployment --without 'development test'
 - bundle exec rake db:create db:migrate
 - bundle package
-- bundle exec rake assets:precompile:all RAILS_GROUPS=assets
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
