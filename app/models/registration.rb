@@ -19,9 +19,9 @@ class Registration < ActiveRecord::Base
   POSSIBLE_STATES      = %w(AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA PR RI SC SD TN TX UT VT VA WA WV WI WY)
   POSSIBLE_INTERESTS   = %w(Design Development Hardware)
   POSSIBLE_EXPERIENCES = {
-    "first"       => "This is my first",
-    "experienced" => "1-5",
-    "expert"      => "6+"
+    "first"       => "This is my 1st hackathon!",
+    "experienced" => "My feet are wet. (1-5 hackathons)",
+    "expert"      => "I'm a veteran hacker. (6+ hackathons)"
   }
   POSSIBLE_YEARS       = {
     "hs" => "High School",
