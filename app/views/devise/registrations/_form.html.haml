@@ -1,4 +1,4 @@
-%div{class:'form-container'}
+%div{class:'form-container signup'}
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     .form-inputs
       = f.input :email, required: true, autofocus: true
@@ -7,4 +7,5 @@
     .form-actions
       .center
         = f.button :submit, "Sign up", class:"button"
+      .center
         = render "devise/shared/links"
