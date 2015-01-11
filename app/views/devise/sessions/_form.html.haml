@@ -5,6 +5,6 @@
       = f.input :password, required: false
       = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     .form-actions{class:'center'}
-      = f.button :submit, "Log in"
+      = f.button :submit, "Log In"
     .center
       = render "devise/shared/links"
