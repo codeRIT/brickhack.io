@@ -14,7 +14,8 @@
     font-size: 1rem
     min-width: initial
     padding: 3px 5px
-  &:hover
+  &:hover, &:focus
     background: lighten($blue-light, 10%)
     @include box-shadow(inset 0 0 10px 3px lighten($blue-light, 5%))
     color: $white_pure
+    outline-color: $orange-light
