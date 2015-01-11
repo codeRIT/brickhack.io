@@ -14,12 +14,18 @@ $(document).ready(function () {
 
   var $sidebar = $('.sidebar');
 
-  $('#sidebar-toggle').on('click', function () {
-    if ($sidebar.hasClass('open'))
+  $('#sidebar-toggle').on('click', toggleSidebar);
+
+  function toggleSidebar (e) {
+    if ($sidebar.hasClass('open')) {
+      $('#main').off('click', toggleSidebar);
       $sidebar.removeClass('open');
-    else
+    }
+    else {
+      $('#main').on('click', toggleSidebar);
       $sidebar.addClass('open');
-  });
+    }
+  }
 
   $('[name="participant[international]"]').on('change', function() {
     var $select = $('.participant_state.select select'),
