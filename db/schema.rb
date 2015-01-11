@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20150111012709) do
     t.integer  "resume_file_size"
     t.datetime "resume_updated_at"
     t.boolean  "international"
+    t.string   "portfolio_url"
+    t.string   "vcs_url"
     t.integer  "user_id"
   end
 

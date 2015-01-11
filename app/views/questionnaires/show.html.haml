@@ -1,47 +1,58 @@
-%p#notice= notice
+%div{class:'form-success'}
+  %div{class:'success_message'}
+    %p#notice= notice
+    %p Thanks for applying! Acceptance notifications will be sent out in a few months.
 
-%p Thanks for applying! Acceptance notifications will be sent out in March.
-%p Below is a copy of your application.
-%p
-  %b First name:
-  = @questionnaire.first_name
-%p
-  %b Last name:
-  = @questionnaire.last_name
-%p
-  %b Email:
-  = @questionnaire.email
-%p
-  %b Birthday:
-  = @questionnaire.birthday_formatted
-%p
-  %b School:
-  = @questionnaire.school.full_name
-%p
-  %b City:
-  = @questionnaire.city
-%p
-  %b State:
-  = @questionnaire.state
-%p
-  %b Experience:
-  = Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience]
-%p
-  %b Year:
-  = Questionnaire::POSSIBLE_YEARS[@questionnaire.year]
-%p
-  %b Interest:
-  = @questionnaire.interest
-%p
-  %b Shirt size:
-  = @questionnaire.shirt_size
-%p
-  %b Dietary & medical notes:
-  = @questionnaire.dietary_medical_notes || "None"
-%p
-  %b Resume:
-  = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
+  %div{class:'participant_info'}
+    %p Below is a copy of your application.
+    %div{class:'fields'}
 
-%p
-  Need to make changes?
-  = link_to 'Edit &raquo;'.html_safe, edit_questionnaire_path(@questionnaire)
+    %p
+      %b First name:
+      = @questionnaire.first_name
+    %p
+      %b Last name:
+      = @questionnaire.last_name
+    %p
+      %b Email:
+      = @questionnaire.email
+    %p
+      %b Birthday:
+      = @questionnaire.birthday_formatted
+    %p
+      %b School:
+      = @questionnaire.school.full_name
+    %p
+      %b City:
+      = @questionnaire.city
+    %p
+      %b State:
+      = @questionnaire.state
+    %p
+      %b Experience:
+      = Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience]
+    %p
+      %b Year:
+      = Questionnaire::POSSIBLE_YEARS[@questionnaire.year]
+    %p
+      %b Interest:
+      = @questionnaire.interest
+    %p
+      %b Shirt size:
+      = Questionnaire::POSSIBLE_SHIRT_SIZES[@questionnaire.shirt_size]
+    %p
+      %b Dietary & medical notes:
+      = @questionnaire.dietary_medical_notes || "None"
+    %p
+      %b Resume:
+      = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
+    %p
+      %b Portfolio Link:
+      = @questionnaire.portfolio_url? ? link_to(@questionnaire.portfolio_url, @questionnaire.portfolio_url, target: '_blank') : 'Not provided'
+    %p
+      %b GitHub/BitBucket Link:
+      = @questionnaire.vcs_url? ? link_to(@questionnaire.vcs_url, @questionnaire.vcs_url, target: '_blank') : 'Not provided'
+
+    %p
+      Need to make changes?
+      = link_to 'Edit &raquo;'.html_safe, edit_questionnaire_path(@questionnaire)

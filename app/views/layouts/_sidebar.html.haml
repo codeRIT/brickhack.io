@@ -1,34 +1,31 @@
-%div{class:'sidebar'}
+%div{class:"sidebar #{controller.controller_name}"}
+  %span{id:'sidebar-toggle'}
+    %i{class:'fa fa-navicon'}
   %div{class:'pusher'}
     %div{id:'logo-cta'}
       = image_tag('brickhack_logo_white.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
+    %a{href:'/apply', class:'button'}Register
     %nav
       %ul{class:'nav-list'}
         %li
-          %a{href:"#main", class:'nav-link active'}HOME
+          %a{href:"/#main", class:'nav-link active'}HOME
         %li
-          %a{href:"#faq", class:'nav-link'}FAQ
+          %a{href:"/#faq", class:'nav-link'}FAQ
         %li
-          %a{href:"#sponsors", class:'nav-link'}SPONSORS
+          %a{href:"/#sponsors", class:'nav-link'}SPONSORS
         %li
-          %a{href:"#contact", class:'nav-link'}CONTACT
-      %ul{class:'social-list'}
-        %li
-          %a{href:"#home", class:'sm-link'}
-            %span{class:'fa fa-code'}
-            Challenge Post
-        %li
-          %a{href:"#home", class:'sm-link'}
-            %span{class:'fa fa-facebook'}
-            Facebook
-        %li
-          %a{href:"#home", class:'sm-link'}
-            %span{class:'fa fa-twitter'}
-            @BrickHack
-        %li
-          %a{href:"#home", class:'sm-link'}
-            %span{class:'fa fa-instagram'}
-            Instagram
+          %a{href:"/#contact", class:'nav-link'}CONTACT
+      %div{class:'social-list'}
+        / TODO: uncomment after finishing Challenge Post article
+        /   %a{href:"#home", class:'sm-link'}
+        /     %span{class:'fa fa-code'}
+        /     Challenge Post
+        %a{href:"https://www.facebook.com/brickhackrit", class:'sm-link', target: '_blank'}
+          %span{class:'fa fa-facebook'}
+        %a{href:"https://twitter.com/brickhackrit", class:'sm-link', target: '_blank'}
+          %span{class:'fa fa-twitter'}
+        %a{href:"http://instagram.com/brickhack", class:'sm-link', target: '_blank'}
+          %span{class:'fa fa-instagram'}
   %footer{class:"footer"}
     Student run by
     %a{href:"http://coderit.org", class:"coderit-logo", target:'_blank'} CodeRIT

@@ -1,29 +1,38 @@
-%div{class:'form-container'}
+%div{class:'form-container wizard'}
   = simple_form_for @questionnaire, html: { "data-validate" => "form" } do |f|
 
-    .form-inputs
-      = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }
-      = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }
-      = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email" }
-      = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
+    .wizard-stage.wizard-current
+      .form-inputs
+        = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
+        = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
+        = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email" }
+        = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
-      = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
-      = f.input :year, as: :select, collection: Questionnaire::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+        = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
+        = f.input :year, as: :select, collection: Questionnaire::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
-      = f.input :international, label: "International?"
+        = f.input :international, label: "International?"
 
-      = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
+        = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
 
-      - intl_state = !@questionnaire.new_record? && @questionnaire.international
-      = f.input :state, as: :select, collection: Questionnaire::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
-      = f.input :state, input_html: { "data-validate" => "presence", disabled: !intl_state }, wrapper_html: { style: intl_state ? "" : "display: none" }, label: "State/Province"
+        - intl_state = !@questionnaire.new_record? && @questionnaire.international
+        = f.input :state, as: :select, collection: Questionnaire::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
+        = f.input :state, input_html: { "data-validate" => "presence", disabled: !intl_state }, wrapper_html: { style: intl_state ? "" : "display: none" }, label: "State/Province"
+      %div{class:'center'}
+        %button.button{ type: "button", "data-wizard" => "next" } Next
 
-      = f.input :experience, as: :select, collection: Questionnaire::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Hackathon experience", input_html: { "data-validate" => "presence" }
-      = f.input :interest, as: :select, collection: Questionnaire::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :shirt_size, as: :select, collection: Questionnaire::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Dietary & medical notes"
+    .wizard-stage
+      .form-inputs
+        = f.input :experience, as: :select, collection: Questionnaire::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
+        = f.input :interest, as: :select, collection: Questionnaire::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+        = f.input :shirt_size, as: :select, collection: Questionnaire::POSSIBLE_SHIRT_SIZES.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+        = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
 
-      = f.input :resume, as: :deletable_attachment, hint: "must be a PDF under 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }
+        = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
 
-    %div{class:'center'}
-      = f.button :submit, class:"button", value: ( @questionnaire.new_record? ? 'Apply' : 'Save' )
+        = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
+        = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"http://github.com/coderit"
+
+      %div{class:'center'}
+        %button.button{ type: "button", "data-wizard" => "previous" } Previous
+        = f.button :submit, class:"button", value: ( @questionnaire.new_record? ? 'Apply' : 'Save' )
