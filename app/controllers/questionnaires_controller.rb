@@ -1,5 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_filter :logged_in
+  before_filter :check_user_has_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def logged_in
     authenticate_user!
@@ -13,8 +14,8 @@ class QuestionnairesController < ApplicationController
   # GET /apply/1
   # GET /apply/1.json
   def show
-    if (current_user.questionnaire().id != params[:id])
-      params[:id] = current_user.questionnaire().id
+    if current_user.questionnaire.to_param != params[:id]
+      return redirect_to questionnaire_path(current_user.questionnaire)
     end
     @questionnaire = Questionnaire.find(params[:id])
 
@@ -27,6 +28,9 @@ class QuestionnairesController < ApplicationController
   # GET /apply/new
   # GET /apply/new.json
   def new
+    if current_user.questionnaire.present?
+      return redirect_to questionnaire_path(current_user.questionnaire)
+    end
     @questionnaire = Questionnaire.new
 
     respond_to do |format|
@@ -99,6 +103,12 @@ class QuestionnairesController < ApplicationController
   end
 
   private
+
+  def check_user_has_questionnaire
+    if current_user.questionnaire.nil?
+      redirect_to new_questionnaire_path
+    end
+  end
 
   def convert_school_name_to_id(questionnaire)
     if questionnaire[:school_name]

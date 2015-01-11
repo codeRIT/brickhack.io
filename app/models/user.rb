@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
     true
   end
 
+  def email=(value)
+    super value.try(:downcase)
+  end
 end

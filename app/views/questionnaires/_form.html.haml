@@ -5,7 +5,6 @@
       .form-inputs
         = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
         = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
-        = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email" }
         = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
         = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
