@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Questionnaire < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
@@ -49,6 +49,8 @@ class Registration < ActiveRecord::Base
   validates_inclusion_of :year, in: POSSIBLE_YEARS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
+
+  belongs_to :user
 
   def portfolio_url=(value)
     value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")
