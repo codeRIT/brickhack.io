@@ -47,7 +47,7 @@ $(document).ready(function () {
     }
   });
 
-  $.fn.validate = function() {
+  $.fn.validate = function(option) {
     var previous_invalid_inputs = [];
 
     var validateInput = function() {
@@ -127,12 +127,47 @@ $(document).ready(function () {
       $element.parent().addClass('field_with_errors');
     };
 
-    $(this).on('submit', validateAll);
-    $(this).find('[data-validate]').each(function() {
-      $(this).on('blur', validateInput);
-    });
+    if (option == 'now') {
+      return validateAll.call(this);
+    }
+    else {
+      $(this).on('submit', validateAll);
+      $(this).find('[data-validate]').each(function() {
+        $(this).on('blur', validateInput);
+      });
+    }
   };
 
   $('[data-validate=form]').validate();
+
+  $.fn.wizard = function() {
+    var form = this;
+
+    var nextStage = function() {
+      if (!$(form).find('.wizard-current').validate('now')) {
+        return false;
+      }
+      $next = $(form).find('.wizard-current').next();
+      $(form).find('.wizard-current').removeClass('wizard-current');
+      $next.addClass('wizard-current');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    };
+
+    var previousStage = function() {
+      $previous = $(form).find('.wizard-current').prev();
+      $(form).find('.wizard-current').removeClass('wizard-current');
+      $previous.addClass('wizard-current');
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+    };
+
+    $(this).find('[data-wizard=next]').each(function() {
+      $(this).on('click', nextStage);
+    });
+    $(this).find('[data-wizard=previous]').each(function() {
+      $(this).on('click', previousStage);
+    });
+  };
+
+  $('.wizard').wizard();
 
 });
