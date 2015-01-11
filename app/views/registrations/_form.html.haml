@@ -25,7 +25,7 @@
       .form-inputs
         = f.input :experience, as: :select, collection: Registration::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
         = f.input :interest, as: :select, collection: Registration::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-        = f.input :shirt_size, as: :select, collection: Registration::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }, label: "Shirt Size"
+        = f.input :shirt_size, as: :select, collection: Registration::POSSIBLE_SHIRT_SIZES.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }, label: "Shirt Size"
         = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
 
         = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
