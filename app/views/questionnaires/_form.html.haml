@@ -1,6 +1,12 @@
 %div{class:'form-container wizard'}
   = simple_form_for @questionnaire, html: { "data-validate" => "form" } do |f|
 
+    #disclaimer
+      %ul
+        %li Applicants must be 18 years of age by April 18th
+        %li RIT Students must still apply
+        %li International applicants are welcome
+
     .wizard-stage.wizard-current
       .form-inputs
         = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
