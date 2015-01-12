@@ -73,6 +73,8 @@ BrickhackIo::Application.configure do
     user_name: ENV["SMTP_USER_NAME"],
     password:  ENV["SMTP_PASSWORD"]
   }
+  # Required for Devise
+  config.action_mailer.default_url_options = { :host => 'brickhack.io', :protocol => 'https' }
 
   # Store resumes on Google Drive when in production
   config.paperclip_defaults = {
