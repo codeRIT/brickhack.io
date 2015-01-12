@@ -6,20 +6,6 @@ rvm:
 script:
 - bundle exec rake db:migrate db:test:prepare
 - bundle exec rake test
-before_deploy:
-- export RAILS_ENV=production
-- export OPENSHIFT_APP_NAME=myapp_test OPENSHIFT_MYSQL_DB_USERNAME=root OPENSHIFT_MYSQL_DB_HOST=127.0.0.1
-- git config --global user.email "marketing@coderit.org"
-- git config --global user.name "Travis CI"
-- mysql -e 'create database myapp_test;'
-- bundle install --deployment --without 'development test'
-- bundle exec rake db:create db:migrate
-- bundle cache
-- git add -f vendor/cache/
-- git commit -m "Added bundle cache for deployment"
-- bundle exec rake assets:precompile:all RAILS_GROUPS=assets
-- git add -f public/assets/
-- git commit -m "Added public assets for deployment"
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
