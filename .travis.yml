@@ -13,8 +13,11 @@ before_deploy:
 - bundle install --deployment --without 'development test'
 - bundle exec rake db:create db:migrate
 - bundle package
-- echo '!/public/assets/' >> .gitignore
 - bundle exec rake assets:precompile:all RAILS_GROUPS=assets
+- git config --global user.email "marketing@coderit.org"
+- git config --global user.name "Travis CI"
+- git add -f public/assets/
+- git commit -m "Added public assets"
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
