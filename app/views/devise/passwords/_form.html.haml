@@ -3,6 +3,7 @@
     = f.error_notification
     .form-inputs
       = f.input :email, required: true, autofocus: true
-    .form-actions
-      = f.button :submit, "Send me reset password instructions"
-  = render "devise/shared/links"
+    .center
+      .form-actions
+        = f.button :submit, "Send Reset Instructions"
+      = render "devise/shared/links"
