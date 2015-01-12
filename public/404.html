@@ -1,26 +1,125 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
-
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
-  </div>
-</body>
+  <head>
+    <title>BrickHack</title>
+    <meta charset='utf-8'>
+    <meta content='hackathons, hackathon, hack-a-thon, programming, hardware, development, design, rit, ' name='keywords'>
+    <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <meta content='BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating.' name='description'>
+    <meta content='BrickHack' property='og:title'>
+    <meta content='http://brickhack.io' property='og:url'>
+    <meta content='BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating.' property='og:description'>
+    <meta content='http://brickhack.io/assets/brickhack_logo.png' property='og:image'>
+    <meta content='summary' name='twitter:card'>
+    <meta content='http://brickhak.io' name='twitter:url'>
+    <meta content='BrickHack' name='twitter:title'>
+    <meta content='/assets/brickhack_logo.png' name='twitter:image'>
+    <meta content='BrickHack: RIT’s premiere collegiate hackathon. April 18th ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating.' name='twitter:description'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-114x114.png' rel='apple-touch-icon' sizes='114x114'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-72x72.png' rel='apple-touch-icon' sizes='72x72'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-144x144.png' rel='apple-touch-icon' sizes='144x144'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-120x120.png' rel='apple-touch-icon' sizes='120x120'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-76x76.png' rel='apple-touch-icon' sizes='76x76'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-152x152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href='http://localhost:3000/assets/favicon/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+    <link href='http://localhost:3000/assets/favicon/favicon.ico' rel='shortcut icon'>
+    <link href='http://localhost:3000/assets/favicon/favicon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
+    <link href='http://localhost:3000/assets/favicon/favicon-160x160.png' rel='icon' sizes='160x160' type='image/png'>
+    <link href='http://localhost:3000/assets/favicon/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+    <link href='http://localhost:3000/assets/favicon/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+    <link href='http://localhost:3000/assets/favicon/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <meta content='#f9f6f3' name='msapplication-TileColor'>
+    <meta content='http://localhost:3000/assets/favicon/mstile-144x144.png' name='msapplication-TileImage'>
+    <meta content='http://localhost:3000/assets/favicon/mstile-70x70.png' name='msapplication-square70x70logo'>
+    <meta content='http://localhost:3000/assets/favicon/mstile-150x150.png' name='msapplication-square150x150logo'>
+    <meta content='http://localhost:3000/assets/favicon/mstile-310x310.png' name='msapplication-square310x310logo'>
+    <meta content='http://localhost:3000/assets/favicon/mstile-310x150.png' name='msapplication-wide310x150logo'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,900,300,100,500,700' rel='stylesheet' type='text/css'>
+    <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+    <meta content="authenticity_token" name="csrf-param" />
+    <meta content="BhkM+GEppyJawLe0QufX6YgYju9l500v3aLKIWsWrEY=" name="csrf-token" />
+  </head>
+  <body>
+    <div class='sidebar home'>
+      <span id='sidebar-toggle'>
+        <i class='fa fa-navicon'></i>
+      </span>
+      <div class='pusher'>
+        <div id='logo-cta'>
+          <a href='/'>
+            <img alt="BrickHack" id="logo" src="/assets/brickhack_logo_white.svg" title="BrickHack" />
+          </a>
+        </div>
+        <div>
+          <a class='button' href='/users/sign_in'>Login</a>
+        </div>
+        <div>
+          <a class='button' href='/users/sign_up'>Register</a>
+        </div>
+        <nav>
+          <ul class='nav-list'>
+            <li>
+              <a class='nav-link active' href='/#main'>HOME</a>
+            </li>
+            <li>
+              <a class='nav-link' href='/#faq'>FAQ</a>
+            </li>
+            <li>
+              <a class='nav-link' href='/#sponsors'>SPONSORS</a>
+            </li>
+            <li>
+              <a class='nav-link' href='/#contact'>CONTACT</a>
+            </li>
+          </ul>
+          <div class='social-list'>
+            <!-- TODO: uncomment after finishing Challenge Post article -->
+            <!-- %a{href:"#home", class:'sm-link'} -->
+            <!-- %span{class:'fa fa-code'} -->
+            <!-- Challenge Post -->
+            <a class='sm-link' href='https://www.facebook.com/brickhackrit' target='_blank'>
+              <span class='fa fa-facebook'></span>
+            </a>
+            <a class='sm-link' href='https://twitter.com/brickhackrit' target='_blank'>
+              <span class='fa fa-twitter'></span>
+            </a>
+            <a class='sm-link' href='http://instagram.com/brickhack' target='_blank'>
+              <span class='fa fa-instagram'></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+      <footer class='footer'>
+        Student run by
+        <a class='coderit-logo' href='http://coderit.org' target='_blank'>CodeRIT</a>
+      </footer>
+    </div>
+    <div id="main">
+      <div class="section">
+        <div class="container">
+          <h2 class="section-title">Page Not Found</h2>
+          <div class="center">
+            <p>It looks like you stumbled across a page that doesn't exist.</p>
+            <cite>Error 404</cite>
+            <p>
+              <a class="button" href="/">Home</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.ui.core.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.ui.widget.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.ui.position.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.ui.menu.js?body=1" type="text/javascript"></script>
+    <script src="/assets/jquery.ui.autocomplete.js?body=1" type="text/javascript"></script>
+    <script src="/assets/main.js?body=1" type="text/javascript"></script>
+    <script src="/assets/registrations.js?body=1" type="text/javascript"></script>
+    <script src="/assets/application.js?body=1" type="text/javascript"></script>
+  </body>
 </html>
