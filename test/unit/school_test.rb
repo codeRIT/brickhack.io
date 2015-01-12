@@ -1,11 +1,7 @@
 require 'test_helper'
 
 class SchoolTest < ActiveSupport::TestCase
-
-  test "TRAVIS TEST" do
-    assert false
-  end
-
+  
   should strip_attribute :name
   should strip_attribute :address
   should strip_attribute :city
