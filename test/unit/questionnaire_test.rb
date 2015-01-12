@@ -116,4 +116,12 @@ class QuestionnaireTest < ActiveSupport::TestCase
     end
   end
 
+  context "#email" do
+    should "return the questionnaire's user" do
+      questionnaire = create(:questionnaire)
+      questionnaire.user.email = "joe.smith@example.com"
+      assert_equal "joe.smith@example.com", questionnaire.email
+    end
+  end
+
 end

@@ -34,4 +34,4 @@
 
       %div{class:'center'}
         %button.button{ type: "button", "data-wizard" => "previous" } Previous
-        = f.button :submit, class:"button", value: ( @questionnaire.new_record? ? 'Apply' : 'Save' )
+        = f.button :submit, value: ( @questionnaire.new_record? ? 'Apply' : 'Save' )

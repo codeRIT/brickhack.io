@@ -10,7 +10,6 @@ class MailerTest < ActionMailer::TestCase
       @questionnaire = create(:questionnaire,
         first_name: "Joe",
         last_name: "Smith",
-        email: "joe.smith@example.com",
         city: "Anytown",
         state: "NY",
         school_id: @school.id,
@@ -20,6 +19,7 @@ class MailerTest < ActionMailer::TestCase
         shirt_size: "L",
         dietary_medical_notes: "Peanut allergy"
       )
+      @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
     end
 
     should "deliver email to questionnaire" do
