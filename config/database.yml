@@ -36,3 +36,7 @@ test: &test
 production:
   <<: *defaults
   <<: *mysql
+
+staging:
+  <<: *defaults
+  <<: *mysql
