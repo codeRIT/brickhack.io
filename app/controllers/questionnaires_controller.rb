@@ -1,5 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_filter :logged_in
+  before_filter :restrict_questionnaire_access
   before_filter :check_user_has_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def logged_in
@@ -14,9 +15,6 @@ class QuestionnairesController < ApplicationController
   # GET /apply/1
   # GET /apply/1.json
   def show
-    if current_user.questionnaire.to_param != params[:id]
-      return redirect_to questionnaire_path(current_user.questionnaire)
-    end
     @questionnaire = Questionnaire.find(params[:id])
 
     respond_to do |format|
@@ -103,6 +101,13 @@ class QuestionnairesController < ApplicationController
   end
 
   private
+
+  def restrict_questionnaire_access
+    if params[:id].present? && current_user.questionnaire.to_param != params[:id]
+      return redirect_to new_questionnaire_path unless current_user.questionnaire.present?
+      return redirect_to questionnaire_path(current_user.questionnaire)
+    end
+  end
 
   def check_user_has_questionnaire
     if current_user.questionnaire.nil?
