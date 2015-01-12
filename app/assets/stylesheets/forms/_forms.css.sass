@@ -75,13 +75,13 @@ input[type=text], input[type=email], input[type=date], input[type="url"], input[
 // just selects
 select
   @include appearance (none)
-  background: url("/assets/arrow_down.svg"), #FFF
+  background: url("/assets/arrow_down.svg"), $white_pure
   background-repeat: no-repeat
   background-position: right
   background-size: auto 100%
   border: 1px solid $white
   outline: none
-  padding: 5px 8px
+  padding: 5px 30px 5px 8px
   @include transition (200ms, border, ease-in-out, 0)
   width: 100%
   font-size: 100%
@@ -99,6 +99,10 @@ select
   option
     background: $white_pure
     padding: 3px auto
+  &.date:nth-child(3)
+    max-width: 70px
+  &.date:nth-child(4)
+    max-width: 90px
 
 //Submit
 input[type=submit]
@@ -134,7 +138,7 @@ input[type=submit]
   .simple_form .error
     position: initial
 
-@media screen and (max-width: 600px)
+@media screen and (max-width: 680px)
   #disclaimer, .alert
     max-width: none
     margin: 0 25px 25px 25px
@@ -146,6 +150,12 @@ input[type=submit]
     padding: 0 25px
   div.input
     display: block
+
+  select
+    &.date:nth-child(3)
+      max-width: none
+    &.date:nth-child(4)
+      max-width: none
 
   label
     display: block
