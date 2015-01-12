@@ -39,6 +39,26 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
       assert redirect_to new_user_registration_path
     end
+
+    context "accessing a non-owned questionnaire" do
+      should "not allow #show" do
+        get :show, id: 0
+        assert_response :redirect
+        assert_redirected_to new_user_session_path
+      end
+
+      should "not allow #edit" do
+        get :edit, id: 0
+        assert_response :redirect
+        assert_redirected_to new_user_session_path
+      end
+
+      should "not not allow #update" do
+        put :update, id: 3, questionnaire: { first_name: "Foo" }
+        assert_response :redirect
+        assert_redirected_to new_user_session_path
+      end
+    end
   end
 
   context "while authenticated" do
@@ -78,7 +98,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "update questionnaire" do
-      put :update, id: @questionnaire, questionnaire: { email: "new@example.com" }
+      put :update, id: @questionnaire, questionnaire: { first_name: "Foo" }
       assert_redirected_to questionnaire_path(assigns(:questionnaire))
     end
 
@@ -88,6 +108,33 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
+    end
+
+    context "accessing a non-owned questionnaire" do
+      should "not allow #show" do
+        get :show, id: 0
+        assert_response :redirect
+        assert_redirected_to questionnaire_path(@questionnaire)
+      end
+
+      should "not allow #edit" do
+        get :edit, id: 0
+        assert_response :redirect
+        assert_redirected_to questionnaire_path(@questionnaire)
+      end
+
+      should "not not allow #update" do
+        put :update, id: 3, questionnaire: { first_name: "Foo" }
+        assert_response :redirect
+        assert_redirected_to questionnaire_path(@questionnaire)
+      end
+
+      should "redirect to #new if a questionnaire has not been submitted" do
+        @questionnaire.delete
+        get :show, id: 0
+        assert_response :redirect
+        assert_redirected_to new_questionnaire_path
+      end
     end
 
     context "#school_name" do
