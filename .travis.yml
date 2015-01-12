@@ -4,8 +4,8 @@ bundler_args: --path vendor --without development
 rvm:
 - 1.9.3
 script:
-- bundle exec rake db:migrate
-- bundle exec rake
+- bundle exec rake db:migrate db:test:prepare
+- bundle exec rake test
 before_deploy:
 - export RAILS_ENV=production
 - bundle install --deployment --without 'development test'
