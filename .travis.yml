@@ -8,8 +8,13 @@ script:
 - bundle exec rake test
 before_deploy:
 - export RAILS_ENV=production
+- export OPENSHIFT_APP_NAME=myapp_test OPENSHIFT_MYSQL_DB_USERNAME=root OPENSHIFT_MYSQL_DB_HOST=127.0.0.1
+- mysql -e 'create database myapp_test;'
 - bundle install --deployment --without 'development test'
+- bundle exec rake db:create db:migrate
 - bundle package
+- echo '!/public/assets/' >> .gitignore
+- bundle exec rake assets:precompile:all RAILS_GROUPS=assets
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
