@@ -50,6 +50,10 @@ class Questionnaire < ActiveRecord::Base
 
   belongs_to :user
 
+  def email
+    user.email
+  end
+
   def portfolio_url=(value)
     value = "http://" + value if !value.blank? && !value.include?("http://") && !value.include?("https://")
     super value

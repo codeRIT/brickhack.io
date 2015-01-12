@@ -44,8 +44,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
   context "while authenticated" do
     setup do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
-      @user = create(:user, questionnaire: @questionnaire)
-      sign_in @user
+      sign_in @questionnaire.user
     end
 
     should "index should redirect to new" do
@@ -55,8 +54,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "get new" do
-      @user.questionnaire = nil
-      @user.save
+      @questionnaire.delete
       get :new
       assert_response :success
     end
