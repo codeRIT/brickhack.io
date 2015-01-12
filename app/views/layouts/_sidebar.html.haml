@@ -7,14 +7,14 @@
         = image_tag('brickhack_logo_white.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
     - if user_signed_in?
       %div
-        %a{href:'/users/sign_in', class:'button'}Review
+        = btn_link_to "Review", new_questionnaire_path
       %div
-        = link_to "Sign Out", destroy_user_session_path, :method =>:delete, class: "button"
+        = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       %div
-        %a{href:'/users/sign_in', class:'button'}Login
+        = btn_link_to "Login", new_user_session_path
       %div
-        %a{href:'/users/sign_up', class:'button'}Register
+        = btn_link_to "Register", new_user_registration_path
     %nav
       %ul{class:'nav-list'}
         %li
