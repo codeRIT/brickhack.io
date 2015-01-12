@@ -8,8 +8,8 @@
         %h3 April 18, 2015
 
       %div{class:'grid two'}
-        %a{href:'/users/sign_up',class:'button'}Register
-        %a{href:'/#sponsors', class:'button scroll-to'}Sponsors
+        = btn_link_to "Register", new_user_registration_path
+        = btn_link_to "Sponsors", "/#sponsors", class: "scroll-to"
 %section{class:"section", id:"faq"}
   %div{class:"container"}
     %h2{class:'section-title white'}Frequently Asked Questions

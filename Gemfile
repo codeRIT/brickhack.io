@@ -33,9 +33,7 @@ group :assets do
 end
 
 group :development do
-  gem 'factory_girl_rails'
   gem 'guard-minitest'
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'mail_view', '~> 2.0.4'
@@ -47,6 +45,7 @@ group :test do
   gem 'minitest-reporters'
   gem 'valid_attribute'
   gem 'ruby-prof'
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'
