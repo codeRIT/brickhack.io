@@ -1,0 +1,25 @@
+%section.section
+  .container
+    %h1.section-title BrickHack Dashboard
+    %h3 24 Hour Stats:
+    %ul
+      %li
+        %strong New Applications:
+        = Questionnaire.where("created_at >= :one_day_ago", one_day_ago: Time.now - 24.hours).count
+    %h3 Total Stats
+    %ul
+      %li
+        %strong Applications:
+        = total_count = Questionnaire.count
+      %li
+        %strong RIT Applications:
+        - rit_count = Questionnaire.where("school_id == \"2304\" OR school_id == \"5535\"").count
+        = rit_count
+        = "(#{rit_count/total_count * 100}% of all applications)" unless total_count == 0
+      %li
+        %strong Resumes:
+        = Questionnaire.where("resume_file_name != ''").count
+      %li
+        %strong Registered Users:
+        = User.where(admin: false).count
+        (non-admin)

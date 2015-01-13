@@ -10,6 +10,11 @@ BrickhackIo::Application.routes.draw do
     get :schools, on: :collection
   end
 
+  namespace :manage do
+    get "/" => "application#index"
+    resources :dashboard
+  end
+
   get "home/index"
 
   # The priority is based upon order of creation:
