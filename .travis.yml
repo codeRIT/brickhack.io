@@ -13,13 +13,11 @@ before_deploy:
 - git config --global user.name "Travis CI"
 - bundle install --deployment --without 'development test'
 - bundle cache
-- mysql -e 'create database myapp_test;'
 - bundle exec rake db:create db:migrate
 - bundle exec rake assets:precompile:all RAILS_GROUPS=assets
 - git add -f public/assets/
-- echo "test" >> public/test.txt
-- ls public/assets/
-- ls vendor/cache/
+- git add -f vendor/cache/
+- git commit -am "Preparing for deployment"
 deploy:
   provider: openshift
   user: coldencullen@mail.rit.edu
@@ -29,6 +27,5 @@ deploy:
     master: rails
     develop: staging
   domain: coderit
-  skip_cleanup: true
   on:
     repo: codeRIT/brickhack.io
