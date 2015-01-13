@@ -6,6 +6,11 @@
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
+if [ $OPENSHIFT_GEAR_NAME == "staging" ]
+  then
+    bundle exec rake assets:precompile:all RAILS_GROUPS=assets
+fi
+
 ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
 LOCAL_USERNAME=`whoami`
 REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
