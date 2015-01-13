@@ -1,6 +1,6 @@
 BrickhackIo::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
