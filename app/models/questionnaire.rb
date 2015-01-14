@@ -1,4 +1,9 @@
 class Questionnaire < ActiveRecord::Base
+  include ActiveModel::Dirty
+
+  after_save :update_school_questionnaire_count
+  after_destroy :update_school_questionnaire_count
+
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
@@ -78,5 +83,16 @@ class Questionnaire < ActiveRecord::Base
 
   def birthday_formatted
     birthday.strftime("%B %-d, %Y")
+  end
+
+  private
+
+  def update_school_questionnaire_count
+    if school_id_changed?
+      School.decrement_counter(:questionnaire_count, school_id_was) if school_id_was.present?
+      School.increment_counter(:questionnaire_count, school_id)
+    elsif destroyed?
+      School.decrement_counter(:questionnaire_count, school_id)
+    end
   end
 end

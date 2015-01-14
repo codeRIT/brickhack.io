@@ -90,8 +90,32 @@ class QuestionnaireTest < ActiveSupport::TestCase
   context "#school" do
     should "return the current school" do
       school = create(:school, name: "My University")
-      questionnaire = create(:questionnaire, school_id: school.reload.id)
+      questionnaire = create(:questionnaire, school_id: school.id)
       assert_equal "My University", questionnaire.school.name
+    end
+
+    should "increment school questionnaire counter on create" do
+      school = create(:school)
+      questionnaire = create(:questionnaire, school_id: school.id)
+      assert_equal 1, school.reload.questionnaire_count
+    end
+
+    should "update school questionnaire counters on update" do
+      school1 = create(:school, name: "School 1")
+      school2 = create(:school, name: "School 2", id: 2)
+      questionnaire = create(:questionnaire, school_id: school1.reload.id)
+      questionnaire.school_id = school2.id
+      questionnaire.save
+      assert_equal 0, school1.reload.questionnaire_count
+      assert_equal 1, school2.reload.questionnaire_count
+    end
+
+    should "decrement school questionnaire counter on destroy" do
+      school = create(:school)
+      questionnaire = create(:questionnaire, school_id: school.id)
+      assert_equal 1, school.reload.questionnaire_count
+      questionnaire.destroy
+      assert_equal 0, school.reload.questionnaire_count
     end
   end
 
