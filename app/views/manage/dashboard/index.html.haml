@@ -13,7 +13,7 @@
         = total_count = Questionnaire.count
       %li
         %strong RIT Applications:
-        - rit_count = Questionnaire.where("school_id == \"2304\" OR school_id == \"5535\"").count
+        - rit_count = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").count
         = rit_count
         = "(#{rit_count/total_count * 100}% of all applications)" unless total_count == 0
       %li
