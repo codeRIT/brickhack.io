@@ -3,7 +3,7 @@ class Manage::ApplicationController < ApplicationController
 
   def logged_in
     authenticate_user!
-    return redirect_to root_path unless current_user.admin?
+    return redirect_to root_path unless current_user.try(:admin?)
   end
 
   def index
