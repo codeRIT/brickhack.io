@@ -1,6 +1,6 @@
-%section.section
-  .container
-    %h1.section-title BrickHack Dashboard
+%section.section.manage
+  %h1.section-title BrickHack Dashboard
+  .container.container-half
     %h3 24 Hour Stats:
     %ul
       %li
@@ -23,3 +23,9 @@
         %strong Registered Users:
         = User.where(admin: false).count
         (non-admin)
+  .container.container-half
+    %h3 Schools
+    %small Application Count - Name
+    %ul
+      - School.where("questionnaire_count >= 1").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
+        %li= "#{school.questionnaire_count} - #{school.name}"
