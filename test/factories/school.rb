@@ -6,5 +6,6 @@ FactoryGirl.define do
     address "123 Fake Street"
     city    "Rochester"
     state   "NY"
+    questionnaire_count 0
   end
 end

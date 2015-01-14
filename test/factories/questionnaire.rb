@@ -9,7 +9,7 @@ FactoryGirl.define do
     birthday              20.years.ago
     experience            "first"
     interest              "Development"
-    school_id             "1"
+    school_id             { create(:school).id }
     shirt_size            "M"
     dietary_medical_notes ""
 
