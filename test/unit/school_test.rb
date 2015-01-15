@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class SchoolTest < ActiveSupport::TestCase
-  
+
+  should have_many :questionnaires
+
   should strip_attribute :name
   should strip_attribute :address
   should strip_attribute :city

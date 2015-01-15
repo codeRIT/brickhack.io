@@ -2,6 +2,8 @@ require 'test_helper'
 
 class QuestionnaireTest < ActiveSupport::TestCase
 
+  should belong_to :school
+
   should strip_attribute :first_name
   should strip_attribute :last_name
   should strip_attribute :city
