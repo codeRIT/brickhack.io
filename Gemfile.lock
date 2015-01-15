@@ -124,8 +124,14 @@ GEM
     hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
+    hitimes (1.2.2-x86-mingw32)
     i18n (0.7.0)
     journey (1.0.4)
+    jquery-datatables-rails (3.1.1)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
+      sass-rails
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -298,6 +304,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-minitest
   haml-rails
+  jquery-datatables-rails (~> 3.1.1)
   jquery-rails
   jquery-ui-sass-rails
   mail_view (~> 2.0.4)
