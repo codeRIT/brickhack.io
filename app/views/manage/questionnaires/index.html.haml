@@ -1,0 +1,21 @@
+%section.section.manage
+  %h1.section-title Listing Questionnaires
+
+  %table.datatable.row-border.stripe.hover.order-column{ "data-source" => manage_questionnaires_path(format: :json) }
+    %thead
+      %tr
+        %th
+        %th First name
+        %th Last name
+        %th Email
+        %th Int'l
+        %th State
+        %th Year
+        %th Experience
+        %th Interest
+        %th School
+    %tbody
+
+  %br
+
+  = btn_link_to 'New Questionnaire', new_manage_questionnaire_path

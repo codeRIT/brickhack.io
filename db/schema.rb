@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20150113233730) do
     t.string   "state"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "application_count"
     t.integer  "questionnaire_count"
   end
 

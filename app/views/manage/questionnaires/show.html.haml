@@ -1,0 +1,55 @@
+%section.section.manage
+  %h1.section-title BrickHack Dashboard
+
+  .form-container
+    %p#notice= notice
+
+    %p
+      %b First name:
+      = @questionnaire.first_name
+    %p
+      %b Last name:
+      = @questionnaire.last_name
+    %p
+      %b Email:
+      = @questionnaire.email
+    %p
+      %b City:
+      = @questionnaire.city
+    %p
+      %b State:
+      = @questionnaire.state
+    %p
+      %b Year:
+      = @questionnaire.year
+    %p
+      %b Birthday:
+      = @questionnaire.birthday
+    %p
+      %b Experience:
+      = @questionnaire.experience
+    %p
+      %b Interest:
+      = @questionnaire.interest
+    %p
+      %b School:
+      = @questionnaire.school_id
+    %p
+      %b Shirt size:
+      = @questionnaire.shirt_size
+    %p
+      %b Dietary medical notes:
+      = @questionnaire.dietary_medical_notes
+    %p
+      %b International:
+      = @questionnaire.international
+    %p
+      %b Portfolio url:
+      = @questionnaire.portfolio_url
+    %p
+      %b Vcs url:
+      = @questionnaire.vcs_url
+
+    = link_to 'Edit', edit_manage_questionnaire_path(@questionnaire)
+    \|
+    = link_to 'Back', manage_questionnaires_path

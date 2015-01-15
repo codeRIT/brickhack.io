@@ -14,6 +14,8 @@ gem 'devise-async'
 
 gem 'haml-rails'
 gem 'simple_form'
+gem 'kaminari'
+gem 'ajax-datatables-rails'
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
@@ -28,6 +30,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'jquery-ui-sass-rails'
+  gem 'jquery-datatables-rails', '~> 3.1.1'
 
   gem 'uglifier', '>= 1.0.3'
 end
