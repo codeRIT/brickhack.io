@@ -7,7 +7,10 @@
         = image_tag('brickhack_logo_white.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
     - if user_signed_in?
       %div
-        = btn_link_to "Review", new_questionnaire_path
+        - if current_user.admin?
+          = btn_link_to "Manage", manage_root_path
+        - else
+          = btn_link_to "Review", new_questionnaire_path
       %div
         = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
     - else

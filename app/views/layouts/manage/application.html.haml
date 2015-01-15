@@ -6,8 +6,12 @@
     = stylesheet_link_tag "manage", :media => "all"
     = csrf_meta_tags
 
-  %body.manage
+  %body
     = render "layouts/sidebar"
     %div{id:'main'}
+      %div{id:'manageNav'}
+        %p BrickHack Manager
+        = link_to "Dashboard", manage_root_path
+        = link_to "Questionnaires", manage_questionnaires_path
       = yield
     = javascript_include_tag "manage/application"
