@@ -13,6 +13,11 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
+    should "not allow access to manage_questionnaires datatables api" do
+      get :index, format: :json
+      assert_response 401
+    end
+
     should "not allow access to manage_questionnaires#show" do
       get :show, id: @questionnaire
       assert_response :redirect
@@ -46,6 +51,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_questionnaires#index" do
       get :index
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_questionnaires datatables api" do
+      get :index, format: :json
       assert_response :redirect
       assert_redirected_to root_path
     end

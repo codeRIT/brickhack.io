@@ -5,6 +5,8 @@
 
   .form-container
     .center
-      = link_to 'Show', manage_questionnaire_path(@questionnaire)
+      = link_to 'Back', manage_questionnaires_path
       \|
-      = link_to 'Back', manage_questionnaire_path
+      = link_to 'Delete', manage_questionnaire_path(@questionnaire), method: :delete, data: { confirm: 'Are you sure? This action is irreversible.' }
+      \|
+      = link_to 'Show', manage_questionnaire_path(@questionnaire)
