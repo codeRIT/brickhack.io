@@ -4,18 +4,22 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
+set -xe
+
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
 ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
 LOCAL_USERNAME=`whoami`
-REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/master`
+ENVIRONMENT=$RAILS_ENV
 
-if [ $OPENSHIFT_GEAR_NAME == "rails" ]
+if [ $OPENSHIFT_GEAR_NAME == "staging" ]
 then
-  ENVIRONMENT=production
+  BRANCH=develop
 else
-  ENVIRONMENT=$OPENSHIFT_GEAR_NAME
+  BRANCH=master
 fi
+
+REVISION=`cat ~/git/$RAILS_ENV.git/refs/heads/$BRANCH`
 
 curl https://api.rollbar.com/api/1/deploy/ \
   -F access_token=$ACCESS_TOKEN \
@@ -29,8 +33,6 @@ function ruby_with_nodejs_context {
     1.9) /usr/bin/scl enable nodejs010 ruby193 "$1" ;;
   esac
 }
-
-set -e
 
 if [ ! -z "$OPENSHIFT_POSTGRESQL_DB_HOST" ]; then
   export RAILS_DB="postgresql"
@@ -60,4 +62,4 @@ pushd ${OPENSHIFT_REPO_DIR} > /dev/null
 # ruby_with_nodejs_context "bundle exec rake db:migrate RAILS_ENV=${RAILS_ENV:-production}"
 popd > /dev/null
 
-# gem install rack -v 1.4.5    Not required for Ruby 1.9 apps
+# gem install rack -v 1.4.5    Only required for Rails 3 on Ruby 2 cartridge
