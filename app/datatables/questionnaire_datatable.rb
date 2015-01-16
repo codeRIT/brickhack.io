@@ -5,6 +5,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
+      false,
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
@@ -47,6 +48,6 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Questionnaire.joins(:user).joins(:school)
+    Questionnaire.includes(:user, :school)
   end
 end
