@@ -3,12 +3,23 @@
 
 $(document).ready(function () {
   $('.datatable').DataTable({
-    "order"      : [1, 'asc'],
-    "pageLength" : 25,
+    "order"      : [2, 'asc'],
     "processing" : true,
     "serverSide" : true,
     "ajax"       : $('.datatable').data('source'),
     "pagingType" : 'full_numbers',
-    "scrollX"    : true
+    "scrollX"    : true,
+    "columns"    : [
+      { "orderable" : false },
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
   });
 });
