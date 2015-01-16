@@ -4,7 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-set -xe
+set -x
 
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
@@ -19,13 +19,15 @@ else
   BRANCH=master
 fi
 
-REVISION=`cat ~/git/$RAILS_ENV.git/refs/heads/$BRANCH`
+REVISION=`cat ~/git/$OPENSHIFT_GEAR_NAME.git/refs/heads/$BRANCH`
 
 curl https://api.rollbar.com/api/1/deploy/ \
   -F access_token=$ACCESS_TOKEN \
   -F environment=$ENVIRONMENT \
   -F revision=$REVISION \
   -F local_username=$LOCAL_USERNAME
+
+set -xe
 
 function ruby_with_nodejs_context {
   case $OPENSHIFT_RUBY_VERSION in
