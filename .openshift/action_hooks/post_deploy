@@ -3,3 +3,11 @@
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
+set -xe
+
+if [ $OPENSHIFT_GEAR_NAME == "staging" ]
+then
+  ln -s $OPENSHIFT_DATA_DIR/public/assets $OPENSHIFT_REPO_DIR/public/assets
+  cd $OPENSHIFT_REPO_DIR
+  bundle exec rake assets:precompile:all RAILS_GROUPS=assets
+fi
