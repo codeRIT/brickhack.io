@@ -11,8 +11,11 @@
       %b Last name:
       = @questionnaire.last_name
     %p
-      %b Email:
-      = @questionnaire.email
+      %b Birthday:
+      = @questionnaire.birthday_formatted
+    %p
+      %b School:
+      = @questionnaire.school.full_name
     %p
       %b City:
       = @questionnaire.city
@@ -20,35 +23,29 @@
       %b State:
       = @questionnaire.state
     %p
-      %b Year:
-      = @questionnaire.year
-    %p
-      %b Birthday:
-      = @questionnaire.birthday
-    %p
       %b Experience:
-      = @questionnaire.experience
+      = Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience]
+    %p
+      %b Year:
+      = Questionnaire::POSSIBLE_YEARS[@questionnaire.year]
     %p
       %b Interest:
       = @questionnaire.interest
     %p
-      %b School:
-      = @questionnaire.school_id
-    %p
       %b Shirt size:
-      = @questionnaire.shirt_size
+      = Questionnaire::POSSIBLE_SHIRT_SIZES[@questionnaire.shirt_size]
     %p
-      %b Dietary medical notes:
-      = @questionnaire.dietary_medical_notes
+      %b Dietary & medical notes:
+      = @questionnaire.dietary_medical_notes || "None"
     %p
-      %b International:
-      = @questionnaire.international
+      %b Resume:
+      = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
     %p
-      %b Portfolio url:
-      = @questionnaire.portfolio_url
+      %b Portfolio Link:
+      = @questionnaire.portfolio_url? ? link_to(@questionnaire.portfolio_url, @questionnaire.portfolio_url, target: '_blank') : 'Not provided'
     %p
-      %b Vcs url:
-      = @questionnaire.vcs_url
+      %b GitHub/BitBucket Link:
+      = @questionnaire.vcs_url? ? link_to(@questionnaire.vcs_url, @questionnaire.vcs_url, target: '_blank') : 'Not provided'
 
     = link_to 'Edit', edit_manage_questionnaire_path(@questionnaire)
     \|
