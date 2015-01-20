@@ -6,6 +6,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     @sortable_columns ||= [
       false,
+      'questionnaires.id',
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
@@ -20,6 +21,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
 
   def searchable_columns
     @searchable_columns ||= [
+      'questionnaires.id',
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
@@ -34,6 +36,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
     records.map do |record|
       [
         link_to('<i class="fa fa-pencil"></i>'.html_safe, edit_manage_questionnaire_path(record)),
+        record.id,
         record.first_name,
         record.last_name,
         record.email,
