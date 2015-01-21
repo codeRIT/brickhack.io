@@ -9,5 +9,6 @@ if [ $OPENSHIFT_GEAR_NAME == "staging" ]
 then
   ln -s $OPENSHIFT_DATA_DIR/public/assets $OPENSHIFT_REPO_DIR/public/assets
   cd $OPENSHIFT_REPO_DIR
-  bundle exec rake assets:precompile:all RAILS_GROUPS=assets
+  bundle exec rake assets:precompile:all RAILS_GROUPS=assets --trace
+  # --trace is required to prevent slow compiles from terminating on Travis
 fi
