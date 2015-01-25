@@ -21,7 +21,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
 
   def searchable_columns
     @searchable_columns ||= [
-      'questionnaires.id',
+      'questionnaires.ID',
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
