@@ -45,6 +45,9 @@ class QuestionnairesController < ApplicationController
   # POST /apply
   # POST /apply.json
   def create
+    if current_user.questionnaire.present?
+      return redirect_to current_user.questionnaire, notice: 'Application already exists.'
+    end
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
     @questionnaire = Questionnaire.new(params[:questionnaire])
 
