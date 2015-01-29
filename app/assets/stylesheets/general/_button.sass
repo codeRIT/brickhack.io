@@ -19,3 +19,8 @@
     @include box-shadow(inset 0 0 10px 3px lighten($blue-light, 5%))
     color: $white_pure
     outline-color: $orange-light
+  &:disabled
+    color: mix($blue-light, $white, 30%)
+    background: lighten($blue-light, 20%)
+    cursor: default
+    @include box-shadow(inset 0 0 0 0 lighten($blue-light, 5%))

@@ -131,7 +131,14 @@ $(document).ready(function () {
       return validateAll.call(this);
     }
     else {
-      $(this).on('submit', validateAll);
+      $(this).on('submit', function() {
+        $(this).find('[type=submit]').prop('disabled', true);
+        if (!validateAll.call(this)) {
+          $(this).find('[type=submit]').prop('disabled', false);
+          return false;
+        }
+        return true;
+      });
       $(this).find('[data-validate]').each(function() {
         $(this).on('blur', validateInput);
       });
