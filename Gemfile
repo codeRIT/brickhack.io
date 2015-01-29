@@ -5,7 +5,7 @@ gem 'rails', '3.2.16'
 gem 'sqlite3', :group => [:development, :test]
 gem 'mysql2', :group => :production
 
-gem 'rollbar', '~> 1.3.0'
+gem 'rollbar', '~> 1.4.2'
 
 gem 'sidekiq', '< 3'
 
@@ -18,7 +18,7 @@ gem 'kaminari'
 gem 'ajax-datatables-rails'
 
 gem 'strip_attributes'
-gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion status code, PR #8
+gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
 
 gem 'email_validator'
 gem 'validate_url'
