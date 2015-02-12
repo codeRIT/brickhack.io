@@ -1,9 +1,15 @@
 BrickhackIo::Application.routes.draw do
 
+  require 'sidekiq/web'
+
   devise_for :users, controllers: { registrations: "users/registrations" }
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'
+  end
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 
   resources :questionnaires, path: "apply" do

@@ -8,6 +8,8 @@ gem 'mysql2', :group => :production
 gem 'rollbar', '~> 1.4.2'
 
 gem 'sidekiq', '< 3'
+gem 'sinatra', :require => nil
+gem 'sprockets', :require => nil
 
 gem 'devise'
 gem 'devise-async'
