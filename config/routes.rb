@@ -9,7 +9,7 @@ BrickhackIo::Application.routes.draw do
   end
 
   authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/sidekiq_web'
   end
 
   resources :questionnaires, path: "apply" do
