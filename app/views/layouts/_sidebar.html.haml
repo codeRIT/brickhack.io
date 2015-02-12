@@ -9,9 +9,11 @@
       %div
         - if current_user.admin?
           = btn_link_to "Manage", manage_root_path
-          = btn_link_to "My Account", edit_user_registration_path
         - else
           = btn_link_to "Review", new_questionnaire_path
+      - if current_user.admin?
+        %div
+          = btn_link_to "My Account", edit_user_registration_path
       %div
         = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
