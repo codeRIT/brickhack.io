@@ -31,6 +31,6 @@ class AdminDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    User.unscoped
+    User.where(admin: true)
   end
 end
