@@ -3,15 +3,21 @@
 # is deployed and started.  This script gets executed directly, so
 # it could be python, php, ruby, etc.
 
-set -xe
+set -x
 
 if [ $OPENSHIFT_GEAR_NAME == "staging" ]
 then
+  URL="https://staging.brickhack.io/"
   ln -s $OPENSHIFT_DATA_DIR/public/assets $OPENSHIFT_REPO_DIR/public/assets
   cd $OPENSHIFT_REPO_DIR
   bundle exec rake assets:precompile:all RAILS_GROUPS=assets --trace
   # --trace is required to prevent slow compiles from terminating on Travis
+else
+  URL="https://brickhack.io/"
 fi
+
+# sends a request to the website to avoid startup delays
+wget -bqO- $URL &> /dev/null
 
 # notify Rollbar of the deployment
 ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
