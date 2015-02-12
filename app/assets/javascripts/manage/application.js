@@ -2,12 +2,15 @@
 //= require dataTables/jquery.dataTables
 
 $(document).ready(function () {
-  $('.datatable').DataTable({
-    "order"      : [2, 'asc'],
+  var defaultDataTableOptions = {
     "processing" : true,
     "serverSide" : true,
     "ajax"       : $('.datatable').data('source'),
-    "pagingType" : 'full_numbers',
+    "pagingType" : 'full_numbers'
+  };
+
+  $('.datatable.questionnaires').DataTable($.extend(defaultDataTableOptions, {
+    "order"      : [2, 'asc'],
     "scrollX"    : true,
     "columns"    : [
       { "orderable" : false },
@@ -22,5 +25,15 @@ $(document).ready(function () {
       {},
       {}
     ]
-  });
+  }));
+
+  $('.datatable.users').DataTable($.extend(defaultDataTableOptions, {
+    "order"      : [1, 'asc'],
+    "scrollX"    : true,
+    "columns"    : [
+      { "orderable" : false },
+      {},
+      {}
+    ]
+  }));
 });

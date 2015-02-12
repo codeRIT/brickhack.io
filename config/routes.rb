@@ -19,6 +19,7 @@ BrickhackIo::Application.routes.draw do
   namespace :manage do
     root to: "dashboard#index"
     resources :questionnaires
+    resources :admins
   end
 
   get "home/index"

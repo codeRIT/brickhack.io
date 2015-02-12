@@ -1,0 +1,13 @@
+%section.section.manage
+  %h1.section-title BrickHack Dashboard
+
+  .form-container
+    %p#notice= notice
+
+    %p
+      %b Email Address:
+      = @user.email
+
+    = link_to 'Edit', edit_manage_admin_path(@user)
+    \|
+    = link_to 'Back', manage_admins_path
