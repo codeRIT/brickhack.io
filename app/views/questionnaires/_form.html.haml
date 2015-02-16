@@ -38,6 +38,11 @@
         = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
         = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
 
+        %p
+          Please read and accept the
+          %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
+          // insert checkbox here
+
       %div{class:'center'}
         %button.button{ type: "button", "data-wizard" => "previous" } Previous
         = f.button :submit, value: ( @questionnaire.new_record? ? 'Apply' : 'Save' )
