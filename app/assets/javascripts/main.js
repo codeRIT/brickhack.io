@@ -52,6 +52,9 @@ $(document).ready(function () {
 
     var validateInput = function() {
       var success = true, types = $(this).data('validate').split(/[ ,]+/), value = $(this).val();
+      if ($(this).is(':checkbox') && !$(this).is(':checked')) {
+        value = "";
+      }
       if ($(this).is(':disabled')) {
         return true;
       }

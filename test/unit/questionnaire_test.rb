@@ -41,6 +41,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :international
   should allow_mass_assignment_of :portfolio_url
   should allow_mass_assignment_of :vcs_url
+  should allow_mass_assignment_of :agreement_accepted
 
   should allow_value("VA").for(:state)
   should allow_value("NY").for(:state)
@@ -77,6 +78,9 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_value("L").for(:shirt_size)
   should allow_value("XL").for(:shirt_size)
   should_not allow_value("foo").for(:shirt_size)
+
+  should allow_value(true).for(:agreement_accepted)
+  should_not allow_value(false).for(:agreement_accepted)
 
   should have_attached_file(:resume)
   should validate_attachment_content_type(:resume)
