@@ -14,7 +14,7 @@
       = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
       = f.input :year, as: :select, collection: Questionnaire::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
 
-      = f.input :international, label: "International?"
+      = f.input :international, as: :formatted_boolean, label: "International?"
 
       = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
 
@@ -30,6 +30,8 @@
 
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
+
+      = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
 
     %div{class:'center'}
       = f.button :submit, value: ( @questionnaire.new_record? ? 'Create' : 'Save' )

@@ -12,6 +12,7 @@ FactoryGirl.define do
     school_id             { create(:school).id }
     shirt_size            "M"
     dietary_medical_notes ""
+    agreement_accepted    true
 
     association :user
   end
