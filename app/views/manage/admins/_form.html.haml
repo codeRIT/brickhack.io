@@ -1,6 +1,10 @@
 %div{class:'form-container'}
   = simple_form_for @user, url: url_for(action: @user.new_record? ? "create" : "update", controller: "admins"), html: { "data-validate" => "form" } do |f|
 
+    - if @user.new_record?
+      %p
+        If a user already exists, first delete the questionnaire in the
+        = link_to "questionnaires manager.", manage_questionnaires_path
     - if f.error_notification.present?
       #disclaimer
         = f.error_notification
