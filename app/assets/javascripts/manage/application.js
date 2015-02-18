@@ -33,6 +33,7 @@ $(document).ready(function () {
     "columns"    : [
       { "orderable" : false },
       {},
+      {},
       {}
     ]
   }));

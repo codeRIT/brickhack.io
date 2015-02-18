@@ -11,6 +11,7 @@ class UserTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :password
   should allow_mass_assignment_of :remember_me
   should_not allow_mass_assignment_of :admin
+  should allow_mass_assignment_of :admin_read_only
 
   should "downcase emails" do
     s = build(:user, email: "Test@ExAmPlE.cOm")

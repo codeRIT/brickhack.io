@@ -7,6 +7,9 @@
     %p
       %b Email Address:
       = @user.email
+    %p
+      %b Read-Only:
+      = @user.admin_read_only ? "Read-only" : "No"
 
     = link_to 'Edit', edit_manage_admin_path(@user)
     \|

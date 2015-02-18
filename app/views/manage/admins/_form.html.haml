@@ -7,6 +7,7 @@
 
     .form-inputs
       = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence" }, required: true
+      = f.input :admin_read_only, as: :formatted_boolean, label: "Read-Only"
 
     %div{class:'center'}
       = f.button :submit, value: ( @user.new_record? ? 'Create' : 'Save' )

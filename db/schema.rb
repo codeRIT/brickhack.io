@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150216232155) do
+ActiveRecord::Schema.define(:version => 20150218051450) do
 
   create_table "questionnaires", :force => true do |t|
     t.string   "first_name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20150216232155) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  :default => false
+    t.boolean  "admin_read_only",        :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -102,7 +102,15 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       post :create, user: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to manage_admins_path
-      assert assigns(:user).admin, "new user should be admin"
+      assert assigns(:user).admin, "new user should be an admin"
+    end
+
+    should "create a new read-only admin" do
+      post :create, user: { email: "test@example.com", admin_read_only: true }
+      assert_response :redirect
+      assert_redirected_to manage_admins_path
+      assert assigns(:user).admin, "new user should be an admin"
+      assert assigns(:user).admin_read_only, "new user should be a read-only admin"
     end
 
     should "allow access to manage_admins#show" do

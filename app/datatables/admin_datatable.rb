@@ -7,7 +7,8 @@ class AdminDatatable < AjaxDatatablesRails::Base
     @sortable_columns ||= [
       false,
       'users.id',
-      'users.email'
+      'users.email',
+      'users.admin_read_only'
     ]
   end
 
@@ -25,7 +26,8 @@ class AdminDatatable < AjaxDatatablesRails::Base
       [
         link_to('<i class="fa fa-pencil"></i>'.html_safe, edit_manage_admin_path(record)),
         record.id,
-        record.email
+        record.email,
+        record.admin_read_only ? 'Read-only' : 'No'
       ]
     end
   end
