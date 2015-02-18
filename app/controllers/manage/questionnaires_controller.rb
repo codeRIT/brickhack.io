@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy]
+  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :convert_to_admin]
 
   respond_to :html
 
@@ -46,6 +46,13 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
     @questionnaire.update_attributes(params[:questionnaire])
     respond_with(:manage, @questionnaire)
+  end
+
+  def convert_to_admin
+    user = @questionnaire.user
+    @questionnaire.destroy
+    user.update_attributes({ admin: true, admin_read_only: true }, without_protection: true)
+    redirect_to edit_manage_admin_path(user)
   end
 
   def destroy

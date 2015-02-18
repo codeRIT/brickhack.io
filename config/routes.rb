@@ -18,7 +18,9 @@ BrickhackIo::Application.routes.draw do
 
   namespace :manage do
     root to: "dashboard#index"
-    resources :questionnaires
+    resources :questionnaires do
+      put :convert_to_admin, on: :member
+    end
     resources :admins
   end
 
