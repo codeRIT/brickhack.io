@@ -54,6 +54,6 @@
     - unless current_user.admin_read_only
       = link_to 'Edit', edit_manage_questionnaire_path(@questionnaire)
       \|
-      = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :put
+      = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :put, data: { confirm: "Are you sure? The questionnaire for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }
       \|
     = link_to 'Back', manage_questionnaires_path

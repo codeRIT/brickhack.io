@@ -7,6 +7,6 @@
     .center
       = link_to 'Back', manage_questionnaires_path
       \|
-      = link_to 'Delete', manage_questionnaire_path(@questionnaire), method: :delete, data: { confirm: 'Are you sure? This action is irreversible.' }
+      = link_to 'Delete', manage_questionnaire_path(@questionnaire), method: :delete, data: { confirm: "Are you sure? The questionnaire and account for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }
       \|
       = link_to 'Show', manage_questionnaire_path(@questionnaire)
