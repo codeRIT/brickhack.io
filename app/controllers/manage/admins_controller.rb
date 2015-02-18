@@ -25,6 +25,7 @@ class Manage::AdminsController < Manage::ApplicationController
   def create
     @user = ::User.new(email: params[:user][:email], password: Devise.friendly_token.first(10))
     @user.save
+    @user.update_attributes({ admin: true }, without_protection: true)
     respond_with(:manage, @user, location: manage_admins_path)
   end
 

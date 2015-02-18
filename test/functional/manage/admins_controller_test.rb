@@ -98,6 +98,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "create a new admin" do
+      post :create, user: { email: "test@example.com" }
+      assert_response :redirect
+      assert_redirected_to manage_admins_path
+      assert assigns(:user).admin, "new user should be admin"
+    end
+
     should "allow access to manage_admins#show" do
       get :show, id: @user
       assert_response :success
