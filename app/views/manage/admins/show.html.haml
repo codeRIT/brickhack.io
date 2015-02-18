@@ -11,6 +11,7 @@
       %b Read-Only:
       = @user.admin_read_only ? "Read-only" : "No"
 
-    = link_to 'Edit', edit_manage_admin_path(@user)
-    \|
+    - unless current_user.admin_read_only
+      = link_to 'Edit', edit_manage_admin_path(@user)
+      \|
     = link_to 'Back', manage_admins_path

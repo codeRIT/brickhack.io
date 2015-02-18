@@ -35,7 +35,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        link_to('<i class="fa fa-pencil"></i>'.html_safe, edit_manage_questionnaire_path(record)),
+        link_to('<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(record)),
         record.id,
         record.first_name,
         record.last_name,
