@@ -17,6 +17,6 @@
         %th School
     %tbody
 
-  %br
-
-  = btn_link_to 'New Questionnaire', new_manage_questionnaire_path
+  - unless current_user.admin_read_only
+    %br
+    = btn_link_to 'New Questionnaire', new_manage_questionnaire_path
