@@ -10,9 +10,9 @@ class BulkMessageWorker
     message.recipients.each do |recipient_type|
       case recipient_type
       when "all"
-        recipients += User.select(:id).map(&:id)
+        recipients += User.where(admin: false).select(:id).map(&:id)
       when "incomplete"
-        recipients += User.select(:id).map(&:id) - Questionnaire.select(:user_id).map(&:user_id)
+        recipients += User.where(admin: false).select(:id).map(&:id) - Questionnaire.select(:user_id).map(&:user_id)
       when "complete"
         recipients += Questionnaire.select(:user_id).map(&:user_id)
       end
