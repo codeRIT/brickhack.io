@@ -34,11 +34,12 @@ group :assets do
   gem 'jquery-ui-sass-rails'
   gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails' # issue with images, PR #158
 
+  gem 'selectize-rails'
+
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development do
-  gem 'guard-minitest'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'mail_view', '~> 2.0.4'
@@ -51,6 +52,7 @@ group :test do
   gem 'valid_attribute'
   gem 'ruby-prof'
   gem 'factory_girl_rails'
+  gem 'guard-minitest'
 end
 
 gem 'jquery-rails'

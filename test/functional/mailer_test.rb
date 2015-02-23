@@ -42,4 +42,19 @@ class MailerTest < ActionMailer::TestCase
     end
   end
 
+  context "upon trigger of a bulk message" do
+    setup do
+      @message = create(:message, subject: "Example Subject", body: "Hello World!")
+      @user = create(:user, email: "test@example.com")
+    end
+
+    should "deliver bulk messages" do
+      email = Mailer.bulk_message_email(@message, @user.id).deliver
+
+      assert_equal ["test@example.com"],                email.to
+      assert_equal "[BrickHack] Example Subject",       email.subject
+      assert_match /Hello World/,                       email.encoded
+    end
+  end
+
 end

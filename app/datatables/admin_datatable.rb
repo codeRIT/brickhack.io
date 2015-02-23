@@ -1,7 +1,7 @@
 class AdminDatatable < AjaxDatatablesRails::Base
   include AjaxDatatablesRails::Extensions::Kaminari
 
-  def_delegators :@view, :link_to, :edit_manage_admin_path, :manage_admin_path
+  def_delegators :@view, :link_to, :manage_admin_path
 
   def sortable_columns
     @sortable_columns ||= [

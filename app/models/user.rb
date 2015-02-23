@@ -16,4 +16,19 @@ class User < ActiveRecord::Base
   def email=(value)
     super value.try(:downcase)
   end
+
+  def first_name
+    return "" if questionnaire.blank?
+    questionnaire.first_name
+  end
+
+  def last_name
+    return "" if questionnaire.blank?
+    questionnaire.last_name
+  end
+
+  def full_name
+    return "" if questionnaire.blank?
+    questionnaire.full_name
+  end
 end

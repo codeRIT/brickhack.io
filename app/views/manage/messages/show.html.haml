@@ -1,0 +1,45 @@
+%section.section.manage
+  %h1.section-title Message
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @message.name
+  %p
+    %b Subject:
+    = @message.subject
+  %p
+    %b Recipients:
+    = @message.recipients_list
+  %p
+    %b Body:
+    = @message.body
+
+  %hr
+
+  %p
+    %b
+      Status:
+      = @message.status.titleize
+  %p
+    %b Queued At:
+    = @message.queued_at || "(n/a)"
+  %p
+    %b Started At:
+    = @message.started_at || "(n/a)"
+  %p
+    %b Delivered At:
+    = @message.delivered_at || "(n/a)"
+
+  %hr
+
+  - unless current_user.admin_read_only
+    - if @message.status == "drafted"
+      = btn_link_to 'Deliver', deliver_manage_message_path(@message), method: :put, data: { confirm: "Are you sure? The message \"#{@message.name}\" will be sent out to all recipients." }
+      \|
+    - if @message.can_edit?
+      = link_to 'Edit', edit_manage_message_path(@message)
+      \|
+      = link_to 'Delete', manage_message_path(@message), method: :delete, data: { confirm: "Are you sure? The message \"#{@message.name}\" will be permanently erased. This action is irreversible." }
+      \|
+  = link_to 'Back', manage_messages_path
