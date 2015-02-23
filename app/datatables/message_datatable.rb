@@ -1,7 +1,7 @@
 class MessageDatatable < AjaxDatatablesRails::Base
   include AjaxDatatablesRails::Extensions::Kaminari
 
-  def_delegators :@view, :link_to, :edit_manage_message_path, :manage_message_path
+  def_delegators :@view, :link_to, :manage_message_path
 
   def sortable_columns
     @sortable_columns ||= [
