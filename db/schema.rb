@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150218051450) do
+ActiveRecord::Schema.define(:version => 20150221165513) do
+
+  create_table "messages", :force => true do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.string   "recipients"
+    t.text     "body"
+    t.datetime "queued_at"
+    t.datetime "started_at"
+    t.datetime "delivered_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "questionnaires", :force => true do |t|
     t.string   "first_name"

@@ -22,6 +22,9 @@ BrickhackIo::Application.routes.draw do
       put :convert_to_admin, on: :member
     end
     resources :admins
+    resources :messages do
+      put :deliver, on: :member
+    end
   end
 
   get "home/index"

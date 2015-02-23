@@ -1,0 +1,17 @@
+%section.section.manage
+  %h1.section-title Listing Messages
+
+  %table.messages.datatable.row-border.stripe.hover.order-column{ "data-source" => manage_messages_path(format: :json) }
+    %thead
+      %tr
+        %th
+        %th ID
+        %th Name
+        %th Subject
+        %th Status
+    %tbody
+
+  %br
+
+  - unless current_user.admin_read_only
+    = btn_link_to 'New Message', new_manage_message_path
