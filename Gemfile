@@ -13,6 +13,7 @@ gem 'sprockets', :require => nil
 
 gem 'devise'
 gem 'devise-async'
+gem 'omniauth-github'
 
 gem 'haml-rails'
 gem 'simple_form'
@@ -43,6 +44,9 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'mail_view', '~> 2.0.4'
+  
+  #fix dev cert errors on windows
+  gem 'certified', :platforms => [:mswin, :mingw]
 end
 
 group :test do

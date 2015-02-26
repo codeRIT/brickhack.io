@@ -7,5 +7,8 @@
     .form-actions
       .center
         = f.button :submit, "Sign up"
+        = link_to user_omniauth_authorize_path(:github), class: 'button' do 
+          %span.fa.fa-github
+          Sign up with Github
       .center
         = render "devise/shared/links"
