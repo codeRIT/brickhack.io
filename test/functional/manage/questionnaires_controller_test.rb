@@ -53,6 +53,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
+
+    should "not allow access to manage_questionnaires#update_acc_status" do
+      put :update_acc_status, id: @questionnaire
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
   end
 
   context "while authenticated as a user" do
@@ -105,6 +111,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_questionnaires#destroy" do
       put :destroy, id: @questionnaire
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_questionnaires#update_acc_status" do
+      put :update_acc_status, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -168,6 +180,16 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
     end
+
+    should "allow access to manage_questionnaires#update_acc_status" do
+      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
+      assert_equal "accepted", @questionnaire.reload.acc_status
+      assert_equal @user.id, @questionnaire.reload.acc_status_author_id
+      assert_not_equal nil, @questionnaire.reload.acc_status_date
+      assert_equal nil, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path @questionnaire
+    end
   end
 
   context "while authenticated as an admin" do
@@ -228,6 +250,15 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
         end
       end
       assert_redirected_to manage_questionnaires_path
+    end
+
+    should "allow access to manage_questionnaires#update_acc_status" do
+      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
+      assert_equal "accepted", @questionnaire.reload.acc_status
+      assert_equal @user.id, @questionnaire.reload.acc_status_author_id
+      assert_not_equal nil, @questionnaire.reload.acc_status_date
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path @questionnaire
     end
   end
 end

@@ -1,5 +1,5 @@
 %section.section.manage
-  %h1.section-title BrickHack Dashboard
+  %h1.section-title Questionnaire View
 
   .form-container
     %p#notice= notice
@@ -57,3 +57,20 @@
       = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :put, data: { confirm: "Are you sure? The questionnaire for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }
       \|
     = link_to 'Back', manage_questionnaires_path
+
+    %hr
+
+    %p
+      %b Acceptance Status:
+      = Questionnaire::POSSIBLE_ACC_STATUS[@questionnaire.acc_status]
+    %p
+      %b Last Updated By:
+      = @questionnaire.acc_status_author_id ? @questionnaire.acc_status_author.email : "(no author)"
+    %p
+      %b Changed On:
+      = @questionnaire.acc_status_date ? @questionnaire.acc_status_date : "(no date)"
+
+    %h4 Change Status:
+    = simple_form_for @questionnaire, url: url_for(action: "update_acc_status", controller: "questionnaires") do |f|
+      = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:"
+      = f.button :submit, value: "Update Status"

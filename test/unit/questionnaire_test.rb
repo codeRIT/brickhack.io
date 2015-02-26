@@ -8,6 +8,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should strip_attribute :last_name
   should strip_attribute :city
   should strip_attribute :state
+  should strip_attribute :acc_status
 
   should validate_presence_of :first_name
   should validate_presence_of :last_name
@@ -23,6 +24,9 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not validate_presence_of :international
   should_not validate_presence_of :portfolio_url
   should_not validate_presence_of :vcs_url
+  should_not validate_presence_of :acc_status
+  should_not validate_presence_of :acc_status_author_id
+  should_not validate_presence_of :acc_status_date
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -42,6 +46,9 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :portfolio_url
   should allow_mass_assignment_of :vcs_url
   should allow_mass_assignment_of :agreement_accepted
+  should_not allow_mass_assignment_of :acc_status
+  should_not allow_mass_assignment_of :acc_status_author_id
+  should_not allow_mass_assignment_of :acc_status_date
 
   should allow_value("VA").for(:state)
   should allow_value("NY").for(:state)
@@ -81,6 +88,12 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   should allow_value(true).for(:agreement_accepted)
   should_not allow_value(false).for(:agreement_accepted)
+
+  should allow_value("pending").for(:acc_status)
+  should allow_value("accepted").for(:acc_status)
+  should allow_value("waitlist").for(:acc_status)
+  should allow_value("denied").for(:acc_status)
+  should_not allow_value("foo").for(:acc_status)
 
   should have_attached_file(:resume)
   should validate_attachment_content_type(:resume)
@@ -151,6 +164,19 @@ class QuestionnaireTest < ActiveSupport::TestCase
       questionnaire = create(:questionnaire)
       questionnaire.user.email = "joe.smith@example.com"
       assert_equal "joe.smith@example.com", questionnaire.email
+    end
+  end
+
+  context "#acc_status_author" do
+    should "return nil if no author" do
+      questionnaire = create(:questionnaire, acc_status_author_id: nil)
+      assert_equal nil, questionnaire.acc_status_author
+    end
+
+    should "return the questionnaire's user" do
+      user = create(:user, email: "admin@example.com")
+      questionnaire = create(:questionnaire, acc_status_author_id: user.id)
+      assert_equal "admin@example.com", questionnaire.acc_status_author.email
     end
   end
 
