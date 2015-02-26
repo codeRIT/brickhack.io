@@ -46,7 +46,7 @@ group :development do
   gem 'mail_view', '~> 2.0.4'
   
   #fix dev cert errors on windows
-  gem 'certified', :platform => :mswin
+  gem 'certified', :platforms => [:mswin, :mingw]
 end
 
 group :test do
