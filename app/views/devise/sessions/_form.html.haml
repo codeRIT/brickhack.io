@@ -6,5 +6,6 @@
       = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
     .form-actions{class:'center'}
       = f.button :submit, "Log In"
+      = link_to "Sign in with Github", user_omniauth_authorize_path(:github)
     .center
       = render "devise/shared/links"
