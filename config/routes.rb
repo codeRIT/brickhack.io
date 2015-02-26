@@ -20,6 +20,7 @@ BrickhackIo::Application.routes.draw do
     root to: "dashboard#index"
     resources :questionnaires do
       put :convert_to_admin, on: :member
+      put :update_acc_status, on: :member
     end
     resources :admins
     resources :messages do

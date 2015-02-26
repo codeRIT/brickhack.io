@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150221165513) do
+ActiveRecord::Schema.define(:version => 20150225235817) do
 
   create_table "messages", :force => true do |t|
     t.string   "name"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20150221165513) do
     t.string   "experience"
     t.string   "interest"
     t.string   "school_id"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "shirt_size"
     t.string   "dietary_medical_notes"
     t.string   "resume_file_name"
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(:version => 20150221165513) do
     t.string   "vcs_url"
     t.integer  "user_id"
     t.boolean  "agreement_accepted",    :default => false
+    t.string   "acc_status",            :default => "pending"
+    t.integer  "acc_status_author_id"
+    t.datetime "acc_status_date"
   end
 
   add_index "questionnaires", ["user_id"], :name => "index_questionnaires_on_user_id"

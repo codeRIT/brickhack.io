@@ -48,6 +48,12 @@ class Questionnaire < ActiveRecord::Base
     "L"  => "Large",
     "XL" => "X-Large"
   }
+  POSSIBLE_ACC_STATUS = {
+    "pending"  => "Pending Review",
+    "accepted" => "Accepted",
+    "waitlist" => "Waitlisted",
+    "denied"   => "Denied"
+  }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
@@ -55,6 +61,7 @@ class Questionnaire < ActiveRecord::Base
   validates_inclusion_of :year, in: POSSIBLE_YEARS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
+  validates_inclusion_of :acc_status, in: POSSIBLE_ACC_STATUS
 
   belongs_to :user
 
@@ -86,6 +93,11 @@ class Questionnaire < ActiveRecord::Base
 
   def birthday_formatted
     birthday.strftime("%B %-d, %Y")
+  end
+
+  def acc_status_author
+    return unless acc_status_author_id.present?
+    User.find(acc_status_author_id)
   end
 
   private

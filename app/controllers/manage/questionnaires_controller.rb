@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :convert_to_admin]
+  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :convert_to_admin, :update_acc_status]
 
   respond_to :html
 
@@ -60,6 +60,23 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     @questionnaire.destroy
     user.destroy if user.present?
     respond_with(:manage, @questionnaire)
+  end
+
+  def update_acc_status
+    new_status = params[:questionnaire][:acc_status]
+    if new_status.blank?
+      flash[:notice] = "No status provided"
+      redirect_to(manage_questionnaire_path(@questionnaire))
+    end
+
+    @questionnaire.acc_status = new_status
+    @questionnaire.acc_status_author_id = current_user.id
+    @questionnaire.acc_status_date = Time.now
+
+    unless @questionnaire.save(validate: false, without_protection: true)
+      flash[:notice] = "Failed to update acceptance status"
+    end
+    redirect_to manage_questionnaire_path(@questionnaire)
   end
 
   private
