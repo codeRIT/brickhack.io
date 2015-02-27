@@ -62,7 +62,8 @@
 
     %p
       %b Acceptance Status:
-      = Questionnaire::POSSIBLE_ACC_STATUS[@questionnaire.acc_status]
+      %span{class: "acc-status-#{@questionnaire.acc_status}"}
+        = Questionnaire::POSSIBLE_ACC_STATUS[@questionnaire.acc_status]
     %p
       %b Last Updated By:
       = @questionnaire.acc_status_author_id ? @questionnaire.acc_status_author.email : "(no author)"

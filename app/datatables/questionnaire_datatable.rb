@@ -42,7 +42,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
         record.first_name,
         record.last_name,
         record.email,
-        record.acc_status,
+        "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
         record.state,
         record.year,
         record.experience,
