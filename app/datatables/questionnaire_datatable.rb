@@ -6,11 +6,12 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   def sortable_columns
     @sortable_columns ||= [
       false,
+      false,
       'questionnaires.id',
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
-      'questionnaires.international',
+      'questionnaires.acc_status',
       'questionnaires.state',
       'questionnaires.year',
       'questionnaires.experience',
@@ -35,12 +36,13 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
+        '<input type="checkbox" data-bulk-row-edit="' + record.id.to_s + '">',
         link_to('<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(record)),
         record.id,
         record.first_name,
         record.last_name,
         record.email,
-        record.international,
+        "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
         record.state,
         record.year,
         record.experience,

@@ -21,6 +21,7 @@ BrickhackIo::Application.routes.draw do
     resources :questionnaires do
       put :convert_to_admin, on: :member
       put :update_acc_status, on: :member
+      put :bulk_apply, on: :collection
     end
     resources :admins
     resources :messages do

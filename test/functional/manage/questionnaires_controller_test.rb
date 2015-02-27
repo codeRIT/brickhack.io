@@ -59,6 +59,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
+
+    should "not allow access to manage_questionnaires#bulk_apply" do
+      put :bulk_apply, id: @questionnaire
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
   end
 
   context "while authenticated as a user" do
@@ -117,6 +123,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_questionnaires#update_acc_status" do
       put :update_acc_status, id: @questionnaire
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_questionnaires#bulk_apply" do
+      put :bulk_apply, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -190,6 +202,11 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to manage_questionnaire_path @questionnaire
     end
+
+    should "allow access to manage_questionnaires#bulk_apply" do
+      put :bulk_apply, bulk_action: "waitlist", bulk_ids: [@questionnaire.id]
+      assert_response :success
+    end
   end
 
   context "while authenticated as an admin" do
@@ -259,6 +276,22 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_not_equal nil, @questionnaire.reload.acc_status_date
       assert_response :redirect
       assert_redirected_to manage_questionnaire_path @questionnaire
+    end
+
+    should "allow access to manage_questionnaires#bulk_apply" do
+      put :bulk_apply, bulk_action: "accepted", bulk_ids: [@questionnaire.id]
+      assert_response :success
+      assert_equal "accepted", @questionnaire.reload.acc_status
+    end
+
+    should "fail manage_questionnaires#bulk_apply when missing action" do
+      put :bulk_apply, bulk_ids: [@questionnaire.id]
+      assert_response 400
+    end
+
+    should "fail manage_questionnaires#bulk_apply when missing ids" do
+      put :bulk_apply, bulk_action: "waitlist"
+      assert_response 400
     end
   end
 end
