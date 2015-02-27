@@ -23,6 +23,6 @@
     = btn_link_to 'New Questionnaire', new_manage_questionnaire_path
 
   %h4 Bulk Action:
-  = simple_form_for Questionnaire.first, url: bulk_apply_manage_questionnaires_path, html: { data: { bulk_row_edit: true } } do |f|
+  = simple_form_for Questionnaire.new, url: bulk_apply_manage_questionnaires_path, html: { data: { bulk_row_edit: true } } do |f|
     = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:", input_html: { data: { bulk_row_edit: true } }
     = f.button :submit, value: "Update Status", data: { bulk_row_edit: true }
