@@ -79,6 +79,22 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     redirect_to manage_questionnaire_path(@questionnaire)
   end
 
+  def bulk_apply
+    action = params[:bulk_action]
+    ids = params[:bulk_ids]
+    if action.blank? || ids.blank?
+      render nothing: true, status: 400
+      return
+    end
+    Questionnaire.find(ids).each do |q|
+      q.acc_status = action
+      q.acc_status_author_id = current_user.id
+      q.acc_status_date = Time.now
+      q.save(validate: false, without_protection: true)
+    end
+    render nothing: true, staus: 200
+  end
+
   private
 
   def set_questionnaire
