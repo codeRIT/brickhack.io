@@ -13,7 +13,7 @@ $(document).ready(function () {
   };
 
   $('.datatable.questionnaires').DataTable($.extend(defaultDataTableOptions, {
-    "order"      : [2, 'asc'],
+    "order"      : [1, 'desc'],
     "scrollX"    : true,
     "columns"    : [
       { "orderable" : false },
