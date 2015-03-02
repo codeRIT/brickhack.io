@@ -96,6 +96,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
           post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1" }
           assert_redirected_to questionnaire_path(assigns(:questionnaire))
           assert_equal 1, School.all.count
+          assert_equal "late_waitlist", assigns(:questionnaire).acc_status, "should automatically waitlist"
         end
 
         should "create a new school when unknown" do

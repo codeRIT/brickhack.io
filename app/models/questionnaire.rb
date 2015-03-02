@@ -52,7 +52,8 @@ class Questionnaire < ActiveRecord::Base
     "pending"  => "Pending Review",
     "accepted" => "Accepted",
     "waitlist" => "Waitlisted",
-    "denied"   => "Denied"
+    "denied"   => "Denied",
+    "late_waitlist" => "Waitlisted, Late"
   }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
