@@ -18,6 +18,9 @@ BrickhackIo::Application.routes.draw do
 
   namespace :manage do
     root to: "dashboard#index"
+    resources :dashboard do
+      get :map_data, on: :collection
+    end
     resources :questionnaires do
       put :convert_to_admin, on: :member
       put :update_acc_status, on: :member

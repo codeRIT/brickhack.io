@@ -20,4 +20,8 @@ class School < ActiveRecord::Base
     end
     out
   end
+
+  def fips_code
+    Fips.where(city: city, state: state).first
+  end
 end
