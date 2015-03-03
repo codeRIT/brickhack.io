@@ -82,7 +82,7 @@ $.fn.bulkRowEdit = function() {
         bulk_ids: ids
       }
     }).done(function() {
-      window.questionnairesDataTable.draw();
+      window.questionnairesDataTable.draw(false);
     }).fail(function() {
       alert("Request failed, please refresh the page or try again later.");
     }).always(function() {
