@@ -26,9 +26,10 @@ class Manage::AdminsController < Manage::ApplicationController
     parameters = params[:user]
     parameters.merge!(password: Devise.friendly_token.first(10))
     @user = ::User.new(parameters)
-    @user.save
-    @user.update_attributes({ admin: true }, without_protection: true)
-    @user.send_reset_password_instructions
+    if (@user.save)
+      @user.update_attributes({ admin: true }, without_protection: true)
+      @user.send_reset_password_instructions
+    end
     respond_with(:manage, @user, location: manage_admins_path)
   end
 
