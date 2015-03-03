@@ -27,7 +27,7 @@
       %li
         %strong
           %span.acc-status-accepted Accepted:
-        = Questionnaire.where("acc_status == \"accepted\" AND school_id = \"2304\" OR acc_status == \"accepted\" AND school_id = \"5535\"").count
+        = Questionnaire.where("acc_status = \"accepted\" AND school_id = \"2304\" OR acc_status = \"accepted\" AND school_id = \"5535\"").count
       %li
         %strong
           %span.acc-status-waitlist Waitlisted:
