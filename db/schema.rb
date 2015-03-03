@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150225235817) do
+ActiveRecord::Schema.define(:version => 20150302011457) do
+
+  create_table "fips", :force => true do |t|
+    t.string   "fips_code"
+    t.string   "city"
+    t.string   "state"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "messages", :force => true do |t|
     t.string   "name"

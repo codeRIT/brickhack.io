@@ -101,6 +101,10 @@ class Questionnaire < ActiveRecord::Base
     User.find(acc_status_author_id)
   end
 
+  def fips_code
+    Fips.where(city: school.city, state: school.state).first
+  end
+
   private
 
   def update_school_questionnaire_count
