@@ -5,29 +5,27 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
-      false,
-      false,
-      'questionnaires.id',
-      'questionnaires.first_name',
-      'questionnaires.last_name',
-      'users.email',
-      'questionnaires.acc_status',
-      'questionnaires.state',
-      'questionnaires.year',
-      'questionnaires.experience',
-      'questionnaires.interest',
-      'schools.name'
+      'Questionnaires.id',
+      'Questionnaires.first_name',
+      'Questionnaires.last_name',
+      'Users.email',
+      'Questionnaires.acc_status',
+      'Questionnaires.state',
+      'Questionnaires.year',
+      'Questionnaires.experience',
+      'Questionnaires.interest',
+      'Schools.name'
     ]
   end
 
   def searchable_columns
     @searchable_columns ||= [
-      'questionnaires.ID',
-      'questionnaires.first_name',
-      'questionnaires.last_name',
-      'users.email',
-      'questionnaires.state',
-      'schools.name'
+      'Questionnaires.ID',
+      'Questionnaires.first_name',
+      'Questionnaires.last_name',
+      'Users.email',
+      'Questionnaires.state',
+      'Schools.name'
     ]
   end
 
