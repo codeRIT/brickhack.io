@@ -69,9 +69,9 @@
       - School.where("questionnaire_count >= 1").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
         %li= "#{school.questionnaire_count} - #{school.name}"
 
-%script{src: "/assets/d3.v3.min.js"}
-%script{src: "/assets/queue.v1.min.js"}
-%script{src: "/assets/topojson.v1.min.js"}
+= javascript_include_tag "vendor/d3.v3.min.js"
+= javascript_include_tag "vendor/queue.v1.min.js"
+= javascript_include_tag "vendor/topojson.v1.min.js"
 :javascript
   var width = 950,
   height = 600;
