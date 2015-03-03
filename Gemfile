@@ -43,6 +43,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'mail_view', '~> 2.0.4'
+  gem 'guard-minitest'
+  gem 'guard'
 end
 
 group :test do
@@ -52,8 +54,6 @@ group :test do
   gem 'valid_attribute'
   gem 'ruby-prof'
   gem 'factory_girl_rails'
-  gem 'guard-minitest'
-  gem 'guard'
 end
 
 gem 'jquery-rails'
