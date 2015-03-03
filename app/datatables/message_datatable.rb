@@ -5,18 +5,18 @@ class MessageDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
-      'Messages.id',
-      'Messages.name',
-      'Messages.subject'
+      'messages.id',
+      'messages.name',
+      'messages.subject'
     ]
   end
 
   def searchable_columns
     @searchable_columns ||= [
-      'Messages.ID',
-      'Message.name',
-      'Messages.subject',
-      'Messages.recipients'
+      'messages.id',
+      'message.name',
+      'messages.subject',
+      'messages.recipients'
     ]
   end
 
