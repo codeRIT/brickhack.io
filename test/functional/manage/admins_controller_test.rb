@@ -179,6 +179,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert assigns(:user).admin_read_only, "new user should be a read-only admin"
     end
 
+    should "not create an admin with duplicate emails" do
+      create(:user, email: "existing@example.com")
+      assert_difference('User.count', 0) do
+        post :create, user: { email: "existing@example.com" }
+      end
+    end
+
     should "allow access to manage_admins#show" do
       get :show, id: @user
       assert_response :success
