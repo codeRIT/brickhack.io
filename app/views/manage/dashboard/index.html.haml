@@ -76,7 +76,7 @@
   var width = 950,
   height = 600;
 
-  var rateById = d3.map();
+  var appsById = d3.map();
 
   var formatNumber = d3.format(",.0f");
 
@@ -93,7 +93,7 @@
 
   queue()
       .defer(d3.json, "/us.json")
-      .defer(d3.tsv, "/manage/dashboard/map_data.tsv", function(d) { rateById.set(d.id, +d.rate); })
+      .defer(d3.tsv, "/manage/dashboard/map_data.tsv", function(d) { appsById.set(d.id, +d.apps); })
       .await(ready);
 
   function ready(error, us) {
@@ -113,14 +113,14 @@
         .attr("class", "bubble")
       .selectAll("circle")
         .data(topojson.feature(us, us.objects.counties).features
-          .sort(function(a, b) { return (rateById.get(b.id) || 0) - (rateById.get(a.id) || 0); }))
+          .sort(function(a, b) { return (appsById.get(b.id) || 0) - (appsById.get(a.id) || 0); }))
       .enter().append("circle")
         .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("r", function(d) { return radius(rateById.get(d.id) || 0); })
+        .attr("r", function(d) { return radius(appsById.get(d.id) || 0); })
       .append("title")
         .text(function(d) {
           return d.properties.name
-              + "\nApplications: " + formatNumber(rateById.get(d.id) || 0);
+              + "\nApplications: " + formatNumber(appsById.get(d.id) || 0);
         });
   };
 
