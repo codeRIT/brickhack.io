@@ -53,6 +53,7 @@ group :test do
   gem 'ruby-prof'
   gem 'factory_girl_rails'
   gem 'guard-minitest'
+  gem 'guard'
 end
 
 gem 'jquery-rails'
