@@ -10,8 +10,10 @@ class Message < ActiveRecord::Base
     "all"        => "Everyone",
     "incomplete" => "Incomplete Applications",
     "complete"   => "Complete Applications",
-    # "accepted"   => "Accepted Applications" not implemented
-    # "rejected"   => "Rejected Applications" not implemented
+    "accepted"   => "Accepted Applications",
+    "denied"     => "Denied Applications",
+    "waitlisted" => "Waitlisted Applications",
+    "late-waitlisted" => "Late, Waitlisted Applications"
     # "awaiting-rsvp" => "Awaiting RSVP Applications" not implemented
   }
   serialize :recipients, Array

@@ -15,6 +15,14 @@ class BulkMessageWorker
         recipients += User.where(admin: false).select(:id).map(&:id) - Questionnaire.select(:user_id).map(&:user_id)
       when "complete"
         recipients += Questionnaire.select(:user_id).map(&:user_id)
+      when "accepted"
+        recipients += Questionnaire.where(acc_status: "accepted").select(:user_id).map(&:user_id)
+      when "denied"
+        recipients += Questionnaire.where(acc_status: "denied").select(:user_id).map(&:user_id)
+      when "waitlisted"
+        recipients += Questionnaire.where(acc_status: "waitlist").select(:user_id).map(&:user_id)
+      when "late-waitlisted"
+        recipients += Questionnaire.where(acc_status: "late_waitlist").select(:user_id).map(&:user_id)
       end
     end
 
