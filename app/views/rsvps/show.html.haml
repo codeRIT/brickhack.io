@@ -23,4 +23,5 @@
         = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
 
       .center
+        = btn_link_to "Edit Application", edit_questionnaire_path(@questionnaire)
         = f.button :submit, value: "Update"

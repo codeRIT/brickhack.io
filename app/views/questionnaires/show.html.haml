@@ -1,7 +1,12 @@
 %div{class:'form-success'}
   %div{class:'success_message'}
     %p#notice= notice
-    %p Thanks for applying! Acceptance notifications will be sent out in March.
+    - if ["accepted", "rsvp_confirmed", "rsvp_denied"].include? @questionnaire.acc_status
+      %p
+        Below is a copy of your information for BrickHack.
+        = link_to "Back to RSVP page &raquo;".html_safe, rsvp_path
+    - else
+      %p Thanks for applying! Acceptance notifications will be sent out in March.
 
   %div{class:'participant_info'}
     %p Below is a copy of your application.
