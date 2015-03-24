@@ -1,7 +1,7 @@
 %div{class:'form-success'}
   %div{class:'success_message'}
     %p#notice= notice
-    - if ["accepted", "rsvp_confirmed", "rsvp_denied"].include? @questionnaire.acc_status
+    - if @questionnaire.can_rsvp?
       %p
         Below is a copy of your information for BrickHack.
         = link_to "Back to RSVP page &raquo;".html_safe, rsvp_path

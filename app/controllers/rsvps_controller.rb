@@ -75,7 +75,7 @@ class RsvpsController < ApplicationController
   end
 
   def require_accepted_questionnaire
-    unless ["accepted", "rsvp_confirmed", "rsvp_denied"].include? @questionnaire.acc_status
+    unless @questionnaire.can_rsvp?
       redirect_to root_path
     end
   end

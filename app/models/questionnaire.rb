@@ -107,6 +107,10 @@ class Questionnaire < ActiveRecord::Base
     Fips.where(city: school.city, state: school.state).first
   end
 
+  def can_rsvp?
+    ["accepted", "rsvp_confirmed", "rsvp_denied"].include? acc_status
+  end
+
   private
 
   def update_school_questionnaire_count

@@ -2,7 +2,7 @@
   = simple_form_for @questionnaire, html: { "data-validate" => "form" } do |f|
 
     #disclaimer
-      - unless ["accepted", "rsvp_confirmed", "rsvp_denied"].include? @questionnaire.acc_status
+      - unless @questionnaire.can_rsvp?
         %p Registration officially ended on February 28th. Further applications will be waitlisted.
       %ul
         %li Applicants must be 18 years of age by April 18th

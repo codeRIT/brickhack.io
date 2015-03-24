@@ -183,4 +183,20 @@ class QuestionnaireTest < ActiveSupport::TestCase
     end
   end
 
+  context "#can_rsvp?" do
+    should "return true for accepted questionnaires" do
+      questionnaire = create(:questionnaire, acc_status: "accepted")
+      assert questionnaire.can_rsvp?
+      questionnaire.acc_status = "rsvp_confirmed"
+      assert questionnaire.can_rsvp?
+      questionnaire.acc_status = "rsvp_denied"
+      assert questionnaire.can_rsvp?
+    end
+
+    should "return false for non-accepted questionnaires" do
+      questionnaire = create(:questionnaire, acc_status: "denied")
+      assert !questionnaire.can_rsvp?
+    end
+  end
+
 end
