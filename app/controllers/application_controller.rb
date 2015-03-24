@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       new_questionnaire_path
     else
       @questionnaire = current_user.questionnaire
-      questionnaire_path(current_user.questionnaire)
+      @questionnaire.can_rsvp? ? rsvp_path : questionnaire_path(@questionnaire)
     end
   end
 end
