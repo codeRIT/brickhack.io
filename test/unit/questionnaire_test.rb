@@ -94,6 +94,8 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_value("waitlist").for(:acc_status)
   should allow_value("denied").for(:acc_status)
   should allow_value("late_waitlist").for(:acc_status)
+  should allow_value("rsvp_confirmed").for(:acc_status)
+  should allow_value("rsvp_denied").for(:acc_status)
   should_not allow_value("foo").for(:acc_status)
 
   should have_attached_file(:resume)

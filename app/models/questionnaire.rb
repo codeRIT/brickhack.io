@@ -49,11 +49,13 @@ class Questionnaire < ActiveRecord::Base
     "XL" => "X-Large"
   }
   POSSIBLE_ACC_STATUS = {
-    "pending"  => "Pending Review",
-    "accepted" => "Accepted",
-    "waitlist" => "Waitlisted",
-    "denied"   => "Denied",
-    "late_waitlist" => "Waitlisted, Late"
+    "pending"        => "Pending Review",
+    "accepted"       => "Accepted",
+    "waitlist"       => "Waitlisted",
+    "denied"         => "Denied",
+    "late_waitlist"  => "Waitlisted, Late",
+    "rsvp_confirmed" => "RSVP Confirmed",
+    "rsvp_denied"    => "RSVP Denied"
   }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international

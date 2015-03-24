@@ -16,6 +16,11 @@ BrickhackIo::Application.routes.draw do
     get :schools, on: :collection
   end
 
+  resource :rsvp do
+    get :accept, on: :collection
+    get :deny, on: :collection
+  end
+
   namespace :manage do
     root to: "dashboard#index"
     resources :dashboard do
