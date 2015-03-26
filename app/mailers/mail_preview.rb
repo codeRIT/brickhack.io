@@ -8,4 +8,9 @@ class MailPreview < MailView
     message = Message.first
     Mailer.bulk_message_email(message, User.first)
   end
+
+  def accepted_email
+    message = Message.where(template: "accepted").first
+    Mailer.bulk_message_email(message, User.first)
+  end
 end if defined?(MailView)

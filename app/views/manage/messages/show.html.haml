@@ -9,6 +9,9 @@
     %b Subject:
     = @message.subject
   %p
+    %b Template:
+    = @message.template.titleize
+  %p
     %b Recipients:
     = @message.recipients_list
   %p

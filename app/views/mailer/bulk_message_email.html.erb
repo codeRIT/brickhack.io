@@ -1,5 +1,5 @@
 <%= render partial: "header" %>
-  <%= @message.body %>
+<%= render partial: "mailer/bulk_templates/#{@message.template}" %>
 <%= render partial: "footer" %>
 </div>
 </body>
