@@ -99,4 +99,16 @@ class MessageTest < ActiveSupport::TestCase
     end
   end
 
+  context "using_default_template?" do
+    should "return true if message template is default" do
+      message = build(:message)
+      assert message.using_default_template?
+    end
+
+    should "return false if message template is not default" do
+      message = build(:message, template: "accepted")
+      assert !message.using_default_template?
+    end
+  end
+
 end

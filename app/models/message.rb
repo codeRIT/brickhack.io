@@ -2,7 +2,8 @@ class Message < ActiveRecord::Base
 
   attr_accessible :name, :subject, :recipients, :template, :body
 
-  validates_presence_of :name, :subject, :recipients, :template, :body
+  validates_presence_of :name, :subject, :recipients, :template
+  validates_presence_of :body, if: :using_default_template?
 
   strip_attributes
 
@@ -52,6 +53,10 @@ class Message < ActiveRecord::Base
 
   def can_edit?
     status == "drafted"
+  end
+
+  def using_default_template?
+    template == "default"
   end
 
 end
