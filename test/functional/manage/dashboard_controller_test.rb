@@ -6,7 +6,7 @@ class Manage::DashboardControllerTest < ActionController::TestCase
     should "redirect to sign in page on manage_dashboard#index" do
       get :index
       assert_response :redirect
-      assert redirect_to new_user_session_path
+      assert_redirected_to new_user_session_path
     end
   end
 
@@ -20,7 +20,7 @@ class Manage::DashboardControllerTest < ActionController::TestCase
     should "allow access to manage_dashboard#index" do
       get :index
       assert_response :redirect
-      assert redirect_to root_path
+      assert_redirected_to root_path
     end
   end
 

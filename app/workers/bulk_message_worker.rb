@@ -23,6 +23,10 @@ class BulkMessageWorker
         recipients += Questionnaire.where(acc_status: "waitlist").select(:user_id).map(&:user_id)
       when "late-waitlisted"
         recipients += Questionnaire.where(acc_status: "late_waitlist").select(:user_id).map(&:user_id)
+      when "rsvp-confirmed"
+        recipients += Questionnaire.where(acc_status: "rsvp_confirmed").select(:user_id).map(&:user_id)
+      when "rsvp-denied"
+        recipients += Questionnaire.where(acc_status: "rsvp_denied").select(:user_id).map(&:user_id)
       end
     end
 

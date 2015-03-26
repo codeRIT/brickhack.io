@@ -94,6 +94,8 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_value("waitlist").for(:acc_status)
   should allow_value("denied").for(:acc_status)
   should allow_value("late_waitlist").for(:acc_status)
+  should allow_value("rsvp_confirmed").for(:acc_status)
+  should allow_value("rsvp_denied").for(:acc_status)
   should_not allow_value("foo").for(:acc_status)
 
   should have_attached_file(:resume)
@@ -178,6 +180,22 @@ class QuestionnaireTest < ActiveSupport::TestCase
       user = create(:user, email: "admin@example.com")
       questionnaire = create(:questionnaire, acc_status_author_id: user.id)
       assert_equal "admin@example.com", questionnaire.acc_status_author.email
+    end
+  end
+
+  context "#can_rsvp?" do
+    should "return true for accepted questionnaires" do
+      questionnaire = create(:questionnaire, acc_status: "accepted")
+      assert questionnaire.can_rsvp?
+      questionnaire.acc_status = "rsvp_confirmed"
+      assert questionnaire.can_rsvp?
+      questionnaire.acc_status = "rsvp_denied"
+      assert questionnaire.can_rsvp?
+    end
+
+    should "return false for non-accepted questionnaires" do
+      questionnaire = create(:questionnaire, acc_status: "denied")
+      assert !questionnaire.can_rsvp?
     end
   end
 

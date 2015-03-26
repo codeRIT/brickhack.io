@@ -13,8 +13,9 @@ class Message < ActiveRecord::Base
     "accepted"   => "Accepted Applications",
     "denied"     => "Denied Applications",
     "waitlisted" => "Waitlisted Applications",
-    "late-waitlisted" => "Late, Waitlisted Applications"
-    # "awaiting-rsvp" => "Awaiting RSVP Applications" not implemented
+    "late-waitlisted" => "Late, Waitlisted Applications",
+    "rsvp-confirmed" => "RSVP Confirmed Attendees",
+    "rsvp-denied" => "RSVP Denied Attendees"
   }
   serialize :recipients, Array
 

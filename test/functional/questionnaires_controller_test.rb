@@ -15,29 +15,29 @@ class QuestionnairesControllerTest < ActionController::TestCase
   context "while not authenticated" do
     should "redirect to sign up page on questionnaire#index" do
       get :index
-      assert redirect_to new_user_registration_path
+      assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#new" do
       get :new
-      assert redirect_to new_user_registration_path
+      assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#edit" do
       get :edit, id: @questionnaire
-      assert redirect_to new_user_registration_path
+      assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#update" do
       put :update, id: @questionnaire, questionnaire: { city: "different" }
-      assert redirect_to new_user_registration_path
+      assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#destroy" do
       assert_difference('Questionnaire.count', 0) do
         delete :destroy, id: @questionnaire
       end
-      assert redirect_to new_user_registration_path
+      assert_redirected_to new_user_session_path
     end
 
     context "accessing a non-owned questionnaire" do

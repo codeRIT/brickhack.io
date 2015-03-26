@@ -49,11 +49,13 @@ class Questionnaire < ActiveRecord::Base
     "XL" => "X-Large"
   }
   POSSIBLE_ACC_STATUS = {
-    "pending"  => "Pending Review",
-    "accepted" => "Accepted",
-    "waitlist" => "Waitlisted",
-    "denied"   => "Denied",
-    "late_waitlist" => "Waitlisted, Late"
+    "pending"        => "Pending Review",
+    "accepted"       => "Accepted",
+    "waitlist"       => "Waitlisted",
+    "denied"         => "Denied",
+    "late_waitlist"  => "Waitlisted, Late",
+    "rsvp_confirmed" => "RSVP Confirmed",
+    "rsvp_denied"    => "RSVP Denied"
   }
 
   validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
@@ -103,6 +105,10 @@ class Questionnaire < ActiveRecord::Base
 
   def fips_code
     Fips.where(city: school.city, state: school.state).first
+  end
+
+  def can_rsvp?
+    ["accepted", "rsvp_confirmed", "rsvp_denied"].include? acc_status
   end
 
   private

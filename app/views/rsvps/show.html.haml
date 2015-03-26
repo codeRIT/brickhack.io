@@ -1,0 +1,27 @@
+%section.section.manage
+  %h1.section-title RSVP for BrickHack
+  .form-container
+    #disclaimer
+      - if flash[:notice]
+        = flash[:notice]
+        %br
+        %br
+      - if @questionnaire.acc_status == "rsvp_confirmed"
+        .fa.fa-check
+        Congratulations! You're all set to attend BrickHack.
+      - elsif @questionnaire.acc_status == "rsvp_denied"
+        Sorry to hear you won't be with us this year.
+      - else
+        You've been accepted to BrickHack! Will you be attending?
+    = simple_form_for @questionnaire, url: url_for(controller: "rsvps", action: "update"), html: { "data-validate" => "form" } do |f|
+      .form-inputs
+        = f.input :acc_status, as: :radio_buttons, collection: { " Attending" => "rsvp_confirmed", " Not Attending" => "rsvp_denied" }, label: "RSVP Status:"
+        %br
+        %p
+          Please read the
+          %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
+        = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
+
+      .center
+        = btn_link_to "Edit Application", edit_questionnaire_path(@questionnaire)
+        = f.button :submit, value: "Update"
