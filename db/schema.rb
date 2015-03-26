@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150302011457) do
+ActiveRecord::Schema.define(:version => 20150326031423) do
 
   create_table "fips", :force => true do |t|
     t.string   "fips_code"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(:version => 20150302011457) do
     t.datetime "queued_at"
     t.datetime "started_at"
     t.datetime "delivered_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "template",     :default => "default"
   end
 
   create_table "questionnaires", :force => true do |t|

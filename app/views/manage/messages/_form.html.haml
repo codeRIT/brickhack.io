@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :subject, hint: "[BrickHack] Will be added before the subject when sent."
+    = f.input :template, as: :select, collection: Message::POSSIBLE_TEMPLATES.map { |x| [x.titleize, x] }, include_blank: false
     = f.input :recipients, as: :select, collection: Message::POSSIBLE_RECIPIENTS.invert, input_html: { class: "selectize", multiple: true }
     = f.input :body, hint: "codeRIT & BrickHack info will be appended to the email body"
 

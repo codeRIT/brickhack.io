@@ -1,10 +1,12 @@
 class Message < ActiveRecord::Base
 
-  attr_accessible :name, :subject, :recipients, :body
+  attr_accessible :name, :subject, :recipients, :template, :body
 
-  validates_presence_of :name, :subject, :recipients, :body
+  validates_presence_of :name, :subject, :recipients, :template, :body
 
   strip_attributes
+
+  POSSIBLE_TEMPLATES = ["default", "accepted"]
 
   POSSIBLE_RECIPIENTS = {
     "all"        => "Everyone",
@@ -18,6 +20,8 @@ class Message < ActiveRecord::Base
     "rsvp-denied" => "RSVP Denied Attendees"
   }
   serialize :recipients, Array
+
+  validates_inclusion_of :template, in: POSSIBLE_TEMPLATES
 
   def recipients=(values)
     values.present? ? super(values.reject(&:blank?)) : super(values)

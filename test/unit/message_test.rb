@@ -4,11 +4,13 @@ class MessageTest < ActiveSupport::TestCase
 
   should strip_attribute :name
   should strip_attribute :subject
+  should strip_attribute :template
   should strip_attribute :body
 
   should allow_mass_assignment_of :name
   should allow_mass_assignment_of :subject
   should allow_mass_assignment_of :recipients
+  should allow_mass_assignment_of :template
   should allow_mass_assignment_of :body
   should_not allow_mass_assignment_of :queued_at
   should_not allow_mass_assignment_of :delivered_at
@@ -16,7 +18,12 @@ class MessageTest < ActiveSupport::TestCase
   should validate_presence_of :name
   should validate_presence_of :subject
   should validate_presence_of :recipients
+  should validate_presence_of :template
   should validate_presence_of :body
+
+  should allow_value("default").for(:template)
+  should allow_value("accepted").for(:template)
+  should_not allow_value("foo").for(:template)
 
   context "delivered?" do
     should "return false if delivered date is not set" do
