@@ -22,6 +22,16 @@
     %ul
       %li
         %strong
+          %span.acc-status-rsvp_confirmed RSVP Confirmed:
+        = Questionnaire.where(acc_status: "rsvp_confirmed").count
+        (Everyone)
+      %li
+        %strong
+          %span.acc-status-rsvp_confirmed RSVP Confirmed:
+        = Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = \"2304\" OR acc_status = \"rsvp_confirmed\" AND school_id = \"5535\"").count
+        (RIT)
+      %li
+        %strong
           %span.acc-status-accepted Accepted:
         = Questionnaire.where(acc_status: "accepted").count
         (Everyone)
@@ -38,6 +48,10 @@
         %strong
           %span.acc-status-denied Denied:
         = Questionnaire.where(acc_status: "denied").count
+      %li
+        %strong
+          %span.acc-status-rsvp_denied RSVP Denied:
+        = Questionnaire.where(acc_status: "rsvp_denied").count
       %li
         %strong
           %span.acc-status-pending Pending:
