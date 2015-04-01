@@ -2,11 +2,11 @@
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="http://brickhack.io/assets/favicon/mstile-70x70.png"/>
-      <square150x150logo src="http://brickhack.io/assets/favicon/mstile-150x150.png"/>
-      <square310x310logo src="http://brickhack.io/assets/favicon/mstile-310x310.png"/>
-      <wide310x150logo src="http://brickhack.io/assets/favicon/mstile-310x150.png"/>
-      <TileColor>#f9f6f3</TileColor>
+      <square70x70logo src="/mstile-70x70.png"/>
+      <square150x150logo src="/mstile-150x150.png"/>
+      <square310x310logo src="/mstile-310x310.png"/>
+      <wide310x150logo src="/mstile-310x150.png"/>
+      <TileColor>#f58525</TileColor>
     </tile>
   </msapplication>
 </browserconfig>
