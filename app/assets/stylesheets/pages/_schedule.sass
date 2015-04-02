@@ -5,17 +5,18 @@
   font-weight: $font-bold
   margin-top: 25px
   width: 100%
-  td
-    border: 0
+  th, td
     margin: 0
+    border: 0
   th
     background: $blue
     color: $white
     font-size: 1.250rem
     font-weight: $font-light
-    padding: 4px 10px
     text-align: left
+    padding: 9px 13px
   td
+    padding: 6px 10px
     &:first-child
       padding-left: 10px
     &:last-child
@@ -23,8 +24,7 @@
       padding-right: 10px
       text-align: right
   tr
-    padding: 4px 10px
     &:nth-child(odd)
       background: $grey-light
     &.accent
-      background: $grey-med
+      background: lighten($grey-med, 20%)
