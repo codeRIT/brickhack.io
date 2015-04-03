@@ -89,8 +89,24 @@
         = User.where(admin: false).count
         (non-admin)
   .container.container-half
-    %h3 Schools
+    %h3 Schools (Confirmed)
     %small Application Count - Name
     %ul
-      - School.where("questionnaire_count >= 1").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
+      - schools = Questionnaire.where(acc_status: "rsvp_confirmed").select([:school_id]).map(&:school)
+      - counted_schools = {}
+      - schools.each do |school|
+        - counted_schools[school.name] ||= 0
+        - counted_schools[school.name] += 1
+      - counted_schools.each do |name, count|
+        %li= "#{count} - #{name}"
+    %h3 Schools (Applied)
+    %small Application Count - Name
+    - hidden_threshold = 5
+    %ul
+      - School.where("questionnaire_count >= #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").limit(50).each do |school|
         %li= "#{school.questionnaire_count} - #{school.name}"
+    - if School.where("questionnaire_count >= 1 AND questionnaire_count < #{hidden_threshold}").count > 0
+      %button{onclick: "$('#least-applied-schools').toggle()"}= "Toggle schools with < #{hidden_threshold} applicants"
+      %ul#least-applied-schools{style: "display: none"}
+        - School.where("questionnaire_count >= 1 AND questionnaire_count < #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
+          %li= "#{school.questionnaire_count} - #{school.name}"
