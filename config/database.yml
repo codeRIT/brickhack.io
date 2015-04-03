@@ -21,7 +21,7 @@ postgresql: &postgresql
   reconnect: false
 
 defaults: &defaults
-  pool: 25
+  pool: 30
   timeout: 5000
   encoding: utf8
 
