@@ -7,6 +7,12 @@
     - today = Time.now.beginning_of_day
     %ul
       %li
+        %strong New Confirmations:
+        = total_count = Questionnaire.where("acc_status_date >= :today AND acc_status = \"rsvp_confirmed\"", today: today).count
+      %li
+        %strong New Denials:
+        = total_count = Questionnaire.where("acc_status_date >= :today AND acc_status = \"rsvp_denied\"", today: today).count
+      %li
         %strong New Applications:
         = total_count = Questionnaire.where("created_at >= :today", today: today).count
       %li
