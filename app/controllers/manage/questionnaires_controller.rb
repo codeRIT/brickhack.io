@@ -77,7 +77,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       flash[:notice] = "Failed to update acceptance status"
     end
 
-    Mailer.delay.accepted_email(@questionnaire.id) if new_status == "accepted"
+    process_acc_status_notifications(@questionnaire, new_status)
 
     redirect_to manage_questionnaire_path(@questionnaire)
   end
@@ -94,7 +94,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       q.acc_status_author_id = current_user.id
       q.acc_status_date = Time.now
       if q.save(validate: false, without_protection: true)
-        Mailer.delay.accepted_email(q.id) if action == "accepted"
+        process_acc_status_notifications(q, action)
       end
     end
     render nothing: true, staus: 200
@@ -116,5 +116,10 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       questionnaire.delete :school_name
     end
     questionnaire
+  end
+
+  def process_acc_status_notifications(questionnaire, new_status)
+    Mailer.delay.accepted_email(questionnaire.id) if new_status == "accepted"
+    Mailer.delay.denied_email(questionnaire.id) if new_status == "denied"
   end
 end
