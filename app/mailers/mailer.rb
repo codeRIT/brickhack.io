@@ -1,5 +1,7 @@
 class Mailer < ActionMailer::Base
-  default from: "\"codeRIT\" <noreply@coderit.org>"
+  include Roadie::Rails::Automatic
+
+  default from: '"codeRIT" <noreply@coderit.org>'
 
   def application_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
@@ -7,6 +9,24 @@ class Mailer < ActionMailer::Base
     mail(
       to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
       subject: "[#{subject_base}] Application Received"
+    )
+  end
+
+  def accepted_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    return unless @questionnaire.present? && @questionnaire.user.present?
+    mail(
+      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
+      subject: "[#{subject_base}] You've been accepted!"
+    )
+  end
+
+  def denied_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    return unless @questionnaire.present? && @questionnaire.user.present?
+    mail(
+      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
+      subject: "[#{subject_base}] Your application status"
     )
   end
 

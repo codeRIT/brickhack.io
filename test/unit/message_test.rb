@@ -22,7 +22,6 @@ class MessageTest < ActiveSupport::TestCase
   should validate_presence_of :body
 
   should allow_value("default").for(:template)
-  should allow_value("accepted").for(:template)
   should_not allow_value("foo").for(:template)
 
   context "delivered?" do

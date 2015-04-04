@@ -2,6 +2,11 @@ require 'test_helper'
 
 class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
+  before do
+    ActionMailer::Base.deliveries = []
+    Sidekiq::Extensions::DelayedMailer.jobs.clear
+  end
+
   setup do
     @questionnaire = create(:questionnaire)
   end
@@ -286,12 +291,30 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "fail manage_questionnaires#bulk_apply when missing action" do
       put :bulk_apply, bulk_ids: [@questionnaire.id]
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response 400
     end
 
     should "fail manage_questionnaires#bulk_apply when missing ids" do
-      put :bulk_apply, bulk_action: "waitlist"
+      put :bulk_apply, id: @questionnaire
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response 400
+    end
+
+    ["accepted", "denied"].each do |status|
+      should "send notification emails appropriately for #{status} bulk_apply" do
+        assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
+        put :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
+        assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
+      end
+    end
+
+    ["accepted", "denied"].each do |status|
+      should "send notification emails appropriately for #{status} update_acc_status" do
+        assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
+        put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: status }
+        assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
+      end
     end
   end
 end

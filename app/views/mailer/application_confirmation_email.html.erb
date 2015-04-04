@@ -1,24 +1,19 @@
-<%= render partial: "header" %>
-  <h2 style="margin: 0px 0px 10px;">Thanks for applying to BrickHack!</h2>
-  <span class="orange-block" style="background: #F98728;display: block;height: 8px;margin-bottom: 35px;width: 200px;"></span>
-  <p style="margin: 0 0 8px;">We've successfully received your application to BrickHack 2015. Below is a copy of your information.</p>
-  <p style="margin: 0 0 8px;">If necessary, you may update your application at <a href="<%= edit_questionnaire_url(@questionnaire, host: "brickhack.io") %>" style="color: #F98728;"> <%= edit_questionnaire_url(@questionnaire, host: "brickhack.io") %></a></p>
-  <h4 style="margin: 0px 0px 10px;">Acceptance notifications will be sent out in March.</h4>
-  <ul style="list-style: none;padding: 0;">
-    <li style="margin:5px 0px;">Name: <%= @questionnaire.full_name %></li>
-    <li style="margin:5px 0px;">Location: <%= @questionnaire.full_location %></li>
-    <li style="margin:5px 0px;">Birthday: <%= @questionnaire.birthday_formatted %></li>
-    <li style="margin:5px 0px;">School: <%= @questionnaire.school.name %></li>
-    <li style="margin:5px 0px;">Year: <%= Questionnaire::POSSIBLE_YEARS[@questionnaire.year] %></li>
-    <li style="margin:5px 0px;">Interest: <%= @questionnaire.interest %></li>
-    <li style="margin:5px 0px;">Experience: <%= Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience] %></li>
-    <li style="margin:5px 0px;">Shirt Size: <%= @questionnaire.shirt_size %></li>
-    <li style="margin:5px 0px;">Resume: <%= @questionnaire.resume? ? "Provided" : "Not provided" %></li>
-    <li style="margin:5px 0px;">Dietary & Medical Notes: <%= @questionnaire.dietary_medical_notes || "None" %></li>
-    <li style="margin:5px 0px;">Portfolio Link: <%= @questionnaire.portfolio_url? ? @questionnaire.portfolio_url : 'Not provided' %></li>
-    <li style="margin:5px 0px;">GitHub/BitBucket Link: <%= @questionnaire.vcs_url? ? @questionnaire.vcs_url : 'Not provided' %></li>
-  </ul>
-<%= render partial: "footer" %>
-</div>
-</body>
-</html>
+<h2 style="margin: 0px 0px 10px;">Thanks for applying to BrickHack!</h2>
+<span class="orange-block" style="background: #F98728;display: block;height: 8px;margin-bottom: 35px;width: 200px;"></span>
+<p style="margin: 0 0 8px;">We've successfully received your application to BrickHack 2015. Below is a copy of your information.</p>
+<p style="margin: 0 0 8px;">If necessary, you may update your application at <a href="<%= edit_questionnaire_url(@questionnaire, host: "brickhack.io") %>" style="color: #F98728;"> <%= edit_questionnaire_url(@questionnaire, host: "brickhack.io") %></a></p>
+<h4 style="margin: 0px 0px 10px;">You will be notified of your acceptance status some time before April 18th.</h4>
+<ul style="list-style: none;padding: 0;">
+  <li style="margin:5px 0px;">Name: <%= @questionnaire.full_name %></li>
+  <li style="margin:5px 0px;">Location: <%= @questionnaire.full_location %></li>
+  <li style="margin:5px 0px;">Birthday: <%= @questionnaire.birthday_formatted %></li>
+  <li style="margin:5px 0px;">School: <%= @questionnaire.school.name %></li>
+  <li style="margin:5px 0px;">Year: <%= Questionnaire::POSSIBLE_YEARS[@questionnaire.year] %></li>
+  <li style="margin:5px 0px;">Interest: <%= @questionnaire.interest %></li>
+  <li style="margin:5px 0px;">Experience: <%= Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience] %></li>
+  <li style="margin:5px 0px;">Shirt Size: <%= @questionnaire.shirt_size %></li>
+  <li style="margin:5px 0px;">Resume: <%= @questionnaire.resume? ? "Provided" : "Not provided" %></li>
+  <li style="margin:5px 0px;">Dietary & Medical Notes: <%= @questionnaire.dietary_medical_notes || "None" %></li>
+  <li style="margin:5px 0px;">Portfolio Link: <%= @questionnaire.portfolio_url? ? @questionnaire.portfolio_url : 'Not provided' %></li>
+  <li style="margin:5px 0px;">GitHub/BitBucket Link: <%= @questionnaire.vcs_url? ? @questionnaire.vcs_url : 'Not provided' %></li>
+</ul>

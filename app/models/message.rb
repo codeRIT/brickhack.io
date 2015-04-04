@@ -7,7 +7,7 @@ class Message < ActiveRecord::Base
 
   strip_attributes
 
-  POSSIBLE_TEMPLATES = ["default", "accepted"]
+  POSSIBLE_TEMPLATES = ["default"]
 
   POSSIBLE_RECIPIENTS = {
     "all"        => "Everyone",
