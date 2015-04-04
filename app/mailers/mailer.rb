@@ -10,6 +10,15 @@ class Mailer < ActionMailer::Base
     )
   end
 
+  def accepted_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    return unless @questionnaire.present? && @questionnaire.user.present?
+    mail(
+      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
+      subject: "[#{subject_base}] You've been accepted!"
+    )
+  end
+
   def bulk_message_email(message_id, user_id)
     @message = Message.find(message_id)
     @user    = User.find(user_id)
