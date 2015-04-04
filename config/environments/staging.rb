@@ -76,6 +76,10 @@ BrickhackIo::Application.configure do
   # Required for Devise
   config.action_mailer.default_url_options = { :host => 'brickhack.io', :protocol => 'https' }
 
+  config.to_prepare do
+    Devise::Mailer.layout "mailer"
+  end
+
   # Store resumes on Google Drive when in production
   config.paperclip_defaults = {
     storage: :google_drive,
