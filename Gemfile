@@ -18,6 +18,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
+gem 'roadie-rails'
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version

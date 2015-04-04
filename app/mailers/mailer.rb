@@ -1,5 +1,7 @@
 class Mailer < ActionMailer::Base
-  default from: "\"codeRIT\" <noreply@coderit.org>"
+  include Roadie::Rails::Automatic
+
+  default from: '"codeRIT" <noreply@coderit.org>'
 
   def application_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
