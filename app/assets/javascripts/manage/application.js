@@ -1,4 +1,5 @@
 //= require_directory ../
+//= require_directory .
 //= require dataTables/jquery.dataTables
 //= require selectize
 
