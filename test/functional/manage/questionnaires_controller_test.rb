@@ -199,9 +199,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires#update_acc_status" do
-      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
       put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
-      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
       assert_equal "accepted", @questionnaire.reload.acc_status
       assert_equal @user.id, @questionnaire.reload.acc_status_author_id
       assert_not_equal nil, @questionnaire.reload.acc_status_date
@@ -286,9 +284,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires#bulk_apply" do
-      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
       put :bulk_apply, bulk_action: "accepted", bulk_ids: [@questionnaire.id]
-      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
       assert_response :success
       assert_equal "accepted", @questionnaire.reload.acc_status
     end
@@ -303,6 +299,22 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       put :bulk_apply, id: @questionnaire
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response 400
+    end
+
+    ["accepted"].each do |status|
+      should "send notification emails appropriately for #{status} bulk_apply" do
+        assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
+        put :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
+        assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
+      end
+    end
+
+    ["accepted"].each do |status|
+      should "send notification emails appropriately for #{status} update_acc_status" do
+        assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
+        put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: status }
+        assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
+      end
     end
   end
 end
