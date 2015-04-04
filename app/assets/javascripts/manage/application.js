@@ -76,7 +76,7 @@ $.fn.bulkRowEdit = function() {
     }
 
     $.ajax({
-      url: $('form[data-bulk-row-edit').attr('action'),
+      url: $('form[data-bulk-row-edit]').attr('action'),
       type: 'PUT',
       data: {
         bulk_action: action,
