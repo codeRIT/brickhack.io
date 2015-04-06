@@ -3,6 +3,8 @@ cache: bundler
 bundler_args: --path vendor --without development
 rvm:
 - 1.9.3
+before_script:
+  - mysql -e 'create database myapp_test;'
 script:
 - bundle exec rake db:migrate db:test:prepare
 - bundle exec rake test

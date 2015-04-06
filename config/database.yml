@@ -1,6 +1,6 @@
 mysql_local: &mysql_local
-  adapter: mysql2
-  username: root
+  adapter:  mysql2
+  username: <%= ENV['TRAVIS'] ? 'travis' : 'root' %>
   host:     localhost
 
 mysql: &mysql
@@ -34,7 +34,7 @@ development:
 test: &test
   <<: *defaults
   <<: *mysql_local
-  database: brickhack-test
+  database: <%= ENV['TRAVIS'] ? 'myapp_test' : 'brickhack-test' %>
 
 production:
   <<: *defaults
