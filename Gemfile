@@ -20,7 +20,6 @@ gem 'ajax-datatables-rails'
 gem 'roadie-rails'
 gem 'chartkick'
 gem 'groupdate'
-gem 'highcharts-rails', '~> 3.0.0'
 gem 'chartkick-remote'
 
 gem 'strip_attributes'
@@ -39,6 +38,7 @@ group :assets do
   gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails' # issue with images, PR #158
 
   gem 'selectize-rails'
+  gem 'highcharts-rails', '~> 3.0.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
