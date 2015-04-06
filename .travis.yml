@@ -1,6 +1,6 @@
 language: ruby
 cache: bundler
-bundler_args: --path vendor --without development
+bundler_args: --path vendor --local --without development
 rvm:
 - 1.9.3
 before_script:
