@@ -1,4 +1,7 @@
 class Manage::DashboardController < Manage::ApplicationController
+  include Chartkick::Remote
+  chartkick_remote
+
   def index
   end
 

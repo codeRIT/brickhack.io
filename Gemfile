@@ -18,6 +18,10 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
 gem 'roadie-rails'
+gem 'chartkick'
+gem 'groupdate'
+gem 'highcharts-rails', '~> 3.0.0'
+gem 'chartkick-remote'
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
