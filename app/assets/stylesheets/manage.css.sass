@@ -31,17 +31,20 @@
   width: 100%
   background: $secondary
   color: $white
-  padding-left: 20px
-
+  padding: 16px 20px 6px
+  @media(max-width: 840px)
+    padding-left: 70px
+  p, a
+    margin: 0 5px 10px
   p
     color: $orange-light
     display: inline-block
+    margin-top: 0
     &:first-child
       margin-right: 10px
   a
     color: $white
-    margin-left: 5px
-    margin-right: 5px
+    display: inline-block
     &:hover
       color: darken($grey-light, 5%)
 
