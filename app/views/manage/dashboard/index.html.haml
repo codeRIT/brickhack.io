@@ -1,111 +1,76 @@
+- blue = "#4886C2"
+- green = "#7FEC8D"
+- red = "#E44646"
+- orange = "#F49C54"
+- grey = "#A6A6A6"
+
+= javascript_include_tag "vendor/d3.v3.min.js"
+= javascript_include_tag "vendor/queue.v1.min.js"
+= javascript_include_tag "vendor/topojson.v1.min.js"
+
 %section.section.manage
   %h1.section-title BrickHack Dashboard
-  .container
-    #chart
-    = javascript_include_tag "vendor/d3.v3.min.js"
-    = javascript_include_tag "vendor/queue.v1.min.js"
-    = javascript_include_tag "vendor/topojson.v1.min.js"
+
+  .container.container-full
+    #map
+    :javascript
+      $('#map').initMap();
+
+  - today_range = Date.today.beginning_of_day..Date.today.end_of_day
+  .container.container-half{ style: "width: 59%" }
+    %h4.dashboard-container-title  Today's Activity
+    = area_chart(colors: [blue, green, red]) { activity_chart_data(["Applications", "Confirmations", "Denials"], "hour", today_range) }
+  .container.container-half{ style: "width: 39%" }
+    %h4.dashboard-container-title Today's Stats
+    - date_min = Date.today.beginning_of_day
+    = pie_chart(colors: [blue, green, red]) { { "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count, "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count, "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count } }
+
+  .container.container-full
+    %h4.dashboard-container-title Confirmation Activity
+    .graph-overlay.double-metrics
+      %h3= Questionnaire.where(acc_status: "rsvp_confirmed").count
+      %p total confirmed
+      %h3= Questionnaire.where(acc_status: "rsvp_denied").count
+      %p total denied
+    = area_chart(colors: [green, red], library: { legend: { enabled: false } }) { activity_chart_data(["Confirmations", "Denials"], "day", 1.week.ago..Time.now) }
+
+  .container.container-full
+    %h4.dashboard-container-title Application Activity
+    .graph-overlay
+      %h3= Questionnaire.count
+      %p total applications
+    = area_chart(colors: [blue, orange], library: { legend: { enabled: false } }) { activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 1.week.ago..Time.now) }
+
   .container.container-half
-    %h3 Today's Stats
-    - today = Time.now.beginning_of_day
-    %ul
-      %li
-        %strong New Confirmations:
-        = total_count = Questionnaire.where("acc_status_date >= :today AND acc_status = \"rsvp_confirmed\"", today: today).count
-      %li
-        %strong New Denials:
-        = total_count = Questionnaire.where("acc_status_date >= :today AND acc_status = \"rsvp_denied\"", today: today).count
-      %li
-        %strong New Applications:
-        = total_count = Questionnaire.where("created_at >= :today", today: today).count
-      %li
-        %strong RIT Applications:
-        - rit_count = Questionnaire.where("school_id = \"2304\" AND created_at >= :today OR school_id = \"5535\" AND created_at >= :today", today: today).count
-        = rit_count
-        = "(#{100 * rit_count/total_count}%)" unless total_count == 0
-      %li
-        %strong Resumes:
-        = resume_count = Questionnaire.where("resume_file_name != '' AND created_at >= :today", today: today).count
-        = "(#{100 * resume_count/total_count}%)" unless total_count == 0
-    %h3 Acceptance Stats
-    %ul
-      %li
-        %strong
-          %span.acc-status-rsvp_confirmed RSVP Confirmed:
-        = Questionnaire.where(acc_status: "rsvp_confirmed").count
-        (Everyone)
-      %li
-        %strong
-          %span.acc-status-rsvp_confirmed RSVP Confirmed:
-        = Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = \"2304\" OR acc_status = \"rsvp_confirmed\" AND school_id = \"5535\"").count
-        (RIT)
-      %li
-        %strong
-          %span.acc-status-accepted Accepted:
-        = Questionnaire.where(acc_status: "accepted").count
-        (Everyone)
-      %li
-        %strong
-          %span.acc-status-accepted Accepted:
-        = Questionnaire.where("acc_status = \"accepted\" AND school_id = \"2304\" OR acc_status = \"accepted\" AND school_id = \"5535\"").count
-        (RIT)
-      %li
-        %strong
-          %span.acc-status-waitlist Waitlisted:
-        = Questionnaire.where(acc_status: "waitlist").count
-      %li
-        %strong
-          %span.acc-status-denied Denied:
-        = Questionnaire.where(acc_status: "denied").count
-      %li
-        %strong
-          %span.acc-status-rsvp_denied RSVP Denied:
-        = Questionnaire.where(acc_status: "rsvp_denied").count
-      %li
-        %strong
-          %span.acc-status-pending Pending:
-        = Questionnaire.where(acc_status: "pending").count
-      %li
-        %strong
-          %span.acc-status-late_waitlist Late Waitlisted:
-        = Questionnaire.where(acc_status: "late_waitlist").count
-    %h3 Total Stats
-    %ul
-      %li
-        %strong Applications:
-        = total_count = Questionnaire.count
-      %li
-        %strong RIT Applications:
-        - rit_count = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").count
-        = rit_count
-        = "(#{100 * rit_count/total_count}%)" unless total_count == 0
-      %li
-        %strong Resumes:
-        = resume_count = Questionnaire.where("resume_file_name != ''").count
-        = "(#{100 * resume_count/total_count}%)" unless total_count == 0
-      %li
-        %strong Registered Users:
-        = User.where(admin: false).count
-        (non-admin)
+    %h4.dashboard-container-title User Distribution
+    - totalStatsData = {}
+    - rit_count = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").count
+    - totalStatsData["Non-Applied Users"] = User.count - Questionnaire.count
+    - totalStatsData["Non-RIT Applications"] = Questionnaire.count - rit_count
+    - totalStatsData["RIT Applications"] = rit_count
+    = pie_chart(colors: [grey, blue, orange]) { totalStatsData }
   .container.container-half
-    %h3 Schools (Confirmed)
-    %small Application Count - Name
+    %h4.dashboard-container-title Application Distribution
+    = pie_chart(colors: [blue, green, red, red, blue, blue]) { { "Accepted" => Questionnaire.where(acc_status: "accepted").count, "RSVP Confirmed" => Questionnaire.where(acc_status: "rsvp_confirmed").count, "RSVP Denied" => Questionnaire.where(acc_status: "rsvp_denied").count, "Denied" => Questionnaire.where(acc_status: "denied").count, "Waitlisted" => Questionnaire.where(acc_status: "waitlist").count, "Late Waitlisted" => Questionnaire.where(acc_status: "late_waitlist").count } }
+
+  .container.container-full
+    %h4.dashboard-container-title Schools (Confirmed)
     %ul
       - schools = Questionnaire.where(acc_status: "rsvp_confirmed").select([:school_id]).map(&:school)
-      - counted_schools = {}
+      - counted_confirmed_schools = {}
       - schools.each do |school|
-        - counted_schools[school.name] ||= 0
-        - counted_schools[school.name] += 1
-      - counted_schools.each do |name, count|
-        %li= "#{count} - #{name}"
-    %h3 Schools (Applied)
-    %small Application Count - Name
+        - counted_confirmed_schools[school.name] ||= 0
+        - counted_confirmed_schools[school.name] += 1
+      = bar_chart(height: "600px") { counted_confirmed_schools.sort_by { |name, count| count }.reverse }
+    %h4.dashboard-container-title Schools (Applied)
     - hidden_threshold = 5
     %ul
-      - School.where("questionnaire_count >= #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").limit(50).each do |school|
-        %li= "#{school.questionnaire_count} - #{school.name}"
+      - counted_schools = {}
+      - School.where("questionnaire_count >= #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
+        - counted_schools[school.name] = school.questionnaire_count
+      = bar_chart(height: "600px") { counted_schools }
     - if School.where("questionnaire_count >= 1 AND questionnaire_count < #{hidden_threshold}").count > 0
-      %button{onclick: "$('#least-applied-schools').toggle()"}= "Toggle schools with < #{hidden_threshold} applicants"
+      %button{onclick: "$('#least-applied-schools').toggle()"}= "List schools with < #{hidden_threshold} applicants"
       %ul#least-applied-schools{style: "display: none"}
         - School.where("questionnaire_count >= 1 AND questionnaire_count < #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
           %li= "#{school.questionnaire_count} - #{school.name}"

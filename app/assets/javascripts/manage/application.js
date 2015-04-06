@@ -2,10 +2,42 @@
 //= require_directory .
 //= require dataTables/jquery.dataTables
 //= require selectize
+//= require highcharts
+//= require chartkick
 
 $(document).ready(function () {
   $('.selectize').selectize();
   $('select[data-bulk-row-edit]').bulkRowEdit();
+  $('body').chartkickAutoReload();
+
+  Highcharts.setOptions({
+    legend: {
+       labelFormatter: function() {
+          var total = 0;
+          for(var i=this.yData.length; i--;) { total += this.yData[i]; };
+          return this.name + ': ' + total;
+       }
+    },
+    chart: {
+      backgroundColor: "#f9f6f3"
+    },
+    tooltip: {
+      shared: true
+    },
+    plotOptions: {
+      series: {
+        animation: false
+      },
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b>: {point.y}'
+        }
+      }
+    }
+  });
 
   var defaultDataTableOptions = {
     "processing" : true,
@@ -98,4 +130,13 @@ $.fn.bulkRowEdit = function() {
     return applyAction();
   });
 
+};
+
+$.fn.chartkickAutoReload = function() {
+  var reloadData = function() {
+    for (i in Chartkick.charts) {
+      eval($(Chartkick.charts[i].element).next("script").text());
+    }
+  };
+  setInterval(reloadData, 15000);
 };

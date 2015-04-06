@@ -17,7 +17,7 @@ $.fn.initMap = function() {
       .domain([0, 50])
       .range([0, 25]);
 
-  var svg = d3.select("#chart").append("svg:svg")
+  var svg = d3.select(this[0]).append("svg:svg")
       .attr("width", width)
       .attr("height", height);
 
@@ -56,4 +56,3 @@ $.fn.initMap = function() {
 
   d3.select(self.frameElement).style("height", height + "px");
 };
-$('#chart').initMap();

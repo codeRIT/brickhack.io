@@ -1,6 +1,7 @@
-sqlite: &sqlite
-  adapter: sqlite3
-  database: db/<%= Rails.env %>.sqlite3
+mysql_local: &mysql_local
+  adapter:  mysql2
+  username: <%= ENV['TRAVIS'] ? 'travis' : 'root' %>
+  host:     localhost
 
 mysql: &mysql
   adapter: mysql2
@@ -27,11 +28,13 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  <<: *sqlite
+  <<: *mysql_local
+  database: brickhack
 
 test: &test
   <<: *defaults
-  <<: *sqlite
+  <<: *mysql_local
+  database: <%= ENV['TRAVIS'] ? 'myapp_test' : 'brickhack-test' %>
 
 production:
   <<: *defaults

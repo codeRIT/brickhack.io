@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.16'
 
-gem 'sqlite3', :group => [:development, :test]
-gem 'mysql2', :group => :production
+gem 'mysql2'
 
 gem 'rollbar', '~> 1.4.2'
 
@@ -19,6 +18,9 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
 gem 'roadie-rails'
+gem 'chartkick'
+gem 'groupdate'
+gem 'chartkick-remote'
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
@@ -36,6 +38,7 @@ group :assets do
   gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails' # issue with images, PR #158
 
   gem 'selectize-rails'
+  gem 'highcharts-rails', '~> 3.0.0'
 
   gem 'uglifier', '>= 1.0.3'
 end
