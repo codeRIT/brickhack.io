@@ -6,11 +6,11 @@ The public facing site for Brick Hack.
 
 ## Mac OS X
 
-Install ruby, sqlite, and other required development environment tools.
+Install ruby, mysql, and other required development environment tools.
 ```bash
 $ brew install rbenv ruby-build rbenv-readline rbenv-gem-rehash rbenv-default-gems rbenv-binstubs
 $ brew install redis
-$ brew install sqlite3
+$ brew install mysql
 ```
 
 Download & configure local environment, [vendor everything](http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/) style.
