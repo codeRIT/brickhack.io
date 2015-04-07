@@ -32,14 +32,14 @@
       %p total confirmed
       %h3= Questionnaire.where(acc_status: "rsvp_denied").count
       %p total denied
-    = area_chart(colors: [green, red], library: { legend: { enabled: false } }) { activity_chart_data(["Confirmations", "Denials"], "day", 1.week.ago..Time.now) }
+    = area_chart(colors: [green, red], library: { legend: { enabled: false } }) { activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.now) }
 
   .container.container-full
     %h4.dashboard-container-title Application Activity
     .graph-overlay
       %h3= Questionnaire.count
       %p total applications
-    = area_chart(colors: [blue, orange], library: { legend: { enabled: false } }) { activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 1.week.ago..Time.now) }
+    = area_chart(colors: [blue, orange], library: { legend: { enabled: false } }) { activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.now) }
 
   .container.container-half
     %h4.dashboard-container-title User Distribution
