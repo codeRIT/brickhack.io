@@ -12,6 +12,12 @@ namespace :tools do
     puts a.join("\n")
   end
 
+  desc "Prints the list of attendees with dietary/medical notes in CSV format"
+  task :dietary_notes => :environment do
+    puts "First Name,Last Name,Email,Dietary/Medical Notes\n"
+    puts Questionnaire.where("acc_status = \"rsvp_confirmed\" AND dietary_medical_notes != \"\" AND dietary_medical_notes != \"none\" AND dietary_medical_notes != \"None\" AND dietary_medical_notes != \"N/A\" AND dietary_medical_notes != \"NONE\"").map { |q| "#{q.first_name},#{q.last_name},#{q.email},\"#{q.dietary_medical_notes}\"" }.join("\n")
+  end
+
   desc "Merges one school's attendees with another"
   task :merge_schools, [:old_school_name, :new_school_name] => :environment do |t, args|
     old_school_name = args[:old_school_name]
