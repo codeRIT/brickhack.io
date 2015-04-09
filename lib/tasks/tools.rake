@@ -13,11 +13,11 @@ namespace :tools do
   end
 
   desc "Merges one school's attendees with another"
-  task :merge_school, [:old_school_name, :new_school_name] => :environment do |t, args|
+  task :merge_schools, [:old_school_name, :new_school_name] => :environment do |t, args|
     old_school_name = args[:old_school_name]
     new_school_name = args[:new_school_name]
     if old_school_name.blank? || new_school_name.blank?
-      puts "Usage: rake tools:merge_school[\"Old school name\",\"New school name\"]"
+      puts "Usage: rake tools:merge_schools[\"Old school name\",\"New school name\"]"
       return
     end
 
