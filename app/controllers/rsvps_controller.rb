@@ -18,7 +18,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
     unless @questionnaire.save(without_protection: true)
-      flash[:notice] = "There was an error submitting your response, please check over your application and try again."
+      flash[:notice] = "There was an error submitting your response, please check over your application and try again. Did you accept the BrickHack Agreement?"
     end
     redirect_to rsvp_path
   end
@@ -29,7 +29,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
     unless @questionnaire.save(without_protection: true)
-      flash[:notice] = "There was an error submitting your response, please check over your application and try again."
+      flash[:notice] = "There was an error submitting your response, please check over your application and try again. Did you accept the BrickHack Agreement?"
     end
     redirect_to rsvp_path
   end
