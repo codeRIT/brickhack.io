@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150326031423) do
+ActiveRecord::Schema.define(:version => 20150410175056) do
+
+  create_table "bus_lists", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "fips", :force => true do |t|
     t.string   "fips_code"
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20150326031423) do
     t.string   "acc_status",            :default => "pending"
     t.integer  "acc_status_author_id"
     t.datetime "acc_status_date"
+    t.boolean  "riding_bus",            :default => false
   end
 
   add_index "questionnaires", ["user_id"], :name => "index_questionnaires_on_user_id"
@@ -73,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20150326031423) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "questionnaire_count"
+    t.integer  "bus_list_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,20 @@
+%section.section.manage
+  %h1.section-title Message
+  %p#notice= notice
+
+  %p
+    %b Name:
+    = @bus_list.name
+
+  %p People:
+  %table
+    %tbody
+      - @bus_list.passengers.each do |p|
+        %tr
+          %td= p.first_name
+          %td= p.last_name
+          %td= p.email
+
+  = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
+  \|
+  = link_to 'Back', manage_bus_lists_path
