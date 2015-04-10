@@ -111,6 +111,10 @@ class Questionnaire < ActiveRecord::Base
     ["accepted", "rsvp_confirmed", "rsvp_denied"].include? acc_status
   end
 
+  def can_ride_bus?
+    school.bus_list_id?
+  end
+
   private
 
   def update_school_questionnaire_count

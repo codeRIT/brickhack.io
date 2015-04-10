@@ -1,0 +1,19 @@
+%h1 Listing bus_lists
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @bus_lists.each do |bus_list|
+    %tr
+      %td= bus_list.name
+      %td= link_to 'Show', manage_bus_list_path(bus_list)
+      %td= link_to 'Edit', edit_manage_bus_list_path(bus_list)
+      %td= link_to 'Destroy', manage_bus_list_path(bus_list), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Bus list', new_manage_bus_list_path

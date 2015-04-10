@@ -1,0 +1,8 @@
+= simple_form_for(@bus_list, url: url_for(action: @bus_list.new_record? ? "create" : "update", controller: "bus_lists")) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+
+  .form-actions
+    = f.button :submit

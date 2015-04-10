@@ -35,6 +35,7 @@ BrickhackIo::Application.routes.draw do
     resources :messages do
       put :deliver, on: :member
     end
+    resources :bus_lists
   end
 
   get "home/index"
