@@ -5,15 +5,48 @@
   %p
     %b Name:
     = @bus_list.name
+  %p
+    %b Capacity:
+    = @bus_list.capacity
+  %p
+    %b Notes:
+  %hr
+  = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"
+  %hr
 
-  %p People:
-  %table
+  %p
+    %strong Passengers:
+  %table.table
+    %thead
+      %tr
+        %th First Name
+        %th Last Name
+        %th Email
+        %th School Name
     %tbody
       - @bus_list.passengers.each do |p|
         %tr
           %td= p.first_name
           %td= p.last_name
           %td= p.email
+          %td= p.school.name
+  - if @bus_list.needs_bus_captain
+    %p
+      %strong Possible Bus Captains:
+    %table.table
+      %thead
+        %tr
+          %th First Name
+          %th Last Name
+          %th Email
+          %th School Name
+      %tbody
+        - @bus_list.passengers.select { |q| q.bus_captain_interest }.each do |p|
+          %tr
+            %td= p.first_name
+            %td= p.last_name
+            %td= p.email
+            %td= p.school.name
 
   = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
   \|

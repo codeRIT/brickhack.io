@@ -16,7 +16,9 @@
     = @message.recipients_list
   %p
     %b Body:
-    = @message.body
+  %hr
+  = @message.body.html_safe
+  %hr
 
   %hr
 
