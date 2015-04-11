@@ -48,9 +48,9 @@ class RsvpsController < ApplicationController
       return
     end
 
+    @questionnaire.acc_status_date = Time.now if @questionnaire.acc_status != params[:questionnaire][:acc_status]
     @questionnaire.acc_status = params[:questionnaire][:acc_status]
     @questionnaire.acc_status_author_id = current_user.id
-    @questionnaire.acc_status_date = Time.now
     if !@questionnaire.riding_bus && params[:questionnaire][:riding_bus] == true && @questionnaire.bus_list && @questionnaire.bus_list.full?
       flash[:notice] = "Sorry, your bus is full! You may need to arrange other plans for transportation."
       @questionnaire.riding_bus = false
