@@ -126,6 +126,17 @@ class RsvpsControllerTest < ActionController::TestCase
       assert_redirected_to rsvp_path
     end
 
+    should "not allow riding a bus if bus is full" do
+      bus_list = create(:bus_list, capacity: 0)
+      @questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
+      put :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
+      assert_equal false, @questionnaire.reload.riding_bus
+      assert_equal 0, bus_list.passengers.count
+      assert_match  /full/, flash[:notice]
+      assert_redirected_to rsvp_path
+    end
+
     should "allow riding a bus if school has bus list" do
       bus_list = create(:bus_list)
       @questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
