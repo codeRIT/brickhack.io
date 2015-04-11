@@ -7,7 +7,7 @@ class Questionnaire < ActiveRecord::Base
   attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
-  attr_accessible :portfolio_url, :vcs_url, :agreement_accepted
+  attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
 
   validates_presence_of :first_name, :last_name, :city, :city, :state, :year
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size

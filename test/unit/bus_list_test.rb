@@ -5,6 +5,7 @@ class BusListTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :name
   should allow_mass_assignment_of :capacity
   should allow_mass_assignment_of :notes
+  should allow_mass_assignment_of :needs_bus_captain
 
   should strip_attribute :name
   should strip_attribute :notes

@@ -47,6 +47,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :portfolio_url
   should allow_mass_assignment_of :vcs_url
   should allow_mass_assignment_of :agreement_accepted
+  should allow_mass_assignment_of :bus_captain_interest
   should_not allow_mass_assignment_of :acc_status
   should_not allow_mass_assignment_of :acc_status_author_id
   should_not allow_mass_assignment_of :acc_status_date
