@@ -1,6 +1,11 @@
 class BusList < ActiveRecord::Base
   attr_accessible :name, :capacity, :notes
 
+  validates_presence_of :name
+  validates_uniqueness_of :name
+
+  strip_attributes
+
   def full?
     passengers.count >= capacity
   end
