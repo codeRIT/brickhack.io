@@ -52,6 +52,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
     @questionnaire.riding_bus = params[:questionnaire][:riding_bus]
+    @questionnaire.riding_bus = false if !@questionnaire.can_ride_bus?
 
     unless @questionnaire.save(without_protection: true)
       flash[:notice] = @questionnaire.errors.full_message.join(", ")
