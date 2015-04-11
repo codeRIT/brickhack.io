@@ -1,19 +1,22 @@
-%h1 Listing bus_lists
+%section.section.manage
+  %h1.section-title Listing Bus Lists
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @bus_lists.each do |bus_list|
+  %table.table
     %tr
-      %td= bus_list.name
-      %td= link_to 'Show', manage_bus_list_path(bus_list)
-      %td= link_to 'Edit', edit_manage_bus_list_path(bus_list)
-      %td= link_to 'Destroy', manage_bus_list_path(bus_list), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Capacity
+      %th Actions
+      %th
+      %th
 
-%br
+    - @bus_lists.each do |bus_list|
+      %tr
+        %td= bus_list.name
+        %td= "#{bus_list.passengers.count} / #{bus_list.capacity}"
+        %td= link_to 'Show', manage_bus_list_path(bus_list)
+        %td= link_to 'Edit', edit_manage_bus_list_path(bus_list)
+        %td= link_to 'Destroy', manage_bus_list_path(bus_list), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'New Bus list', new_manage_bus_list_path
+  %br
+
+  = btn_link_to 'New Bus list', new_manage_bus_list_path

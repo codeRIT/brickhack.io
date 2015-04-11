@@ -15,13 +15,20 @@
   %hr
 
   %p Passengers:
-  %table
+  %table.table
+    %thead
+      %tr
+        %th First Name
+        %th Last Name
+        %th Email
+        %th School Name
     %tbody
       - @bus_list.passengers.each do |p|
         %tr
           %td= p.first_name
           %td= p.last_name
           %td= p.email
+          %td= p.school.name
 
   = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
   \|
