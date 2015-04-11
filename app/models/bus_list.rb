@@ -1,5 +1,9 @@
 class BusList < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :capacity, :notes
+
+  def full?
+    passengers.count >= capacity
+  end
 
   def passengers
     passengers = []

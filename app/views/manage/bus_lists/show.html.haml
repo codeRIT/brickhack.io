@@ -5,8 +5,16 @@
   %p
     %b Name:
     = @bus_list.name
+  %p
+    %b Capacity:
+    = @bus_list.capacity
+  %p
+    %b Notes:
+  %hr
+  = @bus_list.notes.html_safe
+  %hr
 
-  %p People:
+  %p Passengers:
   %table
     %tbody
       - @bus_list.passengers.each do |p|

@@ -28,6 +28,7 @@
 
         = f.input :riding_bus, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }
         %p You MUST sign up here if you wish to ride the bus! IDs will be checked at boarding.
+        = @questionnaire.bus_list.notes.html_safe
       - else
         = f.input :riding_bus, as: :hidden, value: false
 

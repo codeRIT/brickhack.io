@@ -115,6 +115,11 @@ class Questionnaire < ActiveRecord::Base
     school.bus_list_id?
   end
 
+  def bus_list
+    return unless can_ride_bus?
+    school.bus_list
+  end
+
   private
 
   def update_school_questionnaire_count

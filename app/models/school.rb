@@ -21,6 +21,11 @@ class School < ActiveRecord::Base
     out
   end
 
+  def bus_list
+    return unless bus_list_id
+    BusList.find(bus_list_id)
+  end
+
   def fips_code
     Fips.where(city: city, state: state).first
   end
