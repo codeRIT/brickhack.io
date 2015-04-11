@@ -34,15 +34,15 @@ class BulkMessageWorker
       when "bus-list-buffalo"
         recipients += BusList.find(3).passengers.map(&:user_id)
       when "school-cornell"
-        recipients += Questionnaire.where(acc_status: "rsvp_confirmed", school_id: 2164).select(:user_id).map(&:user_id)
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 2164 OR acc_status = \"accepted\" AND school_id = 2164").select(:user_id).map(&:user_id)
       when "school-binghamton"
-        recipients += Questionnaire.where(acc_status: "rsvp_confirmed", school_id: 5550).select(:user_id).map(&:user_id)
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5550 OR acc_status = \"accepted\" AND school_id = 5550").select(:user_id).map(&:user_id)
       when "school-buffalo"
-        recipients += Questionnaire.where(acc_status: "rsvp_confirmed", school_id: 2345).select(:user_id).map(&:user_id)
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 2345 OR acc_status = \"accepted\" AND school_id = 2345").select(:user_id).map(&:user_id)
       when "school-waterloo"
-        recipients += Questionnaire.where(acc_status: "rsvp_confirmed", school_id: 5529).select(:user_id).map(&:user_id)
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5529 OR acc_status = \"accepted\" AND school_id = 5529").select(:user_id).map(&:user_id)
       when "school-toronto"
-        recipients += Questionnaire.where(acc_status: "rsvp_confirmed", school_id: 5522).select(:user_id).map(&:user_id)
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5522 OR acc_status = \"accepted\" AND school_id = 5522").select(:user_id).map(&:user_id)
       end
     end
 
