@@ -4,6 +4,10 @@ class MailPreview < MailView
     Mailer.application_confirmation_email(questionnaire)
   end
 
+  def rsvp_confirmation_email
+    Mailer.rsvp_confirmation_email(Questionnaire.first.id)
+  end
+
   def accepted_email
     Mailer.accepted_email(Questionnaire.first.id)
   end
