@@ -4,7 +4,21 @@
   th
     font-size: 1.250rem
   td
+    &:first-child
+      width: 95px
     &:last-child
       font-weight: $font-light
       padding-right: 10px
       text-align: right
+    .toggle-details
+      cursor: pointer
+      .fa
+        margin-left: 5px
+    .details
+      font-weight: $font-light
+      font-size: 0.85rem
+      display: none
+      p
+        margin: 0.6em 0 0.4em
+      .title
+        font-weight: 500
