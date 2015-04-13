@@ -11,6 +11,9 @@ $(document).ready(function () {
   $('body').chartkickAutoReload();
 
   Highcharts.setOptions({
+    global: {
+      timezoneOffset: 4 * 60
+    },
     legend: {
        labelFormatter: function() {
           var total = 0;
