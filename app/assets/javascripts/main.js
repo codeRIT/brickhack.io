@@ -45,7 +45,6 @@ $(document).ready(function () {
 
   $.fn.toggleBlock = function() {
     var toggle = function() {
-      console.log('clicked');
       var $this = $(this);
       $('.info').slideUp();
       $('#' + $this.data('target') + ':hidden').slideDown();
