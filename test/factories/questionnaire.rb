@@ -6,7 +6,7 @@ FactoryGirl.define do
     city                  "Rochester"
     state                 "NY"
     year                  "1"
-    birthday              20.years.ago
+    birthday              Date.today - 20.years
     experience            "first"
     interest              "Development"
     school_id             { create(:school).id }
