@@ -30,6 +30,19 @@ $(document).ready(function () {
     }
   }
 
+  $.fn.toggleDetails = function() {
+    var toggle = function() {
+      $('.details').slideUp();
+      $(this).parent().find('.details:hidden').slideDown();
+    };
+
+    $(this).each(function() {
+      $(this).on('click', toggle);
+    });
+  };
+
+  $('.toggle-details').toggleDetails();
+
   $('[name="questionnaire[international]"]').on('change', function() {
     var $select = $('.questionnaire_state.select select'),
         $text   = $('.questionnaire_state.string input')

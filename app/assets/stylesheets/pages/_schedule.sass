@@ -1,30 +1,24 @@
 .schedule-table
-  border: 0
-  border-spacing: 0
-  color: $black
   font-weight: $font-bold
-  margin-top: 25px
-  width: 100%
-  th, td
-    margin: 0
-    border: 0
+  margin: 25px 0 0
   th
-    background: $blue
-    color: $white
     font-size: 1.250rem
-    font-weight: $font-light
-    text-align: left
-    padding: 9px 13px
   td
-    padding: 6px 10px
     &:first-child
-      padding-left: 10px
+      width: 95px
     &:last-child
       font-weight: $font-light
       padding-right: 10px
       text-align: right
-  tr
-    &:nth-child(odd)
-      background: $grey-light
-    &.accent
-      background: lighten($grey-med, 20%)
+    .toggle-details
+      cursor: pointer
+      .fa
+        margin-left: 5px
+    .details
+      font-weight: $font-light
+      font-size: 0.85rem
+      display: none
+      p
+        margin: 0.6em 0 0.4em
+      .title
+        font-weight: 500

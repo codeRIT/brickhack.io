@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  attr_accessible :name, :address, :city, :state
+  attr_accessible :name, :address, :city, :state, :bus_list_id
 
   validates_presence_of :name
 
@@ -19,6 +19,11 @@ class School < ActiveRecord::Base
       out << state if state.present?
     end
     out
+  end
+
+  def bus_list
+    return unless bus_list_id
+    BusList.find(bus_list_id)
   end
 
   def fips_code

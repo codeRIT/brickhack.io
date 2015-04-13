@@ -18,7 +18,15 @@ class Message < ActiveRecord::Base
     "waitlisted" => "Waitlisted Applications",
     "late-waitlisted" => "Late, Waitlisted Applications",
     "rsvp-confirmed" => "RSVP Confirmed Attendees",
-    "rsvp-denied" => "RSVP Denied Attendees"
+    "rsvp-denied" => "RSVP Denied Attendees",
+    "bus-list-cornell" => "Bus List: Cornell (Confirmed)",
+    "bus-list-binghamton" => "Bus List: Binghamton (Confirmed)",
+    "bus-list-buffalo" => "Bus List: Buffalo (Confirmed)",
+    "school-cornell" => "School: Cornell",
+    "school-binghamton" => "School: Binghamton",
+    "school-buffalo" => "School: Buffalo",
+    "school-waterloo" => "School: Waterloo",
+    "school-toronto" => "School: Toronto"
   }
   serialize :recipients, Array
 
