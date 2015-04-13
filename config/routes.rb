@@ -38,7 +38,7 @@ BrickhackIo::Application.routes.draw do
     resources :bus_lists
   end
 
-  get "home/event"
+  get "/event", to: "home#event"
 
   get "home/index"
 

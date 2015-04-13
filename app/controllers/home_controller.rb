@@ -3,5 +3,6 @@ class HomeController < ApplicationController
   end
 
   def event
+    render :layout => "dayof"
   end
 end
