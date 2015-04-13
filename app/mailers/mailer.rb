@@ -12,6 +12,15 @@ class Mailer < ActionMailer::Base
     )
   end
 
+  def rsvp_confirmation_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    return unless @questionnaire.present? && @questionnaire.user.present?
+    mail(
+      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
+      subject: "[#{subject_base}] RSVP Confirmation"
+    )
+  end
+
   def accepted_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?

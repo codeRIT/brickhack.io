@@ -103,13 +103,15 @@ class RsvpsControllerTest < ActionController::TestCase
 
     should "update the questionnaire status to accepted" do
       get :accept
-      assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status # reload not needed?
+      assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
+      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "should email confirmation to questionnaire"
       assert_redirected_to rsvp_path
     end
 
     should "update the questionnaire status to denied" do
       get :deny
-      assert_equal "rsvp_denied", @questionnaire.reload.acc_status # reload not needed?
+      assert_equal "rsvp_denied", @questionnaire.reload.acc_status
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent"
       assert_redirected_to rsvp_path
     end
 
@@ -123,6 +125,7 @@ class RsvpsControllerTest < ActionController::TestCase
       put :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
       assert_equal false, @questionnaire.reload.riding_bus
+      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "should email confirmation to questionnaire"
       assert_redirected_to rsvp_path
     end
 
