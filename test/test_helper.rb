@@ -7,7 +7,7 @@ require "minitest/reporters"
 require "valid_attribute"
 require "factory_girl_rails"
 require "paperclip/matchers"
-require 'sidekiq/testing'
+require "sidekiq/testing"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
   module Kernel
@@ -41,12 +41,6 @@ class ActiveSupport::TestCase
   include ValidAttribute::Method
   include FactoryGirl::Syntax::Methods
   extend Paperclip::Shoulda::Matchers
-
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  fixtures :all
 
   # Add more helper methods to be used by all tests here...
 end
