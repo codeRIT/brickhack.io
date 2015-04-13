@@ -17,7 +17,9 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status = "rsvp_confirmed"
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
-    unless @questionnaire.save(without_protection: true)
+    if @questionnaire.save(without_protection: true)
+      Mailer.delay.rsvp_confirmation_email(@questionnaire.id)
+    else
       flash[:notice] = "There was an error submitting your response, please check over your application and try again. Did you accept the BrickHack Agreement?"
     end
     redirect_to rsvp_path
@@ -68,6 +70,8 @@ class RsvpsController < ApplicationController
       redirect_to rsvp_path
       return
     end
+
+    Mailer.delay.rsvp_confirmation_email(@questionnaire.id) if @questionnaire.reload.acc_status == "rsvp_confirmed"
 
     redirect_to rsvp_path
   end

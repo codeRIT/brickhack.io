@@ -301,7 +301,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response 400
     end
 
-    ["accepted", "denied"].each do |status|
+    ["accepted", "denied", "rsvp_confirmed"].each do |status|
       should "send notification emails appropriately for #{status} bulk_apply" do
         assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
         put :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
@@ -309,7 +309,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       end
     end
 
-    ["accepted", "denied"].each do |status|
+    ["accepted", "denied", "rsvp_confirmed"].each do |status|
       should "send notification emails appropriately for #{status} update_acc_status" do
         assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
         put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: status }
