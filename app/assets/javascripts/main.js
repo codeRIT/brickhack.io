@@ -43,6 +43,19 @@ $(document).ready(function () {
 
   $('.toggle-details').toggleDetails();
 
+  $.fn.toggleBlock = function() {
+    var toggle = function() {
+      console.log('clicked');
+      var $this = $(this);
+      $('.info').slideUp();
+      $('#' + $this.data('target') + ':hidden').slideDown();
+    };
+    $(this).each(function() {
+      $(this).on('click', toggle);
+    });
+  };
+  $('.block .name').toggleBlock();
+
   $('[name="questionnaire[international]"]').on('change', function() {
     var $select = $('.questionnaire_state.select select'),
         $text   = $('.questionnaire_state.string input')
