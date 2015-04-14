@@ -65,10 +65,20 @@
     %h4.dashboard-container-title Schools (Applied)
     - hidden_threshold = 5
     %ul
-      - counted_schools = {}
-      - School.where("questionnaire_count >= #{hidden_threshold}").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
-        - counted_schools[school.name] = school.questionnaire_count
-      = bar_chart(height: "600px") { counted_schools }
+      - counted_schools_denied = {}
+      - counted_schools_rsvp_denied = {}
+      - counted_schools_late_waitlist = {}
+      - counted_schools_waitlist = {}
+      - counted_schools_accepted = {}
+      - counted_schools_rsvp_confirmed = {}
+      - School.where("questionnaire_count >= #{hidden_threshold}").select([:id, :name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
+        - counted_schools_denied[school.name] = Questionnaire.where(school_id: school.id, acc_status: "denied").count
+        - counted_schools_rsvp_denied[school.name] = Questionnaire.where(school_id: school.id, acc_status: "rsvp_denied").count
+        - counted_schools_late_waitlist[school.name] = Questionnaire.where(school_id: school.id, acc_status: "late_waitlist").count
+        - counted_schools_waitlist[school.name] = Questionnaire.where(school_id: school.id, acc_status: "waitlist").count
+        - counted_schools_accepted[school.name] = Questionnaire.where(school_id: school.id, acc_status: "accepted").count
+        - counted_schools_rsvp_confirmed[school.name] = Questionnaire.where(school_id: school.id, acc_status: "rsvp_confirmed").count
+      = bar_chart(height: "600px", stacked: true, colors: [green, blue, "#059", "#058", red, "#666"], library: { legend: { enabled: false } }) { [{ name: "RSVP Confirmed", data: counted_schools_rsvp_confirmed}, { name: "Accepted", data: counted_schools_accepted},  { name: "Waitlisted", data: counted_schools_waitlist}, { name: "Late Waitlisted", data: counted_schools_late_waitlist}, { name: "RSVP Denied", data: counted_schools_denied}, { name: "Denied", data: counted_schools_denied}] }
     - if School.where("questionnaire_count >= 1 AND questionnaire_count < #{hidden_threshold}").count > 0
       %button{onclick: "$('#least-applied-schools').toggle()"}= "List schools with < #{hidden_threshold} applicants"
       %ul#least-applied-schools{style: "display: none"}
