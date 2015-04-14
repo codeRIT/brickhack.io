@@ -25,6 +25,15 @@ BrickhackIo::Application.routes.draw do
     root to: "dashboard#index"
     resources :dashboard do
       get :map_data, on: :collection
+      get :todays_activity_data, on: :collection
+      get :todays_stats_data, on: :collection
+      get :confirmation_activity_data, on: :collection
+      get :application_activity_data, on: :collection
+      get :schools_confirmed_data, on: :collection
+      get :user_distribution_data, on: :collection
+      get :application_distribution_data, on: :collection
+      get :schools_confirmed_data, on: :collection
+      get :schools_applied_data, on: :collection
     end
     resources :questionnaires do
       put :convert_to_admin, on: :member
