@@ -30,6 +30,9 @@
 
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
+      = f.input :riding_bus, as: :formatted_boolean, label: "Riding Bus", disabled: !@questionnaire.can_ride_bus?
+      - if !@questionnaire.can_ride_bus?
+        %p (school not eligible for bus)
 
       = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
 
