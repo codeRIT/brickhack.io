@@ -38,7 +38,7 @@ class RsvpsController < ApplicationController
 
   # PUT /rsvp
   def update
-    unless @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted))
+    unless @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_resume))
       flash[:notice] = @questionnaire.errors.full_messages.join(", ")
       redirect_to rsvp_path
       return
@@ -89,7 +89,7 @@ class RsvpsController < ApplicationController
   end
 
   def require_accepted_questionnaire
-    unless @questionnaire.can_rsvp?
+    unless @questionnaire.can_rsvp? || @questionnaire.checked_in?
       redirect_to root_path
     end
   end

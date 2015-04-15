@@ -30,6 +30,7 @@ class MailerTest < ActionMailer::TestCase
 
       assert_match "Joe Smith",                         email.encoded
       assert_match "joe.smith@example.com",             email.encoded
+      assert_match "(123) 456-7890",                    email.encoded
       assert_match @questionnaire.birthday_formatted,   email.encoded
       assert_match "Anytown, NY",                       email.encoded
       assert_match "Example University",                email.encoded
