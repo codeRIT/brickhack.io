@@ -52,6 +52,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not allow_mass_assignment_of :acc_status_author_id
   should_not allow_mass_assignment_of :acc_status_date
   should_not allow_mass_assignment_of :riding_bus
+  should_not allow_mass_assignment_of :is_bus_captain
 
   should allow_value("VA").for(:state)
   should allow_value("NY").for(:state)
