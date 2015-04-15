@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :questionnaire do
     first_name            "John"
     last_name             "Doe"
+    phone                 "(123) 456-7890"
     international         false
     city                  "Rochester"
     state                 "NY"
@@ -13,6 +14,7 @@ FactoryGirl.define do
     shirt_size            "M"
     dietary_medical_notes ""
     agreement_accepted    true
+    can_share_resume      true
 
     association :user
   end

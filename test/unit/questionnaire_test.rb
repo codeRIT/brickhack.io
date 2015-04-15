@@ -19,6 +19,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should validate_presence_of :experience
   should validate_presence_of :interest
   should validate_presence_of :shirt_size
+  should validate_presence_of :phone
   should_not validate_presence_of :dietary_medical_notes
   should_not validate_presence_of :resume
   should_not validate_presence_of :international
@@ -28,6 +29,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not validate_presence_of :acc_status_author_id
   should_not validate_presence_of :acc_status_date
   should_not validate_presence_of :riding_bus
+  should_not validate_presence_of :can_share_resume
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -48,12 +50,14 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :vcs_url
   should allow_mass_assignment_of :agreement_accepted
   should allow_mass_assignment_of :bus_captain_interest
+  should allow_mass_assignment_of :riding_bus
+  should allow_mass_assignment_of :phone
+  should allow_mass_assignment_of :can_share_resume
   should_not allow_mass_assignment_of :checked_in_by
   should_not allow_mass_assignment_of :checked_in_at
   should_not allow_mass_assignment_of :acc_status
   should_not allow_mass_assignment_of :acc_status_author_id
   should_not allow_mass_assignment_of :acc_status_date
-  should_not allow_mass_assignment_of :riding_bus
   should_not allow_mass_assignment_of :is_bus_captain
 
   should allow_value("VA").for(:state)

@@ -8,8 +8,9 @@ class Questionnaire < ActiveRecord::Base
   attr_accessible :birthday, :interest, :experience, :school_id, :school_name
   attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
   attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
+  attr_accessible :riding_bus, :phone, :can_share_resume
 
-  validates_presence_of :first_name, :last_name, :city, :city, :state, :year
+  validates_presence_of :first_name, :last_name, :city, :city, :state, :year, :phone
   validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
   validates_presence_of :agreement_accepted, message: "Must accept"
 

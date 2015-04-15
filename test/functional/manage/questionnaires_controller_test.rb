@@ -239,7 +239,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     should "create questionnaire and user" do
       assert_difference('User.count', 1) do
         assert_difference('Questionnaire.count', 1) do
-          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "test@example.com", agreement_accepted: "1" }
+          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "test@example.com", agreement_accepted: "1" }
         end
       end
 

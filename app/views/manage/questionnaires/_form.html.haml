@@ -9,6 +9,7 @@
       = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
       = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
       = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
+      = f.input :phone, placeholder: "(123) 456-7890", input_html: { "data-validate" => "presence" }
       = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
       = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
@@ -27,6 +28,7 @@
       = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
 
       = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
+      = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
 
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"

@@ -16,7 +16,8 @@
     = simple_form_for @questionnaire, url: url_for(controller: "rsvps", action: "update"), html: { "data-validate" => "form" } do |f|
       .form-inputs
         = f.input :acc_status, as: :radio_buttons, collection: { " Attending" => "rsvp_confirmed", " Not Attending" => "rsvp_denied" }, label: "RSVP Status:"
-        %br
+        = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
+        = f.input :phone, input_html: { "data-validate" => "presence" }
         %p
           Please read the
           %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
