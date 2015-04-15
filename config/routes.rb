@@ -47,6 +47,8 @@ BrickhackIo::Application.routes.draw do
     resources :bus_lists
   end
 
+  resource :bus_list
+
   get "home/index"
 
   # The priority is based upon order of creation:
