@@ -10,10 +10,8 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
       'questionnaires.last_name',
       'users.email',
       'questionnaires.acc_status',
-      'questionnaires.state',
+      'questionnaires.checked_in_at',
       'questionnaires.year',
-      'questionnaires.experience',
-      'questionnaires.interest',
       'schools.name'
     ]
   end
@@ -24,7 +22,6 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
       'questionnaires.first_name',
       'questionnaires.last_name',
       'users.email',
-      'questionnaires.state',
       'schools.name'
     ]
   end
@@ -41,10 +38,8 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
         record.last_name,
         record.email,
         "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
-        record.state,
+        record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
         record.year,
-        record.experience,
-        record.interest,
         record.school.name
       ]
     end

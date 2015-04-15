@@ -89,7 +89,7 @@ class RsvpsController < ApplicationController
   end
 
   def require_accepted_questionnaire
-    unless @questionnaire.can_rsvp?
+    unless @questionnaire.can_rsvp? || @questionnaire.checked_in?
       redirect_to root_path
     end
   end

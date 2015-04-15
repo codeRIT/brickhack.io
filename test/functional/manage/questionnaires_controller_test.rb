@@ -274,6 +274,42 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to manage_questionnaires_path
     end
 
+    should "check in the questionnaire" do
+      put :check_in, id: @questionnaire, check_in: "true"
+      assert 1.minute.ago < @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_match /Checked in/, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "require agreement_accepted to check in" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      put :check_in, id: @questionnaire, check_in: "true"
+      assert_equal nil, @questionnaire.reload.checked_in_at
+      assert_equal nil, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path(@questionnaire)
+    end
+
+    should "accept agreement and check in" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1 }
+      assert 1.minute.ago < @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "undo check in of the questionnaire" do
+      put :check_in, id: @questionnaire, check_in: "false"
+      assert_equal nil, @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_match /no longer/, flash[:notice]
+      assert_redirected_to manage_questionnaires_path
+    end
+
     should "allow access to manage_questionnaires#update_acc_status" do
       put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
       assert_equal "accepted", @questionnaire.reload.acc_status

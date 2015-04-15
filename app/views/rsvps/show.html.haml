@@ -6,7 +6,7 @@
         = flash[:notice]
         %br
         %br
-      - if @questionnaire.acc_status == "rsvp_confirmed"
+      - if @questionnaire.acc_status == "rsvp_confirmed" || @questionnaire.checked_in?
         .fa.fa-check
         Congratulations! You're all set to attend BrickHack.
       - elsif @questionnaire.acc_status == "rsvp_denied"

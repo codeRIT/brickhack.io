@@ -36,6 +36,7 @@ BrickhackIo::Application.routes.draw do
       get :schools_applied_data, on: :collection
     end
     resources :questionnaires do
+      put :check_in, on: :member
       put :convert_to_admin, on: :member
       put :update_acc_status, on: :member
       put :bulk_apply, on: :collection

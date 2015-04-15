@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :convert_to_admin, :update_acc_status]
+  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
 
   respond_to :html
 
@@ -46,6 +46,31 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
     @questionnaire.update_attributes(params[:questionnaire])
     respond_with(:manage, @questionnaire)
+  end
+
+  def check_in
+    if params[:check_in] == "true"
+      if params[:questionnaire] && params[:questionnaire][:agreement_accepted]
+        @questionnaire.update_attribute(:agreement_accepted, params[:questionnaire][:agreement_accepted])
+      end
+      unless @questionnaire.agreement_accepted
+        flash[:notice] = "BrickHack agreement must be accepted to check in."
+        redirect_to manage_questionnaire_path @questionnaire
+        return
+      end
+      @questionnaire.update_attribute(:checked_in_at, Time.now)
+      @questionnaire.update_attribute(:checked_in_by_id, current_user.id)
+      flash[:notice] = "Checked in #{@questionnaire.full_name}."
+    elsif params[:check_in] == "false"
+      @questionnaire.update_attribute(:checked_in_at, nil)
+      @questionnaire.update_attribute(:checked_in_by_id, current_user.id)
+      flash[:notice] = "#{@questionnaire.full_name} no longer checked in."
+    else
+      flash[:notice] = "No check-in action provided!"
+      redirect_to manage_questionnaire_path @questionnaire
+      return
+    end
+    redirect_to manage_questionnaires_path
   end
 
   def convert_to_admin

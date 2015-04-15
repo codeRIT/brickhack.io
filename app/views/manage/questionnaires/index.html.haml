@@ -1,6 +1,9 @@
 %section.section.manage
   %h1.section-title Listing Questionnaires
 
+  - if flash[:notice]
+    #disclaimer= flash[:notice]
+
   %table.questionnaires.datatable.row-border.stripe.hover.order-column{ "data-source" => manage_questionnaires_path(format: :json) }
     %thead
       %tr
@@ -11,10 +14,8 @@
         %th Last name
         %th Email
         %th Status
-        %th State
+        %th Checked In
         %th Year
-        %th Experience
-        %th Interest
         %th School
     %tbody
 
