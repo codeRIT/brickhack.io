@@ -89,7 +89,7 @@
       - if !@questionnaire.checked_in?
         = f.input :agreement_accepted, as: :formatted_boolean, input_html: { "data-validate" => "presence" }
         = f.input :can_share_resume, as: :formatted_boolean
-        = f.input :phone
+        = f.input :phone, input_html: { "data-validate" => "presence" }
       = hidden_field_tag("check_in", !@questionnaire.checked_in?)
       = f.button :submit, value: ( @questionnaire.checked_in? ? "Remove check-in" : "Check In" )
 

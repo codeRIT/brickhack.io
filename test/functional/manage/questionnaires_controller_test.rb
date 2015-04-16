@@ -283,6 +283,22 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to manage_questionnaires_path
     end
 
+    should "check in the questionnaire and update information" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      @questionnaire.update_attribute(:can_share_resume, false)
+      @questionnaire.update_attribute(:phone, "")
+      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      @questionnaire.reload
+      assert 1.minute.ago < @questionnaire.checked_in_at
+      assert_equal @user.id, @questionnaire.checked_in_by_id
+      assert_equal true, @questionnaire.agreement_accepted
+      assert_equal true, @questionnaire.can_share_resume
+      assert_equal "(123) 333-3333", @questionnaire.phone
+      assert_match /Checked in/, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
     should "require agreement_accepted to check in" do
       @questionnaire.update_attribute(:agreement_accepted, false)
       put :check_in, id: @questionnaire, check_in: "true"

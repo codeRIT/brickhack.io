@@ -50,11 +50,11 @@ class Manage::QuestionnairesController < Manage::ApplicationController
 
   def check_in
     if params[:check_in] == "true"
-      if params[:questionnaire] && params[:questionnaire][:agreement_accepted]
-        @questionnaire.update_attribute(:agreement_accepted, params[:questionnaire][:agreement_accepted])
+      if params[:questionnaire]
+        @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_resume))
       end
-      unless @questionnaire.agreement_accepted
-        flash[:notice] = "BrickHack agreement must be accepted to check in."
+      if !@questionnaire.valid?
+        flash[:notice] = @questionnaire.errors.full_messages.join(", ")
         redirect_to manage_questionnaire_path @questionnaire
         return
       end
