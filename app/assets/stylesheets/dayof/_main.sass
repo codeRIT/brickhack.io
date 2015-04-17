@@ -1,7 +1,8 @@
 $red: #F05124
 $blue: #1EBECD
-$yellow: #F7931D
+$yellow-orange: #F7931D
 $green: #26B24A
+$purple: #9A24D1
 
 .day-of
   .header
@@ -20,6 +21,8 @@ $green: #26B24A
       vertical-align: middle
   .footer
     position: relative
+  .sponsor img
+    max-width: 200px
 
 .block
   cursor: pointer
@@ -30,9 +33,11 @@ $green: #26B24A
   &.map
     background: $blue
   &.sponsors
-    background: $yellow
+    background: $yellow-orange
   &.support
     background: $red
+  &.mentors
+    background: $purple
 
 .name
   color: $white
@@ -64,3 +69,13 @@ $green: #26B24A
     font-size: 1.250rem
     font-weight: $font-bold
     margin: 0
+
+// mentor carousel
+.mentor-list.carousel
+  .owl-item > div
+    @include border-radius(4px)
+    background: $white-pure
+    padding: 8px 15px
+  h3
+    color: $orange-light
+    font-weight: $font-bold
