@@ -2,6 +2,17 @@ $(document).ready(function () {
 
   var $sidebar = $('.sidebar');
 
+  if ($('.carousel').length > 0) {
+    $('.maps.carousel').owlCarousel({
+      items: 3,
+      singleItem: true
+    });
+    $('.support.carousel').owlCarousel({
+      items: 3,
+      singleItem: true
+    });
+  }
+
   if ( $sidebar.hasClass('home') ) {
     $('.nav-link, .scroll-to').on('click', function (e) {
       e.preventDefault();
@@ -42,6 +53,18 @@ $(document).ready(function () {
   };
 
   $('.toggle-details').toggleDetails();
+
+  $.fn.toggleBlock = function() {
+    var toggle = function() {
+      var $this = $(this);
+      $('.info').slideUp();
+      $('#' + $this.data('target') + ':hidden').slideDown();
+    };
+    $(this).each(function() {
+      $(this).on('click', toggle);
+    });
+  };
+  $('.block .name').toggleBlock();
 
   $('[name="questionnaire[international]"]').on('change', function() {
     var $select = $('.questionnaire_state.select select'),

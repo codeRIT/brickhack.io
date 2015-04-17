@@ -50,6 +50,7 @@ BrickhackIo::Application.routes.draw do
 
   resource :bus_list
 
+  get "/event", to: "home#event"
   get "home/index"
 
   # The priority is based upon order of creation:

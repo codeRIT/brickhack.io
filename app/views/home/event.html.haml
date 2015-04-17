@@ -1,0 +1,103 @@
+%div{class:"header"}
+  = image_tag('brickhack_logo_v2_filled.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
+%div{class:"block schedule"}
+  %div{class:"container"}
+    %h3{class:"name","data-target" => "schedule"}Schedule
+  %div{class:"info", id:"schedule"}
+    %div{class:"container"}
+      = render partial: "schedule"
+
+%div{class:"block map"}
+  %div{class:"container"}
+    %h3{class:"name","data-target" => "map"}Map
+  %div{class:"info", id:"map"}
+    %div{class:"container"}
+      %div{class:"maps carousel"}
+        = image_tag('maps/brickhack_map_1.jpg', :class => "map", :alt =>'BrickHack Map - First Floor', :title =>'BrickHack Map - First Floor')
+        = image_tag('maps/brickhack_map_2.jpg', :class => "map", :alt =>'BrickHack Map - Second Floor', :title =>'BrickHack Map - Second Floor')
+        = image_tag('maps/brickhack_map_3.jpg', :class => "map", :alt =>'BrickHack Map - Third Floor', :title =>'BrickHack Map - Third Floor')
+      %p{class:"center"} Swipe Friendly
+%div{class:"block support"}
+  %div{class:"container"}
+    %h3{class:"name","data-target" => "support"}FAQ / Support
+  %div{class:"info", id:"support"}
+    %div{class:"container"}
+      %div{class:"support carousel"}
+        %div
+          %h4 Connecting to Wi-FI
+          %p
+            Please use
+            %strong rit_guest
+            to connect to the Internet. If your school is eligible, feel free to use
+            %strong eduroam
+          // FIXME
+          %h4 Opening &amp; Closing Ceremonies
+          %p
+            Both ceremonies will take place in the Innovation/MAGIC Center. There is not enough seating for everyone, but we will be streaming the ceremonies via YouTube in the rooms 1400 and 2400 in Golisano.
+            %a{href:'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA', target:'_blank'}Our Youtube Channel
+
+          %h4 Submissions
+          %p
+            All projects must be submitted to
+            %a{href:'http://brickhack.challengepost.com/', target:'_blank'}ChallengePost
+            by 11 AM on Sunday. While hacking does not end until 12 PM, it will help expedite the expo portion of the event. Be sure to mark what award categories you’re submitting into so we don’t miss judging you for that prize.
+        %div
+          %h4 Tech Talks
+          %p The talks will start 1:00pm. All talks will take place in the Innovation/MAGIC Center. For more details about each talk, please see the Schedule.
+
+          %h4 Food
+          %p Breakfast, Lunch, and Dinner will all be served in the Golisano Atrium.
+          // FIXME
+          %h4 Travel Reimbursements
+          %p Some info....
+      %p{class:"center"} Swipe Friendly
+%div{class:"block sponsors"}
+  %div{class:"container"}
+    %h3{class:"name","data-target" => "sponsors"}Sponsors
+  %div{class:"info", id:"sponsors"}
+    %div{class:"container"}
+      %a{href:"http://dattobackup.com/",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/datto.png", alt:"Datto", :title=>"Datto")
+      %br
+      %a{href:"http://google.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/google.png", alt:"Google", :title=>"Google", id:"google")
+      %a{href:"http://bose.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/bose.png", alt:"Bose", :title=>"Bose", id:"bose")
+      %br
+      %a{href:"http://staples.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/staples.gif", alt:"Staples", :title=>"Staples")
+      %a{href:"http://emc.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/emc.png", alt:"EMC", :title=>"EMC", id:"emc")
+      %a{href:"http://synacor.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/synacor.gif", alt:"Synacor", :title=>"Synacor")
+      %a{href:"http://spotify.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/spotify.gif", alt:"Spotify", :title=>"Spotify")
+      %br
+      %a{href:"http://mozilla.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/mozilla.png", alt:"Mozilla", :title=>"Mozilla",id:'firefox')
+      %a{href:"http://effectiveui.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/effectiveui.gif", alt:"EffectiveUI", :title=>"EffectiveUI")
+      %br
+      %a{href:"http://digitalocean.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/digitalocean.png", alt:"Digital Ocean", :title=>"Digital Ocean", id:"digitalocean")
+      %a{href:"http://twilio.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/twilio.png", alt:"Twilio", :title=>"Twilio", id:'twilio')
+      %br
+      %a{href:"http://hackerrank.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/hackerrank.png", alt:"HackerRank", :title=>"HackerRank", id:"hackerrank")
+      %a{href:"http://namecheap.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/namecheap.gif", alt:"Namecheap", :title=>"Namecheap", id:"namecheap")
+      %a{href:"http://teespring.com",class:'sponsor',target:"_blank"}
+        = image_tag("sponsors/teespring.gif", alt:"Teespring", :title=>"Teespring")
+
+      %h2{class:'section-title'} Partners
+      %a{href:"http://mlh.io/",class:'sponsor',target:"_blank"}
+        = image_tag("partners/mlh.png", alt:"MLH", :title=>"MLH")
+      %a{href:"http://magic.rit.edu/main/index.html",class:'sponsor',target:"_blank"}
+        = image_tag("partners/magic.gif", alt:"MAGIC", :title=>"MAGIC")
+      %a{href:"http://www.rit.edu/research/simonecenter/",class:'sponsor',target:"_blank"}
+        = image_tag("partners/simone.png", alt:"Simone", :title=>"Simone", id: "simone")
+
+%footer{class:"footer"}
+  BrickHack is student run by
+  %a{href:"http://coderit.org", class:"coderit-logo", target:'_blank'} CodeRIT

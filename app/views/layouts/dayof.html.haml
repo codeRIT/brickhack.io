@@ -1,0 +1,12 @@
+!!! 5
+%html
+  %head
+    %title BrickHack
+    = render "layouts/shared_head"
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+  %body
+    %div{class:'day-of'}
+      = yield
+    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/owl.carousel.min.js"

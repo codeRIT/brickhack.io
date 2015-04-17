@@ -1,0 +1,66 @@
+$red: #F05124
+$blue: #1EBECD
+$yellow: #F7931D
+$green: #26B24A
+
+.day-of
+  .header
+    background: $grey-dark
+    color: $white
+    text-align: center
+    margin: 0
+    padding: 8px 0
+    h3
+      display: inline-block
+      margin: 0
+      vertical-align: middle
+    #logo
+      display: inline-block
+      max-width: 60px
+      vertical-align: middle
+  .footer
+    position: relative
+
+.block
+  cursor: pointer
+  &.schedule
+    background: $green
+    .schedule-table
+      margin: 0
+  &.map
+    background: $blue
+  &.sponsors
+    background: $yellow
+  &.support
+    background: $red
+
+.name
+  color: $white
+  font-weight: $font-reg
+  margin: 0
+  padding: 5px 0
+  text-align: center
+
+.info
+  background: $white
+  display: none
+  padding: 5px 0
+
+// map carousel
+.maps.carousel
+  .owl-item
+    text-align: center
+.map
+  width: auto
+
+// support carousel
+.support.carousel
+  .owl-item > div
+    @include border-radius(4px)
+    background: $white-pure
+    padding: 8px 15px
+  h4
+    color: $orange-light
+    font-size: 1.250rem
+    font-weight: $font-bold
+    margin: 0
