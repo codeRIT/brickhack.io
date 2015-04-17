@@ -7,6 +7,10 @@ $(document).ready(function () {
       items: 3,
       singleItem: true
     });
+    $('.support.carousel').owlCarousel({
+      items: 3,
+      singleItem: true
+    });
   }
 
   if ( $sidebar.hasClass('home') ) {

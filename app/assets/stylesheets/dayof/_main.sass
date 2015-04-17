@@ -47,7 +47,20 @@ $green: #26B24A
   padding: 5px 0
 
 // map carousel
-.owl-item
-  text-align: center
+.maps.carousel
+  .owl-item
+    text-align: center
 .map
   width: auto
+
+// support carousel
+.support.carousel
+  .owl-item > div
+    @include border-radius(4px)
+    background: $white-pure
+    padding: 8px 15px
+  h4
+    color: $orange-light
+    font-size: 1.250rem
+    font-weight: $font-bold
+    margin: 0
