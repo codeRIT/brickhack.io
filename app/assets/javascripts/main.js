@@ -8,11 +8,9 @@ $(document).ready(function () {
       singleItem: true
     });
     $('.support.carousel').owlCarousel({
-      items: 3,
       singleItem: true
     });
     $('.mentor-list.carousel').owlCarousel({
-      items: 3,
       singleItem: true
     });
   }
