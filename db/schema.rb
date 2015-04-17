@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150411161432) do
+ActiveRecord::Schema.define(:version => 20150415181114) do
 
   create_table "bus_lists", :force => true do |t|
     t.string   "name"
@@ -72,6 +72,11 @@ ActiveRecord::Schema.define(:version => 20150411161432) do
     t.datetime "acc_status_date"
     t.boolean  "riding_bus",            :default => false
     t.boolean  "bus_captain_interest",  :default => false
+    t.boolean  "is_bus_captain",        :default => false
+    t.integer  "checked_in_by_id"
+    t.datetime "checked_in_at"
+    t.string   "phone"
+    t.boolean  "can_share_resume",      :default => false
   end
 
   add_index "questionnaires", ["user_id"], :name => "index_questionnaires_on_user_id"

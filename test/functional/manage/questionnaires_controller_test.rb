@@ -239,7 +239,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     should "create questionnaire and user" do
       assert_difference('User.count', 1) do
         assert_difference('Questionnaire.count', 1) do
-          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "test@example.com", agreement_accepted: "1" }
+          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "test@example.com", agreement_accepted: "1" }
         end
       end
 
@@ -271,6 +271,58 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
           delete :destroy, id: @questionnaire
         end
       end
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "check in the questionnaire" do
+      put :check_in, id: @questionnaire, check_in: "true"
+      assert 1.minute.ago < @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_match /Checked in/, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "check in the questionnaire and update information" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      @questionnaire.update_attribute(:can_share_resume, false)
+      @questionnaire.update_attribute(:phone, "")
+      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      @questionnaire.reload
+      assert 1.minute.ago < @questionnaire.checked_in_at
+      assert_equal @user.id, @questionnaire.checked_in_by_id
+      assert_equal true, @questionnaire.agreement_accepted
+      assert_equal true, @questionnaire.can_share_resume
+      assert_equal "(123) 333-3333", @questionnaire.phone
+      assert_match /Checked in/, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "require agreement_accepted to check in" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      put :check_in, id: @questionnaire, check_in: "true"
+      assert_equal nil, @questionnaire.reload.checked_in_at
+      assert_equal nil, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path(@questionnaire)
+    end
+
+    should "accept agreement and check in" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1 }
+      assert 1.minute.ago < @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_redirected_to manage_questionnaires_path
+    end
+
+    should "undo check in of the questionnaire" do
+      put :check_in, id: @questionnaire, check_in: "false"
+      assert_equal nil, @questionnaire.reload.checked_in_at
+      assert_equal @user.id, @questionnaire.reload.checked_in_by_id
+      assert_response :redirect
+      assert_match /no longer/, flash[:notice]
       assert_redirected_to manage_questionnaires_path
     end
 
