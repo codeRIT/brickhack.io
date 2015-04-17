@@ -2,6 +2,13 @@ $(document).ready(function () {
 
   var $sidebar = $('.sidebar');
 
+  if ($('.carousel').length > 0) {
+    $('.maps.carousel').owlCarousel({
+      items: 3,
+      singleItem: true
+    });
+  }
+
   if ( $sidebar.hasClass('home') ) {
     $('.nav-link, .scroll-to').on('click', function (e) {
       e.preventDefault();
