@@ -1,15 +1,22 @@
 %section.section.manage
   %h1.section-title Questionnaire View
 
-  .form-container
-    %p#notice= notice
+  - if notice
+    #disclaimer= notice
 
+  .container.container-half
     %p
       %b First name:
       = @questionnaire.first_name
     %p
       %b Last name:
       = @questionnaire.last_name
+    %p
+      %b Email:
+      = @questionnaire.email
+    %p
+      %b Phone:
+      = @questionnaire.phone
     %p
       %b Birthday:
       = @questionnaire.birthday_formatted
@@ -51,13 +58,13 @@
       %b Accepted Agreement:
       = @questionnaire.agreement_accepted ? "Yes" : "<span style='color: red'><strong>NO</strong></span>".html_safe
 
+  .container.container-half
     - unless current_user.admin_read_only
       = link_to 'Edit', edit_manage_questionnaire_path(@questionnaire)
       \|
       = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :put, data: { confirm: "Are you sure? The questionnaire for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }
       \|
     = link_to 'Back', manage_questionnaires_path
-
     %hr
 
     %p
@@ -70,8 +77,23 @@
     %p
       %b Changed On:
       = @questionnaire.acc_status_date ? @questionnaire.acc_status_date : "(no date)"
+    %p
+      %b Checked In At:
+      = @questionnaire.checked_in_at ? @questionnaire.checked_in_at : "(not checked in)"
+    %p
+      %b Check-in Updated By:
+      = @questionnaire.checked_in_by_id ? @questionnaire.checked_in_by.email : "(never checked in)"
 
-    %h4 Change Status:
+    %hr
+    = simple_form_for @questionnaire, url: url_for(action: "check_in", controller: "questionnaires", method: :put), html: { "data-validate" => "form" } do |f|
+      - if !@questionnaire.checked_in?
+        = f.input :agreement_accepted, as: :formatted_boolean, input_html: { "data-validate" => "presence" }
+        = f.input :can_share_resume, as: :formatted_boolean
+        = f.input :phone, input_html: { "data-validate" => "presence" }
+      = hidden_field_tag("check_in", !@questionnaire.checked_in?)
+      = f.button :submit, value: ( @questionnaire.checked_in? ? "Remove check-in" : "Check In" )
+
+    %hr
     = simple_form_for @questionnaire, url: url_for(action: "update_acc_status", controller: "questionnaires") do |f|
       = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:"
       = f.button :submit, value: "Update Status"

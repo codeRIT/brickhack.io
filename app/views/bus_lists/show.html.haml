@@ -1,0 +1,37 @@
+%section.section{style: "padding-left: 20px; padding-right: 20px"}
+  %h1.section-title Bus List
+  %p#notice= notice
+
+  %p Thank you for being a bus captain! Below is any information you may need about your passengers.
+
+  %ul
+    %li Only students on this list may board the bus. No exceptions.
+    %li If a student was accepted but didn't RSVP or sign up for the bus, they can go to https://brickhack.io/rsvp to do so.
+    %li If any emergencies arise, call (973) 517-5138.
+
+  %p
+    %b Bus List Name:
+    = @bus_list.name
+
+  %p
+    %strong Passengers:
+  %table.table
+    %thead
+      %tr
+        %th First Name
+        %th Last Name
+        %th Email
+        %th School Name
+    %tbody
+      - @bus_list.passengers.each do |p|
+        %tr
+          %td= p.first_name
+          %td= p.last_name
+          %td= p.email
+          %td= p.school.name
+
+  %p
+    %b General Notes:
+  %hr
+  = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"
+  %hr

@@ -20,7 +20,7 @@ gem 'ajax-datatables-rails'
 gem 'roadie-rails'
 gem 'chartkick'
 gem 'groupdate'
-gem 'chartkick-remote'
+gem 'font-awesome-rails' # needed for icon helpers
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
