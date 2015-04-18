@@ -65,13 +65,15 @@ class RsvpsController < ApplicationController
       @questionnaire.bus_captain_interest = params[:questionnaire][:bus_captain_interest]
     end
 
+    acc_status_changed = @questionnaire.acc_status_changed?
+
     unless @questionnaire.save(without_protection: true)
       flash[:notice] = @questionnaire.errors.full_message.join(", ")
       redirect_to rsvp_path
       return
     end
 
-    Mailer.delay.rsvp_confirmation_email(@questionnaire.id) if @questionnaire.reload.acc_status == "rsvp_confirmed"
+    Mailer.delay.rsvp_confirmation_email(@questionnaire.id) if acc_status_changed && @questionnaire.acc_status == "rsvp_confirmed"
 
     redirect_to rsvp_path
   end

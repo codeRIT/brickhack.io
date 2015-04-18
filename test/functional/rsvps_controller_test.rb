@@ -140,6 +140,12 @@ class RsvpsControllerTest < ActionController::TestCase
       assert_redirected_to rsvp_path
     end
 
+    should "not send email if updating info after confirming" do
+      @questionnaire.update_attribute(:acc_status, "rsvp_confirmed")
+      put :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent"
+    end
+
     should "allow riding a bus if school has bus list" do
       bus_list = create(:bus_list)
       @questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
