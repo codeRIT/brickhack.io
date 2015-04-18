@@ -27,6 +27,8 @@ class BulkMessageWorker
         recipients += Questionnaire.where(acc_status: "rsvp_confirmed").select(:user_id).map(&:user_id)
       when "rsvp-denied"
         recipients += Questionnaire.where(acc_status: "rsvp_denied").select(:user_id).map(&:user_id)
+      when "checked-in"
+        recipients += Questionnaire.where("checked_in_at != 0").select(:user_id).map(&:user_id)
       when "bus-list-cornell"
         recipients += BusList.find(1).passengers.map(&:user_id)
       when "bus-list-binghamton"

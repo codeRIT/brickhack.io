@@ -19,6 +19,7 @@ class Message < ActiveRecord::Base
     "late-waitlisted" => "Late, Waitlisted Applications",
     "rsvp-confirmed" => "RSVP Confirmed Attendees",
     "rsvp-denied" => "RSVP Denied Attendees",
+    "checked-in" => "Checked-In Attendees",
     "bus-list-cornell" => "Bus List: Cornell (Confirmed)",
     "bus-list-binghamton" => "Bus List: Binghamton (Confirmed)",
     "bus-list-buffalo" => "Bus List: Buffalo (Confirmed)",
