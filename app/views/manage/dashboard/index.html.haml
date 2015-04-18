@@ -26,10 +26,10 @@
   .container.container-full
     %h4.dashboard-container-title Confirmation Activity
     .graph-overlay.double-metrics
+      %h3= Questionnaire.where("checked_in_at != 0").count
+      %p total checked in
       %h3= Questionnaire.where(acc_status: "rsvp_confirmed").count
       %p total confirmed
-      %h3= Questionnaire.where(acc_status: "rsvp_denied").count
-      %p total denied
     = area_chart confirmation_activity_data_manage_dashboard_index_path, colors: [green, red], library: { legend: { enabled: false } }
 
   .container.container-full
