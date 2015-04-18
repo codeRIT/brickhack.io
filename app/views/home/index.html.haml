@@ -4,4 +4,9 @@
       = image_tag('brickhack_logo_v2_filled.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
 
       %h2 Looking for the event information?
-      %a{href:'/event',class:'button'}Click Here
+      %p= btn_link_to "Click Here &raquo;".html_safe, event_path
+      - if current_user && current_user.admin?
+        %p= btn_link_to "Manage &raquo;".html_safe, manage_root_path
+      - else
+        %p Need access to your account?
+        %p= btn_link_to "Account &raquo;".html_safe, rsvp_path
