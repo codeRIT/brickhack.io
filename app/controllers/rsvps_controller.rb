@@ -86,13 +86,13 @@ class RsvpsController < ApplicationController
 
   def check_user_has_questionnaire
     if current_user.questionnaire.nil?
-      redirect_to root_path
+      redirect_to new_questionnaire_path
     end
   end
 
   def require_accepted_questionnaire
     unless @questionnaire.can_rsvp? || @questionnaire.checked_in?
-      redirect_to root_path
+      redirect_to new_questionnaire_path
     end
   end
 

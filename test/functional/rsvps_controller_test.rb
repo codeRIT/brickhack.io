@@ -42,22 +42,22 @@ class RsvpsControllerTest < ActionController::TestCase
 
     should "redirect to root page on rsvp#index" do
       get :show
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#accept" do
       get :accept
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#deny" do
       get :deny
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#update" do
       put :update
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
   end
 
@@ -70,22 +70,22 @@ class RsvpsControllerTest < ActionController::TestCase
 
     should "redirect to root page on rsvp#index" do
       get :show
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#accept" do
       get :accept
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#deny" do
       get :deny
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
 
     should "redirect to root page on rsvp#update" do
       put :update
-      assert_redirected_to root_path
+      assert_redirected_to new_questionnaire_path
     end
   end
 
