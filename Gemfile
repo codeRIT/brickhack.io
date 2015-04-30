@@ -5,6 +5,7 @@ gem 'rails', '3.2.16'
 gem 'mysql2'
 
 gem 'rollbar', '~> 1.4.2'
+gem 'skylight'
 
 gem 'sidekiq', '< 3'
 gem 'sinatra', :require => nil
