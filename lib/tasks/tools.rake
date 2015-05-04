@@ -92,15 +92,26 @@ namespace :tools do
         }
       ]
     }
-    result = client.execute(
-      api_method:  drive.files.copy,
-      body_object: new_file_body,
-      parameters:  { fileId: file_id }
-    )
-    if result.status == 200
-      return result.data
-    else
-      puts "Error: #{file_id} could not be moved: #{result.data['error']['message']}"
+    begin
+      result = client.execute(
+        api_method:  drive.files.copy,
+        body_object: new_file_body,
+        parameters:  { fileId: file_id }
+      )
+      if result.status == 200
+        return result.data
+      else
+        puts "Error: #{file_id} could not be moved: #{result.data['error']['message']}"
+        if result.data['error']['message'] == "User rate limit exceeded"
+          raise "Rate Limit Exceeded"
+        end
+      end
+    rescue => e
+      if e.message == "Rate Limit Exceeded"
+        puts "Sleeping..."
+        sleep 5
+        retry
+      end
     end
   end
 
