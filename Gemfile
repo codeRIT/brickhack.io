@@ -25,6 +25,7 @@ gem 'font-awesome-rails' # needed for icon helpers
 
 gem 'strip_attributes'
 gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
+gem 'paperclip', '< 4.3' # drops support for Ruby 1.9.3
 
 gem 'email_validator'
 gem 'validate_url'

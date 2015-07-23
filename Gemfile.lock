@@ -189,7 +189,7 @@ GEM
       powerbar
     minitest-test (1.1.0)
       minitest (~> 4.0)
-    multi_json (1.10.1)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
     mysql2 (0.3.18)
     mysql2 (0.3.18-x86-mingw32)
@@ -202,10 +202,10 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
-    paperclip (4.2.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.2.4)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
     polyglot (0.3.5)
     powerbar (1.0.12)
@@ -354,6 +354,7 @@ DEPENDENCIES
   minitest-rails
   minitest-reporters
   mysql2
+  paperclip (< 4.3)
   paperclip-googledrive!
   rails (= 3.2.16)
   roadie-rails
