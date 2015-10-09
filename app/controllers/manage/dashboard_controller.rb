@@ -78,7 +78,7 @@ class Manage::DashboardController < Manage::ApplicationController
       counted_schools_accepted[school_name] = data["accepted"] || 0
       counted_schools_rsvp_confirmed[school_name] = data["rsvp_confirmed"] || 0
     end
-    render :json => [{ name: "RSVP Confirmed", data: counted_schools_rsvp_confirmed}, { name: "Accepted", data: counted_schools_accepted},  { name: "Waitlisted", data: counted_schools_waitlist}, { name: "Late Waitlisted", data: counted_schools_late_waitlist}, { name: "RSVP Denied", data: counted_schools_denied}, { name: "Denied", data: counted_schools_denied}]
+    render :json => [{ name: "RSVP Confirmed", data: counted_schools_rsvp_confirmed}, { name: "Accepted", data: counted_schools_accepted},  { name: "Waitlisted", data: counted_schools_waitlist}, { name: "Late Waitlisted", data: counted_schools_late_waitlist}, { name: "RSVP Denied", data: counted_schools_rsvp_denied}, { name: "Denied", data: counted_schools_denied}]
   end
 
   private
