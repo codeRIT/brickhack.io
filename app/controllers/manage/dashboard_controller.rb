@@ -48,37 +48,24 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def schools_confirmed_data
-    schools = Questionnaire.where(acc_status: "rsvp_confirmed").select([:school_id]).map(&:school)
-    counted_confirmed_schools = {}
-    schools.each do |school|
-      counted_confirmed_schools[school.name] ||= 0
-      counted_confirmed_schools[school.name] += 1
-    end
-    render :json => counted_confirmed_schools.sort_by { |name, count| count }.reverse
+    schools = Questionnaire.count(include: :school, group: "schools.name", conditions: "acc_status = 'rsvp_confirmed'")
+    render :json => schools.sort_by { |name, count| count }.reverse
   end
 
   def schools_applied_data
-    counted_schools_denied = {}
-    counted_schools_rsvp_denied = {}
-    counted_schools_late_waitlist = {}
-    counted_schools_waitlist = {}
-    counted_schools_accepted = {}
-    counted_schools_rsvp_confirmed = {}
-    counted_schools = {}
-    schools = School.where("questionnaire_count >= 5").select([:id, :name]).order("questionnaire_count DESC")
-    schools.each do |school|
-      counted_schools[school.name] = Questionnaire.where(school_id: school.id).select([:id, :acc_status]).group_by(&:acc_status).map { |a, b| { a => b.count } }
+    counted_schools = {
+      "denied" => {},
+      "rsvp_denied" => {},
+      "late_waitlist" => {},
+      "waitlist" => {},
+      "accepted" => {},
+      "rsvp_confirmed" => {}
+    }
+    result = Questionnaire.joins(:school).group(:acc_status).count(group: "schools.name", conditions: "schools.questionnaire_count >= 5", order: "schools.questionnaire_count DESC")
+    result.each do |group, count|
+      counted_schools[group[0]][group[1]] = count
     end
-    counted_schools.each do |school_name, data|
-      data = data.reduce Hash.new, :merge
-      counted_schools_denied[school_name] = data["denied"] || 0
-      counted_schools_rsvp_denied[school_name] = data["rsvp_denied"] || 0
-      counted_schools_late_waitlist[school_name] = data["late_waitlist"] || 0
-      counted_schools_waitlist[school_name] = data["waitlist"] || 0
-      counted_schools_accepted[school_name] = data["accepted"] || 0
-      counted_schools_rsvp_confirmed[school_name] = data["rsvp_confirmed"] || 0
-    end
-    render :json => [{ name: "RSVP Confirmed", data: counted_schools_rsvp_confirmed}, { name: "Accepted", data: counted_schools_accepted},  { name: "Waitlisted", data: counted_schools_waitlist}, { name: "Late Waitlisted", data: counted_schools_late_waitlist}, { name: "RSVP Denied", data: counted_schools_rsvp_denied}, { name: "Denied", data: counted_schools_denied}]
+    render :json => [{ name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]}, { name: "Accepted", data: counted_schools["accepted"]},  { name: "Waitlisted", data: counted_schools["waitlist"]}, { name: "Late Waitlisted", data: counted_schools["late_waitlist"]}, { name: "RSVP Denied", data: counted_schools["rsvp_denied"]}, { name: "Denied", data: counted_schools["denied"]}]
   end
 
   private
