@@ -36,15 +36,18 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def user_distribution_data
     totalStatsData = {}
+    total_count = Questionnaire.count
     rit_count = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").count
-    totalStatsData["Non-Applied Users"] = User.count - Questionnaire.count
-    totalStatsData["Non-RIT Applications"] = Questionnaire.count - rit_count
+    totalStatsData["Non-Applied Users"] = User.count - total_count
+    totalStatsData["Non-RIT Applications"] = total_count - rit_count
     totalStatsData["RIT Applications"] = rit_count
     render :json => totalStatsData
   end
 
   def application_distribution_data
-    render json: { "Accepted" => Questionnaire.where(acc_status: "accepted").count, "RSVP Confirmed" => Questionnaire.where(acc_status: "rsvp_confirmed").count, "RSVP Denied" => Questionnaire.where(acc_status: "rsvp_denied").count, "Denied" => Questionnaire.where(acc_status: "denied").count, "Waitlisted" => Questionnaire.where(acc_status: "waitlist").count, "Late Waitlisted" => Questionnaire.where(acc_status: "late_waitlist").count }
+    groups = Questionnaire.count(group: :acc_status)
+    groups.keys.each { |short_status, count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
+    render json: groups
   end
 
   def schools_confirmed_data
