@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.22'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.10'
 
 gem 'rollbar', '~> 2.4'
 gem 'skylight'
