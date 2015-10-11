@@ -148,7 +148,7 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     hashie (3.4.2)
-    highcharts-rails (3.0.10)
+    highcharts-rails (4.1.8)
       railties (>= 3.1)
     hike (1.2.3)
     i18n (0.7.0)
@@ -335,7 +335,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   chartkick
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   devise
   devise-async
   email_validator
@@ -345,7 +345,7 @@ DEPENDENCIES
   guard
   guard-minitest
   haml-rails
-  highcharts-rails (~> 3.0.0)
+  highcharts-rails (~> 4.1.8)
   jquery-datatables-rails!
   jquery-rails
   jquery-ui-sass-rails
@@ -360,7 +360,7 @@ DEPENDENCIES
   roadie-rails
   rollbar (~> 2.4)
   ruby-prof
-  sass-rails (~> 3.2.3)
+  sass-rails
   selectize-rails
   shoulda
   sidekiq (< 3)
