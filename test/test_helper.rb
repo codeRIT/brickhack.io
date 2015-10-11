@@ -1,9 +1,9 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path("../../config/environment", __FILE__)
 
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
 require "strip_attributes/matchers"
