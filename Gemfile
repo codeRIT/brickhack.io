@@ -33,14 +33,14 @@ gem 'validate_url'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   gem 'jquery-ui-sass-rails'
   gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails' # issue with images, PR #158
 
   gem 'selectize-rails'
-  gem 'highcharts-rails', '~> 3.0.0'
+  gem 'highcharts-rails', '~> 4.1.8'
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -60,6 +60,7 @@ group :test do
   gem 'valid_attribute'
   gem 'ruby-prof'
   gem 'factory_girl_rails'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 gem 'jquery-rails'

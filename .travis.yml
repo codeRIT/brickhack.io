@@ -20,3 +20,6 @@ deploy:
   domain: coderit
   on:
     repo: codeRIT/brickhack.io
+addons:
+    code_climate:
+        repo_token: c13cf427384c2291d3fac2745b3b4012541adab0993853175d89f91671762ddb
