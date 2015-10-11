@@ -60,6 +60,7 @@ group :test do
   gem 'valid_attribute'
   gem 'ruby-prof'
   gem 'factory_girl_rails'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 gem 'jquery-rails'
