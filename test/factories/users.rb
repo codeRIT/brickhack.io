@@ -1,16 +1,22 @@
 FactoryGirl.define do
   factory :user do
-    email "foo@example.com"
+    sequence :email do |n|
+      "foo#{n}@example.com"
+    end
     password "password"
 
     factory :admin do
-      email "admin@example.com"
+      sequence :email do |n|
+        "admin#{n}@example.com"
+      end
       admin true
       admin_read_only false
     end
 
     factory :read_only_admin do
-      email "read_only_admin@example.com"
+      sequence :email do |n|
+        "read_only_admin#{n}@example.com"
+      end
       admin true
       admin_read_only true
     end
