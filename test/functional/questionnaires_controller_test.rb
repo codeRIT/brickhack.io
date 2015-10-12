@@ -90,6 +90,15 @@ class QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to questionnaire_path(assigns(:questionnaire))
     end
 
+    context "with an invalid questionnaire" do
+      should "not allow creation" do
+        @questionnaire.delete
+        assert_difference('Questionnaire.count', 0) do
+          post :create, questionnaire: { first_name: "My first name" }
+        end
+      end
+    end
+
     context "#school_name" do
       context "on create" do
         should "save existing school name" do
@@ -136,6 +145,13 @@ class QuestionnairesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "get edit with questionnaire resume" do
+      @questionnaire.resume = sample_file("sample_pdf.pdf")
+      @questionnaire.save
+      get :edit, id: @questionnaire
+      assert_response :success
+    end
+
     should "update questionnaire" do
       put :update, id: @questionnaire, questionnaire: { first_name: "Foo" }
       assert_redirected_to questionnaire_path(assigns(:questionnaire))
@@ -147,6 +163,14 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
+    end
+
+    context "with invalid questionnaire params" do
+      should "not allow updates" do
+        saved_first_name = @questionnaire.first_name
+        put :update, id: @questionnaire, questionnaire: { first_name: "" }
+        assert_equal saved_first_name, @questionnaire.reload.first_name
+      end
     end
 
     context "accessing a non-owned questionnaire" do
@@ -173,6 +197,14 @@ class QuestionnairesControllerTest < ActionController::TestCase
         get :show, id: 0
         assert_response :redirect
         assert_redirected_to new_questionnaire_path
+      end
+    end
+
+    context "accessing #new after already submitting a questionnaire" do
+      should "redirect to existing questionnaire" do
+        get :new
+        assert_response :redirect
+        assert_redirected_to questionnaire_path(@questionnaire)
       end
     end
 

@@ -114,12 +114,28 @@ class QuestionnaireTest < ActiveSupport::TestCase
                 .rejecting('text/plain', 'image/png', 'image/jpg', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
   should validate_attachment_size(:resume).less_than(2.megabytes)
 
+  should "allow deletion of attachment via method" do
+    questionnaire = create(:questionnaire)
+    questionnaire.resume = sample_file()
+    assert_equal "sample_pdf.pdf", questionnaire.resume_file_name
+    questionnaire.delete_resume = "1"
+    questionnaire.save
+    assert_equal false, questionnaire.resume?
+    assert_nil questionnaire.resume_file_name
+  end
+
   should allow_value('foo.com').for(:portfolio_url)
   should allow_value('github.com/foo', 'bitbucket.org/sman591').for(:vcs_url)
   should allow_value('https://github.com/foo', 'https://bitbucket.org/sman591').for(:vcs_url)
   should_not allow_value('http://foo.com', 'https://bar.com').for(:vcs_url)
 
   context "#school" do
+    should "return nil if no school set" do
+      questionnaire = create(:questionnaire)
+      questionnaire.update_attribute(:school_id, nil)
+      assert_nil questionnaire.school
+    end
+
     should "return the current school" do
       school = create(:school, name: "My University")
       questionnaire = create(:questionnaire, school_id: school.id)
@@ -206,6 +222,58 @@ class QuestionnaireTest < ActiveSupport::TestCase
     should "return false for non-accepted questionnaires" do
       questionnaire = create(:questionnaire, acc_status: "denied")
       assert !questionnaire.can_rsvp?
+    end
+  end
+
+  context "#can_ride_bus?" do
+    should "return false if no school set" do
+      questionnaire = create(:questionnaire)
+      questionnaire.update_attribute(:school_id, nil)
+      assert_equal false, questionnaire.can_ride_bus?
+    end
+
+    should "return false if school does not have bus" do
+      questionnaire = create(:questionnaire)
+      questionnaire.school.update_attribute(:bus_list_id, nil)
+      assert_equal false, questionnaire.can_ride_bus?
+    end
+
+    should "return true if school has a bus" do
+      questionnaire = create(:questionnaire)
+      bus_list = create(:bus_list)
+      questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
+      assert_equal true, questionnaire.can_ride_bus?
+    end
+  end
+
+  context "#checked_in_by" do
+    should "return no one if not checked in" do
+      questionnaire = create(:questionnaire)
+      assert_nil questionnaire.checked_in_by
+      assert_nil questionnaire.checked_in_by_id
+    end
+
+    should "return user who checked in ther questionnaire" do
+      user = create(:user)
+      questionnaire = create(:questionnaire, checked_in_by_id: user.id)
+      assert_equal user.id, questionnaire.checked_in_by.id
+      assert_equal user.id, questionnaire.checked_in_by_id
+    end
+  end
+
+  context "#fips_code" do
+    should "return fips code" do
+      school = create(:school, city: "Rochester", state: "NY")
+      create(:fips, fips_code: "36055", city: "Rochester", state: "NY")
+      questionnaire = create(:questionnaire, school: school)
+      assert_equal "36055", questionnaire.fips_code.fips_code
+    end
+
+    should "return null if no fips code" do
+      school = create(:school, city: "Not Found", state: "NF")
+      create(:fips, fips_code: "36055", city: "Rochester", state: "NY")
+      questionnaire = create(:questionnaire, school: school)
+      assert_nil questionnaire.fips_code
     end
   end
 

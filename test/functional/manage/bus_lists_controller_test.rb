@@ -18,6 +18,12 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_response 401
     end
 
+    should "not allow access to manage_bus_lists#new" do
+      get :new
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_bus_lists#show" do
       get :show, id: @bus_list
       assert_response :redirect
@@ -64,6 +70,12 @@ class Manage::BusListsControllerTest < ActionController::TestCase
 
     should "not allow access to manage_bus_lists datatables api" do
       get :index, format: :json
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_bus_lists#new" do
+      get :new
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -156,6 +168,11 @@ class Manage::BusListsControllerTest < ActionController::TestCase
 
     should "allow access to manage_bus_lists#index" do
       get :index
+      assert_response :success
+    end
+
+    should "allow access to manage_bus_lists#new" do
+      get :new
       assert_response :success
     end
 

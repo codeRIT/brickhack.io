@@ -101,6 +101,16 @@ class RsvpsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "not update status for invalid questionnaire" do
+      [:accept, :deny].each do |status|
+        @questionnaire.update_attribute(:agreement_accepted, false)
+        @questionnaire.update_attribute(:acc_status, "accepted")
+        get status
+        assert_match /error/, flash[:notice]
+        assert_equal "accepted", @questionnaire.reload.acc_status
+      end
+    end
+
     should "update the questionnaire status to accepted" do
       get :accept
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
@@ -155,6 +165,36 @@ class RsvpsControllerTest < ActionController::TestCase
       assert_equal 1, bus_list.passengers.count
       assert_redirected_to rsvp_path
     end
-  end
 
+    should "allow updates to questionnaire via rsvp page" do
+      put :update, questionnaire: { phone: "1234567890" }
+      assert_equal "1234567890", @questionnaire.reload.phone
+      assert_redirected_to rsvp_path
+    end
+
+    should "not allow invalid updates to questionnaire via rsvp page" do
+      @questionnaire.update_attribute(:phone, "1111111111")
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      put :update, questionnaire: { phone: "1234567890" }
+      assert_not_nil flash[:notice]
+      assert_equal "1111111111", @questionnaire.reload.phone
+      assert_redirected_to rsvp_path
+    end
+
+    should "not allow updates to invalid questionnaire via rsvp page" do
+      @questionnaire.update_attribute(:phone, "1111111111")
+      @questionnaire.update_attribute(:first_name, "")
+      put :update, questionnaire: { phone: "1234567890" }
+      assert_not_nil flash[:notice]
+      assert_equal "1111111111", @questionnaire.reload.phone
+      assert_redirected_to rsvp_path
+    end
+
+    should "not allow forbidden status update to questionnaire" do
+      put :update, questionnaire: { acc_status: "pending" }
+      assert_equal "accepted", @questionnaire.reload.acc_status
+      assert_match /select a RSVP status/, flash[:notice]
+      assert_redirected_to rsvp_path
+    end
+  end
 end

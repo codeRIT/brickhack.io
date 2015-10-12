@@ -36,6 +36,10 @@ FactoryGirl.reload
 # Uncomment for awesome colorful output
 # require "minitest/pride"
 
+def sample_file(filename = "sample_pdf.pdf")
+  File.new("test/fixtures/#{filename}")
+end
+
 class Test::Unit::TestCase
   extend StripAttributes::Matchers
 end

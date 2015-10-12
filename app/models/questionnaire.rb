@@ -84,7 +84,7 @@ class Questionnaire < ActiveRecord::Base
   end
 
   def school
-    School.find(school_id)
+    School.find(school_id) if school_id
   end
 
   def full_name
@@ -122,7 +122,7 @@ class Questionnaire < ActiveRecord::Base
   end
 
   def can_ride_bus?
-    school.bus_list_id?
+    school.present? && school.bus_list_id?
   end
 
   def bus_list

@@ -23,6 +23,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response 401
     end
 
+    should "not allow access to manage_questionnaires#new" do
+      get :new
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_questionnaires#show" do
       get :show, id: @questionnaire
       assert_response :redirect
@@ -86,6 +92,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_questionnaires datatables api" do
       get :index, format: :json
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_questionnaires#new" do
+      get :new
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -226,6 +238,11 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "allow access to manage_questionnaires#new" do
+      get :new
+      assert_response :success
+    end
+
     should "allow access to manage_questionnaires#show" do
       get :show, id: @questionnaire
       assert_response :success
@@ -245,6 +262,26 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
       assert_equal "test@example.com", assigns(:questionnaire).email
       assert_redirected_to manage_questionnaire_path(assigns(:questionnaire))
+    end
+
+    should "not create an invalid questionnaire user" do
+      create(:user, email: "taken@example.com")
+      assert_difference('User.count', 0) do
+        assert_difference('Questionnaire.count', 1) do
+          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "taken@example.com", agreement_accepted: "1" }
+        end
+      end
+      assert_match /Email has already been taken/, flash[:notice][0]
+      assert_redirected_to edit_manage_questionnaire_path(assigns(:questionnaire))
+    end
+
+    should "create school if doesn't exist in questionnaire" do
+      assert_difference('Questionnaire.count', 1) do
+        assert_difference('School.count', 1) do
+          post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_name: "My New School", email: "taken@example.com", agreement_accepted: "1" }
+        end
+      end
+      assert_equal "My New School", assigns(:questionnaire).school.name
     end
 
     should "update questionnaire" do
@@ -297,6 +334,24 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_match /Checked in/, flash[:notice]
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
+    end
+
+    should "require a new action to check in" do
+      @questionnaire.update_attribute(:agreement_accepted, false)
+      @questionnaire.update_attribute(:can_share_resume, false)
+      @questionnaire.update_attribute(:phone, "")
+      @questionnaire.update_attribute(:checked_in_at, nil)
+      @questionnaire.update_attribute(:checked_in_by_id, nil)
+      put :check_in, id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      @questionnaire.reload
+      assert_equal nil, @questionnaire.checked_in_at
+      assert_equal nil, @questionnaire.checked_in_by_id
+      assert_equal false, @questionnaire.agreement_accepted
+      assert_equal false, @questionnaire.can_share_resume
+      assert_equal "", @questionnaire.phone
+      assert_match /No check-in action provided/, flash[:notice]
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path(@questionnaire)
     end
 
     should "require agreement_accepted to check in" do
@@ -359,6 +414,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
         put :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
         assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
       end
+    end
+
+    should "fail manage_questionnaires#update_acc_status when missing status" do
+      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "" }
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
+      assert_response :redirect
     end
 
     ["accepted", "denied", "rsvp_confirmed"].each do |status|
