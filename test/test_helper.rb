@@ -3,6 +3,14 @@ ENV["RAILS_ENV"] = "test"
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+if ENV["RUN_COVERAGE"] == "1"
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter "vendor/"
+    add_filter "lib/openshift_secret_generator.rb"
+  end
+end
+
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
