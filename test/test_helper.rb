@@ -3,6 +3,14 @@ ENV["RAILS_ENV"] = "test"
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
+if ENV["RUN_COVERAGE"] == "1"
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter "vendor/"
+    add_filter "lib/openshift_secret_generator.rb"
+  end
+end
+
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
@@ -35,6 +43,10 @@ FactoryGirl.reload
 
 # Uncomment for awesome colorful output
 # require "minitest/pride"
+
+def sample_file(filename = "sample_pdf.pdf")
+  File.new("test/fixtures/#{filename}")
+end
 
 class Test::Unit::TestCase
   extend StripAttributes::Matchers

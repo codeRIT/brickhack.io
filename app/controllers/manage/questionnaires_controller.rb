@@ -32,6 +32,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
         @questionnaire.user = user
         @questionnaire.save
       else
+        flash[:notice] = user.errors.full_messages
         return redirect_to edit_manage_questionnaire_path(@questionnaire)
       end
     end
@@ -92,6 +93,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     if new_status.blank?
       flash[:notice] = "No status provided"
       redirect_to(manage_questionnaire_path(@questionnaire))
+      return
     end
 
     @questionnaire.acc_status = new_status

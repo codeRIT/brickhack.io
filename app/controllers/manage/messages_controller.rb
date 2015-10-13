@@ -57,7 +57,6 @@ class Manage::MessagesController < Manage::ApplicationController
 
     def check_message_access
       unless @message.can_edit?
-        puts @message.inspect
         flash[:notice] = "Message can no longer be modified"
         return redirect_to manage_message_path(@message)
       end

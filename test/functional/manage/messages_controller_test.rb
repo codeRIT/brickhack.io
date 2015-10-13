@@ -24,6 +24,12 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response 401
     end
 
+    should "not allow access to manage_messages#new" do
+      get :new
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_messages#show" do
       get :show, id: @message
       assert_response :redirect
@@ -77,6 +83,12 @@ class Manage::MessagesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_messages datatables api" do
       get :index, format: :json
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_messages#new" do
+      get :new
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -192,6 +204,11 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "allow access to manage_messages#new" do
+      get :new
+      assert_response :success
+    end
+
     should "create a new message" do
       post :create, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" }
       assert_response :redirect
@@ -219,6 +236,21 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_equal 1, BulkMessageWorker.jobs.size, "should trigger messages worker"
       assert_match /queued/, flash[:notice]
       assert_redirected_to manage_message_path(assigns(:message))
+    end
+
+    should "not allow multiple deliveries" do
+      put :deliver, id: @message
+      assert_match /queued/, flash[:notice]
+      put :deliver, id: @message
+      assert_match /cannot/, flash[:notice]
+    end
+
+    should "not be able to modify message after delivery" do
+      @message.update_attribute(:delivered_at, 1.minute.ago)
+      old_message_name = @message.name
+      put :update, id: @message, message: { name: "New Message Name" }
+      assert_match /can no longer/, flash[:notice]
+      assert_equal old_message_name, @message.reload.name
     end
 
     should "destroy message" do

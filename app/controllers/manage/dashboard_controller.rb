@@ -24,16 +24,6 @@ class Manage::DashboardController < Manage::ApplicationController
     render :json => activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.now)
   end
 
-  def schools_confirmed_data
-    schools = Questionnaire.where(acc_status: "rsvp_confirmed").select([:school_id]).map(&:school)
-    counted_confirmed_schools = {}
-    schools.each do |school|
-      counted_confirmed_schools[school.name] ||= 0
-      counted_confirmed_schools[school.name] += 1
-    end
-    render :json => counted_confirmed_schools.sort_by { |name, count| count }.reverse
-  end
-
   def user_distribution_data
     totalStatsData = {}
     total_count = Questionnaire.count
@@ -57,6 +47,7 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def schools_applied_data
     counted_schools = {
+      "pending" => {},
       "denied" => {},
       "rsvp_denied" => {},
       "late_waitlist" => {},

@@ -1,7 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_filter :logged_in
   before_filter :restrict_questionnaire_access
-  before_filter :check_user_has_questionnaire, only: [:show, :edit, :update, :destroy]
 
   def logged_in
     authenticate_user!
@@ -110,12 +109,6 @@ class QuestionnairesController < ApplicationController
     if params[:id].present? && current_user.questionnaire.to_param != params[:id]
       return redirect_to new_questionnaire_path unless current_user.questionnaire.present?
       return redirect_to questionnaire_path(current_user.questionnaire)
-    end
-  end
-
-  def check_user_has_questionnaire
-    if current_user.questionnaire.nil?
-      redirect_to new_questionnaire_path
     end
   end
 

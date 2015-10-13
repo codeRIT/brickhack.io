@@ -35,6 +35,36 @@ class Manage::DashboardControllerTest < ActionController::TestCase
       get :index
       assert_response :success
     end
+
+    should "allow access to all data endpoints" do
+      school1 = FactoryGirl.create(:school)
+      school2 = FactoryGirl.create(:school)
+      FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "pending")
+      FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "accepted")
+      FactoryGirl.create_list(:questionnaire, 10, school_id: school2.id, acc_status: "accepted")
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, name|
+        FactoryGirl.create_list(:questionnaire, 1, school_id: school2.id, acc_status: status)
+      end
+
+      paths = [
+        :todays_activity_data,
+        :todays_stats_data,
+        :confirmation_activity_data,
+        :application_activity_data,
+        :schools_confirmed_data,
+        :user_distribution_data,
+        :application_distribution_data,
+        :schools_applied_data
+      ]
+
+      paths.each do |path|
+        get path
+        assert_response :success
+      end
+
+      get :map_data, format: "tsv"
+      assert_response :success
+    end
   end
 
 end

@@ -24,6 +24,12 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
+    should "not allow access to manage_admins#new" do
+      get :new, id: @user
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_admins#edit" do
       get :edit, id: @user
       assert_response :redirect
@@ -63,6 +69,12 @@ class Manage::AdminsControllerTest < ActionController::TestCase
 
     should "not allow access to manage_admins datatables api" do
       get :index, format: :json
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_admins#new" do
+      get :new, id: @user
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -184,6 +196,11 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert_difference('User.count', 0) do
         post :create, user: { email: "existing@example.com" }
       end
+    end
+
+    should "not allow access to manage_admins#new" do
+      get :new, id: @user
+      assert_response :success
     end
 
     should "allow access to manage_admins#show" do

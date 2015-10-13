@@ -51,6 +51,7 @@ group :development do
   gem 'mail_view', '~> 2.0.4'
   gem 'guard-minitest'
   gem 'guard'
+  gem 'simplecov', require: false
 end
 
 group :test do

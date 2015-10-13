@@ -374,6 +374,7 @@ DEPENDENCIES
   shoulda
   sidekiq (< 3)
   simple_form
+  simplecov
   sinatra
   skylight
   sprockets
