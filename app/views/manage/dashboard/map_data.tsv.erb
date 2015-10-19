@@ -1,3 +1,4 @@
+<% cache(cache_key_for_questionnaires) do %>
 <%= "id\tapps" %>
 <%
 counties = {}
@@ -44,3 +45,4 @@ counties.each do |county, value|
   output += "#{county}\t#{value}\n"
 end %>
 <%= output %>
+<% end %>
