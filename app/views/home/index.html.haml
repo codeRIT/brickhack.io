@@ -3,10 +3,12 @@
     %div{class: "content"}
       = image_tag('brickhack_logo_v2_filled.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
 
-      %h2 Thank you for a fantastic hackathon! See you next year!
-      %p= btn_link_to "Event Info &raquo;".html_safe, event_path
-      - if current_user && current_user.admin?
+      
+      %h2 We're almost ready...
+      %p We don't have registratons for Brickhack just yet!  Come back soon.
+      %p=# btn_link_to "Event Info &raquo;".html_safe, event_path
+      -# if current_user && current_user.admin?
         %p= btn_link_to "Manage &raquo;".html_safe, manage_root_path
-      - else
+      -# else
         %p Need access to your account?
         %p= btn_link_to "Account &raquo;".html_safe, rsvp_path
