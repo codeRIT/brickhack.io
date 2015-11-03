@@ -6,9 +6,3 @@
       
       %h2 We're almost ready...
       %p We don't have registratons for Brickhack just yet!  Come back soon.
-      %p=# btn_link_to "Event Info &raquo;".html_safe, event_path
-      -# if current_user && current_user.admin?
-        %p= btn_link_to "Manage &raquo;".html_safe, manage_root_path
-      -# else
-        %p Need access to your account?
-        %p= btn_link_to "Account &raquo;".html_safe, rsvp_path
