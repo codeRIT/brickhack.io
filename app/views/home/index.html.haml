@@ -3,6 +3,21 @@
     %div{class: "content"}
       = image_tag('brickhack_logo_v2_filled.svg', :id=>"logo-large",:alt=>"BrickHack", :title=>"BrickHack")
 
-      
+
       %h2 We're almost ready...
-      %p We don't have registratons for BrickHack just yet!  Come back soon.
+      %p We don't have registration for BrickHack just yet!
+      %p Fill out your email below and we'll let you know when it opens.
+
+      #mc_embed_signup
+        %form#mc-embedded-subscribe-form.validate{:action => "//coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=be625a634d", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+          #mc_embed_signup_scroll
+            .mc-field-group
+              %input#mce-EMAIL.required.email{:name => "EMAIL", :type => "email", :value => "", placeholder: "myemail@example.com"}
+            #mce-responses.clear
+              #mce-error-response.response{:style => "display:none"}
+              #mce-success-response.response{:style => "display:none"}
+            / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            %div{:style => "position: absolute; left: -5000px;"}
+              %input{:name => "b_122b09a8cef4c1f3888af8e40_be625a634d", :tabindex => "-1", :type => "text", :value => ""}/
+            .clear
+              %input#mc-embedded-subscribe.button{:name => "subscribe", :type => "submit", :value => "Subscribe"}/
