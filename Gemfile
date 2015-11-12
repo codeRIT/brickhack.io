@@ -67,6 +67,7 @@ group :test do
   gem 'ruby-prof'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'test-unit', '~> 3.0'
 end
 
 gem 'jquery-rails'

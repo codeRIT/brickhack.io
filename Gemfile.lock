@@ -218,6 +218,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
     polyglot (0.3.5)
+    power_assert (0.2.6)
     powerbar (1.0.12)
       ansi (~> 1.5.0)
       hashie (>= 1.1.0)
@@ -323,6 +324,8 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     strip_attributes (1.7.1)
       activemodel (>= 3.0, < 5.0)
+    test-unit (3.1.5)
+      power_assert
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
@@ -387,6 +390,7 @@ DEPENDENCIES
   skylight
   sprockets
   strip_attributes
+  test-unit (~> 3.0)
   uglifier (>= 1.0.3)
   valid_attribute
   validate_url
