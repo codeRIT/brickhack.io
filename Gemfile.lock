@@ -225,6 +225,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.14.0)
     rack (1.4.7)
     rack-cache (1.5.0)
       rack (>= 0.4)
@@ -242,6 +243,11 @@ GEM
       activesupport (= 3.2.22)
       bundler (~> 1.0)
       railties (= 3.2.22)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (3.2.22)
       actionpack (= 3.2.22)
       activesupport (= 3.2.22)
@@ -365,7 +371,9 @@ DEPENDENCIES
   mysql2 (~> 0.3.10)
   paperclip (< 4.3)
   paperclip-googledrive!
+  puma
   rails (= 3.2.22)
+  rails_12factor
   roadie-rails
   rollbar (~> 2.4)
   ruby-prof
@@ -382,3 +390,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   valid_attribute
   validate_url
+
+BUNDLED WITH
+   1.10.6
