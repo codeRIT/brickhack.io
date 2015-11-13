@@ -1,0 +1,228 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/dist/css/lightbox.css">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100' rel='stylesheet' type='text/css'>
+		<style>
+			body, html{
+				margin: 0
+			}
+			body{
+				background: #f9f6f3;
+			}
+			.grid{
+				margin: 0 auto;
+				visibility: hidden;
+			}
+			header{
+				background: #f98728;
+				color: white;
+				padding-top: 100px;
+				padding-bottom: 120px;
+				margin-bottom: 60px;
+			}
+			header h1, header h2{
+				font-family: 'Roboto', sans-serif;
+			}
+			header h1{
+				font-size: 48px;
+				font-weight: 200;
+				text-align: center;
+				margin-bottom: 24px;
+			}
+			header h2{
+				font-size: 16px;
+				text-align: center;
+				margin: 0 auto;
+				max-width: 400px;
+				display: block;
+				font-weight: 300;
+			}
+			header img{
+				height: 80px;
+				padding: 0 24px;
+				margin: 0 auto;
+				display: block;
+			}
+			.item img{
+				width: 100%;
+			}
+			.item {
+				margin-bottom: 14px;
+			}
+			@media (max-width:500px){
+				.item{
+					width: 200px;
+				}
+			}
+		</style>
+		<script> //init masonry.js
+			
+				function mason(){	
+					$('.grid').masonry({
+						itemSelector: '.item',
+						isFitWidth: true,
+						gutter: 14
+					})
+				}
+
+			$(window).on("load", function(){
+				mason();
+			});
+
+			$(function(){
+				$('.grid').css('visibility','visible').hide().fadeIn()
+				mason();
+			});
+		</script>
+
+	</head>
+	<body>
+		<header>
+			<a href="https://brickhack.io">
+				<img src="https://brickhack.io/assets/brickhack_logo_v2_filled-2cea3ff147cf31005ddb43f9d05f5a7c.svg">
+			</a>
+			<h1>BrickHack 2015</h1>
+			<h2>Thanks for making BrickHack 2015 a huge success!  You can view pictures taken at the event below.</h2>
+		</header>
+
+		<div class="grid">
+			<a href='photos/full/1.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_1.jpg'/>
+			</a>
+			<a href='photos/full/2.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_2.jpg'/>
+			</a>
+			<a href='photos/full/3.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_3.jpg'/>
+			</a>
+			<a href='photos/full/4.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_4.jpg'/>
+			</a>
+			<a href='photos/full/5.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_5.jpg'/>
+			</a>
+			<a href='photos/full/6.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_6.jpg'/>
+			</a>
+			<a href='photos/full/7.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_7.jpg'/>
+			</a>
+			<a href='photos/full/8.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_8.jpg'/>
+			</a>
+			<a href='photos/full/9.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_9.jpg'/>
+			</a>
+			<a href='photos/full/10.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_10.jpg'/>
+			</a>
+			<a href='photos/full/11.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_11.jpg'/>
+			</a>
+			<a href='photos/full/12.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_12.jpg'/>
+			</a>
+			<a href='photos/full/13.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_13.jpg'/>
+			</a>
+			<a href='photos/full/14.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_14.jpg'/>
+			</a>
+			<a href='photos/full/15.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_15.jpg'/>
+			</a>
+			<a href='photos/full/16.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_16.jpg'/>
+			</a>
+			<a href='photos/full/17.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_17.jpg'/>
+			</a>
+			<a href='photos/full/18.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_18.jpg'/>
+			</a>
+			<a href='photos/full/19.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_19.jpg'/>
+			</a>
+			<a href='photos/full/20.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_20.jpg'/>
+			</a>
+			<a href='photos/full/21.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_21.jpg'/>
+			</a>
+			<a href='photos/full/22.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_22.jpg'/>
+			</a>
+			<a href='photos/full/23.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_23.jpg'/>
+			</a>
+			<a href='photos/full/24.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_24.jpg'/>
+			</a>
+			<a href='photos/full/25.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_25.jpg'/>
+			</a>
+			<a href='photos/full/26.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_26.jpg'/>
+			</a>
+			<a href='photos/full/27.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_27.jpg'/>
+			</a>
+			<a href='photos/full/28.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_28.jpg'/>
+			</a>
+			<a href='photos/full/29.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_29.jpg'/>
+			</a>
+			<a href='photos/full/30.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_30.jpg'/>
+			</a>
+			<a href='photos/full/31.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_31.jpg'/>
+			</a>
+			<a href='photos/full/32.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_32.jpg'/>
+			</a>
+			<a href='photos/full/33.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_33.jpg'/>
+			</a>
+			<a href='photos/full/34.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_34.jpg'/>
+			</a>
+			<a href='photos/full/35.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_35.jpg'/>
+			</a>
+			<a href='photos/full/36.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_36.jpg'/>
+			</a>
+			<a href='photos/full/37.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_37.jpg'/>
+			</a>
+			<a href='photos/full/38.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_38.jpg'/>
+			</a>
+			<a href='photos/full/39.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_39.jpg'/>
+			</a>
+			<a href='photos/full/40.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_40.jpg'/>
+			</a>
+			<a href='photos/full/41.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_41.jpg'/>
+			</a>
+			<a href='photos/full/42.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_42.jpg'/>
+			</a>
+			<a href='photos/full/43.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_43.jpg'/>
+			</a>
+			<a href='photos/full/44.jpg' data-lightbox='gallery' class='item'>
+				<img src='photos/thumb/resized_44.jpg'/>
+			</a>
+
+		</div>
+
+		<script src="js/dist/js/lightbox.js"></script>
+	</body>
+</html>
