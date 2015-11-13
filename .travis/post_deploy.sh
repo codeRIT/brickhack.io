@@ -1,11 +1,12 @@
 ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
-LOCAL_USERNAME="Travis CI"
+LOCAL_USERNAME="travisci"
 
-if [ $ENVIRONMENT == "staging" ]
+if [ $TRAVIS_BRANCH == "develop" ]
 then
-  BRANCH=develop
-else
-  BRANCH=master
+  ENVIRONMENT=staging
+elif [ $TRAVIS_BRANCH == "master" ]
+then
+  ENVIRONMENT=production
 fi
 
 REVISION=$TRAVIS_COMMIT
