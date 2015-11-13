@@ -60,4 +60,4 @@ Start your local environment: `bundle exec rails server`
 
 # Deployment
 
-Code pushed to the master branch will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io). Upon a successful build, Travis will deploy to [OpenShift](https://www.openshift.com). See the [Production Environment Setup](https://github.com/codeRIT/brickhack.io/wiki/Production-Environment-Setup) page for details.
+Code pushed will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io). Upon a successful build to the develop or master branches, Travis will deploy to our instance(s) of [Dokku](https://github.com/progrium/dokku). See the [Production Environment Setup](https://github.com/codeRIT/brickhack.io/wiki/Production-Environment-Setup) page for details.

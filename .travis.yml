@@ -12,16 +12,16 @@ script:
 - RUN_COVERAGE=travis bundle exec rake test
 - bundle exec rake coverage:report
 deploy:
-  provider: openshift
-  user: coldencullen@mail.rit.edu
-  password:
-    secure: iDSqyU/ipzsor+793tr9a+QgaKXu7qEurwmxxVCHJFpejhedJny9Z+rBGFHr2kBWeqGbJVUDACZWpWQlNMHNSDPwftxyMg/rBeNGUv1BY0+jPF7GgmGT8u9H7SL5m+3hqB1fqNZuBff9FqdRTiTb60/5aV6GbgNj6G9RQZ1Lnu8=
-  app:
-    master: rails
-    develop: staging
-  domain: coderit
-  on:
-    repo: codeRIT/brickhack.io
+  - provider: script
+    script: .travis/deploy_stage.sh
+    on:
+      branch: develop
+      repo: codeRIT/brickhack.io
+  - provider: script
+    script: .travis/deploy_prod.sh
+    on:
+      branch: master
+      repo: codeRIT/brickhack.io
 addons:
   code_climate:
     repo_token: c13cf427384c2291d3fac2745b3b4012541adab0993853175d89f91671762ddb
