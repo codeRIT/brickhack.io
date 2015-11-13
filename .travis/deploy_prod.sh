@@ -4,4 +4,3 @@ chmod 600 .travis/marketing_rsa # this key should have push access
 ssh-add .travis/marketing_rsa
 git remote add deploy dokku@csh-cloud.oweb.co:brickhack-prod
 git push --force deploy master:master
-bash .travis/post_deploy.sh

@@ -1,13 +1,9 @@
-ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
-LOCAL_USERNAME="travisci"
+#!/bin/bash
 
-if [ $TRAVIS_BRANCH == "develop" ]
-then
-  ENVIRONMENT=staging
-elif [ $TRAVIS_BRANCH == "master" ]
-then
-  ENVIRONMENT=production
-fi
+bundle exec rake db:migrate
+
+ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
+LOCAL_USERNAME="dokku"
 
 REVISION=$TRAVIS_COMMIT
 
