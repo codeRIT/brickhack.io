@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
+ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
+
 gem 'rails', '3.2.22'
 
 gem 'mysql2', '~> 0.3.10'
+
+gem 'puma'
+gem 'rails_12factor', group: :production
 
 gem 'rollbar', '~> 2.4'
 gem 'skylight'
@@ -62,6 +67,7 @@ group :test do
   gem 'ruby-prof'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'test-unit', '~> 3.0'
 end
 
 gem 'jquery-rails'
