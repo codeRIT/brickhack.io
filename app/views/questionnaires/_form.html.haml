@@ -11,7 +11,7 @@
 
     .wizard-stage.wizard-current
       .form-inputs
-        = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
+        = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name", autofocus: true
         = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
         = f.input :phone, placeholder: "(123) 456-7890", input_html: { "data-validate" => "presence" }
         = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }

@@ -195,6 +195,11 @@ $(document).ready(function () {
       $(form).find('.wizard-current').removeClass('wizard-current');
       $newStage.addClass('wizard-current');
       $("html, body").animate({ scrollTop: 0 }, "slow");
+      if ($newStage.find('.field_with_errors').length > 0) {
+        $newStage.find(".field_with_errors").first().find(":input").focus();
+      } else {
+        $newStage.find(":input").first().focus();
+      }
     }
 
     var nextStage = function() {
