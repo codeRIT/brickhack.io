@@ -12,7 +12,7 @@ gem 'rails_12factor', group: :production
 gem 'rollbar', '~> 2.4'
 gem 'skylight'
 
-gem 'sidekiq', '< 3'
+gem 'sidekiq', '< 5'
 gem 'sinatra', :require => nil
 gem 'sprockets', :require => nil
 
