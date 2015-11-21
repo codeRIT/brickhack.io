@@ -57,6 +57,7 @@ Start your local environment: `bundle exec rails server`
 * **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup. **Note:** in order for mail to be sent, you must start a local Sidekiq worker using `bundle exec sidekiq`.
 * **Guard** - Automatically runs tests based on the files you edit. `bundle exec guard`
 * **Coverage** - Test coverage can be manually generated via the `bundle exec rake coverage:run` command. Results are then made available in the `coverage/` directory.
+* **Sidekiq** - Run background jobs (such as emails) and view active & completed jobs. Spin up Sidekiq with `bundle exec sidekiq`. A web portal will be available at http://localhost:3000/sidekiq (*also available in production*).
 
 # Deployment
 
