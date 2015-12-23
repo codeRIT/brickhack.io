@@ -9,7 +9,7 @@ gem 'mysql2', '~> 0.3.10'
 gem 'puma'
 gem 'rails_12factor', group: :production
 
-gem 'rollbar', '~> 2.4'
+gem 'rollbar', '~> 2.7'
 gem 'skylight'
 
 gem 'sidekiq', '< 5'
