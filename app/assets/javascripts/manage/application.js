@@ -1,6 +1,7 @@
 //= require_directory ../
 //= require_directory .
 //= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require selectize
 //= require highcharts
 //= require chartkick
@@ -45,7 +46,10 @@ $(document).ready(function () {
   var defaultDataTableOptions = {
     "processing" : true,
     "serverSide" : true,
-    "ajax"       : $('.datatable').data('source'),
+    "ajax"       : {
+      "url"   : $('.datatable').data('source'),
+      "type"  : "POST"
+    },
     "pagingType" : 'full_numbers'
   };
 

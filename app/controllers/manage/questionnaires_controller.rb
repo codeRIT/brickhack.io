@@ -4,10 +4,10 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   respond_to :html
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: QuestionnaireDatatable.new(view_context) }
-    end
+  end
+
+  def datatable
+    render json: QuestionnaireDatatable.new(view_context)
   end
 
   def show

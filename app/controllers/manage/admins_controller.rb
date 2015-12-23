@@ -4,10 +4,10 @@ class Manage::AdminsController < Manage::ApplicationController
   respond_to :html
 
   def index
-    respond_to do |format|
-      format.html
-      format.json { render json: AdminDatatable.new(view_context) }
-    end
+  end
+
+  def datatable
+    render json: AdminDatatable.new(view_context)
   end
 
   def show

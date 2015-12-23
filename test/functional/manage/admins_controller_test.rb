@@ -14,7 +14,7 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins datatables api" do
-      get :index, format: :json
+      post :datatable, format: :json
       assert_response 401
     end
 
@@ -68,7 +68,7 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins datatables api" do
-      get :index, format: :json
+      post :datatable, format: :json
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -122,11 +122,10 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    # causes a strange bug in testing. works in live application, ignoring for now
-    # should "allow access to manage_admins datatables api" do
-    #   get :index, format: :json
-    #   assert_response :success
-    # end
+    should "allow access to manage_admins datatables api" do
+      post :datatable, format: :json
+      assert_response :success
+    end
 
     should "allow access to manage_admins#show" do
       get :show, id: @user
