@@ -20,7 +20,7 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages datatables api" do
-      get :index, format: :json
+      post :datatable, format: :json
       assert_response 401
     end
 
@@ -82,7 +82,7 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages datatables api" do
-      get :index, format: :json
+      post :datatable, format: :json
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -143,11 +143,10 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    # causes a strange bug in testing. works in live application, ignoring for now
-    # should "allow access to manage_messages datatables api" do
-    #   get :index, format: :json
-    #   assert_response :success
-    # end
+    should "allow access to manage_messages datatables api" do
+      post :datatable, format: :json
+      assert_response :success
+    end
 
     should "allow access to manage_messages#show" do
       get :show, id: @message

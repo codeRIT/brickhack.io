@@ -4,7 +4,7 @@
   - if flash[:notice]
     #disclaimer= flash[:notice]
 
-  %table.questionnaires.datatable.row-border.stripe.hover.order-column{ "data-source" => manage_questionnaires_path(format: :json) }
+  %table.questionnaires.datatable.row-border.stripe.hover.order-column{ "data-source" => datatable_manage_questionnaires_path(format: :json) }
     %thead
       %tr
         %th

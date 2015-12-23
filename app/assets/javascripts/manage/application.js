@@ -45,7 +45,10 @@ $(document).ready(function () {
   var defaultDataTableOptions = {
     "processing" : true,
     "serverSide" : true,
-    "ajax"       : $('.datatable').data('source'),
+    "ajax"       : {
+      "url"   : $('.datatable').data('source'),
+      "type"  : "POST"
+    },
     "pagingType" : 'full_numbers'
   };
 
