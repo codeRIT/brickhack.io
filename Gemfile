@@ -42,7 +42,7 @@ group :assets do
   gem 'coffee-rails'
 
   gem 'jquery-ui-sass-rails'
-  gem 'jquery-datatables-rails', :github => 'rweng/jquery-datatables-rails' # issue with images, PR #158
+  gem 'jquery-datatables-rails', '~> 3.3.0'
 
   gem 'selectize-rails'
   gem 'highcharts-rails', '~> 4.1.8'
