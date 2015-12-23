@@ -43,6 +43,57 @@ class MailerTest < ActionMailer::TestCase
     end
   end
 
+  context "upon successfull rsvp confirmation" do
+    setup do
+      @school = create(:school, name: "Example University")
+      @questionnaire = create(:questionnaire)
+      @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
+    end
+
+    should "deliver email to questionnaire" do
+      email = Mailer.rsvp_confirmation_email(@questionnaire).deliver
+
+      assert_equal [@questionnaire.email],              email.to
+      assert_equal "[BrickHack] RSVP Confirmation",     email.subject
+
+      assert_match "You are confirmed",                 email.encoded
+    end
+  end
+
+  context "upon application denial" do
+    setup do
+      @school = create(:school, name: "Example University")
+      @questionnaire = create(:questionnaire)
+      @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
+    end
+
+    should "deliver email to questionnaire" do
+      email = Mailer.denied_email(@questionnaire).deliver
+
+      assert_equal [@questionnaire.email],              email.to
+      assert_equal "[BrickHack] Your application status", email.subject
+
+      assert_match "Dear ",                             email.encoded
+    end
+  end
+
+  context "upon application acceptance" do
+    setup do
+      @school = create(:school, name: "Example University")
+      @questionnaire = create(:questionnaire)
+      @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
+    end
+
+    should "deliver email to questionnaire" do
+      email = Mailer.accepted_email(@questionnaire).deliver
+
+      assert_equal [@questionnaire.email],              email.to
+      assert_equal "[BrickHack] You've been accepted!", email.subject
+
+      assert_match "Congratulations ",                  email.encoded
+    end
+  end
+
   context "upon trigger of a bulk message" do
     setup do
       @message = create(:message, subject: "Example Subject", body: "Hello World!")
