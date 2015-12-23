@@ -12,7 +12,7 @@ BrickhackIo::Application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  resources :questionnaires, path: "apply" do
+  resource :questionnaires, path: "apply" do
     get :schools, on: :collection
   end
 
