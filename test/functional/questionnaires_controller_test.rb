@@ -13,51 +13,26 @@ class QuestionnairesControllerTest < ActionController::TestCase
   end
 
   context "while not authenticated" do
-    should "redirect to sign up page on questionnaire#index" do
-      get :index
-      assert_redirected_to new_user_session_path
-    end
-
     should "redirect to sign up page on questionnaire#new" do
       get :new
       assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#edit" do
-      get :edit, id: @questionnaire
+      get :edit
       assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#update" do
-      put :update, id: @questionnaire, questionnaire: { city: "different" }
+      put :update, questionnaire: { city: "different" }
       assert_redirected_to new_user_session_path
     end
 
     should "redirect to sign up page on questionnaire#destroy" do
       assert_difference('Questionnaire.count', 0) do
-        delete :destroy, id: @questionnaire
+        delete :destroy
       end
       assert_redirected_to new_user_session_path
-    end
-
-    context "accessing a non-owned questionnaire" do
-      should "not allow #show" do
-        get :show, id: 0
-        assert_response :redirect
-        assert_redirected_to new_user_session_path
-      end
-
-      should "not allow #edit" do
-        get :edit, id: 0
-        assert_response :redirect
-        assert_redirected_to new_user_session_path
-      end
-
-      should "not not allow #update" do
-        put :update, id: 3, questionnaire: { first_name: "Foo" }
-        assert_response :redirect
-        assert_redirected_to new_user_session_path
-      end
     end
   end
 
@@ -78,7 +53,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
         post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1" }
       end
 
-      assert_redirected_to questionnaire_path(assigns(:questionnaire))
+      assert_redirected_to questionnaires_path
     end
 
     should "not allow multiple questionnaires" do
@@ -87,7 +62,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
         post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1" }
       end
 
-      assert_redirected_to questionnaire_path(assigns(:questionnaire))
+      assert_redirected_to questionnaires_path
     end
 
     context "with an invalid questionnaire" do
@@ -103,14 +78,14 @@ class QuestionnairesControllerTest < ActionController::TestCase
       context "on create" do
         should "save existing school name" do
           post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1" }
-          assert_redirected_to questionnaire_path(assigns(:questionnaire))
+          assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
           assert_equal "late_waitlist", assigns(:questionnaire).acc_status, "should automatically waitlist"
         end
 
         should "create a new school when unknown" do
           post :create, questionnaire: { city: @questionnaire.city, experience: @questionnaire.experience, first_name: @questionnaire.first_name, interest: @questionnaire.interest, last_name: @questionnaire.last_name, phone: @questionnaire.phone, state: @questionnaire.state, year: @questionnaire.year, birthday: @questionnaire.birthday, shirt_size: @questionnaire.shirt_size, school_name: "New School", agreement_accepted: "1" }
-          assert_redirected_to questionnaire_path(assigns(:questionnaire))
+          assert_redirected_to questionnaires_path
           assert_equal 2, School.all.count
         end
 
@@ -129,37 +104,31 @@ class QuestionnairesControllerTest < ActionController::TestCase
       sign_in @questionnaire.user
     end
 
-    should "index should redirect to new" do
-      get :index
-      assert_response :redirect
-      assert_redirected_to new_questionnaire_path
-    end
-
     should "show questionnaire" do
-      get :show, id: @questionnaire
+      get :show
       assert_response :success
     end
 
     should "get edit" do
-      get :edit, id: @questionnaire
+      get :edit
       assert_response :success
     end
 
     should "get edit with questionnaire resume" do
       @questionnaire.resume = sample_file("sample_pdf.pdf")
       @questionnaire.save
-      get :edit, id: @questionnaire
+      get :edit
       assert_response :success
     end
 
     should "update questionnaire" do
-      put :update, id: @questionnaire, questionnaire: { first_name: "Foo" }
-      assert_redirected_to questionnaire_path(assigns(:questionnaire))
+      put :update, questionnaire: { first_name: "Foo" }
+      assert_redirected_to questionnaires_path
     end
 
     should "destroy questionnaire" do
       assert_difference('Questionnaire.count', -1) do
-        delete :destroy, id: @questionnaire
+        delete :destroy
       end
 
       assert_redirected_to questionnaires_path
@@ -168,35 +137,8 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "with invalid questionnaire params" do
       should "not allow updates" do
         saved_first_name = @questionnaire.first_name
-        put :update, id: @questionnaire, questionnaire: { first_name: "" }
+        put :update, questionnaire: { first_name: "" }
         assert_equal saved_first_name, @questionnaire.reload.first_name
-      end
-    end
-
-    context "accessing a non-owned questionnaire" do
-      should "not allow #show" do
-        get :show, id: 0
-        assert_response :redirect
-        assert_redirected_to questionnaire_path(@questionnaire)
-      end
-
-      should "not allow #edit" do
-        get :edit, id: 0
-        assert_response :redirect
-        assert_redirected_to questionnaire_path(@questionnaire)
-      end
-
-      should "not not allow #update" do
-        put :update, id: 3, questionnaire: { first_name: "Foo" }
-        assert_response :redirect
-        assert_redirected_to questionnaire_path(@questionnaire)
-      end
-
-      should "redirect to #new if a questionnaire has not been submitted" do
-        @questionnaire.delete
-        get :show, id: 0
-        assert_response :redirect
-        assert_redirected_to new_questionnaire_path
       end
     end
 
@@ -204,21 +146,21 @@ class QuestionnairesControllerTest < ActionController::TestCase
       should "redirect to existing questionnaire" do
         get :new
         assert_response :redirect
-        assert_redirected_to questionnaire_path(@questionnaire)
+        assert_redirected_to questionnaires_path
       end
     end
 
     context "#school_name" do
       context "on update" do
         should "save existing school name" do
-          put :update, id: @questionnaire, questionnaire: { school_name: @school.name }
-          assert_redirected_to questionnaire_path(assigns(:questionnaire))
+          put :update, questionnaire: { school_name: @school.name }
+          assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
         end
 
         should "create a new school when unknown" do
-          put :update, id: @questionnaire, questionnaire: { school_name: "New School" }
-          assert_redirected_to questionnaire_path(assigns(:questionnaire))
+          put :update, questionnaire: { school_name: "New School" }
+          assert_redirected_to questionnaires_path
           assert_equal 2, School.all.count
         end
       end

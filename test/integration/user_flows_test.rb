@@ -5,7 +5,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     user = login(FactoryGirl.create(:user))
     admin = login(FactoryGirl.create(:admin))
 
-    user.assert_redirected_to new_questionnaire_path
+    user.assert_redirected_to new_questionnaires_path
     admin.assert_redirected_to manage_root_path
 
     user.browse_questionnaire
@@ -22,14 +22,14 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   should "redirect to completed application after login" do
     questionnaire = FactoryGirl.create(:questionnaire)
     applied_user = login(questionnaire.user)
-    applied_user.assert_redirected_to questionnaire_path(questionnaire)
+    applied_user.assert_redirected_to questionnaires_path
   end
 
   private
 
     module CustomDsl
       def browse_questionnaire
-        get new_questionnaire_path
+        get new_questionnaires_path
         assert_response :success
         assert assigns(:questionnaire)
       end

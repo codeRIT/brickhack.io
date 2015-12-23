@@ -1,21 +1,14 @@
 class QuestionnairesController < ApplicationController
   before_filter :logged_in
-  before_filter :restrict_questionnaire_access
+  before_filter :find_questionnaire, only: [:show, :update, :edit, :destroy]
 
   def logged_in
     authenticate_user!
   end
 
-  # GET /apply
-  def index
-    redirect_to new_questionnaire_path
-  end
-
   # GET /apply/1
   # GET /apply/1.json
   def show
-    @questionnaire = Questionnaire.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @questionnaire }
@@ -26,7 +19,7 @@ class QuestionnairesController < ApplicationController
   # GET /apply/new.json
   def new
     if current_user.questionnaire.present?
-      return redirect_to questionnaire_path(current_user.questionnaire)
+      return redirect_to questionnaires_path
     end
     @questionnaire = Questionnaire.new
 
@@ -38,14 +31,13 @@ class QuestionnairesController < ApplicationController
 
   # GET /apply/1/edit
   def edit
-    @questionnaire = Questionnaire.find(params[:id])
   end
 
   # POST /apply
   # POST /apply.json
   def create
     if current_user.questionnaire.present?
-      return redirect_to current_user.questionnaire, notice: 'Application already exists.'
+      return redirect_to questionnaires_path, notice: 'Application already exists.'
     end
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
     @questionnaire = Questionnaire.new(params[:questionnaire])
@@ -55,7 +47,7 @@ class QuestionnairesController < ApplicationController
         current_user.questionnaire = @questionnaire
         @questionnaire.update_attribute(:acc_status, "late_waitlist")
         Mailer.delay.application_confirmation_email(@questionnaire.id)
-        format.html { redirect_to @questionnaire, notice: 'Application was successfully created.' }
+        format.html { redirect_to questionnaires_path, notice: 'Application was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }
       else
         format.html { render action: "new" }
@@ -68,11 +60,10 @@ class QuestionnairesController < ApplicationController
   # PUT /apply/1.json
   def update
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
-    @questionnaire = Questionnaire.find(params[:id])
 
     respond_to do |format|
       if @questionnaire.update_attributes(params[:questionnaire])
-        format.html { redirect_to @questionnaire, notice: 'Application was successfully updated.' }
+        format.html { redirect_to questionnaires_path, notice: 'Application was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +75,6 @@ class QuestionnairesController < ApplicationController
   # DELETE /apply/1
   # DELETE /apply/1.json
   def destroy
-    @questionnaire = Questionnaire.find(params[:id])
     @questionnaire.destroy
 
     respond_to do |format|
@@ -105,11 +95,11 @@ class QuestionnairesController < ApplicationController
 
   private
 
-  def restrict_questionnaire_access
-    if params[:id].present? && current_user.questionnaire.to_param != params[:id]
-      return redirect_to new_questionnaire_path unless current_user.questionnaire.present?
-      return redirect_to questionnaire_path(current_user.questionnaire)
+  def find_questionnaire
+    unless current_user.questionnaire.present?
+      return redirect_to new_questionnaires_path
     end
+    @questionnaire = current_user.questionnaire
   end
 
   def convert_school_name_to_id(questionnaire)

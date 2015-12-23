@@ -62,5 +62,5 @@
       = @questionnaire.vcs_url? ? link_to(@questionnaire.vcs_url, @questionnaire.vcs_url, target: '_blank') : 'Not provided'
 
     %p
-      = btn_link_to 'Edit Application &raquo;'.html_safe, edit_questionnaire_path(@questionnaire)
+      = btn_link_to 'Edit Application &raquo;'.html_safe, edit_questionnaires_path
       = btn_link_to 'Edit Account &raquo;'.html_safe, edit_user_registration_path

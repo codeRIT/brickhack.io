@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
     elsif current_user.admin?
       manage_root_path
     elsif current_user.questionnaire === nil
-      new_questionnaire_path
+      new_questionnaires_path
     else
       @questionnaire = current_user.questionnaire
-      @questionnaire.can_rsvp? ? rsvp_path : questionnaire_path(@questionnaire)
+      @questionnaire.can_rsvp? ? rsvp_path : questionnaires_path
     end
   end
 end

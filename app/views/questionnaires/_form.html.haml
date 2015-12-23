@@ -1,5 +1,5 @@
 %div{class:'form-container wizard'}
-  = simple_form_for @questionnaire, html: { "data-validate" => "form" } do |f|
+  = simple_form_for @questionnaire, url: url_for(controller: "questionnaires", action: "update"), html: { "data-validate" => "form" } do |f|
 
     #disclaimer
       - unless @questionnaire.can_rsvp?
