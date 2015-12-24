@@ -13,5 +13,5 @@
 
   %br
 
-  - unless current_user.admin_read_only
+  - unless current_user.admin_limited_access
     = btn_link_to 'New Message', new_manage_message_path

@@ -10,15 +10,15 @@ FactoryGirl.define do
         "admin#{n}@example.com"
       end
       admin true
-      admin_read_only false
+      admin_limited_access false
     end
 
-    factory :read_only_admin do
+    factory :limited_access_admin do
       sequence :email do |n|
-        "read_only_admin#{n}@example.com"
+        "limited_admin#{n}@example.com"
       end
       admin true
-      admin_read_only true
+      admin_limited_access true
     end
   end
 end
