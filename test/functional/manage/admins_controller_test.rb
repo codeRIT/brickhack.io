@@ -110,9 +110,9 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
   end
 
-  context "while authenticated as a read-only admin" do
+  context "while authenticated as a limited access admin" do
     setup do
-      @user = create(:read_only_admin)
+      @user = create(:limited_access_admin)
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in @user
     end
@@ -182,12 +182,12 @@ class Manage::AdminsControllerTest < ActionController::TestCase
       assert assigns(:user).admin, "new user should be an admin"
     end
 
-    should "create a new read-only admin" do
-      post :create, user: { email: "test@example.com", admin_read_only: true }
+    should "create a new limited access admin" do
+      post :create, user: { email: "test@example.com", admin_limited_access: true }
       assert_response :redirect
       assert_redirected_to manage_admins_path
       assert assigns(:user).admin, "new user should be an admin"
-      assert assigns(:user).admin_read_only, "new user should be a read-only admin"
+      assert assigns(:user).admin_limited_access, "new user should be a limited access admin"
     end
 
     should "not create an admin with duplicate emails" do

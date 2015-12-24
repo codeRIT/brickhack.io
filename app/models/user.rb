@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :async
 
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :admin_read_only
+  attr_accessible :admin_limited_access
 
   has_one :questionnaire
 

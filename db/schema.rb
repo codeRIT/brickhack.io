@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150415181114) do
+ActiveRecord::Schema.define(:version => 20151224015223) do
 
   create_table "bus_lists", :force => true do |t|
     t.string   "name"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20150415181114) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  :default => false
-    t.boolean  "admin_read_only",        :default => false
+    t.boolean  "admin_limited_access",   :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -7,9 +7,9 @@
         %th
         %th ID
         %th Email
-        %th Read-Only
+        %th Access Level
     %tbody
 
-  - unless current_user.admin_read_only
+  - unless current_user.admin_limited_access
     %br
     = btn_link_to 'New Admin', new_manage_admin_path

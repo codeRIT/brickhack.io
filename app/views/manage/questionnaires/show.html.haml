@@ -59,7 +59,7 @@
       = @questionnaire.agreement_accepted ? "Yes" : "<span style='color: red'><strong>NO</strong></span>".html_safe
 
   .container.container-half
-    - unless current_user.admin_read_only
+    - unless current_user.admin_limited_access
       = link_to 'Edit', edit_manage_questionnaire_path(@questionnaire)
       \|
       = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :put, data: { confirm: "Are you sure? The questionnaire for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }

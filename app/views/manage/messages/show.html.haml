@@ -38,7 +38,7 @@
 
   %hr
 
-  - unless current_user.admin_read_only
+  - unless current_user.admin_limited_access
     - if @message.status == "drafted"
       = btn_link_to 'Deliver', deliver_manage_message_path(@message), method: :put, data: { confirm: "Are you sure? The message \"#{@message.name}\" will be sent out to all recipients." }
       \|

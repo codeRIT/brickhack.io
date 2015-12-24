@@ -151,9 +151,9 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
   end
 
-  context "while authenticated as a read-only admin" do
+  context "while authenticated as a limited access admin" do
     setup do
-      @user = create(:read_only_admin)
+      @user = create(:limited_access_admin)
       @request.env["devise.mapping"] = Devise.mappings[:admin]
       sign_in @user
     end
