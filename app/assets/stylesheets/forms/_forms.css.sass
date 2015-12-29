@@ -56,6 +56,7 @@ input[type=text], input[type=email], input[type=tel], input[type=date], input[ty
   font-family: $font-body-family
   font-weight: $font-bold
   font-size: 100%
+  font-weight: 300
   &:focus
     color: $black
     color: $primary
@@ -64,13 +65,14 @@ input[type=text], input[type=email], input[type=tel], input[type=date], input[ty
 input[type=text], input[type=email], input[type=tel], input[type=date], input[type="url"], input[type=password], textarea
   border: 1px solid transparent
   outline: none
-  padding: 4px 8px
+  padding: 0.7em 1.2em
   @include transition (200ms, all, ease-in-out, 0)
   width: 100%
   margin-bottom: 5px
   &:focus
     background: $white_pure
-    border-color: lighten($blue, 10%)
+    border-color: lighten($blue, 50%)
+    color: $black
 
 // just selects
 select
@@ -110,7 +112,10 @@ input[type=checkbox]
 
 //Submit
 input[type=submit]
-  margin: 10px 0
+  margin: 0.7em 0
+  padding: 0.7em 0
+  text-transform: uppercase
+  letter-spacing: 0.05em
 
 //cancel button area on edit participant
 .cancel_btn_wrap
