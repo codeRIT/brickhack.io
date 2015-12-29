@@ -1,11 +1,11 @@
 class School < ActiveRecord::Base
-  attr_accessible :name, :address, :city, :state, :bus_list_id
+  #attr_accessible :name, :address, :city, :state, :bus_list_id
 
   validates_presence_of :name
 
   validates_uniqueness_of :name
 
-  strip_attributes
+  #strip_attributes
 
   has_many :questionnaires
 

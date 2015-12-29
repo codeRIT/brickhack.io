@@ -57,6 +57,7 @@ class Manage::DashboardController < Manage::ApplicationController
     }
     result = Questionnaire.joins(:school).group(:acc_status).count(group: "schools.name", conditions: "schools.questionnaire_count >= 5", order: "schools.questionnaire_count DESC")
     result.each do |group, count|
+      puts "GROUP #{group[0]} #{group[1]}"
       counted_schools[group[0]][group[1]] = count
     end
     render :json => [{ name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]}, { name: "Accepted", data: counted_schools["accepted"]},  { name: "Waitlisted", data: counted_schools["waitlist"]}, { name: "Late Waitlisted", data: counted_schools["late_waitlist"]}, { name: "RSVP Denied", data: counted_schools["rsvp_denied"]}, { name: "Denied", data: counted_schools["denied"]}]

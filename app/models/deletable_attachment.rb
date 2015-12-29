@@ -6,7 +6,7 @@ module DeletableAttachment
     attachment_definitions.keys.each do |name|
 
       attr_accessor :"delete_#{name}"
-      attr_accessible :"delete_#{name}"
+#      attr_accessible :"delete_#{name}"
 
       before_validation { send(name).destroy if send("delete_#{name}") == '1' }
 
