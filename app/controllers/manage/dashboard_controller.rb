@@ -35,13 +35,13 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def application_distribution_data
-    groups = Questionnaire.count(group: :acc_status)
+    groups = Questionnaire.group(:acc_status).count
     groups.keys.each { |short_status, count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
     render json: groups
   end
 
   def schools_confirmed_data
-    schools = Questionnaire.count(include: :school, group: "schools.name", conditions: "acc_status = 'rsvp_confirmed'")
+    schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").count
     render :json => schools.sort_by { |name, count| count }.reverse
   end
 
@@ -56,9 +56,10 @@ class Manage::DashboardController < Manage::ApplicationController
       "rsvp_confirmed" => {}
     }
     result = Questionnaire.joins(:school).group(:acc_status).count(group: "schools.name", conditions: "schools.questionnaire_count >= 5", order: "schools.questionnaire_count DESC")
+    puts "RESULTS: #{result}"
     result.each do |group, count|
-      puts "GROUP #{group[0]} #{group[1]}"
-      counted_schools[group[0]][group[1]] = count
+      puts "GROUP #{group[0]} "
+      counted_schools[group] = count
     end
     render :json => [{ name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]}, { name: "Accepted", data: counted_schools["accepted"]},  { name: "Waitlisted", data: counted_schools["waitlist"]}, { name: "Late Waitlisted", data: counted_schools["late_waitlist"]}, { name: "RSVP Denied", data: counted_schools["rsvp_denied"]}, { name: "Denied", data: counted_schools["denied"]}]
   end
@@ -67,6 +68,9 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def activity_chart_data(types, group_type, range)
     chart_data = []
+    puts "TYPES: #{types}"
+    puts "GROUP_TYPE: #{group_type}"
+    puts "RANGE: #{range}"
     types.each do |type|
       case type
       when "Applications"
