@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '~> 4.2'
+
 gem 'mysql2', '~> 0.3.18'
+
+gem 'puma'
+gem 'rails_12factor', group: :production
+gem 'test-unit', '~> 3.0'
 
 gem 'rollbar', '~> 2.7'
 gem 'skylight'
@@ -65,7 +69,6 @@ group :test do
   gem 'ruby-prof'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
-  gem 'test-unit', '~> 3.0'
 end
 
 
