@@ -54,6 +54,10 @@ GEM
       extlib (>= 0.9.15)
       multi_json (>= 1.0.0)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -226,6 +230,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.15.3)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -251,6 +256,11 @@ GEM
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
     rails-perftest (0.0.6)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (4.2.5)
       actionpack (= 4.2.5)
       activesupport (= 4.2.5)
@@ -348,6 +358,7 @@ PLATFORMS
 
 DEPENDENCIES
   ajax-datatables-rails
+  better_errors
   binding_of_caller
   chartkick
   codeclimate-test-reporter
@@ -372,15 +383,17 @@ DEPENDENCIES
   paperclip (~> 4.3)
   paperclip-googledrive!
   protected_attributes
+  puma
   rails (~> 4.2)
   rails-perftest
+  rails_12factor
   roadie-rails
   rollbar (~> 2.7)
   ruby-prof
   sass-rails
   selectize-rails
   shoulda
-  sidekiq (~> 4)
+  sidekiq (< 5)
   simple_form
   simplecov
   sinatra
@@ -391,3 +404,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   valid_attribute
   validate_url
+
+BUNDLED WITH
+   1.11.2
