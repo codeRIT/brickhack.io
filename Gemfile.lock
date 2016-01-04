@@ -209,7 +209,7 @@ GEM
       ruby-progressbar
     multi_json (1.11.2)
     multipart-post (2.0.0)
-    mysql2 (0.3.20)
+    mysql2 (0.4.2)
     nenv (0.2.0)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -379,7 +379,7 @@ DEPENDENCIES
   kaminari
   minitest-rails
   minitest-reporters
-  mysql2 (~> 0.3.18)
+  mysql2
   paperclip (~> 4.3)
   paperclip-googledrive!
   protected_attributes

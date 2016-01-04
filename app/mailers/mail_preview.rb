@@ -1,4 +1,4 @@
-class MailPreview < MailView
+class MailPreview < ActionMailer::Preview
   def application_confirmation_email
     questionnaire = Questionnaire.first
     Mailer.application_confirmation_email(questionnaire)
@@ -20,4 +20,4 @@ class MailPreview < MailView
     message = Message.first
     Mailer.bulk_message_email(message, User.first.id)
   end
-end if defined?(MailView)
+end if defined?(ActionMailer::Preview)
