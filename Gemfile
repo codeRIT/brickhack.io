@@ -28,7 +28,6 @@ gem 'roadie-rails'
 gem 'chartkick'
 gem 'groupdate'
 gem 'font-awesome-rails' # needed for icon helpers
-gem 'rails-perftest'
 gem 'protected_attributes'
 
 gem 'strip_attributes'
@@ -61,7 +60,6 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'valid_attribute'
-  gem 'ruby-prof'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
 end
