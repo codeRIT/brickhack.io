@@ -56,9 +56,7 @@ class Manage::DashboardController < Manage::ApplicationController
       "rsvp_confirmed" => {}
     }
     result = Questionnaire.joins(:school).group(:acc_status).count(group: "schools.name", conditions: "schools.questionnaire_count >= 5", order: "schools.questionnaire_count DESC")
-    puts "RESULTS: #{result}"
     result.each do |group, count|
-      puts "GROUP #{group[0]} "
       counted_schools[group] = count
     end
     render :json => [{ name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]}, { name: "Accepted", data: counted_schools["accepted"]},  { name: "Waitlisted", data: counted_schools["waitlist"]}, { name: "Late Waitlisted", data: counted_schools["late_waitlist"]}, { name: "RSVP Denied", data: counted_schools["rsvp_denied"]}, { name: "Denied", data: counted_schools["denied"]}]
@@ -68,9 +66,6 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def activity_chart_data(types, group_type, range)
     chart_data = []
-    puts "TYPES: #{types}"
-    puts "GROUP_TYPE: #{group_type}"
-    puts "RANGE: #{range}"
     types.each do |type|
       case type
       when "Applications"
