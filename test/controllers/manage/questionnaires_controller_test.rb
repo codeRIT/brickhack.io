@@ -48,31 +48,31 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_questionnaires#update" do
-      put :update, id: @questionnaire, questionnaire: { first_name: "New" }
+      patch :update, id: @questionnaire, questionnaire: { first_name: "New" }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow convert questionnaire's user to an admin" do
-      put :convert_to_admin, id: @questionnaire
+      patch :convert_to_admin, id: @questionnaire
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_questionnaires#destroy" do
-      put :destroy, id: @questionnaire
+      patch :destroy, id: @questionnaire
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_questionnaires#update_acc_status" do
-      put :update_acc_status, id: @questionnaire
+      patch :update_acc_status, id: @questionnaire
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_questionnaires#bulk_apply" do
-      put :bulk_apply, id: @questionnaire
+      patch :bulk_apply, id: @questionnaire
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -121,31 +121,31 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_questionnaires#update" do
-      put :update, id: @questionnaire, questionnaire: { first_name: "New" }
+      patch :update, id: @questionnaire, questionnaire: { first_name: "New" }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow convert questionnaire's user to an admin" do
-      put :convert_to_admin, id: @questionnaire
+      patch :convert_to_admin, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_questionnaires#destroy" do
-      put :destroy, id: @questionnaire
+      patch :destroy, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_questionnaires#update_acc_status" do
-      put :update_acc_status, id: @questionnaire
+      patch :update_acc_status, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_questionnaires#bulk_apply" do
-      put :bulk_apply, id: @questionnaire
+      patch :bulk_apply, id: @questionnaire
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -192,25 +192,25 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_questionnaires#update" do
-      put :update, id: @questionnaire, questionnaire: { first_name: "New" }
+      patch :update, id: @questionnaire, questionnaire: { first_name: "New" }
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
     end
 
     should "not allow convert questionnaire's user to an admin" do
-      put :convert_to_admin, id: @questionnaire
+      patch :convert_to_admin, id: @questionnaire
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
     end
 
     should "not allow access to manage_questionnaires#destroy" do
-      put :destroy, id: @questionnaire
+      patch :destroy, id: @questionnaire
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
     end
 
     should "allow access to manage_questionnaires#update_acc_status" do
-      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
+      patch :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
       assert_equal "accepted", @questionnaire.reload.acc_status
       assert_equal @user.id, @questionnaire.reload.acc_status_author_id
       assert_not_equal nil, @questionnaire.reload.acc_status_date
@@ -220,7 +220,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires#bulk_apply" do
-      put :bulk_apply, bulk_action: "waitlist", bulk_ids: [@questionnaire.id]
+      patch :bulk_apply, bulk_action: "waitlist", bulk_ids: [@questionnaire.id]
       assert_response :success
     end
   end
@@ -284,20 +284,20 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "update questionnaire" do
-      put :update, id: @questionnaire, questionnaire: { first_name: "New" }
+      patch :update, id: @questionnaire, questionnaire: { first_name: "New" }
       assert_redirected_to manage_questionnaire_path(assigns(:questionnaire))
     end
 
     should "update questionnaire's user email" do
-      put :update, id: @questionnaire, questionnaire: { email: "update@example.com" }
+      patch :update, id: @questionnaire, questionnaire: { email: "update@example.com" }
       assert_equal "update@example.com", assigns(:questionnaire).email
       assert_redirected_to manage_questionnaire_path(assigns(:questionnaire))
     end
 
     should "convert questionnaire's user to an admin" do
-      put :convert_to_admin, id: @questionnaire
+      patch :convert_to_admin, id: @questionnaire
       assert assigns(:questionnaire).user.admin
-      assert_equal nil, assigns(:questionnaire).user.questionnaire
+      assert_equal nil, assigns(:questionnaire).user.reload.questionnaire
       assert_redirected_to edit_manage_admin_path(assigns(:questionnaire).user)
     end
 
@@ -311,7 +311,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "check in the questionnaire" do
-      put :check_in, id: @questionnaire, check_in: "true"
+      patch :check_in, id: @questionnaire, check_in: "true"
       assert 1.minute.ago < @questionnaire.reload.checked_in_at
       assert_equal @user.id, @questionnaire.reload.checked_in_by_id
       assert_match /Checked in/, flash[:notice]
@@ -323,7 +323,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:agreement_accepted, false)
       @questionnaire.update_attribute(:can_share_resume, false)
       @questionnaire.update_attribute(:phone, "")
-      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      patch :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
       @questionnaire.reload
       assert 1.minute.ago < @questionnaire.checked_in_at
       assert_equal @user.id, @questionnaire.checked_in_by_id
@@ -341,7 +341,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:phone, "")
       @questionnaire.update_attribute(:checked_in_at, nil)
       @questionnaire.update_attribute(:checked_in_by_id, nil)
-      put :check_in, id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      patch :check_in, id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
       @questionnaire.reload
       assert_equal nil, @questionnaire.checked_in_at
       assert_equal nil, @questionnaire.checked_in_by_id
@@ -355,7 +355,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "require agreement_accepted to check in" do
       @questionnaire.update_attribute(:agreement_accepted, false)
-      put :check_in, id: @questionnaire, check_in: "true"
+      patch :check_in, id: @questionnaire, check_in: "true"
       assert_equal nil, @questionnaire.reload.checked_in_at
       assert_equal nil, @questionnaire.reload.checked_in_by_id
       assert_response :redirect
@@ -364,7 +364,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "accept agreement and check in" do
       @questionnaire.update_attribute(:agreement_accepted, false)
-      put :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1 }
+      patch :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1 }
       assert 1.minute.ago < @questionnaire.reload.checked_in_at
       assert_equal @user.id, @questionnaire.reload.checked_in_by_id
       assert_response :redirect
@@ -372,7 +372,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "undo check in of the questionnaire" do
-      put :check_in, id: @questionnaire, check_in: "false"
+      patch :check_in, id: @questionnaire, check_in: "false"
       assert_equal nil, @questionnaire.reload.checked_in_at
       assert_equal @user.id, @questionnaire.reload.checked_in_by_id
       assert_response :redirect
@@ -381,7 +381,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires#update_acc_status" do
-      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
+      patch :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "accepted" }
       assert_equal "accepted", @questionnaire.reload.acc_status
       assert_equal @user.id, @questionnaire.reload.acc_status_author_id
       assert_not_equal nil, @questionnaire.reload.acc_status_date
@@ -390,19 +390,19 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires#bulk_apply" do
-      put :bulk_apply, bulk_action: "accepted", bulk_ids: [@questionnaire.id]
+      patch :bulk_apply, bulk_action: "accepted", bulk_ids: [@questionnaire.id]
       assert_response :success
       assert_equal "accepted", @questionnaire.reload.acc_status
     end
 
     should "fail manage_questionnaires#bulk_apply when missing action" do
-      put :bulk_apply, bulk_ids: [@questionnaire.id]
+      patch :bulk_apply, bulk_ids: [@questionnaire.id]
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response 400
     end
 
     should "fail manage_questionnaires#bulk_apply when missing ids" do
-      put :bulk_apply, id: @questionnaire
+      patch :bulk_apply, id: @questionnaire
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response 400
     end
@@ -410,13 +410,13 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     ["accepted", "denied", "rsvp_confirmed"].each do |status|
       should "send notification emails appropriately for #{status} bulk_apply" do
         assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
-        put :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
+        patch :bulk_apply, bulk_action: status, bulk_ids: [@questionnaire.id]
         assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
       end
     end
 
     should "fail manage_questionnaires#update_acc_status when missing status" do
-      put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "" }
+      patch :update_acc_status, id: @questionnaire, questionnaire: { acc_status: "" }
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response :redirect
     end
@@ -424,7 +424,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     ["accepted", "denied", "rsvp_confirmed"].each do |status|
       should "send notification emails appropriately for #{status} update_acc_status" do
         assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
-        put :update_acc_status, id: @questionnaire, questionnaire: { acc_status: status }
+        patch :update_acc_status, id: @questionnaire, questionnaire: { acc_status: status }
         assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
       end
     end

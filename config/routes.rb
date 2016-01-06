@@ -36,17 +36,17 @@ Rails.application.routes.draw do
     end
     resources :questionnaires do
       post :datatable, on: :collection
-      put :check_in, on: :member
-      put :convert_to_admin, on: :member
-      put :update_acc_status, on: :member
-      put :bulk_apply, on: :collection
+      patch :check_in, on: :member
+      patch :convert_to_admin, on: :member
+      patch :update_acc_status, on: :member
+      patch :bulk_apply, on: :collection
     end
     resources :admins do
       post :datatable, on: :collection
     end
     resources :messages do
       post :datatable, on: :collection
-      put :deliver, on: :member
+      patch :deliver, on: :member
     end
     resources :bus_lists
   end

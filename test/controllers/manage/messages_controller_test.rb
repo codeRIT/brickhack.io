@@ -49,19 +49,19 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#update" do
-      put :update, id: @message, message: { email: "test@example.com" }
+      patch :update, id: @message, message: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      put :destroy, id: @message
+      patch :destroy, id: @message
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not deliver message" do
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to new_user_session_path
@@ -112,19 +112,19 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#update" do
-      put :update, id: @message, message: { email: "test@example.com" }
+      patch :update, id: @message, message: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      put :destroy, id: @message
+      patch :destroy, id: @message
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not deliver message" do
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to root_path
@@ -172,19 +172,19 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#update" do
-      put :update, id: @message, message: { email: "test@example.com" }
+      patch :update, id: @message, message: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      put :destroy, id: @message
+      patch :destroy, id: @message
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not deliver message" do
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to manage_messages_path
@@ -225,36 +225,36 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "update message" do
-      put :update, id: @message, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" }
+      patch :update, id: @message, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" }
       assert_redirected_to manage_message_path(assigns(:message))
     end
 
     should "deliver message" do
       assert_equal 0, BulkMessageWorker.jobs.size, "worker should not be running prior to delivery"
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_equal 1, BulkMessageWorker.jobs.size, "should trigger messages worker"
       assert_match /queued/, flash[:notice]
       assert_redirected_to manage_message_path(assigns(:message))
     end
 
     should "not allow multiple deliveries" do
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_match /queued/, flash[:notice]
-      put :deliver, id: @message
+      patch :deliver, id: @message
       assert_match /cannot/, flash[:notice]
     end
 
     should "not be able to modify message after delivery" do
       @message.update_attribute(:delivered_at, 1.minute.ago)
       old_message_name = @message.name
-      put :update, id: @message, message: { name: "New Message Name" }
+      patch :update, id: @message, message: { name: "New Message Name" }
       assert_match /can no longer/, flash[:notice]
       assert_equal old_message_name, @message.reload.name
     end
 
     should "destroy message" do
       assert_difference('Message.count', -1) do
-        put :destroy, id: @message
+        patch :destroy, id: @message
       end
       assert_redirected_to manage_messages_path
     end

@@ -43,13 +43,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#update" do
-      put :update, id: @user, user: { email: "test@example.com" }
+      patch :update, id: @user, user: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      put :destroy, id: @user
+      patch :destroy, id: @user
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -98,13 +98,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#update" do
-      put :update, id: @user, user: { email: "test@example.com" }
+      patch :update, id: @user, user: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      put :destroy, id: @user
+      patch :destroy, id: @user
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -151,13 +151,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#update" do
-      put :update, id: @user, user: { email: "test@example.com" }
+      patch :update, id: @user, user: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      put :destroy, id: @user
+      patch :destroy, id: @user
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
@@ -213,13 +213,13 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "update user" do
-      put :update, id: @user, user: { email: "test@example.coma" }
+      patch :update, id: @user, user: { email: "test@example.coma" }
       assert_redirected_to manage_admins_path
     end
 
     should "destroy user" do
       assert_difference('User.count', -1) do
-        put :destroy, id: @user
+        patch :destroy, id: @user
       end
       assert_redirected_to manage_admins_path
     end

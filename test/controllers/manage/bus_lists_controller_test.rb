@@ -38,13 +38,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_bus_lists#update" do
-      put :update, id: @bus_list, bus_list: { email: "test@example.com" }
+      patch :update, id: @bus_list, bus_list: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_bus_lists#destroy" do
-      put :destroy, id: @bus_list
+      patch :destroy, id: @bus_list
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -88,13 +88,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_bus_lists#update" do
-      put :update, id: @bus_list, bus_list: { email: "test@example.com" }
+      patch :update, id: @bus_list, bus_list: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_bus_lists#destroy" do
-      put :destroy, id: @bus_list
+      patch :destroy, id: @bus_list
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -136,13 +136,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_bus_lists#update" do
-      put :update, id: @bus_list, bus_list: { email: "test@example.com" }
+      patch :update, id: @bus_list, bus_list: { email: "test@example.com" }
       assert_response :redirect
       assert_redirected_to manage_bus_lists_path
     end
 
     should "not allow access to manage_bus_lists#destroy" do
-      put :destroy, id: @bus_list
+      patch :destroy, id: @bus_list
       assert_response :redirect
       assert_redirected_to manage_bus_lists_path
     end
@@ -182,13 +182,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
     end
 
     should "update bus_list" do
-      put :update, id: @bus_list, bus_list: { name: "New bus_list Name" }
+      patch :update, id: @bus_list, bus_list: { name: "New bus_list Name" }
       assert_redirected_to manage_bus_list_path(assigns(:bus_list))
     end
 
     should "destroy bus_list" do
       assert_difference('BusList.count', -1) do
-        put :destroy, id: @bus_list
+        patch :destroy, id: @bus_list
       end
       assert_redirected_to manage_bus_lists_path
     end

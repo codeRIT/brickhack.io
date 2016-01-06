@@ -23,7 +23,7 @@ class MailerTest < ActionMailer::TestCase
     end
 
     should "deliver email to questionnaire" do
-      email = Mailer.application_confirmation_email(@questionnaire).deliver
+      email = Mailer.application_confirmation_email(@questionnaire.id).deliver_now
 
       assert_equal [@questionnaire.email],                email.to
       assert_equal "[BrickHack] Application Received",  email.subject
@@ -51,7 +51,7 @@ class MailerTest < ActionMailer::TestCase
     end
 
     should "deliver email to questionnaire" do
-      email = Mailer.rsvp_confirmation_email(@questionnaire).deliver
+      email = Mailer.rsvp_confirmation_email(@questionnaire.id).deliver_now
 
       assert_equal [@questionnaire.email],              email.to
       assert_equal "[BrickHack] RSVP Confirmation",     email.subject
@@ -68,7 +68,7 @@ class MailerTest < ActionMailer::TestCase
     end
 
     should "deliver email to questionnaire" do
-      email = Mailer.denied_email(@questionnaire).deliver
+      email = Mailer.denied_email(@questionnaire.id).deliver_now
 
       assert_equal [@questionnaire.email],              email.to
       assert_equal "[BrickHack] Your application status", email.subject
@@ -85,7 +85,7 @@ class MailerTest < ActionMailer::TestCase
     end
 
     should "deliver email to questionnaire" do
-      email = Mailer.accepted_email(@questionnaire).deliver
+      email = Mailer.accepted_email(@questionnaire.id).deliver_now
 
       assert_equal [@questionnaire.email],              email.to
       assert_equal "[BrickHack] You've been accepted!", email.subject
@@ -101,7 +101,7 @@ class MailerTest < ActionMailer::TestCase
     end
 
     should "deliver bulk messages" do
-      email = Mailer.bulk_message_email(@message, @user.id).deliver
+      email = Mailer.bulk_message_email(@message.id, @user.id).deliver_now
 
       assert_equal ["test@example.com"],                email.to
       assert_equal "[BrickHack] Example Subject",       email.subject

@@ -24,7 +24,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "redirect to sign up page on questionnaire#update" do
-      put :update, questionnaire: { city: "different" }
+      patch :update, questionnaire: { city: "different" }
       assert_redirected_to new_user_session_path
     end
 
@@ -122,7 +122,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "update questionnaire" do
-      put :update, questionnaire: { first_name: "Foo" }
+      patch :update, questionnaire: { first_name: "Foo" }
       assert_redirected_to questionnaires_path
     end
 
@@ -137,7 +137,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "with invalid questionnaire params" do
       should "not allow updates" do
         saved_first_name = @questionnaire.first_name
-        put :update, questionnaire: { first_name: "" }
+        patch :update, questionnaire: { first_name: "" }
         assert_equal saved_first_name, @questionnaire.reload.first_name
       end
     end
@@ -153,13 +153,13 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "#school_name" do
       context "on update" do
         should "save existing school name" do
-          put :update, questionnaire: { school_name: @school.name }
+          patch :update, questionnaire: { school_name: @school.name }
           assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
         end
 
         should "create a new school when unknown" do
-          put :update, questionnaire: { school_name: "New School" }
+          patch :update, questionnaire: { school_name: "New School" }
           assert_redirected_to questionnaires_path
           assert_equal 2, School.all.count
         end
@@ -170,13 +170,13 @@ class QuestionnairesControllerTest < ActionController::TestCase
       should "not respond to search with no query" do
         get :schools
         assert_response 400
-        assert_blank @response.body
+        assert @response.body.blank?
       end
 
       should "not respond to search with short query" do
         get :schools, school: "Al"
         assert_response 400
-        assert_blank @response.body
+        assert @response.body.blank?
       end
 
       should "respond to school search" do
