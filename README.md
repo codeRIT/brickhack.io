@@ -18,8 +18,7 @@ Download & configure local environment, [vendor everything](http://ryan.mcgeary.
 $ git clone git@github.com:codeRIT/brickhack.io.git
 $ cd brickhack.io
 $ rbenv install
-$ bundle install --path vendor --local
-$ bundle exec rake db:create db:migrate
+$ bin/setup
 ```
 
 Optionally, you can use [Pow](http://pow.cx) to host your local development environment. With it, you can visit [http://brickhack.io.dev/](http://brickhack.io.dev/)
@@ -30,7 +29,7 @@ $ powder link
 ```
 Afterwards, you can restart the server with `powder restart`  when needed.
 
-If you choose not to use Pow, you can still initiate a local rails server with `bundle exec rails server` and visit [http://localhost:3000](http://localhost:3000)
+If you choose not to use Pow, you can still initiate a local rails server with `bin/rails server` and visit [http://localhost:3000](http://localhost:3000)
 
 ## Windows
 
@@ -44,19 +43,17 @@ Download & configure local environment, [vendor everything](http://ryan.mcgeary.
 ```bash
 $ git clone git@github.com:codeRIT/brickhack.io.git
 $ cd brickhack.io
-$ gem install bundler
-$ bundle install --path vendor --local
-$ bundle exec rake db:create db:migrate
+$ bin/setup
 ```
 
-Start your local environment: `bundle exec rails server`
+Start your local environment: `bin/rails server`
 
 ## Development Utilities
 
 * **Mail View** - Email templates can be previewed at http://localhost:3000/mail_view/
 * **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup. **Note:** in order for mail to be sent, you must start a local Sidekiq worker using `bundle exec sidekiq`.
 * **Guard** - Automatically runs tests based on the files you edit. `bundle exec guard`
-* **Coverage** - Test coverage can be manually generated via the `bundle exec rake coverage:run` command. Results are then made available in the `coverage/` directory.
+* **Coverage** - Test coverage can be manually generated via the `bin/rake coverage:run` command. Results are then made available in the `coverage/` directory.
 * **Sidekiq** - Run background jobs (such as emails) and view active & completed jobs. Spin up Sidekiq with `bundle exec sidekiq`. A web portal will be available at http://localhost:3000/sidekiq (*also available in production*).
 
 # Deployment
