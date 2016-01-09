@@ -50,7 +50,7 @@ Start your local environment: `bin/rails server`
 
 ## Development Utilities
 
-* **Mail View** - Email templates can be previewed at http://localhost:3000/mail_view/
+* **Mail View** - Email templates can be previewed at http://localhost:3000/rails/mailers
 * **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup. **Note:** in order for mail to be sent, you must start a local Sidekiq worker using `bundle exec sidekiq`.
 * **Guard** - Automatically runs tests based on the files you edit. `bundle exec guard`
 * **Coverage** - Test coverage can be manually generated via the `bin/rake coverage:run` command. Results are then made available in the `coverage/` directory.
