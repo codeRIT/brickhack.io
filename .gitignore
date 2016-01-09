@@ -90,5 +90,6 @@ config/initializers/secret_token.rb
 *.bowerrc
 bower.json
 
-# ignore rubymine files
-.idea/*
+# get rid of rubymine files
+/.idea/*
+
