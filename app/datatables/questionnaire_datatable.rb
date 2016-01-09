@@ -5,24 +5,24 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
-      'questionnaires.id',
-      'questionnaires.first_name',
-      'questionnaires.last_name',
-      'users.email',
-      'questionnaires.acc_status',
-      'questionnaires.checked_in_at',
-      'questionnaires.year',
-      'schools.name'
+      'Questionnaire.id',
+      'Questionnaire.first_name',
+      'Questionnaire.last_name',
+      'User.admin',
+      'Questionnaire.acc_status',
+      'Questionnaire.checked_in_at',
+      'Questionnaire.year',
+      'School.name'
     ]
   end
 
   def searchable_columns
     @searchable_columns ||= [
-      'questionnaires.id',
-      'questionnaires.first_name',
-      'questionnaires.last_name',
-      'users.email',
-      'schools.name'
+      'Questionnaire.id',
+      'Questionnaire.first_name',
+      'Questionnaire.last_name',
+      'User.admin',
+      'School.name'
     ]
   end
 
@@ -46,6 +46,6 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   end
 
   def get_raw_records
-    Questionnaire.includes(:user, :school)
+    Questionnaire.includes(:user, :school).references(:user, :school)
   end
 end
