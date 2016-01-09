@@ -67,5 +67,4 @@ class Message < ActiveRecord::Base
   def using_default_template?
     template == "default"
   end
-
 end

@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["evinsou"]
-  s.date = "2015-12-23"
+  s.date = "2016-01-09"
   s.description = "paperclip-googledrive extends paperclip support of storage for google drive storage"
   s.email = ["evinsou@gmail.com"]
   s.files = ["LICENSE", "README.md", "lib/paperclip", "lib/paperclip-googledrive.rb", "lib/paperclip/google_drive", "lib/paperclip/google_drive.rb", "lib/paperclip/google_drive/railtie.rb", "lib/paperclip/google_drive/rake.rb", "lib/paperclip/google_drive/tasks.rake", "lib/paperclip/storage", "lib/paperclip/storage/google_drive.rb", "lib/paperclip/version.rb", "paperclip-googledrive.gemspec"]

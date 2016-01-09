@@ -39,8 +39,7 @@ class QuestionnairesController < ApplicationController
     if current_user.questionnaire.present?
       return redirect_to questionnaires_path, notice: 'Application already exists.'
     end
-    params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
-    @questionnaire = Questionnaire.new(params[:questionnaire])
+    @questionnaire = Questionnaire.new(convert_school_name_to_id params[:questionnaire])
 
     respond_to do |format|
       if @questionnaire.save

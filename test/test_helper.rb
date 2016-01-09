@@ -50,12 +50,8 @@ def sample_file(filename = "sample_pdf.pdf")
   File.new("test/fixtures/#{filename}")
 end
 
-class Test::Unit::TestCase
-  extend StripAttributes::Matchers
-end
-
 class ActiveSupport::TestCase
-  include StripAttributes::Matchers
+  extend StripAttributes::Matchers
   include ValidAttribute::Method
   include FactoryGirl::Syntax::Methods
   extend Paperclip::Shoulda::Matchers
