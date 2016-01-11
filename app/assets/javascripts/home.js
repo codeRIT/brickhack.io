@@ -2,7 +2,7 @@ var ready;
 ready = function() {
     function recalc(){
         // pages will be scaled to 100% height
-        $('.page').height($(window).height())
+        $('.page').outerHeight($(window).height())
 
         //center elements vertically
         $('.center-vertical').each(function(){
@@ -20,8 +20,12 @@ ready = function() {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top
+                //change color
+                $('nav>a').removeClass('active');
+                $(this).addClass('active');
+                //scroll
+                $('html,body').stop().animate({
+                    scrollTop: target.offset().top - 72
                 }, 500);
                 return false;
             }
