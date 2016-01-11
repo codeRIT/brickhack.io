@@ -1,0 +1,68 @@
+$orange: #f58625
+
+.triangle-background
+  background-image: url('coderit_background.png')
+
+.page
+  width: 100%
+  min-height: 500px
+
+nav
+  background: $orange
+  width: 100%
+  position: fixed
+  top: 0
+
+nav
+  text-align: center
+  font-size: 0
+
+nav a
+  color: white
+  display: inline-block
+  font-size: 15px
+  text-transform: uppercase
+  font-weight: 400
+  padding: 10px 40px
+  margin: 20px 10px
+  border-radius: 4px
+
+  -webkit-transition: background-color 200ms ease
+  -moz-transition: background-color 200ms ease
+  -o-transition: background-color 200ms ease
+  transition: background-color 200ms ease
+
+nav a.active
+  background: white
+  color: $orange
+  &:hover
+    background: white
+    color: $orange
+
+nav a:hover
+  background: darken($orange, 5%)
+  color: white
+
+#logo
+  max-width: 400px
+  margin: 0 auto
+  display: block
+
+h1
+  font-size: 72px
+  text-transform: uppercase
+
+h2
+  font-size: 36px
+  text-transform: uppercase
+
+h3
+  font-size: 24px
+
+h4
+  font-size: 13px
+  text-transform: uppercase
+
+p
+  font-size: 18px
+  line-height: 1.6
