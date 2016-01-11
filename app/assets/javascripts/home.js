@@ -3,7 +3,8 @@ ready = function() {
     function recalc(){
         // pages will be scaled to 100% height
         $('.page').outerHeight($(window).height())
-
+        $('.bg-image').outerHeight($(window).height() * 0.4)
+        $('.orange-fill').height($(window).height() * 0.4)
         //center elements vertically
         $('.center-vertical').each(function(){
            $(this).css('padding-top',($(this).parent().height()/2 - $(this).height()/2))
