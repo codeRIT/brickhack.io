@@ -263,15 +263,15 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to manage_questionnaire_path(assigns(:questionnaire))
     end
 
-    should "not create an invalid questionnaire user" do
+    should "not create a questionnaire with invalid user" do
       create(:user, email: "taken@example.com")
       assert_difference('User.count', 0) do
-        assert_difference('Questionnaire.count', 1) do
+        assert_difference('Questionnaire.count', 0) do
           post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @questionnaire.school_id, email: "taken@example.com", agreement_accepted: "1", gender: @questionnaire.gender, major: @questionnaire.major }
         end
       end
-      assert_redirected_to edit_manage_questionnaire_path(assigns(:questionnaire))
       assert_match /Email has already been taken/, flash[:notice]
+      assert_response :success
     end
 
     should "create school if doesn't exist in questionnaire" do
