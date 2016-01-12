@@ -4,52 +4,65 @@
   %a.active{href: '#home'}BrickHack
   %a{href: '#about'}about
   %a{href: '#faqpage'}FAQ
-  %a{href: '#signup'}sign up
   %a{href: '#sponsors'}sponsors
+  =link_to 'sign up', new_user_registration_path
 
 %div.page.triangle-background#home
   %div.center-vertical
     =image_tag 'brickhack_2.png', {id: 'logo'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
 
-%div.page#about
+%div#about.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
     %h1.center-vertical What is BrickHack?
 
   %div.home-content
-    %h3 BrickHack: RIT's premiere collegiate hackathon. April 18th ignites     a weekend devoted to 400 designers and coders sinking 24 hours into building     and creating. Mentors and industry representatives will also join the fray     to lend expertise and share wisdom. The event will span 3 floors of the GCCI    S atrium for a multi-tiered hacking experience. Expect food, swag, and timel    ess brick-laden memories.
+    %h2.orange.center RIT's PREMIERE HACKATHON
+    %h3{style: 'text-align: justify;'} March 5-6 ignites a weekend devoted to 400 designers and coders sinking 24 hours into building and creating. Mentors and industry representatives will also join the fray     to lend expertise and share wisdom. The event will span 3 floors of the GCCIS atrium for a multi-tiered hacking experience. Expect food, swag, and timeless brick-laden memories.
 
 
 
-%div.page#faqpage
+%div#faqpage.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
     %h1.center-vertical FAQ
   %div.home-content.faq
     %h2 When do Registrations Close?
-    %h3 Registrations close _____
+    %h3 Registrations close _____.  Applications submitted afterwards will be waitlisted.
 
-    %h2 How old do you need to be to...
-    %h3 You need to be...
+    %h2 When will I know if I got in?
+    %h3 Acceptance notifications will be sent out in ____.
+
+    %h2 How old do you need to be to attend BrickHack?
+    %h3 You need to be 18 years or older to participate in BrickHack.  Proof of your age may be requested on the day of the event.
+
+    %h2 I've never been to a hackathon before, can I still apply?
+    %h3 Of course you can! Our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.
+
+    %h2 I don't live near Rochester - can I still come?
+    %h3 Definitely. We're inviting hackers from all over the US and Canada. Travel reimbursement and busing will be provided to some participants to get them to Rochester. Expect more details soon.
+
+    %h2 How am I supposed to get there?
+    %h3 If you live in the Rochester, NY area, you’re good to go. If you’re coming with a lot of hackers from your school, we’ll work to get a bus for you. We’ll cover the cost of gas (up to $50) if you carpool here. If you have any questions, contact <a href="mailto:travel@coderit.org" class="orange">travel@coderit.org</a>.
+
+    %h2 Do I need a team to join?
+    %h3 While teams are often recommended and sometimes more fun, they're not required. Feel free to invite your friends. Teams are a max of 4 people.
+
+    %h2 Do RIT students need to apply?
+    %h3 Yes, RIT students need to apply just like everyone else.
+
+    %h2 Can high schoolers join?
+    %h3 Anyone that fits the age requirements can apply, even high schoolers.
 
 
 
-%div.page#signup
-  %div.orange-fill
-  %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
-    %h1.center-vertical Sign Up
-  %div.home-content
-
-
-
-
-%div.page#sponsors
+%div#sponsors.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
     %h1.center-vertical Sponsors
 
-%div.home-content
+  %div.home-content
 
 %a#mlh-trust-badge{style: "position:fixed;top:0;right:50px;max-width:100px;width:10%;min-width:60px;display:block;z-index:10000", href: "https://mlh.io?utm_campaign=Trust%20Badge", target: "_blank"}
   %img{src: "https://s3.amazonaws.com/logged-assets/trust-badge/s2016.png", alt: "MLH Official - Spring 2015", style: "width:100%"}

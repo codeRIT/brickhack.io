@@ -3,8 +3,17 @@ ready = function() {
     function recalc(){
         // pages will be scaled to 100% height
         $('.page').outerHeight($(window).height())
-        $('.bg-image').outerHeight($(window).height() * 0.4)
-        $('.orange-fill').height($(window).height() * 0.4)
+
+        // setting the height of background image
+        wh = $(window).height();
+        ww = $(window).width();
+        if (ww >= 700) {
+            $('.bg-image').outerHeight(wh * 0.4)
+            $('.orange-fill').height(wh * 0.4)
+        }else{
+            $('.bg-image').outerHeight(wh * 0.2)
+            $('.orange-fill').height(wh * 0.2)
+        }
         //center elements vertically
         $('.center-vertical').each(function(){
            $(this).css('padding-top',($(this).parent().height()/2 - $(this).height()/2))

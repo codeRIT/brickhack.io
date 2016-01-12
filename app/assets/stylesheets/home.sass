@@ -1,4 +1,7 @@
 $orange: #f58625
+$grey: #5D5D5D
+
+$breakpoint-tablet: 1000px
 
 .triangle-background
   background-image: url('coderit_background.png')
@@ -61,6 +64,8 @@ h2
 
 h3
   font-size: 24px
+  line-height: 1.7
+  color: $grey
 
 h4
   font-size: 13px
@@ -80,11 +85,9 @@ p
   font-weight: 300
 
 .faq h3
-  text-align: right
-  font-weight: 300
-  color: darkgrey
-  max-width: 60%
-  margin: 0 40%
+  text-align: left
+  max-width: 70%
+  margin: 0 30%
   margin-bottom: 56px
   width: 100%
 
@@ -98,6 +101,7 @@ p
   background: rgba(darken($orange, 10%), 0.6)
   position: absolute
   width: 100%
+  left: 0
 
 .bg-image h1
   color: white
@@ -111,3 +115,22 @@ p
   padding: 72px 0
   max-width: 1000px
   margin: 0 auto
+
+
+@media (max-width: $breakpoint-tablet)
+  h1
+    font-size: 56px
+  h2
+    font-size: 36px
+  h3
+    font-size: 18px
+  .faq h3
+    margin: 0
+    max-width: 100%
+    margin-bottom: 48px
+  .faq h2
+    text-align: center
+  #mlh-trust-badge img
+    display: none
+  .home-content
+    margin: 0 24px
