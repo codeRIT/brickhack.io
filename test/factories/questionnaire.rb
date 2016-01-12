@@ -11,6 +11,7 @@ FactoryGirl.define do
     dietary_restrictions  ""
     special_needs         ""
     agreement_accepted    true
+    code_of_conduct_accepted true
     can_share_resume      true
     gender                "Male"
     major                 "Computer Science"

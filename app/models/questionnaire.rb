@@ -8,11 +8,12 @@ class Questionnaire < ActiveRecord::Base
   attr_accessible :date_of_birth, :experience, :school_id, :school_name, :major, :graduation
   attr_accessible :shirt_size, :dietary_restrictions, :special_needs, :resume, :international
   attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
-  attr_accessible :riding_bus, :phone, :can_share_resume
+  attr_accessible :riding_bus, :phone, :can_share_resume, :code_of_conduct_accepted
 
   validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size
   validates_presence_of :gender, :major, :graduation
   validates_presence_of :agreement_accepted, message: "Must accept"
+  validates_presence_of :code_of_conduct_accepted, message: "Must accept"
 
   has_attached_file :resume
   validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid file type"
