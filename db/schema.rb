@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111020817) do
+ActiveRecord::Schema.define(version: 20160112222137) do
 
   create_table "bus_lists", force: :cascade do |t|
     t.string   "name",              limit: 255
@@ -78,6 +78,8 @@ ActiveRecord::Schema.define(version: 20160111020817) do
     t.date     "graduation"
     t.string   "major",                    limit: 255
     t.boolean  "code_of_conduct_accepted",             default: false
+    t.boolean  "travel_not_from_school",               default: false
+    t.string   "travel_location",          limit: 255
   end
 
   add_index "questionnaires", ["user_id"], name: "index_questionnaires_on_user_id", using: :btree

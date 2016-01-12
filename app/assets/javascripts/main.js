@@ -68,20 +68,15 @@ $(document).ready(function () {
   };
   $('.block .name').toggleBlock();
 
-  $('[name="questionnaire[international]"]').on('change', function() {
-    var $select = $('.questionnaire_state.select select'),
-        $text   = $('.questionnaire_state.string input')
+  $('[name="questionnaire[travel_not_from_school]"]').on('change', function() {
+    var $location = $('[name="questionnaire[travel_location]"]');
     if ($(this).is(':checked')) {
-      $select.parent().hide();
-      $select.prop('disabled', true);
-      $text.parent().show();
-      $text.prop('disabled', false);
+      $location.parent().show();
+      $location.prop('disabled', false);
     }
     else {
-      $text.parent().hide();
-      $text.prop('disabled', true);
-      $select.parent().show();
-      $select.prop('disabled', false);
+      $location.parent().hide();
+      $location.prop('disabled', true);
     }
   });
 

@@ -32,7 +32,9 @@
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
 
-      = f.input :international, as: :formatted_boolean, label: "International?"
+      - travel_state = !@questionnaire.new_record? && @questionnaire.travel_not_from_school
+      = f.input :travel_not_from_school, as: :formatted_boolean, label: "I will not be traveling from my school"
+      = f.input :travel_location, input_html: { "data-validate" => "presence", disabled: !travel_state }, wrapper_html: { style: travel_state ? "" : "display: none" }, label: "Travel Location"
 
       = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
 
