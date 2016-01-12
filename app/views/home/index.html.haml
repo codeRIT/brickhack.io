@@ -1,11 +1,22 @@
 =stylesheet_link_tag 'home.css'
 
 %nav
-  %a.active{href: '#home'}BrickHack
-  %a{href: '#about'}about
-  %a{href: '#faqpage'}FAQ
-  %a{href: '#sponsors'}sponsors
-  =link_to 'sign up', new_user_registration_path
+  %a.desktop.active{href: '#home'}BrickHack
+  %a.desktop{href: '#about'}about
+  %a.desktop{href: '#faqpage'}FAQ
+  %a.desktop{href: '#sponsors'}sponsors
+  =link_to 'sign up', new_user_registration_path, class: 'desktop'
+
+  -# mobile nav
+  %i{class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu'}
+  %h2{class: 'mobile mob-nav-header', style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300'} BrickHack
+
+  %div#mobile-nav
+    %a.mobile.active{href: '#home'}BrickHack
+    %a.mobile{href: '#about'}about
+    %a.mobile{href: '#faqpage'}FAQ
+    %a.mobile{href: '#sponsors'}sponsors
+    =link_to 'sign up', new_user_registration_path, class: 'mobile'
 
 %div.page.triangle-background#home
   %div.center-vertical.plus-nav.center
@@ -66,6 +77,9 @@
     %h1.center-vertical Sponsors
 
   %div.home-content
+    %div.sponsor-grid
+      %div.third
+
 
 %a#mlh-trust-badge{style: "position:fixed;top:0;right:50px;max-width:100px;width:10%;min-width:60px;display:block;z-index:10000", href: "https://mlh.io?utm_campaign=Trust%20Badge", target: "_blank"}
   %img{src: "https://s3.amazonaws.com/logged-assets/trust-badge/s2016.png", alt: "MLH Official - Spring 2015", style: "width:100%"}

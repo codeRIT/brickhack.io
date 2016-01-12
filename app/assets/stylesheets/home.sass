@@ -19,10 +19,20 @@ nav
   position: fixed
   top: 0
   z-index: 1000
-
-nav
   text-align: center
   font-size: 0
+
+nav i:before
+  color: white
+  font-size: 36px
+  cursor: pointer
+  display: inline-block
+
+nav i
+  margin: 10px 10px
+  display: inline-block
+
+
 
 nav a
   color: white
@@ -33,6 +43,7 @@ nav a
   padding: 10px 40px
   margin: 20px 10px
   border-radius: 4px
+  letter-spacing: 0.1em
 
   -webkit-transition: background-color 200ms ease
   -moz-transition: background-color 200ms ease
@@ -53,6 +64,7 @@ nav a:hover
 #logo
   max-width: 400px
   margin: 0 auto
+  width: 90%
   display: block
 
 h1
@@ -98,6 +110,7 @@ p
   background-attachment: fixed
   background-repeat: no-repeat
   background-position: center
+  background-size: cover
 
 .orange-fill, .blue-fill
   position: absolute
@@ -137,7 +150,12 @@ p
   margin: 16px auto
   text-decoration: none
 
+.mobile, i
+  display: none
+
 @media (max-width: $breakpoint-tablet)
+  #hamburger-menu
+    display: inline-block
   h1
     font-size: 56px
   h2
@@ -154,6 +172,26 @@ p
     display: none
   .home-content
     margin: 0 24px
+
+  nav .desktop
+    display: none
+
+  nav
+    text-align: left
+
+  .mobile
+    display: inherit
+
+  #mobile-nav
+    display: none
+
+  #mobile-nav a
+    margin: 0 10px
+    margin-bottom: 10px
+
+  .mob-nav-header
+    display: inline-block
+
 
 @media (max-height: 700px)
   #logo
