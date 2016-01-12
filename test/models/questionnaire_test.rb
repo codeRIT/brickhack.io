@@ -55,6 +55,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :riding_bus
   should allow_mass_assignment_of :phone
   should allow_mass_assignment_of :can_share_resume
+  should allow_mass_assignment_of :code_of_conduct_accepted
   should_not allow_mass_assignment_of :checked_in_by
   should_not allow_mass_assignment_of :checked_in_at
   should_not allow_mass_assignment_of :acc_status
@@ -82,6 +83,8 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   should allow_value(true).for(:agreement_accepted)
   should_not allow_value(false).for(:agreement_accepted)
+  should allow_value(true).for(:code_of_conduct_accepted)
+  should_not allow_value(false).for(:code_of_conduct_accepted)
 
   should allow_value("pending").for(:acc_status)
   should allow_value("accepted").for(:acc_status)
