@@ -12,6 +12,11 @@ ready = function() {
         $('#mobile-nav').delay(400).slideUp('fast');
     });
 
+    // make sure images have the correct vertical height when loaded
+    $('img').load(function(){
+       recalc();
+    });
+
     // bulk add animations
     $('.faq h2, .faq h3').addClass('wow').addClass('fade-in')
 
