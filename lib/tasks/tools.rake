@@ -80,6 +80,16 @@ namespace :tools do
     end
   end
 
+  desc "Removes all users/questionnaires and resets school questionnaire counts"
+  task :reset_questionnaires, [] => :environment do |t, args|
+    puts "Deleting all questionnaires..."
+    Questionnaire.delete_all
+    puts "Deleting all users..."
+    User.delete_all
+    puts "Resetting all school questionnaire counts..."
+    School.where("questionnaire_count > 0").update_all questionnaire_count: 0
+  end
+
   private
 
   def copy_file_to_folder(client, file_id, new_folder_id, new_file_name)
