@@ -11,6 +11,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should strip_attribute :gender
   should strip_attribute :dietary_restrictions
   should strip_attribute :special_needs
+  should strip_attribute :travel_location
 
   should validate_presence_of :first_name
   should validate_presence_of :last_name
@@ -32,6 +33,8 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not validate_presence_of :acc_status_date
   should_not validate_presence_of :riding_bus
   should_not validate_presence_of :can_share_resume
+  should_not validate_presence_of :travel_not_from_school
+  should_not validate_presence_of :travel_location
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
@@ -56,6 +59,8 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :phone
   should allow_mass_assignment_of :can_share_resume
   should allow_mass_assignment_of :code_of_conduct_accepted
+  should allow_mass_assignment_of :travel_not_from_school
+  should allow_mass_assignment_of :travel_location
   should_not allow_mass_assignment_of :checked_in_by
   should_not allow_mass_assignment_of :checked_in_at
   should_not allow_mass_assignment_of :acc_status
