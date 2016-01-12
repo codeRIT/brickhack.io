@@ -27,7 +27,7 @@ ready = function() {
     $('.wow.fade-in')
         .transition(
             {
-                opacity: 0,
+                opacity: 0.2,
                 scale: 0.9
             }, 0
         );
@@ -42,7 +42,7 @@ ready = function() {
                     opacity: 1
                 }, 500
             )
-        },{offset: '85%'});
+        },{offset: '75%'});
     });
 
 
