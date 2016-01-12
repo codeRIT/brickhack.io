@@ -1,5 +1,6 @@
 $orange: #f58625
 $grey: #5D5D5D
+$navy: #344353
 
 $breakpoint-tablet: 1000px
 
@@ -10,6 +11,7 @@ $breakpoint-tablet: 1000px
   width: 100%
   min-height: 500px
   background-color: white
+
 
 nav
   background: $orange
@@ -97,11 +99,17 @@ p
   background-repeat: no-repeat
   background-position: center
 
-.orange-fill
-  background: rgba(darken($orange, 10%), 0.6)
+.orange-fill, .blue-fill
   position: absolute
   width: 100%
   left: 0
+  z-index: 100
+
+.orange-fill
+  background: rgba(darken($orange, 23%), 0.6)
+
+.blue-fill
+  background: rgba($navy, 0.6)
 
 .bg-image h1
   color: white
@@ -116,6 +124,18 @@ p
   max-width: 1000px
   margin: 0 auto
 
+.button
+  background: #22619D
+  display: inline-block
+  padding: 0.8em 2em
+  font-size: 15px
+  border-radius: 4px
+  text-transform: uppercase
+  letter-spacing: 0.07em
+  color: white
+  font-weight: 500
+  margin: 16px auto
+  text-decoration: none
 
 @media (max-width: $breakpoint-tablet)
   h1
@@ -134,3 +154,7 @@ p
     display: none
   .home-content
     margin: 0 24px
+
+@media (max-height: 700px)
+  #logo
+    max-width: 200px

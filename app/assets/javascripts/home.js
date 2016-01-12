@@ -9,14 +9,20 @@ ready = function() {
         ww = $(window).width();
         if (ww >= 700) {
             $('.bg-image').outerHeight(wh * 0.4)
-            $('.orange-fill').height(wh * 0.4)
+            $('.orange-fill, .blue-fill').height(wh * 0.4)
         }else{
             $('.bg-image').outerHeight(wh * 0.2)
-            $('.orange-fill').height(wh * 0.2)
+            $('.orange-fill, .blue-fill').height(wh * 0.2)
         }
-        //center elements vertically
+        // center elements vertically
+        // center-vertical + plus-nav classes will subtract nav height to give visual center
         $('.center-vertical').each(function(){
-           $(this).css('padding-top',($(this).parent().height()/2 - $(this).height()/2))
+            amount = $(this).parent().height()/2 - $(this).height()/2;
+            if ($(this).hasClass('plus-nav')){
+                amount = amount + $('nav').height();
+            }
+            $(this).hasClass('plus-nav');
+            $(this).css('padding-top',(amount));
         });
     }
     $(window).resize(function(){
