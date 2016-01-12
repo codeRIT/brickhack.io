@@ -6,8 +6,8 @@ class QuestionnairesController < ApplicationController
     authenticate_user!
   end
 
-  # GET /apply/1
-  # GET /apply/1.json
+  # GET /apply
+  # GET /apply.json
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +29,7 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  # GET /apply/1/edit
+  # GET /apply/edit
   def edit
   end
 
@@ -55,8 +55,8 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  # PUT /apply/1
-  # PUT /apply/1.json
+  # PUT /apply
+  # PUT /apply.json
   def update
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
 
@@ -71,8 +71,8 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  # DELETE /apply/1
-  # DELETE /apply/1.json
+  # DELETE /apply
+  # DELETE /apply.json
   def destroy
     @questionnaire.destroy
 
