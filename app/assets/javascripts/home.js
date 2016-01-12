@@ -7,10 +7,49 @@ ready = function() {
        $('#mobile-nav').slideToggle('fast');
     });
 
-    //close hamburger menu when item is clicked
+    // close hamburger menu when item is clicked
     $('a.mobile').click(function(){
         $('#mobile-nav').delay(400).slideUp('fast');
     });
+
+    // bulk add animations
+    $('.faq h2, .faq h3').addClass('wow').addClass('fade-in')
+
+    // fancy animations
+    $('.wow.rotate-in')
+        .transition(
+            {
+            rotate: '25deg',
+            scale: 0.5
+            }, 0
+        );
+
+    $('.wow.fade-in')
+        .transition(
+            {
+                opacity: 0,
+                scale: 0.9
+            }, 0
+        );
+
+    $('.wow').each(function(){
+
+        $(this).waypoint(function(){
+            $(this).transition(
+                {
+                    rotate: '0deg',
+                    scale: 1,
+                    opacity: 1
+                }, 500
+            )
+        },{offset: '85%'});
+    });
+
+
+
+
+
+
 
     function recalc(){
         // pages will be scaled to 100% height

@@ -20,7 +20,7 @@
 
 %div.page.triangle-background#home
   %div.center-vertical.plus-nav.center
-    =image_tag 'brickhack_2.png', {id: 'logo'}
+    =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
     =link_to new_user_registration_path do
@@ -29,7 +29,7 @@
 %div#about.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
-    %h1.center-vertical What is BrickHack?
+    %h1.wow.fade-in.center-vertical What is BrickHack?
 
   %div.home-content
     %h2.orange.center RIT's PREMIERE HACKATHON
@@ -40,7 +40,7 @@
 %div#faqpage.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_3.jpg')  + ")" }
-    %h1.center-vertical FAQ
+    %h1.wow.fade-in.center-vertical FAQ
   %div.home-content.faq
     %h2 When do Registrations Close?
     %h3 Registrations close _____.  Applications submitted afterwards will be waitlisted.
@@ -74,7 +74,7 @@
 %div#sponsors.home-section
   %div.blue-fill
   %div.bg-image{style: "background-image: url(" +  image_url('background_2.jpg')  + ")" }
-    %h1.center-vertical Sponsors
+    %h1.wow.fade-in.center-vertical Sponsors
 
   %div.home-content
     %div.sponsor-grid
