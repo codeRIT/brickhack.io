@@ -26,14 +26,17 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     email = params[:questionnaire].delete(:email)
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
     @questionnaire = ::Questionnaire.new(params[:questionnaire])
-    if @questionnaire.save
+    if @questionnaire.valid?
       user = User.new(email: email, password: Devise.friendly_token.first(10))
       if user.save
         @questionnaire.user = user
         @questionnaire.save
       else
-        flash[:notice] = user.errors.full_messages
-        return redirect_to edit_manage_questionnaire_path(@questionnaire)
+        flash[:notice] = user.errors.full_messages.join(", ")
+        if user.errors.include?(:email)
+          @questionnaire.errors.add(:email, user.errors.get(:email).join(", "))
+        end
+        return render 'new'
       end
     end
     respond_with(:manage, @questionnaire)

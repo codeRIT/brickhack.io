@@ -6,8 +6,8 @@ class QuestionnairesController < ApplicationController
     authenticate_user!
   end
 
-  # GET /apply/1
-  # GET /apply/1.json
+  # GET /apply
+  # GET /apply.json
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -23,13 +23,33 @@ class QuestionnairesController < ApplicationController
     end
     @questionnaire = Questionnaire.new
 
+    if session["devise.provider_data"] && session["devise.provider_data"]["info"]
+      @questionnaire.tap do |q|
+        q.first_name = session["devise.provider_data"]["info"]["first_name"]
+        q.last_name = session["devise.provider_data"]["info"]["last_name"]
+        q.phone = session["devise.provider_data"]["info"]["phone_number"]
+        q.graduation = session["devise.provider_data"]["info"]["graduation"]
+        q.major = session["devise.provider_data"]["info"]["major"]
+        q.date_of_birth = session["devise.provider_data"]["info"]["date_of_birth"]
+        q.shirt_size = session["devise.provider_data"]["info"]["shirt_size"]
+        q.dietary_restrictions = session["devise.provider_data"]["info"]["dietary_restrictions"]
+        q.special_needs = session["devise.provider_data"]["info"]["special_needs"]
+        q.gender = session["devise.provider_data"]["info"]["gender"]
+
+        school = School.where(name: session["devise.provider_data"]["info"]["school"]["name"]).first_or_create do |s|
+          s.name = session["devise.provider_data"]["info"]["school"]["name"]
+        end
+        q.school_id = school.id
+      end
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @questionnaire }
     end
   end
 
-  # GET /apply/1/edit
+  # GET /apply/edit
   def edit
   end
 
@@ -44,7 +64,6 @@ class QuestionnairesController < ApplicationController
     respond_to do |format|
       if @questionnaire.save
         current_user.questionnaire = @questionnaire
-        @questionnaire.update_attribute(:acc_status, "late_waitlist")
         Mailer.delay.application_confirmation_email(@questionnaire.id)
         format.html { redirect_to questionnaires_path, notice: 'Application was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }
@@ -55,8 +74,8 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  # PUT /apply/1
-  # PUT /apply/1.json
+  # PUT /apply
+  # PUT /apply.json
   def update
     params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
 
@@ -71,8 +90,8 @@ class QuestionnairesController < ApplicationController
     end
   end
 
-  # DELETE /apply/1
-  # DELETE /apply/1.json
+  # DELETE /apply
+  # DELETE /apply.json
   def destroy
     @questionnaire.destroy
 

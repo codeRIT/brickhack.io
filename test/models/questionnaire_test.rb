@@ -6,21 +6,23 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   should strip_attribute :first_name
   should strip_attribute :last_name
-  should strip_attribute :city
-  should strip_attribute :state
   should strip_attribute :acc_status
+  should strip_attribute :major
+  should strip_attribute :gender
+  should strip_attribute :dietary_restrictions
+  should strip_attribute :special_needs
 
   should validate_presence_of :first_name
   should validate_presence_of :last_name
-  should validate_presence_of :city
-  should validate_presence_of :state
-  should validate_presence_of :year
-  should validate_presence_of :birthday
+  should validate_presence_of :date_of_birth
   should validate_presence_of :experience
-  should validate_presence_of :interest
   should validate_presence_of :shirt_size
   should validate_presence_of :phone
-  should_not validate_presence_of :dietary_medical_notes
+  should validate_presence_of :graduation
+  should validate_presence_of :major
+  should validate_presence_of :gender
+  should_not validate_presence_of :dietary_restrictions
+  should_not validate_presence_of :special_needs
   should_not validate_presence_of :resume
   should_not validate_presence_of :international
   should_not validate_presence_of :portfolio_url
@@ -33,16 +35,16 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   should allow_mass_assignment_of :first_name
   should allow_mass_assignment_of :last_name
-  should allow_mass_assignment_of :city
-  should allow_mass_assignment_of :state
-  should allow_mass_assignment_of :year
-  should allow_mass_assignment_of :birthday
+  should allow_mass_assignment_of :date_of_birth
   should allow_mass_assignment_of :experience
-  should allow_mass_assignment_of :interest
+  should allow_mass_assignment_of :graduation
+  should allow_mass_assignment_of :major
+  should allow_mass_assignment_of :gender
   should allow_mass_assignment_of :school_id
   should allow_mass_assignment_of :school_name
   should allow_mass_assignment_of :shirt_size
-  should allow_mass_assignment_of :dietary_medical_notes
+  should allow_mass_assignment_of :dietary_restrictions
+  should allow_mass_assignment_of :special_needs
   should allow_mass_assignment_of :resume
   should allow_mass_assignment_of :delete_resume
   should allow_mass_assignment_of :international
@@ -60,40 +62,22 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not allow_mass_assignment_of :acc_status_date
   should_not allow_mass_assignment_of :is_bus_captain
 
-  should allow_value("VA").for(:state)
-  should allow_value("NY").for(:state)
-  should allow_value("PA").for(:state)
-  should_not allow_value("ZZ").for(:state)
-  should_not allow_value("New York").for(:state)
-
-  should "allow for international locations" do
-    p = build(:questionnaire, international: true, city: "Foo", state: "Bar")
-    assert p.valid?, "intl. questionnaire should be valid with custom state"
-  end
-
-  should allow_value("Design").for(:interest)
-  should allow_value("Development").for(:interest)
-  should allow_value("Hardware").for(:interest)
-  should_not allow_value("foo").for(:interest)
-
   should allow_value("first").for(:experience)
   should allow_value("experienced").for(:experience)
   should allow_value("expert").for(:experience)
   should_not allow_value("foo").for(:experience)
 
-  should allow_value("hs").for(:year)
-  should allow_value("1").for(:year)
-  should allow_value("2").for(:year)
-  should allow_value("3").for(:year)
-  should allow_value("4").for(:year)
-  should allow_value("5+").for(:year)
-  should_not allow_value(nil).for(:year)
-  should_not allow_value("foo").for(:year)
-
-  should allow_value("S").for(:shirt_size)
-  should allow_value("M").for(:shirt_size)
-  should allow_value("L").for(:shirt_size)
-  should allow_value("XL").for(:shirt_size)
+  should allow_value("Women's - XS").for(:shirt_size)
+  should allow_value("Women's - S").for(:shirt_size)
+  should allow_value("Women's - M").for(:shirt_size)
+  should allow_value("Women's - L").for(:shirt_size)
+  should allow_value("Women's - XL").for(:shirt_size)
+  should allow_value("Unisex - XS").for(:shirt_size)
+  should allow_value("Unisex - S").for(:shirt_size)
+  should allow_value("Unisex - M").for(:shirt_size)
+  should allow_value("Unisex - L").for(:shirt_size)
+  should allow_value("Unisex - XL").for(:shirt_size)
+  should_not allow_value("M").for(:shirt_size)
   should_not allow_value("foo").for(:shirt_size)
 
   should allow_value(true).for(:agreement_accepted)
@@ -176,15 +160,16 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   context "#full_location" do
     should "concatenate city and state with a comma" do
-      questionnaire = create(:questionnaire, city: "Foo", state: "AZ")
+      school = create(:school, city: "Foo", state: "AZ")
+      questionnaire = create(:questionnaire, school_id: school.id)
       assert_equal "Foo, AZ", questionnaire.full_location
     end
   end
 
-  context "#birthday_formatted" do
-    should "format the birthday correctly" do
-      questionnaire = create(:questionnaire, birthday: Date.new(1995, 1, 5))
-      assert_equal "January 5, 1995", questionnaire.birthday_formatted
+  context "#date_of_birth_formatted" do
+    should "format date_of_birth correctly" do
+      questionnaire = create(:questionnaire, date_of_birth: Date.new(1995, 1, 5))
+      assert_equal "January 5, 1995", questionnaire.date_of_birth_formatted
     end
   end
 

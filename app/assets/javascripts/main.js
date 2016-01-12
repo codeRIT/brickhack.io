@@ -222,6 +222,9 @@ $(document).ready(function () {
     $(this).find('[data-wizard=previous]').each(function() {
       $(this).on('click', previousStage);
     });
+    if ($(this).is('.wizard-skip-valid')) {
+      nextStage.call(this);
+    }
   };
 
   $('.wizard').wizard();

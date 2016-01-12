@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
 
-  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
   if Rails.env.development?
     mount MailPreview => 'mail_view'

@@ -11,7 +11,6 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
       'User.admin',
       'Questionnaire.acc_status',
       'Questionnaire.checked_in_at',
-      'Questionnaire.year',
       'School.name'
     ]
   end
@@ -39,7 +38,6 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
         record.email,
         "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
         record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
-        record.year,
         record.school.name
       ]
     end

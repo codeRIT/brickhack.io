@@ -65,7 +65,6 @@ $(document).ready(function () {
       {},
       {},
       {},
-      {},
       {}
     ]
   }));
@@ -114,7 +113,7 @@ $.fn.bulkRowEdit = function() {
 
     $.ajax({
       url: $('form[data-bulk-row-edit]').attr('action'),
-      type: 'PUT',
+      type: 'PATCH',
       data: {
         bulk_action: action,
         bulk_ids: ids
