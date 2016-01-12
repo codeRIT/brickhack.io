@@ -13,14 +13,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    redirect_to questionnaires_path
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    redirect_to questionnaires_path
+  end
 
   # DELETE /resource
   def destroy

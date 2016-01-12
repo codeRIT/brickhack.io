@@ -65,7 +65,6 @@ $(document).ready(function () {
       {},
       {},
       {},
-      {},
       {}
     ]
   }));

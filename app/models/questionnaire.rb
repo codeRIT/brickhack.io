@@ -4,14 +4,14 @@ class Questionnaire < ActiveRecord::Base
   after_save :update_school_questionnaire_count
   after_destroy :update_school_questionnaire_count
 
-  attr_accessible :city, :email, :experience, :first_name, :last_name, :state, :year
-  attr_accessible :birthday, :interest, :experience, :school_id, :school_name
-  attr_accessible :shirt_size, :dietary_medical_notes, :resume, :international
+  attr_accessible :email, :experience, :first_name, :last_name, :gender
+  attr_accessible :date_of_birth, :experience, :school_id, :school_name, :major, :graduation
+  attr_accessible :shirt_size, :dietary_restrictions, :special_needs, :resume, :international
   attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
   attr_accessible :riding_bus, :phone, :can_share_resume
 
-  validates_presence_of :first_name, :last_name, :city, :city, :state, :year, :phone
-  validates_presence_of :birthday, :school_id, :interest, :experience, :shirt_size
+  validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size
+  validates_presence_of :gender, :major, :graduation
   validates_presence_of :agreement_accepted, message: "Must accept"
 
   has_attached_file :resume
@@ -28,8 +28,6 @@ class Questionnaire < ActiveRecord::Base
 
   strip_attributes
 
-  POSSIBLE_STATES      = %w(AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA PR RI SC SD TN TX UT VT VA WA WV WI WY)
-  POSSIBLE_INTERESTS   = %w(Design Development Hardware)
   POSSIBLE_EXPERIENCES = {
     "first"       => "This is my 1st hackathon!",
     "experienced" => "My feet are wet. (1-5 hackathons)",
@@ -43,12 +41,18 @@ class Questionnaire < ActiveRecord::Base
     "4"  => "4th Year",
     "5+" => "5th+ Year"
   }
-  POSSIBLE_SHIRT_SIZES = {
-    "S"  => "Small",
-    "M"  => "Medium",
-    "L"  => "Large",
-    "XL" => "X-Large"
-  }
+  POSSIBLE_SHIRT_SIZES = [
+    "Women's - XS",
+    "Women's - S",
+    "Women's - M",
+    "Women's - L",
+    "Women's - XL",
+    "Unisex - XS",
+    "Unisex - S",
+    "Unisex - M",
+    "Unisex - L",
+    "Unisex - XL",
+  ]
   POSSIBLE_ACC_STATUS = {
     "pending"        => "Pending Review",
     "accepted"       => "Accepted",
@@ -59,10 +63,7 @@ class Questionnaire < ActiveRecord::Base
     "rsvp_denied"    => "RSVP Denied"
   }
 
-  validates_inclusion_of :state, in: POSSIBLE_STATES, unless: :international
-  validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
   validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES
-  validates_inclusion_of :year, in: POSSIBLE_YEARS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
   validates_inclusion_of :acc_status, in: POSSIBLE_ACC_STATUS
@@ -92,11 +93,15 @@ class Questionnaire < ActiveRecord::Base
   end
 
   def full_location
-    "#{city}, #{state}"
+    "#{school.city}, #{school.state}"
   end
 
-  def birthday_formatted
-    birthday.strftime("%B %-d, %Y")
+  def date_of_birth_formatted
+    date_of_birth.strftime("%B %-d, %Y")
+  end
+
+  def graduation_formatted
+    graduation.strftime("%B %Y")
   end
 
   def acc_status_author

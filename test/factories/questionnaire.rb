@@ -4,17 +4,17 @@ FactoryGirl.define do
     last_name             "Doe"
     phone                 "(123) 456-7890"
     international         false
-    city                  "Rochester"
-    state                 "NY"
-    year                  "1"
-    birthday              Date.today - 20.years
+    date_of_birth         Date.today - 20.years
     experience            "first"
-    interest              "Development"
     school_id             { create(:school).id }
-    shirt_size            "M"
-    dietary_medical_notes ""
+    shirt_size            "Unisex - M"
+    dietary_restrictions  ""
+    special_needs         ""
     agreement_accepted    true
     can_share_resume      true
+    gender                "Male"
+    major                 "Computer Science"
+    graduation            Date.today - 2.years
 
     association :user
   end

@@ -19,6 +19,7 @@ gem 'sprockets', :require => nil
 
 gem 'devise'
 gem 'devise-async'
+gem 'omniauth-mlh'
 
 gem 'haml-rails'
 gem 'simple_form'

@@ -1,41 +1,48 @@
 %div{class:'form-container'}
   = simple_form_for @questionnaire, url: url_for(action: @questionnaire.new_record? ? "create" : "update", controller: "questionnaires"), html: { "data-validate" => "form" } do |f|
 
-    - if f.error_notification.present?
+    - if f.error_notification.present? || flash[:notice]
       #disclaimer
         = f.error_notification
+        - if flash[:notice]
+          %p= flash[:notice]
 
     .form-inputs
-      = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name"
-      = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
-      = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
-      = f.input :phone, placeholder: "(123) 456-7890", input_html: { "data-validate" => "presence" }
-      = f.input :birthday, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
+      %fieldset
+        %legend Provided by My MLH
+        = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, label: "First Name", autofocus: true
+        = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }, label: "Last Name"
+        = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
+        = f.input :phone, placeholder: "(123) 456-7890", input_html: { "data-validate" => "presence" }
+        = f.input :date_of_birth, start_year: Date.today.year - 18, end_year: Date.today.year - 90, order: [:month, :day, :year], input_html: { "data-validate" => "presence" }
 
-      = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
-      = f.input :year, as: :select, collection: Questionnaire::POSSIBLE_YEARS.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+        = f.input :school_id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }
+        = f.input :graduation, start_year: Date.today.year - 2, end_year: Date.today.year + 8, order: [:month, :year], input_html: { "data-validate" => "presence" }
+        = f.input :major, placeholder: "Major", input_html: { "data-validate" => "presence" }
+        = f.input :shirt_size, as: :select, collection: Questionnaire::POSSIBLE_SHIRT_SIZES, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
+        = f.input :gender, placeholder: "Female, Male, Non-Binary, Prefer not to say, other", input_html: { "data-validate" => "presence" }
+        = f.input :dietary_restrictions, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
+        = f.input :special_needs, placeholder: "Any special needs or requests (optional)", label: "Special needs"
 
-      = f.input :international, as: :formatted_boolean, label: "International?"
-
-      = f.input :city, placeholder: "Anytown", input_html: { "data-validate" => "presence" }
-
-      - intl_state = !@questionnaire.new_record? && @questionnaire.international
-      = f.input :state, as: :select, collection: Questionnaire::POSSIBLE_STATES, include_blank: "(select one...)", input_html: { "data-validate" => "presence", disabled: intl_state }, wrapper_html: { style: intl_state ? "display: none" : "" }
-      = f.input :state, input_html: { "data-validate" => "presence", disabled: !intl_state }, wrapper_html: { style: intl_state ? "" : "display: none" }, label: "State/Province"
+    .form-inputs
       = f.input :experience, as: :select, collection: Questionnaire::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
-      = f.input :interest, as: :select, collection: Questionnaire::POSSIBLE_INTERESTS, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :shirt_size, as: :select, collection: Questionnaire::POSSIBLE_SHIRT_SIZES.invert, include_blank: "(select one...)", input_html: { "data-validate" => "presence" }
-      = f.input :dietary_medical_notes, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health Restrictions"
 
       = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
-      = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
 
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
+
+      = f.input :international, as: :formatted_boolean, label: "International?"
+
+      = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
+
       = f.input :riding_bus, as: :formatted_boolean, label: "Riding Bus", disabled: !@questionnaire.can_ride_bus?
       - if !@questionnaire.can_ride_bus?
         %p (school not eligible for bus)
 
+      %p
+        Please read the
+        %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
       = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
 
     %div{class:'center'}

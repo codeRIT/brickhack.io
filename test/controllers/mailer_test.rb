@@ -10,14 +10,8 @@ class MailerTest < ActionMailer::TestCase
       @questionnaire = create(:questionnaire,
         first_name: "Joe",
         last_name: "Smith",
-        city: "Anytown",
-        state: "NY",
-        school_id: @school.id,
-        year: "1",
-        interest: "Development",
-        experience: "first",
-        shirt_size: "L",
-        dietary_medical_notes: "Peanut allergy"
+        email: "joe.smith@example.com",
+        school_id: @school.id
       )
       @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
     end
