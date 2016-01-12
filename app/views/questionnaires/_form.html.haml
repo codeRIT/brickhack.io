@@ -38,8 +38,17 @@
 
         %p
           Please read the
+          %a{href:"#{asset_path("/assets/mlh-code-of-conduct.pdf")}", target:"_blank"} MLH Code of Conduct
+        = f.input :code_of_conduct_accepted, as: :formatted_boolean, label: "I accept the MLH Code of Conduct", input_html: { "data-validate" => "presence" }
+        %p
+          Please read the
           %a{href:"#{asset_path("/assets/BrickHack_ReleaseAgreement.pdf")}", target:"_blank"} BrickHack Agreement
         = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
+        %p
+          We are sanctioned by and participate in,
+          %a{href: "https://app.relateiq.com/r?c=chrome_gmail&url=http%3A%2F%2Fmlh.io%2F&t=AFwhZf1winfefb5t5QTGEBBUlzJIJjr5wSndO8cL8UivBffC8RO6mYqExTLJAcJmHTF2papHd9dl7vpsh1AR4QuX4Vp2t1HQhh3c7jqBcsg8eI_RpNIPW6OE5cDvlHadTPPRcWXpFFBN"} Major League Hacking
+          (MLH). You authorize us to share certain application/registration information for event administration, ranking, MLH administration, and occasional messages about hackathons in line with the
+          %a{href: "http://mlh.io/privacy"} MLH Privacy Policy.
 
       %div{class:'center'}
         %button.button{ type: "button", "data-wizard" => "previous" } Previous

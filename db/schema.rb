@@ -44,39 +44,40 @@ ActiveRecord::Schema.define(version: 20160111020817) do
   end
 
   create_table "questionnaires", force: :cascade do |t|
-    t.string   "first_name",           limit: 255
-    t.string   "last_name",            limit: 255
-    t.string   "email",                limit: 255
+    t.string   "first_name",               limit: 255
+    t.string   "last_name",                limit: 255
+    t.string   "email",                    limit: 255
     t.date     "date_of_birth"
-    t.string   "experience",           limit: 255
-    t.string   "school_id",            limit: 255
+    t.string   "experience",               limit: 255
+    t.string   "school_id",                limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "shirt_size",           limit: 255
-    t.string   "dietary_restrictions", limit: 255
-    t.string   "resume_file_name",     limit: 255
-    t.string   "resume_content_type",  limit: 255
-    t.integer  "resume_file_size",     limit: 4
+    t.string   "shirt_size",               limit: 255
+    t.string   "dietary_restrictions",     limit: 255
+    t.string   "resume_file_name",         limit: 255
+    t.string   "resume_content_type",      limit: 255
+    t.integer  "resume_file_size",         limit: 4
     t.datetime "resume_updated_at"
     t.boolean  "international"
-    t.string   "portfolio_url",        limit: 255
-    t.string   "vcs_url",              limit: 255
-    t.integer  "user_id",              limit: 4
-    t.boolean  "agreement_accepted",               default: false
-    t.string   "acc_status",           limit: 255, default: "pending"
-    t.integer  "acc_status_author_id", limit: 4
+    t.string   "portfolio_url",            limit: 255
+    t.string   "vcs_url",                  limit: 255
+    t.integer  "user_id",                  limit: 4
+    t.boolean  "agreement_accepted",                   default: false
+    t.string   "acc_status",               limit: 255, default: "pending"
+    t.integer  "acc_status_author_id",     limit: 4
     t.datetime "acc_status_date"
-    t.boolean  "riding_bus",                       default: false
-    t.boolean  "bus_captain_interest",             default: false
-    t.boolean  "is_bus_captain",                   default: false
-    t.integer  "checked_in_by_id",     limit: 4
+    t.boolean  "riding_bus",                           default: false
+    t.boolean  "bus_captain_interest",                 default: false
+    t.boolean  "is_bus_captain",                       default: false
+    t.integer  "checked_in_by_id",         limit: 4
     t.datetime "checked_in_at"
-    t.string   "phone",                limit: 255
-    t.boolean  "can_share_resume",                 default: false
-    t.string   "special_needs",        limit: 255
-    t.string   "gender",               limit: 255
+    t.string   "phone",                    limit: 255
+    t.boolean  "can_share_resume",                     default: false
+    t.string   "special_needs",            limit: 255
+    t.string   "gender",                   limit: 255
     t.date     "graduation"
-    t.string   "major",                limit: 255
+    t.string   "major",                    limit: 255
+    t.boolean  "code_of_conduct_accepted",             default: false
   end
 
   add_index "questionnaires", ["user_id"], name: "index_questionnaires_on_user_id", using: :btree
