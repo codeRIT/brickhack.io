@@ -1,0 +1,207 @@
+$orange: #f58625
+$grey: #5D5D5D
+$navy: #344353
+
+$breakpoint-tablet: 1000px
+
+.triangle-background
+  background-image: url('coderit_background.png')
+
+.page
+  width: 100%
+  min-height: 500px
+  background-color: white
+
+
+nav
+  background: $orange
+  width: 100%
+  position: fixed
+  top: 0
+  z-index: 1000
+  text-align: center
+  font-size: 0
+
+nav i:before
+  color: white
+  font-size: 36px
+  cursor: pointer
+  display: inline-block
+
+nav i
+  margin: 10px 10px
+  display: inline-block
+
+
+
+nav a
+  color: white
+  display: inline-block
+  font-size: 15px
+  text-transform: uppercase
+  font-weight: 400
+  padding: 10px 40px
+  margin: 20px 10px
+  border-radius: 4px
+  letter-spacing: 0.1em
+
+  -webkit-transition: background-color 200ms ease
+  -moz-transition: background-color 200ms ease
+  -o-transition: background-color 200ms ease
+  transition: background-color 200ms ease
+
+nav a.active
+  background: white
+  color: $orange
+  &:hover
+    background: white
+    color: $orange
+
+nav a:hover
+  background: darken($orange, 5%)
+  color: white
+
+#logo
+  max-width: 400px
+  margin: 0 auto
+  width: 90%
+  display: block
+
+h1
+  font-size: 72px
+  text-transform: uppercase
+  text-align: center
+
+h2
+  font-size: 36px
+  text-transform: uppercase
+
+h3
+  font-size: 24px
+  line-height: 1.7
+  color: $grey
+
+h4
+  font-size: 13px
+  text-transform: uppercase
+
+p
+  font-size: 18px
+  line-height: 1.6
+
+.orange
+  color: #f58625
+
+.faq h2
+  text-transform: none
+  text-align: left
+  color: $orange
+  font-weight: 300
+
+.faq h3
+  text-align: left
+  max-width: 70%
+  margin: 0 30%
+  margin-bottom: 56px
+  width: 100%
+
+.bg-image
+  width: 100%
+  background-attachment: fixed
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+.orange-fill, .blue-fill
+  position: absolute
+  width: 100%
+  left: 0
+  z-index: 100
+
+.orange-fill
+  background: rgba(darken($orange, 23%), 0.6)
+
+.blue-fill
+  background: rgba($navy, 0.6)
+
+.bg-image h1
+  color: white
+  z-index: 100
+  position: absolute
+  margin: 0 auto
+  width: 100%
+  font-weight: 400
+
+.home-content
+  padding: 72px 0
+  max-width: 1000px
+  margin: 0 auto
+
+.button
+  background: #22619D
+  display: inline-block
+  padding: 0.8em 2em
+  font-size: 15px
+  border-radius: 4px
+  text-transform: uppercase
+  letter-spacing: 0.07em
+  color: white
+  font-weight: 500
+  margin: 16px auto
+  text-decoration: none
+
+.mobile, i
+  display: none
+
+.sponsor-grid .third
+  width: 33.33%
+  float: left
+  padding: 20px
+  height: 200px
+
+@media (max-width: $breakpoint-tablet)
+  #hamburger-menu
+    display: inline-block
+  h1
+    font-size: 56px
+  h2
+    font-size: 36px
+  h3
+    font-size: 18px
+  .faq h3
+    margin: 0
+    max-width: 100%
+    margin-bottom: 48px
+  .faq h2
+    text-align: center
+  .home-content
+    margin: 0 24px
+
+  nav .desktop
+    display: none
+
+  nav
+    text-align: left
+
+  .mobile
+    display: inherit
+
+  #mobile-nav
+    display: none
+
+  #mobile-nav a
+    margin: 0 10px
+    margin-bottom: 10px
+
+  .mob-nav-header
+    display: inline-block
+
+  .sponsor-grid .third
+    width: 100%
+    float: left
+    overflow: hidden
+    height: inherit
+
+@media (max-height: 700px)
+  #logo
+    max-width: 200px

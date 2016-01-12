@@ -45,7 +45,7 @@
         = f.input :code_of_conduct_accepted, as: :formatted_boolean, label: "I accept the MLH Code of Conduct", input_html: { "data-validate" => "presence" }
         %p
           Please read the
-          %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
+          %a{href:"#{asset_path("/assets/BrickHack_ReleaseAgreement.pdf")}", target:"_blank"} BrickHack Agreement
         = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
         %p
           We are sanctioned by and participate in,
