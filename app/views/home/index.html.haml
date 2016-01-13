@@ -3,7 +3,7 @@
 %nav
   %a.desktop.active{href: '#home'}BrickHack
   %a.desktop{href: '#about'}about
-  %a.desktop{href: '#faqpage'}FAQ
+  %a.desktop{href: '#faq'}FAQ
   %a.desktop{href: '#sponsors'}sponsors
   =link_to 'sign up', new_user_registration_path, class: 'desktop'
 
@@ -14,7 +14,7 @@
   %div#mobile-nav
     %a.mobile.active{href: '#home'}BrickHack
     %a.mobile{href: '#about'}about
-    %a.mobile{href: '#faqpage'}FAQ
+    %a.mobile{href: '#faq'}FAQ
     %a.mobile{href: '#sponsors'}sponsors
     =link_to 'sign up', new_user_registration_path, class: 'mobile'
 
@@ -37,7 +37,7 @@
 
 
 
-%div#faqpage.home-section
+%div#faq.home-section
   %div.orange-fill
   %div.bg-image{style: "background-image: url(" +  image_path('background_3.jpg')  + ")" }
     %h1.wow.fade-in.center-vertical FAQ
