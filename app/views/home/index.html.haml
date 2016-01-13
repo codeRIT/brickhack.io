@@ -28,7 +28,7 @@
 
 %div#about.home-section
   %div.orange-fill
-  %div.bg-image{style: "background-image: url(" +  image_url('background_1.jpg')  + ")" }
+  %div.bg-image{style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
     %h1.wow.fade-in.center-vertical What is BrickHack?
 
   %div.home-content
@@ -39,7 +39,7 @@
 
 %div#faqpage.home-section
   %div.orange-fill
-  %div.bg-image{style: "background-image: url(" +  image_url('background_3.jpg')  + ")" }
+  %div.bg-image{style: "background-image: url(" +  image_path('background_3.jpg')  + ")" }
     %h1.wow.fade-in.center-vertical FAQ
   %div.home-content.faq
     %h2 When does registration close?
@@ -85,12 +85,12 @@
 
 %div#sponsors.home-section
   %div.blue-fill
-  %div.bg-image{style: "background-image: url(" +  image_url('background_2.jpg')  + ")" }
+  %div.bg-image{style: "background-image: url(" +  image_path('background_2.jpg')  + ")" }
     %h1.wow.fade-in.center-vertical Sponsors
 
 
   %div.home-content
-    =link_to 'Interested in Sponsoring?', asset_path("/assets/BrickHack_ReleaseAgreement.pdf"), {class: 'button', style: 'margin-bottom: 60px;'}
+    =link_to 'Interested in Sponsoring?', image_path("BrickHack_ReleaseAgreement.pdf"), {class: 'button', style: 'margin-bottom: 60px;'}
     %div.sponsor-grid
       %div.third
       %div.third

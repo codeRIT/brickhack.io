@@ -75,7 +75,7 @@ input[type=text], input[type=email], input[type=tel], input[type=date], input[ty
 // just selects
 select
   @include appearance (none)
-  background: url("/assets/arrow_down.svg"), $white_pure
+  background: url(image_path("/assets/arrow_down.svg")), $white_pure
   background-repeat: no-repeat
   background-position: right
   background-size: auto 100%
@@ -86,13 +86,13 @@ select
   width: 100%
   font-size: 100%
   &:hover
-    background: url("/assets/arrow_down_hover.svg"), $white_pure
+    background: url(image_path("/assets/arrow_down_hover.svg")), $white_pure
     background-repeat: no-repeat
     background-position: right
     background-size: auto 100%
   &:focus
     border-color: lighten($blue, 10%)
-    background: url("/assets/arrow_down_hover.svg"), $white_pure
+    background: url(image_path("/assets/arrow_down_hover.svg")), $white_pure
     background-repeat: no-repeat
     background-position: right
     background-size: auto 100%
