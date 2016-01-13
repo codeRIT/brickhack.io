@@ -35,7 +35,7 @@
         = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
 
         - travel_state = !@questionnaire.new_record? && @questionnaire.travel_not_from_school
-        = f.input :travel_not_from_school, as: :formatted_boolean, label: "I will not be traveling from my school"
+        = f.input :travel_not_from_school, as: :formatted_boolean, label: "Not traveling from your school? Check here."
         = f.input :travel_location, input_html: { "data-validate" => "presence", disabled: !travel_state }, wrapper_html: { style: travel_state ? "" : "display: none" }, label: "Travel Location"
       %div{class:'center'}
         %p
