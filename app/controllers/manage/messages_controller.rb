@@ -46,7 +46,7 @@ class Manage::MessagesController < Manage::ApplicationController
     end
     @message.update_attribute(:queued_at, Time.now)
     BulkMessageWorker.perform_async(@message.id)
-    flash[:notice] = "Mesage queued for delivery"
+    flash[:notice] = "Message queued for delivery"
     redirect_to manage_message_path(@message)
   end
 
