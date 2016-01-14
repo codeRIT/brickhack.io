@@ -1,14 +1,9 @@
 #!/bin/bash
 
-bundle exec rake db:migrate
-
-ACCESS_TOKEN=$ROLLBAR_ACCESS_TOKEN
-LOCAL_USERNAME="dokku"
-
-REVISION=$TRAVIS_COMMIT
+LOCAL_USERNAME=`whoami`
 
 curl https://api.rollbar.com/api/1/deploy/ \
-  -F access_token=$ACCESS_TOKEN \
-  -F environment=$ENVIRONMENT \
-  -F revision=$REVISION \
+  -F access_token=$ROLLBAR_ACCESS_TOKEN \
+  -F environment=$ROLLBAR_ENV \
+  -F revision=$GIT_REV \
   -F local_username=$LOCAL_USERNAME
