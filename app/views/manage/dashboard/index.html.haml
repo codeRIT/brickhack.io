@@ -52,7 +52,7 @@
       = bar_chart schools_confirmed_data_manage_dashboard_index_path, height: "600px"
     %h4.dashboard-container-title Schools (Applied)
     %ul
-      = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [green, blue, "#059", "#058", red, "#666"], library: { legend: { enabled: false } }
+      = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [green, blue, "#059", "#058", red, "#666", "#F98728"], library: { legend: { enabled: false } }
     - if School.where("questionnaire_count >= 1 AND questionnaire_count < 5").count > 0
       %button{onclick: "$('#least-applied-schools').toggle()"}= "List schools with < 5 applicants"
       %ul#least-applied-schools{style: "display: none"}
