@@ -55,7 +55,7 @@ class Manage::DashboardController < Manage::ApplicationController
       "accepted" => {},
       "rsvp_confirmed" => {}
     }
-    result = Questionnaire.joins(:school).group(:acc_status, "schools.name").where("schools.questionnaire_count >= 0").order("schools.questionnaire_count DESC").count
+    result = Questionnaire.joins(:school).group(:acc_status, "schools.name").where("schools.questionnaire_count >= 5").order("schools.questionnaire_count DESC").count
     result.each do |group, count|
       counted_schools[group[0]][group[1]] = count
     end
