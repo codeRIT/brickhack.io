@@ -19,8 +19,8 @@
 			header{
 				background: #f98728;
 				color: white;
-				padding-top: 100px;
-				padding-bottom: 120px;
+				padding-top: 80px;
+				padding-bottom: 90px;
 				margin-bottom: 60px;
 			}
 			header h1, header h2{
@@ -46,6 +46,9 @@
 				margin: 0 auto;
 				display: block;
 			}
+			header a, header a:visited{
+				color: #fff;
+			}
 			.item img{
 				width: 100%;
 			}
@@ -59,8 +62,8 @@
 			}
 		</style>
 		<script> //init masonry.js
-			
-				function mason(){	
+
+				function mason(){
 					$('.grid').masonry({
 						itemSelector: '.item',
 						isFitWidth: true,
@@ -82,10 +85,14 @@
 	<body>
 		<header>
 			<a href="https://brickhack.io">
-				<img src="https://brickhack.io/assets/brickhack_logo_v2_filled-2cea3ff147cf31005ddb43f9d05f5a7c.svg">
+				<img src="brickhack_logo_v2_filled.svg">
 			</a>
 			<h1>BrickHack 2015</h1>
-			<h2>Thanks for making BrickHack 2015 a huge success!  You can view pictures taken at the event below.</h2>
+			<h2>20 schools - 320 hackers - 24 hours</h2>
+			<br>
+			<h2>Thanks for making BrickHack 2015 a huge success! You can view pictures taken at the event below.</h2>
+			<br>
+			<h2><a href="https://brickhack.io">&laquo; Current Year</a></h2>
 		</header>
 
 		<div class="grid">
