@@ -154,11 +154,18 @@ p
 .mobile, i
   display: none
 
-.sponsor-grid .third
-  width: 33.33%
-  float: left
-  padding: 20px
-  height: 200px
+.sponsor-grid
+  .third
+    width: 33.33%
+    float: left
+    padding: 20px
+    height: 200px
+
+  .sixth-spacer
+    width: 16.5%
+    float: left
+    padding: 20px
+    height: 0
 
 @media (max-width: $breakpoint-tablet)
   #hamburger-menu
@@ -197,11 +204,14 @@ p
   .mob-nav-header
     display: inline-block
 
-  .sponsor-grid .third
-    width: 100%
-    float: left
-    overflow: hidden
-    height: inherit
+  .sponsor-grid
+    .third
+      width: 100%
+      float: left
+      overflow: hidden
+      height: inherit
+    .sixth-spacer
+      display: none
 
 @media (max-height: 700px)
   #logo
