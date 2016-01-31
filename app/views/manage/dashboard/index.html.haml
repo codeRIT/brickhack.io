@@ -11,6 +11,9 @@
 %section.section.manage
   %h1.section-title BrickHack Dashboard
 
+  - if flash[:notice]
+    #disclaimer= flash[:notice]
+
   .container.container-full
     #map
     :javascript
