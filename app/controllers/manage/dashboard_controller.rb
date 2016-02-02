@@ -27,7 +27,7 @@ class Manage::DashboardController < Manage::ApplicationController
   def user_distribution_data
     totalStatsData = {}
     total_count = Questionnaire.count
-    rit_count = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").count
+    rit_count = Questionnaire.where("school_id = \"2304\"").count
     totalStatsData["Non-Applied Users"] = User.count - total_count
     totalStatsData["Non-RIT Applications"] = total_count - rit_count
     totalStatsData["RIT Applications"] = rit_count
@@ -71,9 +71,9 @@ class Manage::DashboardController < Manage::ApplicationController
       when "Applications"
         data = Questionnaire.send("group_by_#{group_type}", :created_at, range: range).count
       when "RIT Applications"
-        data = Questionnaire.where("school_id = \"2304\" OR school_id = \"5535\"").send("group_by_#{group_type}", :created_at, range: range).count
+        data = Questionnaire.where("school_id = \"2304\"").send("group_by_#{group_type}", :created_at, range: range).count
       when "Non-RIT Applications"
-        data = Questionnaire.where("school_id != \"2304\" OR school_id != \"5535\"").send("group_by_#{group_type}", :created_at, range: range).count
+        data = Questionnaire.where("school_id != \"2304\"").send("group_by_#{group_type}", :created_at, range: range).count
       when "Confirmations"
         data = Questionnaire.where(acc_status: "rsvp_confirmed").send("group_by_#{group_type}", :acc_status_date, range: range).count
       when "Denials"
