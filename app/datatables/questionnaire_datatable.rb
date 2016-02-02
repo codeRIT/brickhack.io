@@ -21,6 +21,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
       'Questionnaire.first_name',
       'Questionnaire.last_name',
       'User.admin',
+      'User.email',
       'School.name'
     ]
   end
