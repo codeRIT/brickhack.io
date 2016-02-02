@@ -3,8 +3,7 @@ namespace :tools do
   task :bus_list, [:school_name] => :environment do |t, args|
     school_name = args[:school_name]
     if school_name.blank?
-      puts "Usage: rake tools:bus_list[\"school_name\"]"
-      return
+      abort("Usage: rake tools:bus_list[\"school_name\"]")
     end
     school_id = School.where(name: school_name).first.id
     a = Questionnaire.where("school_id = :school_id AND acc_status = \"rsvp_confirmed\" OR school_id = :school_id AND acc_status = \"accepted\"", school_id: school_id).map { |q| q.first_name + "," + q.last_name + "," + q.email + "," + Questionnaire::POSSIBLE_ACC_STATUS[q.acc_status] }
@@ -23,19 +22,16 @@ namespace :tools do
     old_school_name = args[:old_school_name]
     new_school_name = args[:new_school_name]
     if old_school_name.blank? || new_school_name.blank?
-      puts "Usage: rake tools:merge_schools[\"Old school name\",\"New school name\"]"
-      return
+      abort("Usage: rake tools:merge_schools[\"Old school name\",\"New school name\"]")
     end
 
     old_school = School.where(name: old_school_name).first
     if old_school.blank?
-      puts "School doesn't exist: #{old_school_name}"
-      return
+      abort("School doesn't exist: #{old_school_name}")
     end
     new_school = School.where(name: new_school_name).first
     if new_school.blank?
-      puts "School doesn't exist: #{new_school_name}"
-      return
+      abort("School doesn't exist: #{new_school_name}")
     end
 
     Questionnaire.where(school_id: old_school.id).each { |q| puts "Updating #{q.full_name} (ID: #{q.id})...\n"; q.update_attribute(:school_id, new_school.id) }
@@ -56,8 +52,7 @@ namespace :tools do
   task :copy_resumes, [:new_folder_id] => :environment do |t, args|
 
     if args[:new_folder_id].blank?
-      puts "Usage: rake tools:copy_resumes[\"New folder id\"]"
-      return
+      abort("Usage: rake tools:copy_resumes[\"New folder id\"]")
     end
 
     @google_drive_credentials = parse_credentials(
@@ -72,8 +67,7 @@ namespace :tools do
       puts "Copying \"#{file_name}\"..."
       file_id = search_for_title(file_name)
       if file_id.nil?
-        puts "Error: File not found"
-        next
+        abort("Error: File not found")
       end
       new_file_name = "#{q.id} #{q.full_name}.pdf"
       puts "Success" if copy_file_to_folder(google_api_client, file_id, args[:new_folder_id], new_file_name)
