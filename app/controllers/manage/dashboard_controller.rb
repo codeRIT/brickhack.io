@@ -41,7 +41,7 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def schools_confirmed_data
-    schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").count
+    schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").order("schools.name ASC").count
     render :json => schools.sort_by { |name, count| count }.reverse
   end
 
@@ -55,7 +55,7 @@ class Manage::DashboardController < Manage::ApplicationController
       "accepted" => {},
       "rsvp_confirmed" => {}
     }
-    result = Questionnaire.joins(:school).group(:acc_status, "schools.name").where("schools.questionnaire_count >= 5").order("schools.questionnaire_count DESC").count
+    result = Questionnaire.joins(:school).group(:acc_status, "schools.name").where("schools.questionnaire_count >= 5").order("schools.questionnaire_count DESC").order("schools.name ASC").count
     result.each do |group, count|
       counted_schools[group[0]][group[1]] = count
     end
