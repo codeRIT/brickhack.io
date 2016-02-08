@@ -4,6 +4,7 @@
   %a.desktop.active{href: '#home'}BrickHack
   %a.desktop{href: '#about'}about
   %a.desktop{href: '#faq'}FAQ
+  %a.desktop{href: '#schedule'}Schedule
   %a.desktop{href: '#sponsors'}sponsors
   =link_to 'sign up', new_user_registration_path, class: 'desktop'
 
@@ -15,6 +16,7 @@
     %a.mobile.active{href: '#home'}BrickHack
     %a.mobile{href: '#about'}about
     %a.mobile{href: '#faq'}FAQ
+    %a.mobile{href: '#schedule'}Schedule
     %a.mobile{href: '#sponsors'}sponsors
     =link_to 'sign up', new_user_registration_path, class: 'mobile'
 
@@ -90,7 +92,74 @@
     %h2 My question isn't answered here?
     %h3 Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit" class="orange">Twitter</a>, <a href="https://www.facebook.com/brickhackrit" class="orange">Facebook</a>, or <a href="mailto:hello@coderit.org" class="orange">email</a>.
 
+%div#schedule.home-section
+  %div.blue-fill
+  %div.bg-image{style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
+    %h1.wow.fade-in.center-vertical Schedule
 
+  %div.home-content
+    %p.center
+      %small
+        %em * Schedule subject to change
+    %table.schedule{border: '0'}
+      %tbody
+        %th March 5th
+        %tr
+          %td 10:30AM - 2:00PM
+          %td Registration
+        %tr
+          %td 11:15AM
+          %td Lunch
+        %tr
+          %td 12:00PM
+          %td Opening Ceremony
+        %tr
+          %td 1:00PM
+          %td Hacking Begins
+        %tr
+          %td 1:00PM - 5:00PM
+          %td Workshops (TBA)
+        %tr
+          %td 6:00PM
+          %td Dinner
+        %tr
+          %td 9:30PM
+          %td Sushi Snack
+        %tr
+          %td 11:00PM
+          %td MLH Cup Stacking
+
+    %br
+    %br
+    %br
+
+    %table.schedule{border: '0'}
+      %tbody
+        %th March 6th
+        %tr
+          %td 12:00AM
+          %td Midnight Cookies
+        %tr
+          %td 1:00AM - 3:00AM
+          %td HackerRank Code Challenge
+        %tr
+          %td 8:00AM
+          %td Breakfast
+        %tr
+          %td 11:00AM
+          %td Lunch
+        %tr
+          %td 12:30PM
+          %td Submissions Due
+        %tr
+          %td 1:30PM - 2:30PM
+          %td Judging
+        %tr
+          %td 3:00PM
+          %td Move to Closing Ceremony Venue
+        %tr
+          %td 3:30PM - 5:00PM
+          %td Closing Ceremony
 
 %div#sponsors.home-section
   %div.blue-fill
