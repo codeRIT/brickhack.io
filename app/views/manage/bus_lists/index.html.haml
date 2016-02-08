@@ -5,6 +5,8 @@
     %tr
       %th Name
       %th Capacity
+      %th Needs Captain?
+      %th Schools
       %th Actions
       %th
       %th
@@ -13,10 +15,12 @@
       %tr
         %td= bus_list.name
         %td= "#{bus_list.passengers.count} / #{bus_list.capacity}"
+        %td= bus_list.needs_bus_captain ? "Yes" : "No"
+        %td= bus_list.schools.count
         %td= link_to 'Show', manage_bus_list_path(bus_list)
         %td= link_to 'Edit', edit_manage_bus_list_path(bus_list)
         %td= link_to 'Destroy', manage_bus_list_path(bus_list), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   %br
 
-  = btn_link_to 'New Bus list', new_manage_bus_list_path
+  = btn_link_to 'New Bus List', new_manage_bus_list_path
