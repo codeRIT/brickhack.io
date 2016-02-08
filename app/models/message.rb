@@ -20,14 +20,15 @@ class Message < ActiveRecord::Base
     "rsvp-confirmed" => "RSVP Confirmed Attendees",
     "rsvp-denied" => "RSVP Denied Attendees",
     "checked-in" => "Checked-In Attendees",
-    "bus-list-cornell" => "Bus List: Cornell (Confirmed)",
-    "bus-list-binghamton" => "Bus List: Binghamton (Confirmed)",
+    "bus-list-cornell" => "Bus List: Cornell + Binghamton (Confirmed)",
     "bus-list-buffalo" => "Bus List: Buffalo (Confirmed)",
+    "bus-list-umd-collegepark" => "Bus List: UMD College Park (Confirmed)",
     "school-cornell" => "School: Cornell",
     "school-binghamton" => "School: Binghamton",
     "school-buffalo" => "School: Buffalo",
     "school-waterloo" => "School: Waterloo",
-    "school-toronto" => "School: Toronto"
+    "school-toronto" => "School: Toronto",
+    "school-umd-collegepark" => "School: UMD College Park"
   }
   serialize :recipients, Array
 
