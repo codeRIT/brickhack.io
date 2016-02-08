@@ -9,6 +9,14 @@
     %b Capacity:
     = @bus_list.capacity
   %p
+    %b Needs bus captain:
+    = @bus_list.needs_bus_captain ? "Yes" : "No"
+  %p
+    %b Schools:
+    %ul
+      - @bus_list.schools.map(&:name).each do |name|
+        %li= name
+  %p
     %b Notes:
   %hr
   = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"
