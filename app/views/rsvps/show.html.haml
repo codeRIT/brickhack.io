@@ -21,7 +21,7 @@
         = f.input :acc_status, as: :radio_buttons, collection: { " Attending" => "rsvp_confirmed", " Not Attending" => "rsvp_denied" }, label: "RSVP Status:"
 
         .hide-if-not-attending{style: @questionnaire.acc_status == "rsvp_denied" ? "display: none;" : ""}
-          = f.input :can_share_resume, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Share my info?"
+          = f.input :can_share_info, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Share my info?"
           %p{style: "margin-top: -10px"}
             %i
               %small Our sponsors would receive info such as your name, email, resume, GitHub link, etc

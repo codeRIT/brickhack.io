@@ -36,7 +36,7 @@
       = f.input :travel_not_from_school, as: :formatted_boolean, label: "I will not be traveling from my school"
       = f.input :travel_location, input_html: { "data-validate" => "presence", disabled: !travel_state }, wrapper_html: { style: travel_state ? "" : "display: none" }, label: "Travel Location"
 
-      = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
+      = f.input :can_share_info, as: :formatted_boolean, label: "Share resume with employers?"
 
       = f.input :riding_bus, as: :formatted_boolean, label: "Riding Bus", disabled: !@questionnaire.can_ride_bus?
       - if !@questionnaire.can_ride_bus?

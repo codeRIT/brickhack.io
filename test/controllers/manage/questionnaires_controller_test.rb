@@ -321,14 +321,14 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "check in the questionnaire and update information" do
       @questionnaire.update_attribute(:agreement_accepted, false)
-      @questionnaire.update_attribute(:can_share_resume, false)
+      @questionnaire.update_attribute(:can_share_info, false)
       @questionnaire.update_attribute(:phone, "")
-      patch :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      patch :check_in, id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333" }
       @questionnaire.reload
       assert 1.minute.ago < @questionnaire.checked_in_at
       assert_equal @user.id, @questionnaire.checked_in_by_id
       assert_equal true, @questionnaire.agreement_accepted
-      assert_equal true, @questionnaire.can_share_resume
+      assert_equal true, @questionnaire.can_share_info
       assert_equal "(123) 333-3333", @questionnaire.phone
       assert_match /Checked in/, flash[:notice]
       assert_response :redirect
@@ -337,16 +337,16 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "require a new action to check in" do
       @questionnaire.update_attribute(:agreement_accepted, false)
-      @questionnaire.update_attribute(:can_share_resume, false)
+      @questionnaire.update_attribute(:can_share_info, false)
       @questionnaire.update_attribute(:phone, "")
       @questionnaire.update_attribute(:checked_in_at, nil)
       @questionnaire.update_attribute(:checked_in_by_id, nil)
-      patch :check_in, id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_resume: 1, phone: "(123) 333-3333" }
+      patch :check_in, id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333" }
       @questionnaire.reload
       assert_equal nil, @questionnaire.checked_in_at
       assert_equal nil, @questionnaire.checked_in_by_id
       assert_equal false, @questionnaire.agreement_accepted
-      assert_equal false, @questionnaire.can_share_resume
+      assert_equal false, @questionnaire.can_share_info
       assert_equal "", @questionnaire.phone
       assert_match /No check-in action provided/, flash[:notice]
       assert_response :redirect

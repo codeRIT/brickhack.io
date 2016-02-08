@@ -32,7 +32,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not validate_presence_of :acc_status_author_id
   should_not validate_presence_of :acc_status_date
   should_not validate_presence_of :riding_bus
-  should_not validate_presence_of :can_share_resume
+  should_not validate_presence_of :can_share_info
   should_not validate_presence_of :travel_not_from_school
   should_not validate_presence_of :travel_location
 
@@ -57,7 +57,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :bus_captain_interest
   should allow_mass_assignment_of :riding_bus
   should allow_mass_assignment_of :phone
-  should allow_mass_assignment_of :can_share_resume
+  should allow_mass_assignment_of :can_share_info
   should allow_mass_assignment_of :code_of_conduct_accepted
   should allow_mass_assignment_of :travel_not_from_school
   should allow_mass_assignment_of :travel_location
