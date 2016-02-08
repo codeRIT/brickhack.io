@@ -29,12 +29,12 @@ class BulkMessageWorker
         recipients += Questionnaire.where(acc_status: "rsvp_denied").select(:user_id).map(&:user_id)
       when "checked-in"
         recipients += Questionnaire.where("checked_in_at != 0").select(:user_id).map(&:user_id)
-      when "bus-list-cornell"
+      when "bus-list-cornell-bing"
         recipients += BusList.find(1).passengers.map(&:user_id)
       when "bus-list-binghamton"
         recipients += BusList.find(2).passengers.map(&:user_id)
-      when "bus-list-buffalo"
-        recipients += BusList.find(3).passengers.map(&:user_id)
+      when "bus-list-umd-collegepark"
+        recipients += BusList.find(4).passengers.map(&:user_id)
       when "school-cornell"
         recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 2164 OR acc_status = \"accepted\" AND school_id = 2164").select(:user_id).map(&:user_id)
       when "school-binghamton"
@@ -45,6 +45,8 @@ class BulkMessageWorker
         recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5529 OR acc_status = \"accepted\" AND school_id = 5529").select(:user_id).map(&:user_id)
       when "school-toronto"
         recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5522 OR acc_status = \"accepted\" AND school_id = 5522").select(:user_id).map(&:user_id)
+      when "school-umd-collegepark"
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 5616 OR acc_status = \"accepted\" AND school_id = 5616").select(:user_id).map(&:user_id)
       end
     end
 
