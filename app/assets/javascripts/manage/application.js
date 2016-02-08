@@ -91,6 +91,19 @@ $(document).ready(function () {
       { "orderable" : false }
     ]
   }));
+
+  $('.datatable.schools').DataTable($.extend(defaultDataTableOptions, {
+    "order"      : [5, 'desc'],
+    "scrollX"    : true,
+    "columns"    : [
+      { "orderable" : false },
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  }));
 });
 
 $.fn.bulkRowEdit = function() {

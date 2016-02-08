@@ -14,8 +14,8 @@
   %p
     %b Schools:
     %ul
-      - @bus_list.schools.map(&:name).each do |name|
-        %li= name
+      - @bus_list.schools.each do |school|
+        %li= link_to(school.name, manage_school_path(school))
   %p
     %b Notes:
   %hr

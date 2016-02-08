@@ -49,6 +49,9 @@ Rails.application.routes.draw do
       patch :deliver, on: :member
     end
     resources :bus_lists
+    resources :schools do
+      post :datatable, on: :collection
+    end
   end
 
   resource :bus_list

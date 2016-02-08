@@ -1,0 +1,17 @@
+%section.section.manage
+  %h1.section-title Listing Schools
+
+  %table.schools.datatable.row-border.stripe.hover.order-column{ "data-source" => datatable_manage_schools_path(format: :json) }
+    %thead
+      %tr
+        %th
+        %th ID
+        %th Name
+        %th City
+        %th State
+        %th Count
+    %tbody
+
+  - unless current_user.admin_limited_access
+    %br
+    = btn_link_to 'New School', new_manage_school_path

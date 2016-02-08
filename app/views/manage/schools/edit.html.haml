@@ -1,0 +1,12 @@
+%section.section.manage
+  %h1.section-title Editing School
+
+  = render 'form'
+
+  .form-container
+    .center
+      = link_to 'Back', manage_schools_path
+      \|
+      = link_to 'Delete', manage_school_path(@school), method: :delete, data: { confirm: 'Are you sure? This action is irreversible.' }
+      \|
+      = link_to 'Show', manage_school_path(@school)
