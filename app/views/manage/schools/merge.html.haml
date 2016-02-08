@@ -1,0 +1,30 @@
+%section.section.manage
+  %h1.section-title Merge School
+
+  .form-container
+    = simple_form_for @school, url: url_for(action: "perform_merge", controller: "schools"), html: { "data-validate" => "form" } do |f|
+
+      %p#disclaimer
+        %strong WARNING! This is an irreversible action!
+
+      - if f.error_notification.present?
+        #disclaimer
+          = f.error_notification
+      - if flash[:notice]
+        #disclaimer
+          = flash[:notice]
+
+      %p
+        You are going to merge
+        %strong= @school.full_name
+        into:
+
+      .form-inputs
+        = f.input :id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }, label: "Merge Into:", value: ''
+
+      %div{class:'center'}
+        = f.button :submit, value: 'Merge'
+
+  .form-container
+    .center
+      = link_to 'Back', manage_school_path(@school)

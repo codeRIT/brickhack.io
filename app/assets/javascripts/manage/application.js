@@ -81,7 +81,7 @@ $(document).ready(function () {
   }));
 
   $('.datatable.messages').DataTable($.extend(defaultDataTableOptions, {
-    "order"      : [1, 'asc'],
+    "order"      : [1, 'desc'],
     "scrollX"    : true,
     "columns"    : [
       { "orderable" : false },
@@ -89,6 +89,19 @@ $(document).ready(function () {
       {},
       {},
       { "orderable" : false }
+    ]
+  }));
+
+  $('.datatable.schools').DataTable($.extend(defaultDataTableOptions, {
+    "order"      : [5, 'desc'],
+    "scrollX"    : true,
+    "columns"    : [
+      { "orderable" : false },
+      {},
+      {},
+      {},
+      {},
+      {}
     ]
   }));
 });

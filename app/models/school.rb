@@ -8,6 +8,7 @@ class School < ActiveRecord::Base
   strip_attributes
 
   has_many :questionnaires
+  belongs_to :bus_list
 
   def full_name
     out = ""
