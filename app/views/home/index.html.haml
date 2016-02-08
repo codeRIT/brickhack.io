@@ -6,7 +6,10 @@
   %a.desktop{href: '#faq'}FAQ
   %a.desktop{href: '#schedule'}Schedule
   %a.desktop{href: '#sponsors'}sponsors
-  =link_to 'sign up', new_user_registration_path, class: 'desktop'
+  - if current_user
+    =link_to 'My Account', questionnaires_path, class: 'desktop'
+  - else
+    =link_to 'Sign Up/In', new_user_registration_path, class: 'desktop'
 
   -# mobile nav
   %i{class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu'}
@@ -18,15 +21,26 @@
     %a.mobile{href: '#faq'}FAQ
     %a.mobile{href: '#schedule'}Schedule
     %a.mobile{href: '#sponsors'}sponsors
-    =link_to 'sign up', new_user_registration_path, class: 'mobile'
+    - if current_user
+      =link_to 'My Account', questionnaires_path, class: 'mobile'
+    - else
+      =link_to 'Sign Up / Sign In', new_user_registration_path, class: 'mobile'
 
 %div.page.triangle-background#home
   %div.center-vertical.plus-nav.center
     =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
-    =link_to new_user_registration_path do
-      %div.button SIGN UP
+    - if current_user
+      - if current_user.admin
+        =link_to manage_dashboard_index_path do
+          %div.button MANAGE
+      - else
+        =link_to questionnaires_path do
+          %div.button MY ACCOUNT
+    - else
+      =link_to new_user_registration_path do
+        %div.button SIGN UP
     =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
       %div.button VOLUNTEER
 
