@@ -80,6 +80,16 @@ $(document).ready(function () {
     }
   });
 
+  $('[name="questionnaire[acc_status]"]').on('change', function() {
+    var $content = $('.hide-if-not-attending');
+    if ($(this).val() == 'rsvp_denied') {
+      $content.hide();
+    }
+    else {
+      $content.show();
+    }
+  });
+
   $.fn.validate = function(option) {
     var previous_invalid_inputs = [];
 
