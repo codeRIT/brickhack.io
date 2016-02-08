@@ -8,7 +8,10 @@
         %br
       - if @questionnaire.acc_status == "rsvp_confirmed" || @questionnaire.checked_in?
         .fa.fa-check
-        Congratulations! You're all set to attend BrickHack.
+        Congratulations! You're all set to attend BrickHack!
+        %br
+        %br
+        Expect an email closer to March 5th with additional logistics & travel info.
       - elsif @questionnaire.acc_status == "rsvp_denied"
         Sorry to hear you won't be with us this year.
       - else
@@ -16,38 +19,40 @@
     = simple_form_for @questionnaire, url: url_for(controller: "rsvps", action: "update"), html: { "data-validate" => "form" } do |f|
       .form-inputs
         = f.input :acc_status, as: :radio_buttons, collection: { " Attending" => "rsvp_confirmed", " Not Attending" => "rsvp_denied" }, label: "RSVP Status:"
-        = f.input :can_share_resume, as: :formatted_boolean, label: "Share resume with employers?"
-        = f.input :phone, input_html: { "data-validate" => "presence" }
-        %p
-          Please read the
-          %a{href:"/assets/BrickHack_ReleaseAgreement.pdf", target:"_blank"} BrickHack Agreement
-        = f.input :agreement_accepted, as: :formatted_boolean, label: "I accept the BrickHack Agreement", input_html: { "data-validate" => "presence" }
 
-      - if @questionnaire.can_ride_bus? && @questionnaire.acc_status != "rsvp_denied"
-        - if !@questionnaire.riding_bus && @questionnaire.bus_list.full?
-          #disclaimer
-            Aw, shucks. Your school is eligible for a bus to BrickHack, but all the seats are currently taken.
+        .hide-if-not-attending{style: @questionnaire.acc_status == "rsvp_denied" ? "display: none;" : ""}
+          = f.input :can_share_info, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Share my info?"
+          %p{style: "margin-top: -10px"}
+            %i
+              %small Our sponsors would receive info such as your name, email, resume, GitHub link, etc
+          = f.input :phone, input_html: { "data-validate" => "presence" }, label: "Verify Phone #:"
+
+      .hide-if-not-attending{style: @questionnaire.acc_status == "rsvp_denied" ? "display: none;" : ""}
+        - if @questionnaire.can_ride_bus?
+          - if !@questionnaire.riding_bus && @questionnaire.bus_list.full?
+            #disclaimer
+              Aw, shucks. Your school is eligible for a bus to BrickHack, but all the seats are currently taken.
+          - else
+            #disclaimer
+              - if @questionnaire.riding_bus && @questionnaire.acc_status != "rsvp_denied"
+                .fa.fa-check
+                You're all set to ride the bus.
+                - if @questionnaire.bus_list.full?
+                  %br
+                  %br
+                  .fa.fa-warning
+                  Your bus is currently full. If you are no longer riding, please update your status so someone else may use it.
+              - else
+                Good news! Your school is eligible for a bus to BrickHack! Will you be riding on the bus?
+
+            = f.input :riding_bus, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Riding the bus:"
+            %p You MUST sign up here if you wish to ride the bus! IDs will be checked at boarding.
+            - if @questionnaire.bus_list.needs_bus_captain
+              %p We're also looking for bus captains from your school. Are you interested?
+              = f.input :bus_captain_interest, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Bus capain interest:"
+            = @questionnaire.bus_list.notes.present? ? @questionnaire.bus_list.notes.html_safe : ""
         - else
-          #disclaimer
-            - if @questionnaire.riding_bus
-              .fa.fa-check
-              You're all set to ride the bus.
-              - if @questionnaire.bus_list.full?
-                %br
-                %br
-                .fa.fa-warning
-                Your bus is currently full. If you are no longer riding, please update your status so someone else may use it.
-            - else
-              Good news! Your school is eligible for a bus to BrickHack! Will you be riding on the bus?
-
-          = f.input :riding_bus, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Riding the bus:"
-          %p You MUST sign up here if you wish to ride the bus! IDs will be checked at boarding.
-          - if @questionnaire.bus_list.needs_bus_captain
-            %p We're also looking for bus captains from your school. Are you interested?
-            = f.input :bus_captain_interest, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Bus capain interest:"
-          = @questionnaire.bus_list.notes.present? ? @questionnaire.bus_list.notes.html_safe : ""
-      - else
-        = f.input :riding_bus, as: :hidden, value: false
+          = f.input :riding_bus, as: :hidden, value: false
 
       .center
         = btn_link_to "Edit Application", edit_questionnaires_path

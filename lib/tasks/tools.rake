@@ -62,7 +62,7 @@ namespace :tools do
       refresh_token: ENV["GOOGLE_DRIVE_REFRESH_TOKEN"]
     )
 
-    Questionnaire.where("resume_file_name IS NOT NULL AND can_share_resume = '1' AND checked_in_at IS NOT NULL").each do |q|
+    Questionnaire.where("resume_file_name IS NOT NULL AND can_share_info = '1' AND checked_in_at IS NOT NULL").each do |q|
       file_name = "#{q.id}_#{q.resume_file_name}"
       puts "Copying \"#{file_name}\"..."
       file_id = search_for_title(file_name)

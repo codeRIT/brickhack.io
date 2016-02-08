@@ -32,7 +32,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should_not validate_presence_of :acc_status_author_id
   should_not validate_presence_of :acc_status_date
   should_not validate_presence_of :riding_bus
-  should_not validate_presence_of :can_share_resume
+  should_not validate_presence_of :can_share_info
   should_not validate_presence_of :travel_not_from_school
   should_not validate_presence_of :travel_location
 
@@ -57,7 +57,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_mass_assignment_of :bus_captain_interest
   should allow_mass_assignment_of :riding_bus
   should allow_mass_assignment_of :phone
-  should allow_mass_assignment_of :can_share_resume
+  should allow_mass_assignment_of :can_share_info
   should allow_mass_assignment_of :code_of_conduct_accepted
   should allow_mass_assignment_of :travel_not_from_school
   should allow_mass_assignment_of :travel_location
@@ -215,6 +215,24 @@ class QuestionnaireTest < ActiveSupport::TestCase
     should "return false for non-accepted questionnaires" do
       questionnaire = create(:questionnaire, acc_status: "denied")
       assert !questionnaire.can_rsvp?
+    end
+  end
+
+  context "#did_rsvp?" do
+    should "return true for confirmed & denied questionnaires" do
+      questionnaire = create(:questionnaire)
+      ['rsvp_confirmed', 'rsvp_denied'].each do |status|
+        questionnaire.acc_status = status
+        assert questionnaire.did_rsvp?
+      end
+    end
+
+    should "return false for non-RSVP'd questionnaires" do
+      questionnaire = create(:questionnaire)
+      ['pending', 'accepted', 'denied', 'waitlist', 'late_waitlist'].each do |status|
+        questionnaire.acc_status = status
+        assert !questionnaire.did_rsvp?
+      end
     end
   end
 

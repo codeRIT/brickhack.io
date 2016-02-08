@@ -55,7 +55,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def check_in
     if params[:check_in] == "true"
       if params[:questionnaire]
-        @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_resume))
+        @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_info))
       end
       if !@questionnaire.valid?
         flash[:notice] = @questionnaire.errors.full_messages.join(", ")
