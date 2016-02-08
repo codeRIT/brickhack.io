@@ -3,3 +3,6 @@
     .form-actions
       .center
         = btn_link_to "Sign Up with My MLH &raquo;".html_safe, user_omniauth_authorize_path(provider: :mlh)
+      %p.center or
+      .center
+        = btn_link_to "Sign In &raquo;".html_safe, user_omniauth_authorize_path(provider: :mlh)
