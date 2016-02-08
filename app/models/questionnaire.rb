@@ -128,6 +128,10 @@ class Questionnaire < ActiveRecord::Base
     ["accepted", "rsvp_confirmed", "rsvp_denied"].include? acc_status
   end
 
+  def did_rsvp?
+    ['rsvp_confirmed', 'rsvp_denied'].include? acc_status
+  end
+
   def can_ride_bus?
     school.present? && school.bus_list_id?
   end

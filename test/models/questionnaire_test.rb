@@ -218,6 +218,24 @@ class QuestionnaireTest < ActiveSupport::TestCase
     end
   end
 
+  context "#did_rsvp?" do
+    should "return true for confirmed & denied questionnaires" do
+      questionnaire = create(:questionnaire)
+      ['rsvp_confirmed', 'rsvp_denied'].each do |status|
+        questionnaire.acc_status = status
+        assert questionnaire.did_rsvp?
+      end
+    end
+
+    should "return false for non-RSVP'd questionnaires" do
+      questionnaire = create(:questionnaire)
+      ['pending', 'accepted', 'denied', 'waitlist', 'late_waitlist'].each do |status|
+        questionnaire.acc_status = status
+        assert !questionnaire.did_rsvp?
+      end
+    end
+  end
+
   context "#can_ride_bus?" do
     should "return false if no school set" do
       questionnaire = create(:questionnaire)

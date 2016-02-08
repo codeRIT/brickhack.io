@@ -2,9 +2,16 @@
   %div{class:'success_message'}
     %p#notice= notice
     - if @questionnaire.can_rsvp?
-      %p
-        Below is a copy of your information for BrickHack.
-        = link_to "Back to RSVP page &raquo;".html_safe, rsvp_path
+      - if @questionnaire.did_rsvp?
+        %p
+          Below is a copy of your information for BrickHack.
+          = link_to "Back to RSVP page &raquo;".html_safe, rsvp_path
+      - else
+        %p
+          You have not RSVP'd yet!
+          %br
+          %br
+          = link_to "RSVP NOW &raquo;".html_safe, rsvp_path
     - else
       %p Thanks for applying! You will be notified of your acceptance in February.
 
