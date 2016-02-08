@@ -23,6 +23,9 @@
   - unless current_user.admin_limited_access
     = link_to 'Edit', edit_manage_school_path(@school)
     \|
+  - unless current_user.admin_limited_access
+    = link_to 'Merge', merge_manage_school_path(@school)
+    \|
   = link_to 'Back', manage_schools_path
 
   %hr

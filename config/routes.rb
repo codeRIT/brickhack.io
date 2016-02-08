@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     resources :bus_lists
     resources :schools do
       post :datatable, on: :collection
+      get :merge, on: :member
+      patch :perform_merge, on: :member
     end
   end
 
