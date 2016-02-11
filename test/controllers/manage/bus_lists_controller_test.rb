@@ -43,6 +43,14 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
+    should "not allow access to manage_bus_lists#toggle_bus_captain" do
+      questionnaire = create(:questionnaire)
+      patch :toggle_bus_captain, id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1'
+      assert_equal false, questionnaire.reload.is_bus_captain
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_bus_lists#destroy" do
       patch :destroy, id: @bus_list
       assert_response :redirect
@@ -89,6 +97,14 @@ class Manage::BusListsControllerTest < ActionController::TestCase
 
     should "not allow access to manage_bus_lists#update" do
       patch :update, id: @bus_list, bus_list: { email: "test@example.com" }
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
+    should "not allow access to manage_bus_lists#toggle_bus_captain" do
+      questionnaire = create(:questionnaire)
+      patch :toggle_bus_captain, id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1'
+      assert_equal false, questionnaire.reload.is_bus_captain
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -141,6 +157,14 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_redirected_to manage_bus_lists_path
     end
 
+    should "not allow access to manage_bus_lists#toggle_bus_captain" do
+      questionnaire = create(:questionnaire)
+      patch :toggle_bus_captain, id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1'
+      assert_equal false, questionnaire.reload.is_bus_captain
+      assert_response :redirect
+      assert_redirected_to manage_bus_lists_path
+    end
+
     should "not allow access to manage_bus_lists#destroy" do
       patch :destroy, id: @bus_list
       assert_response :redirect
@@ -184,6 +208,22 @@ class Manage::BusListsControllerTest < ActionController::TestCase
     should "update bus_list" do
       patch :update, id: @bus_list, bus_list: { name: "New bus_list Name" }
       assert_redirected_to manage_bus_list_path(assigns(:bus_list))
+    end
+
+    should "make questionnaire a bus captain" do
+      questionnaire = create(:questionnaire)
+      patch :toggle_bus_captain, id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1'
+      assert_equal true, questionnaire.reload.is_bus_captain
+      assert_response :redirect
+      assert_redirected_to manage_bus_list_path(@bus_list)
+    end
+
+    should "remove questionnaire from being a bus captain" do
+      questionnaire = create(:questionnaire)
+      patch :toggle_bus_captain, id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '0'
+      assert_equal false, questionnaire.reload.is_bus_captain
+      assert_response :redirect
+      assert_redirected_to manage_bus_list_path(@bus_list)
     end
 
     should "destroy bus_list" do
