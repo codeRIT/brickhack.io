@@ -48,7 +48,9 @@ Rails.application.routes.draw do
       post :datatable, on: :collection
       patch :deliver, on: :member
     end
-    resources :bus_lists
+    resources :bus_lists do
+      post :toggle_bus_captain, on: :member
+    end
     resources :schools do
       post :datatable, on: :collection
       get :merge, on: :member

@@ -1,5 +1,5 @@
 class Manage::BusListsController < Manage::ApplicationController
-  before_filter :set_bus_list, only: [:show, :edit, :update, :destroy]
+  before_filter :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
 
   respond_to :html
 
@@ -34,6 +34,13 @@ class Manage::BusListsController < Manage::ApplicationController
   def destroy
     @bus_list.destroy
     respond_with(:manage, @bus_list)
+  end
+
+  def toggle_bus_captain
+    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+    is_bus_captain = params[:bus_captain] == "1"
+    @questionnaire.update_attribute(:is_bus_captain, is_bus_captain)
+    redirect_to [:manage, @bus_list]
   end
 
   private
