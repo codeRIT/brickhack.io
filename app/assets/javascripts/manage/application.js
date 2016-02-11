@@ -1,7 +1,10 @@
 //= require_directory ../
 //= require_directory .
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require ../vendor/jquery.dataTables.min
+//= require ../vendor/dataTables.buttons.min
+//= require ../vendor/buttons.html5.min
+//= require ../vendor/pdfmake.min
+//= require ../vendor/vfs_fonts
 //= require selectize
 //= require highcharts
 //= require chartkick
@@ -9,6 +12,7 @@
 $(document).ready(function () {
   $('.selectize').selectize();
   $('select[data-bulk-row-edit]').bulkRowEdit();
+  $().bulkRowSelect();
   $('body').chartkickAutoReload();
 
   Highcharts.setOptions({
@@ -44,13 +48,29 @@ $(document).ready(function () {
   });
 
   var defaultDataTableOptions = {
+    dom: 'Bfrtip',
     "processing" : true,
     "serverSide" : true,
     "ajax"       : {
       "url"   : $('.datatable').data('source'),
       "type"  : "POST"
     },
-    "pagingType" : 'full_numbers'
+    "pagingType" : 'full_numbers',
+    lengthMenu: [
+      [ 10, 25, 50, 100, -1 ],
+      [ '10 rows', '25 rows', '50 rows', '100 rows', 'Show all' ]
+    ],
+    buttons: [
+      'pageLength',
+      {
+        extend: 'collection',
+        text: 'Export',
+        buttons: [
+          'csvHtml5',
+          'pdfHtml5'
+        ]
+      }
+    ]
   };
 
   window.questionnairesDataTable = $('.datatable.questionnaires').DataTable($.extend(defaultDataTableOptions, {
@@ -144,6 +164,20 @@ $.fn.bulkRowEdit = function() {
 
   $('[type=submit][data-bulk-row-edit]').on('click', function(e) {
     e.preventDefault();
+    return applyAction();
+  });
+
+};
+
+$.fn.bulkRowSelect = function() {
+
+  var applyAction = function() {
+    var checkState = $('[data-bulk-row-select]').prop('checked');
+    $('input[type=checkbox][data-bulk-row-edit]').prop('checked', checkState);
+    return true;
+  };
+
+  $('[data-bulk-row-select]').on('click', function(e) {
     return applyAction();
   });
 
