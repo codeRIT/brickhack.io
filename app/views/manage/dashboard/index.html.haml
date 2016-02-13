@@ -3,6 +3,7 @@
 - red = "#E44646"
 - orange = "#F49C54"
 - grey = "#A6A6A6"
+- colors = { accepted: blue, rsvp_confirmed: green, rsvp_denied: red, pending: "#F98728", denied: "#666", waitlist: "#059", late_waitlist: "#057" }
 
 = javascript_include_tag "vendor/d3.v3.min.js"
 = javascript_include_tag "vendor/queue.v1.min.js"
@@ -47,7 +48,7 @@
     = pie_chart user_distribution_data_manage_dashboard_index_path, colors: [grey, blue, orange]
   .container.container-half
     %h4.dashboard-container-title Application Distribution
-    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [blue, green, red, red, blue, blue]
+    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [colors[:accepted], colors[:denied], colors[:late_waitlist], colors[:pending], colors[:rsvp_confirmed], colors[:rsvp_denied]]
 
   .container.container-full
     %h4.dashboard-container-title Schools (Confirmed)
@@ -55,7 +56,7 @@
       = bar_chart schools_confirmed_data_manage_dashboard_index_path, height: "600px"
     %h4.dashboard-container-title Schools (Applied)
     %ul
-      = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [green, blue, "#059", "#058", red, "#666", "#F98728"], library: { legend: { enabled: false } }
+      = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [colors[:rsvp_confirmed], colors[:accepted], colors[:waitlist], colors[:late_waitlist], colors[:rsvp_denied], colors[:denied], colors[:pending]], library: { legend: { enabled: false } }
     - if School.where("questionnaire_count >= 1 AND questionnaire_count < 5").count > 0
       %button{onclick: "$('#least-applied-schools').toggle()"}= "List schools with < 5 applicants"
       %ul#least-applied-schools{style: "display: none"}

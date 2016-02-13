@@ -1,7 +1,8 @@
 var setupHighcharts = function() {
   Highcharts.setOptions({
     global: {
-      timezoneOffset: 4 * 60
+      timezoneOffset: 5 * 60,
+      useUTC: false
     },
     legend: {
        labelFormatter: function() {
