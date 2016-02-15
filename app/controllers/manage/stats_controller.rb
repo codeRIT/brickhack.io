@@ -11,8 +11,12 @@ class Manage::StatsController < Manage::ApplicationController
                   :checked_in_at,
                   :dietary_restrictions,
                   :special_needs]
-    data = Questionnaire.where("dietary_restrictions != '' AND acc_status = 'rsvp_confirmed' OR special_needs != '' AND acc_status = 'rsvp_confirmed'").select(attributes << [:user_id]).map { |e| [e.first_name, e.last_name, e.email, e.phone, e.checked_in_at, e.dietary_restrictions, e.special_needs] }
-    render json: { data: data }
+    data = Questionnaire.where("dietary_restrictions != '' AND acc_status = 'rsvp_confirmed' OR special_needs != '' AND acc_status = 'rsvp_confirmed'").select(attributes << [:user_id])
+    render json: { data: to_json_array(data, attributes) }
+  end
+
+  def to_json_array(data, attributes)
+    data.map { |e| attributes.map { |a| e[a] } }
   end
 
 end
