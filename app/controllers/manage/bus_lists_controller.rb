@@ -32,6 +32,10 @@ class Manage::BusListsController < Manage::ApplicationController
   end
 
   def destroy
+    School.where(bus_list_id: @bus_list.id).each do |school|
+      school.questionnaires.where(riding_bus: true).map { |q| q.update_attribute(:riding_bus, false) }
+      school.update_attribute(:bus_list_id, nil)
+    end
     @bus_list.destroy
     respond_with(:manage, @bus_list)
   end
