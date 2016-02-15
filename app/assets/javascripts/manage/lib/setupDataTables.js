@@ -89,4 +89,9 @@ var setupDataTables = function() {
     ]
   });
 
+  setupDataTable($('.datatable.stats'), {
+    "scrollX"    : true,
+    "processing" : false,
+    "serverSide" : false
+  });
 };
