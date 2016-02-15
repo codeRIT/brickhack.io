@@ -54,6 +54,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
+      assert_equal "waitlist", assigns(:questionnaire).acc_status
     end
 
     should "not allow multiple questionnaires" do
@@ -80,7 +81,6 @@ class QuestionnairesControllerTest < ActionController::TestCase
           post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
           assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
-          assert_equal "pending", assigns(:questionnaire).acc_status, "should save as pending"
         end
 
         should "create a new school when unknown" do
