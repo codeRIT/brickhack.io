@@ -11,43 +11,6 @@ namespace :tools do
     puts a.join("\n")
   end
 
-  desc "Prints the list of attendees with dietary/medical notes in CSV format"
-  task :dietary_notes => :environment do
-    puts "First Name,Last Name,Email,Dietary/Medical Notes\n"
-    puts Questionnaire.where("acc_status = \"rsvp_confirmed\" AND dietary_medical_notes != \"\" AND dietary_medical_notes != \"none\" AND dietary_medical_notes != \"None\" AND dietary_medical_notes != \"N/A\" AND dietary_medical_notes != \"NONE\"").map { |q| "#{q.first_name},#{q.last_name},#{q.email},\"#{q.dietary_medical_notes}\"" }.join("\n")
-  end
-
-  desc "Merges one school's attendees with another"
-  task :merge_schools, [:old_school_name, :new_school_name] => :environment do |t, args|
-    old_school_name = args[:old_school_name]
-    new_school_name = args[:new_school_name]
-    if old_school_name.blank? || new_school_name.blank?
-      abort("Usage: rake tools:merge_schools[\"Old school name\",\"New school name\"]")
-    end
-
-    old_school = School.where(name: old_school_name).first
-    if old_school.blank?
-      abort("School doesn't exist: #{old_school_name}")
-    end
-    new_school = School.where(name: new_school_name).first
-    if new_school.blank?
-      abort("School doesn't exist: #{new_school_name}")
-    end
-
-    Questionnaire.where(school_id: old_school.id).each { |q| puts "Updating #{q.full_name} (ID: #{q.id})...\n"; q.update_attribute(:school_id, new_school.id) }
-
-    old_school.reload
-
-    if old_school.questionnaire_count < 1
-      puts "\nDeleting school #{old_school.name}...\n"
-      old_school.destroy
-    else
-      puts "\n*** Old school NOT deleted: #{old_school.questionnaire_count} questionnaires still associated!\n"
-    end
-
-    puts "\nDone\n"
-  end
-
   desc "Copies signed-in attendees' resumes to new folder"
   task :copy_resumes, [:new_folder_id] => :environment do |t, args|
 

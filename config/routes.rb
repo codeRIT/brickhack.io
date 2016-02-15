@@ -56,6 +56,9 @@ Rails.application.routes.draw do
       get :merge, on: :member
       patch :perform_merge, on: :member
     end
+    resources :stats do
+      post :dietary_special_needs, on: :collection
+    end
   end
 
   resource :bus_list

@@ -226,11 +226,28 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_redirected_to manage_bus_list_path(@bus_list)
     end
 
-    should "destroy bus_list" do
-      assert_difference('BusList.count', -1) do
-        patch :destroy, id: @bus_list
+    context "#destroy" do
+      should "destroy bus_list" do
+        assert_difference('BusList.count', -1) do
+          patch :destroy, id: @bus_list
+        end
+        assert_redirected_to manage_bus_lists_path
       end
-      assert_redirected_to manage_bus_lists_path
+
+      should "reset school's bus list association" do
+        school = create(:school, bus_list_id: @bus_list.id)
+        patch :destroy, id: @bus_list
+        assert_equal nil, school.reload.bus_list_id
+      end
+
+      should "reset everyone's riding_bus status" do
+        school = create(:school, bus_list_id: @bus_list.id)
+        questionnaire = create(:questionnaire, school: school)
+        questionnaire2 = create(:questionnaire, school: school)
+        patch :destroy, id: @bus_list
+        assert_equal false, questionnaire.reload.riding_bus
+        assert_equal false, questionnaire2.reload.riding_bus
+      end
     end
   end
 end
