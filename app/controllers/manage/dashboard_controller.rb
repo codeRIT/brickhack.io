@@ -8,20 +8,20 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def todays_activity_data
-    render :json => activity_chart_data(["Applications", "Confirmations", "Denials"], "hour", Date.today.beginning_of_day..Date.today.end_of_day)
+    render :json => activity_chart_data(["Applications", "Confirmations", "Denials"], "hour", Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
   end
 
   def todays_stats_data
-    date_min = Date.today.beginning_of_day
+    date_min = Time.zone.today.beginning_of_day
     render :json => { "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count, "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count, "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count }
   end
 
   def confirmation_activity_data
-    render :json => activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.now)
+    render :json => activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.zone.now)
   end
 
   def application_activity_data
-    render :json => activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.now)
+    render :json => activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.zone.now)
   end
 
   def user_distribution_data
