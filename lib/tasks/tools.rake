@@ -38,7 +38,7 @@ namespace :tools do
       puts "Copying \"#{file_name}\"..."
       file_id = search_for_title(file_name)
       if file_id.nil?
-        abort("Error: File not found")
+        puts "** Error: File not found for questionnaire #{q.id}"
       end
       new_file_name = "#{q.id} #{q.full_name}.pdf"
       puts "Success" if copy_file_to_folder(google_api_client, file_id, args[:new_folder_id], new_file_name)
@@ -76,7 +76,7 @@ namespace :tools do
       if result.status == 200
         return result.data
       else
-        puts "Error: #{file_id} could not be moved: #{result.data['error']['message']}"
+        puts "** Error: #{file_id} could not be moved: #{result.data['error']['message']}"
         if result.data['error']['message'] == "User rate limit exceeded"
           raise "Rate Limit Exceeded"
         end
@@ -115,9 +115,7 @@ namespace :tools do
   def google_api_client
     @google_api_client ||= begin
       assert_required_keys
-    # Initialize the client & Google+ API
       client = Google::APIClient.new(:application_name => 'ppc-gd', :application_version => PaperclipGoogleDrive::VERSION)
-#          client = Google::APIClient.new(:application_name => @google_drive_credentials[:application_name], :application_version => @google_drive_credentials[:application_version])
       client.authorization.client_id = @google_drive_credentials[:client_id]
       client.authorization.client_secret = @google_drive_credentials[:client_secret]
       client.authorization.access_token = @google_drive_credentials[:access_token]
