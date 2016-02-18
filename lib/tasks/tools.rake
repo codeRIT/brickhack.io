@@ -36,11 +36,17 @@ namespace :tools do
     Questionnaire.where("resume_file_name IS NOT NULL AND can_share_info = '1' AND #{attendee_query}").each do |q|
       file_name = "#{q.id}_#{q.resume_file_name}"
       puts "Copying \"#{file_name}\"..."
-      file_id = search_for_title(file_name)
+      file_id = search_for_title(file_name, ENV["GOOGLE_DRIVE_PUBLIC_FOLDER_ID"])
       if file_id.nil?
         puts "** Error: File not found for questionnaire #{q.id}"
       end
       new_file_name = "#{q.id} #{q.full_name}.pdf"
+      existing_file_id = search_for_title(file_name, args[:new_folder_id])
+      unless file_id.nil?
+        puts "Found existing file, deleting..."
+        puts "Success" if delete_file(google_api_client, existing_file_id, args[:new_folder_id])
+      end
+      puts "Copying file..."
       puts "Success" if copy_file_to_folder(google_api_client, file_id, args[:new_folder_id], new_file_name)
     end
   end
@@ -90,11 +96,34 @@ namespace :tools do
     end
   end
 
+  def delete_file(client, file_id, folder_id)
+    begin
+      result = client.execute(
+        api_method: drive.files.delete,
+        parameters:  { fileId: file_id, folder_id: folder_id }
+      )
+      if result.status == 200
+        return result.data
+      else
+        puts "** Error: #{file_id} could not be deleted: #{result.data['error']['message']}"
+        if result.data['error']['message'] == "User rate limit exceeded"
+          raise "Rate Limit Exceeded"
+        end
+      end
+    rescue => e
+      if e.message == "Rate Limit Exceeded"
+        puts "Sleeping..."
+        sleep 5
+        retry
+      end
+    end
+  end
+
   # Copied from storage/google_drive.rb /w modifications
 
-  def search_for_title(title)
+  def search_for_title(title, folder_id)
     parameters = {
-            folderId: ENV["GOOGLE_DRIVE_PUBLIC_FOLDER_ID"],
+            folderId: folder_id,
             q:        "title = '#{title}'",
             fields:   "items/id"
     }
