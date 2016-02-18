@@ -11,11 +11,13 @@ namespace :tools do
     puts a.join("\n")
   end
 
-  desc "Copies signed-in attendees' resumes to new folder"
-  task :copy_resumes, [:new_folder_id] => :environment do |t, args|
+  desc "Copies attendees' resumes to new folder"
+  task :copy_resumes, [:new_folder_id, :attendee_type] => :environment do |t, args|
 
-    if args[:new_folder_id].blank?
-      abort("Usage: rake tools:copy_resumes[\"New folder id\"]")
+    POSSIBLE_ATTENDEE_TYPES = %w(checked_in rsvp_confirmed)
+
+    if args[:new_folder_id].blank? || !POSSIBLE_ATTENDEE_TYPES.include?(args[:attendee_type])
+      abort("Usage: rake tools:copy_resumes[\"New folder id\", \"[#{POSSIBLE_ATTENDEE_TYPES.join(' | ')}]\"]")
     end
 
     @google_drive_credentials = parse_credentials(
@@ -25,7 +27,13 @@ namespace :tools do
       refresh_token: ENV["GOOGLE_DRIVE_REFRESH_TOKEN"]
     )
 
-    Questionnaire.where("resume_file_name IS NOT NULL AND can_share_info = '1' AND checked_in_at IS NOT NULL").each do |q|
+    if args[:attendee_type] == "rsvp_confirmed"
+      attendee_query = "acc_status = 'rsvp_confirmed'"
+    else
+      attendee_query = "checked_in_at IS NOT NULL"
+    end
+
+    Questionnaire.where("resume_file_name IS NOT NULL AND can_share_info = '1' AND #{attendee_query}").each do |q|
       file_name = "#{q.id}_#{q.resume_file_name}"
       puts "Copying \"#{file_name}\"..."
       file_id = search_for_title(file_name)
