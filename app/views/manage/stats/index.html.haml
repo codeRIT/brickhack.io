@@ -17,3 +17,15 @@
           %th Dietary Restrictions
           %th Special Needs
       %tbody
+
+  .container.container-full
+    %h4.dashboard-container-title Attendee Info for Sponsors
+    %table.stats.datatable.row-border.stripe.hover.order-column{ "data-source" => sponsor_info_manage_stats_path(format: :json) }
+      %thead
+        %tr
+          %th First name
+          %th Last name
+          %th Email
+          %th Open Source Link
+          %th Portfolio Link
+      %tbody
