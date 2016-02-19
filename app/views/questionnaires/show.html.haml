@@ -13,7 +13,10 @@
           %br
           = link_to "RSVP NOW &raquo;".html_safe, rsvp_path
     - else
-      %p Thanks for applying! You will be notified of your acceptance in February.
+      - if REGISTRATION_IS_OPEN
+        %p Thanks for applying! You will be notified of your acceptance in February.
+      - else
+        %p Thanks for applying!
 
   %div{class:'participant_info'}
     %p Below is a copy of your application.
