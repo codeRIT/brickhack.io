@@ -9,7 +9,8 @@
   - if current_user
     =link_to 'My Account', questionnaires_path, class: 'desktop'
   - else
-    =link_to 'Sign Up/In', new_user_registration_path, class: 'desktop'
+    - text = REGISTRATION_IS_OPEN ? 'Sign Up/In' : 'Sign In'
+    =link_to text, new_user_registration_path, class: 'desktop'
 
   -# mobile nav
   %i{class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu'}
@@ -24,13 +25,17 @@
     - if current_user
       =link_to 'My Account', questionnaires_path, class: 'mobile'
     - else
-      =link_to 'Sign Up / Sign In', new_user_registration_path, class: 'mobile'
+      - text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In'
+      =link_to text, new_user_registration_path, class: 'mobile'
 
 %div.page.triangle-background#home
   %div.center-vertical.plus-nav.center
     =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
+    - unless REGISTRATION_IS_OPEN
+      %p
+        %em Registration is now closed.
     - if current_user
       - if current_user.admin
         =link_to manage_dashboard_index_path do
@@ -38,7 +43,7 @@
       - else
         =link_to questionnaires_path do
           %div.button MY ACCOUNT
-    - else
+    - elsif REGISTRATION_IS_OPEN
       =link_to new_user_registration_path do
         %div.button SIGN UP
     =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
