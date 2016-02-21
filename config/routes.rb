@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     resources :stats do
       post :dietary_special_needs, on: :collection
       post :sponsor_info, on: :collection
+      post :alt_travel, on: :collection
     end
   end
 
