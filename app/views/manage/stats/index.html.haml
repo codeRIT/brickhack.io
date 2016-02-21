@@ -19,6 +19,19 @@
       %tbody
 
   .container.container-full
+    %h4.dashboard-container-title Attendees Not Traveling From Their School
+    %table.stats.datatable.row-border.stripe.hover.order-column{ "data-source" => alt_travel_manage_stats_path(format: :json) }
+      %thead
+        %tr
+          %th Link
+          %th First name
+          %th Last name
+          %th Email
+          %th Traveling From
+          %th Acc Status
+      %tbody
+
+  .container.container-full
     %h4.dashboard-container-title Attendee Info for Sponsors
     %table.stats.datatable.row-border.stripe.hover.order-column{ "data-source" => sponsor_info_manage_stats_path(format: :json) }
       %thead

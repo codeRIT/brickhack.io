@@ -27,6 +27,22 @@ class Manage::StatsController < Manage::ApplicationController
     render json: { data: to_json_array(data, attributes) }
   end
 
+  def alt_travel
+    attributes = [:id,
+                  :first_name,
+                  :last_name,
+                  :email,
+                  :travel_location,
+                  :acc_status]
+    select_attributes = Array.new(attributes) << [:user_id, :school_id]
+    data = Questionnaire.where("travel_not_from_school = '1'").select(select_attributes)
+    json = to_json_array(data, attributes)
+    json.each do |e|
+      e[0] = view_context.link_to("View &raquo;".html_safe, manage_questionnaire_path(e[0]))
+    end
+    render json: { data: json }
+  end
+
   def to_json_array(data, attributes)
     data.map { |e| attributes.map { |a| e.send(a) } }
   end
