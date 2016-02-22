@@ -26,6 +26,7 @@ class Message < ActiveRecord::Base
     "bus-list-cornell-bing-eligible" => "Bus List: Cornell + Binghamton (Eligible)",
     "bus-list-buffalo-eligible" => "Bus List: Buffalo (Eligible)",
     "bus-list-rutgers-albany-eligible" => "Bus List: Rutgers & Albany (Eligible)",
+    "school-rit" => "School: RIT",
     "school-cornell" => "School: Cornell",
     "school-binghamton" => "School: Binghamton",
     "school-buffalo" => "School: Buffalo",
