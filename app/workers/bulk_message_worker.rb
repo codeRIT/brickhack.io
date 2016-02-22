@@ -41,6 +41,8 @@ class BulkMessageWorker
         recipients += Questionnaire.joins(:school).where("schools.bus_list_id = 2").select(:user_id).map(&:user_id)
       when "bus-list-rutgers-albany-eligible"
         recipients += Questionnaire.joins(:school).where("schools.bus_list_id = 5").select(:user_id).map(&:user_id)
+      when "school-rit"
+        recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 2304 OR acc_status = \"accepted\" AND school_id = 2304").select(:user_id).map(&:user_id)
       when "school-cornell"
         recipients += Questionnaire.where("acc_status = \"rsvp_confirmed\" AND school_id = 2164 OR acc_status = \"accepted\" AND school_id = 2164").select(:user_id).map(&:user_id)
       when "school-binghamton"
