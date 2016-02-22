@@ -26,12 +26,12 @@ class Message < ActiveRecord::Base
     "bus-list-cornell-bing-eligible" => "Bus List: Cornell + Binghamton (Eligible)",
     "bus-list-buffalo-eligible" => "Bus List: Buffalo (Eligible)",
     "bus-list-rutgers-albany-eligible" => "Bus List: Rutgers & Albany (Eligible)",
-    "school-rit" => "School: RIT",
-    "school-cornell" => "School: Cornell",
-    "school-binghamton" => "School: Binghamton",
-    "school-buffalo" => "School: Buffalo",
-    "school-waterloo" => "School: Waterloo",
-    "school-toronto" => "School: Toronto",
+    "school-rit" => "Confirmed or accepted: RIT",
+    "school-cornell" => "Confirmed or accepted: Cornell",
+    "school-binghamton" => "Confirmed or accepted: Binghamton",
+    "school-buffalo" => "Confirmed or accepted: Buffalo",
+    "school-waterloo" => "Confirmed or accepted: Waterloo",
+    "school-toronto" => "Confirmed or accepted: Toronto",
     "school-umd-collegepark" => "School: UMD College Park"
   }
   serialize :recipients, Array
