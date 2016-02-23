@@ -1,5 +1,5 @@
 %section.section.manage
-  %h1.section-title Listing Messages
+  %h1.section-title= title "Listing Messages"
 
   %table.messages.datatable.row-border.stripe.hover.order-column{ "data-source" => datatable_manage_messages_path(format: :json) }
     %thead
