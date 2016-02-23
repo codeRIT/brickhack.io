@@ -1,5 +1,5 @@
 %section.section.manage
-  %h1.section-title Listing Admins
+  %h1.section-title= title "Listing Admins"
 
   %table.users.datatable.row-border.stripe.hover.order-column{ "data-source" => datatable_manage_admins_path(format: :json) }
     %thead

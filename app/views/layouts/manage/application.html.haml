@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title Manage - BrickHack
+    %title= yield(:title) || "Manage - BrickHack"
     = render "layouts/shared_head"
     = stylesheet_link_tag "manage", :media => "all"
     = csrf_meta_tags
