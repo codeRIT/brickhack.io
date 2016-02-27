@@ -66,6 +66,12 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
+
+    should "not allow access to manage_messages#preview" do
+      get :preview, id: @message
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
   end
 
   context "while authenticated as a user" do
@@ -129,6 +135,12 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to root_path
     end
+
+    should "not allow access to manage_messages#preview" do
+      get :preview, id: @message
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
   end
 
   context "while authenticated as a limited access admin" do
@@ -188,6 +200,11 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to manage_messages_path
+    end
+
+    should "allow access to manage_messages#preview" do
+      get :preview, id: @message
+      assert_response :success
     end
   end
 
@@ -257,6 +274,11 @@ class Manage::MessagesControllerTest < ActionController::TestCase
         patch :destroy, id: @message
       end
       assert_redirected_to manage_messages_path
+    end
+
+    should "allow access to manage_messages#preview" do
+      get :preview, id: @message
+      assert_response :success
     end
   end
 end

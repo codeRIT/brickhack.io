@@ -15,12 +15,10 @@
     %b Recipients:
     = @message.recipients_list
   %p
-    %b Body:
-  %hr
-  = @message.body.html_safe
-  %hr
+    %b Preview:
+    = link_to "Open full preview &raquo;".html_safe, preview_manage_message_path
 
-  %hr
+  %iframe.email-preview{src: preview_manage_message_path(@message)}
 
   %p
     %b
