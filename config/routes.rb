@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       post :datatable, on: :collection
     end
     resources :messages do
+      get :preview, on: :member
       post :datatable, on: :collection
       patch :deliver, on: :member
     end

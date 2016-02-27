@@ -1,5 +1,5 @@
 class Manage::MessagesController < Manage::ApplicationController
-  before_filter :set_message, only: [:show, :edit, :update, :destroy, :deliver]
+  before_filter :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
   before_filter :check_message_access, only: [:edit, :update, :destroy]
 
   respond_to :html
@@ -48,6 +48,11 @@ class Manage::MessagesController < Manage::ApplicationController
     BulkMessageWorker.perform_async(@message.id)
     flash[:notice] = "Message queued for delivery"
     redirect_to manage_message_path(@message)
+  end
+
+  def preview
+    email = Mailer.bulk_message_email(@message.id, current_user.id)
+    render html: email.body.raw_source.html_safe
   end
 
   private
