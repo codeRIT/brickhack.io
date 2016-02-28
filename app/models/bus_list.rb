@@ -15,4 +15,8 @@ class BusList < ActiveRecord::Base
   def passengers
     Questionnaire.joins(:school).where("schools.bus_list_id = '#{id}' AND acc_status = 'rsvp_confirmed' AND riding_bus = true")
   end
+
+  def captains
+    passengers.where(is_bus_captain: true)
+  end
 end

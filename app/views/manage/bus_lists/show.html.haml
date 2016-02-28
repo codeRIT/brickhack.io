@@ -17,6 +17,22 @@
       - @bus_list.schools.each do |school|
         %li= link_to(school.name, manage_school_path(school))
   %p
+    %strong Bus Captians:
+  - if @bus_list.captains.empty?
+    %p
+      %em TBD
+  - @bus_list.captains.each do |p|
+    %p
+      %strong= p.full_name
+      %br
+      %em= p.school.name
+      %br
+      Phone:
+      = p.phone
+      %br
+      Email:
+      = p.email
+  %p
     %b Notes:
   %hr
   = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"

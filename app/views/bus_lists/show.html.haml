@@ -14,6 +14,23 @@
     = @bus_list.name
 
   %p
+    %strong Bus Captians:
+  - if @bus_list.captains.empty?
+    %p
+      %em TBD
+  - @bus_list.captains.each do |p|
+    %p
+      %strong= p.full_name
+      %br
+      %em= p.school.name
+      %br
+      Phone:
+      = p.phone
+      %br
+      Email:
+      = p.email
+
+  %p
     %strong Passengers:
   %table.table
     %thead
