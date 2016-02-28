@@ -51,6 +51,23 @@
             - if @questionnaire.bus_list.needs_bus_captain
               %p We're also looking for bus captains from your school. Are you interested?
               = f.input :bus_captain_interest, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Bus capain interest:"
+
+            %p
+              %strong Bus Captians:
+            - if @questionnaire.bus_list.captains.empty?
+              %p
+                %em TBD
+            - @questionnaire.bus_list.captains.each do |p|
+              %p
+                %strong= p.full_name
+                %br
+                %em= p.school.name
+                %br
+                Phone:
+                = p.phone
+                %br
+                Email:
+                = p.email
             = @questionnaire.bus_list.notes.present? ? @questionnaire.bus_list.notes.html_safe : ""
         - else
           = f.input :riding_bus, as: :hidden, value: false

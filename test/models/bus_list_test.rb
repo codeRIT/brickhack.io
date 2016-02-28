@@ -49,4 +49,40 @@ class BusListTest < ActiveSupport::TestCase
     end
   end
 
+  context "#captians" do
+    before do
+      @bus_list = create(:bus_list)
+      @school = create(:school, bus_list_id: @bus_list.id)
+    end
+
+    should "return all captains" do
+      create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true)
+      create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true)
+      questionnaire1 = create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true, is_bus_captain: true)
+      questionnaire2 = create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true, is_bus_captain: true)
+      create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: false)
+      assert_equal 2, @bus_list.captains.count
+      assert_equal questionnaire1.id, @bus_list.captains[0].id
+      assert_equal questionnaire2.id, @bus_list.captains[1].id
+    end
+
+    should "only return captains who have RSVP'd" do
+      questionnaire1 = create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true, is_bus_captain: true)
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, title|
+        next if status == "rsvp_confirmed"
+        create(:questionnaire, acc_status: status, school_id: @school.id, riding_bus: true, is_bus_captain: true)
+      end
+      assert_equal 1, @bus_list.captains.count
+      assert_equal questionnaire1.id, @bus_list.captains[0].id
+    end
+
+    should "not return captains from another bus" do
+      questionnaire1 = create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true, is_bus_captain: true)
+      school2 = create(:school)
+      create(:questionnaire, acc_status: "rsvp_confirmed", school_id: school2.id, riding_bus: true, is_bus_captain: true)
+      assert_equal 1, @bus_list.captains.count
+      assert_equal questionnaire1.id, @bus_list.captains[0].id
+    end
+  end
+
 end
