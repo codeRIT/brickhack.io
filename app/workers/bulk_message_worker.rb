@@ -32,13 +32,13 @@ class BulkMessageWorker
       when "bus-list-cornell-bing"
         recipients += BusList.find(1).passengers.map(&:user_id)
       when "bus-list-buffalo"
-        recipients += BusList.find(2).passengers.map(&:user_id)
+        recipients += BusList.find(3).passengers.map(&:user_id)
       when "bus-list-rutgers-albany"
         recipients += BusList.find(5).passengers.map(&:user_id)
       when "bus-list-cornell-bing-eligible"
         recipients += Questionnaire.joins(:school).where("(schools.bus_list_id = 1 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").select(:user_id).map(&:user_id)
       when "bus-list-buffalo-eligible"
-        recipients += Questionnaire.joins(:school).where("(schools.bus_list_id = 2 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").select(:user_id).map(&:user_id)
+        recipients += Questionnaire.joins(:school).where("(schools.bus_list_id = 3 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").select(:user_id).map(&:user_id)
       when "bus-list-rutgers-albany-eligible"
         recipients += Questionnaire.joins(:school).where("(schools.bus_list_id = 5 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").select(:user_id).map(&:user_id)
       when "school-rit"
