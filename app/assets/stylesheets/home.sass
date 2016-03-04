@@ -193,12 +193,23 @@ p
   margin: 0
   border-spacing: 0
 
+.schedule
+  line-height: 1.5  
+
 .schedule tbody tr:nth-child(even)
   background-color: #ffe1c9
 
-.schedule tbody tr td:nth-child(odd)
+.schedule tbody tr td:first-child
   color: #f58625
   font-weight: 400
+  min-width: 150px
+
+.schedule tbody tr td:nth-child(2)
+  min-width: 150px
+
+.schedule tbody tr td:nth-child(2) div
+  margin-top: 12px
+  font-size: 12px
 
 .schedule tbody tr:nth-child(odd)
   background-color: #fff3ea
