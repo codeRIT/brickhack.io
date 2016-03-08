@@ -33,7 +33,10 @@
     =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
-    - unless REGISTRATION_IS_OPEN
+    - if EVENT_IS_OVER
+      %p
+        %em Thanks for a great BrickHack! See you next year!
+    - elsif !REGISTRATION_IS_OPEN
       %p
         %em Registration is now closed.
     - if current_user
@@ -46,8 +49,12 @@
     - elsif REGISTRATION_IS_OPEN
       =link_to new_user_registration_path do
         %div.button SIGN UP
-    =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
-      %div.button VOLUNTEER
+    - if EVENT_IS_OVER
+      =link_to "https://www.hackerearth.com/sprints/brickhack-ii/submissions/" do
+        %div.button SUBMISSIONS
+    - else
+      =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
+        %div.button VOLUNTEER
 
 %div#about.home-section
   %div.orange-fill
@@ -154,7 +161,7 @@
             %div Booting without a disk (Live Feature Demo), Making Architectural Decisions the Wrong Way, Docker by Example
         %tr
           %td 2:00PM
-          %td 
+          %td
             Microsoft Tech Talk
             %div Getting Started with Azure Cloud
         %tr

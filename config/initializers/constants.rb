@@ -1,1 +1,2 @@
 REGISTRATION_IS_OPEN = false
+EVENT_IS_OVER = true
