@@ -33,7 +33,10 @@
     =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
-    - unless REGISTRATION_IS_OPEN
+    - if EVENT_IS_OVER
+      %p
+        %em Thanks for a great BrickHack! See you next year!
+    - elsif !REGISTRATION_IS_OPEN
       %p
         %em Registration is now closed.
     - if current_user
@@ -46,8 +49,12 @@
     - elsif REGISTRATION_IS_OPEN
       =link_to new_user_registration_path do
         %div.button SIGN UP
-    =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
-      %div.button VOLUNTEER
+    - if EVENT_IS_OVER
+      =link_to "https://www.hackerearth.com/sprints/brickhack-ii/submissions/" do
+        %div.button SUBMISSIONS
+    - else
+      =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
+        %div.button VOLUNTEER
 
 %div#about.home-section
   %div.orange-fill
@@ -139,9 +146,6 @@
           %td 10:30AM - 2:00PM
           %td Registration
         %tr
-          %td 11AM
-          %td Microsoft Tech Talk
-        %tr
           %td 11:15AM
           %td Lunch
         %tr
@@ -158,30 +162,35 @@
         %tr
           %td 2:00PM
           %td
+            Microsoft Tech Talk
+            %div Getting Started with Azure Cloud
+        %tr
+          %td 3:00PM
+          %td
             Staples Tech Talk
             %div Corporate Innovation in CLOUDy conditions: Looking at cloud based architecture in a corporate enviornment and its use in supporting innovation
         %tr
-          %td 2:30PM
+          %td 3:30PM
           %td
             Facebook Tech Talk
             %div Great big airplanes with internet lasers: Connecting the unconnected with Facebook's Aquila
         %tr
-          %td 3:00PM
+          %td 4:00PM
+          %td
+            Simone Center: Commercializing your Product
+            %div Commercializing your product
+        %tr
+          %td 4:30PM
           %td
             Sparkpost Tech Talk
             %div Build Something Awesome with SparkPost: How to quickly get up and running with SparkPost. How to setup and use Inbound Relay. Awesome demos and examples.
         %tr
-          %td 4:00PM
-          %td
-            Simone Center: Commercializing your Product
-            %div Who is going use product?  How will you monetize it?
-        %tr
-          %td 4:30PM
+          %td 5:00PM
           %td
             Fedora Tech Talk
             %div Free/Open Source Software Submissions: A Primer.  How to license your code FOSS, how to contribute to FOSS projects, how to specifically do things "The Open Source Way."
         %tr
-          %td 5:00PM
+          %td 5:30PM
           %td Design Workshop by MakeSchool
         %tr
           %td 6:00PM
