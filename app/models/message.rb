@@ -20,6 +20,7 @@ class Message < ActiveRecord::Base
     "rsvp-confirmed" => "RSVP Confirmed Attendees",
     "rsvp-denied" => "RSVP Denied Attendees",
     "checked-in" => "Checked-In Attendees",
+    "non-checked-in" => "Non-Checked-In Attendees",
     "bus-list-cornell-bing" => "Bus List: Cornell + Binghamton (Confirmed)",
     "bus-list-buffalo" => "Bus List: Buffalo (Confirmed)",
     "bus-list-rutgers-albany" => "Bus List: Rutgers & Albany (Confirmed)",
