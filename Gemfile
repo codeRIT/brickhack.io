@@ -10,7 +10,7 @@ gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'test-unit', '~> 3.0'
 
-gem 'rollbar', '~> 2.7'
+gem 'rollbar', '~> 2.8'
 gem 'skylight'
 
 gem 'sidekiq', '< 5'
