@@ -1,0 +1,103 @@
+=stylesheet_link_tag 'home.css'
+
+%nav
+  %a.desktop.active{ href: '#home' }BrickHack
+  %a.desktop{ href: '#about' }about
+  %a.desktop{ href: '#faq' }FAQ
+  %a.desktop{ href: '#sponsors' }sponsors
+  - if current_user
+    = link_to 'My Account', questionnaires_path, class: 'desktop'
+
+  -# mobile nav
+  %i{ class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu' }
+  %h2{ class: 'mobile mob-nav-header', style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
+
+  #mobile-nav
+    %a.mobile.active{ href: '#home' }BrickHack
+    %a.mobile{ href: '#about' }about
+    %a.mobile{ href: '#faq' }FAQ
+    %a.mobile{ href: '#sponsors' }sponsors
+    - if current_user
+      = link_to 'My Account', questionnaires_path, class: 'mobile'
+
+.page.triangle-background#home
+  .center-vertical.plus-nav.center
+    = image_tag 'brickhack_2.png', { id: 'logo', class: 'wow rotate-in' }
+    %h3{ style: 'text-align: center; color: white; position: relative; top: 48px;' } Returning Spring 2017
+    %br
+    %p
+      %em Enter your email below! We'll keep you posted.
+    #mc_embed_signup
+      %form#mc-embedded-subscribe-form.validate{ :action => "//coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=be625a634d", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank" }
+        #mc_embed_signup_scroll
+          .mc-field-groupe
+            %input#mce-EMAIL.required.email{ :name => "EMAIL", :type => "email", :value => "", placeholder: "myemail@example.com", autofocus: true, style: "width: 90%; max-width: 300px" }
+          #mce-responses.clear
+            #mce-error-response.response{ :style => "display:none" }
+            #mce-success-response.response{ :style => "display:none" }
+          / real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          %div{ :style => "position: absolute; left: -5000px;" }
+            %input{ :name => "b_122b09a8cef4c1f3888af8e40_be625a634d", :tabindex => "-1", :type => "text", :value => "" }/
+          .clear
+            %input#mc-embedded-subscribe.button{ :name => "subscribe", :type => "submit", :value => "Subscribe" }/
+    - if current_user
+      - if current_user.admin
+        = link_to manage_dashboard_index_path do
+          .button MANAGE
+      - else
+        = link_to questionnaires_path do
+          .button MY ACCOUNT
+
+#about.home-section
+  .orange-fill
+  .bg-image{ style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
+    %h1.wow.fade-in.center-vertical What is BrickHack?
+
+  .home-content
+    %h2.orange.center RIT's PREMIERE HACKATHON
+    %h3{ style: 'text-align: justify;' } BrickHack ignites a weekend devoted to 400 designers and coders sinking 24 hours into learning, building, and creating unique projects. Mentors and industry representatives will also join the fray to lend expertise and share wisdom. Expect food, swag, and timeless brick-laden memories
+    .center
+      %h3
+        %em Last Year:
+      = link_to "https://www.hackerearth.com/sprints/brickhack-ii/submissions/" do
+        .button SUBMISSIONS
+      = link_to "https://www.hackerearth.com/sprints/brickhack-ii/winners/" do
+        .button WINNERS
+
+#faq.home-section
+  .orange-fill
+  .bg-image{ style: "background-image: url(" +  image_path('background_3.jpg')  + ")" }
+    %h1.wow.fade-in.center-vertical FAQ
+  .home-content.faq
+    %h2 What is a hackathon?
+    %h3
+      Great question! A hackathon is best described as an “invention marathon”. Anyone who has an interest in technology attends a hackathon to learn, build & share their creations over the course of a weekend in a relaxed and welcoming atmosphere. You don’t have to be a programmer and you certainly don’t have to be majoring in CS.
+      %br
+      %br
+      MLH has a great list of related questions over at <a href="https://mlh.io/faq" class="orange">mlh.io/faq</a>.
+
+    %h2 Are busses being provided?
+    %h3 Busses will be provided to a specific number of schools, based on interest. If you're interested in getting a bus to your school, reach out to <a href="mailto:travel@codeRIT.org">travel@codeRIT.org</a>!
+
+    %h2 My question isn't answered here?
+    %h3 Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit" class="orange">Twitter</a>, <a href="https://www.facebook.com/brickhackrit" class="orange">Facebook</a>, or <a href="mailto:hello@codeRIT.org" class="orange">email</a>.
+
+#sponsors.home-section
+  .blue-fill
+  .bg-image{ style: "background-image: url(" +  image_path('background_2.jpg')  + ")" }
+    %h1.wow.fade-in.center-vertical Sponsors
+
+
+  .home-content.center
+    = link_to 'Interested in Sponsoring?', "mailto:sponsorship@codeRIT.org", { class: 'button', style: 'margin-bottom: 60px;' }
+    .sponsor-grid
+      %h2 Partners
+      .third
+        %a{ href: "https://magic.rit.edu" }
+          = image_tag 'sponsors/magic.gif', id: "magic"
+      .third
+        %a{ href: "https://mlh.io" }
+          = image_tag 'sponsors/mlh.png'
+      .third
+        %a{ href: "https://www.rit.edu/research/simonecenter/" }
+          = image_tag 'sponsors/simone.png'
