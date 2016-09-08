@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
   def index
-    render :layout => "blank"
+    render layout: "blank"
+  end
+
+  def comingsoon
+    render layout: "blank"
   end
 
   def event
-    render :layout => "dayof"
+    render layout: "dayof"
   end
 end
