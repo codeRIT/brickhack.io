@@ -14,7 +14,6 @@ gem 'rollbar', '~> 2.8'
 gem 'skylight'
 
 gem 'sidekiq', '< 5'
-gem 'sinatra', :require => nil
 gem 'sprockets', :require => nil
 
 gem 'devise'
