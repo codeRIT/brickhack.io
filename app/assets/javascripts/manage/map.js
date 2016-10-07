@@ -15,7 +15,7 @@ $.fn.initMap = function() {
 
   var radius = d3.scale.sqrt()
       .domain([0, 50])
-      .range([0, 25]);
+      .range([0, 1]);
 
   var svg = d3.select(this[0]).append("svg:svg")
       .attr("width", width)
@@ -40,13 +40,13 @@ $.fn.initMap = function() {
         .attr("d", path);
 
     svg.append("g")
-        .attr("class", "bubble")
-      .selectAll("circle")
+        .attr("class", "county")
+      .selectAll("path")
         .data(topojson.feature(us, us.objects.counties).features
           .sort(function(a, b) { return (appsById.get(b.id) || 0) - (appsById.get(a.id) || 0); }))
-      .enter().append("circle")
-        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("r", function(d) { return radius(appsById.get(d.id) || 0); })
+      .enter().append("path")
+        .attr("d", path)
+        .attr("fill-opacity", function(d) { return radius(appsById.get(d.id) || 0); })
       .append("title")
         .text(function(d) {
           return d.properties.name
