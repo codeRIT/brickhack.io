@@ -1,4 +1,4 @@
-=stylesheet_link_tag 'home.css'
+= stylesheet_link_tag 'home.css'
 
 %nav
   %a.desktop.active{ href: '#home' }BrickHack
@@ -48,10 +48,10 @@
         = link_to questionnaires_path do
           .button MY ACCOUNT
     .social-list
-      %a{href:"https://www.facebook.com/brickhackrit", class:'sm-link', target: '_blank'}
-        %span{class:'fa fa-facebook'}
-      %a{href:"https://twitter.com/brickhackrit", class:'sm-link', target: '_blank'}
-        %span{class:'fa fa-twitter'}
+      %a.sm-link{ href:"https://www.facebook.com/brickhackrit", target: '_blank' }
+        %span.fa.fa-facebook
+      %a.sm-link{ href:"https://twitter.com/brickhackrit", target: '_blank' }
+        %span.fa.fa-twitter
 
 #about.home-section
   .orange-fill
