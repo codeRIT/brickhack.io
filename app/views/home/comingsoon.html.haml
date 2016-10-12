@@ -1,4 +1,4 @@
-=stylesheet_link_tag 'home.css'
+= stylesheet_link_tag 'home.css'
 
 %nav
   %a.desktop.active{ href: '#home' }BrickHack
@@ -22,8 +22,8 @@
 
 .page.triangle-background#home
   .center-vertical.plus-nav.center
-    = image_tag 'brickhack_2.png', { id: 'logo', class: 'wow rotate-in' }
-    %h3{ style: 'text-align: center; color: white; position: relative; top: 48px;' } Returning Spring 2017
+    = image_tag 'brickhack.png', { id: 'logo', class: 'wow rotate-in' }
+    %h3{ style: 'text-align: center; color: white; position: relative; top: 48px;' } February 11-12, 2017
     %br
     %p
       %em Enter your email below! We'll keep you posted.
@@ -47,6 +47,11 @@
       - else
         = link_to questionnaires_path do
           .button MY ACCOUNT
+    .social-list
+      %a.sm-link{ href:"https://www.facebook.com/brickhackrit", target: '_blank' }
+        %span.fa.fa-facebook
+      %a.sm-link{ href:"https://twitter.com/brickhackrit", target: '_blank' }
+        %span.fa.fa-twitter
 
 #about.home-section
   .orange-fill
@@ -89,8 +94,18 @@
 
 
   .home-content.center
-    = link_to 'Interested in Sponsoring?', "mailto:sponsorship@codeRIT.org", { class: 'button', style: 'margin-bottom: 60px;' }
+    = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
     .sponsor-grid
+      .third
+      .third
+        %a{ href: "http://www.datto.com" }
+          = image_tag 'sponsors/datto.png'
+      .third
+      %br
+      %br
+      %br
+      %br
+      %br
       %h2 Partners
       .third
         %a{ href: "https://magic.rit.edu" }

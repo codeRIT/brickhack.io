@@ -1,4 +1,4 @@
-=stylesheet_link_tag 'home.css'
+= stylesheet_link_tag 'home.css'
 
 %nav
   %a.desktop.active{href: '#home'}BrickHack
@@ -7,10 +7,10 @@
   %a.desktop{href: '#schedule'}Schedule
   %a.desktop{href: '#sponsors'}sponsors
   - if current_user
-    =link_to 'My Account', questionnaires_path, class: 'desktop'
+    = link_to 'My Account', questionnaires_path, class: 'desktop'
   - else
     - text = REGISTRATION_IS_OPEN ? 'Sign Up/In' : 'Sign In'
-    =link_to text, new_user_registration_path, class: 'desktop'
+    = link_to text, new_user_registration_path, class: 'desktop'
 
   -# mobile nav
   %i{class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu'}
@@ -23,14 +23,14 @@
     %a.mobile{href: '#schedule'}Schedule
     %a.mobile{href: '#sponsors'}sponsors
     - if current_user
-      =link_to 'My Account', questionnaires_path, class: 'mobile'
+      = link_to 'My Account', questionnaires_path, class: 'mobile'
     - else
       - text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In'
-      =link_to text, new_user_registration_path, class: 'mobile'
+      = link_to text, new_user_registration_path, class: 'mobile'
 
 %div.page.triangle-background#home
   %div.center-vertical.plus-nav.center
-    =image_tag 'brickhack_2.png', {id: 'logo', class: 'wow rotate-in'}
+    = image_tag 'brickhack.png', {id: 'logo', class: 'wow rotate-in'}
     %h3{style: 'text-align: center; color: white; position: relative; top: 48px;'} MARCH 5-6, 2016
     %br
     - if EVENT_IS_OVER
@@ -41,21 +41,21 @@
         %em Registration is now closed.
     - if current_user
       - if current_user.admin
-        =link_to manage_dashboard_index_path do
+        = link_to manage_dashboard_index_path do
           %div.button MANAGE
       - else
-        =link_to questionnaires_path do
+        = link_to questionnaires_path do
           %div.button MY ACCOUNT
     - elsif REGISTRATION_IS_OPEN
-      =link_to new_user_registration_path do
+      = link_to new_user_registration_path do
         %div.button SIGN UP
     - if EVENT_IS_OVER
-      =link_to "https://www.hackerearth.com/sprints/brickhack-ii/submissions/" do
+      = link_to "https://www.hackerearth.com/sprints/brickhack-ii/submissions/" do
         %div.button SUBMISSIONS
-      =link_to "https://www.hackerearth.com/sprints/brickhack-ii/winners/" do
+      = link_to "https://www.hackerearth.com/sprints/brickhack-ii/winners/" do
         %div.button WINNERS
     - else
-      =link_to "http://goo.gl/forms/Vu9tS7uL3u" do
+      = link_to "http://goo.gl/forms/Vu9tS7uL3u" do
         %div.button VOLUNTEER
 
 %div#about.home-section
@@ -68,11 +68,11 @@
     %h3{style: 'text-align: justify;'} March 5-6 ignites a weekend devoted to 400 designers and coders sinking 24 hours into learning, building, and creating unique projects. Mentors and industry representatives will also join the fray to lend expertise and share wisdom. The event will take place in RIT's Gordon Field House for a centralized, communal hacking experience. Expect food, swag, and timeless brick-laden memories
 
     .center
-      =link_to "https://www.hackerearth.com/sprints/brickhack-ii/" do
+      = link_to "https://www.hackerearth.com/sprints/brickhack-ii/" do
         %div.button PRIZES, JUDGES, SUBMISSIONS
-      =link_to "https://docs.google.com/document/d/1xMSG496eWKe5ZFrP1VTIJSsUdj0UZPml4oT4gGWQ8iM/edit?usp=sharing" do
+      = link_to "https://docs.google.com/document/d/1xMSG496eWKe5ZFrP1VTIJSsUdj0UZPml4oT4gGWQ8iM/edit?usp=sharing" do
         %div.button MENTORS
-      =link_to "https://docs.google.com/document/d/1zFrifwAa8CPK4xKVGO7oNxRyCeY9uJ3irtEw0oMK1JY/edit?usp=sharing" do
+      = link_to "https://docs.google.com/document/d/1zFrifwAa8CPK4xKVGO7oNxRyCeY9uJ3irtEw0oMK1JY/edit?usp=sharing" do
         %div.button HARDWARE
 
 %div#faq.home-section
@@ -256,37 +256,37 @@
 
 
   %div.home-content.center
-    =link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), {class: 'button', style: 'margin-bottom: 60px;'}
+    = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
     %div.sponsor-grid
       %div.third
       %div.third
         %a{href: "http://www.datto.com"}
-          =image_tag 'sponsors/datto.png'
+          = image_tag 'sponsors/datto.png'
       %div.third
 
       %div.third
         %a{href: "https://www.microsoft.com"}
-          =image_tag 'sponsors/microsoft.png'
+          = image_tag 'sponsors/microsoft.png'
       %div.third
         %a{href: "http://www.staples.com"}
-          =image_tag 'sponsors/staples.gif', id: "staples"
+          = image_tag 'sponsors/staples.gif', id: "staples"
       %div.third
         %a{href: "https://facebook.com"}
-          =image_tag 'sponsors/facebook.png', id: "facebook"
+          = image_tag 'sponsors/facebook.png', id: "facebook"
 
       %div.third
         %a{href: "https://www.sparkpost.com"}
-          =image_tag 'sponsors/sparkpost.png'
+          = image_tag 'sponsors/sparkpost.png'
       %div.third
         %a{href: "https://www.mozilla.org"}
-          =image_tag 'sponsors/mozilla.png', id: "mozilla"
+          = image_tag 'sponsors/mozilla.png', id: "mozilla"
       %div.third
         %a{href: "https://getfedora.org"}
-          =image_tag 'sponsors/fedora.png'
+          = image_tag 'sponsors/fedora.png'
 
       %div.third
         %a{href: "https://www.twilio.com"}
-          =image_tag 'sponsors/twilio.png'
+          = image_tag 'sponsors/twilio.png'
       %br
       %br
       %br
@@ -295,16 +295,16 @@
       %h2 Partners
       %div.third
         %a{href: "http://magic.rit.edu"}
-          =image_tag 'sponsors/magic.gif', id: "magic"
+          = image_tag 'sponsors/magic.gif', id: "magic"
       %div.third
         %a{href: "https://www.hackerearth.com"}
-          =image_tag 'sponsors/hackerearth.png', id: "hackerearth"
+          = image_tag 'sponsors/hackerearth.png', id: "hackerearth"
       %div.third
         %a{href: "https://mlh.io"}
-          =image_tag 'sponsors/mlh.png'
+          = image_tag 'sponsors/mlh.png'
       %div.third
         %a{href: "https://www.rit.edu/research/simonecenter/"}
-          =image_tag 'sponsors/simone.png'
+          = image_tag 'sponsors/simone.png'
 
 
 %a#mlh-trust-badge{style: "position:fixed;top:0;right:20px;max-width:100px;width:10%;min-width:60px;display:block;z-index:10000", href: "https://mlh.io?utm_campaign=Trust%20Badge", target: "_blank"}
