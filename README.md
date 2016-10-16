@@ -48,6 +48,20 @@ $ bin/setup
 
 Start your local environment: `bin/rails server`
 
+## Authenticaiton & Admin Testing
+
+Authenticaiton is performed through [MyMLH](https://my.mlh.io). To access the admin pages, you'll need to create a local account & add our test MyMLH credentials.
+
+1. Copy the sample environment variables (`cp .env.sample .env`)
+2. Replace the values in `.env` with our test MyMLH credentials. *Contact a contributor to obtain these.*
+2. Start up the local server (`bin/rails server`)
+3. Visit `/manage` and sign in. You'll be asked to sign up or sign in to MyMLH, and authorize the applicaiton. Upon doing so, you'll be redirected back to your local server.
+4. Start up the Rails console (`bin/rails console`) and run the following command:
+```ruby
+User.last.update_attribute(:admin, true)
+```
+5. You should now be able to access `/manage` (with `bin/rails server` still running)
+
 ## Development Utilities
 
 * **Mail View** - Email templates can be previewed at http://localhost:3000/rails/mailers
