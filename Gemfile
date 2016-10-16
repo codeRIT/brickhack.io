@@ -47,6 +47,8 @@ gem 'selectize-rails'
 gem 'highcharts-rails', '~> 4.1.8'
 gem 'uglifier', '>= 1.0.3'
 
+gem 'dotenv-rails', :groups => [:development, :test]
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
