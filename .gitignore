@@ -93,3 +93,5 @@ bower.json
 # get rid of rubymine files
 /.idea/*
 
+# don't commit local env vars
+.env
