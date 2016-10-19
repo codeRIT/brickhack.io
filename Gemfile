@@ -16,8 +16,8 @@ gem 'skylight'
 gem 'sidekiq', '< 5'
 gem 'sprockets', :require => nil
 
-gem 'devise'
-gem 'devise-async'
+gem 'devise', '~> 3.5'
+gem 'devise-async', '~> 0.10.2'
 gem 'omniauth-mlh'
 
 gem 'haml-rails'
@@ -25,7 +25,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
 gem 'roadie-rails'
-gem 'chartkick'
+gem 'chartkick', '~> 1.5'
 gem 'groupdate'
 gem 'font-awesome-rails' # needed for icon helpers
 gem 'protected_attributes'
@@ -42,10 +42,10 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-sass-rails'
-gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'selectize-rails'
-gem 'highcharts-rails', '~> 4.1.8'
-gem 'uglifier', '>= 1.0.3'
+gem 'highcharts-rails', '~> 4.2.5'
+gem 'uglifier', '~> 3.0'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
