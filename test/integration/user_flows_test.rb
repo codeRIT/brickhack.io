@@ -46,7 +46,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       open_session do |sess|
         sess.extend(CustomDsl)
         sess.https!
-        sess.post user_session_url, user: { email: user.email, password: user.password }
+        sess.post user_session_url, params: { user: { email: user.email, password: user.password } }
         assert_equal 'Signed in successfully.', sess.flash[:notice]
       end
     end

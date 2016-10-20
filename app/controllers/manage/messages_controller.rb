@@ -1,6 +1,6 @@
 class Manage::MessagesController < Manage::ApplicationController
-  before_filter :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
-  before_filter :check_message_access, only: [:edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
+  before_action :check_message_access, only: [:edit, :update, :destroy]
 
   respond_to :html
 

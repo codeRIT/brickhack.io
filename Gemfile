@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 5.0.0'
 
 gem 'mysql2'
 
@@ -59,4 +59,5 @@ group :test do
   gem 'valid_attribute'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'rails-controller-testing' # Rails 4 fallback
 end

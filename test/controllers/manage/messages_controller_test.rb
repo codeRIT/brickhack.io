@@ -31,44 +31,44 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#show" do
-      get :show, id: @message
+      get :show, params: { id: @message }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#edit" do
-      get :edit, id: @message
+      get :edit, params: { id: @message }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#create" do
-      post :create, message: { email: "test@example.com" }
+      post :create, params: { message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#update" do
-      patch :update, id: @message, message: { email: "test@example.com" }
+      patch :update, params: { id: @message, message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      patch :destroy, id: @message
+      patch :destroy, params: { id: @message }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not deliver message" do
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_messages#preview" do
-      get :preview, id: @message
+      get :preview, params: { id: @message }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -100,44 +100,44 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#show" do
-      get :show, id: @message
+      get :show, params: { id: @message }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#edit" do
-      get :edit, id: @message
+      get :edit, params: { id: @message }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#create" do
-      post :create, message: { email: "test@example.com" }
+      post :create, params: { message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#update" do
-      patch :update, id: @message, message: { email: "test@example.com" }
+      patch :update, params: { id: @message, message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      patch :destroy, id: @message
+      patch :destroy, params: { id: @message }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not deliver message" do
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_messages#preview" do
-      get :preview, id: @message
+      get :preview, params: { id: @message }
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -161,7 +161,7 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_messages#show" do
-      get :show, id: @message
+      get :show, params: { id: @message }
       assert_response :success
     end
 
@@ -172,38 +172,38 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_messages#edit" do
-      get :edit, id: @message
+      get :edit, params: { id: @message }
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not allow access to manage_messages#create" do
-      post :create, message: { email: "test@example.com" }
+      post :create, params: { message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not allow access to manage_messages#update" do
-      patch :update, id: @message, message: { email: "test@example.com" }
+      patch :update, params: { id: @message, message: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not allow access to manage_messages#destroy" do
-      patch :destroy, id: @message
+      patch :destroy, params: { id: @message }
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "not deliver message" do
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_equal 0, BulkMessageWorker.jobs.size, "should not trigger messages worker"
       assert_response :redirect
       assert_redirected_to manage_messages_path
     end
 
     should "allow access to manage_messages#preview" do
-      get :preview, id: @message
+      get :preview, params: { id: @message }
       assert_response :success
     end
   end
@@ -226,58 +226,58 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     end
 
     should "create a new message" do
-      post :create, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" }
+      post :create, params: { message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" } }
       assert_response :redirect
       assert_redirected_to manage_message_path(assigns(:message))
     end
 
     should "allow access to manage_messages#show" do
-      get :show, id: @message
+      get :show, params: { id: @message }
       assert_response :success
     end
 
     should "allow access to manage_messages#edit" do
-      get :edit, id: @message
+      get :edit, params: { id: @message }
       assert_response :success
     end
 
     should "update message" do
-      patch :update, id: @message, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" }
+      patch :update, params: { id: @message, message: { name: "New Message Name", subject: "Subject", recipients: ["abc"], body: "Example" } }
       assert_redirected_to manage_message_path(assigns(:message))
     end
 
     should "deliver message" do
       assert_equal 0, BulkMessageWorker.jobs.size, "worker should not be running prior to delivery"
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_equal 1, BulkMessageWorker.jobs.size, "should trigger messages worker"
       assert_match /queued/, flash[:notice]
       assert_redirected_to manage_message_path(assigns(:message))
     end
 
     should "not allow multiple deliveries" do
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_match /queued/, flash[:notice]
-      patch :deliver, id: @message
+      patch :deliver, params: { id: @message }
       assert_match /cannot/, flash[:notice]
     end
 
     should "not be able to modify message after delivery" do
       @message.update_attribute(:delivered_at, 1.minute.ago)
       old_message_name = @message.name
-      patch :update, id: @message, message: { name: "New Message Name" }
+      patch :update, params: { id: @message, message: { name: "New Message Name" } }
       assert_match /can no longer/, flash[:notice]
       assert_equal old_message_name, @message.reload.name
     end
 
     should "destroy message" do
       assert_difference('Message.count', -1) do
-        patch :destroy, id: @message
+        patch :destroy, params: { id: @message }
       end
       assert_redirected_to manage_messages_path
     end
 
     should "allow access to manage_messages#preview" do
-      get :preview, id: @message
+      get :preview, params: { id: @message }
       assert_response :success
     end
   end

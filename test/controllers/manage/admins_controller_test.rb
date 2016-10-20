@@ -19,37 +19,37 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#show" do
-      get :show, id: @user
+      get :show, params: { id: @user }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#new" do
-      get :new, id: @user
+      get :new, params: { id: @user }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#edit" do
-      get :edit, id: @user
+      get :edit, params: { id: @user }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#create" do
-      post :create, user: { email: "test@example.com" }
+      post :create, params: { user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#update" do
-      patch :update, id: @user, user: { email: "test@example.com" }
+      patch :update, params: { id: @user, user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      patch :destroy, id: @user
+      patch :destroy, params: { id: @user }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -74,37 +74,37 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#new" do
-      get :new, id: @user
+      get :new, params: { id: @user }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#show" do
-      get :show, id: @user
+      get :show, params: { id: @user }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#edit" do
-      get :edit, id: @user
+      get :edit, params: { id: @user }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#create" do
-      post :create, user: { email: "test@example.com" }
+      post :create, params: { user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#update" do
-      patch :update, id: @user, user: { email: "test@example.com" }
+      patch :update, params: { id: @user, user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      patch :destroy, id: @user
+      patch :destroy, params: { id: @user }
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -128,7 +128,7 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_admins#show" do
-      get :show, id: @user
+      get :show, params: { id: @user }
       assert_response :success
     end
 
@@ -139,25 +139,25 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_admins#edit" do
-      get :edit, id: @user
+      get :edit, params: { id: @user }
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
 
     should "not allow access to manage_admins#create" do
-      post :create, user: { email: "test@example.com" }
+      post :create, params: { user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
 
     should "not allow access to manage_admins#update" do
-      patch :update, id: @user, user: { email: "test@example.com" }
+      patch :update, params: { id: @user, user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
 
     should "not allow access to manage_admins#destroy" do
-      patch :destroy, id: @user
+      patch :destroy, params: { id: @user }
       assert_response :redirect
       assert_redirected_to manage_admins_path
     end
@@ -176,14 +176,14 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     end
 
     should "create a new admin" do
-      post :create, user: { email: "test@example.com" }
+      post :create, params: { user: { email: "test@example.com" } }
       assert_response :redirect
       assert_redirected_to manage_admins_path
       assert assigns(:user).admin, "new user should be an admin"
     end
 
     should "create a new limited access admin" do
-      post :create, user: { email: "test@example.com", admin_limited_access: true }
+      post :create, params: { user: { email: "test@example.com", admin_limited_access: true } }
       assert_response :redirect
       assert_redirected_to manage_admins_path
       assert assigns(:user).admin, "new user should be an admin"
@@ -193,33 +193,33 @@ class Manage::AdminsControllerTest < ActionController::TestCase
     should "not create an admin with duplicate emails" do
       create(:user, email: "existing@example.com")
       assert_difference('User.count', 0) do
-        post :create, user: { email: "existing@example.com" }
+        post :create, params: { user: { email: "existing@example.com" } }
       end
     end
 
     should "not allow access to manage_admins#new" do
-      get :new, id: @user
+      get :new, params: { id: @user }
       assert_response :success
     end
 
     should "allow access to manage_admins#show" do
-      get :show, id: @user
+      get :show, params: { id: @user }
       assert_response :success
     end
 
     should "allow access to manage_admins#edit" do
-      get :edit, id: @user
+      get :edit, params: { id: @user }
       assert_response :success
     end
 
     should "update user" do
-      patch :update, id: @user, user: { email: "test@example.coma" }
+      patch :update, params: { id: @user, user: { email: "test@example.coma" } }
       assert_redirected_to manage_admins_path
     end
 
     should "destroy user" do
       assert_difference('User.count', -1) do
-        patch :destroy, id: @user
+        patch :destroy, params: { id: @user }
       end
       assert_redirected_to manage_admins_path
     end

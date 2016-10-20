@@ -1,5 +1,5 @@
 class Manage::BusListsController < Manage::ApplicationController
-  before_filter :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
+  before_action :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
 
   respond_to :html
 

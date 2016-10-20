@@ -6,7 +6,7 @@ class School < ApplicationRecord
   strip_attributes
 
   has_many :questionnaires
-  belongs_to :bus_list
+  belongs_to :bus_list, optional: true
 
   def full_name
     out = ""

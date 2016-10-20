@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
-  before_filter :logged_in
-  before_filter :find_questionnaire, only: [:show, :update, :edit, :destroy]
+  before_action :logged_in
+  before_action :find_questionnaire, only: [:show, :update, :edit, :destroy]
 
   def logged_in
     authenticate_user!
@@ -106,7 +106,7 @@ class QuestionnairesController < ApplicationController
   # GET /apply/schools
   def schools
     if params[:name].blank? || params[:name].length < 3
-      head 400
+      head :bad_request
       return
     end
     schools = School.where('name LIKE ?', "%#{params[:name]}%").limit(20).select(:name).all

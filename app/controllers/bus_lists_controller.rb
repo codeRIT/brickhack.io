@@ -1,9 +1,9 @@
 class BusListsController < ApplicationController
-  before_filter :logged_in
-  before_filter :check_user_has_questionnaire
-  before_filter :find_questionnaire
-  before_filter :find_bus_list
-  before_filter :require_bus_captian
+  before_action :logged_in
+  before_action :check_user_has_questionnaire
+  before_action :find_questionnaire
+  before_action :find_bus_list
+  before_action :require_bus_captian
 
   def logged_in
     authenticate_user!

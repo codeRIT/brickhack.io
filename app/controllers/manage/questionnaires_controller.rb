@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
+  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
 
   respond_to :html
 
@@ -35,7 +35,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       else
         flash[:notice] = user.errors.full_messages.join(", ")
         if user.errors.include?(:email)
-          @questionnaire.errors.add(:email, user.errors.get(:email).join(", "))
+          @questionnaire.errors.add(:email, user.errors[:email].join(", "))
         end
         return render 'new'
       end
@@ -118,7 +118,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     action = params[:bulk_action]
     ids = params[:bulk_ids]
     if action.blank? || ids.blank?
-      render nothing: true, status: 400
+      head :bad_request
       return
     end
     Questionnaire.find(ids).each do |q|
@@ -129,7 +129,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
         process_acc_status_notifications(q, action)
       end
     end
-    render nothing: true, staus: 200
+    head :ok
   end
 
   private

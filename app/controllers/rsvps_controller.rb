@@ -1,8 +1,8 @@
 class RsvpsController < ApplicationController
-  before_filter :logged_in
-  before_filter :check_user_has_questionnaire
-  before_filter :find_questionnaire
-  before_filter :require_accepted_questionnaire
+  before_action :logged_in
+  before_action :check_user_has_questionnaire
+  before_action :find_questionnaire
+  before_action :require_accepted_questionnaire
 
   def logged_in
     authenticate_user!
@@ -53,7 +53,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status_date = Time.now if @questionnaire.acc_status != params[:questionnaire][:acc_status]
     @questionnaire.acc_status = params[:questionnaire][:acc_status]
     @questionnaire.acc_status_author_id = current_user.id
-    if !@questionnaire.riding_bus && params[:questionnaire][:riding_bus] == true && @questionnaire.bus_list && @questionnaire.bus_list.full?
+    if !@questionnaire.riding_bus && params[:questionnaire][:riding_bus] == "true" && @questionnaire.bus_list && @questionnaire.bus_list.full?
       flash[:notice] = "Sorry, your bus is full! You may need to arrange other plans for transportation."
       @questionnaire.riding_bus = false
       @questionnaire.bus_captain_interest = false

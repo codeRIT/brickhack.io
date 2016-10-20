@@ -1,6 +1,6 @@
 class Manage::ApplicationController < ApplicationController
-  before_filter :logged_in
-  before_filter :limit_admin_access, only: ["edit", "update", "new", "create", "destroy", "convert_to_admin", "deliver", "merge", "perform_merge", "toggle_bus_captain"]
+  before_action :logged_in
+  before_action :limit_admin_access, only: ["edit", "update", "new", "create", "destroy", "convert_to_admin", "deliver", "merge", "perform_merge", "toggle_bus_captain"]
 
   def logged_in
     authenticate_user!

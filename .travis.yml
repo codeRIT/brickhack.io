@@ -7,9 +7,9 @@ before_script:
   - mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
   - echo -e "Host csh-cloud.oweb.co\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
-- bundle exec rake db:migrate db:test:prepare
-- RUN_COVERAGE=travis bundle exec rake test
-- bundle exec rake coverage:report
+- bin/rails db:migrate db:test:prepare
+- RUN_COVERAGE=travis bin/rails test
+- bin/rails coverage:report
 deploy:
   - provider: script
     script: .travis/deploy_stage.sh

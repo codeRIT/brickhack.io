@@ -24,7 +24,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "redirect to sign up page on questionnaire#update" do
-      patch :update, questionnaire: { major: "different" }
+      patch :update, params: { questionnaire: { major: "different" } }
       assert_redirected_to new_user_session_path
     end
 
@@ -50,7 +50,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
 
     should "create questionnaire" do
       assert_difference('Questionnaire.count', 1) do
-        post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
+        post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
       end
 
       assert_redirected_to questionnaires_path
@@ -59,8 +59,8 @@ class QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow multiple questionnaires" do
       assert_difference('Questionnaire.count', 1) do
-        post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
-        post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
+        post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
+        post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_id: @school.id, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
       end
 
       assert_redirected_to questionnaires_path
@@ -70,7 +70,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       should "not allow creation" do
         @questionnaire.delete
         assert_difference('Questionnaire.count', 0) do
-          post :create, questionnaire: { first_name: "My first name" }
+          post :create, params: { questionnaire: { first_name: "My first name" } }
         end
       end
     end
@@ -78,20 +78,20 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "#school_name" do
       context "on create" do
         should "save existing school name" do
-          post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
+          post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
           assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
         end
 
         should "create a new school when unknown" do
-          post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: "New School", agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
+          post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: "New School", agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
           assert_redirected_to questionnaires_path
           assert_equal 2, School.all.count
         end
 
         should "send confirmation email to questionnaire" do
           assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be queued prior to questionnaire creation"
-          post :create, questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender }
+          post :create, params: { questionnaire: { experience: @questionnaire.experience, first_name: @questionnaire.first_name, last_name: @questionnaire.last_name, phone: @questionnaire.phone, graduation: @questionnaire.graduation, date_of_birth: @questionnaire.date_of_birth, shirt_size: @questionnaire.shirt_size, school_name: @school.name, agreement_accepted: "1", code_of_conduct_accepted: "1", major: @questionnaire.major, gender: @questionnaire.gender } }
           assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "should email confirmation to questionnaire"
         end
       end
@@ -115,7 +115,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "update questionnaire" do
-      patch :update, questionnaire: { first_name: "Foo" }
+      patch :update, params: { questionnaire: { first_name: "Foo" } }
       assert_redirected_to questionnaires_path
     end
 
@@ -130,7 +130,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "with invalid questionnaire params" do
       should "not allow updates" do
         saved_first_name = @questionnaire.first_name
-        patch :update, questionnaire: { first_name: "" }
+        patch :update, params: { questionnaire: { first_name: "" } }
         assert_equal saved_first_name, @questionnaire.reload.first_name
       end
     end
@@ -146,13 +146,13 @@ class QuestionnairesControllerTest < ActionController::TestCase
     context "#school_name" do
       context "on update" do
         should "save existing school name" do
-          patch :update, questionnaire: { school_name: @school.name }
+          patch :update, params: { questionnaire: { school_name: @school.name } }
           assert_redirected_to questionnaires_path
           assert_equal 1, School.all.count
         end
 
         should "create a new school when unknown" do
-          patch :update, questionnaire: { school_name: "New School" }
+          patch :update, params: { questionnaire: { school_name: "New School" } }
           assert_redirected_to questionnaires_path
           assert_equal 2, School.all.count
         end
@@ -167,7 +167,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       should "not respond to search with short query" do
-        get :schools, school: "Al"
+        get :schools, params: { school: "Al" }
         assert_response 400
         assert @response.body.blank?
       end
@@ -175,7 +175,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       should "respond to school search" do
         create(:school, name: "Alpha University")
         create(:school, name: "Pheta College")
-        get :schools, name: "Alph"
+        get :schools, params: { name: "Alph" }
         assert_response :success
         assert_equal 1, json_response.count
         assert_equal "Alpha University", json_response[0]
