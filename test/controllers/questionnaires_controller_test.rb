@@ -114,13 +114,6 @@ class QuestionnairesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    should "get edit with questionnaire resume" do
-      @questionnaire.resume = sample_file("sample_pdf.pdf")
-      @questionnaire.save
-      get :edit
-      assert_response :success
-    end
-
     should "update questionnaire" do
       patch :update, questionnaire: { first_name: "Foo" }
       assert_redirected_to questionnaires_path

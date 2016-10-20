@@ -6,7 +6,7 @@ class Questionnaire < ActiveRecord::Base
 
   attr_accessible :email, :experience, :first_name, :last_name, :gender
   attr_accessible :date_of_birth, :experience, :school_id, :school_name, :major, :graduation
-  attr_accessible :shirt_size, :dietary_restrictions, :special_needs, :resume, :international
+  attr_accessible :shirt_size, :dietary_restrictions, :special_needs, :international
   attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
   attr_accessible :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted
   attr_accessible :travel_not_from_school, :travel_location
@@ -15,12 +15,6 @@ class Questionnaire < ActiveRecord::Base
   validates_presence_of :gender, :major, :graduation
   validates_presence_of :agreement_accepted, message: "Must accept"
   validates_presence_of :code_of_conduct_accepted, message: "Must accept"
-
-  has_attached_file :resume
-  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid file type"
-  validates_attachment_size :resume, in: 0..2.megabytes, message: "File size is too big"
-
-  include DeletableAttachment
 
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }

@@ -27,8 +27,6 @@
     .form-inputs
       = f.input :experience, as: :select, collection: Questionnaire::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
 
-      = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
-
       = f.input :portfolio_url, label: "Portfolio Link", placeholder:"http://mywebsite.com"
       = f.input :vcs_url, label: "GitHub/BitBucket", placeholder:"https://github.com/coderit"
 
