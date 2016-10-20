@@ -5,16 +5,16 @@ class AdminDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
-      'users.id',
-      'users.email',
-      'users.admin_limited_access'
+      'User.id',
+      'User.email',
+      'User.admin_limited_access'
     ]
   end
 
   def searchable_columns
     @searchable_columns ||= [
-      'users.id',
-      'users.email'
+      'User.id',
+      'User.email'
     ]
   end
 
