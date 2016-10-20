@@ -1,4 +1,4 @@
-class Message < ActiveRecord::Base
+class Message < ApplicationRecord
 
   attr_accessible :name, :subject, :recipients, :template, :body
 

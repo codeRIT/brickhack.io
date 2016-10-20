@@ -1,4 +1,4 @@
-class School < ActiveRecord::Base
+class School < ApplicationRecord
   attr_accessible :name, :address, :city, :state, :bus_list_id
 
   validates_presence_of :name

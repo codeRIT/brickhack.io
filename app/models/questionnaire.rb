@@ -1,4 +1,4 @@
-class Questionnaire < ActiveRecord::Base
+class Questionnaire < ApplicationRecord
   include ActiveModel::Dirty
 
   after_save :update_school_questionnaire_count

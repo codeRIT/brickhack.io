@@ -1,4 +1,4 @@
-class BusList < ActiveRecord::Base
+class BusList < ApplicationRecord
   attr_accessible :name, :capacity, :notes, :needs_bus_captain
 
   validates_presence_of :name
