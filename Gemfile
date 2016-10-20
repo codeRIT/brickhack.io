@@ -17,7 +17,6 @@ gem 'sidekiq', '< 5'
 gem 'sprockets', :require => nil
 
 gem 'devise', '~> 3.5'
-gem 'devise-async', '~> 0.10.2'
 gem 'omniauth-mlh'
 
 gem 'haml-rails'

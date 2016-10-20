@@ -72,8 +72,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-async (0.10.2)
-      devise (>= 3.2, < 4.0)
     docile (1.1.5)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
@@ -327,7 +325,6 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   devise (~> 3.5)
-  devise-async (~> 0.10.2)
   dotenv-rails
   email_validator
   factory_girl_rails
