@@ -59,7 +59,7 @@ class QuestionnairesController < ApplicationController
     if current_user.questionnaire.present?
       return redirect_to questionnaires_path, notice: 'Application already exists.'
     end
-    @questionnaire = Questionnaire.new(convert_school_name_to_id questionnaire_params)
+    @questionnaire = Questionnaire.new(convert_school_name_to_id(questionnaire_params))
 
     respond_to do |format|
       if @questionnaire.save
@@ -79,7 +79,7 @@ class QuestionnairesController < ApplicationController
   # PUT /apply.json
   def update
     update_params = questionnaire_params
-    update_params = convert_school_name_to_id update_params
+    update_params = convert_school_name_to_id(update_params)
 
     respond_to do |format|
       if @questionnaire.update_attributes(update_params)

@@ -25,7 +25,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def create
     create_params = questionnaire_params
     email = create_params.delete(:email)
-    create_params = convert_school_name_to_id create_params
+    create_params = convert_school_name_to_id(create_params)
     @questionnaire = ::Questionnaire.new(create_params)
     if @questionnaire.valid?
       user = User.new(email: email, password: Devise.friendly_token.first(10))
@@ -49,7 +49,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     if email.present?
       @questionnaire.user.update_attributes(email: email)
     end
-    update_params = convert_school_name_to_id update_params
+    update_params = convert_school_name_to_id(update_params)
     @questionnaire.update_attributes(update_params)
     respond_with(:manage, @questionnaire)
   end
@@ -82,7 +82,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def convert_to_admin
     user = @questionnaire.user
     @questionnaire.destroy
-    user.update_attributes({ admin: true, admin_limited_access: true })
+    user.update_attributes(admin: true, admin_limited_access: true)
     redirect_to edit_manage_admin_path(user)
   end
 
@@ -125,9 +125,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       q.acc_status = action
       q.acc_status_author_id = current_user.id
       q.acc_status_date = Time.now
-      if q.save(validate: false)
-        process_acc_status_notifications(q, action)
-      end
+      q.save(validate: false) && process_acc_status_notifications(q, action)
     end
     head :ok
   end
