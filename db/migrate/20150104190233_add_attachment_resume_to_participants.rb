@@ -1,11 +1,13 @@
 class AddAttachmentResumeToParticipants < ActiveRecord::Migration
-  def self.up
-    change_table :participants do |t|
-      t.attachment :resume
-    end
-  end
+  # Paperclip was removed on 10/19/2016 by Stuart Olivera
 
-  def self.down
-    drop_attached_file :participants, :resume
-  end
+  # def self.up
+  #   change_table :participants do |t|
+  #     t.attachment :resume
+  #   end
+  # end
+
+  # def self.down
+  #   drop_attached_file :participants, :resume
+  # end
 end
