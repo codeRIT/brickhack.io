@@ -24,7 +24,7 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
 gem 'roadie-rails'
-gem 'chartkick', '~> 1.5'
+gem 'chartkick', '~> 2.1'
 gem 'groupdate'
 gem 'font-awesome-rails' # needed for icon helpers
 

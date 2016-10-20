@@ -51,7 +51,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
-    chartkick (1.5.2)
+    chartkick (2.1.1)
     codeclimate-test-reporter (0.6.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
@@ -325,7 +325,7 @@ DEPENDENCIES
   ajax-datatables-rails
   better_errors
   binding_of_caller
-  chartkick (~> 1.5)
+  chartkick (~> 2.1)
   codeclimate-test-reporter
   coffee-rails
   devise (~> 4.2)
