@@ -11,12 +11,6 @@ class SchoolTest < ActiveSupport::TestCase
 
   should validate_presence_of :name
 
-  should allow_mass_assignment_of :name
-  should allow_mass_assignment_of :address
-  should allow_mass_assignment_of :city
-  should allow_mass_assignment_of :state
-  should allow_mass_assignment_of :bus_list_id
-
   should validate_uniqueness_of :name
 
   context "#full_name" do

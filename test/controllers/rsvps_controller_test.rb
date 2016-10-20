@@ -126,13 +126,13 @@ class RsvpsControllerTest < ActionController::TestCase
     end
 
     should "redirect to root page on rsvp#update" do
-      patch :update, questionnaire: { acc_status: "rsvp_denied" }
+      patch :update, params: { questionnaire: { acc_status: "rsvp_denied" } }
       assert_equal "rsvp_denied", @questionnaire.reload.acc_status
       assert_redirected_to rsvp_path
     end
 
     should "not allow riding a bus if school does not have bus list" do
-      patch :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      patch :update, params: { questionnaire: { acc_status: "rsvp_confirmed", riding_bus: "true" } }
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
       assert_equal false, @questionnaire.reload.riding_bus
       assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "should email confirmation to questionnaire"
@@ -142,7 +142,7 @@ class RsvpsControllerTest < ActionController::TestCase
     should "not allow riding a bus if bus is full" do
       bus_list = create(:bus_list, capacity: 0)
       @questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
-      patch :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      patch :update, params: { questionnaire: { acc_status: "rsvp_confirmed", riding_bus: "true" } }
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
       assert_equal false, @questionnaire.reload.riding_bus
       assert_equal 0, bus_list.passengers.count
@@ -152,14 +152,14 @@ class RsvpsControllerTest < ActionController::TestCase
 
     should "not send email if updating info after confirming" do
       @questionnaire.update_attribute(:acc_status, "rsvp_confirmed")
-      patch :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      patch :update, params: { questionnaire: { acc_status: "rsvp_confirmed", riding_bus: "true" } }
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent"
     end
 
     should "allow riding a bus if school has bus list" do
       bus_list = create(:bus_list)
       @questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
-      patch :update, questionnaire: { acc_status: "rsvp_confirmed", riding_bus: true }
+      patch :update, params: { questionnaire: { acc_status: "rsvp_confirmed", riding_bus: "true" } }
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
       assert_equal true, @questionnaire.reload.riding_bus
       assert_equal 1, bus_list.passengers.count
@@ -167,7 +167,7 @@ class RsvpsControllerTest < ActionController::TestCase
     end
 
     should "allow updates to questionnaire via rsvp page" do
-      patch :update, questionnaire: { phone: "1234567890" }
+      patch :update, params: { questionnaire: { phone: "1234567890" } }
       assert_equal "1234567890", @questionnaire.reload.phone
       assert_redirected_to rsvp_path
     end
@@ -175,7 +175,7 @@ class RsvpsControllerTest < ActionController::TestCase
     should "not allow invalid updates to questionnaire via rsvp page" do
       @questionnaire.update_attribute(:phone, "1111111111")
       @questionnaire.update_attribute(:agreement_accepted, false)
-      patch :update, questionnaire: { phone: "1234567890" }
+      patch :update, params: { questionnaire: { phone: "1234567890" } }
       assert_not_nil flash[:notice]
       assert_equal "1111111111", @questionnaire.reload.phone
       assert_redirected_to rsvp_path
@@ -184,14 +184,14 @@ class RsvpsControllerTest < ActionController::TestCase
     should "not allow updates to invalid questionnaire via rsvp page" do
       @questionnaire.update_attribute(:phone, "1111111111")
       @questionnaire.update_attribute(:first_name, "")
-      patch :update, questionnaire: { phone: "1234567890" }
+      patch :update, params: { questionnaire: { phone: "1234567890" } }
       assert_not_nil flash[:notice]
       assert_equal "1111111111", @questionnaire.reload.phone
       assert_redirected_to rsvp_path
     end
 
     should "not allow forbidden status update to questionnaire" do
-      patch :update, questionnaire: { acc_status: "pending" }
+      patch :update, params: { questionnaire: { acc_status: "pending" } }
       assert_equal "accepted", @questionnaire.reload.acc_status
       assert_match /select a RSVP status/, flash[:notice]
       assert_redirected_to rsvp_path

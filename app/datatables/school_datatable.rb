@@ -5,21 +5,21 @@ class SchoolDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     @sortable_columns ||= [
-      'schools.id',
-      'schools.name',
-      'schools.city',
-      'schools.state',
-      'schools.questionnaire_count'
+      'School.id',
+      'School.name',
+      'School.city',
+      'School.state',
+      'School.questionnaire_count'
     ]
   end
 
   def searchable_columns
     @searchable_columns ||= [
-      'schools.id',
-      'schools.name',
-      'schools.city',
-      'schools.state',
-      'schools.address'
+      'School.id',
+      'School.name',
+      'School.city',
+      'School.state',
+      'School.address'
     ]
   end
 

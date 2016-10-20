@@ -1,8 +1,8 @@
 class RsvpsController < ApplicationController
-  before_filter :logged_in
-  before_filter :check_user_has_questionnaire
-  before_filter :find_questionnaire
-  before_filter :require_accepted_questionnaire
+  before_action :logged_in
+  before_action :check_user_has_questionnaire
+  before_action :find_questionnaire
+  before_action :require_accepted_questionnaire
 
   def logged_in
     authenticate_user!
@@ -17,7 +17,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status = "rsvp_confirmed"
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
-    if @questionnaire.save(without_protection: true)
+    if @questionnaire.save
       Mailer.delay.rsvp_confirmation_email(@questionnaire.id)
     else
       flash[:notice] = "There was an error submitting your response, please check over your application and try again. Did you accept the BrickHack Agreement?"
@@ -30,7 +30,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status = "rsvp_denied"
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
-    unless @questionnaire.save(without_protection: true)
+    unless @questionnaire.save
       flash[:notice] = "There was an error submitting your response, please check over your application and try again. Did you accept the BrickHack Agreement?"
     end
     redirect_to rsvp_path
@@ -38,7 +38,7 @@ class RsvpsController < ApplicationController
 
   # PUT /rsvp
   def update
-    unless @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_info))
+    unless @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info))
       flash[:notice] = @questionnaire.errors.full_messages.join(", ")
       redirect_to rsvp_path
       return
@@ -53,7 +53,7 @@ class RsvpsController < ApplicationController
     @questionnaire.acc_status_date = Time.now if @questionnaire.acc_status != params[:questionnaire][:acc_status]
     @questionnaire.acc_status = params[:questionnaire][:acc_status]
     @questionnaire.acc_status_author_id = current_user.id
-    if !@questionnaire.riding_bus && params[:questionnaire][:riding_bus] == true && @questionnaire.bus_list && @questionnaire.bus_list.full?
+    if !@questionnaire.riding_bus && params[:questionnaire][:riding_bus] == "true" && @questionnaire.bus_list && @questionnaire.bus_list.full?
       flash[:notice] = "Sorry, your bus is full! You may need to arrange other plans for transportation."
       @questionnaire.riding_bus = false
       @questionnaire.bus_captain_interest = false
@@ -67,7 +67,7 @@ class RsvpsController < ApplicationController
 
     acc_status_changed = @questionnaire.acc_status_changed?
 
-    unless @questionnaire.save(without_protection: true)
+    unless @questionnaire.save
       flash[:notice] = @questionnaire.errors.full_message.join(", ")
       redirect_to rsvp_path
       return

@@ -15,7 +15,7 @@ class Users::RegistrationsControllerTest < ActionController::TestCase
     should "destroy both user and questionnaire" do
       assert_difference('User.count', -1) do
         assert_difference('Questionnaire.count', -1) do
-          delete :destroy, id: @questionnaire.user
+          delete :destroy, params: { id: @questionnaire.user }
         end
       end
 

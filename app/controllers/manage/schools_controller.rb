@@ -1,5 +1,5 @@
 class Manage::SchoolsController < Manage::ApplicationController
-  before_filter :find_school, only: [:show, :edit, :update, :destroy, :merge, :perform_merge]
+  before_action :find_school, only: [:show, :edit, :update, :destroy, :merge, :perform_merge]
 
   respond_to :html
 
@@ -23,14 +23,13 @@ class Manage::SchoolsController < Manage::ApplicationController
   end
 
   def create
-    parameters = params[:school]
-    @school = ::School.new(parameters)
+    @school = ::School.new(school_params)
     @school.save
     respond_with(:manage, @school, location: manage_schools_path)
   end
 
   def update
-    @school.update_attributes(params[:school])
+    @school.update_attributes(school_params)
     respond_with(:manage, @school, location: manage_schools_path)
   end
 
@@ -73,6 +72,12 @@ class Manage::SchoolsController < Manage::ApplicationController
   end
 
   private
+
+  def school_params
+    params.require(:school).permit(
+      :name, :address, :city, :state, :bus_list_id
+    )
+  end
 
   def find_school
     @school = ::School.find(params[:id])

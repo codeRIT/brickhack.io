@@ -1,6 +1,6 @@
 class Manage::MessagesController < Manage::ApplicationController
-  before_filter :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
-  before_filter :check_message_access, only: [:edit, :update, :destroy]
+  before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
+  before_action :check_message_access, only: [:edit, :update, :destroy]
 
   respond_to :html
 
@@ -24,13 +24,13 @@ class Manage::MessagesController < Manage::ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
     @message.save
     respond_with(:manage, @message)
   end
 
   def update
-    @message.update_attributes(params[:message])
+    @message.update_attributes(message_params)
     respond_with(:manage, @message)
   end
 
@@ -56,6 +56,13 @@ class Manage::MessagesController < Manage::ApplicationController
   end
 
   private
+
+    def message_params
+      params.require(:message).permit(
+        :name, :subject, :template, :body, recipients: []
+      )
+    end
+
     def set_message
       @message = Message.find(params[:id])
     end

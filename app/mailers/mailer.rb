@@ -1,4 +1,4 @@
-class Mailer < ActionMailer::Base
+class Mailer < ApplicationMailer
   include Roadie::Rails::Automatic
 
   default from: '"codeRIT" <noreply@coderit.org>'

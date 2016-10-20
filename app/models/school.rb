@@ -1,6 +1,4 @@
-class School < ActiveRecord::Base
-  attr_accessible :name, :address, :city, :state, :bus_list_id
-
+class School < ApplicationRecord
   validates_presence_of :name
 
   validates_uniqueness_of :name
@@ -8,7 +6,7 @@ class School < ActiveRecord::Base
   strip_attributes
 
   has_many :questionnaires
-  belongs_to :bus_list
+  belongs_to :bus_list, optional: true
 
   def full_name
     out = ""

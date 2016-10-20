@@ -19,49 +19,49 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_schools#show" do
-      get :show, id: @school
+      get :show, params: { id: @school }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#new" do
-      get :new, id: @school
+      get :new, params: { id: @school }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#edit" do
-      get :edit, id: @school
+      get :edit, params: { id: @school }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#create" do
-      post :create, school: { name: "My Test School" }
+      post :create, params: { school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#update" do
-      patch :update, id: @school, school: { name: "My Test School" }
+      patch :update, params: { id: @school, school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#destroy" do
-      patch :destroy, id: @school
+      patch :destroy, params: { id: @school }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#merge" do
-      patch :merge, id: @school
+      patch :merge, params: { id: @school }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
 
     should "not allow access to manage_schools#perform_merge" do
-      patch :perform_merge, id: @school, school: { id: "My Test School" }
+      patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -87,49 +87,49 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_schools#new" do
-      get :new, id: @school
+      get :new, params: { id: @school }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#show" do
-      get :show, id: @school
+      get :show, params: { id: @school }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#edit" do
-      get :edit, id: @school
+      get :edit, params: { id: @school }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#create" do
-      post :create, school: { name: "My Test School" }
+      post :create, params: { school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#update" do
-      patch :update, id: @school, school: { name: "My Test School" }
+      patch :update, params: { id: @school, school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#destroy" do
-      patch :destroy, id: @school
+      patch :destroy, params: { id: @school }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#merge" do
-      patch :merge, id: @school
+      patch :merge, params: { id: @school }
       assert_response :redirect
       assert_redirected_to root_path
     end
 
     should "not allow access to manage_schools#perform_merge" do
-      patch :perform_merge, id: @school, school: { id: "My Test School" }
+      patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -153,7 +153,7 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_schools#show" do
-      get :show, id: @school
+      get :show, params: { id: @school }
       assert_response :success
     end
 
@@ -164,37 +164,37 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_schools#edit" do
-      get :edit, id: @school
+      get :edit, params: { id: @school }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
 
     should "not allow access to manage_schools#create" do
-      post :create, school: { name: "My Test School" }
+      post :create, params: { school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
 
     should "not allow access to manage_schools#update" do
-      patch :update, id: @school, school: { name: "My Test School" }
+      patch :update, params: { id: @school, school: { name: "My Test School" } }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
 
     should "not allow access to manage_schools#destroy" do
-      patch :destroy, id: @school
+      patch :destroy, params: { id: @school }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
 
     should "not allow access to manage_schools#merge" do
-      patch :merge, id: @school
+      patch :merge, params: { id: @school }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
 
     should "not allow access to manage_schools#perform_merge" do
-      patch :perform_merge, id: @school, school: { id: "My Test School" }
+      patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
       assert_response :redirect
       assert_redirected_to manage_schools_path
     end
@@ -215,46 +215,46 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     should "not create an school with duplicate names" do
       create(:school, name: "Existing School")
       assert_difference('School.count', 0) do
-        post :create, school: { name: "Existing School" }
+        post :create, params: { school: { name: "Existing School" } }
       end
     end
 
     should "not allow access to manage_schools#new" do
-      get :new, id: @school
+      get :new, params: { id: @school }
       assert_response :success
     end
 
     should "allow access to manage_schools#show" do
-      get :show, id: @school
+      get :show, params: { id: @school }
       assert_response :success
     end
 
     should "allow access to manage_schools#edit" do
-      get :edit, id: @school
+      get :edit, params: { id: @school }
       assert_response :success
     end
 
     should "update school" do
-      patch :update, id: @school, school: { name: "New school name" }
+      patch :update, params: { id: @school, school: { name: "New school name" } }
       assert_redirected_to manage_schools_path
     end
 
     should "destroy school" do
       assert_difference('School.count', -1) do
-        patch :destroy, id: @school
+        patch :destroy, params: { id: @school }
       end
       assert_redirected_to manage_schools_path
     end
 
     should "allow access to manage_schools#merge" do
-      patch :merge, id: @school
+      patch :merge, params: { id: @school }
       assert_response :success
     end
 
     should "not merge into an invalid school" do
       ["Nonexistent School", ""].each do |name|
         assert_difference('School.count', 0) do
-          patch :perform_merge, id: @school, school: { id: name }
+          patch :perform_merge, params: { id: @school, school: { id: name } }
         end
       end
     end
@@ -266,7 +266,7 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
       q3 = create(:questionnaire, school_id: school.id)
       assert_difference('School.count', -1) do
         assert_difference('school.reload.questionnaire_count', 2) do
-          patch :perform_merge, id: @school, school: { id: "My Test School" }
+          patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
         end
       end
     end
@@ -278,7 +278,7 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
       q1 = create(:questionnaire, school_id: @school.id)
       assert_difference('School.count', 0) do
         assert_difference('school.reload.questionnaire_count', 1) do
-          patch :perform_merge, id: @school, school: { id: "My Test School" }
+          patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
         end
       end
     end

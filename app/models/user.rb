@@ -1,15 +1,16 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :async,
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:mlh]
-
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :admin_limited_access
 
   has_one :questionnaire
 
   def active_for_authentication?
     true
+  end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 
   def email=(value)

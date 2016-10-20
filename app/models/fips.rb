@@ -1,5 +1,3 @@
-class Fips < ActiveRecord::Base
-  attr_accessible :fips_code, :city, :state
-
+class Fips < ApplicationRecord
   strip_attributes
 end

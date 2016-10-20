@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_filter :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
+  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
 
   respond_to :html
 
@@ -23,9 +23,10 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   end
 
   def create
-    email = params[:questionnaire].delete(:email)
-    params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
-    @questionnaire = ::Questionnaire.new(params[:questionnaire])
+    create_params = questionnaire_params
+    email = create_params.delete(:email)
+    create_params = convert_school_name_to_id(create_params)
+    @questionnaire = ::Questionnaire.new(create_params)
     if @questionnaire.valid?
       user = User.new(email: email, password: Devise.friendly_token.first(10))
       if user.save
@@ -34,7 +35,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       else
         flash[:notice] = user.errors.full_messages.join(", ")
         if user.errors.include?(:email)
-          @questionnaire.errors.add(:email, user.errors.get(:email).join(", "))
+          @questionnaire.errors.add(:email, user.errors[:email].join(", "))
         end
         return render 'new'
       end
@@ -43,19 +44,20 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   end
 
   def update
-    email = params[:questionnaire].delete(:email)
+    update_params = questionnaire_params
+    email = update_params.delete(:email)
     if email.present?
       @questionnaire.user.update_attributes(email: email)
     end
-    params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
-    @questionnaire.update_attributes(params[:questionnaire])
+    update_params = convert_school_name_to_id(update_params)
+    @questionnaire.update_attributes(update_params)
     respond_with(:manage, @questionnaire)
   end
 
   def check_in
     if params[:check_in] == "true"
       if params[:questionnaire]
-        @questionnaire.update_attributes(params[:questionnaire].slice(:agreement_accepted, :phone, :can_share_info))
+        @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info))
       end
       if !@questionnaire.valid?
         flash[:notice] = @questionnaire.errors.full_messages.join(", ")
@@ -80,7 +82,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def convert_to_admin
     user = @questionnaire.user
     @questionnaire.destroy
-    user.update_attributes({ admin: true, admin_limited_access: true }, without_protection: true)
+    user.update_attributes(admin: true, admin_limited_access: true)
     redirect_to edit_manage_admin_path(user)
   end
 
@@ -103,7 +105,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     @questionnaire.acc_status_author_id = current_user.id
     @questionnaire.acc_status_date = Time.now
 
-    unless @questionnaire.save(validate: false, without_protection: true)
+    unless @questionnaire.save(validate: false)
       flash[:notice] = "Failed to update acceptance status"
     end
 
@@ -116,21 +118,30 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     action = params[:bulk_action]
     ids = params[:bulk_ids]
     if action.blank? || ids.blank?
-      render nothing: true, status: 400
+      head :bad_request
       return
     end
     Questionnaire.find(ids).each do |q|
       q.acc_status = action
       q.acc_status_author_id = current_user.id
       q.acc_status_date = Time.now
-      if q.save(validate: false, without_protection: true)
-        process_acc_status_notifications(q, action)
-      end
+      q.save(validate: false) && process_acc_status_notifications(q, action)
     end
-    render nothing: true, staus: 200
+    head :ok
   end
 
   private
+
+  def questionnaire_params
+    params.require(:questionnaire).permit(
+      :email, :experience, :first_name, :last_name, :gender,
+      :date_of_birth, :experience, :school_id, :school_name, :major, :graduation,
+      :shirt_size, :dietary_restrictions, :special_needs, :international,
+      :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest,
+      :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted,
+      :travel_not_from_school, :travel_location
+    )
+  end
 
   def set_questionnaire
     @questionnaire = ::Questionnaire.find(params[:id])

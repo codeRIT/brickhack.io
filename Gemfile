@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 5.0.0'
 
 gem 'mysql2'
 
@@ -16,8 +16,7 @@ gem 'skylight'
 gem 'sidekiq', '< 5'
 gem 'sprockets', :require => nil
 
-gem 'devise', '~> 3.5'
-gem 'devise-async', '~> 0.10.2'
+gem 'devise', '~> 4.2'
 gem 'omniauth-mlh'
 
 gem 'haml-rails'
@@ -25,16 +24,12 @@ gem 'simple_form'
 gem 'kaminari'
 gem 'ajax-datatables-rails'
 gem 'roadie-rails'
-gem 'chartkick', '~> 1.5'
+gem 'chartkick', '~> 2.1'
 gem 'groupdate'
 gem 'font-awesome-rails' # needed for icon helpers
-gem 'protected_attributes'
 
 gem 'strip_attributes'
-gem 'paperclip-googledrive', :git => 'git://github.com/sman591/paperclip-googledrive/' # issue with file deletion, url, and paperclip version
-gem 'paperclip', '~> 4.3' # drops support for Ruby 1.9.3
 
-gem 'email_validator'
 gem 'validate_url'
 
 # Previously grouped under assets:
@@ -64,4 +59,5 @@ group :test do
   gem 'valid_attribute'
   gem 'factory_girl_rails'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'rails-controller-testing' # Rails 4 fallback
 end

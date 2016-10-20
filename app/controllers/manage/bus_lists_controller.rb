@@ -1,5 +1,5 @@
 class Manage::BusListsController < Manage::ApplicationController
-  before_filter :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
+  before_action :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
 
   respond_to :html
 
@@ -21,13 +21,13 @@ class Manage::BusListsController < Manage::ApplicationController
   end
 
   def create
-    @bus_list = BusList.new(params[:bus_list])
+    @bus_list = BusList.new(bus_list_params)
     @bus_list.save
     respond_with(:manage, @bus_list)
   end
 
   def update
-    @bus_list.update_attributes(params[:bus_list])
+    @bus_list.update_attributes(bus_list_params)
     respond_with(:manage, @bus_list)
   end
 
@@ -48,6 +48,13 @@ class Manage::BusListsController < Manage::ApplicationController
   end
 
   private
+
+    def bus_list_params
+      params.require(:bus_list).permit(
+        :name, :capacity, :notes, :needs_bus_captain
+      )
+    end
+
     def set_bus_list
       @bus_list = BusList.find(params[:id])
     end
