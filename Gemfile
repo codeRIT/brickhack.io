@@ -31,7 +31,6 @@ gem 'protected_attributes'
 
 gem 'strip_attributes'
 
-gem 'email_validator'
 gem 'validate_url'
 
 # Previously grouped under assets:
