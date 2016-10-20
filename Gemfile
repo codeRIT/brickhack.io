@@ -16,7 +16,7 @@ gem 'skylight'
 gem 'sidekiq', '< 5'
 gem 'sprockets', :require => nil
 
-gem 'devise', '~> 3.5'
+gem 'devise', '~> 4.2'
 gem 'omniauth-mlh'
 
 gem 'haml-rails'

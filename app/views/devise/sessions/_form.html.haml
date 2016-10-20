@@ -1,7 +1,7 @@
 %div{class:'form-container login'}
   .form-actions
     .center
-      = btn_link_to "Sign In with My MLH &raquo;".html_safe, user_omniauth_authorize_path(provider: :mlh)
+      = btn_link_to "Sign In with My MLH &raquo;".html_safe, user_mlh_omniauth_authorize_path
       %br
       %br
       %p Need an account?
