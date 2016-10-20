@@ -24,13 +24,13 @@ class Manage::MessagesController < Manage::ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
     @message.save
     respond_with(:manage, @message)
   end
 
   def update
-    @message.update_attributes(params[:message])
+    @message.update_attributes(message_params)
     respond_with(:manage, @message)
   end
 
@@ -56,6 +56,13 @@ class Manage::MessagesController < Manage::ApplicationController
   end
 
   private
+
+    def message_params
+      params.require(:message).permit(
+        :name, :subject, :template, :body, recipients: []
+      )
+    end
+
     def set_message
       @message = Message.find(params[:id])
     end

@@ -3,9 +3,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:mlh]
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :admin_limited_access
-
   has_one :questionnaire
 
   def active_for_authentication?

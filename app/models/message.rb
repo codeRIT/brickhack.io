@@ -1,7 +1,5 @@
 class Message < ApplicationRecord
 
-  attr_accessible :name, :subject, :recipients, :template, :body
-
   validates_presence_of :name, :subject, :recipients, :template
   validates_presence_of :body, if: :using_default_template?
 

@@ -59,7 +59,7 @@ class QuestionnairesController < ApplicationController
     if current_user.questionnaire.present?
       return redirect_to questionnaires_path, notice: 'Application already exists.'
     end
-    @questionnaire = Questionnaire.new(convert_school_name_to_id params[:questionnaire])
+    @questionnaire = Questionnaire.new(convert_school_name_to_id questionnaire_params)
 
     respond_to do |format|
       if @questionnaire.save
@@ -78,10 +78,11 @@ class QuestionnairesController < ApplicationController
   # PUT /apply
   # PUT /apply.json
   def update
-    params[:questionnaire] = convert_school_name_to_id params[:questionnaire]
+    update_params = questionnaire_params
+    update_params = convert_school_name_to_id update_params
 
     respond_to do |format|
-      if @questionnaire.update_attributes(params[:questionnaire])
+      if @questionnaire.update_attributes(update_params)
         format.html { redirect_to questionnaires_path, notice: 'Application was successfully updated.' }
         format.json { head :no_content }
       else
@@ -113,6 +114,17 @@ class QuestionnairesController < ApplicationController
   end
 
   private
+
+  def questionnaire_params
+    params.require(:questionnaire).permit(
+      :email, :experience, :first_name, :last_name, :gender,
+      :date_of_birth, :experience, :school_id, :school_name, :major, :graduation,
+      :shirt_size, :dietary_restrictions, :special_needs, :international,
+      :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest,
+      :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted,
+      :travel_not_from_school, :travel_location
+    )
+  end
 
   def find_questionnaire
     unless current_user.questionnaire.present?

@@ -4,13 +4,6 @@ class Questionnaire < ApplicationRecord
   after_save :update_school_questionnaire_count
   after_destroy :update_school_questionnaire_count
 
-  attr_accessible :email, :experience, :first_name, :last_name, :gender
-  attr_accessible :date_of_birth, :experience, :school_id, :school_name, :major, :graduation
-  attr_accessible :shirt_size, :dietary_restrictions, :special_needs, :international
-  attr_accessible :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest
-  attr_accessible :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted
-  attr_accessible :travel_not_from_school, :travel_location
-
   validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size
   validates_presence_of :gender, :major, :graduation
   validates_presence_of :agreement_accepted, message: "Must accept"

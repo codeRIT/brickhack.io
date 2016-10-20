@@ -27,7 +27,6 @@ gem 'roadie-rails'
 gem 'chartkick', '~> 1.5'
 gem 'groupdate'
 gem 'font-awesome-rails' # needed for icon helpers
-gem 'protected_attributes'
 
 gem 'strip_attributes'
 
