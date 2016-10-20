@@ -288,7 +288,7 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
-    skylight (0.10.6)
+    skylight (1.0.0)
       activesupport (>= 3.0.0)
     slop (3.6.0)
     sprockets (3.7.0)
