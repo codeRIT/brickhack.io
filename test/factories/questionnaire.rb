@@ -12,6 +12,7 @@ FactoryGirl.define do
     special_needs         ""
     agreement_accepted    true
     code_of_conduct_accepted true
+    data_sharing_accepted true
     can_share_info        true
     gender                "Male"
     major                 "Computer Science"
