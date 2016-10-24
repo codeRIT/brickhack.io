@@ -8,6 +8,7 @@ class Questionnaire < ApplicationRecord
   validates_presence_of :gender, :major, :graduation
   validates_presence_of :agreement_accepted, message: "Must accept"
   validates_presence_of :code_of_conduct_accepted, message: "Must accept"
+  validates_presence_of :data_sharing_accepted, message: "Must accept"
 
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }
