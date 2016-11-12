@@ -26,7 +26,7 @@ gem 'ajax-datatables-rails'
 gem 'roadie-rails'
 gem 'chartkick', '~> 2.1'
 gem 'groupdate'
-gem 'font-awesome-rails' # needed for icon helpers
+gem 'font-awesome-rails', '~> 4.0' # needed for icon helpers
 
 gem 'strip_attributes'
 
@@ -58,6 +58,6 @@ group :test do
   gem 'minitest-reporters'
   gem 'valid_attribute'
   gem 'factory_girl_rails'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
   gem 'rails-controller-testing' # Rails 4 fallback
 end
