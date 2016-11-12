@@ -28,18 +28,18 @@
     %p
       %em Enter your email below! We'll keep you posted.
     #mc_embed_signup
-      %form#mc-embedded-subscribe-form.validate{ :action => "//coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=be625a634d", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank" }
+      %form.validate#mc-embedded-subscribe-form{ action: "//coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=be625a634d", method: "post", name: "mc-embedded-subscribe-form", novalidate: "", target: "_blank" }
         #mc_embed_signup_scroll
           .mc-field-groupe
-            %input#mce-EMAIL.required.email{ :name => "EMAIL", :type => "email", :value => "", placeholder: "myemail@example.com", autofocus: true, style: "width: 90%; max-width: 300px" }
-          #mce-responses.clear
-            #mce-error-response.response{ :style => "display:none" }
-            #mce-success-response.response{ :style => "display:none" }
+            %input.required.email#mce-EMAIL{ name: "EMAIL", type: "email", value: "", placeholder: "myemail@example.com", autofocus: true, style: "width: 90%; max-width: 300px" }
+          .clear#mce-responses
+            .response#mce-error-response{ style: "display:none" }
+            .response#mce-success-response{ style: "display:none" }
           / real people should not fill this in and expect good things - do not remove this or risk form bot signups
-          %div{ :style => "position: absolute; left: -5000px;" }
-            %input{ :name => "b_122b09a8cef4c1f3888af8e40_be625a634d", :tabindex => "-1", :type => "text", :value => "" }/
+          %div{ style: "position: absolute; left: -5000px;" }
+            %input{ name: "b_122b09a8cef4c1f3888af8e40_be625a634d", tabindex: "-1", type: "text", value: "" }/
           .clear
-            %input#mc-embedded-subscribe.button{ :name => "subscribe", :type => "submit", :value => "Subscribe" }/
+            %input.button#mc-embedded-subscribe{ name: "subscribe", type: "submit", value: "Subscribe" }/
     - if current_user
       - if current_user.admin
         = link_to manage_dashboard_index_path do
@@ -47,6 +47,7 @@
       - else
         = link_to questionnaires_path do
           .button MY ACCOUNT
+    = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 0px;' }
     .social-list
       %a.sm-link{ href:"https://www.facebook.com/brickhackrit", target: '_blank' }
         %span.fa.fa-facebook
@@ -118,6 +119,15 @@
       .third
         %a{ href: "https://www.rit.edu/research/simonecenter/" }
           = image_tag 'sponsors/simone.png'
+      %br
+      %br
+      %br
+      %br
+      %br
+      %h2 Organized By
+      .third
+        %a{ href: "https://coderit.org" }
+          = image_tag 'coderit_logo.png'
 
 %a#mlh-trust-badge{href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", style: "display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000", target: "_blank"}
   %img{alt: "Major League Hacking 2017 Hackathon Season", src: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg", style: "width:100%"}/
