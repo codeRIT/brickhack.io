@@ -15,7 +15,7 @@
           = link_to "RSVP NOW &raquo;".html_safe, rsvp_path
     - else
       - if REGISTRATION_IS_OPEN
-        %p Thanks for applying! You will be notified of your acceptance in February.
+        %p Thanks for applying! You will be notified of your acceptance via email.
       - else
         %p Thanks for applying!
 
@@ -26,10 +26,10 @@
       %b Experience:
       = Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience]
     %p
-      %b Portfolio Link:
+      %b Portfolio link:
       = @questionnaire.portfolio_url? ? link_to(@questionnaire.portfolio_url, @questionnaire.portfolio_url, target: '_blank') : 'Not provided'
     %p
-      %b GitHub/BitBucket Link:
+      %b GitHub/BitBucket link:
       = @questionnaire.vcs_url? ? link_to(@questionnaire.vcs_url, @questionnaire.vcs_url, target: '_blank') : 'Not provided'
     %p
       %b Resume:
@@ -82,6 +82,6 @@
         = @questionnaire.special_needs || "<i>(none)</i>".html_safe
 
     %p
-      = btn_link_to 'Edit Application &raquo;'.html_safe, edit_questionnaires_path
+      = btn_link_to '<span class="fa fa-pencil icon-space-r"></span> Edit Application'.html_safe, edit_questionnaires_path
     %p
       Unhappy? #{link_to "Revoke my application", user_registration_path, data: { confirm: "Are you sure? Your account and application will be permanently erased." }, method: :delete}

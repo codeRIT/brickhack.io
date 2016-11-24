@@ -1,7 +1,7 @@
-%section{class:'section'}
-  %div{class:'container'}
-    %h1{class:'section-title'} Edit Account
-    %div{class:'form-container'}
+%section.section
+  .container
+    %h1.section-title Edit Account
+    .form-container
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = f.error_notification
         .form-inputs
@@ -14,7 +14,7 @@
           = f.input :current_password, required: true
         .form-actions
           = f.button :submit, "Update"
-    %div{class:'form-container'}
+    .form-container
       %p
         Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure? Your account and application will be permanently erased." }, method: :delete}
       = link_to "Back", :back

@@ -1,0 +1,16 @@
+%nav
+  .logo
+    %a{href: '#'}
+      = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
+  .nav-links
+    %a{href: '#about'} About
+    %a{href: '#faq'} FAQ
+    %a{href: '#gallery'} Gallery
+    / %a{href: '#schedule'} Schedule
+    %a{href: '#sponsors'} Sponsors
+
+    - if current_user
+      = link_to 'My Account', questionnaires_path, class: 'desktop button button-outline'
+    - else
+      - text = REGISTRATION_IS_OPEN ? 'Register' : 'Sign In' # TODO: Sign Up / Sign In
+      = link_to text, new_user_registration_path, class: 'desktop button button-outline'

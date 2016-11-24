@@ -1,8 +1,8 @@
-%section{class:'section'}
-  %div{class:'container'}
-    %h1{class:'section-title'} Sign Up or Sign In
+%section.section
+  %div.container
+    .form-container.signup
+      %h1.section-title Sign Up or Sign In
 
-    .form-container
       #disclaimer
         - unless REGISTRATION_IS_OPEN
           .center
@@ -15,4 +15,4 @@
           %li RIT students must still apply
           %li International applicants are welcome
 
-    = render 'form'
+      = render 'form'

@@ -1,66 +1,73 @@
-$orange: #f58625
-$grey: #5D5D5D
-$navy: #344353
+@import general/variables
 
 $breakpoint-tablet: 1000px
 
-.triangle-background
-  background-image: url(image_path('coderit_background.png'))
-  background-color: #364555 !important
+body
+  background: $black
+  color: $white
+
+p a
+  color: $grey
+  text-decoration: none
+  border-bottom: 2px $red solid
+  &:hover
+    color: $red
 
 .page
   width: 100%
   min-height: 780px
-  background-color: white
-
+  padding: 0 20px
 
 nav
-  background: $orange
+  background: $black
   width: 100%
+  padding: 30px 50px
   position: fixed
   top: 0
   z-index: 1000
-  text-align: center
   font-size: 0
+  display: flex
+  justify-content: space-between
+  align-items: center
 
-nav i:before
-  color: white
-  font-size: 36px
-  cursor: pointer
-  display: inline-block
+  i:before
+    color: $white
+    font-size: 36px
+    cursor: pointer
+    display: inline-block
 
-nav i
-  margin: 10px 10px
-  display: inline-block
+  i
+    margin: 10px 10px
+    display: inline-block
 
+  .logo img
+    height: 100px
+    width: auto
 
+.nav-links
+  display: flex
+  flex-direction: row
+  align-items: baseline
 
-nav a
-  color: white
-  display: inline-block
-  font-size: 15px
-  text-transform: uppercase
-  font-weight: 400
-  padding: 10px 30px
-  margin: 20px 10px
-  border-radius: 4px
-  letter-spacing: 0.1em
+  a
+    color: $white
+    font-size: 15px
+    text-transform: uppercase
+    font-weight: 300
+    padding: 6px 5px
+    margin: 0 15px
 
-  -webkit-transition: background-color 200ms ease
-  -moz-transition: background-color 200ms ease
-  -o-transition: background-color 200ms ease
-  transition: background-color 200ms ease
+    -webkit-transition: background-color 200ms ease
+    -moz-transition: background-color 200ms ease
+    -o-transition: background-color 200ms ease
+    transition: background-color 200ms ease
 
-nav a.active
-  background: white
-  color: $orange
-  &:hover
-    background: white
-    color: $orange
+  a.active:not(.button)
+    border-bottom: 3px solid $red
 
-nav a:hover
-  background: darken($orange, 5%)
-  color: white
+  a:hover:not(.button)
+    border-bottom: 3px solid $red
+    color: $white
 
 #logo
   max-width: 300px
@@ -69,108 +76,146 @@ nav a:hover
   display: block
 
 h1
-  font-size: 72px
-  text-transform: uppercase
-  text-align: center
+  color: $orange
+  font-size: 36px
+  font-weight: 300
+  margin-bottom: 1em
 
 h2
-  font-size: 36px
+  color: $red
+  font-size: 24px
+  font-weight: 600
   text-transform: uppercase
 
 h3
-  font-size: 24px
+  font-size: 18px
   line-height: 1.7
-  color: $grey
+  color: $orange
+  margin-bottom: 0.3em
+  font-weight: 400
 
 h4
-  font-size: 13px
+  font-size: 14px
   text-transform: uppercase
+  font-weight: 600
 
 p
   font-size: 18px
   line-height: 1.6
 
 .orange
-  color: #f58625
-
-.faq h2
-  text-transform: none
-  text-align: left
   color: $orange
+
+.white
+  color: $white
+
+.title
+  color: $white
+  font-size: 58px
+  margin-bottom: 0.5em
+
+.subtitle
+  color: $white
+  font-size: 26px
+  text-transform: none
   font-weight: 300
 
-.faq h3
-  text-align: left
-  max-width: 70%
-  margin: 0 30%
-  margin-bottom: 56px
-  width: 100%
+.white-section
+  background: $white
+  color: $grey
 
-.bg-image
-  width: 100%
-  background-attachment: fixed
-  background-repeat: no-repeat
-  background-position: center
-  background-size: cover
+.grey-section
+  background: $white-grey
+  color: $grey
 
-.orange-fill, .blue-fill
-  position: absolute
-  width: 100%
-  left: 0
-  z-index: 100
+.black-section
+  background: $black
 
-.orange-fill
-  background: rgba(darken($orange, 23%), 0.6)
-
-.blue-fill
-  background: rgba($navy, 0.6)
-
-.bg-image h1
-  color: white
-  z-index: 100
-  position: absolute
-  margin: 0 auto
-  width: 100%
-  font-weight: 400
+  a
+    color: $white
 
 .home-content
-  padding: 72px 0
-  max-width: 1000px
+  max-width: 1300px
   margin: 0 auto
-
-.button
-  background: #22619D
-  display: inline-block
-  padding: 0.8em 2em
-  font-size: 15px
-  border-radius: 4px
-  text-transform: uppercase
-  letter-spacing: 0.07em
-  color: white
-  font-weight: 500
-  margin: 16px auto
-  text-decoration: none
+  padding: 40px 30px 90px
 
 .mobile, i
   display: none
 
-.sponsor-grid
-  .third
-    width: 33%
-    display: inline-block
-    padding: 20px
-    height: 180px
-    vertical-align: top
-    a
-      height: 100%
-      width: 100%
-      display: flex
-      justify-content: center
-      align-items: center
-    img
-      display: block
-      max-width: 100%
-      max-height: 100%
+.split-home
+  display: flex
+  align-items: center
+  justify-content: space-between
+  flex-wrap: wrap
+
+  // TODO: standardize the below amongst split-home and content
+  max-width: 1200px
+  margin: 0 auto
+
+  .split-left
+    flex: 1 1 450px
+    padding-right: 10%
+  .split-right
+    flex: 0 0 auto
+    margin-right: 30px
+
+.split-three
+  display: flex
+  flex-wrap: wrap
+
+.split-four
+  display: flex
+  flex-wrap: wrap
+  margin-left: -20px
+  margin-right: -20px
+
+.column
+  flex: 1 0 280px
+  text-align: center
+  padding: 20px
+
+  // TODO: better selector
+  img
+    width: 110px
+    margin-bottom: 10px
+
+  .img-spaced
+    margin-bottom: 40px
+
+  p
+    text-align: left
+
+.about-gallery
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+
+  .button-wrapper
+    position: absolute
+    top: 215px
+    width: 100%
+
+.about
+  flex: 1 1 300px
+  max-width: 700px
+  margin-right: 30px
+
+.gallery
+  flex: 0 0 400px
+  display: block
+  position: relative
+  width: 400px
+  text-align: center
+  margin: 0 auto
+
+.sponsor
+  display: flex
+  justify-content: center
+  align-items: center
+
+  img
+    width: 100%
+    max-width: 250px
 
   #staples
     width: 85%
@@ -233,27 +278,49 @@ p
   font-size: 24px
   background: #f9f6f3
 
+.diagonal
+  z-index: 1
+  position: relative
 
+.diagonal:before
+  position: absolute
+  content: ''
 
+.diagonal:before
+  -webkit-transform: rotate(-2deg)
+  transform: rotate(-2deg)
+  -webkit-transform-origin: 2% 0
+  transform-origin: 2% 0
+  top: 0
+  left: -25%
+  z-index: -1
+  width: 150%
+  height: 75%
+  background: inherit
 
+#footer
+  &, p
+    font-size: 14px
+
+  .home-content
+    padding-top: 20px
+    padding-bottom: 20px
+
+  h4
+    margin-top: 0
+
+  .column
+    text-align: left
+    flex: 1 1 auto
+    &:first-child
+      flex: 4 1 auto
 
 @media (max-width: $breakpoint-tablet)
   #hamburger-menu
     display: inline-block
-  h1
-    font-size: 56px
-  h2
-    font-size: 36px
-  h3
-    font-size: 18px
-  .faq h3
-    margin: 0
-    max-width: 100%
-    margin-bottom: 48px
-  .faq h2
-    text-align: center
   .home-content
-    margin: 0 24px
+    padding-left: 10px
+    padding-right: 10px
 
   nav .desktop
     display: none
@@ -273,15 +340,6 @@ p
 
   .mob-nav-header
     display: inline-block
-
-  .sponsor-grid
-    .third
-      width: 100%
-      float: left
-      overflow: hidden
-      height: inherit
-    .sixth-spacer
-      display: none
 
 @media (max-height: 700px)
   #logo

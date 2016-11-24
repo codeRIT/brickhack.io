@@ -6,7 +6,7 @@ body, html
   min-height: 250px
 
 body
-  background: $white
+  background: $white-grey
   color: $grey-med
   font-family: $font-body-family
   font-size: 16px
@@ -20,13 +20,13 @@ h1, h2, h3
   margin-top: 0
 h1
   font-size: 2.250rem
-  font-weight: $font-thin
+  font-weight: $font-reg
 h2
   font-size: 2rem
-  font-weight: $font-thin
+  font-weight: $font-bold
 h3
   font-size: 1.750rem
-  font-weight: $font-thin
+  font-weight: $font-reg
   margin-top: 0px
 h4
   font-weight: $font-light
@@ -42,7 +42,7 @@ a
     color: lighten($secondary, 10%)
 
 p > a
-  font-weight: 400
+  font-weight: 300
   text-decoration: underline
 
 a.underline
@@ -55,9 +55,8 @@ a.underline
   position: relative
 
 .section-title
-  color: $secondary
+  color: $primary
   font-size: 2.200rem
-  font-weight: 500
   text-align: center
   &.white
     color: $white
@@ -92,3 +91,15 @@ a.underline
 
 .right
   text-align: right
+
+.icon-space-r
+  margin-right: 0.5em
+
+.icon-space-l
+  margin-left: 0.5em
+
+.icon-space-r-half
+  margin-right: 0.25em
+
+.icon-space-l-half
+  margin-left: 0.25em
