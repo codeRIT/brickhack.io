@@ -28,7 +28,7 @@ class QuestionnairesController < ApplicationController
         q.first_name = session["devise.provider_data"]["info"]["first_name"]
         q.last_name = session["devise.provider_data"]["info"]["last_name"]
         q.phone = session["devise.provider_data"]["info"]["phone_number"]
-        q.graduation = session["devise.provider_data"]["info"]["graduation"]
+        q.level_of_study = session["devise.provider_data"]["info"]["level_of_study"]
         q.major = session["devise.provider_data"]["info"]["major"]
         q.date_of_birth = session["devise.provider_data"]["info"]["date_of_birth"]
         q.shirt_size = session["devise.provider_data"]["info"]["shirt_size"]
@@ -118,7 +118,7 @@ class QuestionnairesController < ApplicationController
   def questionnaire_params
     params.require(:questionnaire).permit(
       :email, :experience, :first_name, :last_name, :gender,
-      :date_of_birth, :experience, :school_id, :school_name, :major, :graduation,
+      :date_of_birth, :experience, :school_id, :school_name, :major, :level_of_study,
       :shirt_size, :dietary_restrictions, :special_needs, :international,
       :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest,
       :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted,

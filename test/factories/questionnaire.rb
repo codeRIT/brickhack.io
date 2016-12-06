@@ -16,7 +16,7 @@ FactoryGirl.define do
     can_share_info        true
     gender                "Male"
     major                 "Computer Science"
-    graduation            Date.today - 2.years
+    level_of_study        "University (Undergraduate)"
 
     association :user
   end

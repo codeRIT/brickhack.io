@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024145452) do
+ActiveRecord::Schema.define(version: 20161206073921) do
 
   create_table "bus_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20161024145452) do
     t.boolean  "code_of_conduct_accepted", default: false
     t.string   "special_needs"
     t.string   "gender"
-    t.date     "graduation"
     t.string   "major"
     t.boolean  "travel_not_from_school",   default: false
     t.string   "travel_location"
     t.boolean  "data_sharing_accepted"
+    t.string   "level_of_study"
     t.index ["user_id"], name: "index_questionnaires_on_user_id", using: :btree
   end
 

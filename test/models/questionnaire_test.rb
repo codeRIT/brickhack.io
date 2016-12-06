@@ -19,7 +19,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should validate_presence_of :experience
   should validate_presence_of :shirt_size
   should validate_presence_of :phone
-  should validate_presence_of :graduation
+  should validate_presence_of :level_of_study
   should validate_presence_of :major
   should validate_presence_of :gender
   should_not validate_presence_of :dietary_restrictions
