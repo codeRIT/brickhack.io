@@ -1,6 +1,9 @@
 Documentation:
   Enabled: false
 
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
 Metrics/LineLength:
   Enabled: false
 
@@ -8,4 +11,10 @@ Style/StringLiterals:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RegexpLiteral:
   Enabled: false
