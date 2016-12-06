@@ -1,14 +1,14 @@
 class Mailer < ApplicationMailer
   include Roadie::Rails::Automatic
 
-  default from: '"codeRIT" <noreply@coderit.org>'
+  default from: '"BrickHack" <noreply@coderit.org>'
 
   def application_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?
     mail(
       to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "[#{subject_base}] Application Received"
+      subject: "Application Received"
     )
   end
 
@@ -17,7 +17,7 @@ class Mailer < ApplicationMailer
     return unless @questionnaire.present? && @questionnaire.user.present?
     mail(
       to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "[#{subject_base}] RSVP Confirmation"
+      subject: "RSVP Confirmation"
     )
   end
 
@@ -26,7 +26,7 @@ class Mailer < ApplicationMailer
     return unless @questionnaire.present? && @questionnaire.user.present?
     mail(
       to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "[#{subject_base}] You've been accepted!"
+      subject: "You've been accepted!"
     )
   end
 
@@ -35,7 +35,7 @@ class Mailer < ApplicationMailer
     return unless @questionnaire.present? && @questionnaire.user.present?
     mail(
       to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "[#{subject_base}] Your application status"
+      subject: "Your application status"
     )
   end
 
@@ -45,15 +45,11 @@ class Mailer < ApplicationMailer
     return if @user.blank? || @message.blank?
     mail(
       to: pretty_email(@user.full_name, @user.email),
-      subject: "[#{subject_base}] #{@message.subject}"
+      subject: @message.subject
     )
   end
 
   private
-
-  def subject_base
-    "BrickHack"
-  end
 
   def pretty_email(name, email)
     return email if name.blank?
