@@ -214,7 +214,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_equal "accepted", @questionnaire.reload.acc_status
       assert_equal @user.id, @questionnaire.reload.acc_status_author_id
       assert_not_equal nil, @questionnaire.reload.acc_status_date
-      assert_equal nil, flash[:notice]
+      assert_nil flash[:notice]
       assert_response :redirect
       assert_redirected_to manage_questionnaire_path @questionnaire
     end
@@ -297,7 +297,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     should "convert questionnaire's user to an admin" do
       patch :convert_to_admin, params: { id: @questionnaire }
       assert assigns(:questionnaire).user.admin
-      assert_equal nil, assigns(:questionnaire).user.reload.questionnaire
+      assert_nil assigns(:questionnaire).user.reload.questionnaire
       assert_redirected_to edit_manage_admin_path(assigns(:questionnaire).user)
     end
 
@@ -343,8 +343,8 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:checked_in_by_id, nil)
       patch :check_in, params: { id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333" } }
       @questionnaire.reload
-      assert_equal nil, @questionnaire.checked_in_at
-      assert_equal nil, @questionnaire.checked_in_by_id
+      assert_nil @questionnaire.checked_in_at
+      assert_nil @questionnaire.checked_in_by_id
       assert_equal false, @questionnaire.agreement_accepted
       assert_equal false, @questionnaire.can_share_info
       assert_equal "", @questionnaire.phone
@@ -356,8 +356,8 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     should "require agreement_accepted to check in" do
       @questionnaire.update_attribute(:agreement_accepted, false)
       patch :check_in, params: { id: @questionnaire, check_in: "true" }
-      assert_equal nil, @questionnaire.reload.checked_in_at
-      assert_equal nil, @questionnaire.reload.checked_in_by_id
+      assert_nil @questionnaire.reload.checked_in_at
+      assert_nil @questionnaire.reload.checked_in_by_id
       assert_response :redirect
       assert_redirected_to manage_questionnaire_path(@questionnaire)
     end
@@ -373,7 +373,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "undo check in of the questionnaire" do
       patch :check_in, params: { id: @questionnaire, check_in: "false" }
-      assert_equal nil, @questionnaire.reload.checked_in_at
+      assert_nil @questionnaire.reload.checked_in_at
       assert_equal @user.id, @questionnaire.reload.checked_in_by_id
       assert_response :redirect
       assert_match /no longer/, flash[:notice]

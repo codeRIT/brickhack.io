@@ -143,7 +143,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   context "#acc_status_author" do
     should "return nil if no author" do
       questionnaire = create(:questionnaire, acc_status_author_id: nil)
-      assert_equal nil, questionnaire.acc_status_author
+      assert_nil questionnaire.acc_status_author
     end
 
     should "return the questionnaire's user" do
