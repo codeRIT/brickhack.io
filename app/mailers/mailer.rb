@@ -49,6 +49,15 @@ class Mailer < ApplicationMailer
     )
   end
 
+  def incomplete_reminder_email(user_id)
+    @user = User.find(user_id)
+    return if @user.blank? || @user.questionnaire || Time.now.to_date > LAST_DAY_TO_APPLY
+    mail(
+      to: @user.email,
+      subject: "Incomplete Application"
+    )
+  end
+
   private
 
   def pretty_email(name, email)

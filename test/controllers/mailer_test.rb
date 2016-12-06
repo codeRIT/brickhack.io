@@ -93,4 +93,18 @@ class MailerTest < ActionMailer::TestCase
     end
   end
 
+  context "upon scheduled incomplete reminder email" do
+    setup do
+      @user = create(:user, email: "test@example.com")
+    end
+
+    should "deliver reminder email" do
+      email = Mailer.incomplete_reminder_email(@user.id).deliver_now
+
+      assert_equal ["test@example.com"],     email.to
+      assert_equal "Incomplete Application", email.subject
+      assert_match /brickhack.io\/apply/,    email.encoded
+    end
+  end
+
 end

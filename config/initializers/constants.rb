@@ -1,2 +1,3 @@
 REGISTRATION_IS_OPEN = false
 EVENT_IS_OVER = true
+LAST_DAY_TO_APPLY = Date.new(2017, 2, 11)
