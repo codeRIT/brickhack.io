@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication # this will throw if @user is not activated
       session["devise.provider_data"] = request.env["omniauth.auth"]
       set_flash_message(:notice, :success, :kind => "My MLH") if is_navigational_format?
+      @user.queue_reminder_email
     else
       redirect_to new_user_registration_url
     end

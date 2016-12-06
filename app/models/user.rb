@@ -13,6 +13,12 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
+  def queue_reminder_email
+    return if reminder_sent_at
+    Mailer.delay_for(4.days).incomplete_reminder_email(id)
+    update_attribute(:reminder_sent_at, Time.now)
+  end
+
   def email=(value)
     super value.try(:downcase)
   end

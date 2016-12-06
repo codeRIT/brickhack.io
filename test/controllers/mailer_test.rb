@@ -19,11 +19,11 @@ class MailerTest < ActionMailer::TestCase
     should "deliver email to questionnaire" do
       email = Mailer.application_confirmation_email(@questionnaire.id).deliver_now
 
-      assert_equal [@questionnaire.email],                email.to
-      assert_equal "[BrickHack] Application Received",  email.subject
+      assert_equal [@questionnaire.email],  email.to
+      assert_equal "Application Received",  email.subject
 
-      assert_match "Joe Smith",                         email.encoded
-      assert_match "joe.smith@example.com",             email.encoded
+      assert_match "Joe Smith",             email.encoded
+      assert_match "joe.smith@example.com", email.encoded
     end
   end
 
@@ -37,10 +37,10 @@ class MailerTest < ActionMailer::TestCase
     should "deliver email to questionnaire" do
       email = Mailer.rsvp_confirmation_email(@questionnaire.id).deliver_now
 
-      assert_equal [@questionnaire.email],              email.to
-      assert_equal "[BrickHack] RSVP Confirmation",     email.subject
+      assert_equal [@questionnaire.email], email.to
+      assert_equal "RSVP Confirmation",    email.subject
 
-      assert_match "You are confirmed",                 email.encoded
+      assert_match "You are confirmed",    email.encoded
     end
   end
 
@@ -54,10 +54,10 @@ class MailerTest < ActionMailer::TestCase
     should "deliver email to questionnaire" do
       email = Mailer.denied_email(@questionnaire.id).deliver_now
 
-      assert_equal [@questionnaire.email],              email.to
-      assert_equal "[BrickHack] Your application status", email.subject
+      assert_equal [@questionnaire.email],    email.to
+      assert_equal "Your application status", email.subject
 
-      assert_match "Dear ",                             email.encoded
+      assert_match "Dear ",                   email.encoded
     end
   end
 
@@ -71,10 +71,10 @@ class MailerTest < ActionMailer::TestCase
     should "deliver email to questionnaire" do
       email = Mailer.accepted_email(@questionnaire.id).deliver_now
 
-      assert_equal [@questionnaire.email],              email.to
-      assert_equal "[BrickHack] You've been accepted!", email.subject
+      assert_equal [@questionnaire.email],  email.to
+      assert_equal "You've been accepted!", email.subject
 
-      assert_match "Congratulations ",                  email.encoded
+      assert_match "Congratulations ",      email.encoded
     end
   end
 
@@ -87,9 +87,23 @@ class MailerTest < ActionMailer::TestCase
     should "deliver bulk messages" do
       email = Mailer.bulk_message_email(@message.id, @user.id).deliver_now
 
-      assert_equal ["test@example.com"],                email.to
-      assert_equal "[BrickHack] Example Subject",       email.subject
-      assert_match /Hello World/,                       email.encoded
+      assert_equal ["test@example.com"], email.to
+      assert_equal "Example Subject",    email.subject
+      assert_match /Hello World/,        email.encoded
+    end
+  end
+
+  context "upon scheduled incomplete reminder email" do
+    setup do
+      @user = create(:user, email: "test@example.com")
+    end
+
+    should "deliver reminder email" do
+      email = Mailer.incomplete_reminder_email(@user.id).deliver_now
+
+      assert_equal ["test@example.com"],     email.to
+      assert_equal "Incomplete Application", email.subject
+      assert_match /brickhack.io\/apply/,    email.encoded
     end
   end
 

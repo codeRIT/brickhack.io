@@ -50,4 +50,25 @@ class UserTest < ActiveSupport::TestCase
       assert_equal "", user.full_name
     end
   end
+
+  context "queue_reminder_email" do
+    before do
+      ActionMailer::Base.deliveries = []
+      Sidekiq::Extensions::DelayedMailer.jobs.clear
+    end
+
+    should "queue an email to be sent out" do
+      user = create(:user)
+      user.queue_reminder_email
+      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size
+    end
+
+    should "only queue email once" do
+      user = create(:user)
+      user.queue_reminder_email
+      user.queue_reminder_email
+      user.queue_reminder_email
+      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size
+    end
+  end
 end
