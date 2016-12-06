@@ -237,7 +237,7 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       should "reset school's bus list association" do
         school = create(:school, bus_list_id: @bus_list.id)
         patch :destroy, params: { id: @bus_list }
-        assert_equal nil, school.reload.bus_list_id
+        assert_nil school.reload.bus_list_id
       end
 
       should "reset everyone's riding_bus status" do

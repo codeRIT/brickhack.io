@@ -5,7 +5,7 @@ class Questionnaire < ApplicationRecord
   after_destroy :update_school_questionnaire_count
 
   validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size
-  validates_presence_of :gender, :major, :graduation
+  validates_presence_of :gender, :major, :level_of_study
   validates_presence_of :agreement_accepted, message: "Must accept"
   validates_presence_of :code_of_conduct_accepted, message: "Must accept"
   validates_presence_of :data_sharing_accepted, message: "Must accept"
@@ -88,10 +88,6 @@ class Questionnaire < ApplicationRecord
 
   def date_of_birth_formatted
     date_of_birth.strftime("%B %-d, %Y")
-  end
-
-  def graduation_formatted
-    graduation.strftime("%B %Y")
   end
 
   def acc_status_author

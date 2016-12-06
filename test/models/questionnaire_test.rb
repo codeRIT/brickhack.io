@@ -19,7 +19,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should validate_presence_of :experience
   should validate_presence_of :shirt_size
   should validate_presence_of :phone
-  should validate_presence_of :graduation
+  should validate_presence_of :level_of_study
   should validate_presence_of :major
   should validate_presence_of :gender
   should_not validate_presence_of :dietary_restrictions
@@ -143,7 +143,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   context "#acc_status_author" do
     should "return nil if no author" do
       questionnaire = create(:questionnaire, acc_status_author_id: nil)
-      assert_equal nil, questionnaire.acc_status_author
+      assert_nil questionnaire.acc_status_author
     end
 
     should "return the questionnaire's user" do
