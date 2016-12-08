@@ -19,6 +19,9 @@ gem 'sprockets', :require => nil
 gem 'devise', '~> 4.2'
 gem 'omniauth-mlh'
 
+gem 'paperclip', '~> 5.0.0'
+gem 'aws-sdk'
+
 gem 'haml-rails'
 gem 'simple_form'
 gem 'kaminari'
