@@ -4,8 +4,10 @@
 
 <p>Hey <%= @questionnaire.first_name %>,</p>
 <p>We've received your application to BrickHack 3! You'll be notified of your acceptance status in January.</p>
-<p>In the meantime, you can review and edit your information by clicking the button below.</p>
-
+<p>If needed, you can edit your information by clicking the button below.</p>
 <%= link_to questionnaires_url, class: 'button' do %>
   My Profile
 <% end %>
+<% count = @questionnaire.school.questionnaires.count %>
+<p>In the meantime, <strong>invite your friends!</strong> Hacking is always fun as a team.</p>
+<p>Only <%= count == 1 ? '1 person has' : "#{count} people have" %> applied from <%= @questionnaire.school.name %> - spread the word!</p>
