@@ -24,6 +24,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should validate_presence_of :gender
   should_not validate_presence_of :dietary_restrictions
   should_not validate_presence_of :special_needs
+  should_not validate_presence_of :resume
   should_not validate_presence_of :international
   should_not validate_presence_of :portfolio_url
   should_not validate_presence_of :vcs_url
@@ -66,6 +67,22 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_value("rsvp_confirmed").for(:acc_status)
   should allow_value("rsvp_denied").for(:acc_status)
   should_not allow_value("foo").for(:acc_status)
+
+  should have_attached_file(:resume)
+  should validate_attachment_content_type(:resume)
+                .allowing('application/pdf')
+                .rejecting('text/plain', 'image/png', 'image/jpg', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+  should validate_attachment_size(:resume).less_than(2.megabytes)
+
+  should "allow deletion of attachment via method" do
+    questionnaire = create(:questionnaire)
+    questionnaire.resume = sample_file()
+    assert_equal "sample_pdf.pdf", questionnaire.resume_file_name
+    questionnaire.delete_resume = "1"
+    questionnaire.save
+    assert_equal false, questionnaire.resume?
+    assert_nil questionnaire.resume_file_name
+  end
 
   should allow_value('foo.com').for(:portfolio_url)
   should allow_value('github.com/foo', 'bitbucket.org/sman591').for(:vcs_url)

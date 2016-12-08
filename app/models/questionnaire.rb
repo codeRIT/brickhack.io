@@ -10,6 +10,12 @@ class Questionnaire < ApplicationRecord
   validates_presence_of :code_of_conduct_accepted, message: "Must accept"
   validates_presence_of :data_sharing_accepted, message: "Must accept"
 
+  has_attached_file :resume
+  validates_attachment_content_type :resume, content_type: %w(application/pdf), message: "Invalid file type"
+  validates_attachment_size :resume, in: 0..2.megabytes, message: "File size is too big"
+
+  include DeletableAttachment
+
   validates :portfolio_url, url: { allow_blank: true }
   validates :vcs_url, url: { allow_blank: true }
   validates_format_of :vcs_url, with: /((github.com\/\w+\/?)|(bitbucket.org\/\w+\/?))/, allow_blank: true, message: "Must be a GitHub or BitBucket url"

@@ -21,6 +21,7 @@ require "minitest/reporters"
 require "valid_attribute"
 require "factory_girl_rails"
 require "sidekiq/testing"
+require "paperclip/matchers"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
   module Kernel
@@ -53,6 +54,7 @@ class ActiveSupport::TestCase
   extend StripAttributes::Matchers
   include ValidAttribute::Method
   include FactoryGirl::Syntax::Methods
+  extend Paperclip::Shoulda::Matchers
 
   # Add more helper methods to be used by all tests here...
 end

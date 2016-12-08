@@ -139,7 +139,8 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       :shirt_size, :dietary_restrictions, :special_needs, :international,
       :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest,
       :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted,
-      :travel_not_from_school, :travel_location, :data_sharing_accepted
+      :travel_not_from_school, :travel_location, :data_sharing_accepted,
+      :resume, :delete_resume
     )
   end
 
