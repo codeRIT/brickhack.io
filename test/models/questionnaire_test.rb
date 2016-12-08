@@ -70,13 +70,13 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
   should have_attached_file(:resume)
   should validate_attachment_content_type(:resume)
-                .allowing('application/pdf')
-                .rejecting('text/plain', 'image/png', 'image/jpg', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    .allowing('application/pdf')
+    .rejecting('text/plain', 'image/png', 'image/jpg', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
   should validate_attachment_size(:resume).less_than(2.megabytes)
 
   should "allow deletion of attachment via method" do
     questionnaire = create(:questionnaire)
-    questionnaire.resume = sample_file()
+    questionnaire.resume = sample_file
     assert_equal "sample_pdf.pdf", questionnaire.resume_file_name
     questionnaire.delete_resume = "1"
     questionnaire.save
