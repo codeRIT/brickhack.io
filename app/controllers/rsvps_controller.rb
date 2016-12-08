@@ -38,7 +38,7 @@ class RsvpsController < ApplicationController
 
   # PUT /rsvp
   def update
-    unless @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info))
+    unless @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone))
       flash[:notice] = @questionnaire.errors.full_messages.join(", ")
       redirect_to rsvp_path
       return
