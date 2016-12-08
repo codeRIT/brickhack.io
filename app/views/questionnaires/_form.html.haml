@@ -22,7 +22,7 @@
         = f.input :dietary_restrictions, placeholder: "Allergies, medical assistance, etc. (optional)", label: "Health restrictions"
         = f.input :special_needs, placeholder: "Any special needs or requests (optional)", label: "Special needs"
 
-      %div{class:'center'}
+      .center
         %button.button{ type: "button", "data-wizard" => "next" } Next
 
     .wizard-stage
@@ -33,7 +33,7 @@
         = f.input :vcs_url, label: "GitHub/Bitbucket", placeholder:"https://github.com/coderit"
         = f.input :resume, as: :deletable_attachment, hint: "Must be < 2MB", input_html: { "data-validate" => "file-max-size file-content-type", "data-validate-file-max-size" => "2097152", "data-validate-file-content-type" => "application/pdf" }, label: "Resume (PDF)"
         = f.input :can_share_info, as: :radio_buttons, collection: { " Yes!" => true, " No thank you" => false }, label: "Share info with sponsors?"
-        %p{style: "margin-top: -10px"}
+        %p{ style: "margin-top: -10px" }
           %i
             %small Our sponsors would receive info such as your name, email, resume, GitHub link, etc
 

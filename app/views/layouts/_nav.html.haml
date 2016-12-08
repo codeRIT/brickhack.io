@@ -1,13 +1,13 @@
 %nav
   .logo
-    %a{href: '#'}
+    %a{ href: '#' }
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
-    %a{href: '#about'} About
-    %a{href: '#faq'} FAQ
-    %a{href: '#gallery'} Gallery
-    / %a{href: '#schedule'} Schedule
-    %a{href: '#sponsors'} Sponsors
+    %a{ href: '#about' } About
+    %a{ href: '#faq' } FAQ
+    %a{ href: '#gallery' } Gallery
+    / %a{ href: '#schedule' } Schedule
+    %a{ href: '#sponsors' } Sponsors
 
     - if current_user
       = link_to 'My Account', questionnaires_path, class: 'desktop button button-outline'
