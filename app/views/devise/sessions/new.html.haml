@@ -1,8 +1,9 @@
-%section{class:'section'}
-  %div{class:'container'}
-    %h1{class:'section-title'} Log In
-    - if notice
-      %div{class:'form-success'}
-        %div{class:'success_message'}
-          %p#notice= notice
-    = render 'form'
+.section
+  .container
+    .form-container.login
+      %h1.section-title Log In
+      - if notice
+        .form-success
+          .success_message
+            %p#notice= notice
+      = render 'form'

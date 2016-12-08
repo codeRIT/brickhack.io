@@ -1,0 +1,6 @@
+- name: Datto
+  image: datto.png
+  url: https://www.datto.com
+- name: Sparkpost
+  image: sparkpost.png
+  url: https://www.sparkpost.com

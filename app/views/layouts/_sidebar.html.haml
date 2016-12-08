@@ -1,40 +1,41 @@
-%div{class:"sidebar #{controller.controller_name}"}
-  %span{id:'sidebar-toggle'}
-    %i{class:'fa fa-navicon'}
-  %div{class:'pusher'}
-    %div{id:'logo-cta'}
-      %a{href:"/"}
-        = image_tag('brickhack_logo_v2.svg', :id=>"logo",:alt=>"BrickHack", :title=>"BrickHack")
+%div{ class:"sidebar #{controller.controller_name}" }
+  %span#sidebar-toggle
+    %i.fa.fa-navicon
+  .pusher
+    #logo-cta
+      %a{ href: "/" }
+        = image_tag 'brickhack.png', id: "logo", alt: "BrickHack", title: "BrickHack"
     - if user_signed_in?
       %div
         - if current_user.admin?
           = btn_link_to "Manage", manage_root_path
         - else
           = btn_link_to "Review", new_questionnaires_path
-      %div
-        = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       %div
         = btn_link_to "Login", new_user_session_path
       %div
         = btn_link_to "Register", new_user_registration_path
     %nav
-      %ul{class:'nav-list'}
+      %ul.nav-list
         %li
-          %a{href:"/#home", class:'nav-link'}HOME
+          %a.nav-link{ href:"/#home" } HOME
         %li
-          %a{href:"/#about", class:'nav-link'}ABOUT
+          %a.nav-link{ href:"/#about" } ABOUT
         %li
-          %a{href:"/#faq", class:'nav-link'}FAQ
+          %a.nav-link{ href:"/#faq" } FAQ
         %li
-          %a{href:"/#schedule", class:'nav-link'}SCHEDULE
+          %a.nav-link{ href:"/#schedule" } SCHEDULE
         %li
-          %a{href:"/#sponsors", class:'nav-link'}SPONSORS
-      %div{class:'social-list'}
-        %a{href:"https://www.facebook.com/brickhackrit", class:'sm-link', target: '_blank'}
-          %span{class:'fa fa-facebook'}
-        %a{href:"https://twitter.com/brickhackrit", class:'sm-link', target: '_blank'}
-          %span{class:'fa fa-twitter'}
-  %footer{class:"footer"}
+          %a.nav-link{ href:"/#sponsors" } SPONSORS
+      .social-list
+        %a.sm-link{ href:"https://www.facebook.com/brickhackrit", target: '_blank' }
+          %span.fa.fa-facebook
+        %a.sm-link{ href:"https://twitter.com/brickhackrit", target: '_blank' }
+          %span.fa.fa-twitter
+    - if user_signed_in?
+      %div
+        = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
+  %footer.footer
     Student run by
-    %a{href:"http://coderit.org", class:"coderit-logo", target:'_blank'} CodeRIT
+    %a.coderit-logo{ href:"http://coderit.org", target:'_blank' } CodeRIT

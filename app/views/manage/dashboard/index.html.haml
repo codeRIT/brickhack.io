@@ -58,7 +58,7 @@
     %ul
       = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [colors[:rsvp_confirmed], colors[:accepted], colors[:waitlist], colors[:late_waitlist], colors[:rsvp_denied], colors[:denied], colors[:pending]], library: { legend: { enabled: false } }
     - if School.where("questionnaire_count >= 1 AND questionnaire_count < 5").count > 0
-      %button{onclick: "$('#least-applied-schools').toggle()"}= "List schools with < 5 applicants"
-      %ul#least-applied-schools{style: "display: none"}
+      %button{ onclick: "$('#least-applied-schools').toggle()" }= "List schools with < 5 applicants"
+      %ul#least-applied-schools{ style: "display: none" }
         - School.where("questionnaire_count >= 1 AND questionnaire_count < 5").select([:name, :questionnaire_count]).order("questionnaire_count DESC").each do |school|
           %li= "#{school.questionnaire_count} - #{school.name}"

@@ -70,7 +70,7 @@ $(document).ready(function () {
 
   $('[name="questionnaire[travel_not_from_school]"]').on('change', function() {
     var $location = $('[name="questionnaire[travel_location]"]');
-    if ($(this).is(':checked')) {
+    if (this.value === "true") {
       $location.parent().show();
       $location.prop('disabled', false);
     }

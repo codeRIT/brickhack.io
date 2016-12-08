@@ -71,5 +71,5 @@ Rails.application.routes.draw do
   get "/event", to: "home#event"
   get "home/index"
 
-  root to: 'home#comingsoon'
+  root to: 'home#index'
 end

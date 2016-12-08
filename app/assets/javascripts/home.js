@@ -59,23 +59,6 @@ ready = function() {
     function recalc(){
         // pages will be scaled to 100% height
         $('.page').outerHeight($(window).height())
-
-        // setting the height of background image
-        wh = $(window).height();
-        ww = $(window).width();
-        $('.bg-image').outerHeight(wh * 0.4);
-        $('.orange-fill, .blue-fill').height(wh * 0.4);
-
-        // center elements vertically
-        // center-vertical + plus-nav classes will subtract nav height to give visual center
-        $('.center-vertical').each(function(){
-            amount = $(this).parent().height()/2 - $(this).height()/2;
-            if ($(this).hasClass('plus-nav')){
-                amount = amount + $('nav').height();
-            }
-            $(this).hasClass('plus-nav');
-            $(this).css('padding-top',(amount));
-        });
     }
     $(window).resize(function(){
         recalc();

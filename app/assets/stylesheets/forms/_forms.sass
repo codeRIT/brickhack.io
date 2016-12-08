@@ -1,8 +1,27 @@
 #disclaimer, .alert
-  background: lighten($blue, 10%)
+  background: $black
   color: $white_pure
   margin: 0 auto 50px auto
-  padding: 25px 30px
+  padding: 20px 25px
+  line-height: 1.4
+
+fieldset
+  margin-top: 25px
+  border: 1px solid #aaa
+  padding: 0.25em 1.5em 0.5em
+  outline: none
+
+  legend
+    background: $black
+    color: $white
+    width: 100%
+    text-align: center
+    padding: 0.5em
+
+hr
+  border: none
+  border-top: 1px solid $primary
+  margin: 40px 25px 35px
 
 .alert
   background: lighten($red, 10%)
@@ -20,7 +39,7 @@
   .btn
     margin-bottom: 30px
 .simple_form
-  color: $blue
+  color: $grey
   abbr
   // display: none
   .error
@@ -62,7 +81,8 @@ input[type=text], input[type=email], input[type=tel], input[type=date], input[ty
 
 // just inputs
 input[type=text], input[type=email], input[type=tel], input[type=date], input[type="url"], input[type=password], textarea
-  border: 1px solid transparent
+  border: 1px solid $white
+  background: $white
   outline: none
   padding: 4px 8px
   @include transition (200ms, all, ease-in-out, 0)
@@ -70,7 +90,7 @@ input[type=text], input[type=email], input[type=tel], input[type=date], input[ty
   margin-bottom: 5px
   &:focus
     background: $white_pure
-    border-color: lighten($blue, 10%)
+    border-color: lighten($black, 10%)
 
 // just selects
 select
@@ -85,13 +105,17 @@ select
   @include transition (200ms, border, ease-in-out, 0)
   width: 100%
   font-size: 100%
+  margin-right: 5px
+  border-radius: 0
+  &:last-child
+    margin-right: 0
   &:hover
     background: url(image_path("/assets/arrow_down_hover.svg")), $white_pure
     background-repeat: no-repeat
     background-position: right
     background-size: auto 100%
   &:focus
-    border-color: lighten($blue, 10%)
+    border-color: lighten($black, 10%)
     background: url(image_path("/assets/arrow_down_hover.svg")), $white_pure
     background-repeat: no-repeat
     background-position: right
@@ -106,7 +130,7 @@ select
 
 // checkbox
 input[type=checkbox]
-  margin-top: 7px
+  margin-top: 9px
 
 //Submit
 input[type=submit]
@@ -127,8 +151,8 @@ input[type=submit]
 // jquery ui override
 .ui-autocomplete
   background: $white_pure
-  border: 1px solid lighten($blue, 10%)
-  color: $blue
+  border: 1px solid lighten($black, 10%)
+  color: $primary
   list-style: none
   padding: 0
   .ui-menu-item a
@@ -156,6 +180,8 @@ input[type=submit]
     display: block
 
   select
+    margin-right: 0
+    margin-bottom: 5px
     &.date:nth-child(3)
       max-width: none
     &.date:nth-child(4)
@@ -195,3 +221,23 @@ input[type=submit]
 // selectize
 .selectize
   width: 100%
+
+.diagonal
+  z-index: 1
+  position: relative
+
+.diagonal:before
+  position: absolute
+  content: ''
+
+.diagonal:before
+  -webkit-transform: rotate(-2deg)
+  transform: rotate(-2deg)
+  -webkit-transform-origin: 2% 0
+  transform-origin: 2% 0
+  top: 0
+  left: -25%
+  z-index: -1
+  width: 150%
+  height: 75%
+  background: inherit

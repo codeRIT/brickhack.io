@@ -1,16 +1,26 @@
+$orange: #f58625
+$black: #201e1f
+$grey: #4d4d4d
+$blue: #3413ac
+$white: #ffffff
+$white-grey: #f8f8f8
+$red: #fc401c
+
 .button, input[type=submit]
-  background: $blue-light
+  background: $blue
   border: 0
-  color: $white
   cursor: pointer
   display: inline-block
-  font-size: 1.100rem
-  min-width: 160px
-  padding: 13px 25px
+  padding: 0.8em 1.5em !important // TODO: only for nav button... find a better fix
+  font-size: 15px
+  border-radius: 30px
+  text-transform: uppercase
+  color: $white
+  font-weight: 600 !important
+  margin: 0.5em 0.5em 0.5em 0
   text-align: center
   text-decoration: none
   -webkit-appearance: none
-  border-radius: 0
   @include transition(200ms, all, ease-in-out, 0ms)
 
   &.small
@@ -18,12 +28,29 @@
     min-width: initial
     padding: 3px 5px
   &:hover, &:focus
-    background: lighten($blue-light, 10%)
-    @include box-shadow(inset 0 0 10px 3px lighten($blue-light, 5%))
+    background: lighten($blue, 15%)
+    @include box-shadow(inset 0 0 10px 3px lighten($blue, 5%))
     color: $white_pure
-    outline-color: $orange-light
+    outline-color: $blue
   &:disabled
-    color: mix($blue-light, $white, 30%)
-    background: lighten($blue-light, 20%)
+    color: mix($blue, $white, 30%)
+    background: lighten($blue, 20%)
     cursor: default
-    @include box-shadow(inset 0 0 0 0 lighten($blue-light, 5%))
+    @include box-shadow(inset 0 0 0 0 lighten($blue, 5%))
+
+.button-center
+  margin-left: auto
+  margin-right: auto
+
+.button-outline
+  background: transparent
+  border: 1px solid $white
+  &:hover
+    outline-color: lighten($blue, 5%)
+    border-color: lighten($blue, 5%)
+
+.button-clean
+  background: transparent
+
+.button-overlay
+  margin-top: -100px
