@@ -37,10 +37,11 @@
           %i
             %small Our sponsors would receive info such as your name, email, resume, GitHub link, etc
 
+        %hr
 
         - travel_state = !@questionnaire.new_record? && @questionnaire.travel_not_from_school
-        = f.input :travel_not_from_school, as: :formatted_boolean, label: "Not traveling from your school? Check here."
-        = f.input :travel_location, input_html: { "data-validate" => "presence", disabled: !travel_state }, wrapper_html: { style: travel_state ? "" : "display: none" }, label: "Travel Location"
+        = f.input :travel_not_from_school, as: :radio_buttons, collection: { " My School" => false, " Somewhere else" => true }, label: "I am traveling from..."
+        = f.input :travel_location, input_html: { "data-validate" => "presence", disabled: !travel_state }, wrapper_html: { style: travel_state ? "" : "display: none" }, label: "Where are you traveling from?", placeholder: "New York City"
       %hr
       %div
         %p
