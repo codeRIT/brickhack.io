@@ -54,7 +54,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
-      assert_equal "waitlist", assigns(:questionnaire).acc_status
+      assert_equal "pending", assigns(:questionnaire).acc_status
     end
 
     should "not allow multiple questionnaires" do

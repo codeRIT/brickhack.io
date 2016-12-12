@@ -64,7 +64,7 @@ class QuestionnairesController < ApplicationController
     respond_to do |format|
       if @questionnaire.save
         current_user.questionnaire = @questionnaire
-        @questionnaire.update_attribute(:acc_status, "waitlist")
+        @questionnaire.update_attribute(:acc_status, "pending")
         Mailer.delay.application_confirmation_email(@questionnaire.id)
         format.html { redirect_to questionnaires_path, notice: 'Application was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }
