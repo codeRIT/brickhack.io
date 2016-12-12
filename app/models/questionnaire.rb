@@ -4,7 +4,7 @@ class Questionnaire < ApplicationRecord
   after_save :update_school_questionnaire_count
   after_destroy :update_school_questionnaire_count
 
-  validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size
+  validates_presence_of :first_name, :last_name, :phone, :date_of_birth, :school_id, :experience, :shirt_size, :interest
   validates_presence_of :gender, :major, :level_of_study
   validates_presence_of :agreement_accepted, message: "Must accept"
   validates_presence_of :code_of_conduct_accepted, message: "Must accept"
@@ -29,13 +29,11 @@ class Questionnaire < ApplicationRecord
     "experienced" => "My feet are wet. (1-5 hackathons)",
     "expert"      => "I'm a veteran hacker. (6+ hackathons)"
   }
-  POSSIBLE_YEARS       = {
-    "hs" => "High School",
-    "1"  => "1st Year",
-    "2"  => "2nd Year",
-    "3"  => "3rd Year",
-    "4"  => "4th Year",
-    "5+" => "5th+ Year"
+  POSSIBLE_INTERESTS = {
+    "design"      => "Design",
+    "software"    => "Software",
+    "hardware"    => "Hardware",
+    "combination" => "Combination of everything!"
   }
   POSSIBLE_SHIRT_SIZES = [
     "Women's - XS",
@@ -60,6 +58,7 @@ class Questionnaire < ApplicationRecord
   }
 
   validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES
+  validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
   # validates_inclusion_of :school_id, :in => School.select(:id)
   validates_inclusion_of :shirt_size, in: POSSIBLE_SHIRT_SIZES
   validates_inclusion_of :acc_status, in: POSSIBLE_ACC_STATUS
