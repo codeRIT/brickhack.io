@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dokku": {
-      "postdeploy": "bin/rails db:create db:migrate"
+      "predeploy": "bin/rails db:create",
+      "postdeploy": "bin/rails db:migrate"
     }
   }
 }
