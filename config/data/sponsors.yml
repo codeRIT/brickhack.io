@@ -1,12 +1,18 @@
 - name: Datto
   image: datto.png
   url: https://www.datto.com
+- name: Microsoft
+  image: microsoft.png
+  url: https://www.microsoft.com
 - name: UPS
   image: ups.png
   url: https://www.ups.com
 - name: Sparkpost
   image: sparkpost.png
   url: https://www.sparkpost.com
+- name: Intuit
+  image: intuit.png
+  url: https://www.intuit.com
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
