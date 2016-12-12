@@ -1,7 +1,5 @@
 @import general/variables
 
-$breakpoint-tablet: 1000px
-
 body
   background: $black
   color: $white
@@ -21,14 +19,15 @@ p a
 nav
   background: $black
   width: 100%
-  padding: 30px 50px
   position: fixed
   top: 0
   z-index: 1000
-  font-size: 0
-  display: flex
-  justify-content: space-between
-  align-items: center
+
+  &.desktop
+    padding: 30px 50px
+    display: flex
+    justify-content: space-between
+    align-items: center
 
   i:before
     color: $white
@@ -45,9 +44,15 @@ nav
     width: auto
 
 .nav-links
-  display: flex
-  flex-direction: row
-  align-items: baseline
+  .desktop &
+    display: flex
+    flex-direction: row
+    align-items: baseline
+  .mobile &
+    text-align: center
+    a
+      display: block
+      width: 100%
 
   a
     color: $white
@@ -201,7 +206,7 @@ p
   margin-right: 30px
 
 .gallery
-  flex: 0 0 400px
+  flex: 0 1 400px
   display: block
   position: relative
   width: 400px
@@ -322,7 +327,7 @@ p
     padding-left: 10px
     padding-right: 10px
 
-  nav .desktop
+  nav.desktop
     display: none
 
   nav
@@ -333,10 +338,10 @@ p
 
   #mobile-nav
     display: none
+    margin-bottom: 10px
 
   #mobile-nav a
     margin: 0 10px
-    margin-bottom: 10px
 
   .mob-nav-header
     display: inline-block

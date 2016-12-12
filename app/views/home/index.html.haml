@@ -82,7 +82,7 @@
         = image_tag 'eng_grey.png', class: 'img-spaced'
         %h2 Engineers
         %p Is hardware your passion?
-        /= link_to "#" do
+        /= link_to "https://mlh.io/hardware-lab" do
         /  .button HARDWARE
 
 .grey-section.diagonal#faq
@@ -93,26 +93,67 @@
       .column
         %h2 What is a hackathon?
         %p
-          Great question! A hackathon is best described as an “invention marathon”. Anyone who has an interest in technology attends a hackathon to learn, build & share their creations over the course of a weekend in a relaxed and welcoming atmosphere. You don’t have to be a programmer and you certainly don’t have to be majoring in CS.
-          %br
-          %br
+          Great question! A hackathon is best described as an “invention marathon”. Anyone with an interest in technology attends a hackathon to learn, build & share their creations over the course of a weekend in a relaxed, welcoming atmosphere. You don’t have to be a programmer and you certainly don’t have to be majoring in CS!
+        %p
           MLH has a great list of related questions over at <a href="https://mlh.io/faq">mlh.io/faq</a>.
+
+      .column
+        %h2 How am I supposed to get there?
+        %p If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! Some schools will have a bus provided; see below. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@coderit.org" class="orange">travel@codeRIT.org</a>.
 
       .column
         %h2 What should I bring?
         %p Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup and maybe an idea or two.
 
       .column
+        %h2 Who can participate in BrickHack?
+        %p Anyone who is currently enrolled as a student or has graduated within the last 12 months can attend! If you don't fit that description, you're welcome to attend as a mentor or volunteer!
+        %p All attendees must be 18 years or older to attend. Proof of your age may be requested on the day of the event.
+
+      .column
         %h2 When does registration close?
         %p Acceptance notification will start being sent out February 8th. Applications submitted afterwards will be waitlisted.
 
       .column
-        %h2 When will I know if I got in?
-        %p Acceptance notifications will start being sent out February 8th on a rolling basis.
+        %h2 How much does this cost?
+        %p Zero. Zip. Nada. Attending BrickHack is free, and we'll be providing plenty of food and swag throughout the weekend!
 
       .column
-        %h2 More?
-        %p TODO: add more
+        %h2 I've never been to a hackathon before, can I still apply?
+        %p Of course you can! Our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.
+
+      .column
+        %h2 I don't live near Rochester - can I still come?
+        %p Definitely. We invite hackers from all over the US and Canada to join us for our annual event!
+
+      .column
+        %h2 Are busses being provided?
+        %p Busses are being provided to a number of schools. We'll email you after you register if a bus is available!
+
+      .column
+        %h2 Do I need a team to join?
+        %p While teams are often recommended and sometimes more fun, they're not required. Feel free to invite your friends. Teams are a max of 4 people.
+
+      .column
+        %h2 Do RIT students need to apply?
+        %p Yes, RIT students need to apply just like everyone else.
+
+      .column
+        %h2 Can high schoolers join?
+        %p Anyone that fits the age requirements can apply, even high schoolers.
+
+      .column
+        %h2 When will I know if I got in?
+        %p Acceptance notifications will start being sent out January 16th on a rolling basis.
+
+      .column
+        %h2 Should I bring my own bricks?
+        %p We've got you covered.
+
+      .column
+        %h2 My question isn't answered here?
+        %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit" class="orange">Twitter</a>, <a href="https://www.facebook.com/brickhackrit" class="orange">Facebook</a>, or <a href="mailto:hello@coderit.org" class="orange">email</a>.
+
 
 #schedule{ style: 'display: none;' }
   .home-content
@@ -283,5 +324,5 @@
         %p
           = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
 
-%a#mlh-trust-badge{ href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", style: "display:block;max-width:80px;min-width:60px;position:fixed;left:190px;top:0;width:10%;z-index:10000", target: "_blank" }
+%a#mlh-trust-badge{ href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", target: "_blank" }
   %img{ alt: "Major League Hacking 2017 Hackathon Season", src: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg", style: "width:100%" }/

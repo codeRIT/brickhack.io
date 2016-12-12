@@ -1,6 +1,12 @@
 - name: Datto
   image: datto.png
   url: https://www.datto.com
+- name: UPS
+  image: ups.png
+  url: https://www.ups.com
 - name: Sparkpost
   image: sparkpost.png
   url: https://www.sparkpost.com
+- name: Insomnia Cookies
+  image: insomnia.png
+  url: https://insomniacookies.com
