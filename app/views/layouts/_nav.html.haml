@@ -1,4 +1,4 @@
-%nav
+%nav.desktop
   .logo
     %a{ href: '#' }
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
@@ -10,7 +10,26 @@
     %a{ href: '#sponsors' } Sponsors
 
     - if current_user
-      = link_to 'My Account', questionnaires_path, class: 'desktop button button-outline'
+      = link_to 'My Account', questionnaires_path, class: 'button button-outline'
     - else
       - text = REGISTRATION_IS_OPEN ? 'Register' : 'Sign In' # TODO: Sign Up / Sign In
-      = link_to text, new_user_registration_path, class: 'desktop button button-outline'
+      = link_to text, new_user_registration_path, class: 'button button-outline'
+
+-# mobile nav
+%nav.mobile
+  %i.fa.fa-bars.mob-nav-header#hamburger-menu
+  %h2.mob-nav-header{ style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
+
+  #mobile-nav
+    .nav-links
+      %a.active{ href: '#home' } BrickHack
+      %a{ href: '#about' } About
+      %a{ href: '#faq' } FAQ
+      %a{ href: '#schedule' } Schedule
+      %a{ href: '#sponsors' } sponsors
+      - if current_user
+        = link_to 'My Account', questionnaires_path, class: 'mobile'
+      - else
+        - text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In'
+        = link_to text, new_user_registration_path, class: 'mobile'
+
