@@ -28,13 +28,13 @@ class Questionnaire < ApplicationRecord
     "first"       => "This is my 1st hackathon!",
     "experienced" => "My feet are wet. (1-5 hackathons)",
     "expert"      => "I'm a veteran hacker. (6+ hackathons)"
-  }
+  }.freeze
   POSSIBLE_INTERESTS = {
     "design"      => "Design",
     "software"    => "Software",
     "hardware"    => "Hardware",
     "combination" => "Combination of everything!"
-  }
+  }.freeze
   POSSIBLE_SHIRT_SIZES = [
     "Women's - XS",
     "Women's - S",
@@ -55,7 +55,7 @@ class Questionnaire < ApplicationRecord
     "late_waitlist"  => "Waitlisted, Late",
     "rsvp_confirmed" => "RSVP Confirmed",
     "rsvp_denied"    => "RSVP Denied"
-  }
+  }.freeze
 
   validates_inclusion_of :experience, in: POSSIBLE_EXPERIENCES
   validates_inclusion_of :interest, in: POSSIBLE_INTERESTS
