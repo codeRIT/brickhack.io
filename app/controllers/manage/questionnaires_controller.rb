@@ -135,7 +135,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def questionnaire_params
     params.require(:questionnaire).permit(
       :email, :experience, :first_name, :last_name, :gender,
-      :date_of_birth, :experience, :school_id, :school_name, :major, :level_of_study,
+      :date_of_birth, :interest, :school_id, :school_name, :major, :level_of_study,
       :shirt_size, :dietary_restrictions, :special_needs, :international,
       :portfolio_url, :vcs_url, :agreement_accepted, :bus_captain_interest,
       :riding_bus, :phone, :can_share_info, :code_of_conduct_accepted,

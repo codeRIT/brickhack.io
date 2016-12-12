@@ -17,6 +17,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should validate_presence_of :last_name
   should validate_presence_of :date_of_birth
   should validate_presence_of :experience
+  should validate_presence_of :interest
   should validate_presence_of :shirt_size
   should validate_presence_of :phone
   should validate_presence_of :level_of_study
@@ -40,6 +41,11 @@ class QuestionnaireTest < ActiveSupport::TestCase
   should allow_value("experienced").for(:experience)
   should allow_value("expert").for(:experience)
   should_not allow_value("foo").for(:experience)
+
+  should allow_value("design").for(:interest)
+  should allow_value("software").for(:interest)
+  should allow_value("hardware").for(:interest)
+  should_not allow_value("foo").for(:interest)
 
   should allow_value("Women's - XS").for(:shirt_size)
   should allow_value("Women's - S").for(:shirt_size)

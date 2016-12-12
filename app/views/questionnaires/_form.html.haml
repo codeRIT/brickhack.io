@@ -35,6 +35,7 @@
     .wizard-stage
       .form-inputs
         = f.input :experience, as: :select, collection: Questionnaire::POSSIBLE_EXPERIENCES.invert, include_blank: "(select one...)", label: "Experience", input_html: { "data-validate" => "presence" }
+        = f.input :interest, as: :select, collection: Questionnaire::POSSIBLE_INTERESTS.invert, include_blank: "(select one...)", label: "Interest", input_html: { "data-validate" => "presence" }
 
         = f.input :portfolio_url, label: "Portfolio link", placeholder:"http://mywebsite.com"
         = f.input :vcs_url, label: "GitHub/Bitbucket", placeholder:"https://github.com/coderit"
