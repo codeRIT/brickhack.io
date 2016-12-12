@@ -16,3 +16,6 @@
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
+- name: Sticker Mule
+  image: stickermule.png
+  url: https://www.stickermule.com
