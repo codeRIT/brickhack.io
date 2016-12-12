@@ -1,13 +1,20 @@
 %div{class:"form-container wizard#{action_name == "new" ? " wizard-skip-valid" : ""}"}
   = simple_form_for @questionnaire, url: url_for(controller: "questionnaires", action: "update"), html: { "data-validate" => "form" } do |f|
 
-    #disclaimer
-      %ul
-        %li Applicants must be 18 years of age by February 11th
-        %li RIT students must still apply
-        %li International applicants are welcome
+    - if f.error_notification.present?
+      = f.error_notification
+
+    - if flash[:notice]
+      #disclaimer
+        %p= flash[:notice]
 
     .wizard-stage.wizard-current
+      #disclaimer
+        %ul
+          %li Applicants must be 18 years of age by February 11th
+          %li RIT students must still apply
+          %li International applicants are welcome
+
       .form-inputs
         = f.input :first_name, placeholder: "Joe", input_html: { "data-validate" => "presence" }, autofocus: true
         = f.input :last_name, placeholder: "Smith", input_html: { "data-validate" => "presence" }
