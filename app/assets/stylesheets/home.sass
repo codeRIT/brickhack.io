@@ -157,12 +157,23 @@ p
   max-width: 1200px
   margin: 0 auto
 
-  .split-left
-    flex: 1 1 450px
-    padding-right: 10%
-  .split-right
-    flex: 0 0 auto
-    margin-right: 30px
+  @media (max-width: $breakpoint-tablet)
+    .split-left
+      margin: 30px auto 0
+      width: 100%
+      max-width: 500px
+    .split-right
+      width: 100%
+      text-align: center
+      margin-bottom: 30px
+
+  @media (min-width: $breakpoint-tablet)
+    .split-left
+      flex: 1 1 450px
+      padding-right: 10%
+    .split-right
+      flex: 0 0 auto
+      margin-right: 30px
 
 .split-three
   display: flex
