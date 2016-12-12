@@ -1,13 +1,12 @@
+- pages = ['About', 'FAQ', 'Gallery', 'Sponsors']
+
 %nav.desktop
   .logo
     %a{ href: '#' }
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
-    %a{ href: '#about' } About
-    %a{ href: '#faq' } FAQ
-    %a{ href: '#gallery' } Gallery
-    / %a{ href: '#schedule' } Schedule
-    %a{ href: '#sponsors' } Sponsors
+    - pages.each do |page|
+      %a{ href: page.downcase }= page
 
     - if current_user
       = link_to 'My Account', questionnaires_path, class: 'button button-outline'
@@ -23,10 +22,10 @@
   #mobile-nav
     .nav-links
       %a.active{ href: '#home' } BrickHack
-      %a{ href: '#about' } About
-      %a{ href: '#faq' } FAQ
-      %a{ href: '#schedule' } Schedule
-      %a{ href: '#sponsors' } sponsors
+
+      - pages.each do |page|
+        %a{ href: page.downcase }= page
+
       - if current_user
         = link_to 'My Account', questionnaires_path, class: 'mobile'
       - else
