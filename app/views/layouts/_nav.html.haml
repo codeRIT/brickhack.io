@@ -6,7 +6,7 @@
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
-      %a{ href: page.downcase }= page
+      %a{ href: "##{page.downcase}" }= page
 
     - if current_user
       = link_to 'My Account', questionnaires_path, class: 'button button-outline'
