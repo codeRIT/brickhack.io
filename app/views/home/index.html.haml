@@ -280,8 +280,9 @@
       .column
         %h1 Sponsors
         - STATIC_DATA['sponsors'].each do |sponsor|
-          %a.sponsor{ href: sponsor['url'] }
+          %a.sponsor{ href: sponsor['url'], class: sponsor['small'] ? 'sponsor-small' : '' }
             = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
+        %br
         = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
       .column
         %h1 Partners
