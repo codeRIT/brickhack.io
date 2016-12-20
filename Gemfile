@@ -18,6 +18,7 @@ gem 'sprockets', :require => nil
 
 gem 'devise', '~> 4.2'
 gem 'omniauth-mlh'
+gem 'httparty'
 
 gem 'paperclip', '~> 5.0.0'
 gem 'aws-sdk'
