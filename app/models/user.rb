@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def queue_reminder_email
     return if self.reminder_sent_at
-    Mailer.delay_for(4.days).incomplete_reminder_email(id)
+    Mailer.delay_for(1.day).incomplete_reminder_email(id)
     update_attribute(:reminder_sent_at, Time.now)
   end
 

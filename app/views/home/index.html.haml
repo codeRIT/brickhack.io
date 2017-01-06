@@ -2,6 +2,9 @@
 
 = render "layouts/nav"
 
+- mentor_link = "https://goo.gl/forms/3rNdjlrS9u7gZX9p1".freeze
+- volunteer_link = "https://goo.gl/forms/7Z6dZmZxEOXXpBPA3".freeze
+
 .page.split-home#home
   .split-left
     = image_tag 'scroller.png'
@@ -32,8 +35,11 @@
         .button.button-outline SUBMISSIONS
     - else
       %br
-      = link_to "https://docs.google.com/forms/d/e/1FAIpQLSfvMIqzp_U_LxSOPP_bzYsAxgxJXLrh90f8VmnWO8P0p3l8iQ/viewform" do
+      = link_to volunteer_link do
         .button.button-outline VOLUNTEER
+      %br
+      = link_to mentor_link do
+        .button.button-outline MENTOR
 
 .grey-section.diagonal#about
   .home-content.about-gallery
@@ -111,7 +117,8 @@
 
       .column
         %h2 Who can participate in BrickHack?
-        %p Anyone who is currently enrolled as a student or has graduated within the last 12 months can attend! If you don't fit that description, you're welcome to attend as a mentor or volunteer!
+        %p
+          Anyone who is currently enrolled as a student or has graduated within the last 12 months can attend! If you don't fit that description, you're absolutely welcome to attend as a <a href="#{mentor_link}">mentor</a> or <a href="#{volunteer_link}">volunteer</a>.
         %p All attendees must be 18 years or older to attend. Proof of your age may be requested on the day of the event.
 
       .column
