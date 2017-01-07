@@ -94,7 +94,7 @@ class Manage::DashboardController < Manage::ApplicationController
       when "Denials"
         data = Questionnaire.where(acc_status: "rsvp_denied").send("group_by_#{group_type}", :acc_status_date, range: range).count
       when "Non-Applied Users"
-        data = User.without_questionnaire.send("group_by_#{group_type}", :acc_status_date, range: range).count
+        data = User.without_questionnaire.send("group_by_#{group_type}", "users.created_at", range: range).count
       end
       chart_data << { name: type, data: data }
     end
