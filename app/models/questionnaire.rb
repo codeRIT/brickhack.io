@@ -1,6 +1,7 @@
 class Questionnaire < ApplicationRecord
   include ActiveModel::Dirty
 
+  before_validation :consolidate_school_names
   after_save :update_school_questionnaire_count
   after_destroy :update_school_questionnaire_count
 
@@ -131,6 +132,13 @@ class Questionnaire < ApplicationRecord
   end
 
   private
+
+  def consolidate_school_names
+    return if school.blank?
+    duplicate = SchoolNameDuplicate.find_by(name: school.name)
+    return if duplicate.blank?
+    self.school_id = duplicate.school_id
+  end
 
   def update_school_questionnaire_count
     if school_id_changed?

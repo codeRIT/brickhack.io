@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class QuestionnaireTest < ActiveSupport::TestCase
-
   should belong_to :school
 
   should strip_attribute :first_name
@@ -262,4 +261,16 @@ class QuestionnaireTest < ActiveSupport::TestCase
     end
   end
 
+  context "#consolidate_school_names" do
+    should "consolidate duplicate school names" do
+      school = create(:school, name: "My School", city: "Rochester", state: "NY")
+      bad_school = create(:school, name: "The My School")
+      create(:school_name_duplicate, name: "The My School", school: school)
+
+      questionnaire = create(:questionnaire, school: bad_school)
+      assert_equal "My School", questionnaire.school.name
+      assert_equal 1, school.reload.questionnaire_count
+      assert_equal 0, bad_school.reload.questionnaire_count
+    end
+  end
 end

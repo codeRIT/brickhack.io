@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212030010) do
+ActiveRecord::Schema.define(version: 20170107210122) do
 
   create_table "bus_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 20161212030010) do
     t.index ["user_id"], name: "index_questionnaires_on_user_id", using: :btree
   end
 
+  create_table "school_name_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "school_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_school_name_duplicates_on_school_id", using: :btree
+  end
+
   create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
     t.string   "address"
@@ -129,4 +137,5 @@ ActiveRecord::Schema.define(version: 20161212030010) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
+  add_foreign_key "school_name_duplicates", "schools"
 end

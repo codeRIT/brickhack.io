@@ -60,6 +60,8 @@ class Manage::SchoolsController < Manage::ApplicationController
       q.update_attribute(:school_id, new_school.id)
     end
 
+    SchoolNameDuplicate.create(name: @school.name, school_id: new_school.id)
+
     @school.reload
 
     if @school.questionnaire_count < 1
