@@ -28,7 +28,7 @@ class Manage::DashboardController < Manage::ApplicationController
     totalStatsData = {}
     total_count = Questionnaire.count
     rit_count = Questionnaire.where("school_id = \"2304\"").count
-    totalStatsData["Non-Applied Users"] = User.count - total_count
+    totalStatsData["Non-Applied Users"] = User.where(admin: false).count - total_count
     totalStatsData["Non-RIT Applications"] = total_count - rit_count
     totalStatsData["RIT Applications"] = rit_count
     render :json => totalStatsData
