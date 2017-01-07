@@ -22,3 +22,6 @@ Style/NumericLiterals:
 
 Style/RegexpLiteral:
   Enabled: false
+
+Style/WordArray:
+  Enabled: false
