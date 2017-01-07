@@ -45,4 +45,8 @@ class User < ApplicationRecord
       user.password          = Devise.friendly_token[0,20]
     end
   end
+
+  def self.without_questionnaire
+    User.left_outer_joins(:questionnaire).where(questionnaires: { id: nil }, admin: false)
+  end
 end

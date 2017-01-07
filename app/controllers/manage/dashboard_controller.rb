@@ -17,7 +17,7 @@ class Manage::DashboardController < Manage::ApplicationController
       "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count,
       "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count,
       "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count,
-      "Non-Applied Users" => User.left_outer_joins(:questionnaire).where( questionnaires: { id: nil }, admin: false ).where("users.created_at >= :date_min", date_min: date_min).count
+      "Non-Applied Users" => User.without_questionnaire.where("users.created_at >= :date_min", date_min: date_min).count
     }
   end
 
@@ -94,7 +94,7 @@ class Manage::DashboardController < Manage::ApplicationController
       when "Denials"
         data = Questionnaire.where(acc_status: "rsvp_denied").send("group_by_#{group_type}", :acc_status_date, range: range).count
       when "Non-Applied Users"
-        data = User.left_outer_joins(:questionnaire).where(questionnaires: { id: nil }, admin: false).send("group_by_#{group_type}", :acc_status_date, range: range).count
+        data = User.without_questionnaire.send("group_by_#{group_type}", :acc_status_date, range: range).count
       end
       chart_data << { name: type, data: data }
     end
