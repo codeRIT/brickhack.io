@@ -47,7 +47,7 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def schools_confirmed_data
     schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").order("schools.name ASC").count
-    render json: schools.sort_by { |name, count| count }.reverse
+    render json: schools.sort_by { |_, count| count }.reverse
   end
 
   def schools_applied_data
@@ -67,13 +67,13 @@ class Manage::DashboardController < Manage::ApplicationController
       counted_schools[group[0]][group[1]] = count
     end
     render json: [
-      { name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]},
-      { name: "Accepted", data: counted_schools["accepted"]},
-      { name: "Waitlisted", data: counted_schools["waitlist"]},
-      { name: "Late Waitlisted", data: counted_schools["late_waitlist"]},
-      { name: "RSVP Denied", data: counted_schools["rsvp_denied"]},
-      { name: "Denied", data: counted_schools["denied"]},
-      { name: "Pending", data: counted_schools["pending"]}
+      { name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"] },
+      { name: "Accepted", data: counted_schools["accepted"] },
+      { name: "Waitlisted", data: counted_schools["waitlist"] },
+      { name: "Late Waitlisted", data: counted_schools["late_waitlist"] },
+      { name: "RSVP Denied", data: counted_schools["rsvp_denied"] },
+      { name: "Denied", data: counted_schools["denied"] },
+      { name: "Pending", data: counted_schools["pending"] }
     ]
   end
 
@@ -94,7 +94,7 @@ class Manage::DashboardController < Manage::ApplicationController
       when "Denials"
         data = Questionnaire.where(acc_status: "rsvp_denied").send("group_by_#{group_type}", :acc_status_date, range: range).count
       when "Non-Applied Users"
-        data = User.left_outer_joins(:questionnaire).where( questionnaires: { id: nil }, admin: false ).send("group_by_#{group_type}", :acc_status_date, range: range).count
+        data = User.left_outer_joins(:questionnaire).where(questionnaires: { id: nil }, admin: false).send("group_by_#{group_type}", :acc_status_date, range: range).count
       end
       chart_data << { name: type, data: data }
     end
