@@ -13,15 +13,19 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def todays_stats_data
     date_min = Time.zone.today.beginning_of_day
-    render :json => { "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count, "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count, "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count }
+    render json: {
+      "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count,
+      "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count,
+      "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count
+    }
   end
 
   def confirmation_activity_data
-    render :json => activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.zone.now)
+    render json: activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.zone.now)
   end
 
   def application_activity_data
-    render :json => activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.zone.now)
+    render json: activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.zone.now)
   end
 
   def user_distribution_data
@@ -31,7 +35,7 @@ class Manage::DashboardController < Manage::ApplicationController
     totalStatsData["Non-Applied Users"] = User.where(admin: false).count - total_count
     totalStatsData["Non-RIT Applications"] = total_count - rit_count
     totalStatsData["RIT Applications"] = rit_count
-    render :json => totalStatsData
+    render json: totalStatsData
   end
 
   def application_distribution_data
@@ -42,7 +46,7 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def schools_confirmed_data
     schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").order("schools.name ASC").count
-    render :json => schools.sort_by { |name, count| count }.reverse
+    render json: schools.sort_by { |name, count| count }.reverse
   end
 
   def schools_applied_data
@@ -61,7 +65,15 @@ class Manage::DashboardController < Manage::ApplicationController
     result.each do |group, count|
       counted_schools[group[0]][group[1]] = count
     end
-    render :json => [{ name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]}, { name: "Accepted", data: counted_schools["accepted"]},  { name: "Waitlisted", data: counted_schools["waitlist"]}, { name: "Late Waitlisted", data: counted_schools["late_waitlist"]}, { name: "RSVP Denied", data: counted_schools["rsvp_denied"]}, { name: "Denied", data: counted_schools["denied"]}, { name: "Pending", data: counted_schools["pending"]}]
+    render json: [
+      { name: "RSVP Confirmed", data: counted_schools["rsvp_confirmed"]},
+      { name: "Accepted", data: counted_schools["accepted"]},
+      { name: "Waitlisted", data: counted_schools["waitlist"]},
+      { name: "Late Waitlisted", data: counted_schools["late_waitlist"]},
+      { name: "RSVP Denied", data: counted_schools["rsvp_denied"]},
+      { name: "Denied", data: counted_schools["denied"]},
+      { name: "Pending", data: counted_schools["pending"]}
+    ]
   end
 
   private
