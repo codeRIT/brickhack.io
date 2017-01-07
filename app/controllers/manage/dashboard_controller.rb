@@ -8,7 +8,7 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def todays_activity_data
-    render :json => activity_chart_data(["Applications", "Confirmations", "Denials"], "hour", Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
+    render json: activity_chart_data(["Applications", "Confirmations", "Denials", "Non-Applied Users"], "hour", Time.zone.today.beginning_of_day..Time.zone.today.end_of_day)
   end
 
   def todays_stats_data
@@ -16,7 +16,8 @@ class Manage::DashboardController < Manage::ApplicationController
     render json: {
       "Applications" => Questionnaire.where("created_at >= :date_min", date_min: date_min).count,
       "Confirmations" => Questionnaire.where("acc_status = \"rsvp_confirmed\" AND acc_status_date >= :date_min", date_min: date_min).count,
-      "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count
+      "Denials" => Questionnaire.where("acc_status = \"rsvp_denied\" AND acc_status_date >= :date_min", date_min: date_min).count,
+      "Non-Applied Users" => User.left_outer_joins(:questionnaire).where( questionnaires: { id: nil }, admin: false ).where("users.created_at >= :date_min", date_min: date_min).count
     }
   end
 
@@ -25,7 +26,7 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def application_activity_data
-    render json: activity_chart_data(["Non-RIT Applications", "RIT Applications"], "day", 2.week.ago..Time.zone.now)
+    render json: activity_chart_data(["Non-RIT Applications", "RIT Applications", "Non-Applied Users"], "day", 2.week.ago..Time.zone.now)
   end
 
   def user_distribution_data
@@ -92,6 +93,8 @@ class Manage::DashboardController < Manage::ApplicationController
         data = Questionnaire.where(acc_status: "rsvp_confirmed").send("group_by_#{group_type}", :acc_status_date, range: range).count
       when "Denials"
         data = Questionnaire.where(acc_status: "rsvp_denied").send("group_by_#{group_type}", :acc_status_date, range: range).count
+      when "Non-Applied Users"
+        data = User.left_outer_joins(:questionnaire).where( questionnaires: { id: nil }, admin: false ).send("group_by_#{group_type}", :acc_status_date, range: range).count
       end
       chart_data << { name: type, data: data }
     end

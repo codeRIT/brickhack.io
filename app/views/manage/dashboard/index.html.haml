@@ -22,10 +22,10 @@
 
   .container.container-half{ style: "width: 59%" }
     %h4.dashboard-container-title  Today's Activity
-    = area_chart todays_activity_data_manage_dashboard_index_path, colors: [blue, green, red]
+    = area_chart todays_activity_data_manage_dashboard_index_path, colors: [blue, green, red, grey]
   .container.container-half{ style: "width: 39%" }
     %h4.dashboard-container-title Today's Stats
-    = pie_chart todays_stats_data_manage_dashboard_index_path, colors: [blue, green, red]
+    = pie_chart todays_stats_data_manage_dashboard_index_path, colors: [blue, green, red, grey]
 
   .container.container-full
     %h4.dashboard-container-title Confirmation Activity
@@ -41,7 +41,7 @@
     .graph-overlay
       %h3= Questionnaire.count
       %p total applications
-    = area_chart application_activity_data_manage_dashboard_index_path, colors: [blue, orange], library: { legend: { enabled: false } }
+    = area_chart application_activity_data_manage_dashboard_index_path, colors: [blue, orange, grey], library: { legend: { enabled: false } }
 
   .container.container-half
     %h4.dashboard-container-title User Distribution
