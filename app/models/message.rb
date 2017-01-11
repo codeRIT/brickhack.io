@@ -1,11 +1,10 @@
 class Message < ApplicationRecord
-
   validates_presence_of :name, :subject, :recipients, :template
   validates_presence_of :body, if: :using_default_template?
 
   strip_attributes
 
-  POSSIBLE_TEMPLATES = ["default"]
+  POSSIBLE_TEMPLATES = ["default"].freeze
 
   POSSIBLE_RECIPIENTS = {
     "all"                              => "Everyone",
@@ -32,7 +31,7 @@ class Message < ApplicationRecord
     "school-waterloo"                  => "Confirmed or accepted: Waterloo",
     "school-toronto"                   => "Confirmed or accepted: Toronto",
     "school-umd-collegepark"           => "School: UMD College Park"
-  }
+  }.freeze
   serialize :recipients, Array
 
   validates_inclusion_of :template, in: POSSIBLE_TEMPLATES

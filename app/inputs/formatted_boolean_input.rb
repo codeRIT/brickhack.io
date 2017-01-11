@@ -17,9 +17,7 @@ class FormattedBooleanInput < SimpleForm::Inputs::Base
   def merge_wrapper_options(options, wrapper_options)
     if wrapper_options
       options.merge(wrapper_options) do |_, oldval, newval|
-        if Array === oldval
-          oldval + Array(newval)
-        end
+        oldval + Array(newval) if oldval.is_a?(Array)
       end
     else
       options
