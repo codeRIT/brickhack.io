@@ -1,18 +1,16 @@
 require 'test_helper'
 
 class MailerTest < ActionMailer::TestCase
-
   setup { ActionMailer::Base.deliveries.clear }
 
   context "upon successfull questionnaire application" do
     setup do
       @school = create(:school, name: "Example University")
       @questionnaire = create(:questionnaire,
-        first_name: "Joe",
-        last_name: "Smith",
-        email: "joe.smith@example.com",
-        school_id: @school.id
-      )
+                              first_name: "Joe",
+                              last_name: "Smith",
+                              email: "joe.smith@example.com",
+                              school_id: @school.id)
       @user = create(:user, questionnaire: @questionnaire, email: "joe.smith@example.com")
     end
 
@@ -106,5 +104,4 @@ class MailerTest < ActionMailer::TestCase
       assert_match /brickhack.io\/apply/,    email.encoded
     end
   end
-
 end

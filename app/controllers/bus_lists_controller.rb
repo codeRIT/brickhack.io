@@ -26,15 +26,10 @@ class BusListsController < ApplicationController
   end
 
   def check_user_has_questionnaire
-    if current_user.questionnaire.nil?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.questionnaire.nil?
   end
 
   def require_bus_captian
-    unless @questionnaire.is_bus_captain?
-      redirect_to root_path
-    end
+    redirect_to root_path unless @questionnaire.is_bus_captain?
   end
-
 end

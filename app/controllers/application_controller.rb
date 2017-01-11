@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       stored_location
     elsif current_user.admin?
       manage_root_path
-    elsif current_user.questionnaire === nil
+    elsif current_user.questionnaire.nil?
       new_questionnaires_path
     else
       @questionnaire = current_user.questionnaire

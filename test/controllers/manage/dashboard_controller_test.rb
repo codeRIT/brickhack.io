@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::DashboardControllerTest < ActionController::TestCase
-
   context "while not authenticated" do
     should "redirect to sign in page on manage_dashboard#index" do
       get :index
@@ -42,7 +41,7 @@ class Manage::DashboardControllerTest < ActionController::TestCase
       FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "pending")
       FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "accepted")
       FactoryGirl.create_list(:questionnaire, 10, school_id: school2.id, acc_status: "accepted")
-      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, name|
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, _name|
         FactoryGirl.create_list(:questionnaire, 1, school_id: school2.id, acc_status: status)
       end
 
@@ -66,5 +65,4 @@ class Manage::DashboardControllerTest < ActionController::TestCase
       assert_response :success
     end
   end
-
 end

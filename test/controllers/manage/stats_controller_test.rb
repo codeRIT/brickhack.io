@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::StatsControllerTest < ActionController::TestCase
-
   context "while not authenticated" do
     should "redirect to sign in page on manage_dashboard#index" do
       get :index
@@ -54,7 +53,7 @@ class Manage::StatsControllerTest < ActionController::TestCase
 
     should "allow access to all data endpoints" do
       school = create(:school)
-      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, name|
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, _name|
         create_list(:questionnaire, 5, school_id: school.id, acc_status: status, dietary_restrictions: "Vegetarian", special_needs: "Something")
       end
 
@@ -70,5 +69,4 @@ class Manage::StatsControllerTest < ActionController::TestCase
   def paths
     [:dietary_special_needs, :sponsor_info, :alt_travel]
   end
-
 end

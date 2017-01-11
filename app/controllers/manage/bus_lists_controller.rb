@@ -49,13 +49,13 @@ class Manage::BusListsController < Manage::ApplicationController
 
   private
 
-    def bus_list_params
-      params.require(:bus_list).permit(
-        :name, :capacity, :notes, :needs_bus_captain
-      )
-    end
+  def bus_list_params
+    params.require(:bus_list).permit(
+      :name, :capacity, :notes, :needs_bus_captain
+    )
+  end
 
-    def set_bus_list
-      @bus_list = BusList.find(params[:id])
-    end
+  def set_bus_list
+    @bus_list = BusList.find(params[:id])
+  end
 end

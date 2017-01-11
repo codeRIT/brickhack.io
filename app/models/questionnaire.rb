@@ -30,12 +30,14 @@ class Questionnaire < ApplicationRecord
     "experienced" => "My feet are wet. (1-5 hackathons)",
     "expert"      => "I'm a veteran hacker. (6+ hackathons)"
   }.freeze
+
   POSSIBLE_INTERESTS = {
     "design"      => "Design",
     "software"    => "Software",
     "hardware"    => "Hardware",
     "combination" => "Combination of everything!"
   }.freeze
+
   POSSIBLE_SHIRT_SIZES = [
     "Women's - XS",
     "Women's - S",
@@ -46,8 +48,9 @@ class Questionnaire < ApplicationRecord
     "Unisex - S",
     "Unisex - M",
     "Unisex - L",
-    "Unisex - XL",
-  ]
+    "Unisex - XL"
+  ].freeze
+
   POSSIBLE_ACC_STATUS = {
     "pending"        => "Pending Review",
     "accepted"       => "Accepted",

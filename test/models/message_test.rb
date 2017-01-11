@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MessageTest < ActiveSupport::TestCase
-
   should strip_attribute :name
   should strip_attribute :subject
   should strip_attribute :template
@@ -101,5 +100,4 @@ class MessageTest < ActiveSupport::TestCase
       assert !message.using_default_template?
     end
   end
-
 end

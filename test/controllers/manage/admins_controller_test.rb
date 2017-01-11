@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::AdminsControllerTest < ActionController::TestCase
-
   setup do
     @user = create(:user)
   end
