@@ -146,7 +146,7 @@ class RsvpsControllerTest < ActionController::TestCase
       assert_equal "rsvp_confirmed", @questionnaire.reload.acc_status
       assert_equal false, @questionnaire.reload.riding_bus
       assert_equal 0, bus_list.passengers.count
-      assert_match  /full/, flash[:notice]
+      assert_match /full/, flash[:notice]
       assert_redirected_to rsvp_path
     end
 

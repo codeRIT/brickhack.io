@@ -1,5 +1,4 @@
 class Manage::DashboardController < Manage::ApplicationController
-
   def index
   end
 
@@ -41,7 +40,7 @@ class Manage::DashboardController < Manage::ApplicationController
 
   def application_distribution_data
     groups = Questionnaire.group(:acc_status).count
-    groups.keys.each { |short_status, count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
+    groups.keys.each { |short_status, _count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
     render json: groups
   end
 

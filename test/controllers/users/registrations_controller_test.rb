@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Users::RegistrationsControllerTest < ActionController::TestCase
-
   setup do
     @questionnaire = create(:questionnaire)
   end

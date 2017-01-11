@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::SchoolsControllerTest < ActionController::TestCase
-
   setup do
     @school = create(:school)
   end

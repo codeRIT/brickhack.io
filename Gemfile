@@ -14,7 +14,7 @@ gem 'rollbar', '~> 2.8'
 gem 'skylight'
 
 gem 'sidekiq', '< 5'
-gem 'sprockets', :require => nil
+gem 'sprockets', require: nil
 
 gem 'devise', '~> 4.2'
 gem 'omniauth-mlh'
@@ -45,7 +45,7 @@ gem 'selectize-rails'
 gem 'highcharts-rails', '~> 4.2.5'
 gem 'uglifier', '~> 3.0'
 
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development do
   gem 'better_errors'

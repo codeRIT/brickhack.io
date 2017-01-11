@@ -57,20 +57,20 @@ class Manage::MessagesController < Manage::ApplicationController
 
   private
 
-    def message_params
-      params.require(:message).permit(
-        :name, :subject, :template, :body, recipients: []
-      )
-    end
+  def message_params
+    params.require(:message).permit(
+      :name, :subject, :template, :body, recipients: []
+    )
+  end
 
-    def set_message
-      @message = Message.find(params[:id])
-    end
+  def set_message
+    @message = Message.find(params[:id])
+  end
 
-    def check_message_access
-      unless @message.can_edit?
-        flash[:notice] = "Message can no longer be modified"
-        return redirect_to manage_message_path(@message)
-      end
+  def check_message_access
+    unless @message.can_edit?
+      flash[:notice] = "Message can no longer be modified"
+      redirect_to manage_message_path(@message)
     end
+  end
 end
