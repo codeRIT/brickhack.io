@@ -24,13 +24,16 @@ class Message < ApplicationRecord
     "bus-list-cornell-bing-eligible"   => "Bus List: Cornell + Binghamton (eligible, not signed up)",
     "bus-list-buffalo-eligible"        => "Bus List: Buffalo (eligible, not signed up)",
     "bus-list-rutgers-albany-eligible" => "Bus List: Rutgers & Albany (eligible, not signed up)",
+    "bus-list-cornell-bing-applied"    => "Bus List: Cornell + Binghamton (applied/not accepted)",
+    "bus-list-buffalo-applied"         => "Bus List: Buffalo (applied/not accepted)",
+    "bus-list-rutgers-albany-applied"  => "Bus List: Rutgers & Albany (applied/not accepted)",
     "school-rit"                       => "Confirmed or accepted: RIT",
     "school-cornell"                   => "Confirmed or accepted: Cornell",
     "school-binghamton"                => "Confirmed or accepted: Binghamton",
     "school-buffalo"                   => "Confirmed or accepted: Buffalo",
     "school-waterloo"                  => "Confirmed or accepted: Waterloo",
     "school-toronto"                   => "Confirmed or accepted: Toronto",
-    "school-umd-collegepark"           => "School: UMD College Park"
+    "school-umd-collegepark"           => "Confirmed or accepted: UMD College Park"
   }.freeze
   serialize :recipients, Array
 
