@@ -6,15 +6,13 @@ SECTION = ":section".freeze
 ITEM = ":item".freeze
 
 class Schedule
-  def initialize(name, spreadsheet_id, ranges, sheet=0)
+  attr_reader :name
+
+  def initialize(name, spreadsheet_id, ranges, sheet = 0)
     @name = name
-    response = HTTParty.get(SHEETS_URL+"#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
+    response = HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
     @sheet = response.parsed_response["sheets"][sheet]
     @sections = []
-  end
-
-  def name
-    @name
   end
 
   def rows
@@ -35,6 +33,7 @@ class Schedule
   end
 
   private
+
   def fill_section(section, row)
     r = []
     row["values"].map { |col| r << col["userEnteredValue"]["stringValue"] unless col["userEnteredValue"]["stringValue"] == ITEM }
