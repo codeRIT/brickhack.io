@@ -66,15 +66,15 @@ class BulkMessageWorker
     when "school-cornell"
       Questionnaire.where("school_id = 2164 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-binghamton"
-      Questionnaire.where("school_id = 5550 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
+      Questionnaire.where("school_id = 5526 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-buffalo"
       Questionnaire.where("school_id = 2345 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-waterloo"
-      Questionnaire.where("school_id = 5529 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
+      Questionnaire.where("school_id = 5580 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-toronto"
-      Questionnaire.where("school_id = 5522 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
+      Questionnaire.where("school_id = 5539 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-umd-collegepark"
-      Questionnaire.where("school_id = 5616 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
+      Questionnaire.where("school_id = 5543 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     end
   end
 end
