@@ -31,6 +31,7 @@ class AdminDatatable < AjaxDatatablesRails::Base
     end
   end
 
+  # rubocop:disable Style/AccessorMethodName
   def get_raw_records
     User.where(admin: true)
   end

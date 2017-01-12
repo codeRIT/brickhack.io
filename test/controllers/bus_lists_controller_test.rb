@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class BusListsControllerTest < ActionController::TestCase
-
   setup do
     @school = create(:school, name: "Another School")
     @questionnaire = create(:questionnaire, school_id: @school.id)
@@ -65,5 +64,4 @@ class BusListsControllerTest < ActionController::TestCase
       end
     end
   end
-
 end

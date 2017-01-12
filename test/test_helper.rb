@@ -25,11 +25,11 @@ require "paperclip/matchers"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
   module Kernel
-    alias :__at_exit :at_exit
-    def at_exit(&block)
+    alias __at_exit at_exit
+    def at_exit
       __at_exit do
-        exit_status = $!.status if $!.is_a?(SystemExit)
-        block.call
+        exit_status = $ERROR_INFO.status if $ERROR_INFO.is_a?(SystemExit)
+        yield
         exit exit_status if exit_status
       end
     end

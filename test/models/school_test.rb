@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class SchoolTest < ActiveSupport::TestCase
-
   should have_many :questionnaires
 
   should strip_attribute :name
@@ -34,5 +33,4 @@ class SchoolTest < ActiveSupport::TestCase
       assert_equal "Foo in Bar, World", @school.full_name
     end
   end
-
 end

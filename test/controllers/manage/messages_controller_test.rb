@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::MessagesControllerTest < ActionController::TestCase
-
   before do
     ActionMailer::Base.deliveries = []
     Sidekiq::Extensions::DelayedMailer.jobs.clear

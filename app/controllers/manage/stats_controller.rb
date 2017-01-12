@@ -1,5 +1,4 @@
 class Manage::StatsController < Manage::ApplicationController
-
   def index
   end
 
@@ -62,5 +61,4 @@ class Manage::StatsController < Manage::ApplicationController
     max_updated_at = Questionnaire.maximum(:updated_at).try(:utc).try(:to_s, :number)
     "stats/all-#{count}-#{max_updated_at}-#{id}"
   end
-
 end

@@ -85,9 +85,7 @@ class RsvpsController < ApplicationController
   end
 
   def check_user_has_questionnaire
-    if current_user.questionnaire.nil?
-      redirect_to new_questionnaires_path
-    end
+    redirect_to new_questionnaires_path if current_user.questionnaire.nil?
   end
 
   def require_accepted_questionnaire
@@ -95,5 +93,4 @@ class RsvpsController < ApplicationController
       redirect_to new_questionnaires_path
     end
   end
-
 end

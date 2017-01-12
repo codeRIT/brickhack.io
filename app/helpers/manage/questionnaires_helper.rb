@@ -1,2 +1,4 @@
-module Manage::QuestionnairesHelper
+module Manage
+  module QuestionnairesHelper
+  end
 end

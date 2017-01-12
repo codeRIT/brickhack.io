@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::SchoolsControllerTest < ActionController::TestCase
-
   setup do
     @school = create(:school)
   end
@@ -269,6 +268,7 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
           patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
         end
       end
+      assert_equal @school.name, SchoolNameDuplicate.first.name
     end
 
     should "merge but not delete school if it contains questionnaires" do

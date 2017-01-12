@@ -14,8 +14,8 @@ class User < ApplicationRecord
   end
 
   def queue_reminder_email
-    return if self.reminder_sent_at
-    Mailer.delay_for(4.days).incomplete_reminder_email(id)
+    return if reminder_sent_at
+    Mailer.delay_for(1.day).incomplete_reminder_email(id)
     update_attribute(:reminder_sent_at, Time.now)
   end
 
@@ -42,7 +42,11 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.uid               = auth.uid
       user.email             = auth.info.email
-      user.password          = Devise.friendly_token[0,20]
+      user.password          = Devise.friendly_token[0, 20]
     end
+  end
+
+  def self.without_questionnaire
+    User.left_outer_joins(:questionnaire).where(questionnaires: { id: nil }, admin: false)
   end
 end

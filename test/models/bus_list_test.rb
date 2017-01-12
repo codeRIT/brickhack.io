@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class BusListTest < ActiveSupport::TestCase
-
   should strip_attribute :name
   should strip_attribute :notes
 
@@ -27,7 +26,7 @@ class BusListTest < ActiveSupport::TestCase
 
     should "only return passengers who have RSVP'd" do
       questionnaire1 = create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true)
-      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, title|
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, _title|
         next if status == "rsvp_confirmed"
         create(:questionnaire, acc_status: status, school_id: @school.id, riding_bus: true)
       end
@@ -63,7 +62,7 @@ class BusListTest < ActiveSupport::TestCase
 
     should "only return captains who have RSVP'd" do
       questionnaire1 = create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true, is_bus_captain: true)
-      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, title|
+      Questionnaire::POSSIBLE_ACC_STATUS.each do |status, _title|
         next if status == "rsvp_confirmed"
         create(:questionnaire, acc_status: status, school_id: @school.id, riding_bus: true, is_bus_captain: true)
       end
@@ -79,5 +78,4 @@ class BusListTest < ActiveSupport::TestCase
       assert_equal questionnaire1.id, @bus_list.captains[0].id
     end
   end
-
 end

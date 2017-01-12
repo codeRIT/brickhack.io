@@ -5,11 +5,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations", omniauth_callbacks: "users/omniauth_callbacks" }
 
-  if Rails.env.development?
-    mount MailPreview => 'mail_view'
-  end
+  mount MailPreview => 'mail_view' if Rails.env.development?
 
-  authenticate :user, lambda { |u| u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 

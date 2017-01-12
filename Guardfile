@@ -1,7 +1,7 @@
 # More info at https://github.com/guard/guard#readme
 
 guard :minitest, all_on_start: false, all_after_pass: false do
-  watch(%r{^app/(?:models|presenters|validators|lib)/(.+)\.rb$})  { |m| "test/models/#{m[1]}_test.rb" }
+  watch(%r{^app/(?:models|presenters|validators|lib)/(.+)\.rb$}) { |m| "test/models/#{m[1]}_test.rb" }
   watch(%r{^app/helpers/(.+)\.rb$})                    { |m| "test/models/helpers/#{m[1]}_test.rb" }
   watch(%r{^app/mailers/(.+)\.rb$})                    { |m| "test/controllers/#{m[1]}_test.rb" }
   watch(%r{^app/controllers/(?:([^\/]+/))?(.+)\.rb$})  { |m| "test/controllers/#{m[1..2].join}_test.rb" }

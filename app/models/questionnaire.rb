@@ -1,6 +1,7 @@
 class Questionnaire < ApplicationRecord
   include ActiveModel::Dirty
 
+  before_validation :consolidate_school_names
   after_save :update_school_questionnaire_count
   after_destroy :update_school_questionnaire_count
 
@@ -29,12 +30,14 @@ class Questionnaire < ApplicationRecord
     "experienced" => "My feet are wet. (1-5 hackathons)",
     "expert"      => "I'm a veteran hacker. (6+ hackathons)"
   }.freeze
+
   POSSIBLE_INTERESTS = {
     "design"      => "Design",
     "software"    => "Software",
     "hardware"    => "Hardware",
     "combination" => "Combination of everything!"
   }.freeze
+
   POSSIBLE_SHIRT_SIZES = [
     "Women's - XS",
     "Women's - S",
@@ -45,8 +48,9 @@ class Questionnaire < ApplicationRecord
     "Unisex - S",
     "Unisex - M",
     "Unisex - L",
-    "Unisex - XL",
-  ]
+    "Unisex - XL"
+  ].freeze
+
   POSSIBLE_ACC_STATUS = {
     "pending"        => "Pending Review",
     "accepted"       => "Accepted",
@@ -131,6 +135,13 @@ class Questionnaire < ApplicationRecord
   end
 
   private
+
+  def consolidate_school_names
+    return if school.blank?
+    duplicate = SchoolNameDuplicate.find_by(name: school.name)
+    return if duplicate.blank?
+    self.school_id = duplicate.school_id
+  end
 
   def update_school_questionnaire_count
     if school_id_changed?

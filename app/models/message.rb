@@ -1,11 +1,10 @@
 class Message < ApplicationRecord
-
   validates_presence_of :name, :subject, :recipients, :template
   validates_presence_of :body, if: :using_default_template?
 
   strip_attributes
 
-  POSSIBLE_TEMPLATES = ["default"]
+  POSSIBLE_TEMPLATES = ["default"].freeze
 
   POSSIBLE_RECIPIENTS = {
     "all"                              => "Everyone",
@@ -21,18 +20,21 @@ class Message < ApplicationRecord
     "non-checked-in"                   => "Non-Checked-In, Accepted & RSVP'd Applications",
     "bus-list-cornell-bing"            => "Bus List: Cornell + Binghamton (Confirmed)",
     "bus-list-buffalo"                 => "Bus List: Buffalo (Confirmed)",
-    "bus-list-rutgers-albany"          => "Bus List: Rutgers & Albany (Confirmed)",
+    "bus-list-albany"                  => "Bus List: Albany (Confirmed)",
     "bus-list-cornell-bing-eligible"   => "Bus List: Cornell + Binghamton (eligible, not signed up)",
     "bus-list-buffalo-eligible"        => "Bus List: Buffalo (eligible, not signed up)",
-    "bus-list-rutgers-albany-eligible" => "Bus List: Rutgers & Albany (eligible, not signed up)",
+    "bus-list-albany-eligible"         => "Bus List: Albany (eligible, not signed up)",
+    "bus-list-cornell-bing-applied"    => "Bus List: Cornell + Binghamton (applied/not accepted)",
+    "bus-list-buffalo-applied"         => "Bus List: Buffalo (applied/not accepted)",
+    "bus-list-albany-applied"          => "Bus List: Albany (applied/not accepted)",
     "school-rit"                       => "Confirmed or accepted: RIT",
     "school-cornell"                   => "Confirmed or accepted: Cornell",
     "school-binghamton"                => "Confirmed or accepted: Binghamton",
     "school-buffalo"                   => "Confirmed or accepted: Buffalo",
     "school-waterloo"                  => "Confirmed or accepted: Waterloo",
     "school-toronto"                   => "Confirmed or accepted: Toronto",
-    "school-umd-collegepark"           => "School: UMD College Park"
-  }
+    "school-umd-collegepark"           => "Confirmed or accepted: UMD College Park"
+  }.freeze
   serialize :recipients, Array
 
   validates_inclusion_of :template, in: POSSIBLE_TEMPLATES

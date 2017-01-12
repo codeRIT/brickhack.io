@@ -22,6 +22,11 @@
       .form-inputs
         = f.input :id, as: :school_selection, placeholder: "My University", input_html: { "data-validate" => "presence" }, label: "Merge Into:", value: ''
 
+      %p
+        This will rename all future applications with the
+        %strong= @school.full_name
+        school name to this new school.
+
       %div{class:'center'}
         = f.button :submit, value: 'Merge'
 

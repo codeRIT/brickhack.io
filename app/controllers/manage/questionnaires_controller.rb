@@ -46,9 +46,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def update
     update_params = questionnaire_params
     email = update_params.delete(:email)
-    if email.present?
-      @questionnaire.user.update_attributes(email: email)
-    end
+    @questionnaire.user.update_attributes(email: email) if email.present?
     update_params = convert_school_name_to_id(update_params)
     @questionnaire.update_attributes(update_params)
     respond_with(:manage, @questionnaire)
@@ -59,7 +57,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       if params[:questionnaire]
         @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info))
       end
-      if !@questionnaire.valid?
+      unless @questionnaire.valid?
         flash[:notice] = @questionnaire.errors.full_messages.join(", ")
         redirect_to manage_questionnaire_path @questionnaire
         return
@@ -151,9 +149,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def convert_school_name_to_id(questionnaire)
     if questionnaire[:school_name]
       school = School.where(name: questionnaire[:school_name]).first
-      if school.blank?
-        school = School.create(name: questionnaire[:school_name])
-      end
+      school = School.create(name: questionnaire[:school_name]) if school.blank?
       questionnaire[:school_id] = school.id
       questionnaire.delete :school_name
     end

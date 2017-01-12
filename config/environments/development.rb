@@ -31,9 +31,9 @@ Rails.application.configure do
 
   # MailCatcher
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', :protocol => 'http' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
   config.action_mailer.asset_host = 'http://localhost:3000'
 
   config.to_prepare do

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Manage::BusListsControllerTest < ActionController::TestCase
-
   setup do
     @bus_list = create(:bus_list)
   end

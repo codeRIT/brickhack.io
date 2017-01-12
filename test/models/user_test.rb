@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
   should strip_attribute :email
 
   should validate_presence_of :email
@@ -69,6 +68,22 @@ class UserTest < ActiveSupport::TestCase
       user.queue_reminder_email
       user.queue_reminder_email
       assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size
+    end
+  end
+
+  context "without_questionnaire" do
+    should "not return users with a questionnaire" do
+      create_list(:questionnaire, 3)
+      assert_equal 3, User.count
+      assert_equal 0, User.without_questionnaire.count
+    end
+
+    should "return users without questionnaire" do
+      create_list(:questionnaire, 1)
+      create_list(:user, 2)
+      create_list(:questionnaire, 3)
+      assert_equal 6, User.count
+      assert_equal 2, User.without_questionnaire.count
     end
   end
 end

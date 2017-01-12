@@ -32,27 +32,27 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   private
 
-    module CustomDsl
-      def browse_questionnaire
-        get new_questionnaires_path
-        assert_response :success
-        assert assigns(:questionnaire)
-      end
-
-      def browse_admin
-        get manage_dashboard_index_path
-        assert_response :success
-        get manage_questionnaires_path
-        assert_response :success
-      end
+  module CustomDsl
+    def browse_questionnaire
+      get new_questionnaires_path
+      assert_response :success
+      assert assigns(:questionnaire)
     end
 
-    def login(user)
-      open_session do |sess|
-        sess.extend(CustomDsl)
-        sess.https!
-        sess.post user_session_url, params: { user: { email: user.email, password: user.password } }
-        assert_equal 'Signed in successfully.', sess.flash[:notice]
-      end
+    def browse_admin
+      get manage_dashboard_index_path
+      assert_response :success
+      get manage_questionnaires_path
+      assert_response :success
     end
+  end
+
+  def login(user)
+    open_session do |sess|
+      sess.extend(CustomDsl)
+      sess.https!
+      sess.post user_session_url, params: { user: { email: user.email, password: user.password } }
+      assert_equal 'Signed in successfully.', sess.flash[:notice]
+    end
+  end
 end
