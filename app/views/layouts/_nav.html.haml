@@ -24,10 +24,10 @@
 
   #mobile-nav
     .nav-links
-      %a.active{ href: '#home' } BrickHack
+      %a.active{ href: '#' } BrickHack
 
       - pages.each do |page|
-        %a{ href: page.downcase }= page
+        %a{ href: "##{page.downcase}" }= page
 
       - if current_user
         - if current_user.admin
