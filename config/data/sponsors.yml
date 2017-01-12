@@ -18,6 +18,10 @@
   image: intuit.png
   url: https://www.intuit.com
   small: true
+- name: Java's Cafe
+  image: javas.png
+  url: http://www.javascafe.com
+  small: true
 - name: Sticker Mule
   image: stickermule.png
   url: https://www.stickermule.com
