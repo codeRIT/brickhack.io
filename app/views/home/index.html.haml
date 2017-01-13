@@ -168,6 +168,7 @@
 
 
 - if current_user&.admin? && event_schedule
+  / TODO: NEEDS A SECTION COLOR
   #schedule
     .home-content
       %h1
@@ -175,16 +176,21 @@
         %p.pull-right.white
           %small
             %em * Schedule subject to change
-      - event_schedule.sections.each do |section|
-        %table.schedule{ border: '0' }
-          %tbody
-            %th{ colspan: 2 }= section.shift
-            - section.each do |row|
-              %tr
-                %td= row[1] + "-" + row[2]
-                %td= row[0]
+      - sections = event_schedule.sections
+      - if sections.blank?
+        %p.center Schedule temporarily unavailable - please check back later!
         %br
-        %br
+      - else
+        - sections.each do |section|
+          %table.schedule{ border: '0' }
+            %tbody
+              %th{ colspan: 2 }= section.shift
+              - section.each do |row|
+                %tr
+                  %td= row[1] + "-" + row[2]
+                  %td= row[0]
+          %br
+          %br
 
 .white-section.diagonal#sponsors
   .home-content
