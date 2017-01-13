@@ -4,6 +4,7 @@
 
 - mentor_link = "https://goo.gl/forms/3rNdjlrS9u7gZX9p1".freeze
 - volunteer_link = "https://goo.gl/forms/7Z6dZmZxEOXXpBPA3".freeze
+- event_schedule = Schedule.new("146w2Ozjkomtubbob03DWpUMN3vBOtCnxn_YCh82Vga0", "A1:E6", 0)
 
 .page.split-home#home
   .split-left
@@ -166,120 +167,30 @@
         %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit" class="orange">Twitter</a>, <a href="https://www.facebook.com/brickhackrit" class="orange">Facebook</a>, or <a href="mailto:hello@coderit.org" class="orange">email</a>.
 
 
-#schedule{ style: 'display: none;' }
-  .home-content
-    %h1 Schedule
-    %p.center
-      %small
-        %em * Schedule subject to change
-    %table.schedule{ border: '0' }
-      %tbody
-        %th March 5th
-        %tr
-          %td 10:30AM - 2:00PM
-          %td Registration
-        %tr
-          %td 11:15AM
-          %td Lunch
-        %tr
-          %td 12:00PM
-          %td Opening Ceremony
-        %tr
-          %td 1:00PM
-          %td Hacking Begins
-        %tr
-          %td 1:00PM
-          %td
-            Datto Tech Talk
-            %div Booting without a disk (Live Feature Demo), Making Architectural Decisions the Wrong Way, Docker by Example
-        %tr
-          %td 2:00PM
-          %td
-            Microsoft Tech Talk
-            %div Getting Started with Azure Cloud
-        %tr
-          %td 3:00PM
-          %td
-            Staples Tech Talk
-            %div Corporate Innovation in CLOUDy conditions: Looking at cloud based architecture in a corporate enviornment and its use in supporting innovation
-        %tr
-          %td 3:30PM
-          %td
-            Facebook Tech Talk
-            %div Great big airplanes with internet lasers: Connecting the unconnected with Facebook's Aquila
-        %tr
-          %td 4:00PM
-          %td
-            Simone Center: Commercializing your Product
-            %div Commercializing your product
-        %tr
-          %td 4:30PM
-          %td
-            Sparkpost Tech Talk
-            %div Build Something Awesome with SparkPost: How to quickly get up and running with SparkPost. How to setup and use Inbound Relay. Awesome demos and examples.
-        %tr
-          %td 5:00PM
-          %td
-            Fedora Tech Talk
-            %div Free/Open Source Software Submissions: A Primer.  How to license your code FOSS, how to contribute to FOSS projects, how to specifically do things "The Open Source Way."
-        %tr
-          %td 5:30PM
-          %td Design Workshop by MakeSchool
-        %tr
-          %td 6:00PM
-          %td Dinner
-        %tr
-          %td 7:00PM
-          %td
-            "Gotta Code 'Em All" Workshop by MakeSchool
-            %div An introduction to programming for iOS using Swift. Covers topics like "if statements", "for-loops", "functions", and "variables". Internet connection and computer required (PC or Mac).
-        %tr
-          %td 8:00PM
-          %td Sushi Snack
-        %tr
-          %td 11:00PM
-          %td MLH Cup Stacking
-
-    %br
-    %br
-    %br
-
-    %table.schedule{ border: '0' }
-      %tbody
-        %th March 6th
-        %tr
-          %td 12:00AM
-          %td
-            %strong Field House will be secured - No one may enter from 12am - 7am, no exceptions.
-        %tr
-          %td 1:00AM
-          %td Cookies
-        %tr
-          %td 1:00AM - 3:00AM
-          %td
-            HackerRank Codesprint
-            %div
-              Test your coding skills with a code sprint! Top 10 coders win HackerRank t-shirts.
-              %a{ href: "https://www.hackerrank.com/brickhack-ii-codesprint" } Challenge page &raquo;
-        %tr
-          %td 8:00AM
-          %td Breakfast
-        %tr
-          %td 11:30AM
-          %td Lunch
-        %tr
-          %td 12:00PM
-          %td Submissions Due
-        %tr
-          %td 1:00PM - 2:30PM
-          %td Judging
-        %tr
-          %td 3:00PM
-          %td Move to Closing Ceremony Venue
-        %tr
-          %td 3:30PM - 5:00PM
-          %td Closing Ceremony
-
+- if current_user&.admin? && event_schedule
+  / TODO: NEEDS A SECTION COLOR
+  #schedule
+    .home-content
+      %h1
+        Schedule
+        %p.pull-right.white
+          %small
+            %em * Schedule subject to change
+      - sections = event_schedule.sections
+      - if sections.blank?
+        %p.center Schedule temporarily unavailable - please check back later!
+        %br
+      - else
+        - sections.each do |section|
+          %table.schedule{ border: '0' }
+            %tbody
+              %th{ colspan: 2 }= section.shift
+              - section.each do |row|
+                %tr
+                  %td= row[1] + "-" + row[2]
+                  %td= row[0]
+          %br
+          %br
 
 .white-section.diagonal#sponsors
   .home-content
