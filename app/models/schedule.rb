@@ -6,12 +6,9 @@ SECTION = ":section".freeze
 ITEM = ":item".freeze
 
 class Schedule
-  attr_reader :name
-
-  def initialize(name, spreadsheet_id, ranges, sheet = 0)
-    @name = name
     response = HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
     @sheet = response.parsed_response["sheets"][sheet]
+  def initialize(spreadsheet_id, ranges, sheet = 0)
     @sections = []
   end
 
