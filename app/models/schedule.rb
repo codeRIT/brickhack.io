@@ -8,10 +8,10 @@ ITEM = ":item".freeze
 class Schedule
   def initialize(spreadsheet_id, ranges, sheet = 0)
     cache_key = "schedule/#{spreadsheet_id}"
-    response = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
+    parsed_response = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
+      response = HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
+      response ? response.parsed_response.to_hash : nil
     end
-    parsed_response = response.parsed_response
 
     unless parsed_response && parsed_response["error"].nil?
       Rails.logger.error "Error reading Google Sheet #{spreadsheet_id}"
