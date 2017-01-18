@@ -52,21 +52,21 @@ class BulkMessageWorker
     when "bus-list-cornell-bing"
       BusList.find(1).passengers.pluck(:user_id)
     when "bus-list-buffalo"
-      BusList.find(3).passengers.pluck(:user_id)
+      BusList.find(2).passengers.pluck(:user_id)
     when "bus-list-albany"
-      BusList.find(5).passengers.pluck(:user_id)
+      BusList.find(3).passengers.pluck(:user_id)
     when "bus-list-cornell-bing-eligible"
       Questionnaire.joins(:school).where("(schools.bus_list_id = 1 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").pluck(:user_id)
     when "bus-list-buffalo-eligible"
-      Questionnaire.joins(:school).where("(schools.bus_list_id = 3 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").pluck(:user_id)
+      Questionnaire.joins(:school).where("(schools.bus_list_id = 2 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").pluck(:user_id)
     when "bus-list-albany-eligible"
-      Questionnaire.joins(:school).where("(schools.bus_list_id = 5 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").pluck(:user_id)
+      Questionnaire.joins(:school).where("(schools.bus_list_id = 3 AND riding_bus != 1) AND (acc_status = 'accepted' OR acc_status = 'rsvp_confirmed')").pluck(:user_id)
     when "bus-list-cornell-bing-applied"
       Questionnaire.joins(:school).where("(schools.bus_list_id = 1) AND (acc_status != 'accepted' AND acc_status != 'rsvp_confirmed' AND acc_status != 'rsvp_denied')").pluck(:user_id)
     when "bus-list-buffalo-applied"
-      Questionnaire.joins(:school).where("(schools.bus_list_id = 3) AND (acc_status != 'accepted' AND acc_status != 'rsvp_confirmed' AND acc_status != 'rsvp_denied')").pluck(:user_id)
+      Questionnaire.joins(:school).where("(schools.bus_list_id = 2) AND (acc_status != 'accepted' AND acc_status != 'rsvp_confirmed' AND acc_status != 'rsvp_denied')").pluck(:user_id)
     when "bus-list-albany-applied"
-      Questionnaire.joins(:school).where("(schools.bus_list_id = 5) AND (acc_status != 'accepted' AND acc_status != 'rsvp_confirmed' AND acc_status != 'rsvp_denied')").pluck(:user_id)
+      Questionnaire.joins(:school).where("(schools.bus_list_id = 3) AND (acc_status != 'accepted' AND acc_status != 'rsvp_confirmed' AND acc_status != 'rsvp_denied')").pluck(:user_id)
     when "school-rit"
       Questionnaire.where("school_id = 2304 AND (acc_status = \"rsvp_confirmed\" OR acc_status = \"accepted\")").pluck(:user_id)
     when "school-cornell"
