@@ -4,7 +4,6 @@
 
 - mentor_link = "https://goo.gl/forms/3rNdjlrS9u7gZX9p1".freeze
 - volunteer_link = "https://goo.gl/forms/7Z6dZmZxEOXXpBPA3".freeze
-- event_schedule = Schedule.new("146w2Ozjkomtubbob03DWpUMN3vBOtCnxn_YCh82Vga0", "A1:E6", 0)
 
 .page.split-home#home
   .split-left
@@ -42,7 +41,7 @@
       = link_to mentor_link do
         .button.button-outline MENTOR
 
-.grey-section.diagonal#about
+.white-section.diagonal#about
   .home-content.about-gallery
     .about
       %h1 RIT's Premiere Hackathon
@@ -69,7 +68,7 @@
 
 / TODO: who should come
 
-.white-section.diagonal#whoshouldcome
+.grey-section.diagonal#whoshouldcome
   .home-content
     %h1 Who should come?
     .split-three
@@ -95,6 +94,8 @@
         %button.button.disabled{disabled: true} Details coming soon
         /= link_to "https://mlh.io/hardware-lab" do
         /  .button HARDWARE
+
+= render 'schedule'
 
 .grey-section.diagonal#faq
   .home-content
@@ -165,32 +166,6 @@
       .column
         %h2 My question isn't answered here?
         %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit" class="orange">Twitter</a>, <a href="https://www.facebook.com/brickhackrit" class="orange">Facebook</a>, or <a href="mailto:hello@coderit.org" class="orange">email</a>.
-
-
-- if current_user&.admin? && event_schedule
-  / TODO: NEEDS A SECTION COLOR
-  #schedule
-    .home-content
-      %h1
-        Schedule
-        %p.pull-right.white
-          %small
-            %em * Schedule subject to change
-      - sections = event_schedule.sections
-      - if sections.blank?
-        %p.center Schedule temporarily unavailable - please check back later!
-        %br
-      - else
-        - sections.each do |section|
-          %table.schedule{ border: '0' }
-            %tbody
-              %th{ colspan: 2 }= section.shift
-              - section.each do |row|
-                %tr
-                  %td= row[1] + "-" + row[2]
-                  %td= row[0]
-          %br
-          %br
 
 .white-section.diagonal#sponsors
   .home-content

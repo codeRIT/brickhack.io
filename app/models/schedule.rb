@@ -6,10 +6,10 @@ SECTION = ":section".freeze
 ITEM = ":item".freeze
 
 class Schedule
-  def initialize(spreadsheet_id, ranges, sheet = 0)
+  def initialize(spreadsheet_id, sheet = 0)
     cache_key = "schedule/#{spreadsheet_id}"
     parsed_response = Rails.cache.fetch(cache_key, expires_in: 1.hour) do
-      response = HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?ranges=#{ranges}&#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
+      response = HTTParty.get(SHEETS_URL + "#{spreadsheet_id}?#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
       response ? response.parsed_response.to_hash : nil
     end
 
