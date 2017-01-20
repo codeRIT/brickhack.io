@@ -195,11 +195,12 @@
 .white-section.diagonal#sponsors
   .home-content
     .split-three
-      .column
+      .column.column--two
         %h1 Sponsors
-        - STATIC_DATA['sponsors'].each do |sponsor|
-          %a.sponsor{ href: sponsor['url'], class: sponsor['small'] ? 'sponsor-small' : '' }
-            = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
+        .sponsors
+          - STATIC_DATA['sponsors'].each do |sponsor|
+            %a.sponsor{ href: sponsor['url'], class: sponsor['small'] ? 'sponsor-small' : '' }
+              = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
         %br
         = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
       .column
@@ -210,7 +211,7 @@
           = image_tag 'sponsors/mlh.png', class: 'img-spaced'
         %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/" }
           = image_tag 'sponsors/simone.png', class: 'img-spaced'
-      .column
+
         %h1 Organized By
         %a.sponsor{ href: "https://coderit.org" }
           = image_tag 'coderit_logo.png', class: 'img-spaced'
