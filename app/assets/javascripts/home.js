@@ -76,7 +76,7 @@ ready = function() {
                 $(this).addClass('active');
                 //scroll
                 $('html,body').stop().animate({
-                    scrollTop: target.offset().top - 72
+                    scrollTop: target.offset().top - 170
                 }, 500);
                 return false;
             }
