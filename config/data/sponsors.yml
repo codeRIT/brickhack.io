@@ -25,6 +25,10 @@
   image: javas.png
   url: http://www.javascafe.com
   small: true
+- name: Club Cafe
+  image: clubcafe.png
+  url: https://www.facebook.com/ritclubcafe/
+  small: true
 - name: Sticker Mule
   image: stickermule.png
   url: https://www.stickermule.com
