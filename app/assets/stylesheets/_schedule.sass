@@ -1,0 +1,114 @@
+$schedule-unit: 15px
+$schedule-dot-size: 10px
+$schedule-breakpoint: 500px
+
+.schedule__section
+  margin-bottom: 25px
+
+  @media (min-width: $schedule-breakpoint)
+    display: flex
+    flex-direction: row
+    justify-content: center
+
+.schedule__day
+  background: $black
+  color: $white
+  text-align: center
+  overflow: hidden
+  width: 100%
+  @media (min-width: $schedule-breakpoint)
+    width: 52px
+    text-align: left
+
+  .schedule__day-text
+    text-transform: uppercase
+    letter-spacing: 4px
+    display: inline-block
+    padding: 15px
+    @media (min-width: $schedule-breakpoint)
+      transform: rotate(-90deg) translateX(-100%)
+      transform-origin: left top
+      padding: 15px 15px
+
+.schedule__rows
+  flex: 0 1 900px
+
+.schedule__row
+  display: flex
+  flex-direction: row
+
+.schedule__row--static
+  &, .schedule__title
+    font-weight: $font-bold
+  .schedule__dot
+    background: $grey-med
+
+.schedule__time, .schedule__details
+  padding: $schedule-unit $schedule-unit 0
+
+.schedule__time
+  flex: 0 0 25%
+  color: $grey-med
+  text-align: right
+
+@media (max-width: $schedule-breakpoint)
+  .schedule__time
+    padding-left: 0
+    padding-right: 0
+  .schedule__line
+    margin-right: 10px !important
+
+.schedule__line
+  flex: 0 0
+  border-left: 1px solid $grey-light
+  margin: 0 1.5*$schedule-unit
+
+.schedule__dot
+  border: 2px solid $grey-med
+  border-radius: 50%
+
+  box-shadow: 0 0 1px 0px rgb(255, 255, 255)
+  width: $schedule-dot-size
+  height: $schedule-dot-size
+  z-index: 86
+  margin-top: $schedule-unit + 5px
+  margin-left: -1 * $schedule-dot-size/2
+  background: #fff
+
+  transition: background-color .5s ease-in-out
+
+.schedule__details
+  flex: 1 1
+
+.schedule__title
+  font-weight: 400
+
+.schedule__desc
+  display: none
+  padding-top: $schedule-unit - 2px
+
+// todo: implement JS
+.schedule__row--selected
+  padding: 2 * $schedule-unit 0 $schedule-unit
+
+  .schedule__line
+    margin-top: -2 * $schedule-unit
+    margin-bottom: -1 * $schedule-unit
+    padding-top: 2 * $schedule-unit
+    padding-bottom: $schedule-unit
+
+  .schedule__dot
+    background: $orange
+    border: none
+
+  .schedule__details
+    border: 2px solid $grey-light
+    margin: -2px -2px -2px
+    padding-bottom: $schedule-unit
+
+  .schedule__title
+    color: $orange
+    font-weight: $font-bold
+
+  .schedule__desc
+    display: block

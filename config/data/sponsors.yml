@@ -10,6 +10,9 @@
 - name: Sparkpost
   image: sparkpost.png
   url: https://www.sparkpost.com
+- name: Fedora
+  image: fedora.png
+  url: https://getfedora.org
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
@@ -21,6 +24,10 @@
 - name: Java's Cafe
   image: javas.png
   url: http://www.javascafe.com
+  small: true
+- name: Club Cafe
+  image: clubcafe.png
+  url: https://www.facebook.com/ritclubcafe/
   small: true
 - name: Sticker Mule
   image: stickermule.png
