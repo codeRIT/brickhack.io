@@ -109,7 +109,7 @@ class QuestionnairesController < ApplicationController
       head :bad_request
       return
     end
-    schools = School.where('name LIKE ?', "%#{params[:name]}%").limit(20).select(:name).all
+    schools = School.where('name LIKE ?', "%#{params[:name]}%").order(questionnaire_count: :desc).limit(20).select(:name).all
     render json: schools.map(&:name)
   end
 
