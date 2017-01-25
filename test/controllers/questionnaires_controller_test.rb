@@ -186,6 +186,14 @@ class QuestionnairesControllerTest < ActionController::TestCase
         assert_equal 1, json_response.count
         assert_equal "Alpha University", json_response[0]
       end
+
+      should "prioritize schools with more applicants" do
+        create(:school, name: "Alpha College", questionnaire_count: 0)
+        create(:school, name: "Pheta College", questionnaire_count: 5)
+        get :schools, params: { name: "Coll" }
+        assert_response :success
+        assert_equal "Pheta College", json_response[0]
+      end
     end
   end
 
