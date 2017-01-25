@@ -1,0 +1,12 @@
+<h3>Getting There - Busses</h3>
+<p>Buses are being provided to Buffalo, Binghamton, Cornell, and Albany. If you are eligible, you will be given an option to sign up on the <a href="https://brickhack.io/rsvp">RSVP form</a>. <strong>You must RSVP and sign up for the bus to guarantee a seat!</strong></p>
+<p>If you live near these areas but don't see the bus sign-up option, please email <a href="mailto:travel@codeRIT.org">travel@codeRIT.org</a>.</p>
+<h3>Getting There - Driving</h3>
+<p>If there isn't a bus available for your school, don't fret! We encourage you to carpool with others from your school.</p>
+<p><strong>A car pool list</strong> is available at the below link. If you're driving and would be open to taking a few more attendees with you, please list yourself!</p>
+<% raise 'Carpool link missing' if ENV['CARPOOL_LINK'].blank? %>
+<p><%= link_to ENV['CARPOOL_LINK'], ENV['CARPOOL_LINK'] %></p>
+<p>For those driving, you can put <em>1 Lomb Memorial Drive, Rochester, NY 14623</em> into your GPS. This will take you to the main RIT entrance, which will include a roundabout. Take the third exit off the roundabout and park in either lot to your left or right.</p>
+<p><em>Unfortunately we are unable to provide travel reimbursements due to university policy.</em></p>
+<p><%= link_to image_tag('brickhack-parking.png', width: '400px').html_safe, image_url('brickhack-parking.png') %></p>
+<p><%= link_to 'Full-size Image &raquo;'.html_safe, image_url('brickhack-parking.png') %></p>
