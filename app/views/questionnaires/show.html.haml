@@ -35,8 +35,8 @@
       %b Resume:
       = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
     %p
-      %b Not traveling from school?
-      = @questionnaire.travel_not_from_school ? "Yes" : "No"
+      %b I am traveling from:
+      = @questionnaire.travel_not_from_school ? "Somewhere else:" : "My school (#{@questionnaire.school.full_name})"
     - if @questionnaire.travel_not_from_school
       %p
         %b Traveling from:
