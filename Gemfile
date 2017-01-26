@@ -51,8 +51,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'guard-minitest'
   gem 'guard'
+  gem 'guard-minitest'
   gem 'simplecov', require: false
 end
 
