@@ -35,12 +35,8 @@
       %b Resume:
       = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
     %p
-      %b I am traveling from:
-      = @questionnaire.travel_not_from_school ? "Somewhere else:" : "My school (#{@questionnaire.school.full_name})"
-    - if @questionnaire.travel_not_from_school
-      %p
-        %b Traveling from:
-        = @questionnaire.travel_location
+      %b Traveling from:
+      = @questionnaire.travel_not_from_school ? "Somewhere else (#{@questionnaire.travel_location})" : "My school (#{@questionnaire.school.full_name})"
 
     %fieldset
       %legend Provided by My MLH
