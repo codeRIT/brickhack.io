@@ -1,0 +1,54 @@
+%p
+  %b Experience:
+  = Questionnaire::POSSIBLE_EXPERIENCES[@questionnaire.experience]
+%p
+  %b Portfolio link:
+  = @questionnaire.portfolio_url? ? link_to(@questionnaire.portfolio_url, @questionnaire.portfolio_url, target: '_blank') : 'Not provided'
+%p
+  %b GitHub/BitBucket link:
+  = @questionnaire.vcs_url? ? link_to(@questionnaire.vcs_url, @questionnaire.vcs_url, target: '_blank') : 'Not provided'
+%p
+  %b Resume:
+  = @questionnaire.resume? ? link_to("Download &raquo;".html_safe, @questionnaire.resume.url) : 'Not provided'
+%p
+  %b Traveling from:
+  = @questionnaire.travel_not_from_school ? "Somewhere else (#{@questionnaire.travel_location})" : "My school (#{@questionnaire.school.full_name})"
+
+%fieldset
+  %legend Provided by My MLH
+  %p
+    %b First name:
+    = @questionnaire.first_name
+  %p
+    %b Last name:
+    = @questionnaire.last_name
+  %p
+    %b Email:
+    = @questionnaire.email
+  %p
+    %b Phone:
+    = @questionnaire.phone
+  %p
+    %b Date of birth:
+    = @questionnaire.date_of_birth_formatted
+  %p
+    %b Gender:
+    = @questionnaire.gender
+  %p
+    %b School:
+    = @questionnaire.school.full_name
+  %p
+    %b Major:
+    = @questionnaire.major
+  %p
+    %b Level of study:
+    = @questionnaire.level_of_study
+  %p
+    %b Shirt size:
+    = @questionnaire.shirt_size
+  %p
+    %b Dietary restrictions
+    = @questionnaire.dietary_restrictions || "<i>(none)</i>".html_safe
+  %p
+    %b Special needs
+    = @questionnaire.special_needs || "<i>(none)</i>".html_safe

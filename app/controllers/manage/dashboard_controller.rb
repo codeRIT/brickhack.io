@@ -21,11 +21,11 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def confirmation_activity_data
-    render json: activity_chart_data(["Confirmations", "Denials"], "day", 2.week.ago..Time.zone.now)
+    render json: activity_chart_data(["Confirmations", "Denials"], "day", 3.week.ago..Time.zone.now)
   end
 
   def application_activity_data
-    render json: activity_chart_data(["Non-RIT Applications", "RIT Applications", "Non-Applied Users"], "day", 2.week.ago..Time.zone.now)
+    render json: activity_chart_data(["Non-RIT Applications", "RIT Applications", "Non-Applied Users"], "day", 3.week.ago..Time.zone.now)
   end
 
   def user_distribution_data

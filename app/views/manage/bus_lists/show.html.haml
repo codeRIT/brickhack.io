@@ -16,30 +16,12 @@
     %ul
       - @bus_list.schools.each do |school|
         %li= link_to(school.name, manage_school_path(school))
-  %p
-    %strong Bus Captians:
-  - if @bus_list.captains.empty?
-    %p
-      %em TBD
-  - @bus_list.captains.each do |p|
-    %p
-      %strong= p.full_name
-      %br
-      %em= p.school.name
-      %br
-      Phone:
-      = p.phone
-      %br
-      Email:
-      = p.email
-  %p
-    %b Notes:
-  %hr
-  = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"
-  %hr
+
+  = render partial: 'bus_list_info', locals: { bus_list: @bus_list }
 
   %p
     %strong Passengers:
+    = "(#{@bus_list.passengers.count} total)"
   %table.table
     %thead
       %tr
@@ -61,7 +43,7 @@
               - if p.is_bus_captain?
                 = link_to "Remove Bus Captain", toggle_bus_captain_manage_bus_list_path(@bus_list, questionnaire_id: p.id, bus_captain: '0'), method: 'post'
               - else
-                = link_to "Make Bus Captain", toggle_bus_captain_manage_bus_list_path(@bus_list, questionnaire_id: p.id, bus_captain: '1'), method: 'post'
+                = link_to "Make Bus Captain", toggle_bus_captain_manage_bus_list_path(@bus_list, questionnaire_id: p.id, bus_captain: '1'), method: 'post', data: { confirm: 'Are you sure? This will send a confirmation email to the bus captain.' }
   - if @bus_list.needs_bus_captain
     %p
       %strong Possible Bus Captains:
@@ -79,6 +61,8 @@
             %td= p.last_name
             %td= p.email
             %td= p.school.name
+
+  = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
 
   = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
   \|

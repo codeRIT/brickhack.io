@@ -7,31 +7,22 @@
   %ul
     %li Only students on this list may board the bus. <strong>No exceptions</strong>- this is to ensure everyone goes through the application process & has signed RIT's waivers.
     %li If a student was accepted but didn't RSVP or sign up for the bus, they can go to <strong>https://brickhack.io/rsvp</strong> to do so.
-    %li If any emergencies arise, call <strong>Velizar Demirev (413) 221-2420</strong>.
+    %li If any emergencies arise, call our travel director, <strong>Velizar Demirev</strong>, at <strong>(413) 221-2420</strong>.
+    %li
+      If you have any other questions, please feel free to email
+      = link_to "travel@codeRIT.org", "mailto:travel@codeRIT.org"
+      !
 
   %p
     %b Bus List Name:
     = @bus_list.name
 
-  %p
-    %strong Bus Captians:
-  - if @bus_list.captains.empty?
-    %p
-      %em TBD
-  - @bus_list.captains.each do |p|
-    %p
-      %strong= p.full_name
-      %br
-      %em= p.school.name
-      %br
-      Phone:
-      = p.phone
-      %br
-      Email:
-      = p.email
+  = render partial: 'bus_list_info', locals: { bus_list: @bus_list }
 
   %p
     %strong Passengers:
+    = "(#{@bus_list.passengers.count} total)"
+
   %table.table
     %thead
       %tr
@@ -47,8 +38,4 @@
           %td= p.email
           %td= p.school.name
 
-  %p
-    %b General Notes:
-  %hr
-  = @bus_list.notes.present? ? @bus_list.notes.html_safe : "(none)"
-  %hr
+  = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }

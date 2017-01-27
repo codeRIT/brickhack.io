@@ -1,0 +1,9 @@
+%p
+  - accepted = Questionnaire.joins(:school).where("schools.bus_list_id = '#{bus_list.id}' AND acc_status = 'accepted'").count
+  = pluralize(accepted, 'person has', 'people have')
+  been accepted but not yet RSVP'd.
+
+%p
+  - accepted = Questionnaire.joins(:school).where("schools.bus_list_id = '#{bus_list.id}' AND acc_status = 'rsvp_confirmed' AND riding_bus = false").count
+  = pluralize(accepted, 'person has', 'people have')
+  RSVP'd as attending but didn't sign up for the bus.

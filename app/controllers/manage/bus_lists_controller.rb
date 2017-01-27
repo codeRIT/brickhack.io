@@ -44,6 +44,9 @@ class Manage::BusListsController < Manage::ApplicationController
     @questionnaire = Questionnaire.find(params[:questionnaire_id])
     is_bus_captain = params[:bus_captain] == "1"
     @questionnaire.update_attribute(:is_bus_captain, is_bus_captain)
+    if @questionnaire.reload.is_bus_captain
+      Mailer.delay.bus_captain_confirmation_email(@bus_list.id, @questionnaire.user.id)
+    end
     redirect_to [:manage, @bus_list]
   end
 
