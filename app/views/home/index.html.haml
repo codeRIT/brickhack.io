@@ -174,7 +174,10 @@
         %h1 Sponsors
         .sponsors
           - STATIC_DATA['sponsors'].each do |sponsor|
-            %a.sponsor{ href: sponsor['url'], class: sponsor['small'] ? 'sponsor-small' : '' }
+            - sponsor_class = []
+            - sponsor_class << 'sponsor-small' if sponsor['small']
+            - sponsor_class << 'sponsor-large' if sponsor['large']
+            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' ') }
               = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
         %br
         = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }

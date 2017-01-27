@@ -1,6 +1,7 @@
 - name: Datto
   image: datto.png
   url: https://www.datto.com
+  large: true
 - name: Microsoft
   image: microsoft.png
   url: https://www.microsoft.com
