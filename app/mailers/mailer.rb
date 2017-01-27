@@ -58,6 +58,16 @@ class Mailer < ApplicationMailer
     )
   end
 
+  def bus_captain_confirmation_email(bus_list_id, user_id)
+    @user = User.find(user_id)
+    @bus_list = BusList.find(bus_list_id)
+    return if @user.blank? || @user.questionnaire.blank? || !@user.questionnaire.is_bus_captain? || @bus_list.blank?
+    mail(
+      to: @user.email,
+      subject: "You're a bus captain!"
+    )
+  end
+
   private
 
   def pretty_email(name, email)

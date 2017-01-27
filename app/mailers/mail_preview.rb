@@ -21,5 +21,11 @@ if defined?(ActionMailer::Preview)
       message = Message.first
       Mailer.bulk_message_email(message, User.first.id)
     end
+
+    def bus_captain_confirmation_email
+      buslist = BusList.first
+      Mailer.bus_captain_confirmation_email(buslist.id, buslist.captains.first.id)
+    end
+
   end
 end
