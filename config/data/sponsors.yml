@@ -1,15 +1,22 @@
 - name: Datto
   image: datto.png
   url: https://www.datto.com
+  large: true
 - name: Microsoft
   image: microsoft.png
   url: https://www.microsoft.com
+- name: IBM
+  image: ibm.png
+  url: https://www.ibm.com/internet-of-things/
 - name: UPS
   image: ups.png
   url: https://www.ups.com
 - name: Sparkpost
   image: sparkpost.png
   url: https://www.sparkpost.com
+- name: SapientNitro
+  image: sapientnitro.png
+  url: http://www.sapientnitro.com/
 - name: Fedora
   image: fedora.png
   url: https://getfedora.org

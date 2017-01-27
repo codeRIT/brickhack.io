@@ -174,21 +174,24 @@
         %h1 Sponsors
         .sponsors
           - STATIC_DATA['sponsors'].each do |sponsor|
-            %a.sponsor{ href: sponsor['url'], class: sponsor['small'] ? 'sponsor-small' : '' }
+            - sponsor_class = []
+            - sponsor_class << 'sponsor-small' if sponsor['small']
+            - sponsor_class << 'sponsor-large' if sponsor['large']
+            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
               = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
         %br
         = link_to 'Interested in Sponsoring?', image_path("BrickHack_Sponsorship_Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
       .column
         %h1 Partners
-        %a.sponsor{ href: "http://magic.rit.edu" }
+        %a.sponsor{ href: "http://magic.rit.edu", target: "_blank" }
           = image_tag 'sponsors/magic.gif', id: "magic", class: 'img-spaced'
-        %a.sponsor{ href: "https://mlh.io" }
+        %a.sponsor{ href: "https://mlh.io", target: "_blank" }
           = image_tag 'sponsors/mlh.png', class: 'img-spaced'
-        %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/" }
+        %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/", target: "_blank" }
           = image_tag 'sponsors/simone.png', class: 'img-spaced'
 
         %h1 Organized By
-        %a.sponsor{ href: "https://coderit.org" }
+        %a.sponsor{ href: "https://coderit.org", target: "_blank" }
           = image_tag 'coderit_logo.png', class: 'img-spaced'
 
 
