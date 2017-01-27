@@ -21,6 +21,8 @@
 
   %p
     %strong Passengers:
+    = "(#{@bus_list.passengers.count} total)"
+
   %table.table
     %thead
       %tr
@@ -35,3 +37,5 @@
           %td= p.last_name
           %td= p.email
           %td= p.school.name
+
+  = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
