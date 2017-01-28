@@ -34,6 +34,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
+    should "not allow access to manage_questionnaires#message_events" do
+      get :message_events, params: { id: @questionnaire }
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
     should "not allow access to manage_questionnaires#edit" do
       get :edit, params: { id: @questionnaire }
       assert_response :redirect
@@ -107,6 +113,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to root_path
     end
 
+    should "not allow access to manage_questionnaires#message_events" do
+      get :message_events, params: { id: @questionnaire }
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
     should "not allow access to manage_questionnaires#edit" do
       get :edit, params: { id: @questionnaire }
       assert_response :redirect
@@ -169,6 +181,11 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "allow access to manage_questionnaires#show" do
       get :show, params: { id: @questionnaire }
+      assert_response :success
+    end
+
+    should "allow access to manage_questionnaires#message_events" do
+      get :message_events, params: { id: @questionnaire }
       assert_response :success
     end
 
@@ -243,6 +260,11 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "allow access to manage_questionnaires#show" do
       get :show, params: { id: @questionnaire }
+      assert_response :success
+    end
+
+    should "allow access to manage_questionnaires#message_events" do
+      get :message_events, params: { id: @questionnaire }
       assert_response :success
     end
 

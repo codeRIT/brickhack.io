@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status]
+  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status, :message_events]
 
   respond_to :html
 
@@ -126,6 +126,10 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       q.save(validate: false) && process_acc_status_notifications(q, action)
     end
     head :ok
+  end
+
+  def message_events
+    render json: @questionnaire.message_events
   end
 
   private
