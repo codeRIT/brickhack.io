@@ -20,4 +20,7 @@
         = link_to "Bus Lists", manage_bus_lists_path
         = link_to "Schools", manage_schools_path
         = link_to "Stats", manage_stats_path
+        - unless current_user.admin_limited_access?
+          \|
+          = link_to "Sidekiq", blazer_path
       = yield
