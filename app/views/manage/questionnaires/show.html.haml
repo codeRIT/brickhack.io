@@ -50,3 +50,8 @@
     = simple_form_for @questionnaire, url: url_for(action: "update_acc_status", controller: "questionnaires") do |f|
       = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:"
       = f.button :submit, value: "Update Status"
+
+    %hr
+    %h4 Recent Email Events (past 10 days)
+    .email-events{ data: { url: message_events_manage_questionnaire_path(@questionnaire) } }
+      %em Email events not available at this time.

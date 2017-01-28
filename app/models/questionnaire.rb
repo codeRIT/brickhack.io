@@ -134,6 +134,13 @@ class Questionnaire < ApplicationRecord
     school.bus_list
   end
 
+  def message_events
+    return [] unless ENV['SPARKPOST_API_KEY']
+
+    simple_spark = SimpleSpark::Client.new
+    simple_spark.message_events.search(recipients: email)
+  end
+
   private
 
   def consolidate_school_names

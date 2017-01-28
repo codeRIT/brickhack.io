@@ -48,6 +48,8 @@ gem 'uglifier', '~> 3.0'
 
 gem 'blazer'
 
+gem 'simple_spark'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development do
