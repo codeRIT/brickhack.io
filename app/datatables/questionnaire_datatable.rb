@@ -1,7 +1,7 @@
 class QuestionnaireDatatable < AjaxDatatablesRails::Base
   include AjaxDatatablesRails::Extensions::Kaminari
 
-  def_delegators :@view, :link_to, :manage_questionnaire_path
+  def_delegators :@view, :link_to, :manage_questionnaire_path, :manage_school_path
 
   def sortable_columns
     @sortable_columns ||= [
@@ -39,7 +39,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
         record.email,
         "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
         record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
-        record.school.name
+        link_to(record.school.name, manage_school_path(record.school))
       ]
     end
   end

@@ -1,7 +1,7 @@
 class SchoolDatatable < AjaxDatatablesRails::Base
   include AjaxDatatablesRails::Extensions::Kaminari
 
-  def_delegators :@view, :link_to, :manage_school_path
+  def_delegators :@view, :link_to, :manage_school_path, :manage_bus_list_path
 
   def sortable_columns
     @sortable_columns ||= [
@@ -33,7 +33,8 @@ class SchoolDatatable < AjaxDatatablesRails::Base
         record.name,
         record.city,
         record.state,
-        record.questionnaire_count
+        record.questionnaire_count,
+        record.bus_list ? link_to(record.bus_list.name, manage_bus_list_path(record.bus_list)) : ''
       ]
     end
   end

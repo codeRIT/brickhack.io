@@ -35,6 +35,7 @@
   %table.table
     %thead
       %tr
+        %th
         %th First Name
         %th Last Name
         %th Email
@@ -43,6 +44,7 @@
     %tbody
       - @school.questionnaires.order(:acc_status).each do |q|
         %tr
+          %td= link_to '<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(q)
           %td= q.first_name
           %td= q.last_name
           %td= q.email

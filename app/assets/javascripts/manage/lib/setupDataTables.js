@@ -39,7 +39,7 @@ var setupDataTables = function() {
 
   window.questionnairesDataTable = setupDataTable($('.datatable.questionnaires'), {
     "order"      : [2, 'desc'],
-    "scrollX"    : true,
+    "scrollX"    : false,
     "columns"    : [
       { "orderable" : false },
       { "orderable" : false },
@@ -55,7 +55,7 @@ var setupDataTables = function() {
 
   setupDataTable($('.datatable.users'), {
     "order"      : [1, 'asc'],
-    "scrollX"    : true,
+    "scrollX"    : false,
     "columns"    : [
       { "orderable" : false },
       {},
@@ -66,7 +66,7 @@ var setupDataTables = function() {
 
   setupDataTable($('.datatable.messages'), {
     "order"      : [1, 'desc'],
-    "scrollX"    : true,
+    "scrollX"    : false,
     "columns"    : [
       { "orderable" : false },
       {},
@@ -78,19 +78,20 @@ var setupDataTables = function() {
 
   setupDataTable($('.datatable.schools'), {
     "order"      : [5, 'desc'],
-    "scrollX"    : true,
+    "scrollX"    : false,
     "columns"    : [
       { "orderable" : false },
       {},
       {},
       {},
       {},
-      {}
+      {},
+      { "orderable" : false }
     ]
   });
 
   setupDataTable($('.datatable.stats'), {
-    "scrollX"    : true,
+    "scrollX"    : false,
     "processing" : false,
     "serverSide" : false
   });
