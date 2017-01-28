@@ -46,6 +46,8 @@ gem 'selectize-rails'
 gem 'highcharts-rails', '~> 4.2.5'
 gem 'uglifier', '~> 3.0'
 
+gem 'blazer'
+
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development do

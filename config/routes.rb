@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(u) { u.admin? && !u.admin_limited_access? } do
     mount Sidekiq::Web => '/sidekiq'
+    mount Blazer::Engine, at: "blazer"
   end
 
   resource :questionnaires, path: "apply" do
