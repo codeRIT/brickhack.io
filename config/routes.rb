@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   mount MailPreview => 'mail_view' if Rails.env.development?
 
-  authenticate :user, ->(u) { u.admin? } do
+  authenticate :user, ->(u) { u.admin? && !u.admin_limited_access? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
