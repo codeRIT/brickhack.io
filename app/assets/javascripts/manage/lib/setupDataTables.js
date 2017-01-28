@@ -85,7 +85,8 @@ var setupDataTables = function() {
       {},
       {},
       {},
-      {}
+      {},
+      { "orderable" : false }
     ]
   });
 
