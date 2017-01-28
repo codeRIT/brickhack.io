@@ -22,6 +22,6 @@
         = link_to "Stats", manage_stats_path
         - unless current_user.admin_limited_access?
           \|
-          = link_to "Sidekiq", blazer_path
+          = link_to "Sidekiq", sidekiq_web_path
           = link_to "Blazer", blazer_path
       = yield
