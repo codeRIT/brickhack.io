@@ -57,6 +57,8 @@
           %th Last Name
           %th Email
           %th School Name
+          - unless current_user.admin_limited_access
+            %th Actions
       %tbody
         - @bus_list.passengers.select { |q| q.bus_captain_interest }.each do |p|
           %tr
@@ -65,6 +67,12 @@
             %td= p.last_name
             %td= p.email
             %td= p.school.name
+            - unless current_user.admin_limited_access
+              %td
+                - if p.is_bus_captain?
+                  = link_to "Remove Bus Captain", toggle_bus_captain_manage_bus_list_path(@bus_list, questionnaire_id: p.id, bus_captain: '0'), method: 'post'
+                - else
+                  = link_to "Make Bus Captain", toggle_bus_captain_manage_bus_list_path(@bus_list, questionnaire_id: p.id, bus_captain: '1'), method: 'post', data: { confirm: 'Are you sure? This will send a confirmation email to the bus captain.' }
 
   = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
 
