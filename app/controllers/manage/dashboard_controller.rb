@@ -29,13 +29,13 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def user_distribution_data
-    totalStatsData = {}
+    total_stats_data = {}
     total_count = Questionnaire.count
     rit_count = Questionnaire.where("school_id = \"2304\"").count
-    totalStatsData["Non-Applied Users"] = User.where(admin: false).count - total_count
-    totalStatsData["Non-RIT Applications"] = total_count - rit_count
-    totalStatsData["RIT Applications"] = rit_count
-    render json: totalStatsData
+    total_stats_data["Non-Applied Users"] = User.where(admin: false).count - total_count
+    total_stats_data["Non-RIT Applications"] = total_count - rit_count
+    total_stats_data["RIT Applications"] = rit_count
+    render json: total_stats_data
   end
 
   def application_distribution_data
