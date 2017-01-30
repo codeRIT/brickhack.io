@@ -56,3 +56,6 @@
       .center
         = btn_link_to "Edit Application", edit_questionnaires_path
         = f.button :submit, value: "Update"
+        %br
+        - if @questionnaire.can_ride_bus? && @questionnaire.is_bus_captain?
+          %p= link_to "Manage Bus List &raquo;".html_safe, bus_list_path
