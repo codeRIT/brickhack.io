@@ -5,8 +5,10 @@
     = f.input :name
     = f.input :capacity
     = f.input :needs_bus_captain
-    = f.input :notes
-    %p Notes support HTML
+    = f.input :notes, input_html: { rows: 10 }
+    %p
+      %small
+        %em Notes support Markdown and HTML.
 
   .form-actions
     = f.button :submit

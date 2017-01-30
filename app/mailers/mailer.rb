@@ -1,5 +1,6 @@
 class Mailer < ApplicationMailer
   include Roadie::Rails::Automatic
+  add_template_helper(ApplicationHelper)
 
   default from: '"BrickHack" <noreply@coderit.org>'
 

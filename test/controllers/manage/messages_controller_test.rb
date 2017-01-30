@@ -279,5 +279,19 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       get :preview, params: { id: @message }
       assert_response :success
     end
+
+    should "render markdown in manage_messages#preview" do
+      @message.update_attribute(:body, '### This is a title')
+      get :preview, params: { id: @message }
+      assert_response :success
+      assert_select "h3", "This is a title"
+    end
+
+    should "render html in manage_messages#preview" do
+      @message.update_attribute(:body, '<h3>This is a title</h3>')
+      get :preview, params: { id: @message }
+      assert_response :success
+      assert_select "h3", "This is a title"
+    end
   end
 end

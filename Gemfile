@@ -36,6 +36,8 @@ gem 'strip_attributes'
 
 gem 'validate_url'
 
+gem 'redcarpet'
+
 # Previously grouped under assets:
 gem 'sass-rails'
 gem 'coffee-rails'
