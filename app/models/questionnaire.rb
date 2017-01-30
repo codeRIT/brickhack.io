@@ -125,12 +125,12 @@ class Questionnaire < ApplicationRecord
     ['rsvp_confirmed', 'rsvp_denied'].include? acc_status
   end
 
-  def can_ride_bus?
+  def eligible_for_a_bus?
     school.present? && school.bus_list_id?
   end
 
   def bus_list
-    return unless can_ride_bus?
+    return unless eligible_for_a_bus?
     school.bus_list
   end
 

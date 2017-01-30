@@ -57,7 +57,7 @@ class RsvpsController < ApplicationController
       flash[:notice] = "Sorry, your bus is full! You may need to arrange other plans for transportation."
       @questionnaire.riding_bus = false
       @questionnaire.bus_captain_interest = false
-    elsif !@questionnaire.can_ride_bus?
+    elsif !@questionnaire.eligible_for_a_bus?
       @questionnaire.riding_bus = false
       @questionnaire.bus_captain_interest = false
     else

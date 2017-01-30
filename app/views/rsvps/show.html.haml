@@ -25,7 +25,7 @@
           = f.input :phone, input_html: { "data-validate" => "presence" }, label: "Verify Phone #:"
 
       .hide-if-not-attending{ style: @questionnaire.acc_status == "rsvp_denied" ? "display: none;" : "" }
-        - if @questionnaire.can_ride_bus?
+        - if @questionnaire.eligible_for_a_bus?
           - if !@questionnaire.riding_bus && @questionnaire.bus_list.full?
             #disclaimer
               Aw, shucks. Your school is eligible for a bus to BrickHack, but all the seats are currently taken.
@@ -57,5 +57,5 @@
         = btn_link_to "Edit Application", edit_questionnaires_path
         = f.button :submit, value: "Update"
         %br
-        - if @questionnaire.can_ride_bus? && @questionnaire.is_bus_captain?
+        - if @questionnaire.eligible_for_a_bus? && @questionnaire.is_bus_captain?
           %p= link_to "Manage Bus List &raquo;".html_safe, bus_list_path
