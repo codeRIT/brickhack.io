@@ -41,6 +41,7 @@
       = f.input :can_share_info, as: :formatted_boolean, label: "Share resume with employers?"
 
       = f.input :riding_bus, as: :formatted_boolean, label: "Riding Bus", disabled: !@questionnaire.can_ride_bus?
+      = f.input :is_bus_captain, as: :formatted_boolean, label: "Is Bus Captain", disabled: !@questionnaire.can_ride_bus?
       - if !@questionnaire.can_ride_bus?
         %p (school not eligible for bus)
 
