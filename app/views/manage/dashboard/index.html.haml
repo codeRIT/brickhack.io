@@ -48,12 +48,12 @@
     = pie_chart user_distribution_data_manage_dashboard_index_path, colors: [grey, blue, orange]
   .container.container-half
     %h4.dashboard-container-title Application Distribution
-    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [colors[:accepted], colors[:denied], colors[:late_waitlist], colors[:pending], colors[:rsvp_confirmed], colors[:rsvp_denied]]
+    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [colors[:pending], colors[:accepted], colors[:waitlisted], colors[:denied], colors[:late_waitlist], colors[:rsvp_confirmed], colors[:rsvp_denied]]
 
   .container.container-full
     %h4.dashboard-container-title Schools (Confirmed)
     %ul
-      = bar_chart schools_confirmed_data_manage_dashboard_index_path, height: "600px"
+      = bar_chart schools_confirmed_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [blue, orange]
     %h4.dashboard-container-title Schools (Applied)
     %ul
       = bar_chart schools_applied_data_manage_dashboard_index_path, height: "600px", stacked: true, colors: [colors[:rsvp_confirmed], colors[:accepted], colors[:waitlist], colors[:late_waitlist], colors[:rsvp_denied], colors[:denied], colors[:pending]], library: { legend: { enabled: false } }

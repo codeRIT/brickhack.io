@@ -10,8 +10,8 @@
     = render "layouts/sidebar"
     = javascript_include_tag "manage/application"
     = render "layouts/shared_footer"
-    %div{id:'main'}
-      %div{id:'manageNav'}
+    #main
+      #manageNav
         %p BrickHack Manager
         = link_to "Dashboard", manage_root_path
         = link_to "Questionnaires", manage_questionnaires_path

@@ -29,24 +29,34 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def user_distribution_data
-    totalStatsData = {}
+    total_stats_data = {}
     total_count = Questionnaire.count
     rit_count = Questionnaire.where("school_id = \"2304\"").count
-    totalStatsData["Non-Applied Users"] = User.where(admin: false).count - total_count
-    totalStatsData["Non-RIT Applications"] = total_count - rit_count
-    totalStatsData["RIT Applications"] = rit_count
-    render json: totalStatsData
+    total_stats_data["Non-Applied Users"] = User.where(admin: false).count - total_count
+    total_stats_data["Non-RIT Applications"] = total_count - rit_count
+    total_stats_data["RIT Applications"] = rit_count
+    render json: total_stats_data
   end
 
   def application_distribution_data
-    groups = Questionnaire.group(:acc_status).count
-    groups.keys.each { |short_status, _count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
-    render json: groups
+    counts = Questionnaire.group(:acc_status).count
+    results = Questionnaire::POSSIBLE_ACC_STATUS.map { |acc_status, status_title| [status_title, counts[acc_status] || 0] }
+    render json: results
   end
 
   def schools_confirmed_data
     schools = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed'").order("schools.name ASC").count
-    render json: schools.sort_by { |_, count| count }.reverse
+    schools_riding = Questionnaire.joins(:school).group('schools.name').where("acc_status = 'rsvp_confirmed' AND riding_bus AND schools.bus_list_id").count
+    schools = schools.map do |name, count|
+      bus_count_row = schools_riding.select { |school_bus_name, _| school_bus_name == name }
+      bus_count = bus_count_row ? bus_count_row[name] || 0 : 0
+      count_without_bus = count - bus_count
+      [name, count_without_bus]
+    end
+    render json: [
+      { name: "Not riding bus", data: schools.sort_by { |_, count, _| count }.reverse },
+      { name: "Riding bus", data: schools_riding }
+    ]
   end
 
   def schools_applied_data

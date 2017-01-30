@@ -113,7 +113,7 @@ GEM
       activesupport (>= 4.1.0)
     groupdate (3.1.1)
       activesupport (>= 3)
-    guard (2.14.0)
+    guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (~> 1.0)
@@ -234,7 +234,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    power_assert (1.0.0)
+    power_assert (1.0.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
