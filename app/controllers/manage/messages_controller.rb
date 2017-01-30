@@ -1,5 +1,5 @@
 class Manage::MessagesController < Manage::ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview]
+  before_action :set_message, only: [:show, :edit, :update, :destroy, :deliver, :preview, :duplicate]
   before_action :check_message_access, only: [:edit, :update, :destroy]
 
   respond_to :html
@@ -53,6 +53,18 @@ class Manage::MessagesController < Manage::ApplicationController
   def preview
     email = Mailer.bulk_message_email(@message.id, current_user.id)
     render html: email.body.raw_source.html_safe
+  end
+
+  def duplicate
+    new_message = @message.dup
+    new_message.update_attributes(
+      delivered_at: nil,
+      started_at: nil,
+      queued_at: nil,
+      name: "Copy of #{@message.name}"
+    )
+    new_message.save
+    redirect_to edit_manage_message_path(new_message.reload)
   end
 
   private

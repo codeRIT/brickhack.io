@@ -71,6 +71,14 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
+
+    should "not allow access to manage_messages#duplicate" do
+      assert_difference('Message.count', 0) do
+        patch :duplicate, params: { id: @message }
+      end
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
   end
 
   context "while authenticated as a user" do
@@ -140,6 +148,14 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       assert_response :redirect
       assert_redirected_to root_path
     end
+
+    should "not allow access to manage_messages#duplicate" do
+      assert_difference('Message.count', 0) do
+        patch :duplicate, params: { id: @message }
+      end
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
   end
 
   context "while authenticated as a limited access admin" do
@@ -204,6 +220,14 @@ class Manage::MessagesControllerTest < ActionController::TestCase
     should "allow access to manage_messages#preview" do
       get :preview, params: { id: @message }
       assert_response :success
+    end
+
+    should "not allow access to manage_messages#duplicate" do
+      assert_difference('Message.count', 0) do
+        patch :duplicate, params: { id: @message }
+      end
+      assert_response :redirect
+      assert_redirected_to manage_messages_path
     end
   end
 
@@ -292,6 +316,38 @@ class Manage::MessagesControllerTest < ActionController::TestCase
       get :preview, params: { id: @message }
       assert_response :success
       assert_select "h3", "This is a title"
+    end
+
+    context "manage_messages#duplicate" do
+      should "duplicate message" do
+        assert_difference('Message.count', 1) do
+          patch :duplicate, params: { id: @message }
+        end
+        assert_response :redirect
+        assert_redirected_to edit_manage_message_path(Message.last)
+      end
+
+      should "reset status" do
+        @message.update_attributes(
+          delivered_at: Time.now,
+          started_at: Time.now,
+          queued_at: Time.now
+        )
+        patch :duplicate, params: { id: @message }
+        assert_equal "drafted", Message.last.status
+      end
+
+      should "maintain similar fields" do
+        @message.update_attributes(
+          name: 'My message name',
+          subject: 'This subject',
+          body: 'hello world'
+        )
+        patch :duplicate, params: { id: @message }
+        assert_equal 'Copy of My message name', Message.last.name
+        assert_equal 'This subject', Message.last.subject
+        assert_equal 'hello world', Message.last.body
+      end
     end
   end
 end
