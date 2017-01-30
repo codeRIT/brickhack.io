@@ -39,9 +39,9 @@ class Manage::DashboardController < Manage::ApplicationController
   end
 
   def application_distribution_data
-    groups = Questionnaire.group(:acc_status).count
-    groups.keys.each { |short_status, _count| groups[Questionnaire::POSSIBLE_ACC_STATUS[short_status]] = groups.delete(short_status) }
-    render json: groups
+    counts = Questionnaire.group(:acc_status).count
+    results = Questionnaire::POSSIBLE_ACC_STATUS.map { |acc_status, status_title| [status_title, counts[acc_status] || 0] }
+    render json: results
   end
 
   def schools_confirmed_data

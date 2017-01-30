@@ -48,7 +48,7 @@
     = pie_chart user_distribution_data_manage_dashboard_index_path, colors: [grey, blue, orange]
   .container.container-half
     %h4.dashboard-container-title Application Distribution
-    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [colors[:accepted], colors[:denied], colors[:late_waitlist], colors[:pending], colors[:rsvp_confirmed], colors[:rsvp_denied]]
+    = pie_chart application_distribution_data_manage_dashboard_index_path, colors: [colors[:pending], colors[:accepted], colors[:waitlisted], colors[:denied], colors[:late_waitlist], colors[:rsvp_confirmed], colors[:rsvp_denied]]
 
   .container.container-full
     %h4.dashboard-container-title Schools (Confirmed)
