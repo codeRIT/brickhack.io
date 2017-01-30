@@ -53,7 +53,11 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
-      assert_equal "pending", assigns(:questionnaire).acc_status
+      if AUTO_LATE_WAITLIST
+        assert_equal "late_waitlist", assigns(:questionnaire).acc_status
+      else
+        assert_equal "pending", assigns(:questionnaire).acc_status
+      end
     end
 
     should "not allow multiple questionnaires" do

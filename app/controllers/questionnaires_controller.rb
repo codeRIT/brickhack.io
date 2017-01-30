@@ -64,7 +64,7 @@ class QuestionnairesController < ApplicationController
     respond_to do |format|
       if @questionnaire.save
         current_user.questionnaire = @questionnaire
-        @questionnaire.update_attribute(:acc_status, "pending")
+        @questionnaire.update_attribute(:acc_status, default_acc_status)
         Mailer.delay.application_confirmation_email(@questionnaire.id)
         format.html { redirect_to questionnaires_path, notice: 'Application was successfully created.' }
         format.json { render json: @questionnaire, status: :created, location: @questionnaire }
@@ -142,5 +142,10 @@ class QuestionnairesController < ApplicationController
       questionnaire.delete :school_name
     end
     questionnaire
+  end
+
+  def default_acc_status
+    return "late_waitlist" if AUTO_LATE_WAITLIST
+    "pending"
   end
 end
