@@ -207,6 +207,20 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "render markdown in manage_bus_lists#show" do
+      @bus_list.update_attribute(:notes, '### This is a title')
+      get :show, params: { id: @bus_list }
+      assert_response :success
+      assert_select "fieldset h3", "This is a title"
+    end
+
+    should "render html in manage_bus_lists#show" do
+      @bus_list.update_attribute(:notes, '<h3>This is a title</h3>')
+      get :show, params: { id: @bus_list }
+      assert_response :success
+      assert_select "fieldset h3", "This is a title"
+    end
+
     should "allow access to manage_bus_lists#edit" do
       get :edit, params: { id: @bus_list }
       assert_response :success
