@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       get :preview, on: :member
       post :datatable, on: :collection
       patch :deliver, on: :member
+      patch :duplicate, on: :member
     end
     resources :bus_lists do
       post :toggle_bus_captain, on: :member

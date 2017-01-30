@@ -45,4 +45,6 @@
       \|
       = link_to 'Delete', manage_message_path(@message), method: :delete, data: { confirm: "Are you sure? The message \"#{@message.name}\" will be permanently erased. This action is irreversible." }
       \|
+    = link_to 'Duplicate', duplicate_manage_message_path(@message), method: :patch
+    \|
   = link_to 'Back', manage_messages_path
