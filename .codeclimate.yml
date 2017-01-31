@@ -1,5 +1,22 @@
-languages:
-  Ruby: true
-  JavaScript: true
+engines:
+  rubocop:
+    enabled: true
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+        #mass_threshold: 30
+      - javascript
+ratings:
+  paths:
+  - app/**
+  - lib/**
+  - "**.rb"
 exclude_paths:
-- "public/"
+- "**/*.min.*"
+- public/**/*
+- test/**/*
+- "**/vendor/**/*"
