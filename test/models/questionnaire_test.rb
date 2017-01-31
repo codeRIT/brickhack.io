@@ -209,24 +209,32 @@ class QuestionnaireTest < ActiveSupport::TestCase
     end
   end
 
-  context "#can_ride_bus?" do
+  context "#eligible_for_a_bus?" do
     should "return false if no school set" do
       questionnaire = create(:questionnaire)
       questionnaire.update_attribute(:school_id, nil)
-      assert_equal false, questionnaire.can_ride_bus?
+      assert_equal false, questionnaire.eligible_for_a_bus?
     end
 
     should "return false if school does not have bus" do
       questionnaire = create(:questionnaire)
       questionnaire.school.update_attribute(:bus_list_id, nil)
-      assert_equal false, questionnaire.can_ride_bus?
+      assert_equal false, questionnaire.eligible_for_a_bus?
     end
 
     should "return true if school has a bus" do
       questionnaire = create(:questionnaire)
       bus_list = create(:bus_list)
       questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
-      assert_equal true, questionnaire.can_ride_bus?
+      assert_equal true, questionnaire.eligible_for_a_bus?
+    end
+
+    should "return true even if bus is full" do
+      questionnaire = create(:questionnaire)
+      bus_list = create(:bus_list, capacity: 0)
+      questionnaire.school.update_attribute(:bus_list_id, bus_list.id)
+      assert_equal true, bus_list.full?
+      assert_equal true, questionnaire.eligible_for_a_bus?
     end
   end
 
