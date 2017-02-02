@@ -9,7 +9,7 @@
       %tr
         %th
           - unless current_user.admin_limited_access?
-            %input{type: "checkbox", name: "select_allc", value: "1", data: { bulk_row_select: "" }}
+            %input{ type: "checkbox", name: "select_allc", value: "1", data: { bulk_row_select: "" } }
         %th
         %th ID
         %th First name

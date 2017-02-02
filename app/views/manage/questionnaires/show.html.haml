@@ -41,6 +41,7 @@
         = f.input :agreement_accepted, as: :formatted_boolean, input_html: { "data-validate" => "presence" }
         = f.input :can_share_info, as: :formatted_boolean
         = f.input :phone, input_html: { "data-validate" => "presence" }
+        = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
       = hidden_field_tag("check_in", !@questionnaire.checked_in?)
       = f.button :submit, value: ( @questionnaire.checked_in? ? "Remove check-in" : "Check In" )
 
