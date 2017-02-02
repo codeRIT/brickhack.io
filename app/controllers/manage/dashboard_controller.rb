@@ -51,10 +51,10 @@ class Manage::DashboardController < Manage::ApplicationController
       bus_count_row = schools_riding.select { |school_bus_name, _| school_bus_name == name }
       bus_count = bus_count_row ? bus_count_row[name] || 0 : 0
       count_without_bus = count - bus_count
-      [name, count_without_bus]
+      [name, count_without_bus, bus_count]
     end
     render json: [
-      { name: "Not riding bus", data: schools.sort_by { |_, count, _| count }.reverse },
+      { name: "Not riding bus", data: schools.sort_by { |_, no_bus, bus| [bus, no_bus] }.reverse },
       { name: "Riding bus", data: schools_riding }
     ]
   end
