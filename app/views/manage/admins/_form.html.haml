@@ -1,4 +1,4 @@
-%div{class:'form-container'}
+.form-container
   = simple_form_for @user, url: url_for(action: @user.new_record? ? "create" : "update", controller: "admins"), html: { "data-validate" => "form" } do |f|
 
     - if @user.new_record?
@@ -14,5 +14,5 @@
       = f.input :admin_limited_access, as: :formatted_boolean, label: "Limited Access"
       %p Limited access prevents the admin from adding, modifying, or deleting any records. Modifications through the check-in process are allowed.
 
-    %div{class:'center'}
+    .center
       = f.button :submit, value: ( @user.new_record? ? 'Create' : 'Save' )
