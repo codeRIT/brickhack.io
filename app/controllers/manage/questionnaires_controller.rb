@@ -55,7 +55,10 @@ class Manage::QuestionnairesController < Manage::ApplicationController
   def check_in
     if params[:check_in] == "true"
       if params[:questionnaire]
-        @questionnaire.update_attributes(params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info))
+        q_params = params.require(:questionnaire).permit(:agreement_accepted, :phone, :can_share_info, :email)
+        email = q_params.delete(:email)
+        @questionnaire.update_attributes(q_params)
+        @questionnaire.user.update_attributes(email: email)
       end
       unless @questionnaire.valid?
         flash[:notice] = @questionnaire.errors.full_messages.join(", ")

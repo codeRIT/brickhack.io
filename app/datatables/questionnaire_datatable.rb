@@ -1,7 +1,7 @@
 class QuestionnaireDatatable < AjaxDatatablesRails::Base
   include AjaxDatatablesRails::Extensions::Kaminari
 
-  def_delegators :@view, :link_to, :manage_questionnaire_path, :manage_school_path
+  def_delegators :@view, :link_to, :manage_questionnaire_path, :manage_school_path, :current_user
 
   def sortable_columns
     @sortable_columns ||= [
@@ -31,7 +31,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
-        '<input type="checkbox" data-bulk-row-edit="' + record.id.to_s + '">',
+        current_user.admin_limited_access ? '' : '<input type="checkbox" data-bulk-row-edit="' + record.id.to_s + '">',
         link_to('<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(record)),
         record.id,
         record.first_name,

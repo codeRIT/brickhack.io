@@ -1,6 +1,4 @@
 %section.section.manage
-  %h1.section-title= title "Questionnaire View"
-
   - if notice
     #disclaimer= notice
 
@@ -43,13 +41,15 @@
         = f.input :agreement_accepted, as: :formatted_boolean, input_html: { "data-validate" => "presence" }
         = f.input :can_share_info, as: :formatted_boolean
         = f.input :phone, input_html: { "data-validate" => "presence" }
+        = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
       = hidden_field_tag("check_in", !@questionnaire.checked_in?)
       = f.button :submit, value: ( @questionnaire.checked_in? ? "Remove check-in" : "Check In" )
 
-    %hr
-    = simple_form_for @questionnaire, url: url_for(action: "update_acc_status", controller: "questionnaires") do |f|
-      = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:"
-      = f.button :submit, value: "Update Status"
+    - unless current_user.admin_limited_access?
+      %hr
+      = simple_form_for @questionnaire, url: url_for(action: "update_acc_status", controller: "questionnaires") do |f|
+        = f.input :acc_status, as: :select, collection: Questionnaire::POSSIBLE_ACC_STATUS.invert, include_blank: false, label: "Acceptance Status:"
+        = f.button :submit, value: "Update Status"
 
     %hr
     %h4 Recent Email Events (past 10 days)

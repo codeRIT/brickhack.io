@@ -42,3 +42,14 @@
           %th Open Source Link
           %th Portfolio Link
       %tbody
+
+  .container.container-full
+    %h4.dashboard-container-title MLH Info
+    %table.stats.datatable.row-border.stripe.hover.order-column{ "data-source" => mlh_info_manage_stats_path(format: :json) }
+      %thead
+        %tr
+          %th First name
+          %th Last name
+          %th Email
+          %th Phone Number
+      %tbody

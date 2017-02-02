@@ -225,14 +225,10 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to manage_questionnaires_path
     end
 
-    should "allow access to manage_questionnaires#update_acc_status" do
+    should "not access to manage_questionnaires#update_acc_status" do
       patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: "accepted" } }
-      assert_equal "accepted", @questionnaire.reload.acc_status
-      assert_equal @user.id, @questionnaire.reload.acc_status_author_id
-      assert_not_equal nil, @questionnaire.reload.acc_status_date
-      assert_nil flash[:notice]
       assert_response :redirect
-      assert_redirected_to manage_questionnaire_path @questionnaire
+      assert_redirected_to manage_questionnaires_path
     end
 
     should "allow access to manage_questionnaires#bulk_apply" do
@@ -344,13 +340,14 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:agreement_accepted, false)
       @questionnaire.update_attribute(:can_share_info, false)
       @questionnaire.update_attribute(:phone, "")
-      patch :check_in, params: { id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333" } }
+      patch :check_in, params: { id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333", email: "new_email@example.com" } }
       @questionnaire.reload
       assert 1.minute.ago < @questionnaire.checked_in_at
       assert_equal @user.id, @questionnaire.checked_in_by_id
       assert_equal true, @questionnaire.agreement_accepted
       assert_equal true, @questionnaire.can_share_info
       assert_equal "(123) 333-3333", @questionnaire.phone
+      assert_equal "new_email@example.com", @questionnaire.email
       assert_match /Checked in/, flash[:notice]
       assert_response :redirect
       assert_redirected_to manage_questionnaires_path
@@ -360,15 +357,17 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:agreement_accepted, false)
       @questionnaire.update_attribute(:can_share_info, false)
       @questionnaire.update_attribute(:phone, "")
+      @questionnaire.user.update_attribute(:email, "old_email@example.com")
       @questionnaire.update_attribute(:checked_in_at, nil)
       @questionnaire.update_attribute(:checked_in_by_id, nil)
-      patch :check_in, params: { id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333" } }
+      patch :check_in, params: { id: @questionnaire, check_in: "", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333", email: "new_email@example.com" } }
       @questionnaire.reload
       assert_nil @questionnaire.checked_in_at
       assert_nil @questionnaire.checked_in_by_id
       assert_equal false, @questionnaire.agreement_accepted
       assert_equal false, @questionnaire.can_share_info
       assert_equal "", @questionnaire.phone
+      assert_equal "old_email@example.com", @questionnaire.email
       assert_match /No check-in action provided/, flash[:notice]
       assert_response :redirect
       assert_redirected_to manage_questionnaire_path(@questionnaire)

@@ -50,6 +50,19 @@ class Manage::StatsController < Manage::ApplicationController
     render json: { data: data }
   end
 
+  def mlh_info
+    data = Rails.cache.fetch(cache_key_for_questionnaires("mlh_info")) do
+      attributes = [:first_name,
+                    :last_name,
+                    :email,
+                    :phone]
+      select_attributes = Array.new(attributes) << :user_id
+      data = Questionnaire.select(select_attributes)
+      to_json_array(data, attributes)
+    end
+    render json: { data: data }
+  end
+
   private
 
   def to_json_array(data, attributes)
