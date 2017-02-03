@@ -17,9 +17,6 @@
 - name: SapientNitro
   image: sapientnitro.png
   url: http://www.sapientnitro.com/
-- name: Fedora
-  image: fedora.png
-  url: https://getfedora.org
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
