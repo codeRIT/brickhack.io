@@ -94,6 +94,28 @@ $schedule-breakpoint: 500px
   display: none
   padding-top: $schedule-unit - 2px
 
+.schedule__section:first-of-type .schedule__row:first-child
+  .schedule__line
+    margin-top: $schedule-unit + 5px
+  .schedule__dot
+    margin-top: 0
+
+.schedule__section:not(:last-of-type) .schedule__row:last-child
+  .schedule__line:after
+    content: ""
+    width: 10px
+    height: 25px
+    left: -1px
+    position: relative
+    display: block
+    border-left: 1px solid $grey-light
+    bottom: -29px
+    z-index: -1
+
+.schedule__section:last-of-type .schedule__row:last-child
+  .schedule__line
+    height: 30px
+
 // todo: implement JS
 .schedule__row--selected
   padding: 2 * $schedule-unit 0 $schedule-unit
