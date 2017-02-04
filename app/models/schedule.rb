@@ -44,7 +44,10 @@ class Schedule
 
   def fill_section(section, row)
     r = []
-    row["values"].map { |col| r << col["userEnteredValue"]["stringValue"] unless col["userEnteredValue"]["stringValue"] == ITEM }
+    row["values"].map do |col|
+      next if !col.empty? && col["userEnteredValue"]["stringValue"] == ITEM
+      r << (col.empty? ? '' : col["userEnteredValue"]["stringValue"])
+    end
     section << r unless r.count.zero?
   end
 end
