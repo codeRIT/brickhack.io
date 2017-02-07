@@ -82,6 +82,17 @@ ready = function() {
             }
         }
     });
+
+    $('.schedule__trigger').on('mouseover', function() {
+        $(this).parents('.schedule__row').addClass('schedule__row--hover');
+    });
+    $('.schedule__trigger').on('mouseout', function() {
+        $(this).parents('.schedule__row').removeClass('schedule__row--hover');
+    });
+    $('.schedule__trigger').on('click', function() {
+        $('.schedule__row--selected').removeClass('schedule__row--selected');
+        $(this).parents('.schedule__row').addClass('schedule__row--selected');
+    });
 };
 
 $(document).ready(ready);

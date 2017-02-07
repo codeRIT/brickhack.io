@@ -1,6 +1,8 @@
 $schedule-unit: 15px
 $schedule-dot-size: 10px
 $schedule-breakpoint: 500px
+$schedule-transition-time: 0.2s
+$schedule-transition-ease: ease-out
 
 .schedule__section
   margin-bottom: 25px
@@ -36,6 +38,7 @@ $schedule-breakpoint: 500px
 .schedule__row
   display: flex
   flex-direction: row
+  transition: all $schedule-transition-time $schedule-transition-ease
 
 .schedule__row--static
   &, .schedule__title
@@ -74,14 +77,16 @@ $schedule-breakpoint: 500px
   margin-top: $schedule-unit + 5px
   margin-left: -1 * $schedule-dot-size/2
   background: #fff
-
-  transition: background-color .5s ease-in-out
+  transition: background-color $schedule-transition-time $schedule-transition-ease
+  transition-delay: $schedule-transition-time * .5
 
 .schedule__details
   flex: 1 1
+  transition: padding $schedule-transition-time $schedule-transition-ease
 
 .schedule__title
   font-weight: 400
+  transition: color $schedule-transition-time $schedule-transition-ease
 
 .schedule__location
   font-weight: 400
@@ -91,8 +96,13 @@ $schedule-breakpoint: 500px
   margin-top: 2px
 
 .schedule__desc
-  display: none
-  padding-top: $schedule-unit - 2px
+  max-height: 0
+  padding-top: 0
+  overflow: hidden
+  transition: max-height $schedule-transition-time $schedule-transition-ease
+
+.schedule__trigger
+  cursor: pointer
 
 .schedule__section:first-of-type .schedule__row:first-child
   .schedule__line
@@ -116,9 +126,15 @@ $schedule-breakpoint: 500px
   .schedule__line
     height: 30px
 
-// todo: implement JS
+.schedule__row--hover
+  .schedule__title
+    color: $orange
+  .schedule__dot
+    background: $grey-med
+    transition-delay: 0s
+
 .schedule__row--selected
-  padding: 2 * $schedule-unit 0 $schedule-unit
+  padding: 1.5 * $schedule-unit 0 .5 * $schedule-unit
 
   .schedule__line
     margin-top: -2 * $schedule-unit
@@ -140,4 +156,5 @@ $schedule-breakpoint: 500px
     font-weight: $font-bold
 
   .schedule__desc
-    display: block
+    max-height: 100px
+    padding-top: $schedule-unit - 2px

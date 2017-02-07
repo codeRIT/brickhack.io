@@ -12,19 +12,23 @@
       %p.center Schedule temporarily unavailable - please check back later!
       %br
     - else
+      - first_used = false
       - sections.each do |section|
         .schedule__section
           .schedule__day
             .schedule__day-text= section.shift
           .schedule__rows
-            - section.each do |row|
-              - row_class = row[2] && row[3] == ':static' ? 'schedule__row--static' : ''
-              .schedule__row{ class: row_class }
-                .schedule__time= row[0]
-                .schedule__line
+            - section.each_with_index do |row, index|
+              - row_class = []
+              - row_class << 'schedule__row--static' if row[2] && row[3] == ':static'
+              - row_class << 'schedule__row--selected' && first_used = true unless first_used
+              - trigger_class = row[3] == ':static' ? '' : 'schedule__trigger'
+              .schedule__row{ class: row_class.join(' ') }
+                .schedule__time{ class: trigger_class }= row[0]
+                .schedule__line{ class: trigger_class }
                   .schedule__dot
                 .schedule__details
-                  .schedule__title= row[1]
+                  .schedule__title{ class: trigger_class }= row[1]
                   - if row[2]
                     .schedule__location= row[2]
                   - if row[3] && row[3] != ':static'
