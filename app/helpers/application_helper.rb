@@ -16,7 +16,8 @@ module ApplicationHelper
                                        disable_indented_code_blocks: true,
                                        autolink: true,
                                        tables: true,
-                                       underline: true)
+                                       underline: true,
+                                       hard_wrap: true)
     markdown.render(text).html_safe
   end
 end
