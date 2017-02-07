@@ -18,7 +18,7 @@
             .schedule__day-text= section.shift
           .schedule__rows
             - section.each do |row|
-              - row_class = row[2] && row[2] == ':static' ? 'schedule__row--static' : ''
+              - row_class = row[2] && row[3] == ':static' ? 'schedule__row--static' : ''
               .schedule__row{ class: row_class }
                 .schedule__time= row[0]
                 .schedule__line
