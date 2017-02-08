@@ -1,5 +1,5 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
-  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status, :message_events]
+  before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status, :message_events, :invite_to_slack]
 
   respond_to :html
 
@@ -67,6 +67,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
       end
       @questionnaire.update_attribute(:checked_in_at, Time.now)
       @questionnaire.update_attribute(:checked_in_by_id, current_user.id)
+      @questionnaire.invite_to_slack
       flash[:notice] = "Checked in #{@questionnaire.full_name}."
     elsif params[:check_in] == "false"
       @questionnaire.update_attribute(:checked_in_at, nil)
@@ -131,6 +132,12 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     head :ok
   end
 
+  def invite_to_slack
+    @questionnaire.invite_to_slack
+    flash[:notice] = 'Slack invite has been queued for delivery'
+    redirect_to manage_questionnaire_path @questionnaire
+  end
+
   def message_events
     render json: @questionnaire.message_events
   end
@@ -167,5 +174,7 @@ class Manage::QuestionnairesController < Manage::ApplicationController
     Mailer.delay.accepted_email(questionnaire.id) if new_status == "accepted"
     Mailer.delay.rsvp_confirmation_email(questionnaire.id) if new_status == "rsvp_confirmed"
     Mailer.delay.denied_email(questionnaire.id) if new_status == "denied"
+
+    questionnaire.invite_to_slack if ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] == 'true' && ['accepted', 'rsvp_confirmed'].include?(new_status)
   end
 end

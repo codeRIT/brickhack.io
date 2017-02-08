@@ -141,6 +141,10 @@ class Questionnaire < ApplicationRecord
     simple_spark.message_events.search(recipients: email)
   end
 
+  def invite_to_slack
+    SlackInviteWorker.perform_async(id)
+  end
+
   private
 
   def consolidate_school_names

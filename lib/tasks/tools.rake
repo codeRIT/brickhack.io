@@ -18,4 +18,11 @@ namespace :tools do
     puts "Resetting all school questionnaire counts..."
     School.where("questionnaire_count > 0").update_all questionnaire_count: 0
   end
+
+  desc "Invite all accepted users to Slack"
+  task :invite_all_accepted_to_slack, [] => :environment do |_t, _args|
+    puts "Queueing invitations..."
+    Questionnaire.where("acc_status = 'accepted' OR acc_status = 'rsvp_confirmed'").each(&:invite_to_slack)
+    puts "Done."
+  end
 end

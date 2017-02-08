@@ -15,6 +15,8 @@
       \|
       = link_to 'Convert to Admin', convert_to_admin_manage_questionnaire_path(@questionnaire), method: :patch, data: { confirm: "Are you sure? The questionnaire for \"#{@questionnaire.full_name}\" will be permanently erased. This action is irreversible." }
       \|
+    = link_to 'Invite to Slack', invite_to_slack_manage_questionnaire_path(@questionnaire), method: :patch
+    \|
     = link_to 'Back', manage_questionnaires_path
     %hr
 
@@ -44,6 +46,10 @@
         = f.input :email, placeholder: "joe@example.com", input_html: { "data-validate" => "presence email", value: @questionnaire.user.try(:email) }, required: true
       = hidden_field_tag("check_in", !@questionnaire.checked_in?)
       = f.button :submit, value: ( @questionnaire.checked_in? ? "Remove check-in" : "Check In" )
+      - if !@questionnaire.checked_in?
+        %p
+          %small
+            %i An invite to Slack will be sent upon check-in, if they haven't gotten one already.
 
     - unless current_user.admin_limited_access?
       %hr
