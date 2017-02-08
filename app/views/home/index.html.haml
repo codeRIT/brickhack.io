@@ -81,23 +81,19 @@
         %h2 Designers
         %p Do you have a penchant for creating intuitive works? Take this opportunity to work with other designers!
         %p Work on a team to create a new brand or marketing strategy! You can even hack alongside engineers to produce a working prototype.
-        %button.button.disabled{disabled: true} Details coming soon
+        = btn_link_to 'Design Category', 'https://goo.gl/51WUv0'
       .column
         = image_tag 'dev_grey.png', class: 'img-spaced'
         %h2 Developers
         %p Does hammering away at bugs excite you? What about exploring new technologies while bringing an idea to life?
         %p Come together to hack on the next solution to an every day problem, or even contribute back to the open source community.
-        %button.button.disabled{disabled: true} Details coming soon
-        /= link_to "#" do
-        /  .button API List
+        = btn_link_to 'API List', 'https://goo.gl/qmv2GH'
       .column
         = image_tag 'eng_grey.png', class: 'img-spaced'
         %h2 Engineers
         %p Is hardware your passion? Does bringing the physical world to life excite you?
         %p Put the parts together and get hands-on to construct your vision. We'll have various devices & products from MLH's popular hardware lab to work with.
-        %button.button.disabled{disabled: true} Details coming soon
-        /= link_to "https://mlh.io/hardware-lab" do
-        /  .button HARDWARE
+        = btn_link_to 'Hardware Lab', 'https://hardware.mlh.io'
 
 = render 'schedule'
 
