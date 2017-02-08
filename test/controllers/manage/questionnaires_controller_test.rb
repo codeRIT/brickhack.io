@@ -4,6 +4,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
   before do
     ActionMailer::Base.deliveries = []
     Sidekiq::Extensions::DelayedMailer.jobs.clear
+    SlackInviteWorker.jobs.clear
   end
 
   setup do
@@ -36,6 +37,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
 
     should "not allow access to manage_questionnaires#message_events" do
       get :message_events, params: { id: @questionnaire }
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
+    should "not allow access to manage_questionnaires#invite_to_slack" do
+      patch :invite_to_slack, params: { id: @questionnaire }
       assert_response :redirect
       assert_redirected_to new_user_session_path
     end
@@ -119,6 +126,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_redirected_to root_path
     end
 
+    should "not allow access to manage_questionnaires#invite_to_slack" do
+      patch :invite_to_slack, params: { id: @questionnaire }
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
     should "not allow access to manage_questionnaires#edit" do
       get :edit, params: { id: @questionnaire }
       assert_response :redirect
@@ -187,6 +200,12 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     should "allow access to manage_questionnaires#message_events" do
       get :message_events, params: { id: @questionnaire }
       assert_response :success
+    end
+
+    should "allow access to manage_questionnaires#invite_to_slack" do
+      patch :invite_to_slack, params: { id: @questionnaire }
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path(@questionnaire)
     end
 
     should "not allow access to manage_questionnaires#new" do
@@ -264,6 +283,14 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    should "allow access to manage_questionnaires#invite_to_slack" do
+      assert_difference('SlackInviteWorker.jobs.size', 1) do
+        patch :invite_to_slack, params: { id: @questionnaire }
+      end
+      assert_response :redirect
+      assert_redirected_to manage_questionnaire_path(@questionnaire)
+    end
+
     should "allow access to manage_questionnaires#edit" do
       get :edit, params: { id: @questionnaire }
       assert_response :success
@@ -328,7 +355,9 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "check in the questionnaire" do
-      patch :check_in, params: { id: @questionnaire, check_in: "true" }
+      assert_difference('SlackInviteWorker.jobs.size', 1) do
+        patch :check_in, params: { id: @questionnaire, check_in: "true" }
+      end
       assert 1.minute.ago < @questionnaire.reload.checked_in_at
       assert_equal @user.id, @questionnaire.reload.checked_in_by_id
       assert_match /Checked in/, flash[:notice]
@@ -340,7 +369,9 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       @questionnaire.update_attribute(:agreement_accepted, false)
       @questionnaire.update_attribute(:can_share_info, false)
       @questionnaire.update_attribute(:phone, "")
-      patch :check_in, params: { id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333", email: "new_email@example.com" } }
+      assert_difference('SlackInviteWorker.jobs.size', 1) do
+        patch :check_in, params: { id: @questionnaire, check_in: "true", questionnaire: { agreement_accepted: 1, can_share_info: 1, phone: "(123) 333-3333", email: "new_email@example.com" } }
+      end
       @questionnaire.reload
       assert 1.minute.ago < @questionnaire.checked_in_at
       assert_equal @user.id, @questionnaire.checked_in_by_id
@@ -435,6 +466,34 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
       end
     end
 
+    ["accepted", "rsvp_confirmed"].each do |status|
+      should "not send slack invite emails for #{status} bulk_apply if not enabled" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'false'
+        assert_difference('SlackInviteWorker.jobs.size', 0) do
+          patch :bulk_apply, params: { bulk_action: status, bulk_ids: [@questionnaire.id] }
+        end
+      end
+    end
+
+    ["accepted", "rsvp_confirmed"].each do |status|
+      should "send slack invite emails for #{status} bulk_apply" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'true'
+        assert_difference('SlackInviteWorker.jobs.size', 1) do
+          patch :bulk_apply, params: { bulk_action: status, bulk_ids: [@questionnaire.id] }
+        end
+      end
+    end
+
+    non_accepted_statuses = Questionnaire::POSSIBLE_ACC_STATUS.keys - ["accepted", "rsvp_confirmed"]
+    non_accepted_statuses.each do |status|
+      should "not send slack invite emails for #{status} bulk_apply" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'true'
+        assert_difference('SlackInviteWorker.jobs.size', 0) do
+          patch :bulk_apply, params: { bulk_action: status, bulk_ids: [@questionnaire.id] }
+        end
+      end
+    end
+
     should "fail manage_questionnaires#update_acc_status when missing status" do
       patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: "" } }
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
@@ -446,6 +505,34 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
         assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size, "no emails should be sent prior"
         patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: status } }
         assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size, "questionnaire should be notified"
+      end
+    end
+
+    ["accepted", "rsvp_confirmed"].each do |status|
+      should "not send slack invite emails for #{status} update_acc_status if not enabled" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'false'
+        assert_difference('SlackInviteWorker.jobs.size', 0) do
+          patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: status } }
+        end
+      end
+    end
+
+    ["accepted", "rsvp_confirmed"].each do |status|
+      should "send slack invite emails for #{status} update_acc_status" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'true'
+        assert_difference('SlackInviteWorker.jobs.size', 1) do
+          patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: status } }
+        end
+      end
+    end
+
+    non_accepted_statuses = Questionnaire::POSSIBLE_ACC_STATUS.keys - ["accepted", "rsvp_confirmed"]
+    non_accepted_statuses.each do |status|
+      should "not send slack invite emails for #{status} update_acc_status" do
+        ENV['INVITE_TO_SLACK_WHEN_ACCEPTED'] = 'true'
+        assert_difference('SlackInviteWorker.jobs.size', 0) do
+          patch :update_acc_status, params: { id: @questionnaire, questionnaire: { acc_status: status } }
+        end
       end
     end
   end
