@@ -58,12 +58,13 @@
       %p
         From
         %strong noon February 11 to noon February 12,
-        you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, go to our map.
+        you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, see our
+        = link_to 'parking instructions', image_path('brickhack-parking.png')
+        and <a href="https://maps.rit.edu">RIT's map</a>.
         / TODO: link to the map
 
       = link_to 'https://brickhack3.devpost.com/' do
         .button.button-primary Devpost
-      %button.button.disabled{disabled: true} Hardware lab coming soon
 
     .gallery#gallery
       = image_tag 'gallery-img.png'
