@@ -1,0 +1,7 @@
+<h1>Bus Update</h1>
+<p>Hey <%= @questionnaire.first_name %>,</p>
+<p>There's been an update to your bus - see below!</p>
+<p>As always, up-to-date bus info &amp; captains are available at <a href="https://brickhack.io/rsvp">brickhack.io/rsvp</a>.</p>
+<hr />
+<%= markdown(@bus_list.notes) %>
+

@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     end
     resources :bus_lists do
       post :toggle_bus_captain, on: :member
+      patch :send_update_email, on: :member
     end
     resources :schools do
       post :datatable, on: :collection

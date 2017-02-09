@@ -119,4 +119,21 @@ class MailerTest < ActionMailer::TestCase
       assert_match /slack.com\/shared_invite/, email.encoded
     end
   end
+
+  context "upon scheduled bus update email" do
+    setup do
+      @bus_list = create(:bus_list)
+      @questionnaire = create(:questionnaire)
+      @user = @questionnaire.user
+      @user.update_attribute(:email, "test@example.com")
+    end
+
+    should "deliver update email" do
+      email = Mailer.bus_list_update_email(@bus_list.id, @user.id).deliver_now
+
+      assert_equal ["test@example.com"], email.to
+      assert_equal "Bus Update", email.subject
+      assert_match /brickhack.io\/rsvp/, email.encoded
+    end
+  end
 end

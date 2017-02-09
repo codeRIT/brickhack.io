@@ -8,6 +8,8 @@ class Manage::BusListsControllerTest < ActionController::TestCase
 
   setup do
     @bus_list = create(:bus_list)
+    questionnaire = create(:questionnaire, riding_bus: true, acc_status: 'rsvp_confirmed')
+    questionnaire.school.update_attribute(:bus_list_id, @bus_list.id)
   end
 
   context "while not authenticated" do
@@ -51,6 +53,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       questionnaire = create(:questionnaire)
       patch :toggle_bus_captain, params: { id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1' }
       assert_equal false, questionnaire.reload.is_bus_captain
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+
+    should "not allow access to manage_bus_lists#send_update_email" do
+      patch :send_update_email, params: { id: @bus_list }
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response :redirect
       assert_redirected_to new_user_session_path
@@ -115,6 +124,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       assert_redirected_to root_path
     end
 
+    should "not allow access to manage_bus_lists#send_update_email" do
+      patch :send_update_email, params: { id: @bus_list }
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
+      assert_response :redirect
+      assert_redirected_to root_path
+    end
+
     should "not allow access to manage_bus_lists#destroy" do
       patch :destroy, params: { id: @bus_list }
       assert_response :redirect
@@ -167,6 +183,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       questionnaire = create(:questionnaire)
       patch :toggle_bus_captain, params: { id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '1' }
       assert_equal false, questionnaire.reload.is_bus_captain
+      assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
+      assert_response :redirect
+      assert_redirected_to manage_bus_lists_path
+    end
+
+    should "not allow access to manage_bus_lists#send_update_email" do
+      patch :send_update_email, params: { id: @bus_list }
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response :redirect
       assert_redirected_to manage_bus_lists_path
@@ -245,6 +268,13 @@ class Manage::BusListsControllerTest < ActionController::TestCase
       patch :toggle_bus_captain, params: { id: @bus_list, questionnaire_id: questionnaire.id, bus_captain: '0' }
       assert_equal false, questionnaire.reload.is_bus_captain
       assert_equal 0, Sidekiq::Extensions::DelayedMailer.jobs.size
+      assert_response :redirect
+      assert_redirected_to manage_bus_list_path(@bus_list)
+    end
+
+    should "send email upon manage_bus_lists#send_update_email" do
+      patch :send_update_email, params: { id: @bus_list }
+      assert_equal 1, Sidekiq::Extensions::DelayedMailer.jobs.size
       assert_response :redirect
       assert_redirected_to manage_bus_list_path(@bus_list)
     end

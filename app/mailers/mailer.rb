@@ -78,6 +78,17 @@ class Mailer < ApplicationMailer
     )
   end
 
+  def bus_list_update_email(bus_list_id, user_id)
+    @user = User.find(user_id)
+    @questionnaire = @user.questionnaire
+    @bus_list = BusList.find(bus_list_id)
+    return if @user.blank? || @user.questionnaire.blank? || @bus_list.blank?
+    mail(
+      to: @user.email,
+      subject: "Bus Update"
+    )
+  end
+
   private
 
   def pretty_email(name, email)

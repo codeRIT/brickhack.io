@@ -76,6 +76,11 @@
 
   = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
 
-  = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
-  \|
+  %hr
+
+  - unless current_user.admin_limited_access?
+    = link_to 'Edit', edit_manage_bus_list_path(@bus_list)
+    \|
+    = link_to 'Send Email Update', send_update_email_manage_bus_list_path(@bus_list), method: :patch, data: { confirm: "Are you sure? All passengers for \"#{@bus_list.name}\" will be emailed the current bus notes." }
+    \|
   = link_to 'Back', manage_bus_lists_path

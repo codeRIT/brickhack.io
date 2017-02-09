@@ -1,5 +1,5 @@
 class Manage::BusListsController < Manage::ApplicationController
-  before_action :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain]
+  before_action :set_bus_list, only: [:show, :edit, :update, :destroy, :toggle_bus_captain, :send_update_email]
 
   respond_to :html
 
@@ -46,6 +46,13 @@ class Manage::BusListsController < Manage::ApplicationController
     @questionnaire.update_attribute(:is_bus_captain, is_bus_captain)
     if @questionnaire.reload.is_bus_captain
       Mailer.delay.bus_captain_confirmation_email(@bus_list.id, @questionnaire.user.id)
+    end
+    redirect_to [:manage, @bus_list]
+  end
+
+  def send_update_email
+    @bus_list.passengers.each do |passenger|
+      Mailer.delay.bus_list_update_email(@bus_list.id, passenger.id)
     end
     redirect_to [:manage, @bus_list]
   end
