@@ -30,5 +30,9 @@ if defined?(ActionMailer::Preview)
       buslist = BusList.first
       Mailer.bus_captain_confirmation_email(buslist.id, buslist.captains.first.id)
     end
+
+    def slack_invite_email
+      Mailer.slack_invite_email(Questionnaire.first.id)
+    end
   end
 end

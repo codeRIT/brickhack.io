@@ -69,6 +69,15 @@ class Mailer < ApplicationMailer
     )
   end
 
+  def slack_invite_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    return if @questionnaire.blank?
+    mail(
+      to: @questionnaire.email,
+      subject: "Slack Invite!"
+    )
+  end
+
   private
 
   def pretty_email(name, email)

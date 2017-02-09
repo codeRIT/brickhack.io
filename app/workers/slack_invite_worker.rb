@@ -18,6 +18,7 @@ class SlackInviteWorker
     if json[:error]
       return if ok_errors.include?(json[:error])
       return if ignore_errors.include?(json[:error])
+      return Mailer.delay.slack_invite_email(questionnaire.id) if json[:error] == 'invite_limit_reached'
       raise "Slack error: #{json[:error]}"
     end
 
