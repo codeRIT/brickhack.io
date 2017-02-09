@@ -89,8 +89,7 @@ class RsvpsController < ApplicationController
   end
 
   def require_accepted_questionnaire
-    unless @questionnaire.can_rsvp? || @questionnaire.checked_in?
-      redirect_to new_questionnaires_path
-    end
+    return if @questionnaire.can_rsvp? || @questionnaire.checked_in?
+    redirect_to new_questionnaires_path
   end
 end

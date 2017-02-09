@@ -80,9 +80,9 @@ class Manage::MessagesController < Manage::ApplicationController
   end
 
   def check_message_access
-    unless @message.can_edit?
-      flash[:notice] = "Message can no longer be modified"
-      redirect_to manage_message_path(@message)
-    end
+    return if @message.can_edit?
+
+    flash[:notice] = "Message can no longer be modified"
+    redirect_to manage_message_path(@message)
   end
 end
