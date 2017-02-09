@@ -260,9 +260,9 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
 
     should "merge schools" do
       school = create(:school, name: "My Test School")
-      q1 = create(:questionnaire, school_id: @school.id)
-      q2 = create(:questionnaire, school_id: @school.id)
-      q3 = create(:questionnaire, school_id: school.id)
+      create(:questionnaire, school_id: @school.id)
+      create(:questionnaire, school_id: @school.id)
+      create(:questionnaire, school_id: school.id)
       assert_difference('School.count', -1) do
         assert_difference('school.reload.questionnaire_count', 2) do
           patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }
@@ -272,10 +272,10 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "merge but not delete school if it contains questionnaires" do
-      school = create(:school, name: "My Test School")
+      create(:school, name: "My Test School")
       @school.increment(:questionnaire_count, 4)
       @school.save
-      q1 = create(:questionnaire, school_id: @school.id)
+      create(:questionnaire, school_id: @school.id)
       assert_difference('School.count', 0) do
         assert_difference('school.reload.questionnaire_count', 1) do
           patch :perform_merge, params: { id: @school, school: { id: "My Test School" } }

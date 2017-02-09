@@ -109,7 +109,7 @@ class QuestionnaireTest < ActiveSupport::TestCase
 
     should "increment school questionnaire counter on create" do
       school = create(:school)
-      questionnaire = create(:questionnaire, school_id: school.id)
+      create(:questionnaire, school_id: school.id)
       assert_equal 1, school.reload.questionnaire_count
     end
 
