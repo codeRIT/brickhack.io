@@ -81,7 +81,6 @@ class Mailer < ApplicationMailer
   def bus_list_update_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     @bus_list = @questionnaire.bus_list
-    puts @bus_list.inspect
     return if @questionnaire.blank? || @questionnaire.user.blank? || @bus_list.blank?
     mail(
       to: @questionnaire.email,

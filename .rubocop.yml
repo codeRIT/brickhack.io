@@ -4,6 +4,9 @@ AllCops:
     - vendor/**/*
     - bin/**/*
 
+Bundler/OrderedGems:
+  Enabled: false
+
 Documentation:
   Enabled: false
 
@@ -23,6 +26,9 @@ Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/CyclomaticComplexity:
