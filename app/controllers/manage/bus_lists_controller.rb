@@ -52,7 +52,7 @@ class Manage::BusListsController < Manage::ApplicationController
 
   def send_update_email
     @bus_list.passengers.each do |passenger|
-      Mailer.delay.bus_list_update_email(@bus_list.id, passenger.id)
+      Mailer.delay.bus_list_update_email(passenger.id)
     end
     redirect_to [:manage, @bus_list]
   end

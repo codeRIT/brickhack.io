@@ -36,8 +36,7 @@ if defined?(ActionMailer::Preview)
     end
 
     def bus_list_update_email
-      bus_list = BusList.first
-      Mailer.bus_list_update_email(bus_list.id, bus_list.passengers.first.id)
+      Mailer.bus_list_update_email(BusList.first.passengers.first.id)
     end
   end
 end

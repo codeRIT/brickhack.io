@@ -78,13 +78,13 @@ class Mailer < ApplicationMailer
     )
   end
 
-  def bus_list_update_email(bus_list_id, user_id)
-    @user = User.find(user_id)
-    @questionnaire = @user.questionnaire
-    @bus_list = BusList.find(bus_list_id)
-    return if @user.blank? || @user.questionnaire.blank? || @bus_list.blank?
+  def bus_list_update_email(questionnaire_id)
+    @questionnaire = Questionnaire.find(questionnaire_id)
+    @bus_list = @questionnaire.bus_list
+    puts @bus_list.inspect
+    return if @questionnaire.blank? || @questionnaire.user.blank? || @bus_list.blank?
     mail(
-      to: @user.email,
+      to: @questionnaire.email,
       subject: "Bus Update"
     )
   end

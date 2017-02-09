@@ -123,13 +123,13 @@ class MailerTest < ActionMailer::TestCase
   context "upon scheduled bus update email" do
     setup do
       @bus_list = create(:bus_list)
-      @questionnaire = create(:questionnaire)
-      @user = @questionnaire.user
-      @user.update_attribute(:email, "test@example.com")
+      @questionnaire = create(:questionnaire, acc_status: 'rsvp_confirmed', riding_bus: true)
+      @questionnaire.school.update_attribute(:bus_list_id, @bus_list.id)
+      @questionnaire.user.update_attribute(:email, "test@example.com")
     end
 
     should "deliver update email" do
-      email = Mailer.bus_list_update_email(@bus_list.id, @user.id).deliver_now
+      email = Mailer.bus_list_update_email(@questionnaire.id).deliver_now
 
       assert_equal ["test@example.com"], email.to
       assert_equal "Bus Update", email.subject
