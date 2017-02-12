@@ -21,6 +21,10 @@
   image: insomnia.png
   url: https://insomniacookies.com
   small: true
+- name: SkillFlow
+  image: skillflow.png
+  url: https://skillflow.io
+  small: true
 - name: Intuit
   image: intuit.png
   url: https://www.intuit.com
