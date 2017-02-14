@@ -1,6 +1,6 @@
 defaults: &defaults
-  registration_is_open: true
-  event_is_over: false
+  registration_is_open: false
+  event_is_over: true
   last_day_to_apply: <%= Date.new(2017, 2, 11) %>
   auto_late_waitlist: true
 
