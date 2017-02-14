@@ -21,7 +21,7 @@
 
   %p
     %strong Passengers:
-    = "(#{@bus_list.passengers.count} total)"
+    = "(#{@bus_list.passengers.count} total, #{@bus_list.checked_in_passengers.count} checked in)"
   %table.table
     %thead
       %tr
@@ -31,6 +31,7 @@
         %th Email
         %th Phone Number
         %th School
+        %th Checked in?
         - unless current_user.admin_limited_access
           %th Actions
     %tbody
@@ -42,6 +43,7 @@
           %td= p.email
           %td= phone_link_to p.phone
           %td= link_to p.school.name, manage_school_path(p.school)
+          %td= p.checked_in? ? '<span class="acc-status-accepted">Yes</span>'.html_safe : 'No'
           - unless current_user.admin_limited_access
             %td
               - if p.is_bus_captain?

@@ -43,6 +43,24 @@ class BusListTest < ActiveSupport::TestCase
     end
   end
 
+  context "#checked_in_passengers" do
+    before do
+      @bus_list = create(:bus_list)
+      @school = create(:school, bus_list_id: @bus_list.id)
+    end
+
+    should "be empty if no passengers" do
+      assert_equal 0, @bus_list.checked_in_passengers.count
+    end
+
+    should "only return passengers who have checked in" do
+      create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true, checked_in_at: 2.minutes.ago)
+      create(:questionnaire, acc_status: "rsvp_confirmed", school_id: @school.id, riding_bus: true, checked_in_at: nil)
+      assert_equal 2, @bus_list.passengers.count
+      assert_equal 1, @bus_list.checked_in_passengers.count
+    end
+  end
+
   context "#captians" do
     before do
       @bus_list = create(:bus_list)

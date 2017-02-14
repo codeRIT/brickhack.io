@@ -14,6 +14,10 @@ class BusList < ApplicationRecord
     Questionnaire.joins(:school).where("schools.bus_list_id = '#{id}' AND acc_status = 'rsvp_confirmed' AND riding_bus = true").order("schools.name ASC, last_name ASC")
   end
 
+  def checked_in_passengers
+    passengers.select(&:checked_in?)
+  end
+
   def captains
     passengers.where(is_bus_captain: true)
   end
