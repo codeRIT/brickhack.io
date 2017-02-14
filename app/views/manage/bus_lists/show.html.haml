@@ -30,6 +30,7 @@
         %th Last Name
         %th Email
         %th School Name
+        %th Phone Number
         - unless current_user.admin_limited_access
           %th Actions
     %tbody
@@ -40,6 +41,7 @@
           %td= p.last_name
           %td= p.email
           %td= p.school.name
+          %td= phone_link_to p.phone
           - unless current_user.admin_limited_access
             %td
               - if p.is_bus_captain?
@@ -57,6 +59,7 @@
           %th Last Name
           %th Email
           %th School Name
+          %th Phone Number
           - unless current_user.admin_limited_access
             %th Actions
       %tbody
@@ -67,6 +70,7 @@
             %td= p.last_name
             %td= p.email
             %td= p.school.name
+            %td= phone_link_to p.phone
             - unless current_user.admin_limited_access
               %td
                 - if p.is_bus_captain?

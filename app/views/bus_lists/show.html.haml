@@ -30,12 +30,14 @@
         %th Last Name
         %th Email
         %th School Name
+        %th Phone Number
     %tbody
       - @bus_list.passengers.each do |p|
         %tr
           %td= p.first_name
           %td= p.last_name
           %td= p.email
+          %td= phone_link_to p.phone
           %td= p.school.name
 
   = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
