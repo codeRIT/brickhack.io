@@ -33,6 +33,8 @@
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
+      = link_to URI.escape("mailto:hello@codeRIT.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
+        .button.button-outline HELP ORGANIZE
     - else
       %br
       = link_to volunteer_link do
