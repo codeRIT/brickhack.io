@@ -7,37 +7,25 @@ class Mailer < ApplicationMailer
   def application_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?
-    mail(
-      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "Application Received"
-    )
+    mail_questionnaire("Application Received")
   end
 
   def rsvp_confirmation_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?
-    mail(
-      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "RSVP Confirmation"
-    )
+    mail_questionnaire("RSVP Confirmation")
   end
 
   def accepted_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?
-    mail(
-      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "You've been accepted!"
-    )
+    mail_questionnaire("You've been accepted!")
   end
 
   def denied_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return unless @questionnaire.present? && @questionnaire.user.present?
-    mail(
-      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
-      subject: "Your application status"
-    )
+    mail_questionnaire("Your application status")
   end
 
   def bulk_message_email(message_id, user_id)
@@ -61,31 +49,23 @@ class Mailer < ApplicationMailer
 
   def bus_captain_confirmation_email(bus_list_id, user_id)
     @user = User.find(user_id)
+    @questionnaire = @user.questionnaire
     @bus_list = BusList.find(bus_list_id)
     return if @user.blank? || @user.questionnaire.blank? || !@user.questionnaire.is_bus_captain? || @bus_list.blank?
-    mail(
-      to: @user.email,
-      subject: "You're a bus captain!"
-    )
+    mail_questionnaire("You're a bus captain!")
   end
 
   def slack_invite_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     return if @questionnaire.blank?
-    mail(
-      to: @questionnaire.email,
-      subject: "Slack Invite!"
-    )
+    mail_questionnaire("Slack Invite!")
   end
 
   def bus_list_update_email(questionnaire_id)
     @questionnaire = Questionnaire.find(questionnaire_id)
     @bus_list = @questionnaire.bus_list
     return if @questionnaire.blank? || @questionnaire.user.blank? || @bus_list.blank?
-    mail(
-      to: @questionnaire.email,
-      subject: "Bus Update"
-    )
+    mail_questionnaire("Bus Update")
   end
 
   private
@@ -93,5 +73,12 @@ class Mailer < ApplicationMailer
   def pretty_email(name, email)
     return email if name.blank?
     "\"#{name}\" <#{email}>"
+  end
+
+  def mail_questionnaire(subject)
+    mail(
+      to: pretty_email(@questionnaire.full_name, @questionnaire.user.email),
+      subject: subject
+    )
   end
 end
