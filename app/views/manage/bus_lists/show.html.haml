@@ -29,8 +29,8 @@
         %th First Name
         %th Last Name
         %th Email
-        %th School Name
         %th Phone Number
+        %th School
         - unless current_user.admin_limited_access
           %th Actions
     %tbody
@@ -40,8 +40,8 @@
           %td= p.first_name
           %td= p.last_name
           %td= p.email
-          %td= p.school.name
           %td= phone_link_to p.phone
+          %td= link_to p.school.name, manage_school_path(p.school)
           - unless current_user.admin_limited_access
             %td
               - if p.is_bus_captain?
@@ -58,8 +58,8 @@
           %th First Name
           %th Last Name
           %th Email
-          %th School Name
           %th Phone Number
+          %th School
           - unless current_user.admin_limited_access
             %th Actions
       %tbody
@@ -69,8 +69,8 @@
             %td= p.first_name
             %td= p.last_name
             %td= p.email
-            %td= p.school.name
             %td= phone_link_to p.phone
+            %td= link_to p.school.name, manage_school_path(p.school)
             - unless current_user.admin_limited_access
               %td
                 - if p.is_bus_captain?
