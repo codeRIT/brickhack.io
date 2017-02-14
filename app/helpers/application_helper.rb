@@ -9,6 +9,10 @@ module ApplicationHelper
     link_to(name, path, options)
   end
 
+  def phone_link_to(phone_number)
+    link_to(phone_number, "tel:#{phone_number}")
+  end
+
   def markdown(text)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML,
                                        no_intra_emphasis: true,

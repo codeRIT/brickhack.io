@@ -21,7 +21,7 @@
 
   %p
     %strong Passengers:
-    = "(#{@bus_list.passengers.count} total)"
+    = "(#{@bus_list.passengers.count} total, #{@bus_list.checked_in_passengers.count} checked in)"
 
   %table.table
     %thead
@@ -29,13 +29,17 @@
         %th First Name
         %th Last Name
         %th Email
-        %th School Name
+        %th Phone Number
+        %th School
+        %th Checked in?
     %tbody
       - @bus_list.passengers.each do |p|
         %tr
           %td= p.first_name
           %td= p.last_name
           %td= p.email
+          %td= phone_link_to p.phone
           %td= p.school.name
+          %td= p.checked_in? ? '<span class="acc-status-accepted">Yes</span>'.html_safe : 'No'
 
   = render partial: 'bus_list_stats', locals: { bus_list: @bus_list }
