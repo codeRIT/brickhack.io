@@ -272,7 +272,7 @@ class Manage::SchoolsControllerTest < ActionController::TestCase
     end
 
     should "merge but not delete school if it contains questionnaires" do
-      school = create(:school, name: "My Test School")
+      school = create(:school, name: "My Test School") # rubocop:disable UselessAssignment (actually used below)
       @school.increment(:questionnaire_count, 4)
       @school.save
       create(:questionnaire, school_id: @school.id)
