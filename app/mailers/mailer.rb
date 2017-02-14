@@ -52,7 +52,7 @@ class Mailer < ApplicationMailer
 
   def incomplete_reminder_email(user_id)
     @user = User.find(user_id)
-    return if @user.blank? || @user.questionnaire || Time.now.to_date > LAST_DAY_TO_APPLY
+    return if @user.blank? || @user.questionnaire || Time.now.to_date > Rails.configuration.hackathon['last_day_to_apply']
     mail(
       to: @user.email,
       subject: "Incomplete Application"

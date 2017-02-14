@@ -21,5 +21,7 @@ module Brickhack
     # config.i18n.default_locale = :de
 
     config.skylight.probes = %w(redis)
+
+    config.hackathon = config_for(:hackathon)
   end
 end

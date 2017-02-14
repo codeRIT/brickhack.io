@@ -10,13 +10,13 @@
     = image_tag 'scroller.png'
   .split-right
     %h1.title BrickHack 3
-    - if !EVENT_IS_OVER
+    - if !Rails.configuration.hackathon['event_is_over']
       %h3 Inviting students to come together on
     %h2.subtitle February 11-12, 2017
     %br
-    - if EVENT_IS_OVER
+    - if Rails.configuration.hackathon['event_is_over']
       %h3 Thanks for a great BrickHack! See you next year!
-    - elsif !REGISTRATION_IS_OPEN
+    - elsif !Rails.configuration.hackathon['registration_is_open']
       %h3 Registration has closed.
       / TODO: better styling for this - looks too much like the h3 statement
 
@@ -27,10 +27,10 @@
       - else
         = link_to questionnaires_path do
           .button.button-outline MY ACCOUNT
-    - elsif REGISTRATION_IS_OPEN
+    - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
         .button.button-outline SIGN UP TODAY!
-    - if EVENT_IS_OVER
+    - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
     - else

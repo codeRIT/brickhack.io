@@ -53,7 +53,7 @@ class QuestionnairesControllerTest < ActionController::TestCase
       end
 
       assert_redirected_to questionnaires_path
-      if AUTO_LATE_WAITLIST
+      if Rails.configuration.hackathon['auto_late_waitlist']
         assert_equal "late_waitlist", assigns(:questionnaire).acc_status
       else
         assert_equal "pending", assigns(:questionnaire).acc_status

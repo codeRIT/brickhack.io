@@ -1,0 +1,18 @@
+defaults: &defaults
+  registration_is_open: true
+  event_is_over: false
+  last_day_to_apply: <%= Date.new(2017, 2, 11) %>
+  auto_late_waitlist: true
+
+development:
+  <<: *defaults
+
+test: &test
+  <<: *defaults
+  last_day_to_apply: <%= 2.months.from_now %>
+
+production:
+  <<: *defaults
+
+staging:
+  <<: *defaults

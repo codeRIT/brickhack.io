@@ -4,7 +4,7 @@
       %h1.section-title Sign Up or Sign In
 
       #disclaimer
-        - unless REGISTRATION_IS_OPEN
+        - unless Rails.configuration.hackathon['registration_is_open']
           .center
             %strong Registration is now closed. Thanks to everyone who applied!
           %br
