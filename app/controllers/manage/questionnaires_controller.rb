@@ -1,4 +1,6 @@
 class Manage::QuestionnairesController < Manage::ApplicationController
+  include QuestionnairesControllable
+
   before_action :set_questionnaire, only: [:show, :edit, :update, :destroy, :check_in, :convert_to_admin, :update_acc_status, :message_events, :invite_to_slack]
 
   respond_to :html
@@ -158,16 +160,6 @@ class Manage::QuestionnairesController < Manage::ApplicationController
 
   def set_questionnaire
     @questionnaire = ::Questionnaire.find(params[:id])
-  end
-
-  def convert_school_name_to_id(questionnaire)
-    if questionnaire[:school_name]
-      school = School.where(name: questionnaire[:school_name]).first
-      school = School.create(name: questionnaire[:school_name]) if school.blank?
-      questionnaire[:school_id] = school.id
-      questionnaire.delete :school_name
-    end
-    questionnaire
   end
 
   def process_acc_status_notifications(questionnaire, new_status)

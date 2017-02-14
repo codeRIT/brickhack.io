@@ -1,4 +1,6 @@
 class QuestionnairesController < ApplicationController
+  include QuestionnairesControllable
+
   before_action :logged_in
   before_action :find_questionnaire, only: [:show, :update, :edit, :destroy]
 
@@ -132,16 +134,6 @@ class QuestionnairesController < ApplicationController
       return redirect_to new_questionnaires_path
     end
     @questionnaire = current_user.questionnaire
-  end
-
-  def convert_school_name_to_id(questionnaire)
-    if questionnaire[:school_name]
-      school = School.where(name: questionnaire[:school_name]).first
-      school = School.create(name: questionnaire[:school_name]) if school.blank?
-      questionnaire[:school_id] = school.id
-      questionnaire.delete :school_name
-    end
-    questionnaire
   end
 
   def default_acc_status
