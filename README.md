@@ -8,7 +8,7 @@ The public facing site for Brick Hack.
 
 Install ruby, mysql, and other required development environment tools.
 ```bash
-$ brew install rbenv ruby-build rbenv-default-gems rbenv-binstubs
+$ brew install rbenv ruby-build rbenv-binstubs
 $ brew install redis
 $ brew install mysql
 ```
