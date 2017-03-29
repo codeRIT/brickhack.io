@@ -10,14 +10,16 @@ The public facing site for BrickHack.
 
 # Getting Started
 
-## Mac OS X
+## macOS
 
-Install ruby, mysql, and other required development environment tools.
+Install ruby, mysql, and other required development environment tools via [homebrew](https://brew.sh/).
 ```bash
 $ brew install rbenv ruby-build rbenv-binstubs
 $ brew install redis
 $ brew install mysql
 ```
+
+Ensure you have Git set up and [SSH access to GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/). If you have Git but not SSH, you can clone using the HTTPS url, however you'll have to type in your GitHub credentials every time.
 
 Download & configure local environment, [vendor everything](http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/) style.
 ```bash
@@ -27,7 +29,7 @@ $ rbenv install
 $ bin/setup
 ```
 
-Optionally, you can use [Pow](http://pow.cx) to host your local development environment. With it, you can visit [http://brickhack.io.dev/](http://brickhack.io.dev/)
+Optionally, you can use [Pow](http://pow.cx) to host your local development environment. This enables you to use [http://brickhack.io.dev/](http://brickhack.io.dev/) as your local URL, without having to manually run `rails server`.
 ```bash
 $ brew install pow
 $ gem install powder
@@ -35,7 +37,7 @@ $ powder link
 ```
 Afterwards, you can restart the server with `powder restart`  when needed.
 
-If you choose not to use Pow, you can still initiate a local rails server with `bin/rails server` and visit [http://localhost:3000](http://localhost:3000)
+If you choose not to use Pow, you can still initiate a local Rails server with `bin/rails server` and visit [http://localhost:3000](http://localhost:3000)
 
 ## Windows
 
