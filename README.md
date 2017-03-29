@@ -41,9 +41,11 @@ If you choose not to use Pow, you can still initiate a local Rails server with `
 
 ## Windows
 
+***Note:*** *This setup is outdated. Contributions welcome!*
+
 Verify you have a unix console emulator. We recommend the full version of [cmder](http://bliker.github.io/cmder/).
 
-Download & install RailsInstaller 3.0 (alpha) from [http://railsinstaller.org/](http://railsinstaller.org/)
+Download & install RailsInstaller from [http://railsinstaller.org/](http://railsinstaller.org/). Use the latest version.
 
 Download & install redis from [https://github.com/rgl/redis/downloads](https://github.com/rgl/redis/downloads)
 
