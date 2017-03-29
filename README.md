@@ -1,6 +1,12 @@
 # brickhack.io  [![Build Status](https://travis-ci.org/codeRIT/brickhack.io.svg?branch=develop)](https://travis-ci.org/codeRIT/brickhack.io) [![Code Climate](https://codeclimate.com/github/codeRIT/brickhack.io/badges/gpa.svg)](https://codeclimate.com/github/codeRIT/brickhack.io) [![Test Coverage](https://codeclimate.com/github/codeRIT/brickhack.io/badges/coverage.svg)](https://codeclimate.com/github/codeRIT/brickhack.io/coverage) [![security](https://hakiri.io/github/codeRIT/brickhack.io/develop.svg)](https://hakiri.io/github/codeRIT/brickhack.io/develop)
 
-The public facing site for Brick Hack.
+The public facing site for BrickHack.
+
+* **Hacker applications:** Users sign up/in using [MyMLH](https://my.mlh.io/), which includes standard hackathon application info. This pre-fills the BrickHack application, so hackers don't have to duplicate information!
+* **Acceptance, RSVPs**: Manage applications & coordinate acceptance/waitlist/denials
+* **Bus Lists:** Coordinate bus sign-ups during the RSVP process while communicating important information to riders & captains
+* **Email communication**: Ensure hackers get consistent, timely information throughout their application process, while enabling the organizing team to communicate important information at any time.
+* **Statistics & Visualization:** Surface key information about the application base, distribution of applicants, progress towards attendance, etc.
 
 # Getting Started
 
