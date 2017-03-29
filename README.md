@@ -80,6 +80,10 @@ User.last.update_attribute(:admin, true)
 * **Coverage** - Test coverage can be manually generated via the `bin/rails coverage:run` command. Results are then made available in the `coverage/` directory.
 * **Sidekiq** - Run background jobs (such as emails) and view active & completed jobs. Spin up Sidekiq with `bundle exec sidekiq`. A web portal will be available at http://localhost:3000/sidekiq (*also available in production*).
 
-# Deployment
+# Development & Deployment
 
-Code pushed will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io). Upon a successful build to the develop or master branches, Travis will deploy to our instance(s) of [Dokku](https://github.com/progrium/dokku). See the [Production Environment Setup](https://github.com/codeRIT/brickhack.io/wiki/Production-Environment-Setup) page for details.
+All development work should be done locally in a new branch and/or fork. Then, make a pull request to have the code merged into the develop branch. Once the develop branch gets to a good state, it gets merged into the master branch for a production deployment.
+
+Code pushed to any `codeRIT/brickhack.io` branch will automatically build on [Travis CI](https://travis-ci.org/codeRIT/brickhack.io) for tests. Any build on the develop or master branches will also trigger a deploy to our instance(s) of [Dokku](https://github.com/progrium/dokku) - staging for develop, production for master. 
+
+See the [Production Environment Setup](https://github.com/codeRIT/brickhack.io/wiki/Production-Environment-Setup) page for details.
