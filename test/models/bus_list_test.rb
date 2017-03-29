@@ -20,8 +20,9 @@ class BusListTest < ActiveSupport::TestCase
       questionnaire2 = create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true)
       create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: false)
       assert_equal 2, @bus_list.passengers.count
-      assert_equal questionnaire1.id, @bus_list.passengers[0].id
-      assert_equal questionnaire2.id, @bus_list.passengers[1].id
+      allowed_ids = [questionnaire1, questionnaire2].map(&:id)
+      assert allowed_ids.include? @bus_list.passengers[0].id
+      assert allowed_ids.include? @bus_list.passengers[1].id
     end
 
     should "only return passengers who have RSVP'd" do
@@ -74,8 +75,9 @@ class BusListTest < ActiveSupport::TestCase
       questionnaire2 = create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: true, is_bus_captain: true)
       create(:questionnaire, school_id: @school.id, acc_status: "rsvp_confirmed", riding_bus: false)
       assert_equal 2, @bus_list.captains.count
-      assert_equal questionnaire1.id, @bus_list.captains[0].id
-      assert_equal questionnaire2.id, @bus_list.captains[1].id
+      allowed_ids = [questionnaire1, questionnaire2].map(&:id)
+      assert allowed_ids.include? @bus_list.captains[0].id
+      assert allowed_ids.include? @bus_list.captains[1].id
     end
 
     should "only return captains who have RSVP'd" do
