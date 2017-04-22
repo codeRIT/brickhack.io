@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.datetime "updated_at",                null: false
   end
 
-  create_table "bus_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "bus_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.boolean  "needs_bus_captain",               default: false
   end
 
-  create_table "fips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "fips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "fips_code"
     t.string   "city"
     t.string   "state"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "subject"
     t.string   "recipients"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.string   "template",                   default: "default"
   end
 
-  create_table "questionnaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "questionnaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.index ["school_id"], name: "index_school_name_duplicates_on_school_id", using: :btree
   end
 
-  create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "address"
     t.string   "city"
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.integer  "bus_list_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "",    null: false
@@ -171,16 +171,6 @@ ActiveRecord::Schema.define(version: 20170128063020) do
     t.index ["provider"], name: "index_users_on_provider", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
     t.index ["uid"], name: "index_users_on_uid", using: :btree
-  end
-
-  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string   "item_type",  limit: 191,        null: false
-    t.integer  "item_id",                       null: false
-    t.string   "event",                         null: false
-    t.string   "whodunnit"
-    t.text     "object",     limit: 4294967295
-    t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
   add_foreign_key "school_name_duplicates", "schools"
