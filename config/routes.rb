@@ -73,6 +73,7 @@ Rails.application.routes.draw do
   resource :bus_list
 
   get "/event", to: "home#event"
+  get "/apilist", to: "home#apilist"
   get "home/index"
 
   root to: 'home#index'

@@ -10,4 +10,8 @@ class HomeController < ApplicationController
   def event
     render layout: "dayof"
   end
+
+  def apilist
+    render layout: "api"
+  end
 end

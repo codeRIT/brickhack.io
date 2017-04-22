@@ -1,4 +1,7 @@
 - pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
+- api_list = current_page?(:controller => 'home', :action => 'apilist')
+- if api_list
+  - pages = ['Home']
 
 %nav.desktop
   .logo
@@ -6,7 +9,10 @@
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
-      %a{ href: "##{page.downcase}" }= page
+      -if api_list
+        %a{ href: "/" }= page
+      -else
+        %a{ href: "##{page.downcase}" }= page
 
     - if current_user
       - if current_user.admin
