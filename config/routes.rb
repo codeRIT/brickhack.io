@@ -74,6 +74,7 @@ Rails.application.routes.draw do
 
   get "/event", to: "home#event"
   get "home/index"
+  get "/design_category", to: "home#design_category"
 
   root to: 'home#index'
 end
