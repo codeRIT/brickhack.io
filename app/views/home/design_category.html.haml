@@ -1,4 +1,38 @@
-= render "layouts/sidebar"
+= stylesheet_link_tag 'home.css'
 
-%section.section
-  %h1.center These are the Design Categories
+:css
+  html, body {
+    height: 100%;
+  }
+  body {
+    padding-top: 87px;
+    padding-bottom: 50px;
+  }
+  .container-fluid.scrollable {
+    height: 100%;
+    background: #f0f0f0;
+    color: #4d4d4d;
+    margin-top: 50px;
+  }
+
+= render "layouts/nav"
+
+%br
+
+%div.container-fluid.scrollable
+
+  %br
+  %h1.center
+    %strong Design Category
+  %div{style: 'margin: 0 20%; display: flex; flex-direction: column; height: 400px; justify-content: center'}
+
+
+    %p{style: 'text-indent: 30px'}
+      Design encompasses a product’s brand, identity, and user experience.
+      How does your design reinforce your product’s goals? Is it intuitive
+      for someone to use? Does the average person understand what it is?
+
+    %p{style: 'text-indent: 30px;'}
+      No coding required! Build wire-frames, mock-ups, user flows, etc. that
+      showcase your product and how your design accomplishes a wholesome brand,
+      identity, and user experience. Integrating it into a software or hardware hack is optional
