@@ -86,7 +86,6 @@ class Manage::DashboardController < Manage::ApplicationController
     ]
   end
 
-
   private
 
   def activity_chart_data(types, group_type, range)
