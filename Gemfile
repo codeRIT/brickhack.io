@@ -11,7 +11,6 @@ gem 'rails_12factor', group: :production
 gem 'test-unit', '~> 3.0'
 
 gem 'rollbar', '~> 2.8'
-gem 'skylight'
 
 gem 'sidekiq', '< 5'
 gem 'sprockets', require: nil
