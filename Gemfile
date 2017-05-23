@@ -25,8 +25,7 @@ gem 'aws-sdk'
 
 gem 'haml-rails'
 gem 'simple_form'
-gem 'kaminari'
-gem 'ajax-datatables-rails'
+gem 'ajax-datatables-rails', '~> 0.4.0' # Does NOT follow semver
 gem 'roadie-rails'
 gem 'chartkick', '~> 2.1'
 gem 'groupdate'
