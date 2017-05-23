@@ -1,46 +1,34 @@
 class QuestionnaireDatatable < AjaxDatatablesRails::Base
-  include AjaxDatatablesRails::Extensions::Kaminari
-
   def_delegators :@view, :link_to, :manage_questionnaire_path, :manage_school_path, :current_user
 
-  def sortable_columns
-    @sortable_columns ||= [
-      'Questionnaire.id',
-      'Questionnaire.first_name',
-      'Questionnaire.last_name',
-      'User.admin',
-      'Questionnaire.acc_status',
-      'Questionnaire.checked_in_at',
-      'School.name'
-    ]
-  end
-
-  def searchable_columns
-    @searchable_columns ||= [
-      'Questionnaire.id',
-      'Questionnaire.first_name',
-      'Questionnaire.last_name',
-      'User.admin',
-      'User.email',
-      'School.name'
-    ]
+  def view_columns
+    @view_columns ||= {
+      id: { source: 'Questionnaire.id', cond: :eq },
+      first_name: { source: 'Questionnaire.first_name' },
+      last_name: { source: 'Questionnaire.last_name' },
+      email: { source: 'User.email' },
+      admin: { source: 'User.admin', cond: :eq, searchable: false },
+      acc_status: { source: 'Questionnaire.acc_status', searchable: false },
+      checked_in: { source: 'Questionnaire.checked_in_at', searchable: false },
+      school: { source: 'School.name' }
+    }
   end
 
   private
 
   def data
     records.map do |record|
-      [
-        current_user.admin_limited_access ? '' : '<input type="checkbox" data-bulk-row-edit="' + record.id.to_s + '">',
-        link_to('<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(record)),
-        record.id,
-        record.first_name,
-        record.last_name,
-        record.email,
-        "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>",
-        record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
-        link_to(record.school.name, manage_school_path(record.school))
-      ]
+      {
+        bulk: current_user.admin_limited_access ? '' : "<input type=\"checkbox\" data-bulk-row-edit=\"#{record.id}\">".html_safe,
+        link: link_to('<i class="fa fa-search"></i>'.html_safe, manage_questionnaire_path(record)),
+        id: record.id,
+        first_name: record.first_name,
+        last_name: record.last_name,
+        email: record.email,
+        acc_status: "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>".html_safe,
+        checked_in: record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
+        school: link_to(record.school.name, manage_school_path(record.school))
+      }
     end
   end
 
