@@ -155,11 +155,12 @@ class Questionnaire < ApplicationRecord
   end
 
   def update_school_questionnaire_count
-    if school_id_changed?
-      School.decrement_counter(:questionnaire_count, school_id_was) if school_id_was.present?
-      School.increment_counter(:questionnaire_count, school_id)
-    elsif destroyed?
+    if destroyed?
       School.decrement_counter(:questionnaire_count, school_id)
+    elsif saved_change_to_school_id?
+      old_school_id = saved_changes['school_id'].first
+      School.decrement_counter(:questionnaire_count, old_school_id) if old_school_id.present?
+      School.increment_counter(:questionnaire_count, school_id)
     end
   end
 end
