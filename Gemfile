@@ -12,7 +12,7 @@ gem 'test-unit', '~> 3.0'
 
 gem 'rollbar', '~> 2.8'
 
-gem 'sidekiq', '< 5'
+gem 'sidekiq', '< 6'
 gem 'sprockets', require: nil
 
 gem 'devise', '~> 4.2'
