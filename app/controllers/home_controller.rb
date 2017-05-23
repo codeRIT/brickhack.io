@@ -6,8 +6,4 @@ class HomeController < ApplicationController
   def comingsoon
     render layout: "blank"
   end
-
-  def event
-    render layout: "dayof"
-  end
 end
