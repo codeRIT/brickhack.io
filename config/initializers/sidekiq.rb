@@ -7,3 +7,5 @@ if Rails.env.production? || Rails.env.staging?
     config.redis = { url: ENV['REDIS_URL'] }
   end
 end
+
+Sidekiq::Extensions.enable_delay!

@@ -242,7 +242,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     puma (3.8.2)
-    rack (2.0.2)
+    rack (2.0.3)
     rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
@@ -318,11 +318,11 @@ GEM
     shoulda-context (1.2.2)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    sidekiq (4.2.10)
+    sidekiq (5.0.0)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
-      redis (~> 3.2, >= 3.2.1)
+      redis (~> 3.3, >= 3.3.3)
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
@@ -405,7 +405,7 @@ DEPENDENCIES
   sass-rails
   selectize-rails
   shoulda
-  sidekiq (< 5)
+  sidekiq (< 6)
   simple_form
   simple_spark
   simplecov
