@@ -26,7 +26,7 @@ class QuestionnaireDatatable < AjaxDatatablesRails::Base
         last_name: record.last_name,
         email: record.email,
         acc_status: "<span class=\"acc-status-#{record.acc_status}\">#{record.acc_status.titleize}</span>".html_safe,
-        checked_in: record.checked_in? ? '<span class="acc-status-accepted">Yes</span>' : 'No',
+        checked_in: record.checked_in? ? '<span class="acc-status-accepted">Yes</span>'.html_safe : 'No',
         school: link_to(record.school.name, manage_school_path(record.school))
       }
     end
