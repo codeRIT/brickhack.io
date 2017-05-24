@@ -1,4 +1,4 @@
-class AddCheckInDataToQuestionnaire < ActiveRecord::Migration
+class AddCheckInDataToQuestionnaire < ActiveRecord::Migration[4.2]
   def change
     add_column :questionnaires, :checked_in_by_id, :integer
     add_column :questionnaires, :checked_in_at, :datetime

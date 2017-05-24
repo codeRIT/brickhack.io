@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208041345) do
+ActiveRecord::Schema.define(version: 20170128063020) do
 
-  create_table "blazer_audits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blazer_audits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "query_id"
     t.text "statement"
     t.string "data_source"
-    t.datetime "created_at"
+    t.timestamp "created_at"
+    t.index ["query_id"], name: "index_blazer_audits_on_query_id"
+    t.index ["user_id"], name: "index_blazer_audits_on_user_id"
   end
 
-  create_table "blazer_checks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blazer_checks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "creator_id"
     t.integer "query_id"
     t.string "state"
@@ -28,27 +30,32 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.text "emails"
     t.string "check_type"
     t.text "message"
-    t.datetime "last_run_at"
+    t.timestamp "last_run_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_checks_on_creator_id"
+    t.index ["query_id"], name: "index_blazer_checks_on_query_id"
   end
 
-  create_table "blazer_dashboard_queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blazer_dashboard_queries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "dashboard_id"
     t.integer "query_id"
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["dashboard_id"], name: "index_blazer_dashboard_queries_on_dashboard_id"
+    t.index ["query_id"], name: "index_blazer_dashboard_queries_on_query_id"
   end
 
-  create_table "blazer_dashboards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blazer_dashboards", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "creator_id"
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_dashboards_on_creator_id"
   end
 
-  create_table "blazer_queries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blazer_queries", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "creator_id"
     t.string "name"
     t.text "description"
@@ -56,9 +63,10 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.string "data_source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_blazer_queries_on_creator_id"
   end
 
-  create_table "bus_lists", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "bus_lists", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -67,7 +75,7 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.boolean "needs_bus_captain", default: false
   end
 
-  create_table "fips", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "fips", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "fips_code"
     t.string "city"
     t.string "state"
@@ -75,20 +83,20 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "messages", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "subject"
     t.string "recipients"
     t.text "body"
-    t.datetime "queued_at"
-    t.datetime "started_at"
-    t.datetime "delivered_at"
+    t.timestamp "queued_at"
+    t.timestamp "started_at"
+    t.timestamp "delivered_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "template", default: "default"
   end
 
-  create_table "questionnaires", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "questionnaires", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -130,7 +138,7 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.index ["user_id"], name: "index_questionnaires_on_user_id"
   end
 
-  create_table "school_name_duplicates", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "school_name_duplicates", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.integer "school_id"
     t.datetime "created_at", null: false
@@ -138,7 +146,7 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.index ["school_id"], name: "index_school_name_duplicates_on_school_id"
   end
 
-  create_table "schools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "schools", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "address"
     t.string "city"
@@ -149,7 +157,7 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.integer "bus_list_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "email", default: "", null: false
@@ -173,14 +181,5 @@ ActiveRecord::Schema.define(version: 20170208041345) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
-  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
-    t.string "item_type", limit: 191, null: false
-    t.integer "item_id", null: false
-    t.string "event", null: false
-    t.string "whodunnit"
-    t.text "object", limit: 4294967295
-    t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
-
+  add_foreign_key "school_name_duplicates", "schools"
 end

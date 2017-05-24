@@ -1,4 +1,4 @@
-class UpdateQuestionnaireForMyMlh < ActiveRecord::Migration
+class UpdateQuestionnaireForMyMlh < ActiveRecord::Migration[4.2]
   def change
     add_column :questionnaires, :special_needs, :string
     add_column :questionnaires, :gender, :string
