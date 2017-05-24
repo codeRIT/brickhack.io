@@ -33,13 +33,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 
+  # Required for Devise
   config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
   config.action_mailer.asset_host = 'http://localhost:3000'
-
-  # Devise
-  config.to_prepare do
-    Devise::Mailer.layout "mailer"
-  end
 
   config.action_mailer.perform_caching = false
 

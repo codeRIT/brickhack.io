@@ -38,11 +38,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'brickhack.example.com', protocol: 'http' }
   config.action_mailer.asset_host = 'http://brickhack.example.com'
 
-  # Devise
-  config.to_prepare do
-    Devise::Mailer.layout "mailer"
-  end
-
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
