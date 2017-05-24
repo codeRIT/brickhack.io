@@ -1,5 +1,5 @@
 .button, input[type=submit]
-  background: $blue
+  background: $secondary
   border: 0
   cursor: pointer
   display: inline-block
@@ -20,16 +20,16 @@
     min-width: initial
     padding: 3px 5px
   &:hover, &:focus
-    background: lighten($blue, 15%)
-    @include box-shadow(inset 0 0 10px 3px lighten($blue, 5%))
+    background: lighten($secondary, 15%)
+    @include box-shadow(inset 0 0 10px 3px lighten($secondary, 5%))
     color: $white_pure
-    outline-color: $blue
+    outline-color: $secondary
   &:disabled
-    color: lighten($blue, 40%)
+    color: lighten($secondary, 40%)
     background: transparent
-    border: 1px solid lighten($blue, 35%)
+    border: 1px solid lighten($secondary, 35%)
     cursor: default
-    @include box-shadow(inset 0 0 0 0 lighten($blue, 5%))
+    @include box-shadow(inset 0 0 0 0 lighten($secondary, 5%))
 
 .button-center
   margin-left: auto
@@ -39,8 +39,8 @@
   background: transparent
   border: 1px solid $white_pure
   &:hover
-    outline-color: lighten($blue, 5%)
-    border-color: lighten($blue, 5%)
+    outline-color: lighten($secondary, 5%)
+    border-color: lighten($secondary, 5%)
 
 .button-clean
   background: transparent
