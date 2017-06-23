@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
     = render "layouts/nav"
-    %div{class:'api-list'}
+    .api-list
       = yield
     = javascript_include_tag "application"
     = javascript_include_tag "vendor/owl.carousel.min.js"
