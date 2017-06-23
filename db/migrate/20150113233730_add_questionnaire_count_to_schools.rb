@@ -1,4 +1,4 @@
-class AddQuestionnaireCountToSchools < ActiveRecord::Migration
+class AddQuestionnaireCountToSchools < ActiveRecord::Migration[4.2]
   def up
     add_column :schools, :questionnaire_count, :int
     Questionnaire.select(:school_id).each do |q|

@@ -1,4 +1,4 @@
-class CreateFips < ActiveRecord::Migration
+class CreateFips < ActiveRecord::Migration[4.2]
   def change
     create_table :fips do |t|
       t.string :fips_code

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 
 gem 'mysql2'
 
@@ -11,9 +11,8 @@ gem 'rails_12factor', group: :production
 gem 'test-unit', '~> 3.0'
 
 gem 'rollbar', '~> 2.8'
-gem 'skylight'
 
-gem 'sidekiq', '< 5'
+gem 'sidekiq', '< 6'
 gem 'sprockets', require: nil
 
 gem 'devise', '~> 4.2'
@@ -26,8 +25,7 @@ gem 'aws-sdk'
 
 gem 'haml-rails'
 gem 'simple_form'
-gem 'kaminari'
-gem 'ajax-datatables-rails'
+gem 'ajax-datatables-rails', '~> 0.4.0' # Does NOT follow semver
 gem 'roadie-rails'
 gem 'chartkick', '~> 2.1'
 gem 'groupdate'

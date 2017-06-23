@@ -14,4 +14,3 @@ class HomeController < ApplicationController
   def apilist
     render layout: "api"
   end
-end

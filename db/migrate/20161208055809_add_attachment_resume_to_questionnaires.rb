@@ -1,4 +1,4 @@
-class AddAttachmentResumeToQuestionnaires < ActiveRecord::Migration
+class AddAttachmentResumeToQuestionnaires < ActiveRecord::Migration[4.2]
   def self.up
     change_table :questionnaires do |t|
       t.attachment :resume
