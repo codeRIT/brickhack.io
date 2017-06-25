@@ -1,4 +1,4 @@
-class AddQuestionnaireRefToUsers < ActiveRecord::Migration
+class AddQuestionnaireRefToUsers < ActiveRecord::Migration[4.2]
   def change
     change_table(:questionnaires) do |t|
       t.references :user

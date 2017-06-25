@@ -1,4 +1,4 @@
-class RemoveResumeFromQuestionnaires < ActiveRecord::Migration
+class RemoveResumeFromQuestionnaires < ActiveRecord::Migration[4.2]
   def change
     remove :resume_file_name
     remove :resume_content_type

@@ -1,33 +1,24 @@
 class AdminDatatable < AjaxDatatablesRails::Base
-  include AjaxDatatablesRails::Extensions::Kaminari
-
   def_delegators :@view, :link_to, :manage_admin_path
 
-  def sortable_columns
-    @sortable_columns ||= [
-      'User.id',
-      'User.email',
-      'User.admin_limited_access'
-    ]
-  end
-
-  def searchable_columns
-    @searchable_columns ||= [
-      'User.id',
-      'User.email'
-    ]
+  def view_columns
+    @view_columns ||= {
+      id: { source: 'User.id' },
+      email: { source: 'User.email' },
+      admin_limited_access: { source: 'User.admin_limited_access', searchable: false }
+    }
   end
 
   private
 
   def data
     records.map do |record|
-      [
-        link_to('<i class="fa fa-search"></i>'.html_safe, manage_admin_path(record)),
-        record.id,
-        record.email,
-        record.admin_limited_access ? 'Limited Access' : 'Full Access'
-      ]
+      {
+        link: link_to('<i class="fa fa-search"></i>'.html_safe, manage_admin_path(record)),
+        id: record.id,
+        email: record.email,
+        admin_limited_access: record.admin_limited_access ? 'Limited Access' : 'Full Access'
+      }
     end
   end
 

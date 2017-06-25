@@ -1,36 +1,25 @@
 class MessageDatatable < AjaxDatatablesRails::Base
-  include AjaxDatatablesRails::Extensions::Kaminari
-
   def_delegators :@view, :link_to, :manage_message_path
 
-  def sortable_columns
-    @sortable_columns ||= [
-      'Message.id',
-      'Message.name',
-      'Message.subject'
-    ]
-  end
-
-  def searchable_columns
-    @searchable_columns ||= [
-      'Message.id',
-      'message.name',
-      'Message.subject',
-      'Message.recipients'
-    ]
+  def view_columns
+    @view_columns ||= {
+      id: { source: "Message.id" },
+      name: { source: "Message.name" },
+      subject: { source: "Message.subject" }
+    }
   end
 
   private
 
   def data
     records.map do |record|
-      [
-        link_to('<i class="fa fa-search"></i>'.html_safe, manage_message_path(record)),
-        record.id,
-        record.name,
-        record.subject,
-        record.status.titleize
-      ]
+      {
+        link: link_to('<i class="fa fa-search"></i>'.html_safe, manage_message_path(record)),
+        id: record.id,
+        name: record.name,
+        subject: record.subject,
+        status: record.status.titleize
+      }
     end
   end
 

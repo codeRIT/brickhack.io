@@ -1,13 +1,5 @@
-$orange: #f58625
-$black: #201e1f
-$grey: #4d4d4d
-$blue: #3413ac
-$white: #ffffff
-$white-grey: #f8f8f8
-$red: #fc401c
-
 .button, input[type=submit]
-  background: $blue
+  background: $secondary
   border: 0
   cursor: pointer
   display: inline-block
@@ -15,7 +7,7 @@ $red: #fc401c
   font-size: 15px
   border-radius: 30px
   text-transform: uppercase
-  color: $white
+  color: $white_pure
   font-weight: 600 !important
   margin: 0.5em 0.5em 0.5em 0
   text-align: center
@@ -28,16 +20,16 @@ $red: #fc401c
     min-width: initial
     padding: 3px 5px
   &:hover, &:focus
-    background: lighten($blue, 15%)
-    @include box-shadow(inset 0 0 10px 3px lighten($blue, 5%))
+    background: lighten($secondary, 15%)
+    @include box-shadow(inset 0 0 10px 3px lighten($secondary, 5%))
     color: $white_pure
-    outline-color: $blue
+    outline-color: $secondary
   &:disabled
-    color: lighten($blue, 40%)
+    color: lighten($secondary, 40%)
     background: transparent
-    border: 1px solid lighten($blue, 35%)
+    border: 1px solid lighten($secondary, 35%)
     cursor: default
-    @include box-shadow(inset 0 0 0 0 lighten($blue, 5%))
+    @include box-shadow(inset 0 0 0 0 lighten($secondary, 5%))
 
 .button-center
   margin-left: auto
@@ -45,10 +37,10 @@ $red: #fc401c
 
 .button-outline
   background: transparent
-  border: 1px solid $white
+  border: 1px solid $white_pure
   &:hover
-    outline-color: lighten($blue, 5%)
-    border-color: lighten($blue, 5%)
+    outline-color: lighten($secondary, 5%)
+    border-color: lighten($secondary, 5%)
 
 .button-clean
   background: transparent

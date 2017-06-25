@@ -7,10 +7,6 @@ class HomeController < ApplicationController
     render layout: "blank"
   end
 
-  def event
-    render layout: "dayof"
-  end
-
   def design_category
     render layout: "blank"
   end
