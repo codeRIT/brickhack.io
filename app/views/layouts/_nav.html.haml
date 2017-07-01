@@ -1,6 +1,6 @@
-- is_design_category = current_page?(controller: 'home', action: 'design_category' )
+- simplified_nav = false if !defined?(simplified_nav)
 
-- if is_design_category
+- if simplified_nav
   - pages = ['Home']
 - else
   - pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
@@ -11,7 +11,7 @@
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
-      - if is_design_category
+      - if simplified_nav
         %a{ href: "/" }= page
       - else
         %a{ href: "##{page.downcase}" }= page

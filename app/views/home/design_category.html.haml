@@ -28,7 +28,7 @@
       text-indent: 30px;
   }
 
-= render "layouts/nav"
+= render partial: "layouts/nav", locals: { simplified_nav: true }
 
 %br
 
@@ -47,3 +47,4 @@
       No coding required! Build wire-frames, mock-ups, user flows, etc. that
       showcase your product and how your design accomplishes a wholesome brand,
       identity, and user experience. Integrating it into a software or hardware hack is optional
+
