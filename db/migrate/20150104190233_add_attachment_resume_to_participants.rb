@@ -1,4 +1,4 @@
-class AddAttachmentResumeToParticipants < ActiveRecord::Migration
+class AddAttachmentResumeToParticipants < ActiveRecord::Migration[4.2]
   # Paperclip was removed on 10/19/2016 by Stuart Olivera
 
   # def self.up
