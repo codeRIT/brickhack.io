@@ -6,4 +6,8 @@ class HomeController < ApplicationController
   def comingsoon
     render layout: "blank"
   end
+
+  def design_category
+    render layout: "blank"
+  end
 end
