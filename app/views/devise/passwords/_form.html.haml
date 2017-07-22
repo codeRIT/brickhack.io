@@ -1,9 +1,0 @@
-%div{class:'form-container'}
-  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-    = f.error_notification
-    .form-inputs
-      = f.input :email, required: true, autofocus: true
-    .center
-      .form-actions
-        = f.button :submit, "Send Reset Instructions"
-      = render "devise/shared/links"
