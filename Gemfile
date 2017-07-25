@@ -4,7 +4,7 @@ ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
 gem 'rails', '~> 5.1.0'
 
-gem 'hackathon_manager', '~> 0.1.0'
+gem 'hackathon_manager', '~> 0.2.0'
 
 gem 'puma'
 gem 'rails_12factor', group: :production
