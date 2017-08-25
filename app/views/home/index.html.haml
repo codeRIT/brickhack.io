@@ -12,7 +12,7 @@
     %h1.title BrickHack 4
     - if !Rails.configuration.hackathon['event_is_over']
       %h3 Inviting students to come together on
-    %h2.subtitle February 11-12, 2017
+    %h2.subtitle February 17-18, 2018
     %br
     - if Rails.configuration.hackathon['event_is_over']
       %h3 Thanks for a great BrickHack! See you next year!
@@ -81,7 +81,7 @@
         %h2 Designers
         %p Do you have a penchant for creating intuitive works? Take this opportunity to work with other designers!
         %p Work on a team to create a new brand or marketing strategy! You can even hack alongside engineers to produce a working prototype.
-        = btn_link_to 'Design Category', 'https://goo.gl/51WUv0'
+        = btn_link_to 'Design Category', action: 'design_category'
       .column
         = image_tag 'dev_grey.png', class: 'img-spaced'
         %h2 Developers

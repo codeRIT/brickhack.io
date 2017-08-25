@@ -1,4 +1,9 @@
-- pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
+- simplified_nav = false if !defined?(simplified_nav)
+
+- if simplified_nav
+  - pages = ['Home']
+- else
+  - pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
 
 %nav.desktop
   .logo
@@ -6,7 +11,10 @@
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
-      %a{ href: "##{page.downcase}" }= page
+      - if simplified_nav
+        %a{ href: "/" }= page
+      - else
+        %a{ href: "##{page.downcase}" }= page
 
     - if current_user
       - if current_user.admin
@@ -14,7 +22,7 @@
       - else
         = link_to 'My Account', questionnaires_path, class: 'button button-outline'
     - else
-      - text = Rails.configuration.hackathon['registration_is_open'] ? 'Register' : 'Sign In' # TODO: Sign Up / Sign In
+      - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up' : 'Sign In'
       = link_to text, new_user_registration_path, class: 'button button-outline'
 
 -# mobile nav
