@@ -412,9 +412,12 @@ DEPENDENCIES
   shoulda
   simplecov
 <<<<<<< HEAD
+<<<<<<< HEAD
   sparkpost_rails
   sprockets
   strip_attributes
+=======
+>>>>>>> 8a122f0c100dceb953578f3c45ba95bd63a4cd89
 =======
 >>>>>>> 8a122f0c100dceb953578f3c45ba95bd63a4cd89
   test-unit (~> 3.0)
@@ -425,7 +428,11 @@ RUBY VERSION
 
 BUNDLED WITH
 <<<<<<< HEAD
+<<<<<<< HEAD
    1.15.1
+=======
+   1.15.3
+>>>>>>> 8a122f0c100dceb953578f3c45ba95bd63a4cd89
 =======
    1.15.3
 >>>>>>> 8a122f0c100dceb953578f3c45ba95bd63a4cd89
