@@ -91,12 +91,6 @@ Rails.application.configure do
 
   # Send email through Sparkpost API
   config.action_mailer.delivery_method = :sparkpost
-  config.action_mailer.smtp_settings = {
-    address:   ENV["SMTP_ADDRESS"],
-    port:      ENV["SMTP_PORT"],
-    user_name: ENV["SMTP_USER_NAME"],
-    password:  ENV["SMTP_PASSWORD"]
-  }
 
   # Required for Devise
   config.action_mailer.default_url_options = { host: 'brickhack.io', protocol: 'https' }
