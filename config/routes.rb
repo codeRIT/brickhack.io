@@ -6,5 +6,4 @@ Rails.application.routes.draw do
   get "/design_category", to: "home#design_category"
   get "/api_list", to: "home#api_list"
   root to: 'home#index'
-
 end
