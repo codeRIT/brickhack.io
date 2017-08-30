@@ -14,3 +14,4 @@ class HomeController < ApplicationController
   def api_list
     render layout: "blank"
   end
+end
