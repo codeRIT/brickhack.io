@@ -10,8 +10,4 @@ class HomeController < ApplicationController
   def design_category
     render layout: "blank"
   end
-
-  def api_list
-    render layout: "blank"
-  end
 end

@@ -412,8 +412,6 @@ DEPENDENCIES
   shoulda
   simplecov
   sparkpost_rails
-  sprockets
-  strip_attributes
   test-unit (~> 3.0)
   valid_attribute
 
@@ -421,4 +419,4 @@ RUBY VERSION
    ruby 2.4.1
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
