@@ -3,4 +3,5 @@ SparkPostRails.configure do |c|
   c.track_opens = true
   c.track_clicks = true
   c.campaign_id = 'BrickHack 4'
+  c.html_content_only: true
 end
