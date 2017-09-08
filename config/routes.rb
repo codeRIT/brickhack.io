@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   get "/event", to: "home#event"
+  get "/apilist", to: "home#apilist"
   get "home/index"
   get "/design_category", to: "home#design_category"
   root to: 'home#index'

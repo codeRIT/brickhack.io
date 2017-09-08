@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title BrickHack API List
+    = render "layouts/shared_head"
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag 'home.css'
+    = csrf_meta_tags
+  %body
+    = render "layouts/nav"
+    .api-list
+      = yield
+    = javascript_include_tag "application"
+    = javascript_include_tag "vendor/owl.carousel.min.js"
+    = render "layouts/shared_footer"
