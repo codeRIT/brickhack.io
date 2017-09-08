@@ -80,6 +80,7 @@ nav
   margin: 0 auto
   width: 90%
   display: block
+  padding-top: 30px
 
 h1
   color: $orange
@@ -323,4 +324,52 @@ p
 
   #bus_lists_section
     padding-left: 20px
-    padding-right: 20px 
+    padding-right: 20px
+
+#design_comp
+  height: 50px
+  overflow: hidden
+  background-color: #F36E21
+
+#design_comp p
+  position: relative
+  font-size: 3em
+  color: white
+  position: absolute
+  width: 100%
+  margin: 0
+  line-height: 50px
+  text-align: center
+
+
+  -moz-transform:translateX(100%)
+  -webkit-transform:translateX(100%)
+  transform:translateX(100%)
+
+  -moz-animation: design_comp 15s linear infinite
+  -webkit-animation: design_comp 15s linear infinite
+  animation: design_comp 15s linear infinite
+
+/* Move it (define the animation) */
+@-moz-keyframes design_comp
+  0%
+    -moz-transform: translateX(100%)
+  100%
+    -moz-transform: translateX(-100%)
+
+@-webkit-keyframes design_comp
+  0%
+    -webkit-transform: translateX(100%)
+  100%
+    -webkit-transform: translateX(-100%)
+
+@keyframes design_comp
+  0%
+    -moz-transform: translateX(100%)
+    -webkit-transform: translateX(100%)
+    transform: translateX(100%)
+
+  100%
+    -moz-transform: translateX(-100%)
+    -webkit-transform: translateX(-100%)
+    transform: translateX(-100%)
