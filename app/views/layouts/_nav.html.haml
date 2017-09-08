@@ -15,9 +15,7 @@
       = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
-      - if api_list
-        %a{ href: "/" }= page
-      - if simplified_nav
+      - if api_list || simplified_nav
         %a{ href: "/" }= page
       - else
         %a{ href: "##{page.downcase}" }= page
