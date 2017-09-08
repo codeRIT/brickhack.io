@@ -1,7 +1,13 @@
-- pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
+- simplified_nav = false if !defined?(simplified_nav)
+- if simplified_nav
+  - pages = ['Home']
+- else
+  - pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
+
 - api_list = current_page?(:controller => 'home', :action => 'apilist')
 - if api_list
   - pages = ['Home']
+
 
 %nav.desktop
   .logo
@@ -10,6 +16,8 @@
   .nav-links
     - pages.each do |page|
       - if api_list
+        %a{ href: "/" }= page
+      - if simplified_nav
         %a{ href: "/" }= page
       - else
         %a{ href: "##{page.downcase}" }= page
@@ -20,7 +28,7 @@
       - else
         = link_to 'My Account', questionnaires_path, class: 'button button-outline'
     - else
-      - text = Rails.configuration.hackathon['registration_is_open'] ? 'Register' : 'Sign In' # TODO: Sign Up / Sign In
+      - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up' : 'Sign In'
       = link_to text, new_user_registration_path, class: 'button button-outline'
 
 -# mobile nav

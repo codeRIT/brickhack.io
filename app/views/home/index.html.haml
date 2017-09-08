@@ -2,8 +2,8 @@
 
 = render "layouts/nav"
 
-- mentor_link = "https://goo.gl/forms/3rNdjlrS9u7gZX9p1".freeze
-- volunteer_link = "https://goo.gl/forms/7Z6dZmZxEOXXpBPA3".freeze
+- mentor_link = "https://goo.gl/forms/d8WiaiM7rYaLz3SQ2".freeze
+- volunteer_link = "https://goo.gl/forms/cpmRgGxLsUUjNymG2".freeze
 
 .page.split-home#home
   .split-left
@@ -81,7 +81,7 @@
         %h2 Designers
         %p Do you have a penchant for creating intuitive works? Take this opportunity to work with other designers!
         %p Work on a team to create a new brand or marketing strategy! You can even hack alongside engineers to produce a working prototype.
-        = btn_link_to 'Design Category', 'https://goo.gl/51WUv0'
+        = btn_link_to 'Design Category', action: 'design_category'
       .column
         = image_tag 'dev_grey.png', class: 'img-spaced'
         %h2 Developers
