@@ -39,6 +39,41 @@ Afterwards, you can restart the server with `powder restart`  when needed.
 
 If you choose not to use Pow, you can still initiate a local Rails server with `bin/rails server` and visit [http://localhost:3000](http://localhost:3000)
 
+### Possible Errors you may encounter
+
+* You may encounter an error initially with an output like
+```
+While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /Library/Ruby/Gems/2.0.0 directory.
+```
+If encountered rerun
+```bash
+$ rbenv install
+```
+Although it may say 
+```
+rbenv: /Users/../.rbenv/versions/2.4.1 already exists
+continue with installation? (y/N) 
+```
+enter y because there is a chance that rbenv was not installed correctly initially
+
+---
+
+* If encountering errors when starting up your server and going on [http://localhost:3000](http://localhost:3000) with the error:
+Can't connect to local MySQL server through socket '/tmp/mysql.sock'
+run 
+```bash
+$ mysql.server start
+```
+Afterwards you may encounter an error: 
+ActiveRecord::NoDatabaseError - Unknown database 'brickhack'
+rerun 
+```bash
+$ bin/setup
+```
+With that you should now be able to go on to [http://localhost:3000](http://localhost:3000)
+
+
 ## Windows
 
 ***Note:*** *This setup is outdated. Contributions welcome!*
