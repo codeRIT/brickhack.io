@@ -5,9 +5,4 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_response :success
   end
-
-  test "should get event page" do
-    get :event
-    assert_response :success
-  end
 end

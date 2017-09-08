@@ -14,6 +14,11 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  # Attempt to read encrypted secrets from `config/secrets.yml.enc`.
+  # Requires an encryption key in `ENV["RAILS_MASTER_KEY"]` or
+  # `config/secrets.yml.key`.
+  config.read_encrypted_secrets = true
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
@@ -78,29 +83,20 @@ Rails.application.configure do
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Send email through custom SMTP server
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:   ENV["SMTP_ADDRESS"],
-    port:      ENV["SMTP_PORT"],
-    user_name: ENV["SMTP_USER_NAME"],
-    password:  ENV["SMTP_PASSWORD"]
-  }
+  # Send email through Sparkpost API
+  config.action_mailer.delivery_method = :sparkpost
 
   # Required for Devise
   config.action_mailer.default_url_options = { host: 'brickhack.io', protocol: 'https' }
   config.action_mailer.asset_host = 'https://brickhack.io'
 
-  config.to_prepare do
-    Devise::Mailer.layout "mailer"
-  end
-
+  # Paperclip
   config.paperclip_defaults = {
     storage: :s3,
     bucket: ENV['AWS_BUCKET'],

@@ -19,7 +19,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_questionnaires datatables api" do
-      post :datatable, format: :json
+      post :datatable, format: :json, params: { "columns[0][data]" => "" }
       assert_response 401
     end
 
@@ -103,7 +103,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "not allow access to manage_questionnaires datatables api" do
-      post :datatable, format: :json
+      post :datatable, format: :json, params: { "columns[0][data]" => "" }
       assert_response :redirect
       assert_redirected_to root_path
     end
@@ -188,7 +188,7 @@ class Manage::QuestionnairesControllerTest < ActionController::TestCase
     end
 
     should "allow access to manage_questionnaires datatables api" do
-      post :datatable, format: :json
+      post :datatable, format: :json, params: { "columns[0][data]" => "" }
       assert_response :success
     end
 
