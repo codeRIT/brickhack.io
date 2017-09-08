@@ -55,7 +55,7 @@ Although it may say
 rbenv: /Users/../.rbenv/versions/2.4.1 already exists
 continue with installation? (y/N) 
 ```
-enter y because there is a chance that rbenv was not installed correctly initially
+Enter y for yes because there is a chance that rbenv was not installed correctly initially
 
 ---
 
