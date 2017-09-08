@@ -46,8 +46,9 @@ If you choose not to use Pow, you can still initiate a local Rails server with `
 While executing gem ... (Gem::FilePermissionError)
     You don't have write permissions for the /Library/Ruby/Gems/2.0.0 directory.
 ```
-If encountered rerun
+If encountered run
 ```bash
+$ brew install ruby
 $ rbenv install
 ```
 Although it may say 
