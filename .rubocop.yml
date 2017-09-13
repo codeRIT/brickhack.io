@@ -7,9 +7,6 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
-Documentation:
-  Enabled: false
-
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
@@ -17,10 +14,15 @@ Metrics/AbcSize:
   Enabled: false
 
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - test/**/*
+    - config/routes.rb
 
 Metrics/ClassLength:
   Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 7
 
 Metrics/LineLength:
   Enabled: false
@@ -31,7 +33,7 @@ Metrics/MethodLength:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Style/CyclomaticComplexity:
+Style/Documentation:
   Enabled: false
 
 Style/StringLiterals:
@@ -43,13 +45,7 @@ Style/EmptyMethod:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/NumericLiterals:
-  Enabled: false
-
-Style/RegexpLiteral:
-  Enabled: false
-
-Style/SpaceInsideBrackets:
+Style/SymbolArray:
   Enabled: false
 
 Style/WordArray:
