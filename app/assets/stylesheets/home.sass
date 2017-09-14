@@ -327,49 +327,16 @@ p
     padding-right: 20px
 
 #design_comp
-  height: 50px
+  height: 48px
   overflow: hidden
   background-color: #F36E21
 
-#design_comp p
+#design_comp p, #design_comp a
   position: relative
-  font-size: 3em
+  font-size: 18px
   color: white
   position: absolute
   width: 100%
   margin: 0
-  line-height: 50px
+  line-height: 20px
   text-align: center
-
-
-  -moz-transform:translateX(100%)
-  -webkit-transform:translateX(100%)
-  transform:translateX(100%)
-
-  -moz-animation: design_comp 15s linear infinite
-  -webkit-animation: design_comp 15s linear infinite
-  animation: design_comp 15s linear infinite
-
-/* Move it (define the animation) */
-@-moz-keyframes design_comp
-  0%
-    -moz-transform: translateX(100%)
-  100%
-    -moz-transform: translateX(-100%)
-
-@-webkit-keyframes design_comp
-  0%
-    -webkit-transform: translateX(100%)
-  100%
-    -webkit-transform: translateX(-100%)
-
-@keyframes design_comp
-  0%
-    -moz-transform: translateX(100%)
-    -webkit-transform: translateX(100%)
-    transform: translateX(100%)
-
-  100%
-    -moz-transform: translateX(-100%)
-    -webkit-transform: translateX(-100%)
-    transform: translateX(-100%)
