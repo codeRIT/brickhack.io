@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get "/apilist", to: "home#apilist"
   get "home/index"
   get "/design_category", to: "home#design_category"
-  root to: 'home#index'
+#  root to: 'home#index'
+  root to: 'home#comingsoon'
 end
