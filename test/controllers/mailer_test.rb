@@ -101,7 +101,7 @@ class MailerTest < ActionMailer::TestCase
 
       assert_equal ["test@example.com"],     email.to
       assert_equal "Incomplete Application", email.subject
-      assert_match /brickhack.io\/apply/,    email.encoded
+      assert_match %r{brickhack.io\/apply},  email.encoded
     end
   end
 
@@ -114,9 +114,9 @@ class MailerTest < ActionMailer::TestCase
     should "deliver invite email" do
       email = Mailer.slack_invite_email(@questionnaire.id).deliver_now
 
-      assert_equal ["test@example.com"], email.to
-      assert_equal "Slack Invite!", email.subject
-      assert_match /slack.com\/shared_invite/, email.encoded
+      assert_equal ["test@example.com"],         email.to
+      assert_equal "Slack Invite!",              email.subject
+      assert_match %r{slack.com\/shared_invite}, email.encoded
     end
   end
 
@@ -131,9 +131,9 @@ class MailerTest < ActionMailer::TestCase
     should "deliver update email" do
       email = Mailer.bus_list_update_email(@questionnaire.id).deliver_now
 
-      assert_equal ["test@example.com"], email.to
-      assert_equal "Bus Update", email.subject
-      assert_match /brickhack.io\/rsvp/, email.encoded
+      assert_equal ["test@example.com"],   email.to
+      assert_equal "Bus Update",           email.subject
+      assert_match %r{brickhack.io\/rsvp}, email.encoded
     end
   end
 end
