@@ -30,7 +30,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # MailCatcher
-  config.action_mailer.delivery_method = :sparkpost
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
 
   # Required for Devise
