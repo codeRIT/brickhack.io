@@ -416,7 +416,7 @@ DEPENDENCIES
   valid_attribute
 
 RUBY VERSION
-   ruby 2.4.1
+   ruby 2.4.2
 
 BUNDLED WITH
    1.15.4
