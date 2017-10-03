@@ -6,7 +6,7 @@ Rollbar.configure do |config|
   config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
   config.environment = ENV['ROLLBAR_ENV']
 
-  # Here we'll disable in when not 'production':
+  # Here we'll disable Rollbar when not in 'production':
   config.enabled = false unless Rails.env.production?
 
   # By default, Rollbar will try to call the `current_user` controller method
