@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.6.22
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+
+  redis:
+    image: redis:4.0-alpine
+
+  web:
+    build: .
+    command: rails server --port 3000 --binding 0.0.0.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+  sidekiq:
+    build: .
+    command: sidekiq
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    environment:
+      - REDIS_URL=redis://redis:6379
