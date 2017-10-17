@@ -7,12 +7,11 @@ Rollbar.configure do |config|
   config.environment = ENV['ROLLBAR_ENV']
 
   # Rollbar is only enabled in 'production' outside of rake tasks
+  # Note: 'rake rollbar:test' will not properly test the setup since
+  #       Rollbar is now disabled in rake tasks.
   if !Rails.env.production? || /rake/ =~ File.split($PROGRAM_NAME).last
     config.enabled = false
   end
-
-  # Note: 'rake rollbar:test' will not properly test the setup since
-  #       Rollbar is now disabled in rake tasks.
 
   # By default, Rollbar will try to call the `current_user` controller method
   # to fetch the logged-in user object, and then call that object's `id`,
