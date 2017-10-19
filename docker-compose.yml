@@ -18,6 +18,7 @@ services:
       - redis
     volumes:
       - .:/app
+      - bundle_cache:/bundle
     environment:
       - REDIS_URL=redis://redis:6379
 
@@ -29,5 +30,9 @@ services:
       - redis
     volumes:
       - .:/app
+      - bundle_cache:/bundle
     environment:
       - REDIS_URL=redis://redis:6379
+
+volumes:
+  bundle_cache:

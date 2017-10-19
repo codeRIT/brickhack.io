@@ -14,12 +14,18 @@ RUN apt-get install -y libxml2-dev libxslt1-dev
 # for a JS runtime
 RUN apt-get install -y nodejs
 
-RUN mkdir /app
+# Add app files into docker image
+RUN mkdir -p /app
 WORKDIR /app
+COPY . .
 
-ADD Gemfile* /app/
-ADD .ruby-version /app/
-RUN gem install bundler
-RUN bundle install --jobs 20 --retry 5
+# Add bundle entry point to handle bundle cache
+COPY ./docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
-ADD . /app
+# Bundle installs with binstubs to our custom /bundle/bin volume path. Let system use those stubs.
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
