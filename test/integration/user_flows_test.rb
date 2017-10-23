@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserFlowsTest < ActionDispatch::IntegrationTest
   should "be able to login and browse site as a user" do
-    login(FactoryGirl.create(:user))
+    login(FactoryBot.create(:user))
     assert_redirected_to new_questionnaires_path
 
     get new_questionnaires_path
@@ -11,7 +11,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
 
   should "be able to login and browse site as an admin" do
-    login(FactoryGirl.create(:admin))
+    login(FactoryBot.create(:admin))
     assert_redirected_to manage_root_path
 
     get manage_dashboard_index_path
@@ -24,12 +24,12 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get manage_questionnaires_path
     assert_response :redirect
 
-    login(FactoryGirl.create(:admin))
+    login(FactoryBot.create(:admin))
     assert_redirected_to manage_questionnaires_path
   end
 
   should "redirect to completed application after login" do
-    questionnaire = FactoryGirl.create(:questionnaire)
+    questionnaire = FactoryBot.create(:questionnaire)
     login(questionnaire.user)
     assert_redirected_to questionnaires_path
   end

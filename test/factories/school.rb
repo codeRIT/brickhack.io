@@ -1,5 +1,5 @@
 # This will guess the User class
-FactoryGirl.define do
+FactoryBot.define do
   factory :school do
     sequence :id do |n|
       n

@@ -19,7 +19,7 @@ require "minitest/rails"
 require "strip_attributes/matchers"
 require "minitest/reporters"
 require "valid_attribute"
-require "factory_girl_rails"
+require "factory_bot_rails"
 require "sidekiq/testing"
 require "paperclip/matchers"
 
@@ -37,7 +37,7 @@ if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
 end
 
 Minitest::Reporters.use!
-FactoryGirl.reload
+FactoryBot.reload
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
@@ -53,7 +53,7 @@ end
 class ActiveSupport::TestCase
   extend StripAttributes::Matchers
   include ValidAttribute::Method
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   extend Paperclip::Shoulda::Matchers
 
   # Add more helper methods to be used by all tests here...
