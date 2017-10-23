@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :school_name_duplicate do
     sequence :id do |n|
       n

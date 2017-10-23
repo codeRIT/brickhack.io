@@ -36,13 +36,13 @@ class Manage::DashboardControllerTest < ActionController::TestCase
     end
 
     should "allow access to all data endpoints" do
-      school1 = FactoryGirl.create(:school)
-      school2 = FactoryGirl.create(:school)
-      FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "pending")
-      FactoryGirl.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "accepted")
-      FactoryGirl.create_list(:questionnaire, 10, school_id: school2.id, acc_status: "accepted")
+      school1 = FactoryBot.create(:school)
+      school2 = FactoryBot.create(:school)
+      FactoryBot.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "pending")
+      FactoryBot.create_list(:questionnaire, 20, school_id: school1.id, acc_status: "accepted")
+      FactoryBot.create_list(:questionnaire, 10, school_id: school2.id, acc_status: "accepted")
       Questionnaire::POSSIBLE_ACC_STATUS.each do |status, _name|
-        FactoryGirl.create_list(:questionnaire, 1, school_id: school2.id, acc_status: status)
+        FactoryBot.create_list(:questionnaire, 1, school_id: school2.id, acc_status: status)
       end
 
       paths = [

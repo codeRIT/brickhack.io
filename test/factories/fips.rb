@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :fips do
     fips_code  "36055"
     city       "Rochester"
