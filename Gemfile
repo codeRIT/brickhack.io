@@ -4,7 +4,11 @@ ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
 gem 'rails', '~> 5.1.0'
 
-gem 'hackathon_manager', '~> 0.2.0'
+if ENV['HACKATHON_MANAGER_DEV'] == '1'
+  gem 'hackathon_manager', path: '../hackathon_manager'
+else
+  gem 'hackathon_manager', '~> 0.2.0'
+end
 
 gem 'puma'
 gem 'rails_12factor', group: :production

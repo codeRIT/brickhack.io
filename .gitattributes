@@ -1,0 +1,2 @@
+# All files should have regular lf line endings. Docker will break on Windows otherwise.
+* text=auto eol=lf
