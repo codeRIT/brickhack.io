@@ -233,7 +233,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.4.8)
@@ -326,7 +326,7 @@ GEM
     roadie-rails (1.2.1)
       railties (>= 3.0, < 5.2)
       roadie (~> 3.1)
-    rollbar (2.15.0)
+    rollbar (2.15.5)
       multi_json
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
