@@ -3,6 +3,8 @@ dist: precise # Temp fix: https://github.com/travis-ci/travis-ci/issues/8331
 cache: bundler
 sudo: false
 bundler_args: --path vendor --local --without development
+env:
+  - DATABASE_URL="mysql2://travis@localhost/myapp_test"
 before_script:
   - mysql -e 'create database myapp_test;'
   - mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
