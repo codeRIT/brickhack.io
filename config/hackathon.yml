@@ -1,8 +1,16 @@
 defaults: &defaults
+  # Logic config
   registration_is_open: false
   event_is_over: true
   last_day_to_apply: <%= Date.new(2017, 2, 11) %>
   auto_late_waitlist: true
+
+  # Content config
+  name: BrickHack
+  logo_asset: brickhack.png
+  agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
+  email_from: '"BrickHack" <hello@codeRIT.org>'
+  default_page_title: BrickHack 3 - Feb 11-12, 2017
 
 development:
   <<: *defaults

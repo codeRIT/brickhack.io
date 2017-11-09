@@ -7,7 +7,7 @@ gem 'rails', '~> 5.1.0'
 if ENV['HACKATHON_MANAGER_DEV'] == '1'
   gem 'hackathon_manager', path: '../hackathon_manager'
 else
-  gem 'hackathon_manager', '~> 0.2.0'
+  gem 'hackathon_manager', '~> 0.3.0'
 end
 
 gem 'puma'
