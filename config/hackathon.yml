@@ -10,7 +10,7 @@ defaults: &defaults
   logo_asset: brickhack.png
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
   email_from: '"BrickHack" <hello@codeRIT.org>'
-  default_page_title: BrickHack 3 - Feb 11-12, 2017
+  default_page_title: BrickHack 4 - Feb 27-28, 2018
 
 development:
   <<: *defaults
