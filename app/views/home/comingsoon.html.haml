@@ -54,21 +54,10 @@
       %a.sm-link{ href:"https://twitter.com/brickhackrit", target: '_blank' }
         %span.fa.fa-twitter
 
-#about.home-section
-  .orange-fill
-  .bg-image{ style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
-    %h1.wow.fade-in.center-vertical What is BrickHack?
-
-  .home-content
-    %h2.orange.center RIT's PREMIERE HACKATHON
-    %h3{ style: 'text-align: justify;' } BrickHack ignites a weekend devoted to 500 designers and coders sinking 24 hours into learning, building, and creating unique projects. Mentors and industry representatives will also join the fray to lend expertise and share wisdom. Expect food, swag, and timeless brick-laden memories
-    .center
-      %h3
-        %em Last Year:
-      = link_to "https://brickhack3.devpost.com/" do
-        .button SUBMISSIONS
-      = link_to "/gallery/" do
-        .button GALLERY
+/#about.home-section
+/  .orange-fill
+/  .bg-image{ style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
+/    %h1.wow.fade-in.center-vertical What is BrickHack?
 
 /  .home-content
 /    %h2.orange.center RIT's PREMIERE HACKATHON
@@ -104,7 +93,6 @@
 /  .bg-image{ style: "background-image: url(" +  image_path('background_2.jpg')  + ")" }
 /    %h1.wow.fade-in.center-vertical Sponsors
 
-
 /  .home-content.center
 /    = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
 /    .sponsor-grid
@@ -137,6 +125,9 @@
 /      .third
 /        %a{ href: "https://coderit.org" }
 /          = image_tag 'coderit_logo.png'
+
+%a#mlh-trust-badge{href: "https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=white", style: "display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000", target: "_blank"}
+  %img{src:"https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg", alt:"Major League Hacking 2017 Hackathon Season", style:"width:100%"}
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ :async => "", :defer => "defer", :src => "//js.hs-scripts.com/2104052.js", :type => "text/javascript" }
