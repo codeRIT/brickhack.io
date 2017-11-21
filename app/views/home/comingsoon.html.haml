@@ -1,29 +1,29 @@
 = stylesheet_link_tag 'home.css'
 
-%nav
-  %a.desktop.active{ href: '#home' }BrickHack
-  %a.desktop{ href: '#about' }about
-  %a.desktop{ href: '#faq' }FAQ
-  %a.desktop{ href: '#sponsors' }sponsors
-  - if current_user
-    = link_to 'My Account', questionnaires_path, class: 'desktop'
-
-  -# mobile nav
-  %i{ class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu' }
-  %h2{ class: 'mobile mob-nav-header', style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
-
-  #mobile-nav
-    %a.mobile.active{ href: '#home' }BrickHack
-    %a.mobile{ href: '#about' }about
-    %a.mobile{ href: '#faq' }FAQ
-    %a.mobile{ href: '#sponsors' }sponsors
-    - if current_user
-      = link_to 'My Account', questionnaires_path, class: 'mobile'
+/%nav
+/  %a.desktop.active{ href: '#home' }BrickHack
+/  %a.desktop{ href: '#about' }About
+/  %a.desktop{ href: '#faq' }FAQ
+/  %a.desktop{ href: '#sponsors' }Sponsors
+/  - if current_user
+/    = link_to 'My Account', questionnaires_path, class: 'desktop'
+/
+/  -# mobile nav
+/  %i{ class: 'fa fa-bars mobile mob-nav-header', id: 'hamburger-menu' }
+/  %h2{ class: 'mobile mob-nav-header', style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
+/
+/  #mobile-nav
+/    %a.mobile.active{ href: '#home' }BrickHack
+/    %a.mobile{ href: '#about' }About
+/    %a.mobile{ href: '#faq' }FAQ
+/    %a.mobile{ href: '#sponsors' }Sponsors
+/    - if current_user
+/      = link_to 'My Account', questionnaires_path, class: 'mobile'
 
 .page.triangle-background#home
   .center-vertical.plus-nav.center
     = image_tag 'brickhack.png', { id: 'logo', class: 'wow rotate-in' }
-    %h3{ style: 'text-align: center; color: white; position: relative; top: 48px;' } February 11-12, 2017
+    %h3{ style: 'text-align: center; color: white; position: relative; top: 48px;' } January 27-28, 2018
     %br
     %p
       %em Enter your email below! We'll keep you posted.
@@ -61,7 +61,7 @@
 
   .home-content
     %h2.orange.center RIT's PREMIERE HACKATHON
-    %h3{ style: 'text-align: justify;' } BrickHack ignites a weekend devoted to 400 designers and coders sinking 24 hours into learning, building, and creating unique projects. Mentors and industry representatives will also join the fray to lend expertise and share wisdom. Expect food, swag, and timeless brick-laden memories
+    %h3{ style: 'text-align: justify;' } BrickHack ignites a weekend devoted to 500 designers and coders sinking 24 hours into learning, building, and creating unique projects. Mentors and industry representatives will also join the fray to lend expertise and share wisdom. Expect food, swag, and timeless brick-laden memories
     .center
       %h3
         %em Last Year:
@@ -128,9 +128,6 @@
       .third
         %a{ href: "https://coderit.org" }
           = image_tag 'coderit_logo.png'
-
-%a#mlh-trust-badge{href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", style: "display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000", target: "_blank"}
-  %img{alt: "Major League Hacking 2017 Hackathon Season", src: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg", style: "width:100%"}/
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ :async => "", :defer => "defer", :src => "//js.hs-scripts.com/2104052.js", :type => "text/javascript" }
