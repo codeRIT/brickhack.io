@@ -2,7 +2,7 @@ defaults: &defaults
   # Logic config
   registration_is_open: false
   event_is_over: true
-  last_day_to_apply: <%= Date.new(2018, 1, 28) %>
+  last_day_to_apply: <%= Date.new(2018, 1, 22) %>
   auto_late_waitlist: true
 
   # Content config
