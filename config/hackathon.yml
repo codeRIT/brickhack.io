@@ -2,7 +2,7 @@ defaults: &defaults
   # Logic config
   registration_is_open: false
   event_is_over: true
-  last_day_to_apply: <%= Date.new(2017, 2, 11) %>
+  last_day_to_apply: <%= Date.new(2018, 1, 28) %>
   auto_late_waitlist: true
 
   # Content config
@@ -10,7 +10,12 @@ defaults: &defaults
   logo_asset: brickhack.png
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
   email_from: '"BrickHack" <hello@codeRIT.org>'
-  default_page_title: BrickHack 4 - Feb 27-28, 2018
+  default_page_title: BrickHack 4 - Jan 27-28, 2018
+
+  disclaimer: |
+    Applicants must be 18 years of age by January 27th.
+  thanks_for_applying: |
+    Thanks for applying! You will be notified of your acceptance via email in January.
 
 development:
   <<: *defaults
