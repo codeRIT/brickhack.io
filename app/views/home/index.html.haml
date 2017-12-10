@@ -7,12 +7,12 @@
 
 .page.split-home#home
   .split-left
-    = image_tag 'scroller.png'
-  .split-right
     %h1.title BrickHack 4
     - if !Rails.configuration.hackathon['event_is_over']
       %h3 Inviting students to come together on
-    %h2.subtitle February 11-12, 2017
+    %h2.subtitle January 27-28, 2018 at the
+    %br
+    %h2.subtitle Rochester Institute of Technology
     %br
     - if Rails.configuration.hackathon['event_is_over']
       %h3 Thanks for a great BrickHack! See you next year!
@@ -29,7 +29,7 @@
           .button.button-outline MY ACCOUNT
     - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
-        .button.button-outline SIGN UP TODAY!
+        .button.button-outline REGISTER NOW
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
@@ -46,60 +46,33 @@
 .white-section.diagonal#about
   .home-content.about-gallery
     .about
-      %h1 RIT's Premiere Hackathon
-      %p
-        BrickHack brings
-        %strong designers, developers,
-        and
-        %strong all sorts of makers
-        together for 24 hours to create the impossible!
+      .split-left
+        .button-wrapper
+          = link_to 'FULL GALLERY', '/gallery/', class: 'button button-overlay'
 
-      %p
-        Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
+      .split-right
+        %h1 RIT's Premiere Hackathon
+        %p
+          BrickHack brings
+          %strong designers, developers,
+          and
+          %strong all sorts of makers
+          together for 24 hours to create the impossible!
 
-      %p
-        From
-        %strong noon February 11 to noon February 12,
-        you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, see our
-        = link_to 'parking instructions', image_path('brickhack-parking.png')
-        and <a href="https://maps.rit.edu">RIT's map</a>.
+        %p
+          Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
 
-      = link_to 'https://brickhack3.devpost.com/' do
-        .button.button-primary Devpost
+        %p
+          From
+          %strong noon February 11 to noon February 12,
+          you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, see our
+          = link_to 'parking instructions', image_path('brickhack-parking.png')
+          and <a href="https://maps.rit.edu">RIT's map</a>.
 
-    .gallery#gallery
-      = image_tag 'gallery-img.png'
-      .button-wrapper
-        = link_to 'See Gallery', '/gallery/', class: 'button button-overlay'
 
-.grey-section.diagonal#whoshouldcome
+#faq
   .home-content
-    %h1 Who should come?
-    .split-three
-      .column
-        = image_tag 'des_grey.png', class: 'img-spaced'
-        %h2 Designers
-        %p Do you have a penchant for creating intuitive works? Take this opportunity to work with other designers!
-        %p Work on a team to create a new brand or marketing strategy! You can even hack alongside engineers to produce a working prototype.
-        = btn_link_to 'Design Category', action: 'design_category'
-      .column
-        = image_tag 'dev_grey.png', class: 'img-spaced'
-        %h2 Developers
-        %p Does hammering away at bugs excite you? What about exploring new technologies while bringing an idea to life?
-        %p Come together to hack on the next solution to an every day problem, or even contribute back to the open source community.
-        = btn_link_to 'API List', '/apilist/'
-      .column
-        = image_tag 'eng_grey.png', class: 'img-spaced'
-        %h2 Engineers
-        %p Is hardware your passion? Does bringing the physical world to life excite you?
-        %p Put the parts together and get hands-on to construct your vision. We'll have various devices & products from MLH's popular hardware lab to work with.
-        = btn_link_to 'Hardware Lab', 'https://hardware.mlh.io'
-
-= render 'schedule'
-
-.grey-section.diagonal#faq
-  .home-content
-    %h1 FAQ
+    %h1 Do you have questions? We have answers.
 
     .split-four
       .column
@@ -167,35 +140,32 @@
         %h2 My question isn't answered here?
         %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.
 
-.white-section.diagonal#sponsors
+#sponsors
   .home-content
-    .split-three
-      .column.column--two
-        %h1 Sponsors
-        .sponsors
-          - STATIC_DATA['sponsors'].each do |sponsor|
-            - sponsor_class = []
-            - sponsor_class << 'sponsor-small' if sponsor['small']
-            - sponsor_class << 'sponsor-large' if sponsor['large']
-            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
-              = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
-        %br
-        = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
-      .column
-        %h1 Partners
-        %a.sponsor{ href: "http://magic.rit.edu", target: "_blank" }
-          = image_tag 'sponsors/magic.gif', id: "magic", class: 'img-spaced'
-        %a.sponsor{ href: "https://mlh.io", target: "_blank" }
-          = image_tag 'sponsors/mlh.png', class: 'img-spaced'
-        %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/", target: "_blank" }
-          = image_tag 'sponsors/simone.png', class: 'img-spaced'
+    %h1 A huge thank you to our sponsors
+    .sponsors
+      - STATIC_DATA['sponsors'].each do |sponsor|
+      - sponsor_class = []
+      - sponsor_class << 'sponsor-small' if sponsor['small']
+      - sponsor_class << 'sponsor-large' if sponsor['large']
+      %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
+        = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
+      %br
+      = link_to 'Sponsor Us?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
+
+    %h1 BrickHack is brought to you by...
+    %a.sponsor{ href: "http://magic.rit.edu", target: "_blank" }
+      = image_tag 'sponsors/magic.gif', id: "magic", class: 'img-spaced'
+    %a.sponsor{ href: "https://mlh.io", target: "_blank" }
+      = image_tag 'sponsors/mlh.png', class: 'img-spaced'
+    %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/", target: "_blank" }
+      = image_tag 'sponsors/simone.png', class: 'img-spaced'
 
         %h1 Organized By
         %a.sponsor{ href: "https://coderit.org", target: "_blank" }
           = image_tag 'coderit_logo.png', class: 'img-spaced'
 
-
-.black-section.diagonal#footer
+#footer
   .home-content
     .split-four
       .column
@@ -228,9 +198,6 @@
           = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
         %p
           = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
-
-%a#mlh-trust-badge{ href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", target: "_blank" }
-  %img{ alt: "Major League Hacking 2017 Hackathon Season", src: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg", style: "width:100%" }/
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ :async => "", :defer => "defer", :src => "//js.hs-scripts.com/2104052.js", :type => "text/javascript" }

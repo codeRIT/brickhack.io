@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   # get '/', to: 'home#index' is taken care of by "root" below
 
   # Homepage
-  # root to: 'home#index'
-  root to: 'home#comingsoon'
+   root to: 'home#index'
+  # root to: 'home#comingsoon'
 end

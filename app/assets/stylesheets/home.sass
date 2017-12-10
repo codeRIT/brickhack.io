@@ -2,7 +2,7 @@
 @import home/schedule
 
 body
-  background: $black
+  background: $white
   color: $white
 
 p a
@@ -18,16 +18,14 @@ p a
   padding: 0 20px
 
 nav
-  background: $black
+  background: $white
   width: 100%
-  position: fixed
   top: 0
-  z-index: 1000
+
 
   &.desktop
-    padding: 30px 50px
+    padding: 20px 135px
     display: flex
-    justify-content: space-between
     align-items: center
 
   i:before
@@ -56,11 +54,12 @@ nav
       width: 100%
 
   a
-    color: $white
-    font-size: 15px
+    color: $grey
+    font-size: 12px
+    font-weight: bold
     text-transform: uppercase
     font-weight: 300
-    padding: 6px 5px
+    padding: 10px 20px
     margin: 0 15px
 
     -webkit-transition: background-color 200ms ease
@@ -82,7 +81,7 @@ nav
   display: block
 
 h1
-  color: $orange
+  color: $black
   font-size: 36px
   font-weight: 300
   margin-bottom: 1em
@@ -116,12 +115,12 @@ p
   color: $white
 
 .title
-  color: $white
+  color: $black
   font-size: 58px
   margin-bottom: 0.5em
 
 .subtitle
-  color: $white
+  color: $grey
   font-size: 26px
   text-transform: none
   font-weight: 300
@@ -190,6 +189,7 @@ p
   flex: 1 0 280px
   text-align: center
   padding: 20px
+  color: grey
 
   // TODO: better selector
   img
