@@ -2,7 +2,7 @@
 - if simplified_nav
   - pages = ['Home']
 - else
-  - pages = ['About', 'Gallery', 'Schedule', 'FAQ', 'Sponsors']
+  - pages = ['About', 'Schedule', 'FAQ', 'Sponsors']
 
 - api_list = current_page?(:controller => 'home', :action => 'apilist')
 - if api_list
@@ -12,7 +12,7 @@
 %nav.desktop
   .logo
     %a{ href: '#' }
-      = image_tag 'brickhack.png', { class: 'wow rotate-in', alt: 'BrickHack' }
+      = image_tag 'brickhack4_logo.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
     - pages.each do |page|
       - if api_list || simplified_nav
@@ -49,4 +49,3 @@
       - else
         - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up / Sign In' : 'Sign In'
         = link_to text, new_user_registration_path, class: 'mobile'
-
