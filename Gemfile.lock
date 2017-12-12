@@ -52,13 +52,13 @@ GEM
       railties (>= 4.0)
     ansi (1.5.0)
     arel (8.0.0)
-    aws-sdk (2.10.85)
-      aws-sdk-resources (= 2.10.85)
-    aws-sdk-core (2.10.85)
+    aws-sdk (2.10.102)
+      aws-sdk-resources (= 2.10.102)
+    aws-sdk-core (2.10.102)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.10.85)
-      aws-sdk-core (= 2.10.85)
+    aws-sdk-resources (2.10.102)
+      aws-sdk-core (= 2.10.102)
     aws-sigv4 (1.0.2)
     bcrypt (3.1.11)
     better_errors (2.4.0)
@@ -136,7 +136,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
-    hackathon_manager (0.3.2)
+    hackathon_manager (0.4.3)
       ajax-datatables-rails (~> 0.4.0)
       aws-sdk (~> 2.0)
       blazer
@@ -146,15 +146,15 @@ GEM
       font-awesome-rails (~> 4.0)
       groupdate
       haml-rails
-      highcharts-rails (~> 4.2.5)
+      highcharts-rails (~> 4.2)
       httparty
-      jquery-datatables-rails (~> 3.4.0)
+      jquery-datatables-rails (~> 3.4)
       jquery-rails
       jquery-ui-sass-rails
       mysql2
-      omniauth-mlh
-      paperclip (~> 5.1.0)
-      rails (~> 5.1.1)
+      omniauth-mlh (~> 0.1)
+      paperclip (~> 5.1)
+      rails (~> 5.1)
       redcarpet
       roadie-rails
       sass-rails
@@ -276,7 +276,7 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
-    rack-test (0.7.0)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -379,7 +379,7 @@ GEM
     strip_attributes (1.8.0)
       activemodel (>= 3.0, < 6.0)
     temple (0.8.0)
-    test-unit (3.2.6)
+    test-unit (3.2.7)
       power_assert
     thor (0.20.0)
     thread_safe (0.3.6)
@@ -409,7 +409,7 @@ DEPENDENCIES
   factory_bot_rails
   guard
   guard-minitest
-  hackathon_manager (~> 0.3.0)
+  hackathon_manager (~> 0.4.0)
   httparty
   minitest-rails
   minitest-reporters
