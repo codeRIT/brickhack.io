@@ -1,6 +1,64 @@
 @import variables
 @import home/schedule
 
+#home
+  background-image: url("home_asset_1.png"), url("home_asset_2.png")
+  background-repeat: no-repeat, no-repeat
+
+  background-position: left top, right bottom
+  margin-top: 35px
+  margin-left: 0
+  padding-top: 100px
+  margin-right: 0
+  display: block
+  height: 650px
+
+#home h1
+  padding-top: 0
+
+.btn_border
+  background: #ffffff
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff)
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff)
+  background-image: -ms-linear-gradient(top, #ffffff, #ffffff)
+  background-image: -o-linear-gradient(top, #ffffff, #ffffff)
+  background-image: linear-gradient(to bottom, #ffffff, #ffffff)
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  border-radius: 0px
+  font-family: Arial
+  color: #000000
+  font-size: 16px
+  padding: 10px 20px 10px 20px
+  border: solid #050505 1px
+  text-decoration: none
+  width: 175px
+
+.btn_border:hover
+  text-decoration: none
+  border-color: $orange
+
+#about
+  height: 600px
+  background-image: url("home_asset_3.png")
+  background-repeat: no-repeat
+  background-position: right 100px bottom -80px
+#faq
+  background-image: url("home_asset_3.png")
+  background-repeat: no-repeat
+  background-position: right 100px top -200px
+
+#logo-footer
+  background-image: url("home_asset_6.png"), url("brickhack4_logo.png")
+  background-repeat: no-repeat, no-repeat
+  background-size: auto, 200px 200px
+  background-position: center, center
+  height: 300px
+
+.button_outline
+  background-color: inherit
+  color: $black
+  border: 3px solid $black
 body
   background: $white
   color: $white
@@ -14,8 +72,8 @@ p a
 
 .page
   width: 100%
-  min-height: 780px
-  padding: 0 20px
+  padding: 0 0 0 110px
+
 
 nav
   background: $white
@@ -55,7 +113,7 @@ nav
 
   a
     color: $grey
-    font-size: 12px
+    font-size: 16px
     font-weight: bold
     text-transform: uppercase
     font-weight: 300
@@ -67,12 +125,11 @@ nav
     -o-transition: background-color 200ms ease
     transition: background-color 200ms ease
 
-  a.active:not(.button)
-    border-bottom: 3px solid $red
 
   a:hover:not(.button)
-    border-bottom: 3px solid $red
-    color: $white
+    box-sizing: border-box
+    border: 1px solid $black
+    color: $orange
 
 #logo
   max-width: 350px
@@ -107,6 +164,7 @@ h4
 p
   font-size: 18px
   line-height: 1.6
+  color: $black
 
 .orange
   color: $orange
@@ -117,13 +175,15 @@ p
 .title
   color: $black
   font-size: 58px
-  margin-bottom: 0.5em
+  margin-bottom: 0.3em
 
 .subtitle
   color: $grey
   font-size: 26px
   text-transform: none
   font-weight: 300
+  margin-bottom: 0
+  margin-top: 10px
 
 .white-section
   background: $white
@@ -154,7 +214,6 @@ p
   flex-wrap: wrap
 
   // TODO: standardize the below amongst split-home and content
-  max-width: 1200px
   margin: 0 auto
 
   @media (max-width: $breakpoint-tablet)
@@ -169,11 +228,10 @@ p
 
   @media (min-width: $breakpoint-tablet)
     .split-left
-      flex: 1 1 450px
+      flex: 0 0 500px
       padding-right: 10%
     .split-right
-      flex: 0 0 auto
-      margin-right: 30px
+      flex: 1 1 500px
 
 .split-three
   display: flex
@@ -217,8 +275,7 @@ p
 
 .about
   flex: 1 1 300px
-  max-width: 700px
-  margin-right: 30px
+  max-width: 1000px
 
 .gallery
   flex: 0 1 400px

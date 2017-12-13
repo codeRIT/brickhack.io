@@ -6,12 +6,9 @@
 - volunteer_link = "https://goo.gl/forms/cpmRgGxLsUUjNymG2".freeze
 
 .page.split-home#home
-  .split-left
+  .split-left#home-left
     %h1.title BrickHack 4
-    - if !Rails.configuration.hackathon['event_is_over']
-      %h3 Inviting students to come together on
     %h2.subtitle January 27-28, 2018 at the
-    %br
     %h2.subtitle Rochester Institute of Technology
     %br
     - if Rails.configuration.hackathon['event_is_over']
@@ -29,45 +26,44 @@
           .button.button-outline MY ACCOUNT
     - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
-        .button.button-outline REGISTER NOW
+        .btn_border REGISTER NOW
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
       = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
         .button.button-outline HELP ORGANIZE
-    - else
-      %br
-      = link_to volunteer_link do
-        .button.button-outline VOLUNTEER
-      %br
-      = link_to mentor_link do
-        .button.button-outline MENTOR
-
-.white-section.diagonal#about
+  .split-right:
+#about
   .home-content.about-gallery
-    .about
+    .about.split-home
       .split-left
-        .button-wrapper
-          = link_to 'FULL GALLERY', '/gallery/', class: 'button button-overlay'
+        #slider
+          #images
+
+          #controls
+            %div
+              %button#previous &lt;
+              %button#next &gt;
 
       .split-right
-        %h1 RIT's Premiere Hackathon
+        %h1 Brick City's Premiere Hackathon
         %p
           BrickHack brings
-          %strong designers, developers,
-          and
-          %strong all sorts of makers
-          together for 24 hours to create the impossible!
+          designers, developers, and all sorts of
+          %br
+          makers together for 24 hours to create the impossible!
 
         %p
-          Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
+          Mentors and industry representatives will lend expertise and
+          %br
+          watch as you dive into learning, developing, and producing a
+          %br
+          unique project.
 
         %p
-          From
-          %strong noon February 11 to noon February 12,
-          you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, see our
-          = link_to 'parking instructions', image_path('brickhack-parking.png')
-          and <a href="https://maps.rit.edu">RIT's map</a>.
+          From the novices to the experts, from designers to engineers,
+          %br
+          this one's for you!
 
 
 #faq
@@ -140,30 +136,23 @@
         %h2 My question isn't answered here?
         %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.
 
-#sponsors
+#sponsor
   .home-content
-    %h1 A huge thank you to our sponsors
-    .sponsors
-      - STATIC_DATA['sponsors'].each do |sponsor|
-      - sponsor_class = []
-      - sponsor_class << 'sponsor-small' if sponsor['small']
-      - sponsor_class << 'sponsor-large' if sponsor['large']
-      %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
-        = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
-      %br
-      = link_to 'Sponsor Us?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
+    .split-three
+      .column.column--two
+        %h1 Sponsors
+        .sponsors
+          - STATIC_DATA['sponsors'].each do |sponsor|
+            - sponsor_class = []
+            - sponsor_class << 'sponsor-small' if sponsor['small']
+            - sponsor_class << 'sponsor-large' if sponsor['large']
+            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
+              = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
+        %br
+          = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
 
-    %h1 BrickHack is brought to you by...
-    %a.sponsor{ href: "http://magic.rit.edu", target: "_blank" }
-      = image_tag 'sponsors/magic.gif', id: "magic", class: 'img-spaced'
-    %a.sponsor{ href: "https://mlh.io", target: "_blank" }
-      = image_tag 'sponsors/mlh.png', class: 'img-spaced'
-    %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/", target: "_blank" }
-      = image_tag 'sponsors/simone.png', class: 'img-spaced'
 
-        %h1 Organized By
-        %a.sponsor{ href: "https://coderit.org", target: "_blank" }
-          = image_tag 'coderit_logo.png', class: 'img-spaced'
+#logo-footer
 
 #footer
   .home-content
@@ -175,13 +164,21 @@
           %br
           Rochester, NY 14623
       .column
-        %h4 Contact
+        %h4 Get in Contact
         %p
-          Questions?
-          = link_to 'Contact us', 'mailto:hello@brickhack.io'
+
+          = link_to 'Questions?', 'mailto:hello@brickhack.io'
         %p
-          Found a bug?
-          = link_to '<span class="fa fa-github fa-fw"></span> GitHub'.html_safe, 'https://github.com/codeRIT/brickhack.io/issues/new'
+
+          = link_to 'Found a bug?', 'https://github.com/codeRIT/brickhack.io/issues/new'
+      .column
+        %h4 Follow BrickHack
+        %p
+          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
+        %p
+          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
+        %p
+          = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
       .column
         %h4 codeRIT
         %p
@@ -190,14 +187,7 @@
           = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/coderit'
         %p
           = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/groups/codeRIT/'
-      .column
-        %h4 BrickHack
-        %p
-          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
+
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ :async => "", :defer => "defer", :src => "//js.hs-scripts.com/2104052.js", :type => "text/javascript" }
