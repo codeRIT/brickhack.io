@@ -2,36 +2,12 @@
   image: datto.png
   url: https://www.datto.com
   large: true
-- name: Microsoft
-  image: microsoft.png
-  url: https://www.microsoft.com
-- name: IBM
-  image: ibm.png
-  url: https://www.ibm.com/internet-of-things/
-- name: UPS
-  image: ups.png
-  url: https://www.ups.com
-- name: Sparkpost
-  image: sparkpost.png
-  url: https://www.sparkpost.com
-- name: SapientNitro
-  image: sapientnitro.png
-  url: http://www.sapientnitro.com/
+- name: (R)Tech
+  image: rtech.png
+  url: rtech.org/
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
-  small: true
-- name: SkillFlow
-  image: skillflow.png
-  url: https://skillflow.io
-  small: true
-- name: Intuit
-  image: intuit.png
-  url: https://www.intuit.com
-  small: true
-- name: Java's Cafe
-  image: javas.png
-  url: http://www.javascafe.com
   small: true
 - name: Club Cafe
   image: clubcafe.png
