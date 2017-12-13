@@ -26,13 +26,13 @@
           .button.button-outline MY ACCOUNT
     - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
-        .btn_border REGISTER NOW
+        .button.btn_border REGISTER NOW
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
       = link_to URI.escape("mailto:hello@codeRIT.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
         .button.button-outline HELP ORGANIZE
-  .split-right:
+
 #about
   .home-content.about-gallery
     .about.split-home
@@ -63,7 +63,7 @@
         %p
           From the novices to the experts, from designers to engineers,
           %br
-          this one's for you!
+          %strong this one's for you!
 
 
 #faq
@@ -136,7 +136,7 @@
         %h2 My question isn't answered here?
         %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@coderit.org">email</a>.
 
-#sponsor
+#sponsors
   .home-content
     .split-three
       .column.column--two
@@ -149,7 +149,7 @@
             %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
               = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
         %br
-          = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
+          = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button .btn_border', style: 'margin-bottom: 60px;' }
 
 
 #logo-footer

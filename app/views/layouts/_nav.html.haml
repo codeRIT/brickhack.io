@@ -27,7 +27,7 @@
         = link_to 'My Account', questionnaires_path, class: 'button'
     - else
       - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up' : 'Sign In'
-      = link_to text, new_user_registration_path, class: 'button button-outline'
+      = link_to text, new_user_registration_path, class: 'button btn_border'
 
 -# mobile nav
 %nav.mobile
