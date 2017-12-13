@@ -1,4 +1,5 @@
 var ready;
+
 ready = function() {
 
     // when mobile hamburger menu is clicked
@@ -51,9 +52,65 @@ ready = function() {
     });
 
 
+    $('.carousel').carousel({
+            dist:0,
+            shift:0,
+            padding:20,
 
+      });
 
+    var $last = $("#previous"); //previous button
+    var $next = $("#next"); //next button
+    var $car = $("#slider"); //the whole slider
+    var $count = 1; //the current image
+    var $total = 3; //the amount of images
 
+    $("#images img").hide(); //hide all images
+    $("#" + $count).show(); //except the index image
+
+    $last.click(function() {
+      //when the 'last' button is clicked
+      $("#" + $count).fadeOut(300, function() {
+        //fade out the currently shown image
+
+        //if the count is > 1
+        if ($count > 1) {
+          //decrement count
+          $count--;
+        } else {
+          //else, loop back around so that the last image is shown
+          $count = $total;
+        }
+
+        //find the next image
+        $item = $("#" + $count);
+
+        //fade in the next image
+        $item.fadeIn(300);
+      });
+    })
+
+    $next.click(function() {
+      //when the 'next' button is clicked
+      $("#" + $count).fadeOut(300, function() {
+        //fade out the currently shown image
+
+        //if the count is less than the total amount of image
+        if ($count < $total) {
+          //increment the count
+          $count++;
+        } else {
+          //else, loop back around so that the first image is shown
+          $count = 1;
+        }
+
+        //find the next image
+        $item = $("#" + $count);
+
+        //fade in the next image
+        $item.fadeIn(300);
+      });
+    })
 
 
     function recalc(){
