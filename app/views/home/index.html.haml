@@ -140,7 +140,7 @@
   .home-content
     .split-three
       .column.column--two
-        %h1 Sponsors
+        %h1{:style => "text-align: left;"} A huge thank you to our sponsors!
         .sponsors
           - STATIC_DATA['sponsors'].each do |sponsor|
             - sponsor_class = []
@@ -151,6 +151,11 @@
         %br
           = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button .btn_border', style: 'margin-bottom: 60px;' }
 
+    %h1 BrickHack is brought to you by...
+    %a.sponsor{ href: "https://mlh.io", target: "_blank" }
+      = image_tag 'sponsors/mlh.png', class: 'img-spaced'
+    %a.sponsor{ href: "https://coderit.org", target: "_blank" }
+      = image_tag 'coderit_logo.png', class: 'img-spaced'
 
 #logo-footer
 
