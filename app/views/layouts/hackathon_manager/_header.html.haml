@@ -1,0 +1,23 @@
+.header
+  .header__wrapper.account-nav__wrapper
+    - if Rails.configuration.hackathon['logo_asset']
+      .header-logo
+        = link_to root_path do
+          = image_tag Rails.configuration.hackathon['logo_asset'], id: 'logo', alt: "#{Rails.configuration.hackathon['name']} logo", title: Rails.configuration.hackathon['name'], class: 'header-logo__image'
+    - else
+      .header-nav
+        = btn_link_to "Home", root_path
+    .header-nav
+      - if user_signed_in?
+        - if current_user.admin?
+          = btn_link_to "Manage", manage_root_path
+        = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
+
+- if current_user && controller.class.parent != Manage
+  .page-banner
+    .page-banner__inner
+      %span.page-banner__text
+        - if current_user && current_user.questionnaire.present?
+          Hello, #{current_user.questionnaire.first_name}
+        - else
+          Hello!
