@@ -33,7 +33,7 @@
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
         .button.button-outline SUBMISSIONS
-      = link_to URI.escape("mailto:hello@codeRIT.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
+      = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
         .button.button-outline HELP ORGANIZE
     - else
       %br
@@ -111,7 +111,7 @@
 
       .column
         %h2 How am I supposed to get there?
-        %p If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! Some schools will have a bus provided; see below. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@coderit.org">travel@codeRIT.org</a>.
+        %p If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! Some schools will have a bus provided; see below. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@brickhack.io">travel@brickhack.io</a>.
 
       .column
         %h2 What should I bring?
@@ -165,7 +165,7 @@
 
       .column
         %h2 My question isn't answered here?
-        %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@coderit.org">email</a>.
+        %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.
 
 .white-section.diagonal#sponsors
   .home-content
@@ -208,7 +208,7 @@
         %h4 Contact
         %p
           Questions?
-          = link_to 'Contact us', 'mailto:hello@codeRIT.org'
+          = link_to 'Contact us', 'mailto:hello@brickhack.io'
         %p
           Found a bug?
           = link_to '<span class="fa fa-github fa-fw"></span> GitHub'.html_safe, 'https://github.com/codeRIT/brickhack.io/issues/new'
