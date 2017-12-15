@@ -16,7 +16,8 @@
 - if current_user && controller.class.parent != Manage
   .page-banner
     .page-banner__inner
-      - if current_user && current_user.questionnaire.present?
-        Hello, #{current_user.questionnaire.first_name}
-      - else
-        Hello!
+      %span.page-banner__text
+        - if current_user && current_user.questionnaire.present?
+          Hello, #{current_user.questionnaire.first_name}
+        - else
+          Hello!
