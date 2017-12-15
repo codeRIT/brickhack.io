@@ -13,7 +13,7 @@
           = btn_link_to "Manage", manage_root_path
         = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
 
-- if current_user
+- if current_user && controller.class.parent != Manage
   .page-banner
     .page-banner__inner
       - if current_user && current_user.questionnaire.present?
