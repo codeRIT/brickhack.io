@@ -5,7 +5,6 @@
   background-image: url("home_asset_1.png"), url("home_asset_2.png")
   background-repeat: no-repeat, no-repeat
   background-position: left top, right bottom
-  margin-top: 35px
   margin-left: 0
   margin-right: 0
   display: block
@@ -20,9 +19,9 @@
   background-repeat: no-repeat
   background-position: right 100px bottom -80px
 #faq
-  background-image: url("home_asset_3.png")
-  background-repeat: no-repeat
-  background-position: right 100px top -200px
+  background-image: url("home_asset_3.png"), url("home_asset_4.png")
+  background-repeat: no-repeat, no-repeat
+  background-position: right 100px top -200px, left bottom
 
 #logo-footer
   background-image: url("home_asset_6.png"), url("brickhack4_logo.png")
@@ -30,6 +29,35 @@
   background-size: auto, 200px 200px
   background-position: center, center
   height: 300px
+
+#sponsors
+  background-image: url("home_asset_5.png")
+  background-repeat: no-repeat
+  background-position: right top
+
+#image_with_hackathon
+  background-image: url("hackathon_2.jpg")
+  height: 400px
+  align-items: center
+  background-size: 100% auto
+  background-position: center top
+  margin-left: auto
+  margin-right: auto
+
+#image_with_hackathon h1
+  font-weight: 600
+  color: white
+  text-align: center
+  padding-top: 140px
+  font-size: 4em
+  -webkit-text-stroke-width: 1px
+  -webkit-text-stroke-color: black
+
+#image_with_hackathon a
+  display: flex
+  margin-left: auto
+  margin-right: auto
+  justify-content: center
 
 .button_outline
   background-color: inherit
@@ -103,7 +131,6 @@ nav
     transition: background-color 200ms ease
 
   a:hover:not(.button)
-    box-sizing: border-box
     border-color: $black
     color: $orange
 
