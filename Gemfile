@@ -38,4 +38,4 @@ group :test do
   gem 'rails-controller-testing' # Rails 4 fallback
 end
 
-gem 'sparkpost_rails', git: 'https://github.com/the-refinery/sparkpost_rails.git', ref: 'b318bb7a345d04825f4c7de8944caf2ca120ab42'
+gem 'sparkpost_rails'
