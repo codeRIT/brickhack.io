@@ -20,20 +20,25 @@
     - if current_user
       - if current_user.admin
         = link_to manage_dashboard_index_path do
-          .button.button-outline MANAGE
+          .button MANAGE
       - else
         = link_to questionnaires_path do
-          .button.button-outline MY ACCOUNT
+          .button MY ACCOUNT
     - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
         .button REGISTER NOW
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
-        .button.button-outline SUBMISSIONS
+        .button SUBMISSIONS
       = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
+<<<<<<< HEAD
         .button.button-outline HELP ORGANIZE
   .split-right#home-right
     =image_tag 'hackathon.jpg'
+=======
+        .button HELP ORGANIZE
+
+>>>>>>> c6486d5578af4f9a03724227e33faa003a6157c8
 #about
   .home-content.about-gallery
     .about.split-home
