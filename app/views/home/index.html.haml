@@ -1,5 +1,5 @@
 = stylesheet_link_tag 'home.css'
-
+= stylesheet_link_tag ''
 = render "layouts/nav"
 
 - mentor_link = "https://goo.gl/forms/d8WiaiM7rYaLz3SQ2".freeze
@@ -154,6 +154,7 @@
     %h1 BrickHack is brought to you by...
     %a.sponsor{ href: "https://mlh.io", target: "_blank" }
       = image_tag 'sponsors/mlh.png', class: 'img-spaced'
+    %br
     %a.sponsor{ href: "https://coderit.org", target: "_blank" }
       = image_tag 'coderit_logo.png', class: 'img-spaced'
 
@@ -171,12 +172,7 @@
       .column
         %h4 Get in Contact
         %p
-
-<<<<<<< HEAD
-          = link_to 'Questions?', 'mailto:hello@codeRIT.org'
-=======
           = link_to 'Questions?', 'mailto:hello@brickhack.io'
->>>>>>> ce21def0b82996f3a84c40c07fa4583aeaf6f969
         %p
 
           = link_to 'Found a bug?', 'https://github.com/codeRIT/brickhack.io/issues/new'

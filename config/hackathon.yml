@@ -9,10 +9,6 @@ defaults: &defaults
   name: BrickHack
   logo_asset: brickhack.png
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
-<<<<<<< HEAD
-  email_from: '"BrickHack" <hello@codeRIT.org>'
-  default_page_title: BrickHack 4 - Jan 27-28, 2018
-=======
   email_from: '"BrickHack" <hello@brickhack.io>'
   default_page_title: BrickHack 4 - Jan 27-28, 2018
 
@@ -24,7 +20,6 @@ defaults: &defaults
     * Only students on this list may board the bus. **No exceptions**- this is to ensure everyone goes through the application process & has signed RIT's waivers.
     * If any emergencies arise, call our travel director, **Velizar Demirev**, at **(413) 221-2420**.
     * If you have any other questions, please feel free to email [travel@brickhack.io](mailto:travel@brickhack.io)
->>>>>>> ce21def0b82996f3a84c40c07fa4583aeaf6f969
 
 development:
   <<: *defaults
