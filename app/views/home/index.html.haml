@@ -149,7 +149,7 @@
             %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
               = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
         %br
-          = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
+          = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
 
     %h1 BrickHack is brought to you by...
     %a.sponsor{ href: "https://mlh.io", target: "_blank" }

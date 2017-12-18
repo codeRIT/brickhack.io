@@ -22,12 +22,12 @@
 
     - if current_user
       - if current_user.admin
-        = link_to 'Manage', manage_dashboard_index_path, class: 'button'
+        = btn_link_to 'Manage', manage_dashboard_index_path
       - else
-        = link_to 'My Account', questionnaires_path, class: 'button'
+        = btn_link_to 'My Account', questionnaires_path
     - else
       - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up' : 'Sign In'
-      = link_to text, new_user_registration_path, class: 'button'
+      = btn_link_to text, new_user_registration_path
 
 -# mobile nav
 %nav.mobile
@@ -43,9 +43,9 @@
 
       - if current_user
         - if current_user.admin
-          = link_to 'Manage', manage_dashboard_index_path, class: 'button button-outline'
+          = btn_link_to 'Manage', manage_dashboard_index_path
         - else
-          = link_to 'My Account', questionnaires_path, class: 'mobile'
+          = btn_link_to 'My Account', questionnaires_path, class: 'mobile'
       - else
         - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up / Sign In' : 'Sign In'
         = link_to text, new_user_registration_path, class: 'mobile'
