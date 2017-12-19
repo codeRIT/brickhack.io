@@ -5,6 +5,9 @@
 - name: (R)Tech
   image: rtech.png
   url: http://rtech.org/
+- name: Wegmans
+  image: wegmans.png
+  url: https://wegmans.com
 - name: Insomnia Cookies
   image: insomnia.png
   url: https://insomniacookies.com
