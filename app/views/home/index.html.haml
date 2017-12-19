@@ -40,7 +40,7 @@
       .split-left
         .button-wrapper
           = link_to 'Full Gallery', '/gallery/', class: 'button button-overlay'
-    
+
       .split-right
         %h1 Brick City's Premiere Hackathon
         %p
@@ -170,10 +170,10 @@
           = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
 
     %h1 BrickHack is brought to you by...
-    %a.sponsor{ href: "https://mlh.io", target: "_blank" }
+    %a.sponsor{ href: "https://mlh.io", target: "_blank", style: "float: left" }
       = image_tag 'sponsors/mlh.png', class: 'img-spaced'
     %br
-    %a.sponsor{ href: "https://coderit.org", target: "_blank" }
+    %a.sponsor{ href: "https://coderit.org", target: "_blank", style: "float: right" }
       = image_tag 'coderit_logo.png', class: 'img-spaced'
 
 #logo-footer
