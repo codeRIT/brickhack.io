@@ -37,11 +37,12 @@
 #about
   .home-content.about-gallery
     .about.split-home
-      .split-left
+      .split-left#gallery-left
+        =image_tag 'gallery-img.png'
         .button-wrapper
           = link_to 'Full Gallery', '/gallery/', class: 'button button-overlay'
 
-      .split-right
+      .split-right#gallery-right{:style => ""}
         %h1 Brick City's Premiere Hackathon
         %p
           BrickHack brings
