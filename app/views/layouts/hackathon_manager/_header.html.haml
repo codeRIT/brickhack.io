@@ -13,11 +13,13 @@
           = btn_link_to "Manage", manage_root_path
         = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
 
-- if current_user && controller.class.parent != Manage
+- first_name = current_user&.questionnaire&.first_name.presence
+- page_title = content_for(:page_title)
+- if (first_name || page_title) && controller.class.parent != Manage
   .page-banner
     .page-banner__inner
       %span.page-banner__text
-        - if current_user && current_user.questionnaire.present?
-          Hello, #{current_user.questionnaire.first_name}
+        - if first_name
+          Hello, #{first_name}
         - else
-          Hello!
+          = page_title
