@@ -98,3 +98,6 @@ bower.json
 
 # Local lock for bundler in Docker
 .bundle-install-lock
+
+# Mac stuff
+.DS_Store

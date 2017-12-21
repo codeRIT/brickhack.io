@@ -1,27 +1,14 @@
 @import variables
 @import home/schedule
 
-#home
-  background-image: url("home_asset_1.png"), url("home_asset_2.png")
-  background-repeat: no-repeat, no-repeat
-  background-position: left top, right bottom
-  margin-left: 0
-  margin-right: 0
-  display: block
-  height: 650px
-
-#home h1
-  padding-top: 0
+#home-left
+  margin-left: 60px
 
 #about
   height: 600px
   background-image: url("home_asset_3.png")
   background-repeat: no-repeat
   background-position: right 100px bottom -80px
-#faq
-  background-image: url("home_asset_3.png"), url("home_asset_4.png")
-  background-repeat: no-repeat, no-repeat
-  background-position: right 100px top -200px, left bottom
 
 #logo-footer
   background-image: url("home_asset_6.png"), url("brickhack4_logo.png")
@@ -59,24 +46,18 @@
   margin-right: auto
   justify-content: center
 
-#gallery-right
-  padding-top: 0
-  padding-right: 0
-  float: right
-  padding-left: 200px
-
-
-#gallery-left
-  padding-right: 0
-  padding-top: 0
-
 .button_outline
   background-color: inherit
   color: $black
   border: 3px solid $black
+
+html
+  width: 100%
+
 body
   background: $white
   color: $white
+  width: 100%
 
 p a
   color: $grey
@@ -86,9 +67,9 @@ p a
     color: $red
 
 .page
-  width: 100%
-  padding: 0 0 0 110px
-
+  margin: 0 auto
+  padding: 40px 30px 90px
+  max-width: 1000px
 
 nav
   background: $white
@@ -97,9 +78,22 @@ nav
 
 
   &.desktop
-    padding: 20px 135px
+    padding: 10px 0px
     display: flex
     align-items: center
+    margin: 0 auto
+    width: 1000px
+    
+    #mlh-trust-badge
+      display: block
+      width: 70px
+      position: fixed
+      right: 15px
+      top: 0px
+
+    .button
+      min-width: 130px
+
 
   i:before
     color: $white
@@ -113,7 +107,8 @@ nav
 
   .logo img
     height: 100px
-    width: auto
+    width: 100px
+    max-width: 100px
 
 .nav-links
   width: 100%
@@ -133,7 +128,7 @@ nav
     font-weight: 600 !important
     text-transform: uppercase
     font-weight: 300
-    padding: 10px 20px
+    padding: 10px 10px
     margin: 0 15px
     border: 1px solid transparent
 
@@ -147,8 +142,6 @@ nav
 
   .button
     color: $white
-    margin-left: auto
-    margin-right: 3em
 
 #logo
   max-width: 350px
@@ -163,10 +156,9 @@ h1
   margin-bottom: 1em
 
 h2
-  color: $red
-  font-size: 24px
-  font-weight: 600
-  text-transform: uppercase
+  color: $grey
+  font-size: 26px
+  font-weight: 200
 
 h3
   font-size: 18px
@@ -181,35 +173,37 @@ h4
   font-weight: 600
 
 p
-  font-size: 18px
+  font-size: 15px
   line-height: 1.6
   color: $black
 
 .orange
   color: $orange
+  display: inline-block
 
 .white
   color: $white
 
 .title
   color: $black
-  font-size: 58px
+  font-size: 48px
   margin-bottom: 0.3em
-  font-weight: 600 !important
+  font-weight: 600
 
 .subtitle
   color: $grey
-  font-size: 26px
+  font-size: 22px
   text-transform: none
-  font-weight: 400 !important
+  font-weight: 200
   margin-bottom: 0
   margin-top: 10px
 
-#subtitle
-  font-weight: 600 !important
+.bold
+    display: inline
+    font-weight: 400
 
 #normal_subtitle
-  font-weight: 400 !important
+  font-weight: 400
 
 .white-section
   background: $white
@@ -226,47 +220,44 @@ p
     color: $white
 
 .home-content
-  max-width: 1300px
-  margin: 0 auto
-  padding: 40px 30px 90px
+  background-image: url("home_asset_1.png"), url("home_asset_2.png")
+  background-repeat: no-repeat, no-repeat
+  background-position: left top, right bottom
+
+  h1
+    padding-top: 0
+    margin-left: -2px
+
+#home-img
+  margin-top: 105px
 
 .mobile, i
   display: none
 
-.split-home
+.split
   display: flex
   align-items: center
   justify-content: space-between
   flex-wrap: wrap
-
-  // TODO: standardize the below amongst split-home and content
   margin: 0 auto
+  transition: 0.1s linear margin
 
-  @media (max-width: $breakpoint-tablet)
-    .split-left
-      margin: 30px auto 0
-      width: 100%
-      max-width: 500px
-    .split-right
-      width: 100%
-      text-align: center
-      margin-bottom: 30px
+  #home-left
+    margin-left: 55px
+    margin-top: 90px
 
-  @media (min-width: $breakpoint-tablet)
-    .split-left
-      flex: 0 0 500px
-      padding-right: 10%
-      width: 500px
-      padding-left: 15px
-      display: inline-block
-      padding-top: 100px
-    .split-right
-      flex: 1 1 500px
-      width: 800px
-      display: inline-block
-      float: right
-      padding-right: 140px
-      padding-top: 50px
+  .split-left
+    flex: 1 1 390px
+    padding-right: 10px
+    padding-left: 15px
+    display: inline-block
+  .split-right
+    flex: 1 1 390px
+    margin-right: 50px
+
+  .split-left, .split-right
+    img
+      width: 390px
 
 .split-three
   display: flex
@@ -299,18 +290,31 @@ p
   flex: 1 1 280px * 2
 
 .about-gallery
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-between
-  margin-left: 0
 
+  h2
+    margin-left: -1px
+
+  #gallery-left
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    order: 0
+
+  #gallery-right
+    margin-left: 54px
+
+  #gallery-text
+    width: 400px
 
   .button-wrapper
-    top: 215px
-    width: 100%
+    width: 300px
+    position: relative
+    margin: 0 auto
+    text-align: center
 
-.about
-  flex: 1 1 300px
+    .button-overlay
+      text-align: center
 
 .gallery
   flex: 0 1 400px
@@ -319,6 +323,103 @@ p
   width: 400px
   text-align: center
   margin: 0 auto
+
+.faq
+  position: relative
+  .faq-container-fade
+    position: absolute
+    pointer-events: none
+    width: 100%
+    height: 100%
+    top: 0
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(100%, $white))
+    background: gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(100%, $white))
+
+  .faq-container-expand
+    position: relative
+    width: 40px
+    height: 30px
+    background-position: center
+    background-image: url("arrow_down.svg")
+    transform-origin: center
+    transition: 0.1s linear all
+    margin: 0 auto
+
+    &:hover
+      cursor: pointer
+      background-image: url("arrow_down_hover.svg")
+
+  .faq-ex-open .faq-container-fade
+    display: none
+
+  .faq-ex-select .faq-container-fade
+    display: none
+
+  .faq-ex-open>.faq-container-expand
+    transform: rotate(180deg)
+
+  .faq-container-outer
+    margin-left: 18px
+
+    h2
+      margin-bottom: 20px
+    
+    .faq-container
+      max-height: 290px
+      text-align: center
+      position: relative
+      transition: 0.3s linear height
+      overflow: hidden
+
+      .column
+        width: 280px
+        max-height: 135px
+        overflow-y: visible
+        text-align: center
+        font-size: 12px
+        display: inline-block
+        margin: 0 5px
+        vertical-align: middle
+
+        &.faq-ex-qopen
+          max-height: inherit
+        
+        .question
+          display: table
+          height: 100%
+          width: 100%
+          transition: 0.1s linear all
+
+          h3
+            vertical-align: middle
+            margin-bottom: 0
+            font-size: 16px
+            display: table-cell
+
+          &:hover
+            cursor: pointer
+            transform: scale(1.1, 1.1)
+
+        .answer
+          display: none
+
+        &.faq-ex-qopen
+          .answer
+            display: block
+
+  .faq-ex-select.faq-container
+    max-height: 400px
+    
+  .faq-ex-select + .faq-container-expand
+    background-image: none
+    &:after
+      content: "X"
+      display: block
+      color: $orange
+
+  .faq-ex-open>.faq-container
+    max-height: 1000px
+
 
 .sponsors
   display: flex
@@ -385,7 +486,14 @@ p
 .api-section-top-margin
   margin-top: 12%
 
+@media (min-width: 1120px)
+  .split
+    .split-right
+      margin-right: 0px
+
 @media (max-width: $breakpoint-tablet)
+  body
+    text-align: center
   #hamburger-menu
     display: inline-block
   .home-content
@@ -393,13 +501,45 @@ p
     padding-right: 10px
 
   nav.desktop
-    display: none
+    padding: 0 0
+    position: fixed
+    background: 0
+    z-index: 9
+    .logo
+      position: relative
+      .logo-bg
+        position: absolute
+        width: 20%
+        height: 50%
+        left: 50%
+        transform: translateX(-50%) translateY(50%) rotateZ(-60deg)
+        z-index: -1
+        background: white
+        box-shadow: -1px 0px 20px 20px $white
+        border-radius: 50%
+    #mlh-trust-badge
+      width: 8%
+      margin-right: 10px
+      z-index: 99
+    .nav-links a
+      padding: 0
+      display: none
+    .nav-links .button
+      display: none
+
+    &:hover, &:active
+      background: $white
+      .nav-links a
+        padding: 0
+        display: inline-block
+      .nav-links .button
+        display: none
 
   nav
     text-align: left
 
   .mobile
-    display: inherit
+    display: none
 
   #mobile-nav
     display: none
@@ -412,10 +552,43 @@ p
   .mob-nav-header
     display: inline-block
 
-@media (max-height: 700px)
-  #logo
-    max-width: 200px
+  .split
+    #home-left
+      margin: 0
+    .split-left
+      flex: 1 1 450px
+    .split-right
+      flex: 1 1 450px
+      margin-right: 0px
 
-  #bus_lists_section
-    padding-left: 20px
-    padding-right: 20px
+  .home-content
+    margin-top: 55px
+    padding-bottom: 0px
+
+  .about-gallery
+    margin-bottom: 35px
+    #gallery-right
+      margin: 0 auto
+    #gallery-left
+      order: 1
+    #gallery-text
+      margin: 0 auto 35px auto
+
+  .faq
+    .faq-container-outer
+      margin-left: 0px
+      position: relative
+    .faq-container
+      max-height: 270px
+    .answer p
+      text-align: center
+
+@media (max-width: 500px)
+  .home-content
+    margin-top: 80px
+  .split
+    .split-left
+      padding: 0
+  .about-gallery
+    #gallery-text
+      width: 100%

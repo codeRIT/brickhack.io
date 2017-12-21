@@ -2,7 +2,7 @@
 - if simplified_nav
   - pages = ['Home']
 - else
-  - pages = ['About', 'Schedule', 'FAQ', 'Sponsors']
+  - pages = ['About', 'FAQ', 'Sponsors']
 
 - api_list = current_page?(:controller => 'home', :action => 'apilist')
 - if api_list
@@ -11,6 +11,7 @@
 
 %nav.desktop
   .logo
+    .logo-bg
     %a{ href: '#' }
       = image_tag 'brickhack4_logo.png', { class: 'wow rotate-in', alt: 'BrickHack' }
   .nav-links
@@ -28,6 +29,8 @@
     - else
       - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up' : 'Sign In'
       = btn_link_to text, new_user_registration_path
+  %a#mlh-trust-badge{:href => "https://mlh.io/seasons/na-2018/events?utm_source=na-2018&utm_medium=TrustBadge&utm_campaign=na-2018&utm_content=gray", :target => "_blank"}
+    %img{:alt => "Major League Hacking 2017 Hackathon Season", :src => "https://s3.amazonaws.com/logged-assets/trust-badge/2018/gray.svg", :style => "width:100%"}/
 
 -# mobile nav
 %nav.mobile

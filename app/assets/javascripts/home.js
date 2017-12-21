@@ -1,5 +1,7 @@
 var ready;
 
+var questionOpen = false;
+
 ready = function() {
 
     // when mobile hamburger menu is clicked
@@ -67,6 +69,40 @@ ready = function() {
                 return false;
             }
         }
+    });
+
+    $('.faq-container-expand').on('click', function(event) {
+        var me=event.target;
+        console.log(me.parentElement);
+        if ($('.faq-container')[0].classList.contains('faq-ex-select')) {
+
+            $('.faq .question')[0].click();
+        } else if (me.parentElement.classList.contains('faq-ex-open')) {
+            me.parentElement.classList.remove('faq-ex-open');
+        } else {
+            me.parentElement.classList.add('faq-ex-open');
+        }
+    });
+
+    $('.faq .question').on('click', function(event) {
+        var me=event.target;
+        var item = me.parentElement;
+        var questionColumn = item.parentElement;
+        var questions = $('.faq-container').children('.column');
+
+        if (questionOpen) {
+            $('.faq-container')[0].classList.remove('faq-ex-select')
+            $('.faq-ex-qopen')[0].classList.remove('faq-ex-qopen')
+            questions.css('display', 'inline-block');
+        } else {
+            $('.faq-container')[0].classList.add('faq-ex-select');
+            questionColumn.classList.add('faq-ex-qopen')
+            questions.not(questionColumn).each(function(index, value) {
+                $(value).css('display', 'none');
+            });
+        }
+
+        questionOpen = !questionOpen;
     });
 
     $('.schedule__trigger').on('mouseover', function() {
