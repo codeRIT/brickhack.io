@@ -1,51 +1,77 @@
 @import variables
 @import home/schedule
 
+.behind
+  position: absolute
+  margin-top: 125px
+  width: 1000px
+  height: 100%
+  z-index: -1
+  top: 0
+  left: 50%
+  transform: translateX(-50%)
+  overflow: hidden
+
+  *
+    width: 100%
+    position: absolute
+    background-size: contain
+    background-repeat: no-repeat, no-repeat
+
+  .bg-img1
+    height: 402px
+    width: 440px
+    background-image: url("home_asset_1.png")
+    background-position: left top, right bottom
+  .bg-img2
+    height: 520px
+    width: 400px
+    background-image: url("home_asset_2.png")
+    background-position: right top, right bottom
+    right: 3px
+    top: 5px
+  .bg-img3
+  .bg-img4
+  .bg-img5
+
 #home-left
   margin-left: 60px
-
-#about
-  height: 600px
-  background-image: url("home_asset_3.png")
-  background-repeat: no-repeat
-  background-position: right 100px bottom -80px
 
 #logo-footer
   background-image: url("home_asset_6.png"), url("brickhack4_logo.png")
   background-repeat: repeat-x, no-repeat
-  background-size: auto, 200px 200px
+  background-size: contain, 20%
   background-position: center, center
-  height: 300px
-
-#sponsors
-  background-image: url("home_asset_5.png")
-  background-repeat: no-repeat
-  background-position: right top
-
-#image_with_hackathon
-  background-image: url("hackathon_2.jpg")
   height: 400px
+  width: 1000px
+  margin: 0 auto
+
+#image-with-hackathon
+  background-image: url("hackathon_2.jpg")
+  height: 175px
+  width: 1000px
   align-items: center
   background-size: 100% auto
-  background-position: center top
+  background-position: center -140px
   margin-left: auto
   margin-right: auto
-
-#image_with_hackathon h1
-  font-weight: 600
-  color: white
-  text-align: center
-  padding-top: 140px
-  font-size: 4em
-  -webkit-text-stroke-width: 1px
-  -webkit-text-stroke-color: black
-
-#image_with_hackathon a
   display: flex
-  margin-left: auto
-  margin-right: auto
+  flex-direction: column
   justify-content: center
+  .title
+    margin: 0
+    text-align: center
+    h1
+      color: $white
+      margin: 0
+      height: 30px
+      text-shadow: 0px 0px 6px $black
 
+  a
+    margin-left: auto
+    margin-right: auto
+    height: 36px
+  
 .button_outline
   background-color: inherit
   color: $black
@@ -53,11 +79,13 @@
 
 html
   width: 100%
+  height: auto
 
 body
   background: $white
   color: $white
   width: 100%
+  position: relative
 
 p a
   color: $grey
@@ -68,7 +96,7 @@ p a
 
 .page
   margin: 0 auto
-  padding: 40px 30px 90px
+  padding: 40px 30px
   max-width: 1000px
 
 nav
@@ -219,18 +247,6 @@ p
   a
     color: $white
 
-.home-content
-  background-image: url("home_asset_1.png"), url("home_asset_2.png")
-  background-repeat: no-repeat, no-repeat
-  background-position: left top, right bottom
-
-  h1
-    padding-top: 0
-    margin-left: -2px
-
-#home-img
-  margin-top: 105px
-
 .mobile, i
   display: none
 
@@ -289,22 +305,30 @@ p
 .column--two
   flex: 1 1 280px * 2
 
+.home-content
+  margin-bottom: 60px
+  h1
+    padding-top: 0
+    margin-left: -2px
+#home-img
+  margin-top: 105px
+
 .about-gallery
 
   h2
     margin-left: -1px
 
-  #gallery-left
+  .gallery-left
     display: flex
     justify-content: center
     align-items: center
     flex-direction: column
     order: 0
 
-  #gallery-right
+  .gallery-right
     margin-left: 54px
 
-  #gallery-text
+  .gallery-text
     width: 400px
 
   .button-wrapper
@@ -359,9 +383,8 @@ p
     transform: rotate(180deg)
 
   .faq-container-outer
-    margin-left: 18px
-
     h2
+      margin-left: 18px
       margin-bottom: 20px
     
     .faq-container
@@ -420,31 +443,78 @@ p
   .faq-ex-open>.faq-container
     max-height: 1000px
 
+.sponsor-section
+  text-align: center
+  h2
+    margin-left: 18px
+    text-align: left
+  .sponsors
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-evenly
+    h2
+      margin-left: 18px
+      text-align: left
 
-.sponsors
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
+  .sponsor
+    flex: 1 0 150px
+    display: flex
+    justify-content: center
+    align-items: center
 
-.sponsor
-  flex: 1 0 300px
-  display: flex
-  justify-content: center
-  align-items: center
-
-  img
-    width: 100%
-    max-width: 250px
-
-  &.sponsor-small img
-    max-width: 140px
-    margin-bottom: 10px
-
-  &.sponsor-large
-    flex: 1 1 600px
-    min-width: 300px // same size as regular sponsor flex-basis
     img
-      max-width: 350px
+      width: 100%
+      max-width: 250px
+
+    &.sponsor-small img
+      max-width: 140px
+      margin-bottom: 10px
+
+    &.sponsor-large
+      flex: 1 1 300px
+      img
+        max-width: 350px
+
+  .sponsors-col
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    padding: 10px 15px
+
+  .sponsors-col-lg
+    .sponsor
+      flex: 1 1
+      width: 300px
+
+  .sponsors-col-md
+    .sponsor
+      flex: 2 2
+      width: 150px
+
+  .sponsors-col-sm
+    .sponsor
+      flex: 4 4
+      width: 80px
+
+  .hosts
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-evenly
+    margin-top: 50px
+    .hosts-row
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
+      .host
+        flex: 1 1
+        width: 300px
+        padding: 10px 15px
 
 .diagonal
   z-index: 1
@@ -470,9 +540,10 @@ p
   &, p
     font-size: 14px
 
-  .home-content
-    padding-top: 20px
-    padding-bottom: 20px
+  .footer-content
+    width: 1000px
+    margin: 0 auto
+    padding: 20px 10px
 
   h4
     margin-top: 0
@@ -494,17 +565,24 @@ p
 @media (max-width: $breakpoint-tablet)
   body
     text-align: center
-  #hamburger-menu
-    display: inline-block
   .home-content
     padding-left: 10px
     padding-right: 10px
+    margin: 0
+
+  #image-with-hackathon
+    background-position: center 10%
+    width: 100%
+
+  .behind
+    margin-top: 0
 
   nav.desktop
     padding: 0 0
     position: fixed
     background: 0
     z-index: 9
+    width: 100px
     .logo
       position: relative
       .logo-bg
@@ -529,6 +607,7 @@ p
 
     &:hover, &:active
       background: $white
+      width: 100%
       .nav-links a
         padding: 0
         display: inline-block
@@ -566,13 +645,16 @@ p
     padding-bottom: 0px
 
   .about-gallery
-    margin-bottom: 35px
-    #gallery-right
+    .gallery-right
       margin: 0 auto
-    #gallery-left
+    .gallery-left
       order: 1
-    #gallery-text
+    .gallery-text
       margin: 0 auto 35px auto
+
+  .sponsor-section
+    h2
+      text-align: center
 
   .faq
     .faq-container-outer
@@ -583,12 +665,64 @@ p
     .answer p
       text-align: center
 
+  #logo-footer
+    background-size: contain, 20%
+    width: 100%
+
+  #footer
+    .footer-content
+      width: 100%
+
 @media (max-width: 500px)
+  .behind
+    .bg-img2
+      display: none
+
+  nav.desktop
+    .nav-links a
+      margin: 0 4%
+    &:hover
+      #mlh-trust-badge
+        display: none
+
+  #image-with-hackathon
+    background-position: center 5%
+
   .home-content
     margin-top: 80px
+
   .split
     .split-left
       padding: 0
+
   .about-gallery
-    #gallery-text
+    .gallery-text
       width: 100%
+
+  .sponsor-section
+    .sponsors-col
+      padding: 0
+
+    .sponsors-col-lg
+      .sponsor
+        flex: 1 1
+        width: 150px
+
+    .sponsors-col-md
+      .sponsor
+        flex: 2 2
+        width: 75px
+
+    .sponsors-col-sm
+      .sponsor
+        flex: 4 4
+        width: 40px
+
+    .hosts
+      margin-top: 0
+      .hosts-row
+        .host
+          width: 200px
+
+  #logo-footer
+    height: 100px

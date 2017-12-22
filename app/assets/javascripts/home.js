@@ -1,6 +1,7 @@
 var ready;
 
 var questionOpen = false;
+var mobileNavOpen = false;
 
 ready = function() {
 
@@ -81,6 +82,17 @@ ready = function() {
             me.parentElement.classList.remove('faq-ex-open');
         } else {
             me.parentElement.classList.add('faq-ex-open');
+        }
+    });
+
+    $('nav.desktop .logo').on('click', function(event) {
+        var openClass = 'nav-ex-open';
+        var nav = $('nav.desktop')[0];
+        if (nav.classList.contains(openClass)) {
+            nav.classList.remove(openClass);
+            window.location = '#';
+        } else {
+            nav.classList.add(openClass);
         }
     });
 

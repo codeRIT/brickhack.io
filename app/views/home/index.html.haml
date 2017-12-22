@@ -43,18 +43,18 @@
   .split-right#home-right
     .half-img#home-img
       = image_tag 'hackathon.jpg'
-.page.split.about-gallery#about
-  .split-left#gallery-left
+.page.split.about-gallery
+  .split-left.gallery-left
     = image_tag 'gallery-img.png'
     .button-wrapper
       = link_to 'Full Gallery', '/gallery/', class: 'button button-overlay'
 
-  .split-right#gallery-right
+  .split-right.gallery-right
     %h2
       Brick City's 
       .orange
         Premiere Hackathon
-    #gallery-text
+    .gallery-text#about
       %p
         BrickHack brings
         designers, developers, and all sorts of makers together for 24 hours to create the impossible!
@@ -68,62 +68,72 @@
           this one's for you!
 
 
-.page.faq#faq
-  .faq-container-outer
+.page.faq
+  .faq-container-outer#faq
     %h2
       Do you have questions?
       .orange
         We have answers.
     = render "layouts/faq"
 
-#image_with_hackathon
-  %h1 Make a difference
-  - if Rails.configuration.hackathon['event_is_over']
-    %h3 Thanks for a great BrickHack! See you next year!
-  - elsif !Rails.configuration.hackathon['registration_is_open']
-    %h3 Registration has closed.
-  - if current_user
-    - if current_user.admin
-      = link_to manage_dashboard_index_path do
-        .button MANAGE
-    - else
-      = link_to questionnaires_path do
-        .button MY ACCOUNT
-  - elsif Rails.configuration.hackathon['registration_is_open']
-    = link_to new_user_registration_path do
-      .button REGISTER NOW
-  - if Rails.configuration.hackathon['event_is_over']
-    = link_to "https://brickhack3.devpost.com/submissions/" do
-      .button SUBMISSIONS
-    = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
-      .button.button-outline HELP ORGANIZE
+#image-with-hackathon
+  .title
+    %h1 
+      Make a
+      .orange
+        difference.
+    - if Rails.configuration.hackathon['event_is_over']
+      %h3 Thanks for a great BrickHack! See you next year!
+    - elsif !Rails.configuration.hackathon['registration_is_open']
+      %h3 Registration has closed.
+    - if current_user
+      - if current_user.admin
+        = link_to manage_dashboard_index_path do
+          .button MANAGE
+      - else
+        = link_to questionnaires_path do
+          .button MY ACCOUNT
+    - elsif Rails.configuration.hackathon['registration_is_open']
+      = link_to new_user_registration_path do
+        .button REGISTER NOW
+    - if Rails.configuration.hackathon['event_is_over']
+      = link_to "https://brickhack4.devpost.com/submissions/" do
+        .button SUBMISSIONS
+      = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
+        .button.button-outline HELP ORGANIZE
 
-#sponsors
-  .home-content
-    .split-three
-      .column.column--two
-        %h1{:style => "text-align: left;"} A huge thank you to our sponsors!
-        .sponsors
-          - STATIC_DATA['sponsors'].each do |sponsor|
-            - sponsor_class = []
-            - sponsor_class << 'sponsor-small' if sponsor['small']
-            - sponsor_class << 'sponsor-large' if sponsor['large']
-            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
-              = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
-        %br
-          = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
-
-    %h1 BrickHack is brought to you by...
-    %a.sponsor{ href: "https://mlh.io", target: "_blank", style: "float: left; padding-left: 50px" }
-      = image_tag 'sponsors/mlh.png', class: 'img-spaced'
-    %br
-    %a.sponsor{ href: "https://coderit.org", target: "_blank", style: "float: right; padding-right: 50px" }
-      = image_tag 'coderit_logo.png', class: 'img-spaced'
+.page.sponsor-section#sponsors
+  %h2 
+    A huge thank you to our sponsors!
+  .sponsors
+    .sponsors-col.sponsors-col-lg
+      %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' } 
+        = image_tag 'sponsors/datto.png'
+    .sponsors-col.sponsors-col-md
+      %a.sponsor{ href: 'http://www.rtech.org', title: '(R)Tech', target: 'blank' } 
+        = image_tag 'sponsors/rtech.png'
+      %a.sponsor{ href: 'https://www.wegmans.com', title: 'Wegmans', target: 'blank' } 
+        = image_tag 'sponsors/wegmans.png'
+    .sponsors-col.sponsors-col-sm
+      %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe', title: 'Club Cafe', target: 'blank' } 
+        = image_tag 'sponsors/clubcafe.png'
+      %a.sponsor{ href: 'https://www.stickermule.com', title: 'Sticker Mule', target: 'blank' } 
+        = image_tag 'sponsors/stickermule.png'
+  %br
+    = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
+  %h2 
+    BrickHack is brought to you by...
+  .hosts
+    .hosts-row
+      %a.host{ href: "https://mlh.io", target: "_blank", style: "float: left; padding-left: 50px" }
+        = image_tag 'sponsors/mlh.png'
+      %a.host{ href: "https://coderit.org", target: "_blank", style: "float: right; padding-right: 50px" }
+        = image_tag 'coderit_logo.png'
 
 #logo-footer
 
 #footer
-  .home-content
+  .footer-content
     .split-four
       .column
         = image_tag 'rit.svg'
