@@ -282,8 +282,6 @@ p
 .split-four
   display: flex
   flex-wrap: wrap
-  margin-left: -20px
-  margin-right: -20px
 
 .column
   flex: 1 0 280px
@@ -356,22 +354,27 @@ p
     width: 100%
     height: 100%
     top: 0
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(100%, $white))
-    background: gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(100%, $white))
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(99%, $white))
+    background: gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(90%, rgba(255,255,255,0)), color-stop(99%, $white))
 
-  .faq-container-expand
+  .faq-container-action
+    color: $black
     position: relative
-    width: 40px
-    height: 30px
+    font-size: 50px
+    width: 50px
     background-position: center
-    background-image: url("arrow_down.svg")
     transform-origin: center
     transition: 0.1s linear all
     margin: 0 auto
+    text-align: center
 
     &:hover
       cursor: pointer
-      background-image: url("arrow_down_hover.svg")
+      color: $orange
+
+  .faq-action-close
+    display: none
+    font-size: 30px
 
   .faq-ex-open .faq-container-fade
     display: none
@@ -379,8 +382,14 @@ p
   .faq-ex-select .faq-container-fade
     display: none
 
-  .faq-ex-open>.faq-container-expand
+  .faq-ex-open>.faq-action-expand
     transform: rotate(180deg)
+
+  .faq-ex-select ~ .faq-action-expand
+    display: none
+
+  .faq-ex-select ~ .faq-action-close
+    display: block
 
   .faq-container-outer
     h2
@@ -401,7 +410,7 @@ p
         text-align: center
         font-size: 12px
         display: inline-block
-        margin: 0 5px
+        margin: 6px 5px
         vertical-align: middle
 
         &.faq-ex-qopen
@@ -432,16 +441,9 @@ p
 
   .faq-ex-select.faq-container
     max-height: 400px
-    
-  .faq-ex-select + .faq-container-expand
-    background-image: none
-    &:after
-      content: "X"
-      display: block
-      color: $orange
 
   .faq-ex-open>.faq-container
-    max-height: 1000px
+    max-height: 1000px !important
 
 .sponsor-section
   text-align: center
@@ -536,14 +538,13 @@ p
   height: 75%
   background: inherit
 
-#footer
-  &, p
-    font-size: 14px
+.footer-content
+  width: 1000px
+  margin: 0 auto
+  padding: 20px 10px
 
-  .footer-content
-    width: 1000px
-    margin: 0 auto
-    padding: 20px 10px
+  p
+    font-size: 14px
 
   h4
     margin-top: 0
@@ -552,7 +553,7 @@ p
     text-align: left
     flex: 1 1 auto
     &:first-child
-      flex: 4 1 auto
+      flex: 4 4
 
 .api-section-top-margin
   margin-top: 12%
@@ -576,6 +577,13 @@ p
 
   .behind
     margin-top: 0
+    width: 100%
+
+    .bg-img1
+      width: 100%
+    .bg-img2
+      right: 0px
+      top: 0px
 
   nav.desktop
     padding: 0 0
@@ -605,7 +613,7 @@ p
     .nav-links .button
       display: none
 
-    &:hover, &:active
+    &.nav-ex-open
       background: $white
       width: 100%
       .nav-links a
@@ -656,34 +664,53 @@ p
     h2
       text-align: center
 
+    .hosts
+      .host
+        width: 225px
+
   .faq
     .faq-container-outer
       margin-left: 0px
       position: relative
-    .faq-container
-      max-height: 270px
-    .answer p
-      text-align: center
+      h2
+        margin-left: 0px
+
+      .faq-container
+        max-height: 270px
+        
+        .column
+          width: 100%
+
+      .answer p
+        text-align: center
 
   #logo-footer
     background-size: contain, 20%
     width: 100%
 
-  #footer
-    .footer-content
-      width: 100%
+  .footer-content
+    width: 100%
 
 @media (max-width: 500px)
   .behind
     .bg-img2
-      display: none
+      top: 470px
 
   nav.desktop
-    .nav-links a
-      margin: 0 4%
-    &:hover
+
+    .nav-links
+      width: auto
+      a
+        margin: 0 2%
+
+    #mlh-trust-badge
+      display: none
+      top: 105px
+      left: 40px
+
+    &.nav-ex-open
       #mlh-trust-badge
-        display: none
+        display: inline
 
   #image-with-hackathon
     background-position: center 5%
@@ -694,24 +721,34 @@ p
   .split
     .split-left
       padding: 0
+      width: 100%
+    .split-right
+      width: 100%
 
   .about-gallery
     .gallery-text
       width: 100%
+      p
+        text-shadow: 0px 0px 2px $white
+    .button-wrapper
+      width: inherit
 
   .sponsor-section
+    h2
+      margin-left: 0px
+
     .sponsors-col
       padding: 0
 
     .sponsors-col-lg
       .sponsor
         flex: 1 1
-        width: 150px
+        width: 130px
 
     .sponsors-col-md
       .sponsor
         flex: 2 2
-        width: 75px
+        width: 65px
 
     .sponsors-col-sm
       .sponsor
@@ -722,7 +759,20 @@ p
       margin-top: 0
       .hosts-row
         .host
-          width: 200px
+          width: 20%
 
   #logo-footer
     height: 100px
+
+  .footer-content
+    text-align: center
+    width: 100%
+    .split-four
+      display: block
+      width: 100%
+      .column
+        text-align: center
+        width: 100%
+
+        p
+          text-align: center

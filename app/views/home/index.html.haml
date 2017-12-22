@@ -104,7 +104,9 @@
 
 .page.sponsor-section#sponsors
   %h2 
-    A huge thank you to our sponsors!
+    A huge thank you to 
+    .orange
+      our sponsors!
   .sponsors
     .sponsors-col.sponsors-col-lg
       %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' } 
@@ -122,48 +124,49 @@
   %br
     = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
   %h2 
-    BrickHack is brought to you by...
+    BrickHack is
+    .orange
+      brought to you by...
   .hosts
     .hosts-row
-      %a.host{ href: "https://mlh.io", target: "_blank", style: "float: left; padding-left: 50px" }
+      %a.host{ href: "https://mlh.io", target: "_blank"}
         = image_tag 'sponsors/mlh.png'
-      %a.host{ href: "https://coderit.org", target: "_blank", style: "float: right; padding-right: 50px" }
+      %a.host{ href: "https://coderit.org", target: "_blank" }
         = image_tag 'coderit_logo.png'
 
 #logo-footer
 
-#footer
-  .footer-content
-    .split-four
-      .column
-        = image_tag 'rit.svg'
-        %p
-          1 Lomb Memorial Drive
-          %br
-          Rochester, NY 14623
-      .column
-        %h4 Get in Contact
-        %p
-          = link_to 'Questions?', 'mailto:hello@brickhack.io'
-        %p
+#footer.footer-content
+  .split-four
+    .column
+      = image_tag 'rit.svg'
+      %p
+        1 Lomb Memorial Drive
+        %br
+        Rochester, NY 14623
+    .column
+      %h4 Get in Contact
+      %p
+        = link_to 'Questions?', 'mailto:hello@brickhack.io'
+      %p
 
-          = link_to 'Found a bug?', 'https://github.com/codeRIT/brickhack.io/issues/new'
-      .column
-        %h4 Follow BrickHack
-        %p
-          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
-      .column
-        %h4 codeRIT
-        %p
-          = link_to '<span class="fa fa-globe fa-fw"></span> codeRIT.org'.html_safe, 'https://coderit.org'
-        %p
-          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/coderit'
-        %p
-          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/groups/codeRIT/'
+        = link_to 'Found a bug?', 'https://github.com/codeRIT/brickhack.io/issues/new'
+    .column
+      %h4 Follow BrickHack
+      %p
+        = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
+      %p
+        = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
+      %p
+        = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
+    .column
+      %h4 codeRIT
+      %p
+        = link_to '<span class="fa fa-globe fa-fw"></span> codeRIT.org'.html_safe, 'https://coderit.org'
+      %p
+        = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/coderit'
+      %p
+        = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/groups/codeRIT/'
 
 
 / Start of HubSpot Embed Code

@@ -2,19 +2,9 @@ var ready;
 
 var questionOpen = false;
 var mobileNavOpen = false;
+var mobileNavHover = false;
 
 ready = function() {
-
-    // when mobile hamburger menu is clicked
-    $('#hamburger-menu').click(function(){
-        // TODO: this isn't optimized on mobile.  use css instead of jquery in the future
-       $('#mobile-nav').slideToggle('fast');
-    });
-
-    // close hamburger menu when item is clicked
-    $('a.mobile').click(function(){
-        $('#mobile-nav').delay(400).slideUp('fast');
-    });
 
     // make sure images have the correct vertical height when loaded
     $('img').load(function(){
@@ -42,7 +32,6 @@ ready = function() {
         );
 
     $('.wow').each(function(){
-
         $(this).waypoint(function(){
             $(this).transition(
                 {
@@ -72,16 +61,34 @@ ready = function() {
         }
     });
 
-    $('.faq-container-expand').on('click', function(event) {
-        var me=event.target;
-        console.log(me.parentElement);
-        if ($('.faq-container')[0].classList.contains('faq-ex-select')) {
-
-            $('.faq .question')[0].click();
-        } else if (me.parentElement.classList.contains('faq-ex-open')) {
-            me.parentElement.classList.remove('faq-ex-open');
+    $('.faq-action-expand').on('click', function(event) {
+        var container = $('.faq-container-outer')[0];
+        if (container.classList.contains('faq-ex-open')) {
+            container.classList.remove('faq-ex-open');
         } else {
-            me.parentElement.classList.add('faq-ex-open');
+            container.classList.add('faq-ex-open');
+        }
+    });
+
+    $('.faq-action-close').on('click', function(event) {
+        $('.faq .question')[0].click();
+    });
+
+    $('nav.desktop').on('mouseover', function(event) {
+        var openClass = 'nav-ex-open';
+        var nav = $('nav.desktop')[0];
+        if (!nav.classList.contains(openClass)) {
+            nav.classList.add(openClass);
+            mobileNavHover = true;
+        }
+    });
+
+    $('nav.desktop').on('mouseout', function(event) {
+        var openClass = 'nav-ex-open';
+        var nav = $('nav.desktop')[0];
+        if (nav.classList.contains(openClass)) {
+            nav.classList.remove(openClass);
+            mobileNavHover = false;
         }
     });
 
@@ -89,10 +96,19 @@ ready = function() {
         var openClass = 'nav-ex-open';
         var nav = $('nav.desktop')[0];
         if (nav.classList.contains(openClass)) {
+            if (mobileNavHover) {
+                mobileNavHover = false;
+                mobileNavOpen = true;
+                return;
+            }
+            if (mobileNavOpen) {
+                window.location = '#';
+            }
             nav.classList.remove(openClass);
-            window.location = '#';
+            mobileNavOpen = false;
         } else {
             nav.classList.add(openClass);
+            mobileNavOpen = true;
         }
     });
 
