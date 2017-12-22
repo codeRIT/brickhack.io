@@ -85,7 +85,7 @@ body
   background: $white
   color: $white
   width: 100%
-  position: relative
+  position: absolute
 
 p a
   color: $grey
@@ -692,7 +692,9 @@ p
     width: 100%
 
 @media (max-width: 500px)
-  .behind
+  .behind 
+    .bg-img1
+      top: 0px
     .bg-img2
       top: 470px
 
@@ -714,6 +716,7 @@ p
 
   #image-with-hackathon
     background-position: center 5%
+    margin: 15px 0
 
   .home-content
     margin-top: 80px
