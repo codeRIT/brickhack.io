@@ -1,0 +1,31 @@
+- @involved_link = 'mailto:hello@brickhack.io?subject=I&#39;d%20like%20to%20get%20involved!'
+
+- @faq_content = {'What is a hackathon?' => 'Great question! A hackathon is best described as an “invention marathon”. Anyone with an interest in technology attends a hackathon to learn, build & share their creations over the course of a weekend in a relaxed, welcoming atmosphere. You don’t have to be a programmer and you certainly don’t have to be majoring in CS!<br><br>MLH has a great list of related questions over at <a href="https://mlh.io/faq">mlh.io/faq</a>.',
+  'How am I supposed to get there?' => 'If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! Some schools will have a bus provided - more information will be announced soon. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@brickhack.io">travel@brickhack.io</a>.',
+  'What should I bring?' => 'Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup, and maybe an idea or two.',
+  'Who can participate in BrickHack?' => 'Anyone who is currently enrolled as a student or has graduated within the last 12 months can attend! If you don\'t fit that description, you\'re absolutely welcome to attend as a <a href='+@involved_link+'>mentor</a> or <a href='+@involved_link+'>volunteer</a>.<br><br>All attendees must be 18 years or older to attend. Proof of age may be requested on the day of the event.',
+  'When does registration close?' => 'Acceptance notification will start being sent out January 10th. Applications submitted after January 22nd will be waitlisted.',
+  'How much does this cost?' => 'Zero. Zip. Nada. Attending BrickHack is free, and well be providing plenty of food and swag throughout the weekend!',
+  'I\'ve never been to a hackathon before, can I still apply?' => 'Of course you can! Our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.',
+  'I don\'t live near Rochester - can I still come?' => 'Definitely. We invite hackers from all over the US and Canada to join us for our annual event!',
+  'Do I need a team to join?' => 'While teams are often recommended and sometimes more fun, they\'re not required. Feel free to invite your friends. Teams are a max of 4 people.',
+  'Do RIT students need to apply?' => 'Yes, RIT students need to apply just like everyone else.',
+  'Can high schoolers join?' => 'Anyone that fits the age requirements can apply, even high schoolers.',
+  'When will I know if I got in?' => 'Acceptance notifications will start being sent out January 16th on a rolling basis.',
+  'Should I bring my own bricks?' => 'We\'ve got you covered.',
+  'My question isn\'t answered here...' => 'Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.'}
+
+.faq-container
+  - @faq_content.each do |question, answer|
+    .column
+      .question
+        %h3
+          = question
+      .answer
+        %p
+          = raw answer
+  .faq-container-fade
+.faq-container-action.faq-action-expand
+  %i.fa.fa-caret-down
+.faq-container-action.faq-action-close
+  %i.fa.fa-times

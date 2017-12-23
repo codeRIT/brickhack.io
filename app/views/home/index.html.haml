@@ -1,236 +1,169 @@
 = stylesheet_link_tag 'home.css'
-
 = render "layouts/nav"
 
 - mentor_link = "https://goo.gl/forms/d8WiaiM7rYaLz3SQ2".freeze
 - volunteer_link = "https://goo.gl/forms/cpmRgGxLsUUjNymG2".freeze
 
-.page.split-home#home
-  .split-left
-    = image_tag 'scroller.png'
-  .split-right
+.behind
+  .bg-img1
+  .bg-img2
+  .bg-img3
+  .bg-img4
+  .bg-img5
+
+.page.split.home-content
+  .split-left#home-left
     %h1.title BrickHack 4
-    - if !Rails.configuration.hackathon['event_is_over']
-      %h3 Inviting students to come together on
-    %h2.subtitle February 11-12, 2017
+    %h2.subtitle
+      .bold January 27-28, 2018
+      at the
+    %h2.subtitle Rochester Institute of Technology
     %br
     - if Rails.configuration.hackathon['event_is_over']
       %h3 Thanks for a great BrickHack! See you next year!
     - elsif !Rails.configuration.hackathon['registration_is_open']
       %h3 Registration has closed.
-      / TODO: better styling for this - looks too much like the h3 statement
 
     - if current_user
       - if current_user.admin
         = link_to manage_dashboard_index_path do
-          .button.button-outline MANAGE
+          .button MANAGE
       - else
         = link_to questionnaires_path do
-          .button.button-outline MY ACCOUNT
+          .button MY ACCOUNT
     - elsif Rails.configuration.hackathon['registration_is_open']
       = link_to new_user_registration_path do
-        .button.button-outline SIGN UP TODAY!
+        .button REGISTER NOW
     - if Rails.configuration.hackathon['event_is_over']
       = link_to "https://brickhack3.devpost.com/submissions/" do
-        .button.button-outline SUBMISSIONS
+        .button SUBMISSIONS
       = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
         .button.button-outline HELP ORGANIZE
-    - else
-      %br
-      = link_to volunteer_link do
-        .button.button-outline VOLUNTEER
-      %br
-      = link_to mentor_link do
-        .button.button-outline MENTOR
+  .split-right#home-right
+    .half-img#home-img
+      = image_tag 'hackathon.jpg'
+.page.split.about-gallery
+  .split-left.gallery-left
+    = image_tag 'gallery-img.png'
+    .button-wrapper
+      = link_to 'Full Gallery', '/gallery/', class: 'button button-overlay'
 
-.white-section.diagonal#about
-  .home-content.about-gallery
-    .about
-      %h1 RIT's Premiere Hackathon
+  .split-right.gallery-right
+    %h2
+      Brick City's
+      .orange
+        Premiere Hackathon
+    .gallery-text#about
       %p
-        BrickHack brings
-        %strong designers, developers,
-        and
-        %strong all sorts of makers
-        together for 24 hours to create the impossible!
+        BrickHack brings designers, developers, and all sorts of makers together for 24 hours to create something from nothing.
 
       %p
         Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
 
       %p
-        From
-        %strong noon February 11 to noon February 12,
-        you'll join a team or work solo in RIT's Clark Gym. If you'd like to see how to get around the RIT campus, see our
-        = link_to 'parking instructions', image_path('brickhack-parking.png')
-        and <a href="https://maps.rit.edu">RIT's map</a>.
+        From the novices to the experts, from designers to engineers,
+        %span.bold
+          this one's for you!
 
-      = link_to 'https://brickhack3.devpost.com/' do
-        .button.button-primary Devpost
 
-    .gallery#gallery
-      = image_tag 'gallery-img.png'
-      .button-wrapper
-        = link_to 'See Gallery', '/gallery/', class: 'button button-overlay'
+.page.faq
+  .faq-container-outer#faq
+    %h2
+      Do you have questions?
+      .orange
+        We have answers.
+    = render "layouts/faq"
 
-.grey-section.diagonal#whoshouldcome
-  .home-content
-    %h1 Who should come?
-    .split-three
-      .column
-        = image_tag 'des_grey.png', class: 'img-spaced'
-        %h2 Designers
-        %p Do you have a penchant for creating intuitive works? Take this opportunity to work with other designers!
-        %p Work on a team to create a new brand or marketing strategy! You can even hack alongside engineers to produce a working prototype.
-        = btn_link_to 'Design Category', action: 'design_category'
-      .column
-        = image_tag 'dev_grey.png', class: 'img-spaced'
-        %h2 Developers
-        %p Does hammering away at bugs excite you? What about exploring new technologies while bringing an idea to life?
-        %p Come together to hack on the next solution to an every day problem, or even contribute back to the open source community.
-        = btn_link_to 'API List', '/apilist/'
-      .column
-        = image_tag 'eng_grey.png', class: 'img-spaced'
-        %h2 Engineers
-        %p Is hardware your passion? Does bringing the physical world to life excite you?
-        %p Put the parts together and get hands-on to construct your vision. We'll have various devices & products from MLH's popular hardware lab to work with.
-        = btn_link_to 'Hardware Lab', 'https://hardware.mlh.io'
+#image-with-hackathon
+  .title
+    %h1
+      Make a
+      .orange
+        difference.
+    - if Rails.configuration.hackathon['event_is_over']
+      %h3 Thanks for a great BrickHack! See you next year!
+    - elsif !Rails.configuration.hackathon['registration_is_open']
+      %h3 Registration has closed.
+    - if current_user
+      - if current_user.admin
+        = link_to manage_dashboard_index_path do
+          .button MANAGE
+      - else
+        = link_to questionnaires_path do
+          .button MY ACCOUNT
+    - elsif Rails.configuration.hackathon['registration_is_open']
+      = link_to new_user_registration_path do
+        .button REGISTER NOW
+    - if Rails.configuration.hackathon['event_is_over']
+      = link_to "https://brickhack4.devpost.com/submissions/" do
+        .button SUBMISSIONS
+      = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
+        .button.button-outline HELP ORGANIZE
 
-= render 'schedule'
+.page.sponsor-section#sponsors
+  %h2
+    A huge thank you to
+    .orange
+      our sponsors!
+  .sponsors
+    .sponsors-col.sponsors-col-lg
+      %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' }
+        = image_tag 'sponsors/datto.png'
+    .sponsors-col.sponsors-col-md
+      %a.sponsor{ href: 'http://www.rtech.org', title: '(R)Tech', target: 'blank' }
+        = image_tag 'sponsors/rtech.png'
+      %a.sponsor{ href: 'https://www.wegmans.com', title: 'Wegmans', target: 'blank' }
+        = image_tag 'sponsors/wegmans.png'
+    .sponsors-col.sponsors-col-sm
+      %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe', title: 'Club Cafe', target: 'blank' }
+        = image_tag 'sponsors/clubcafe.png'
+      %a.sponsor{ href: 'https://www.stickermule.com', title: 'Sticker Mule', target: 'blank' }
+        = image_tag 'sponsors/stickermule.png'
+  %br
+    = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
+  %h2
+    BrickHack is
+    .orange
+      brought to you by...
+  .hosts
+    .hosts-row
+      %a.host{ href: "https://mlh.io", target: "_blank" }
+        = image_tag 'sponsors/mlh.png'
+      %a.host{ href: "https://coderit.org", target: "_blank" }
+        = image_tag 'coderit_logo.png'
 
-.grey-section.diagonal#faq
-  .home-content
-    %h1 FAQ
-
-    .split-four
-      .column
-        %h2 What is a hackathon?
-        %p
-          Great question! A hackathon is best described as an “invention marathon”. Anyone with an interest in technology attends a hackathon to learn, build & share their creations over the course of a weekend in a relaxed, welcoming atmosphere. You don’t have to be a programmer and you certainly don’t have to be majoring in CS!
-        %p
-          MLH has a great list of related questions over at <a href="https://mlh.io/faq">mlh.io/faq</a>.
-
-      .column
-        %h2 How am I supposed to get there?
-        %p If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! Some schools will have a bus provided; see below. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@brickhack.io">travel@brickhack.io</a>.
-
-      .column
-        %h2 What should I bring?
-        %p Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup and maybe an idea or two.
-
-      .column
-        %h2 Who can participate in BrickHack?
-        %p
-          Anyone who is currently enrolled as a student or has graduated within the last 12 months can attend! If you don't fit that description, you're absolutely welcome to attend as a <a href="#{mentor_link}">mentor</a> or <a href="#{volunteer_link}">volunteer</a>.
-        %p All attendees must be 18 years or older to attend. Proof of your age may be requested on the day of the event.
-
-      .column
-        %h2 When does registration close?
-        %p Acceptance notification will start being sent out January 26th. Applications submitted afterwards will be waitlisted.
-
-      .column
-        %h2 How much does this cost?
-        %p Zero. Zip. Nada. Attending BrickHack is free, and we'll be providing plenty of food and swag throughout the weekend!
-
-      .column
-        %h2 I've never been to a hackathon before, can I still apply?
-        %p Of course you can! Our attendees will range from first-timers to veteran hackers. Saddle up to a new framework, refresh a stale project, or just hang out and enjoy the diverse company.
-
-      .column
-        %h2 I don't live near Rochester - can I still come?
-        %p Definitely. We invite hackers from all over the US and Canada to join us for our annual event!
-
-      .column
-        %h2 Are busses being provided?
-        %p Busses are being provided to students at Buffalo, Cornell, Binghamton, RPI, and Albany. If you're eligible for a bus, you'll see the option to sign up when you RSVP!
-
-      .column
-        %h2 Do I need a team to join?
-        %p While teams are often recommended and sometimes more fun, they're not required. Feel free to invite your friends. Teams are a max of 4 people.
-
-      .column
-        %h2 Do RIT students need to apply?
-        %p Yes, RIT students need to apply just like everyone else.
-
-      .column
-        %h2 Can high schoolers join?
-        %p Anyone that fits the age requirements can apply, even high schoolers.
-
-      .column
-        %h2 When will I know if I got in?
-        %p Acceptance notifications will start being sent out January 16th on a rolling basis.
-
-      .column
-        %h2 Should I bring my own bricks?
-        %p We've got you covered.
-
-      .column
-        %h2 My question isn't answered here?
-        %p Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.
-
-.white-section.diagonal#sponsors
-  .home-content
-    .split-three
-      .column.column--two
-        %h1 Sponsors
-        .sponsors
-          - STATIC_DATA['sponsors'].each do |sponsor|
-            - sponsor_class = []
-            - sponsor_class << 'sponsor-small' if sponsor['small']
-            - sponsor_class << 'sponsor-large' if sponsor['large']
-            %a.sponsor{ href: sponsor['url'], class: sponsor_class.join(' '), target: '_blank' }
-              = image_tag "sponsors/#{sponsor['image']}", class: 'img-spaced'
+.footer-content#footer
+  .split-four
+    .column
+      = image_tag 'rit.svg'
+      %p
+        1 Lomb Memorial Drive
         %br
-        = link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { class: 'button', style: 'margin-bottom: 60px;' }
-      .column
-        %h1 Partners
-        %a.sponsor{ href: "http://magic.rit.edu", target: "_blank" }
-          = image_tag 'sponsors/magic.gif', id: "magic", class: 'img-spaced'
-        %a.sponsor{ href: "https://mlh.io", target: "_blank" }
-          = image_tag 'sponsors/mlh.png', class: 'img-spaced'
-        %a.sponsor{ href: "https://www.rit.edu/research/simonecenter/", target: "_blank" }
-          = image_tag 'sponsors/simone.png', class: 'img-spaced'
+        Rochester, NY 14623
+    .column
+      %h4 Get in Contact
+      %p
+        = link_to 'Questions?', 'mailto:hello@brickhack.io'
+      %p
 
-        %h1 Organized By
-        %a.sponsor{ href: "https://coderit.org", target: "_blank" }
-          = image_tag 'coderit_logo.png', class: 'img-spaced'
+        = link_to 'Found a bug?', 'https://github.com/codeRIT/brickhack.io/issues/new'
+    .column
+      %h4 Follow BrickHack
+      %p
+        = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
+      %p
+        = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
+      %p
+        = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
+    .column
+      %h4 codeRIT
+      %p
+        = link_to '<span class="fa fa-globe fa-fw"></span> codeRIT.org'.html_safe, 'https://coderit.org'
+      %p
+        = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/coderit'
+      %p
+        = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/groups/codeRIT/'
 
-
-.black-section.diagonal#footer
-  .home-content
-    .split-four
-      .column
-        = image_tag 'rit.svg'
-        %p
-          1 Lomb Memorial Drive
-          %br
-          Rochester, NY 14623
-      .column
-        %h4 Contact
-        %p
-          Questions?
-          = link_to 'Contact us', 'mailto:hello@brickhack.io'
-        %p
-          Found a bug?
-          = link_to '<span class="fa fa-github fa-fw"></span> GitHub'.html_safe, 'https://github.com/codeRIT/brickhack.io/issues/new'
-      .column
-        %h4 codeRIT
-        %p
-          = link_to '<span class="fa fa-globe fa-fw"></span> codeRIT.org'.html_safe, 'https://coderit.org'
-        %p
-          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/coderit'
-        %p
-          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/groups/codeRIT/'
-      .column
-        %h4 BrickHack
-        %p
-          = link_to '<span class="fa fa-twitter-square fa-fw"></span> Twitter'.html_safe, 'https://twitter.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
-        %p
-          = link_to '<span class="fa fa-youtube-square fa-fw"></span> YouTube'.html_safe, 'https://www.youtube.com/channel/UCz3-V8NNSXZM_fUEh-kAptA'
-
-%a#mlh-trust-badge{ href: "https://mlh.io/seasons/na-2017/events?utm_source=na-2017&utm_medium=TrustBadge&utm_campaign=na-2017&utm_content=white", target: "_blank" }
-  %img{ alt: "Major League Hacking 2017 Hackathon Season", src: "https://s3.amazonaws.com/logged-assets/trust-badge/2017/white.svg", style: "width:100%" }/
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ :async => "", :defer => "defer", :src => "//js.hs-scripts.com/2104052.js", :type => "text/javascript" }
