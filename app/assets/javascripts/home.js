@@ -6,11 +6,6 @@ var mobileNavHover = false;
 
 ready = function() {
 
-    // make sure images have the correct vertical height when loaded
-    $('img').load(function(){
-       recalc();
-    });
-
     // bulk add animations
     $('.faq h2, .faq h3').addClass('wow').addClass('fade-in')
 
@@ -93,23 +88,23 @@ ready = function() {
     });
 
     $('nav.desktop .logo').on('click', function(event) {
-        var openClass = 'nav-ex-open';
-        var nav = $('nav.desktop')[0];
-        if (nav.classList.contains(openClass)) {
-            if (mobileNavHover) {
-                mobileNavHover = false;
-                mobileNavOpen = true;
-                return;
-            }
-            if (mobileNavOpen) {
-                window.location = '#';
-            }
-            nav.classList.remove(openClass);
-            mobileNavOpen = false;
-        } else {
-            nav.classList.add(openClass);
-            mobileNavOpen = true;
-        }
+      var openClass = 'nav-ex-open';
+      var nav = $('nav.desktop')[0];
+      if (nav.classList.contains(openClass)) {
+          if (mobileNavHover) {
+              mobileNavHover = false;
+              mobileNavOpen = true;
+              return;
+          }
+          if (mobileNavOpen) {
+              window.location = '#';
+          }
+          nav.classList.remove(openClass);
+          mobileNavOpen = false;
+      } else {
+          nav.classList.add(openClass);
+          mobileNavOpen = true;
+      }
     });
 
     $('.faq .question').on('click', function(event) {

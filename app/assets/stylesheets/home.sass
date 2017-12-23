@@ -71,7 +71,7 @@
     margin-left: auto
     margin-right: auto
     height: 36px
-  
+
 .button_outline
   background-color: inherit
   color: $black
@@ -111,7 +111,7 @@ nav
     align-items: center
     margin: 0 auto
     width: 1000px
-    
+
     #mlh-trust-badge
       display: block
       width: 70px
@@ -121,6 +121,9 @@ nav
 
     .button
       min-width: 130px
+      color: $white
+      margin-left: 0
+      margin-right: 0
 
 
   i:before
@@ -167,9 +170,6 @@ nav
 
   a:hover:not(.button)
     color: #f58625
-
-  .button
-    color: $white
 
 #logo
   max-width: 350px
@@ -395,7 +395,7 @@ p
     h2
       margin-left: 18px
       margin-bottom: 20px
-    
+
     .faq-container
       max-height: 290px
       text-align: center
@@ -415,7 +415,7 @@ p
 
         &.faq-ex-qopen
           max-height: inherit
-        
+
         .question
           display: table
           height: 100%
@@ -562,6 +562,10 @@ p
   .split
     .split-right
       margin-right: 0px
+  nav.desktop
+    .button
+      margin-left: auto
+      margin-right: 83px
 
 @media (max-width: $breakpoint-tablet)
   body
@@ -678,7 +682,7 @@ p
 
       .faq-container
         max-height: 270px
-        
+
         .column
           width: 100%
 
@@ -693,7 +697,7 @@ p
     width: 100%
 
 @media (max-width: 500px)
-  .behind 
+  .behind
     .bg-img1
       top: 0px
     .bg-img2

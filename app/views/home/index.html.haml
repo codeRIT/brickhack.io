@@ -23,7 +23,6 @@
       %h3 Thanks for a great BrickHack! See you next year!
     - elsif !Rails.configuration.hackathon['registration_is_open']
       %h3 Registration has closed.
-      / TODO: better styling for this - looks too much like the h3 statement
 
     - if current_user
       - if current_user.admin
@@ -51,7 +50,7 @@
 
   .split-right.gallery-right
     %h2
-      Brick City's 
+      Brick City's
       .orange
         Premiere Hackathon
     .gallery-text#about
@@ -63,7 +62,7 @@
         Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
 
       %p
-        From the novices to the experts, from designers to engineers, 
+        From the novices to the experts, from designers to engineers,
         %span.bold
           this one's for you!
 
@@ -78,7 +77,7 @@
 
 #image-with-hackathon
   .title
-    %h1 
+    %h1
       Make a
       .orange
         difference.
@@ -103,27 +102,27 @@
         .button.button-outline HELP ORGANIZE
 
 .page.sponsor-section#sponsors
-  %h2 
-    A huge thank you to 
+  %h2
+    A huge thank you to
     .orange
       our sponsors!
   .sponsors
     .sponsors-col.sponsors-col-lg
-      %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' } 
+      %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' }
         = image_tag 'sponsors/datto.png'
     .sponsors-col.sponsors-col-md
-      %a.sponsor{ href: 'http://www.rtech.org', title: '(R)Tech', target: 'blank' } 
+      %a.sponsor{ href: 'http://www.rtech.org', title: '(R)Tech', target: 'blank' }
         = image_tag 'sponsors/rtech.png'
-      %a.sponsor{ href: 'https://www.wegmans.com', title: 'Wegmans', target: 'blank' } 
+      %a.sponsor{ href: 'https://www.wegmans.com', title: 'Wegmans', target: 'blank' }
         = image_tag 'sponsors/wegmans.png'
     .sponsors-col.sponsors-col-sm
-      %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe', title: 'Club Cafe', target: 'blank' } 
+      %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe', title: 'Club Cafe', target: 'blank' }
         = image_tag 'sponsors/clubcafe.png'
-      %a.sponsor{ href: 'https://www.stickermule.com', title: 'Sticker Mule', target: 'blank' } 
+      %a.sponsor{ href: 'https://www.stickermule.com', title: 'Sticker Mule', target: 'blank' }
         = image_tag 'sponsors/stickermule.png'
   %br
     = btn_link_to 'Interested in Sponsoring?', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 60px;' }
-  %h2 
+  %h2
     BrickHack is
     .orange
       brought to you by...
@@ -134,9 +133,7 @@
       %a.host{ href: "https://coderit.org", target: "_blank" }
         = image_tag 'coderit_logo.png'
 
-#logo-footer
-
-#footer.footer-content
+.footer-content#footer
   .split-four
     .column
       = image_tag 'rit.svg'
