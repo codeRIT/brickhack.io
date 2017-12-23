@@ -100,3 +100,20 @@
 
   .faq-ex-open>.faq-container
     max-height: 1000px !important
+
+@media (max-width: $breakpoint-tablet)
+  .faq
+    .faq-container-outer
+      margin-left: 0px
+      position: relative
+      h2
+        margin-left: 0px
+
+      .faq-container
+        max-height: 270px
+
+        .column
+          width: 330px
+
+      .answer p
+        text-align: center
