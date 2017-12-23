@@ -1,9 +1,13 @@
 .header
   .header__wrapper.account-nav__wrapper
     - if Rails.configuration.hackathon['logo_asset']
-      .header-logo
+      .header-logo.header-logo--with-nav
         = link_to root_path do
           = image_tag Rails.configuration.hackathon['logo_asset'], id: 'logo', alt: "#{Rails.configuration.hackathon['name']} logo", title: Rails.configuration.hackathon['name'], class: 'header-logo__image'
+        .header-nav.header-nav__links
+          = link_to "About", "/#about", class: 'header-nav__link'
+          = link_to "FAQs", "/#faq", class: 'header-nav__link'
+          = link_to "Sponsors", "/#sponsors", class: 'header-nav__link'
     - else
       .header-nav
         = btn_link_to "Home", root_path
