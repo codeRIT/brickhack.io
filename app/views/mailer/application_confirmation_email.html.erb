@@ -9,5 +9,8 @@
   My Profile
 <% end %>
 <% count = @questionnaire.school.questionnaires.count %>
+<% if count < 20 %>
+<p>You're only the <%= count.ordinalize %> person to apply from <%= @questionnaire.school.name %> - <strong>invite your friends!</strong> Hacking is always fun as a team.</p>
+<% else %>
 <p>In the meantime, <strong>invite your friends!</strong> Hacking is always fun as a team.</p>
-<p>Only <%= count == 1 ? '1 person has' : "#{count} people have" %> applied from <%= @questionnaire.school.name %> - spread the word!</p>
+<% end %>
