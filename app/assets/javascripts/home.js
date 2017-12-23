@@ -1,21 +1,10 @@
 var ready;
+
+var questionOpen = false;
+var mobileNavOpen = false;
+var mobileNavHover = false;
+
 ready = function() {
-
-    // when mobile hamburger menu is clicked
-    $('#hamburger-menu').click(function(){
-        // TODO: this isn't optimized on mobile.  use css instead of jquery in the future
-       $('#mobile-nav').slideToggle('fast');
-    });
-
-    // close hamburger menu when item is clicked
-    $('a.mobile').click(function(){
-        $('#mobile-nav').delay(400).slideUp('fast');
-    });
-
-    // make sure images have the correct vertical height when loaded
-    $('img').load(function(){
-       recalc();
-    });
 
     // bulk add animations
     $('.faq h2, .faq h3').addClass('wow').addClass('fade-in')
@@ -38,7 +27,6 @@ ready = function() {
         );
 
     $('.wow').each(function(){
-
         $(this).waypoint(function(){
             $(this).transition(
                 {
@@ -49,21 +37,6 @@ ready = function() {
             )
         },{offset: '75%'});
     });
-
-
-
-
-
-
-
-    function recalc(){
-        // pages will be scaled to 100% height
-        $('.page').outerHeight($(window).height())
-    }
-    $(window).resize(function(){
-        recalc();
-    });
-    recalc();
 
     // smooth scrolling
     $('a[href*="#"]:not([href="#"])').click(function() {
@@ -81,6 +54,78 @@ ready = function() {
                 return false;
             }
         }
+    });
+
+    $('.faq-action-expand').on('click', function(event) {
+        var container = $('.faq-container-outer')[0];
+        if (container.classList.contains('faq-ex-open')) {
+            container.classList.remove('faq-ex-open');
+        } else {
+            container.classList.add('faq-ex-open');
+        }
+    });
+
+    $('.faq-action-close').on('click', function(event) {
+        $('.faq .question')[0].click();
+    });
+
+    $('nav.desktop').on('mouseover', function(event) {
+        var openClass = 'nav-ex-open';
+        var nav = $('nav.desktop')[0];
+        if (!nav.classList.contains(openClass)) {
+            nav.classList.add(openClass);
+            mobileNavHover = true;
+        }
+    });
+
+    $('nav.desktop').on('mouseout', function(event) {
+        var openClass = 'nav-ex-open';
+        var nav = $('nav.desktop')[0];
+        if (nav.classList.contains(openClass)) {
+            nav.classList.remove(openClass);
+            mobileNavHover = false;
+        }
+    });
+
+    $('nav.desktop .logo').on('click', function(event) {
+      var openClass = 'nav-ex-open';
+      var nav = $('nav.desktop')[0];
+      if (nav.classList.contains(openClass)) {
+          if (mobileNavHover) {
+              mobileNavHover = false;
+              mobileNavOpen = true;
+              return;
+          }
+          if (mobileNavOpen) {
+              window.location = '#';
+          }
+          nav.classList.remove(openClass);
+          mobileNavOpen = false;
+      } else {
+          nav.classList.add(openClass);
+          mobileNavOpen = true;
+      }
+    });
+
+    $('.faq .question').on('click', function(event) {
+        var me=event.target;
+        var item = me.parentElement;
+        var questionColumn = item.parentElement;
+        var questions = $('.faq-container').children('.column');
+
+        if (questionOpen) {
+            $('.faq-container')[0].classList.remove('faq-ex-select');
+            $('.faq-ex-qopen')[0].classList.remove('faq-ex-qopen');
+            questions.css('display', 'inline-block');
+        } else {
+            $('.faq-container')[0].classList.add('faq-ex-select');
+            questionColumn.classList.add('faq-ex-qopen');
+            questions.not(questionColumn).each(function(index, value) {
+                $(value).css('display', 'none');
+            });
+        }
+
+        questionOpen = !questionOpen;
     });
 
     $('.schedule__trigger').on('mouseover', function() {
