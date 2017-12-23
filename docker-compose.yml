@@ -12,7 +12,12 @@ services:
 
   web:
     build: .
-    command: rails server --port 3000 --binding 0.0.0.0
+    command:
+      - rails
+      - server
+      - --port=3000
+      - --binding=0.0.0.0
+      - --pid=/tmp/rails-server.pid
     ports:
       - "3000:3000"
     depends_on:
