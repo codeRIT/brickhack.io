@@ -100,4 +100,4 @@ bower.json
 .bundle-install-lock
 
 # Mac stuff
-.DS_Store
+*.DS_Store
