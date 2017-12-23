@@ -21,12 +21,12 @@
   .bg-img1
     height: 402px
     width: 440px
-    background-image: url("home_asset_1.png")
+    background-image: asset-url("home_asset_1.png")
     background-position: left top, right bottom
   .bg-img2
     height: 520px
     width: 400px
-    background-image: url("home_asset_2.png")
+    background-image: asset-url("home_asset_2.png")
     background-position: right top, right bottom
     right: 3px
     top: 5px
@@ -38,7 +38,7 @@
   margin-left: 60px
 
 #logo-footer
-  background-image: url("home_asset_6.png"), url("brickhack4_logo.png")
+  background-image: asset-url("home_asset_6.png"), asset-url("brickhack4_logo.png")
   background-repeat: repeat-x, no-repeat
   background-size: contain, 20%
   background-position: center, center
@@ -47,7 +47,7 @@
   margin: 0 auto
 
 #image-with-hackathon
-  background-image: url("hackathon_2.jpg")
+  background-image: asset-url("hackathon_2.jpg")
   height: 175px
   width: 1000px
   align-items: center
@@ -58,6 +58,7 @@
   display: flex
   flex-direction: column
   justify-content: center
+  margin-bottom: 15px
   .title
     margin: 0
     text-align: center
@@ -266,7 +267,6 @@ p
     flex: 1 1 390px
     padding-right: 10px
     padding-left: 15px
-    display: inline-block
   .split-right
     flex: 1 1 390px
     margin-right: 50px
@@ -582,7 +582,6 @@ p
   .behind
     margin-top: 0
     width: 100%
-    overflow: hidden
 
     .bg-img1
       width: 100%
