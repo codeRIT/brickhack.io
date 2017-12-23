@@ -114,12 +114,12 @@ ready = function() {
         var questions = $('.faq-container').children('.column');
 
         if (questionOpen) {
-            $('.faq-container')[0].classList.remove('faq-ex-select')
-            $('.faq-ex-qopen')[0].classList.remove('faq-ex-qopen')
+            $('.faq-container')[0].classList.remove('faq-ex-select');
+            $('.faq-ex-qopen')[0].classList.remove('faq-ex-qopen');
             questions.css('display', 'inline-block');
         } else {
             $('.faq-container')[0].classList.add('faq-ex-select');
-            questionColumn.classList.add('faq-ex-qopen')
+            questionColumn.classList.add('faq-ex-qopen');
             questions.not(questionColumn).each(function(index, value) {
                 $(value).css('display', 'none');
             });
