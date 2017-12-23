@@ -94,8 +94,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :sparkpost
 
   # Required for Devise
-  config.action_mailer.default_url_options = { host: 'brickhack.io', protocol: 'https' }
-  config.action_mailer.asset_host = 'https://brickhack.io'
+  # RAILS_MAILER_DOMAIN allows staging to specify staging.brickhack.io instead of the default brickhack.io
+  mailer_domain = ENV['RAILS_MAILER_DOMAIN'].presence || 'brickhack.io'
+  config.action_mailer.default_url_options = { host: mailer_domain, protocol: 'https' }
+  config.action_mailer.asset_host = "https://#{mailer_domain}"
 
   # Paperclip
   config.paperclip_defaults = {
