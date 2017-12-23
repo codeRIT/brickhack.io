@@ -3,11 +3,11 @@ defaults: &defaults
   registration_is_open: true
   event_is_over: false
   last_day_to_apply: <%= Date.new(2018, 1, 24) %>
-  auto_late_waitlist: true
+  auto_late_waitlist: false
 
   # Content config
   name: BrickHack
-  logo_asset: brickhack.png
+  logo_asset: brickhack4_logo.png
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
   email_from: '"BrickHack" <hello@brickhack.io>'
   default_page_title: BrickHack 4 - Jan 27-28, 2018
