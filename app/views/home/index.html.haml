@@ -1,4 +1,6 @@
-= stylesheet_link_tag 'home.css'
+- content_for(:head) do
+  = stylesheet_link_tag 'home.css'
+
 = render "layouts/nav"
 
 - mentor_link = "https://goo.gl/forms/d8WiaiM7rYaLz3SQ2".freeze

@@ -1,14 +1,13 @@
 !!! 5
 %html
   %head
-    %title= yield(:title) || "BrickHack 4 - Jan 27-28, 2018"
+    %title= yield(:title).presence || "BrickHack 4 - Jan 27-28, 2018"
     = render "layouts/shared_head"
     = stylesheet_link_tag "application", :media => "all"
+    = yield(:head)
     = csrf_meta_tags
 
   %body
-    = render "layouts/sidebar"
-    %div{id:'main'}
-      = yield
+    = yield
     = javascript_include_tag "application"
     = render "layouts/shared_footer"
