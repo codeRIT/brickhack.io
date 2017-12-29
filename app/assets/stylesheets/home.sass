@@ -373,14 +373,13 @@ p
 
     img
       width: 100%
-      max-width: 250px
 
     &.sponsor-small img
       max-width: 140px
       margin-bottom: 10px
 
     &.sponsor-large
-      flex: 1 1 300px
+      flex: 1 1 310px
       img
         max-width: 350px
 
@@ -398,12 +397,16 @@ p
   .sponsors-col-md
     .sponsor
       flex: 2 2
-      width: 150px
+      width: 220px
 
   .sponsors-col-sm
     .sponsor
       flex: 4 4
-      width: 80px
+      width: 120px
+      max-width: 120px
+    @media (max-width: 715px)
+      flex-flow: row nowrap
+      width: 100%
 
   .hosts
     display: flex
@@ -635,26 +638,6 @@ p
   .sponsor-section
     h2
       margin-left: 0px
-
-    .sponsors-col
-      padding: 0
-      .sponsor
-        padding: 0
-
-    .sponsors-col-lg
-      .sponsor
-        flex: 1 1
-        width: 130px
-
-    .sponsors-col-md
-      .sponsor
-        flex: 2 2
-        width: 65px
-
-    .sponsors-col-sm
-      .sponsor
-        flex: 4 4
-        width: 40px
 
     .hosts
       margin-top: 0
