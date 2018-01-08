@@ -1,17 +1,22 @@
 require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
-  test "should get index" do
+  should "render index successfully" do
+    get :index
+    assert_response :success
+  end
+
+  should "render comingsoon successfully" do
     get :comingsoon
     assert_response :success
   end
 
-  test "should get design_category" do
+  should "render design_category successfully" do
     get :design_category
     assert_response :success
   end
 
-  test "should get apilist" do
+  should "render apilist successfully" do
     get :apilist
     assert_response :success
   end
