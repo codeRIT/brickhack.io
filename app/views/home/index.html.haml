@@ -1,6 +1,12 @@
 - content_for(:head) do
   = stylesheet_link_tag 'home.css'
 
+:ruby
+  if current_user && current_user.questionnaire.blank?
+    link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
+    flash[:notice] ||= "You have an incomplete application! #{link}"
+  end
+
 = render "layouts/nav"
 = render "layouts/hackathon_manager/flashes"
 
