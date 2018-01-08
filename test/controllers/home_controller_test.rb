@@ -76,7 +76,7 @@ class HomeControllerTest < ActionController::TestCase
 
     should "display incomplete notice" do
       get :index
-      assert_select ".flashes", /You have an incomplete application/
+      assert_select ".flashes", /Your application is incomplete/
     end
   end
 end

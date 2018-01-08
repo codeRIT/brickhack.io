@@ -6,10 +6,10 @@
     q = current_user.questionnaire
     if q.blank?
       link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
-      flash[:notice] ||= "You have an incomplete application! #{link}"
+      flash[:notice] ||= "Your application is incomplete! #{link}"
     elsif q.can_rsvp? && !q.did_rsvp?
       link = link_to('RSVP now &raquo;'.html_safe, new_user_registration_path)
-      flash[:notice] ||= "We are waiting your RSVP! #{link}"
+      flash[:notice] ||= "We are awaiting your RSVP! #{link}"
     end
   end
 
