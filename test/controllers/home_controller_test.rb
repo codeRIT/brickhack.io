@@ -41,6 +41,32 @@ class HomeControllerTest < ActionController::TestCase
     end
   end
 
+  context "while authenticated with an accepted questionnaire" do
+    setup do
+      @questionnaire = create(:questionnaire, acc_status: 'accepted')
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in @questionnaire.user
+    end
+
+    should "display RSVP notice" do
+      get :index
+      assert_select ".flashes", /RSVP now/
+    end
+  end
+
+  context "while authenticated with an RSVP'd questionnaire" do
+    setup do
+      @questionnaire = create(:questionnaire, acc_status: 'rsvp_confirmed')
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+      sign_in @questionnaire.user
+    end
+
+    should "not display RSVP notice" do
+      get :index
+      assert_select ".flashes", false
+    end
+  end
+
   context "while authenticated with an incomplete questionnaire" do
     setup do
       @user = create(:user)
