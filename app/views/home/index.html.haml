@@ -1,7 +1,20 @@
 - content_for(:head) do
   = stylesheet_link_tag 'home.css'
 
+:ruby
+  if current_user
+    q = current_user.questionnaire
+    if q.blank?
+      link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
+      flash[:notice] ||= "Your application is incomplete! #{link}"
+    elsif q.can_rsvp? && !q.did_rsvp?
+      link = link_to('RSVP now &raquo;'.html_safe, new_user_registration_path)
+      flash[:notice] ||= "We are awaiting your RSVP! #{link}"
+    end
+  end
+
 = render "layouts/nav"
+= render "layouts/hackathon_manager/flashes"
 
 - mentor_link = "https://goo.gl/forms/d8WiaiM7rYaLz3SQ2".freeze
 - volunteer_link = "https://goo.gl/forms/cpmRgGxLsUUjNymG2".freeze
