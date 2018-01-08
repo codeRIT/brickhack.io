@@ -36,6 +36,16 @@ docker-compose run web rails db:setup
 5. You should now be able to access the website at http://localhost:3000
 _**Windows users:** be sure to accept the security pop-ups - they might be hidden! The website will not start until you accept them._
 
+#### Running tests
+
+Most core functionality is provided by [hackathon_manager](https://github.com/codeRIT/hackathon_manager), leaving this repo solely to surface the homepage (and any other pages). The main goal with this is to make sure every page loads successfully - there isn't too much else to test.
+
+1. Copy the sample environment variables (`cp .env.sample .env`)
+2. Run the test suite using Docker:
+```bash
+docker-compose run web rails test
+```
+
 ## Authenticaiton & Admin Testing
 
 Authenticaiton is performed through [MyMLH](https://my.mlh.io). To access the admin pages, you'll need to create a local account & add our test MyMLH credentials.
