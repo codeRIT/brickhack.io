@@ -361,6 +361,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    skylight (1.5.0)
+      activesupport (>= 3.0.0)
     sparkpost_rails (1.5.0)
       rails (>= 4.0, < 5.2)
     sprockets (3.7.1)
@@ -414,6 +416,7 @@ DEPENDENCIES
   rollbar (~> 2.8)
   shoulda
   simplecov
+  skylight
   sparkpost_rails
   test-unit (~> 3.0)
   valid_attribute
