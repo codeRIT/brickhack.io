@@ -16,9 +16,11 @@ defaults: &defaults
     Applicants must be 18 years of age by January 27th.
   thanks_for_applying: |
     Thanks for applying! You will be notified of your acceptance via email in January.
+  thanks_for_rsvp: |
+    Expect an email closer to the event with additional logistics & travel info.
   bus_captain_notes: |
     * Only students on this list may board the bus. **No exceptions**- this is to ensure everyone goes through the application process & has signed RIT's waivers.
-    * If any emergencies arise, call our travel director, **Velizar Demirev**, at **(413) 221-2420**.
+    * If any emergencies arise, call our travel director, **Chris Baudouin**, at **(203) 873–7800‬**.
     * If you have any other questions, please feel free to email [travel@brickhack.io](mailto:travel@brickhack.io)
 
 development:
