@@ -1,0 +1,3 @@
+deploy:
+  id: <%= ENV['GIT_REV'] %>
+  git_sha: <%= ENV['GIT_REV'] %>

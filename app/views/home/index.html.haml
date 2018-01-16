@@ -8,7 +8,7 @@
       link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
       flash[:notice] ||= "Your application is incomplete! #{link}"
     elsif q.can_rsvp? && !q.did_rsvp?
-      link = link_to('RSVP now &raquo;'.html_safe, new_user_registration_path)
+      link = link_to('RSVP now &raquo;'.html_safe, rsvp_path)
       flash[:notice] ||= "We are awaiting your RSVP! #{link}"
     end
   end
