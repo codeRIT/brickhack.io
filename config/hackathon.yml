@@ -12,6 +12,8 @@ defaults: &defaults
   email_from: '"BrickHack" <hello@brickhack.io>'
   default_page_title: BrickHack 4 - Jan 27-28, 2018
 
+  disabled_fields:
+    - :why_attend
   disclaimer: |
     Applicants must be 18 years of age by January 27th.
   thanks_for_applying: |
