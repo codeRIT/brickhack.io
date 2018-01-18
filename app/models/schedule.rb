@@ -14,7 +14,7 @@ class Schedule
     end
 
     unless parsed_response && parsed_response["error"].nil?
-      Rails.logger.error "Error reading Google Sheet #{spreadsheet_id}"
+      Rails.logger.error "Error reading Google Sheet #{spreadsheet_id}. Response: #{parsed_response['error'].inspect}"
       return
     end
 
