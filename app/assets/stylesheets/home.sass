@@ -352,6 +352,7 @@ p
 
 .sponsor-section
   text-align: center
+  padding: 50px 30px 25px 30px
   h2
     margin-left: 18px
     text-align: left
@@ -436,25 +437,9 @@ p
         width: 250px
         padding: 10px 15px
 
-.diagonal
-  z-index: 1
-  position: relative
-
-.diagonal:before
-  position: absolute
-  content: ''
-
-.diagonal:before
-  -webkit-transform: rotate(-2deg)
-  transform: rotate(-2deg)
-  -webkit-transform-origin: 2% 0
-  transform-origin: 2% 0
-  top: 0
-  left: -25%
-  z-index: -1
-  width: 150%
-  height: 75%
-  background: inherit
+.volunteer
+  .button
+    margin-left: 15px
 
 .footer-content
   width: 1000px
@@ -692,6 +677,12 @@ p
 
   #logo-footer
     height: 100px
+
+  .volunteer
+    .button
+      margin: 15px auto
+      display: block
+      width: 255px
 
   .footer-content
     text-align: center
