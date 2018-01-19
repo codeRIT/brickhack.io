@@ -50,6 +50,7 @@
 #schedule
   .home-content
     padding-left: 18px
+    margin-bottom: 0
     .title
       h1
         margin: 0
@@ -384,7 +385,9 @@ p
     padding: 10px 15px
 
     img
+      height: 100%
       width: 100%
+      object-fit: scale-down
 
     &.sponsor-small img
       max-width: 140px
@@ -448,6 +451,10 @@ p
         padding: 10px 15px
 
 .volunteer
+  h2
+    margin-left: 18px
+  .volunteer-buttons
+    display: inline-block
   .button
     margin-left: 15px
 
@@ -587,6 +594,10 @@ p
       order: 1
     .gallery-text
       margin: 0 auto 35px auto
+
+  .volunteer
+    h2
+      margin-left: 0
 
   .sponsor-section
     h2
