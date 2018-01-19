@@ -1,12 +1,10 @@
 - event_schedule = Schedule.new("1Ssak3FU6V0sJP3uPZCCsk8RITu6wW6lvaA6wlSGSOuI", 0)
 
-.white-section.diagonal#schedule
+.page.white-section#schedule
   .home-content
     %h1
-      Schedule
-      %p.pull-right.white
-        %small
-          %em * Schedule subject to change
+      .orange
+        Schedule
     - sections = event_schedule.sections
     - if sections.blank?
       %p.center Schedule temporarily unavailable - please check back later!
