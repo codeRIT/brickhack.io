@@ -82,6 +82,16 @@
 
 = render "schedule"
 
+.page.volunteer
+  .title
+    %h2
+      Looking to
+      .orange
+        help?
+      .volunteer-buttons
+        = btn_link_to 'Volunteer', volunteer_link
+        = btn_link_to 'Be a Mentor', mentor_link
+
 .page.faq
   .faq-container-outer#faq
     %h2
@@ -156,16 +166,6 @@
         = image_tag 'sponsors/mlh.png'
       %a.host{ href: "https://coderit.org", target: "_blank" }
         = image_tag 'coderit_logo.png'
-
-.page.volunteer
-  .title
-    %h2
-      Looking to
-      .orange
-        help?
-      .volunteer-buttons
-        = btn_link_to 'Volunteer', volunteer_link
-        = btn_link_to 'Be a Mentor', mentor_link
 
 #logo-footer
 
