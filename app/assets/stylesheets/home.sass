@@ -415,23 +415,14 @@ p
       width: 220px
 
   .sponsors-col-sm
-    height: 195px
+    height: 120px
+    flex-direction: row
+    flex-wrap: nowrap
     .sponsor
-      flex: 4 4
+      flex: 4 4 100%
       width: 130px
       max-width: 130px
-    @media (max-width: 715px)
-      flex-flow: row nowrap
-      width: 100%
-
-  .sponsors-col-xs
-    .sponsor
-      flex: 6 6
-      width: 110px
-      max-width: 110px
-    @media (max-width: 820px)
-      flex-flow: row nowrap
-      width: 100%
+      min-width: 100px
 
   .hosts
     display: flex
@@ -685,10 +676,12 @@ p
         width: 60%
 
     .sponsors-col-sm
+      flex-wrap: wrap
       .sponsor
-        flex: 4 4
-        width: 30%
-        max-width: 30%
+        flex: 2 2 100%
+        width: 35%
+        height: 100px
+        max-width: 35%
 
     .hosts
       margin-top: 0
