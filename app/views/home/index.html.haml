@@ -37,6 +37,12 @@
     - if Rails.configuration.hackathon['event_is_over']
       %h3 Thanks for a great BrickHack! See you next year!
     - elsif !Rails.configuration.hackathon['registration_is_open']
+      = link_to "https://brickhack4.devpost.com/" do
+        .button DEVPOST
+      = link_to "#schedule" do
+        .button Schedule
+      %br
+      %br
       %h3 Registration has closed.
 
     - if current_user
