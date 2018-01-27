@@ -84,6 +84,17 @@
 
 .page.volunteer
   .title
+    %h2#map
+      .orange
+        Map
+
+  = image_tag 'map.svg', class: 'map'
+
+  %p
+    = link_to 'View full size map &raquo;'.html_safe, image_path('map.svg')
+
+.page.volunteer
+  .title
     %h2
       Looking to
       .orange
