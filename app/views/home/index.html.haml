@@ -59,7 +59,7 @@
       = link_to "https://brickhack4.devpost.com/submissions/" do
         .button SUBMISSIONS
       = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
-        .button.button-outline HELP ORGANIZE
+        .button HELP ORGANIZE
   .split-right#home-right
     .half-img#home-img
       = image_tag 'hackathon.jpg'
@@ -99,14 +99,15 @@
   %p
     = link_to 'View full size map &raquo;'.html_safe, image_path('map.svg')
 
-.page.volunteer
-  .title
-    %h2
-      Looking to
-      .orange
-        help?
-      .volunteer-buttons
-        = btn_link_to 'Be a Mentor', mentor_link
+- unless Rails.configuration.hackathon['event_is_over']
+  .page.volunteer
+    .title
+      %h2
+        Looking to
+        .orange
+          help?
+        .volunteer-buttons
+          = btn_link_to 'Be a Mentor', mentor_link
 
 .page.faq
   .faq-container-outer#faq
@@ -122,10 +123,6 @@
       Make a
       .orange
         difference.
-    - if Rails.configuration.hackathon['event_is_over']
-      %h3 Thanks for a great BrickHack! See you next year!
-    - elsif !Rails.configuration.hackathon['registration_is_open']
-      %h3 Registration has closed.
     - if current_user
       - if current_user.admin
         = link_to manage_dashboard_index_path do
@@ -140,7 +137,7 @@
       = link_to "https://brickhack4.devpost.com/submissions/" do
         .button SUBMISSIONS
       = link_to URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") do
-        .button.button-outline HELP ORGANIZE
+        .button HELP ORGANIZE
 
 .page.sponsor-section#sponsors
   %h2
