@@ -2,9 +2,9 @@
 
 The public facing site for BrickHack.
 
-* **Hacker applications:** Users sign up/in using [MyMLH](https://my.mlh.io/), which includes standard hackathon application info. This pre-fills the BrickHack application, so hackers don't have to duplicate information!
-* **Acceptance, RSVPs**: Manage applications & coordinate acceptance/waitlist/denials
-* **Bus Lists:** Coordinate bus sign-ups during the RSVP process while communicating important information to riders & captains
+* **Hacker applications:** Users sign up/in using [MyMLH](https://my.mlh.io/), which includes standard hackathon application info. This pre-fills the BrickHack application, so hackers don't have to duplicate information.
+* **Acceptance, RSVPs**: Manage applications & coordinate acceptance/waitlist/denials.
+* **Bus Lists:** Coordinate bus sign-ups during the RSVP process while communicating important information to riders & captains.
 * **Email communication**: Ensure hackers get consistent, timely information throughout their application process, while enabling the organizing team to communicate important information at any time.
 * **Statistics & Visualization:** Surface key information about the application base, distribution of applicants, progress towards attendance, etc.
 
@@ -46,19 +46,30 @@ Most core functionality is provided by [hackathon_manager](https://github.com/co
 docker-compose run web rails test
 ```
 
-## Authenticaiton & Admin Testing
+## Authentication & Admin Testing
 
-Authenticaiton is performed through [MyMLH](https://my.mlh.io). To access the admin pages, you'll need to create a local account & add our test MyMLH credentials.
+You'll want to make an account & promote yourself to an admin in order to access the entire website.
+
+1. Visit http://localhost:3000/users/sign_up
+2. Sign up for a regular account
+3. Promote yourself to an admin:
+```bash
+docker-compose run web rails c
+# Wait for the console to start...
+Loading development environment (Rails 5.1.1)
+irb(main):001:0> User.last.update_attribute(:admin, true)
+```
+5. You should now be able to access [`/manage`](http://localhost:3000/manage) (with `docker-compose up` still running)
+
+#### MyMLH Authentication
+
+Login is optionally available through [MyMLH](https://my.mlh.io). To use MyMLH locally, you'll need to create a local account & add test MyMLH credentials.
 
 1. Copy the sample environment variables (`cp .env.sample .env`)
-2. Replace the values in `.env` with our test MyMLH credentials. *Contact a contributor to obtain these.*
+2. Replace the values in `.env` with our test MyMLH credentials. *Contact a contributor to obtain these, or [create your own app](https://my.mlh.io/docs).*
 2. Start up the local server (`docker-compose up` or `docker-compose restart web`)
-3. Visit [`/manage`](https://localhost:3000/manage) and sign in. You'll be asked to sign up or sign in to MyMLH, and authorize the applicaiton. Upon doing so, you'll be redirected back to your local server.
-4. Start up the Rails console (`docker-compose run web rails c`) and run the following command:
-```ruby
-User.last.update_attribute(:admin, true)
-```
-5. You should now be able to access [`/manage`](https://localhost:3000/manage) (with `docker-compose up` still running)
+3. Visit [`/manage`](https://localhost:3000/manage) and sign in with MyMLH. You'll be asked to sign in to MyMLH and authorize the applicaiton. Upon doing so, you'll be redirected back to your local server.
+4. Repeat [steps 3 & 4 from above](#authenticaiton-admin-testing).
 
 ## Development Utilities
 
@@ -72,7 +83,6 @@ User.last.update_attribute(:admin, true)
 
 * If you need to restart the Rails server:
 ```bash
-rm tmp/pids/server.pid
 docker-compose restart web
 ```
 * If you need to restart Sidekiq, the background job worker that handles emails:
@@ -90,12 +100,23 @@ docker-compose build web sidekiq
 #    If `docker-compose up` isn't already running, exclude "-d"
 docker-compose up -d web sidekiq
 ```
+* If you make a change to the Gemfile, such as for installing a new gem:
+```bash
+docker-compose run web bundle install
+docker-compose restart web
+```
 * If you're working on the `hackathon_manager` locally:
 ```bash
 # hackathon_manager should be cloned to the same folder above brickhack.io
 git clone git@github.com:codeRIT/hackathon_manager.git ../hackathon_manager
 # Start up services with the development config
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+```
+* If you need to update a gem, such as `hackathon_manager`:
+```bash
+# replace hackathon_manager with the gem's name
+docker-compose run web bundle update hackathon_manager
+docker-compose restart web
 ```
 
 You can follow the same format for `db` and `redis`, though you shouldn't ever need to restart those.
