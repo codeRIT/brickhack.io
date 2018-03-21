@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby IO.read(File.expand_path("../.ruby-version", __FILE__)).chomp
 
 gem 'rails', '~> 5.1.0'
+gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 if ENV['HACKATHON_MANAGER_DEV'] == '1'
   gem 'hackathon_manager', path: '../hackathon_manager'
