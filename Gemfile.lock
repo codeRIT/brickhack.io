@@ -64,6 +64,8 @@ GEM
       chartkick
       railties (>= 4)
       safely_block (>= 0.1.1)
+    bootsnap (1.2.1)
+      msgpack (~> 1.0)
     builder (3.2.3)
     chartkick (2.3.5)
     climate_control (0.2.0)
@@ -224,6 +226,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    msgpack (1.2.4)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
@@ -401,6 +404,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootsnap (>= 1.1.0)
   codeclimate-test-reporter (~> 0.6.0)
   dotenv-rails
   factory_bot_rails
