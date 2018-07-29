@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180126185352) do
+ActiveRecord::Schema.define(version: 20180729231339) do
 
   create_table "blazer_audits", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
@@ -92,7 +92,6 @@ ActiveRecord::Schema.define(version: 20180126185352) do
   create_table "questionnaires", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
     t.date "date_of_birth"
     t.string "experience"
     t.string "school_id"
