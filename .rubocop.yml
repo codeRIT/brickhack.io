@@ -7,6 +7,9 @@ AllCops:
 Bundler/OrderedGems:
   Enabled: false
 
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
@@ -16,7 +19,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - test/**/*
-    - config/routes.rb
+    - config/**/*
 
 Metrics/ClassLength:
   Enabled: false
