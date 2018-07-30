@@ -15,7 +15,6 @@ end
 
 require File.expand_path('../config/environment', __dir__)
 require "rails/test_help"
-require "minitest/rails"
 require "strip_attributes/matchers"
 require "minitest/reporters"
 require "valid_attribute"
