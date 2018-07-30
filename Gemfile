@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).chomp
 
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 # rubocop:disable Bundler/DuplicatedGem
