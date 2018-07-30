@@ -110,3 +110,4 @@ Rails.application.configure do
     s3_region: ENV['AWS_REGION']
   }
 end
+# rubocop:enable BlockLength
