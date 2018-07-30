@@ -37,7 +37,6 @@ end
 
 group :test do
   gem 'shoulda'
-  gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'valid_attribute'
   gem 'factory_bot_rails'
