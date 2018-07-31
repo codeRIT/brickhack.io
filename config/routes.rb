@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   get '/apilist', to: 'home#apilist'
   get '/design_category', to: 'home#design_category'
   get '/comingsoon', to: 'home#comingsoon'
-  # get '/', to: 'home#index' is taken care of by "root" below
+  get '/home', to: 'home#index'
 
   # Homepage
 
-  root to: 'home#index'
-  # root to: 'home#comingsoon'
+  # root to: 'home#index'
+  root to: 'home#comingsoon'
 end
