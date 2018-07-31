@@ -85,6 +85,12 @@ Login is optionally available through [MyMLH](https://my.mlh.io). To use MyMLH l
 * **Coverage** - Test coverage can be manually generated via the `docker-compose run web rails coverage:run` command. Results are then made available in the `coverage/` directory.
 * **Sidekiq** - Run background jobs (such as emails) and view active & completed jobs. Sidekiq is automatically started with Docker - a dashboard is available at http://localhost:3000/sidekiq (*also available in production*).
 
+### Browser Testing
+
+Thanks to [BrowserStack's open source program](https://www.browserstack.com/open-source), we have access to cross-browser testing! We test for cross-browser compatibility with BrowserStack's Live product. Talk to a maintainer to gain access to our account.
+
+[<img src="public/browserstack.png" height="50" alt="BrowserStack Logo" />](public/browserstack.png)
+
 ## Docker Tooling
 
 * If you need to restart the Rails server:
