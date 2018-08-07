@@ -97,12 +97,24 @@
 
 html
   width: 100%
+  min-height: 100%
+  margin: 0
 
 body
-  background: #0F3F5D /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #0F3F5D, #2A245F) /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #0F3F5D, #2A245F) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -moz-linear-gradient(#0F3F5D, #2A245F) /* FF 3.6+ */
+  background: -ms-linear-gradient(#0F3F5D, #2A245F) /* IE10 */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0F3F5D), color-stop(100%, #2A245F)) /* Safari 4+, Chrome 2+ */
+  background: -webkit-linear-gradient(#0F3F5D, #2A245F) /* Safari 5.1+, Chrome 10+ */
+  background: -o-linear-gradient(#0F3F5D, #2A245F) /* Opera 11.10 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F3F5D', endColorstr='#2A245F') /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#0F3F5D', endColorstr='#2A245F')" /* IE8+ */
+  background: linear-gradient(#0F3F5D, #2A245F) /* the standard */
+  background-color: #2A245F
+  background-repeat: no-repeat
+  background-attachment: fixed
   color: $white
+  min-height: 100%
+  margin: 0
   width: 100%
   font-family: "Bangla Sangam MN", Vrinda, Roboto, Noto, "Noto Sans Bengali", sans-serif
   .button
