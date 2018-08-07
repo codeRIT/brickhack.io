@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   # Homepage
 
-  root to: 'home#index'
-  # root to: 'home#comingsoon'
+  # root to: 'home#index'
+  root to: 'home#comingsoon'
 end

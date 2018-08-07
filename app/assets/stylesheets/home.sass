@@ -2,6 +2,9 @@
 @import home/schedule
 @import home/faq
 
+.center-vertical
+  text-align: center
+
 .behind
   position: absolute
   margin-top: 125px
@@ -94,13 +97,23 @@
 
 html
   width: 100%
-  height: auto
 
 body
-  background: $white
+  background: #0F3F5D /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #0F3F5D, #2A245F) /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #0F3F5D, #2A245F) /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: $white
   width: 100%
-  position: absolute
+  font-family: "Bangla Sangam MN", Vrinda, Roboto, Noto, "Noto Sans Bengali", sans-serif
+  .button
+    background-color: Transparent
+
+#overlay
+  top: -20%
+  float: right
+  width: 65%
+  img
+    max-width: 120%
 
 p a
   color: $grey
@@ -188,10 +201,10 @@ nav
     color: #f58625
 
 #logo
-  max-width: 350px
-  margin: 0 auto
+  max-width: 300px
   width: 90%
-  display: block
+  margin-left: auto
+  margin-right: auto
 
 h1
   color: $black
@@ -200,9 +213,9 @@ h1
   margin-bottom: 1em
 
 h2
-  color: $grey
   font-size: 26px
   font-weight: 200
+  text-align: center
 
 h3
   font-size: 18px
@@ -219,7 +232,6 @@ h4
 p
   font-size: 15px
   line-height: 1.6
-  color: $black
 
 .orange
   color: $orange
@@ -289,9 +301,6 @@ p
     flex: 1 1 390px
     margin-right: 50px
 
-  .split-left, .split-right
-    img
-      width: 390px
 
 .split-three
   display: flex
