@@ -2,6 +2,9 @@
 @import home/schedule
 @import home/faq
 
+.center-vertical
+  text-align: center
+
 .behind
   position: absolute
   margin-top: 125px
@@ -94,13 +97,30 @@
 
 html
   width: 100%
-  height: auto
+  min-height: 100%
+  margin: 0
 
 body
-  background: $white
+  background: -moz-linear-gradient(#0F3F5D, #2A245F) /* FF 3.6+ */
+  background: -ms-linear-gradient(#0F3F5D, #2A245F) /* IE10 */
+  background: linear-gradient(#0F3F5D, #2A245F) /* the standard */
+  background-color: #2A245F
+  background-repeat: no-repeat
+  background-attachment: fixed
   color: $white
+  min-height: 100%
+  margin: 0
   width: 100%
-  position: absolute
+  font-family: "Bangla Sangam MN", Vrinda, Roboto, Noto, "Noto Sans Bengali", sans-serif
+  .button
+    background-color: Transparent
+
+#overlay
+  top: -20%
+  float: right
+  width: 65%
+  img
+    max-width: 120%
 
 p a
   color: $grey
@@ -112,7 +132,7 @@ p a
 .page
   margin: 0 auto
   padding: 50px 30px
-  max-width: 1000px
+  max-width: 1200px
 
 nav
   background: $white
@@ -188,10 +208,10 @@ nav
     color: #f58625
 
 #logo
-  max-width: 350px
-  margin: 0 auto
-  width: 90%
-  display: block
+  max-width: 300px
+  width: 70%
+  margin-left: auto
+  margin-right: auto
 
 h1
   color: $black
@@ -200,9 +220,9 @@ h1
   margin-bottom: 1em
 
 h2
-  color: $grey
   font-size: 26px
   font-weight: 200
+  text-align: center
 
 h3
   font-size: 18px
@@ -219,7 +239,6 @@ h4
 p
   font-size: 15px
   line-height: 1.6
-  color: $black
 
 .orange
   color: $orange
@@ -289,9 +308,6 @@ p
     flex: 1 1 390px
     margin-right: 50px
 
-  .split-left, .split-right
-    img
-      width: 390px
 
 .split-three
   display: flex
