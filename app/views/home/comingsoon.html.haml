@@ -19,11 +19,12 @@
 /    %a.mobile{ href: '#sponsors' }Sponsors
 /    - if current_user
 /      = link_to 'My Account', questionnaires_path, class: 'mobile'
-
+%a#mlh-trust-badge{:href => "https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray", :style => "display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000", :target => "_blank"}
+  %img{:alt => "Major League Hacking 2019 Hackathon Season", :src => "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg", :style => "width:100%"}/
 .page.triangle-background.split
   .split-left#split-left
     .center-vertical.plus-nav
-      = image_tag 'coming_soon/Logo-1.png', { id: 'logo', class: 'wow rotate-in', align: 'center'}
+      = image_tag 'coming_soon/BH5Logo.svg', { id: 'logo', class: 'wow rotate-in', align: 'center'}
       %br
       %h2 Coming Soon
       %p
@@ -56,9 +57,10 @@
         %p{ style: "float: right;" }
         = link_to '<span class="fa fa-facebook-square fa-fw"></span> Facebook'.html_safe, 'https://www.facebook.com/brickhackrit'
         %p{ style: "float: right;" }
-        = link_to '<span class="fa fa-facebook-square fa-fw"></span> CampusGroups'.html_safe, 'https://www.facebook.com/brickhackrit'
+        = link_to '<span class="fa fa-user-circle fa-fw"></span> CampusGroups'.html_safe, 'https://campusgroups.rit.edu/CODERIT/club_signup'
   #overlay.split.split-right
     = image_tag 'coming_soon/grid.png'
+
 /#about.home-section
 /  .orange-fill
 /  .bg-image{ style: "background-image: url(" +  image_path('background_1.jpg')  + ")" }
