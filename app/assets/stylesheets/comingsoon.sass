@@ -12,96 +12,6 @@ $breakpoint-tablet: 1000px
 .center-vertical
   text-align: center
 
-.behind
-  position: absolute
-  margin-top: 125px
-  width: 1000px
-  height: 100%
-  z-index: -1
-  top: 0
-  left: 50%
-  transform: translateX(-50%)
-  overflow: visible
-
-  *
-    width: 100%
-    position: absolute
-    background-size: contain
-    background-repeat: no-repeat, no-repeat
-
-  .bg-img1
-    height: 402px
-    width: 440px
-    background-image: asset-url("home_asset_1.png")
-    background-position: left top, right bottom
-  .bg-img2
-    height: 520px
-    width: 400px
-    background-image: asset-url("home_asset_2.png")
-    background-position: right top, right bottom
-    right: 3px
-    top: 5px
-  .bg-img3
-  .bg-img4
-  .bg-img5
-
-#home-left
-  margin-left: 60px
-
-#logo-footer
-  background-image: asset-url("home_asset_6.png"), asset-url("brickhack4_logo.png")
-  background-repeat: repeat-x, no-repeat
-  background-size: contain, 20%
-  background-position: center, center
-  height: 200px
-  width: 1000px
-  margin: 40px auto 55px auto
-
-#schedule
-  .home-content
-    padding-left: 18px
-    margin-bottom: 0
-    .title
-      h1
-        margin: 0
-        height: 30px
-        margin-bottom: 8px
-        margin-left: 55px
-
-#image-with-hackathon
-  background-image: asset-url("hackathon_2.jpg")
-  height: 175px
-  width: 1000px
-  align-items: center
-  background-size: 100% auto
-  background-position: center -140px
-  margin-left: auto
-  margin-right: auto
-  display: flex
-  flex-direction: column
-  justify-content: center
-  margin-bottom: 15px
-  .title
-    margin: 0
-    text-align: center
-    h1
-      color: $white
-      margin: 0
-      height: 30px
-      text-shadow: 0px 0px 6px $black
-      font-weight: 400
-      margin-bottom: 8px
-
-  a
-    margin-left: auto
-    margin-right: auto
-    height: 36px
-
-.button_outline
-  background-color: inherit
-  color: $black
-  border: 3px solid $black
-
 html
   width: 100%
   min-height: 100%
@@ -144,7 +54,6 @@ nav
   width: 100%
   top: 0
 
-
   &.desktop
     padding: 10px 0px
     display: flex
@@ -181,36 +90,6 @@ nav
     height: 100px
     width: 100px
     max-width: 100px
-
-.nav-links
-  width: 100%
-  .desktop &
-    display: flex
-    flex-flow: row wrap
-    align-items: baseline
-  .mobile &
-    text-align: center
-    a
-      display: block
-      width: 100%
-
-  a
-    color: $grey
-    font-size: 16px
-    font-weight: 600 !important
-    text-transform: uppercase
-    font-weight: 300
-    padding: 10px 10px
-    margin: 0 15px
-    border: 1px solid transparent
-
-    -webkit-transition: background-color 200ms ease
-    -moz-transition: background-color 200ms ease
-    -o-transition: background-color 200ms ease
-    transition: background-color 200ms ease
-
-  a:hover:not(.button)
-    color: #f58625
 
 #logo
   max-width: 300px
@@ -255,40 +134,9 @@ p
 .grey
   color: $grey
 
-.title
-  color: $black
-  font-size: 48px
-  margin-bottom: 0.3em
-  font-weight: 600
-
-.subtitle
-  color: $grey
-  font-size: 22px
-  text-transform: none
-  font-weight: 200
-  margin-bottom: 0
-  margin-top: 10px
-
 .bold
-    display: inline
-    font-weight: 400
-
-#normal_subtitle
+  display: inline
   font-weight: 400
-
-.white-section
-  background: $white
-  color: $grey
-
-.grey-section
-  background: $white-grey
-  color: $grey
-
-.black-section
-  background: $black
-
-  a
-    color: $white
 
 .mobile, i
   display: none
@@ -350,161 +198,6 @@ p
 #home-img
   margin-top: 105px
 
-.about-gallery
-
-  h2
-    margin-left: -1px
-
-  .gallery-left
-    display: flex
-    justify-content: center
-    align-items: center
-    flex-direction: column
-    order: 0
-
-  .gallery-right
-    margin-left: 54px
-
-  .gallery-text
-    width: 400px
-
-  .button-wrapper
-    width: 300px
-    position: relative
-    margin: 0 auto
-    text-align: center
-
-    .button-overlay
-      text-align: center
-
-.gallery
-  flex: 0 1 400px
-  display: block
-  position: relative
-  width: 400px
-  text-align: center
-  margin: 0 auto
-
-.sponsor-section
-  text-align: center
-  padding: 50px 30px 25px 30px
-  h2
-    margin-left: 18px
-    text-align: left
-  .sponsors
-    display: flex
-    flex-direction: row
-    flex-wrap: wrap
-    align-items: center
-    justify-content: space-evenly
-    h2
-      margin-left: 18px
-      text-align: left
-
-  .sponsor
-    flex: 1 0 150px
-    display: flex
-    justify-content: center
-    align-items: center
-    padding: 10px 15px
-
-    img
-      height: 100%
-      width: 100%
-      object-fit: scale-down
-
-    &.sponsor-small img
-      max-width: 140px
-      margin-bottom: 10px
-
-    &.sponsor-large
-      flex: 1 1 310px
-      img
-        max-width: 350px
-
-  .sponsors-col
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-
-  .sponsors-col-lg
-    .sponsor
-      flex: 1 1
-      width: 300px
-
-  .sponsors-col-md
-    .sponsor
-      flex: 2 2
-      width: 220px
-
-  .sponsors-col-sm
-    height: 120px
-    flex-direction: row
-    flex-wrap: nowrap
-    .sponsor
-      flex: 4 4 100%
-      width: 130px
-      max-width: 130px
-      min-width: 100px
-
-  .hosts
-    display: flex
-    flex-direction: column
-    flex-wrap: wrap
-    align-items: center
-    justify-content: space-evenly
-    margin-top: 50px
-    .hosts-row
-      display: flex
-      flex-direction: row
-      justify-content: center
-      align-items: center
-      .host
-        flex: 1 1
-        width: 250px
-        padding: 10px 15px
-
-.volunteer
-  h2
-    margin-left: 18px
-  .volunteer-buttons
-    display: inline-block
-  .button
-    margin-left: 15px
-
-.footer-content
-  width: 1000px
-  margin: 0 auto
-  padding: 20px 10px
-
-  p
-    font-size: 14px
-
-  h4
-    margin-top: 0
-
-  .column
-    text-align: left
-    flex: 1 1 auto
-    &:first-child
-      flex: 4 4
-
-.api-section-top-margin
-  margin-top: 12%
-
-.flashes
-  text-align: center
-  // Padding is already provided by a .container element.
-  // However, more padding is needed to avoid overlapping
-  // the logo and MLH banner on smaller screens.
-  @media (max-width: $breakpoint-tablet)
-    padding-left: 85px
-    padding-right: 100px
-  @media (max-width: 500px)
-    text-align: left
-    padding-right: 0
-
 @media (min-width: 1120px)
   .split
     .split-right
@@ -521,20 +214,6 @@ p
     padding-left: 10px
     padding-right: 10px
     margin: 0
-
-  #image-with-hackathon
-    background-position: center 10%
-    width: 100%
-
-  .behind
-    margin-top: 0
-    width: 100%
-
-    .bg-img1
-      width: 100%
-    .bg-img2
-      right: 0px
-      top: 0px
 
   nav.desktop
     padding: 0 0
@@ -590,8 +269,6 @@ p
     display: inline-block
 
   .split
-    #home-left
-      margin: 0
     .split-left
       flex: 1 1 450px
     .split-right
@@ -610,36 +287,8 @@ p
     .gallery-text
       margin: 0 auto 35px auto
 
-  .volunteer
-    h2
-      margin-left: 0
-
-  .sponsor-section
-    h2
-      text-align: center
-    .sponsors
-      .sponsors-col-sm
-        height: auto
-    .hosts
-      .host
-        width: 225px
-
-  #logo-footer
-    background-size: contain, 20%
-    width: 100%
-
-  .footer-content
-    width: 100%
-
 @media (max-width: 500px)
-  .behind
-    .bg-img1
-      top: 0px
-    .bg-img2
-      top: 470px
-
   nav.desktop
-
     .nav-links
       width: 100%
       a
@@ -654,15 +303,8 @@ p
       #mlh-trust-badge
         display: inline
 
-  #image-with-hackathon
-    background-position: center 5%
-    margin: 15px 0
-
   .home-content
     margin-top: 90px
-
-  #home-img
-    margin-top: 70px
 
   .split
     .split-left
@@ -670,67 +312,3 @@ p
       width: 100%
     .split-right
       width: 100%
-
-  .about-gallery
-    background: rgba(#fff, 0.85)
-    .gallery-text
-      width: 100%
-      p
-        text-shadow: 0px 0px 2px $white
-    .button-wrapper
-      width: inherit
-
-  .sponsor-section
-    h2
-      margin-left: 0px
-
-    .sponsors-col
-      padding: 0
-      .sponsor
-        padding: 10px 10px
-
-    .sponsors-col-lg
-      .sponsor
-        flex: 1 1
-        width: 70%
-
-    .sponsors-col-md
-      .sponsor
-        flex: 2 2
-        width: 60%
-
-    .sponsors-col-sm
-      flex-wrap: wrap
-      .sponsor
-        flex: 2 2 100%
-        width: 35%
-        height: 100px
-        max-width: 35%
-
-    .hosts
-      margin-top: 0
-      .hosts-row
-        .host
-          width: 20%
-
-  #logo-footer
-    height: 100px
-
-  .volunteer
-    .button
-      margin: 15px auto
-      display: block
-      width: 255px
-
-  .footer-content
-    text-align: center
-    width: 100%
-    .split-four
-      display: block
-      width: 100%
-      .column
-        text-align: center
-        width: 100%
-
-        p
-          text-align: center
