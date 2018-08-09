@@ -1,0 +1,314 @@
+/*
+ * Variables
+ */
+$white: darken(#fff, 1%)
+$black: #000
+$grey: #4d4d4d
+$white-grey: darken($white, 5%)
+$orange: #f58625
+$red: #fc401c
+$breakpoint-tablet: 1000px
+
+.center-vertical
+  text-align: center
+
+html
+  width: 100%
+  min-height: 100%
+  margin: 0
+
+body
+  background: -moz-linear-gradient(#0F3F5D, #2A245F) /* FF 3.6+ */
+  background: -ms-linear-gradient(#0F3F5D, #2A245F) /* IE10 */
+  background: linear-gradient(#0F3F5D, #2A245F) /* the standard */
+  background-color: #2A245F
+  background-repeat: no-repeat
+  background-attachment: fixed
+  color: $white
+  min-height: 100%
+  margin: 0
+  width: 100%
+  font-family: "Bangla Sangam MN", Vrinda, Roboto, Noto, "Noto Sans Bengali", sans-serif
+  .button
+    background-color: Transparent
+
+#overlay
+  top: -20%
+  float: right
+  width: 65%
+
+p a
+  color: $grey
+  text-decoration: none
+  border-bottom: 2px $red solid
+  &:hover
+    color: $red
+
+.page
+  margin: 0 auto
+  padding: 50px 30px
+  max-width: 1200px
+
+nav
+  background: $white
+  width: 100%
+  top: 0
+
+  &.desktop
+    padding: 10px 0px
+    display: flex
+    align-items: center
+    margin: 0 auto
+    width: 1000px
+
+    #mlh-trust-badge
+      display: block
+      width: 70px
+      position: fixed
+      right: 15px
+      top: 0px
+      z-index: 9
+
+    .button
+      min-width: 130px
+      color: $white
+      margin-left: 0
+      margin-right: 0
+
+
+  i:before
+    color: $white
+    font-size: 36px
+    cursor: pointer
+    display: inline-block
+
+  i
+    margin: 10px 10px
+    display: inline-block
+
+  .logo img
+    height: 100px
+    width: 100px
+    max-width: 100px
+
+#logo
+  max-width: 300px
+  width: 70%
+  margin-left: auto
+  margin-right: auto
+
+h1
+  color: $black
+  font-size: 36px
+  font-weight: 300
+  margin-bottom: 1em
+
+h2
+  font-size: 26px
+  font-weight: 200
+  text-align: center
+
+h3
+  font-size: 18px
+  line-height: 1.7
+  color: $orange
+  margin-bottom: 0.3em
+  font-weight: 400
+
+h4
+  font-size: 14px
+  text-transform: uppercase
+  font-weight: 600
+
+p
+  font-size: 15px
+  line-height: 1.6
+
+.orange
+  color: $orange
+  display: inline-block
+
+.white
+  color: $white
+
+.grey
+  color: $grey
+
+.bold
+  display: inline
+  font-weight: 400
+
+.mobile, i
+  display: none
+
+.split
+  display: flex
+  align-items: center
+  justify-content: space-between
+  flex-wrap: wrap
+  margin: 0 auto
+  transition: 0.1s linear margin
+
+  #home-left
+    margin-left: 55px
+    margin-top: 90px
+
+  .split-left
+    flex: 1 1 390px
+    padding-right: 10px
+    padding-left: 15px
+  .split-right
+    flex: 1 1 390px
+    margin-right: 50px
+
+
+.split-three
+  display: flex
+  flex-wrap: wrap
+
+.split-four
+  display: flex
+  flex-wrap: wrap
+
+.column
+  flex: 1 0 280px
+  text-align: center
+  padding: 20px
+  color: grey
+
+  // TODO: better selector
+  img
+    width: 110px
+    margin-bottom: 10px
+
+  .img-spaced
+    margin-bottom: 40px
+
+  p
+    text-align: left
+
+.column--two
+  flex: 1 1 280px * 2
+
+.home-content
+  margin-bottom: 60px
+  h1
+    padding-top: 0
+    margin-left: -2px
+#home-img
+  margin-top: 105px
+
+@media (min-width: 1120px)
+  .split
+    .split-right
+      margin-right: 0px
+  nav.desktop
+    .button
+      margin-left: auto
+      margin-right: 83px
+
+@media (max-width: $breakpoint-tablet)
+  body
+    text-align: center
+  .home-content
+    padding-left: 10px
+    padding-right: 10px
+    margin: 0
+
+  nav.desktop
+    padding: 0 0
+    position: fixed
+    background: 0
+    z-index: 9
+    width: 100px
+    .logo
+      position: relative
+      .logo-bg
+        position: absolute
+        width: 20%
+        height: 50%
+        left: 50%
+        transform: translateX(-50%) translateY(50%) rotateZ(-60deg)
+        z-index: -1
+        background: white
+        box-shadow: -1px 0px 20px 20px $white
+        border-radius: 50%
+    #mlh-trust-badge
+      width: 8%
+      margin-right: 10px
+    .nav-links a
+      padding: 0
+      display: none
+    .nav-links .button
+      display: none
+
+    &.nav-ex-open
+      background: $white
+      width: 100%
+      .nav-links a
+        padding: 0
+        display: inline-block
+      .nav-links .button
+        display: none
+
+  nav
+    text-align: left
+
+  .mobile
+    display: none
+
+  #mobile-nav
+    display: none
+    margin-bottom: 10px
+
+  #mobile-nav a
+    margin: 0 10px
+    height: 34px
+
+  .mob-nav-header
+    display: inline-block
+
+  .split
+    .split-left
+      flex: 1 1 450px
+    .split-right
+      flex: 1 1 450px
+      margin-right: 0px
+
+  .home-content
+    margin-top: 45px
+    padding-bottom: 0px
+
+  .about-gallery
+    .gallery-right
+      margin: 0 auto
+    .gallery-left
+      order: 1
+    .gallery-text
+      margin: 0 auto 35px auto
+
+@media (max-width: 500px)
+  nav.desktop
+    .nav-links
+      width: 100%
+      a
+        margin: 0 2%
+
+    #mlh-trust-badge
+      display: none
+      top: 105px
+      left: 40px
+
+    &.nav-ex-open
+      #mlh-trust-badge
+        display: inline
+
+  .home-content
+    margin-top: 90px
+
+  .split
+    .split-left
+      padding: 0
+      width: 100%
+    .split-right
+      width: 100%
