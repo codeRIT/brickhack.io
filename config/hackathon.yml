@@ -1,10 +1,10 @@
 defaults: &defaults
   # Logic config
-  registration_is_open: false
-  event_is_over: true
-  last_day_to_apply: <%= Date.new(2018, 1, 27) %>
-  event_start_date: <%= Date.new(2018, 1, 27) %>
-  auto_late_waitlist: true
+  registration_is_open: true
+  event_is_over: false
+  last_day_to_apply: <%= Date.new(2019, 2, 16) %>
+  event_start_date: <%= Date.new(2018, 2, 16) %>
+  auto_late_waitlist: false
 
   # Content config
   name: BrickHack

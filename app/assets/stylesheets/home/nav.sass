@@ -1,0 +1,51 @@
+@import variables
+
+$nav-space: 20px
+
+.nav
+  font-size: 18px
+  padding-top: 80px
+  display: flex
+  flex-flow: row nowrap
+  justify-content: space-between
+  align-items: baseline
+
+/*
+ * Nav links
+ */
+.nav__links
+  margin-left: -1 * $nav-space
+  margin-right: -1 * $nav-space
+  display: flex
+  flex-flow: row nowrap
+
+.nav__link
+  margin-left: $nav-space
+  margin-right: $nav-space
+  display: flex
+  position: relative
+  transition: all 0.15s ease-in-out 0s
+
+  &, &:visited
+    color: white
+    text-transform: uppercase
+    text-decoration: none
+
+  &:hover
+    text-shadow: 0 0 1px rgba($white, 0.9)
+
+  &:before
+    content: ""
+    position: absolute
+    width: 0%
+    height: 2px
+    margin-bottom: -6px
+    bottom: 0
+    left: 0
+    background-color: rgba($white, 0.8)
+    visibility: hidden
+    transition: all 0.3s ease-out 0s
+
+  &:hover:before
+    visibility: visible
+    width: 100%
