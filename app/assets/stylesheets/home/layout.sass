@@ -28,15 +28,15 @@ body
   width: 100%
   max-width: 1100px
   margin: 0 auto
-  padding-left: 10px
-  padding-right: 10px
+  padding-left: 40px
+  padding-right: 40px
   box-sizing: border-box
 
 /*
  * About section
  */
-.about
-  height: calc(85% - 120px)
+// .about
+//   height: calc(85% - 120px)
 
 .about__background
   background: asset-url('about-background.svg') no-repeat center center
@@ -53,7 +53,7 @@ body
   display: flex
   flex-flow: row wrap
   align-items: center
-  height: 100%
+  // height: 100%
   justify-content: space-around
 
 .about__left, .about__right
@@ -63,8 +63,11 @@ body
   align-items: center
   margin-right: 10px
   margin-right: 10px
+  min-height: calc(85vh - 120px)
 
 .about__left
+  text-align: center
+
   @media (max-width: 480px)
     height: 100%
 
@@ -74,7 +77,11 @@ body
 
 .about__logo
   width: 300px
+  padding: 0 20px 20px
+  box-sizing: border-box
   margin-bottom: 10px
+  @media (max-width: 480px)
+    width: 200px
 
 /*
  * Video section
