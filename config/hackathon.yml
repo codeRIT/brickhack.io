@@ -12,7 +12,7 @@ defaults: &defaults
   favicon_asset: favicon/favicon.ico
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
   email_from: '"BrickHack" <hello@brickhack.io>'
-  default_page_title: BrickHack V - Feb 16-17, 2019
+  default_page_title: BrickHack V – Feb 16-17, 2019
 
   disabled_fields:
     - why_attend
