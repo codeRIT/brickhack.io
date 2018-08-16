@@ -8,7 +8,7 @@ defaults: &defaults
 
   # Content config
   name: BrickHack
-  logo_asset: bh-logos/brickhack-4.png
+  logo_asset: bh-logos/brickhack-5.svg
   favicon_asset: favicon/favicon.ico
   agreement_pdf_asset: BrickHack_ReleaseAgreement.pdf
   email_from: '"BrickHack" <hello@brickhack.io>'
