@@ -19,10 +19,10 @@
 - mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze
 - volunteer_link = "https://goo.gl/forms/cpmRgGxLsUUjNymG2".freeze
 
-.about__background
 .section.about#about
   .about__wrapper
     .about__left
+      .about__left-background
       = image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo'
       %p.subtitle February 16-17, 2019 at the
       %p.subtitle Rochester Institute of Technology
@@ -47,6 +47,7 @@
         = btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/"
         = btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?")
     .about__right
+      .about__right-background
       %h2.text-center Brick City's Premiere Hackathon
       %p BrickHack brings designers, developers, and all sorts of makers together for 24 hours to create something from nothing.
       %p Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
