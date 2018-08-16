@@ -2,13 +2,13 @@
 
 Rails.application.routes.draw do
   # Pages
-  get '/apilist', to: 'home#apilist'
-  get '/design_category', to: 'home#design_category'
-  get '/comingsoon', to: 'home#comingsoon'
-  get '/home', to: 'home#index'
+  get '/apilist', to: 'pages#apilist'
+  get '/design_category', to: 'pages#design_category'
+  get '/comingsoon', to: 'pages#comingsoon'
+  get '/home', to: 'pages#index'
 
   # Homepage
 
-  # root to: 'home#index'
-  root to: 'home#comingsoon'
+  # root to: 'pages#index'
+  root to: 'pages#comingsoon'
 end

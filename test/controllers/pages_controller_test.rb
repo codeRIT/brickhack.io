@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HomeControllerTest < ActionController::TestCase
+class PagesControllerTest < ActionController::TestCase
   should "render index successfully" do
     get :index
     assert_response :success
