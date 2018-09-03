@@ -24,8 +24,8 @@
     .about__left
       .about__left-background
       = image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo'
-      %p.subtitle February 16-17, 2019 at the
-      %p.subtitle Rochester Institute of Technology
+      %p.text.subtitle February 16-17, 2019 at the
+      %p.text.subtitle Rochester Institute of Technology
       %br
       - if Rails.configuration.hackathon['event_is_over']
         %h3 Thanks for a great BrickHack! See you next year!
@@ -49,14 +49,14 @@
     .about__right
       .about__right-background
       %h2.text-center Brick City's Premiere Hackathon
-      %p BrickHack brings designers, developers, and all sorts of makers together for 24 hours to create something from nothing.
-      %p Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
-      %p Expect lots of free food, swag, coffee, and all-you-can-print 3D printers! From the novices to the experts, from designers to engineers, this one's for you!
+      %p.text BrickHack brings designers, developers, and all sorts of makers together for 24 hours to create something from nothing.
+      %p.text Mentors and industry representatives will lend expertise and watch as you dive into learning, developing, and producing a unique project.
+      %p.text Expect lots of free food, swag, coffee, and all-you-can-print 3D printers! From the novices to the experts, from designers to engineers, this one's for you!
 
 .section.video
   .video__wrapper
     %div
-      %p.video__description.text-center Watch a recap from last year
+      %p.text.video__description.text-center Watch a recap from last year
       %iframe.video__frame{ allow: "autoplay; encrypted-media", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/0fOUf1JwzBs", height: "1000px", width: "100%"}
 
 
