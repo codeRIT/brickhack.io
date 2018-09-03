@@ -57,7 +57,7 @@
   .video__wrapper
     %div
       %p.text.video__description.text-center Watch a recap from last year
-      %iframe.video__frame{ allow: "autoplay; encrypted-media", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/0fOUf1JwzBs", height: "1000px", width: "100%"}
+      %iframe.video__frame{ allow: "autoplay; encrypted-media", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/0fOUf1JwzBs", height: "1000px", width: "100%" }
 
 .section#what
   %h2.text-center What is a hackathon?
@@ -145,4 +145,4 @@
     centerControlDiv.index = 1;
     map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
   }
-%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyD4N8LhHBv2LA3hlirMq-Kagsv5lAjRi70&callback=initMap"}
+%script{ async: '', defer: "defer", src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyD4N8LhHBv2LA3hlirMq-Kagsv5lAjRi70&callback=initMap" }
