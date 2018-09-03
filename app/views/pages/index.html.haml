@@ -75,6 +75,7 @@
   %p.text MAP ON RIGHT SIDE
   %p.text If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! We will have busses from Binghamton, Buffalo, and Cornell. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@brickhack.io">travel@brickhack.io</a>.
   %p.text Definitely. We invite hackers from all over the US and Canada to join us for our annual event!
+  .map#map
 
 .section#faq
   %h2.text-center Frequently Asked Questions
@@ -84,3 +85,55 @@
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ async: "", defer: "defer", src: "//js.hs-scripts.com/2104052.js", type: "text/javascript" }
 / End of HubSpot Embed Code
+
+:javascript
+  function CenterControl(controlDiv, map) {
+    // Set CSS for the control border.
+    var controlUI = document.createElement('div');
+    controlUI.style.backgroundColor = '#fff';
+    controlUI.style.border = '2px solid #fff';
+    controlUI.style.borderRadius = '3px';
+    controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+    controlUI.style.cursor = 'pointer';
+    controlUI.style.marginTop = '5px';
+    controlUI.style.marginRight = '5px';
+    controlUI.style.textAlign = 'center';
+    controlUI.title = 'Click to view map on Google Maps';
+    controlDiv.appendChild(controlUI);
+    // Set CSS for the control interior.
+    var controlText = document.createElement('div');
+    controlText.style.color = '#3a84df';
+    controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+    controlText.style.fontSize = '11px';
+    controlText.style.lineHeight = '16px';
+    controlText.style.paddingLeft = '5px';
+    controlText.style.paddingRight = '5px';
+    controlText.style.cursor = 'pointer';
+    controlText.innerHTML = 'View larger map';
+    controlUI.appendChild(controlText);
+    // Setup the click event listeners: simply set the map to Chicago.
+    controlUI.addEventListener('click', function() {
+      window.open('#{google_maps_link}');
+    });
+  }
+  function initMap() {
+    var location = {lat: 43.084643, lng: -77.681755};
+    var center = {lat: 43.0846346, lng: -77.6765977};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: center,
+      disableDefaultUI: true,
+      zoomControl: true,
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map
+    });
+    // Create the DIV to hold the control and call the CenterControl()
+    // constructor passing in this DIV.
+    var centerControlDiv = document.createElement('div');
+    var centerControl = new CenterControl(centerControlDiv, map);
+    centerControlDiv.index = 1;
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(centerControlDiv);
+  }
+%script{:async => "", :defer => "defer", :src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyD4N8LhHBv2LA3hlirMq-Kagsv5lAjRi70&callback=initMap"}
