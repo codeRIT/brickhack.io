@@ -72,7 +72,6 @@
   %h2.text-center Travel
   %p.text Address: 1 Lomb Memorial Dr, Rochester, NY
   %p.text Venue
-  %p.text MAP ON RIGHT SIDE
   %p.text If you live in the Rochester, NY area, you’re good to go. If not, we still welcome you! We will have busses from Binghamton, Buffalo, and Cornell. Unfortunately we are unable to provide travel reimbursements. If you have any questions, contact <a href="mailto:travel@brickhack.io">travel@brickhack.io</a>.
   %p.text Definitely. We invite hackers from all over the US and Canada to join us for our annual event!
   .map#map
@@ -80,6 +79,16 @@
 .section#faq
   %h2.text-center Frequently Asked Questions
   = render "faq"
+
+
+.section#sponsor
+  %h2.text-center Sponsors
+  %p.text Interested in sponsoring? We'd love to hear from you!
+  %p.text BrickHack invites sponsors annually to recruit talented students, grow product exposure, and build a name within the vibrant and ever-growing hacker community.
+  %p.text
+    Reach out to
+    = link_to 'sponsorship@brickhack.io'.html_safe, 'mailto:sponsorship@brickhack.io?subject=BrickHack Sponsorship Inquiry'
+    for more information!
 
 
 / Start of HubSpot Embed Code
