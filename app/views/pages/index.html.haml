@@ -41,8 +41,8 @@
           = btn_link_to "Manage", manage_dashboard_index_path
         - else
           = btn_link_to "My Account", questionnaires_path
-      <!--       - elsif Rails.configuration.hackathon['registration_is_open'] -->
-      <!--        = btn_link_to "Register Now", new_user_registration_path -->
+      - elsif Rails.configuration.hackathon['registration_is_open']
+        = btn_link_to "Register Now", new_user_registration_path
       - if Rails.configuration.hackathon['event_is_over']
         = btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/"
         = btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?")
@@ -62,8 +62,8 @@
 .section.what#what
   .what__wrapper
     %h2.text-center What is a hackathon?
-    %p.text 24 hours dedicated to learning, collaborating, and building
-    %p.text Hackathons have _____. Students from RIT attend alongside those traveling from other schools on the east coast _____. Sponsors attend, recruit, help, promote, ____. Mentors offer _____. Teams compete. Student collaborate. Prizes awarded. But everyone wins.
+    %p.text A Hackathon is an invention marathon. Any student can attend! Really, any student...and it's completely free. Don't worry about food, internet, or travel.
+    %p.text Students work in teams and have mentors offer help. Sponsors attend to help, recruit, and promote their products. Teams compete in different categories and prizes are awarded, but everyone learns and everyone wins!
     %p.text
       %strong The event is completely free.
       Don't worry about food, laskdjf, travel, etc.
