@@ -32,7 +32,10 @@ body {
   line-height: 1;
 }
 ol, ul {
-  list-style: none;
+  padding-left: 4em
+}
+li {
+  line-height: 1.7
 }
 blockquote, q {
   quotes: none;

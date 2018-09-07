@@ -11,7 +11,13 @@
 .faq__items
   - @faq_content.each do |question, answer|
     .faq__item
-      %p.faq__question
-        = question
+      - if question == 'My question isn\'t answered here...'
+        %br
+        %br
+        %p.faq__question
+          = question
+      - else
+        %p.faq__question
+          = question
       %p.faq__answer
         = raw answer

@@ -41,8 +41,8 @@
           = btn_link_to "Manage", manage_dashboard_index_path
         - else
           = btn_link_to "My Account", questionnaires_path
-      - elsif Rails.configuration.hackathon['registration_is_open']
-        = btn_link_to "Register Now", new_user_registration_path
+      <!--       - elsif Rails.configuration.hackathon['registration_is_open'] -->
+      <!--        = btn_link_to "Register Now", new_user_registration_path -->
       - if Rails.configuration.hackathon['event_is_over']
         = btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/"
         = btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?")
@@ -57,7 +57,7 @@
   .video__wrapper
     %div
       %p.text.video__description.text-center Watch a recap from last year
-      %iframe.video__frame{ allow: "autoplay; encrypted-media", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/0fOUf1JwzBs", height: "1000px", width: "100%" }
+      %iframe.video__frame{ allow: "autoplay; encrypted-media", allowfullscreen: "", frameborder: "0", src: "https://www.youtube-nocookie.com/embed/0fOUf1JwzBs" }
 
 .section.what#what
   .what__wrapper
@@ -84,15 +84,26 @@
     = render "faq"
 
 
-.section.sponsor#sponsor
+.section.sponsor#sponsors
   .sponsor__wrapper
     %h2.text-center Sponsors
-    %p.text Interested in sponsoring? We'd love to hear from you!
-    %p.text BrickHack invites sponsors annually to recruit talented students, grow product exposure, and build a name within the vibrant and ever-growing hacker community.
-    %p.text
-      Reach out to
+    %p.text Thinking about sponsoring?
+    %p.text{ style: 'margin-bottom: 0.4em; line-height: 1.7;' } BrickHack offers you the unique ability to connect directly with some of the top developer students.
+    %ul
+      %li
+        Increase awareness of your brand amongst students of top talent.
+      %li
+        Share your technology allowing students to utilize and expand on your products potential.
+      %li
+        Advertise positions you’re hiring for on our Devpost hackathon page.
+      %li
+        Recruit student developers who share your company’s passion.
+    %p.text{ style: 'margin-top: 0.4em; line-height: 1.7;' }
+      Interested in sponsoring BrickHack? Contact
       = link_to 'sponsorship@brickhack.io'.html_safe, 'mailto:sponsorship@brickhack.io?subject=BrickHack Sponsorship Inquiry'
-      for more information!
+      to learn how to get started today!
+    .button__wrapper
+      = btn_link_to 'Click Here to Sponsor', image_path("BrickHackV.pdf"), { style: 'margin-bottom: 0px;', align: 'center' }
 
 
 / Start of HubSpot Embed Code
