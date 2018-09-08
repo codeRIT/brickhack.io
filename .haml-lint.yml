@@ -28,6 +28,9 @@ linters:
   ImplicitDiv:
     enabled: true
 
+  InlineStyles:
+    enabled: false
+
   LeadingCommentSpace:
     enabled: true
 
@@ -67,3 +70,6 @@ linters:
 
   UnnecessaryStringOutput:
     enabled: true
+
+  ViewLength:
+    enabled: false
