@@ -30,19 +30,21 @@
       - if Rails.configuration.hackathon['event_is_over']
         %h3 Thanks for a great BrickHack! See you next year!
       - elsif !Rails.configuration.hackathon['registration_is_open']
-        = btn_link_to "Devpost", "https://brickhack4.devpost.com/"
-        = btn_link_to "Schedule", "#schedule"
-        %br
-        %br
-        %h3 Registration has closed.
+        %p.text Registration opens soon.
+        = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d"
+        / = btn_link_to "Devpost", "https://brickhack4.devpost.com/"
+        / = btn_link_to "Schedule", "#schedule"
+        / %br
+        / %br
+        / %h3 Registration has closed.
 
       - if current_user
         - if current_user.admin
           = btn_link_to "Manage", manage_dashboard_index_path
         - else
           = btn_link_to "My Account", questionnaires_path
-      -# - elsif Rails.configuration.hackathon['registration_is_open']
-        -# = btn_link_to "Register Now", new_user_registration_path
+      - elsif Rails.configuration.hackathon['registration_is_open']
+        = btn_link_to "Register Now", new_user_registration_path
       - if Rails.configuration.hackathon['event_is_over']
         = btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/"
         = btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?")
@@ -89,21 +91,22 @@
 .section.travel#travel
   .travel__wrapper
     %h2.text-center Travel
-    %p.text
-      BrickHack V will be hosted at RIT in the
-      %b Clark Gym
-      \- 1 Lomb Memorial Dr, Rochester, NY.
-    %p.text We invite hackers from all over the US and Canada to join us for our annual event!
-    %ul
-      %li
-        If you live in the Rochester, NY area or are driving to campus you can park in
-        %b D lot.
-      %li
-        We will have busses from Binghamton, Buffalo, and Cornell.
-      %li
-        Are you looking for a bus from your school? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a>
-    %br
-    %p.text Unfortunately we are unable to provide travel reimbursements at this time. If you have any questions, just send us an email.
+    .travel__text-wrapper
+      %p.text
+        BrickHack V will be hosted at RIT in the
+        %b Clark Gym
+        \- 1 Lomb Memorial Dr, Rochester, NY.
+      %p.text We invite hackers from all over the US and Canada to join us for our annual event!
+      %ul
+        %li
+          If you live in the Rochester, NY area or are driving to campus you can park in
+          %b D lot.
+        %li
+          We will have busses from Binghamton, Buffalo, and Cornell.
+        %li
+          Are you looking for a bus from your school? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a>
+      %br
+      %p.text Unfortunately we are unable to provide travel reimbursements at this time. If you have any questions, just send us an email.
     %iframe.map#map{ allowfullscreen: "", frameborder: "0", src: "https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1259.2930693215992!2d-77.67345753452042!3d43.08428833485804!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f573101aa0cc496!2sGeorge+H+Clark+Gymnasium!5e1!3m2!1sen!2sus!4v1536014420677", style: "border:0" }
 
 .section.faq#faq
