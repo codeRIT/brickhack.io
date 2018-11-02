@@ -1,14 +1,9 @@
 .header
   .header__wrapper.account-nav__wrapper
     - if Rails.configuration.hackathon['logo_asset']
-      .header-logo.header-logo--with-nav
+      .header-logo
         = link_to root_path do
           = image_tag Rails.configuration.hackathon['logo_asset'], id: 'logo', alt: "#{Rails.configuration.hackathon['name']} logo", title: Rails.configuration.hackathon['name'], class: 'header-logo__image'
-        .header-nav.header-nav__links
-          = link_to "About", "/#about", class: 'header-nav__link'
-          = link_to "Travel", "/#travel", class: 'header-nav__link'
-          = link_to "FAQs", "/#faq", class: 'header-nav__link'
-          = link_to "Sponsors", "/#sponsor", class: 'header-nav__link'
     - else
       .header-nav
         = btn_link_to "Home", root_path
@@ -18,13 +13,15 @@
           = btn_link_to "Manage", manage_root_path
         = btn_link_to "Sign Out", destroy_user_session_path, method: :delete
 
-- first_name = current_user&.questionnaire&.first_name.presence
-- page_title = content_for(:page_title)
-- if (first_name || page_title) && controller.class.parent != Manage
-  .page-banner
-    .page-banner__inner
-      %span.page-banner__text
-        - if first_name
-          Hello, #{first_name}
-        - else
-          = page_title
+  - first_name = current_user&.questionnaire&.first_name.presence
+  - page_title = content_for(:page_title)
+  - if (first_name || page_title) && controller.class.parent != Manage
+    .page-banner
+      .page-banner__inner
+        %span.page-banner__text
+          - if first_name
+            Hello, #{first_name}
+          - else
+            = page_title
+    .page-banner__left-background
+    .page-banner__right-background

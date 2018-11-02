@@ -1,35 +1,26 @@
 .header
-  border-bottom: 1px solid #666 !important
-  height: 60px !important
-
-.header__wrapper
-  max-width: 100% !important
-  padding-right: 10px !important
-
-.header-logo--with-nav
-  display: flex
-  flex-flow: row nowrap
-  margin-left: 10%
-  @media (max-width: 1000px)
-    margin-left: 15px
-  @media (max-width: 600px)
-    margin-left: 0
+  $color-stop-1: #0f3f5d
+  $color-stop-2: #26325f
+  $color-stop-3: mix(#2A245F, $color-stop-2, 40%)
+  background-color: #402761
+  background: linear-gradient($color-stop-1, mix($color-stop-1, $color-stop-2), $color-stop-3) !important
+  height: auto !important
+  flex-flow: column nowrap !important
+  align-items: center
+  position: relative
+  overflow: hidden
 
 .header-logo
+  display: flex
   align-items: center
 
+  @media (max-width: 400px)
+    margin-left: -10px
+
 .header-logo__image
-  height: 45px !important
-  display: flex
+  height: 60px !important
+  margin: 7px 0 0 !important
 
-.header-nav__links
-  margin-left: 20px
-  margin-right: -20px
-  @media (max-width: 600px)
-    display: none !important
-
-.header-nav__link
-  color: #4d4d4d
-  font-weight: 600
-  padding: 0 20px
-  text-transform: uppercase
+.header__wrapper
+  position: relative
+  z-index: 1
