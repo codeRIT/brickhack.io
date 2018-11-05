@@ -9,7 +9,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 if ENV['HACKATHON_MANAGER_DEV'] == '1'
   gem 'hackathon_manager', path: '../hackathon_manager'
 else
-  gem 'hackathon_manager', '~> 0.7.0'
+  gem 'hackathon_manager', '~> 0.8.0'
 end
 # rubocop:enable Bundler/DuplicatedGem
 
