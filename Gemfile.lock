@@ -146,7 +146,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
-    hackathon_manager (0.8.2)
+    hackathon_manager (0.9.0)
       ajax-datatables-rails (~> 0.4.0)
       aws-sdk-s3
       blazer
@@ -425,7 +425,7 @@ DEPENDENCIES
   factory_bot_rails
   guard
   guard-minitest
-  hackathon_manager (~> 0.8.0)
+  hackathon_manager (~> 0.9.0)
   httparty
   minitest-reporters
   mysql2 (>= 0.3.18, < 0.5)
