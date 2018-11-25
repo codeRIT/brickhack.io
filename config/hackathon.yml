@@ -1,6 +1,6 @@
 defaults: &defaults
   # Logic config
-  registration_is_open: false
+  registration_is_open: true
   event_is_over: false
   last_day_to_apply: <%= Date.new(2019, 2, 16) %>
   event_start_date: <%= Date.new(2018, 2, 16) %>
@@ -17,9 +17,9 @@ defaults: &defaults
   disabled_fields:
     - why_attend
   disclaimer: |
-    Applicants must be 18 years of age by January 27th.
+    Applicants must be 18 years of age by February 16th.
   thanks_for_applying: |
-    Thanks for applying! You will be notified of your acceptance via email in January.
+    Thanks for applying! You will be notified of your acceptance via email in February.
   thanks_for_rsvp: |
     Expect an email closer to the event with additional logistics & travel info.
   bus_captain_notes: |
