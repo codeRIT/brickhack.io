@@ -116,22 +116,22 @@
 
 
 .section.sponsor#sponsors
-  .sponsors
-    %h2.text-center Sponsors
-    .sponsors-col.sponsors-col-x-lg
-      %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' }
-        = image_tag 'sponsors/datto.png'
-    .sponsors-col.sponsors-col-lg
-      %a.sponsor{ href: 'https://cloud.google.com', title: 'Google Cloud Platform', target: 'blank' }
-        = image_tag 'sponsors/google_cloud_platform.png'
-    .sponsors-col.sponsors-col-med
-      %a.sponsor{ href: 'https://www.tcgplayer.com/', title: 'TCGplayer, Inc.', target: 'blank' }
-        = image_tag 'sponsors/tcg_player.png'
-    .sponsors-col.sponsors-col-sm
-      %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe/', title: 'RIT Club Cafe', target: 'blank' }
-        = image_tag 'sponsors/clubcafe.png'
+  .sponsor__wrapper
+    .sponsors
+      %h2.text-center Sponsors
+      .sponsors-col.sponsors-col-x-lg
+        %a.sponsor{ href: 'https://www.datto.com', title: 'Datto', target: 'blank' }
+          = image_tag 'sponsors/datto.png'
+      .sponsors-col.sponsors-col-lg
+        %a.sponsor{ href: 'https://cloud.google.com', title: 'Google Cloud Platform', target: 'blank' }
+          = image_tag 'sponsors/google_cloud_platform.png'
+      .sponsors-col.sponsors-col-med
+        %a.sponsor{ href: 'https://www.tcgplayer.com/', title: 'TCGplayer, Inc.', target: 'blank' }
+          = image_tag 'sponsors/tcg_player.png'
+        %a.sponsor{ href: 'https://www.facebook.com/ritclubcafe/', title: 'RIT Club Cafe', target: 'blank' }
+          = image_tag 'sponsors/clubcafe.png'
 
-      
+
     %br
     %br
     %p.text
