@@ -158,6 +158,29 @@
     .button__wrapper
       = btn_link_to 'Learn More', image_path("BrickHackV.pdf"), { style: 'margin-bottom: 0px;', align: 'center' }
 
+.section.footer-break
+
+.section.footer
+  .footer__rit
+    = link_to 'https://rit.edu' do
+      = image_tag 'rit.svg', class: 'footer__rit-logo'
+    %p
+      1 Lomb Memorial Drive
+      %br
+      Rochester, NY 14623
+  .footer__about
+    %p
+      Student run by
+      = link_to 'https://codeRIT.org' do
+        = image_tag 'coderit_logo.png', class: 'footer__coderit-logo'
+    %p
+      Find us on
+      = link_to 'GitHub', 'https://github.com/codeRIT/brickhack.io'
+  .footer__contact
+    %p= link_to 'Twitter', 'https://twitter.com/brickhackrit'
+    %p= link_to 'Facebook', 'https://www.facebook.com/brickhackrit'
+    %p= link_to 'Email', 'mailto:hello@brickhack.io'
+
 
 / Start of HubSpot Embed Code
 %script#hs-script-loader{ async: "", defer: "defer", src: "//js.hs-scripts.com/2104052.js", type: "text/javascript" }
