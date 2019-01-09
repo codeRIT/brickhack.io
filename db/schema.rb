@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_215430) do
+ActiveRecord::Schema.define(version: 2019_01_09_202806) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -219,6 +219,23 @@ ActiveRecord::Schema.define(version: 2019_01_02_215430) do
     t.integer "bus_list_id"
   end
 
+  create_table "trackable_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "band_id"
+    t.bigint "trackable_tag_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trackable_tag_id"], name: "index_trackable_events_on_trackable_tag_id"
+    t.index ["user_id"], name: "index_trackable_events_on_user_id"
+  end
+
+  create_table "trackable_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_trackable_tags_on_name", unique: true
+  end
+
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -246,4 +263,6 @@ ActiveRecord::Schema.define(version: 2019_01_02_215430) do
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "school_name_duplicates", "schools"
+  add_foreign_key "trackable_events", "trackable_tags"
+  add_foreign_key "trackable_events", "users"
 end
