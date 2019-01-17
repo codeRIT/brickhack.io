@@ -106,11 +106,8 @@
           %b Busses
           are being provided to a number of schools! If you're at one of these schools, you will see an option to sign up when you RSVP:
           %ul
-            %li Binghamton University and Cornell University
-            %li University of Waterloo, University at Buffalo, and the College at Brockport
-            %li Princeton University, Rutgers University, and New York City (location tbd)
-            %li Massachusetts Institute of Technology and Harvard University
-            %li University of Maryland (college park)
+            - BusList.all.pluck(:name).each do |name|
+              %li= name
         %li Don't see bus details when you RSVP? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a>
       %br
       %p.text If you have any questions, please <a href="mailto:travel@brickhack.io" style="color: orange;">email us</a>!
