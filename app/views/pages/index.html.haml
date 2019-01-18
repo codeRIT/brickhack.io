@@ -2,7 +2,7 @@
   = stylesheet_link_tag 'home.css'
 
 :ruby
-  if current_user && !current_user.admin
+  if current_user && !current_user.admin?
     q = current_user.questionnaire
     if q.blank?
       link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
@@ -39,7 +39,7 @@
         / %h3 Registration has closed.
 
       - if current_user
-        - if current_user.admin
+        - if current_user.admin? || current_user.admin_limited_access?
           = btn_link_to "Manage", manage_dashboard_index_path
         - else
           = btn_link_to "My Account", questionnaires_path
