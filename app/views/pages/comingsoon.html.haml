@@ -43,7 +43,7 @@
             .clear
               %input.button#mc-embedded-subscribe{ name: "subscribe", type: "submit", value: "Join the mailing list" }/
       - if current_user
-        - if current_user.admin
+        - if current_user.admin? || current_user.admin_limited_access?
           = link_to manage_dashboard_index_path do
             .button MANAGE
         - else
