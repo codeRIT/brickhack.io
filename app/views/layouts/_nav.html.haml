@@ -19,7 +19,7 @@
 
   .nav__buttons
     - if current_user
-      - if current_user.admin
+      - if current_user.admin? || current_user.admin_limited_access?
         = btn_link_to 'Manage', manage_dashboard_index_path
       - else
         = btn_link_to 'My Account', questionnaires_path
