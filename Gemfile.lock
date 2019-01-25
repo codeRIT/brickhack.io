@@ -51,7 +51,7 @@ GEM
     autoprefixer-rails (9.4.6)
       execjs
     aws-eventstream (1.0.1)
-    aws-partitions (1.133.0)
+    aws-partitions (1.135.0)
     aws-sdk-core (3.46.0)
       aws-eventstream (~> 1.0)
       aws-partitions (~> 1.0)
@@ -152,7 +152,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
-    hackathon_manager (0.13.1)
+    hackathon_manager (0.13.2)
       ajax-datatables-rails (~> 0.4.0)
       aws-sdk-s3
       blazer
@@ -398,12 +398,12 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    strip_attributes (1.8.0)
-      activemodel (>= 3.0, < 6.0)
+    strip_attributes (1.8.1)
+      activemodel (>= 3.0, < 7.0)
     temple (0.8.0)
     terrapin (0.6.0)
       climate_control (>= 0.0.3, < 1.0)
-    test-unit (3.2.9)
+    test-unit (3.3.0)
       power_assert
     thor (0.20.3)
     thread_safe (0.3.6)
