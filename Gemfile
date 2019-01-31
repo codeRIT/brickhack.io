@@ -21,6 +21,7 @@ gem 'rollbar', '~> 2.8'
 gem 'skylight'
 
 gem 'httparty'
+gem 'rubyzip', '>= 1.0.0'
 
 gem 'dotenv-rails', groups: [:development, :test]
 
