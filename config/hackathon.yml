@@ -4,7 +4,7 @@ defaults: &defaults
   event_is_over: false
   last_day_to_apply: <%= Date.new(2019, 2, 01) %>
   event_start_date: <%= Date.new(2019, 2, 16) %>
-  auto_late_waitlist: false
+  auto_late_waitlist: true
 
   # Content config
   name: BrickHack
