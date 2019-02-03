@@ -46,7 +46,7 @@
           = btn_link_to "My Account", questionnaires_path
       - elsif Rails.configuration.hackathon['registration_is_open']
         %div
-          = btn_link_to "Register Now", new_user_registration_path  
+          = btn_link_to "Register Now", new_user_registration_path
       - if Rails.configuration.hackathon['event_is_over']
         = btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/"
         = btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?")
