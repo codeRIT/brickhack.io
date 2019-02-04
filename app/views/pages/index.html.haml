@@ -92,6 +92,10 @@
         %b dedicate time to learn, collaborate, build, and innovate.
       %p.text MLH has a great list of related questions over at <a href="https://mlh.io/faq" style="color: orange;">mlh.io/faq</a>
 
+.section.schedule#schedule
+  .schedule__wrapper
+    = render "schedule"
+
 .section.travel#travel
   .travel__wrapper
     %h2.text-center Travel
@@ -125,10 +129,6 @@
         style, or purpose) will be permitted in the venue.
       %p.text.italic Unfortunately we are unable to provide travel reimbursements at this time.
     %iframe.map#map{ allowfullscreen: "", frameborder: "0", src: "https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1259.2930693215992!2d-77.67345753452042!3d43.08428833485804!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f573101aa0cc496!2sGeorge+H+Clark+Gymnasium!5e1!3m2!1sen!2sus!4v1536014420677", style: "border:0" }
-
-.section.schedule#schedule
-  .schedule__wrapper
-    = render "schedule"
 
 .section.faq#faq
   .faq__wrapper
