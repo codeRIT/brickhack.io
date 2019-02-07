@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def live
-    render(layout: nil)
+   # render(layout: nil)
   end
 
   def design_category
