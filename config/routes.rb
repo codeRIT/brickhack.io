@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   # Pages
+  get '/live', to: 'pages#live'
   get '/apilist', to: 'pages#apilist'
   get '/design_category', to: 'pages#design_category'
   get '/comingsoon', to: 'pages#comingsoon'
