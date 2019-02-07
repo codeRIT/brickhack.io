@@ -5,6 +5,10 @@ class PagesController < ApplicationController
   def comingsoon
   end
 
+  def live
+    render(layout: nil)
+  end
+
   def design_category
   end
 
