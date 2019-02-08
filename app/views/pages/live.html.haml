@@ -4,15 +4,36 @@
 = render "layouts/hackathon_manager/flashes"
 = render "layouts/nav"
 
+.section#timer
+  .timer__section
+    %h2.text-center Timer
+    .timer__column__container
+      .timer__left
+        %h4.text-center Timer #1
+        .timer__container
+          
+      .timer__right
+        %h4.text-center Timer #2
+        .timer__container
+          
 .section#announce
   %h2.text-center Announcements
-    
+  .announce__column__container
+    .announce__left
+      .twitter__container
+    .announce__right
+
 .section#info
   %h2.text-center Important Information
-    
+  .info__container
+    .info__left
+    .info__right
+
 .section#slack
   %h2.text-center Join the Slack!      
-      
+  .slack__container
+    %h1.text-center coderit.slack.com
+    
 .section.footer-break
 
 .section.footer
