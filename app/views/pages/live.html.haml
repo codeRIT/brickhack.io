@@ -1,0 +1,63 @@
+- content_for(:head) do
+  = stylesheet_link_tag 'live.css'
+
+= render "layouts/hackathon_manager/flashes"
+= render "layouts/nav"
+
+.section#timer
+  .timer__section
+    %h2.text-center Timer
+    .timer__column__container
+      .timer__left
+        %h4.text-center Timer #1
+        .timer__container
+          
+      .timer__right
+        %h4.text-center Timer #2
+        .timer__container
+          
+.section#announce
+  %h2.text-center Announcements
+  .announce__column__container
+    .announce__left
+      .twitter__container
+    .announce__right
+
+.section#info
+  %h2.text-center Important Information
+  .info__container
+    .info__left
+    .info__right
+
+.section#slack
+  %h2.text-center Join the Slack!      
+  .slack__container
+    %h1.text-center coderit.slack.com
+    
+.section.footer-break
+
+.section.footer
+  .footer__rit
+    = link_to 'https://rit.edu' do
+      = image_tag 'rit.svg', class: 'footer__rit-logo'
+    %p
+      1 Lomb Memorial Drive
+      %br
+      Rochester, NY 14623
+  .footer__about
+    %p
+      Student run by
+      = link_to 'https://codeRIT.org' do
+        = image_tag 'coderit_logo.png', class: 'footer__coderit-logo'
+    %p
+      Find us on
+      = link_to 'GitHub', 'https://github.com/codeRIT/brickhack.io'
+  .footer__contact
+    %p= link_to 'Twitter', 'https://twitter.com/brickhackrit'
+    %p= link_to 'Facebook', 'https://www.facebook.com/brickhackrit'
+    %p= link_to 'Email', 'mailto:hello@brickhack.io'
+    %p= link_to 'Privacy Policy', image_path("Privacy_Policy.pdf")
+
+/ Start of HubSpot Embed Code
+%script#hs-script-loader{ async: "", defer: "defer", src: "//js.hs-scripts.com/2104052.js", type: "text/javascript" }
+/ End of HubSpot Embed Code
