@@ -6,14 +6,14 @@
 
 .section#timer
   .timer__section
-    %h2.text-center Timer
     .timer__column__container
       .timer__left
-        %h4.text-center Timer #1
+        %h4.text-center
         .timer__container
-          %p.text-center#timer_countdown
+          %p.text-center#timer_submission
+          %p.text-center#submission_text UNTIL SUBMISSIONS DUE
           :javascript
-            var hackEnds = "Feb 17 2019 13:00:00";
+            var hackEnds = "Feb 17 2019 09:30:00";
             var timerFunc = setInterval(function() {
               var countDownDate = new Date(hackEnds).getTime();
               var now = new Date().getTime();
@@ -22,10 +22,10 @@
               //var hours = Math.floor((untilDate%(1000*60*60*24))/(1000*60*60));
               var minutes = Math.floor((untilDate % (1000*60*60))/(1000*60));
               var seconds = Math.floor((untilDate % (1000*60))/1000);
-              document.getElementById("timer_countdown").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
+              document.getElementById("timer_submission").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
               if(untilDate < 0){
                 clearInterval(timerFunc);
-                document.getElementById("timer_countdown").innerHTML = "00h 00m 00s";
+                document.getElementById("timer_submission").innerHTML = "00h 00m 00s";
               }
             }, 1000);
       .timer__right
