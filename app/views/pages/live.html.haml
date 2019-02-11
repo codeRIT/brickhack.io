@@ -11,20 +11,20 @@
       .timer__left
         %h4.text-center Timer #1
         .timer__container
-          %p.text-center{:id => "timer_countdown"}
+          %p.text-center#timer_countdown
           :javascript
-            var x = setInterval(function() {
-            var countDownDate = new Date("Feb 11 2019 15:00:00").getTime();
-            var now = new Date().getTime();
-            var untilDate = countDownDate - now;
-            var hours = Math.floor((untilDate%(1000*60*60*24))/(1000*60*60));
-            var minutes = Math.floor((untilDate % (1000*60*60))/(1000*60));
-            var seconds = Math.floor((untilDate % (1000*60))/1000);
-            document.getElementById("timer_countdown").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
-            if(untilDate < 0){
-            clearInterval(x);
-            document.getElementById("timer_countdown").innerHTML = "00h 00m 00s";
-            }
+            var timerFunc = setInterval(function() {
+              var countDownDate = new Date("Feb 11 2019 15:00:00").getTime();
+              var now = new Date().getTime();
+              var untilDate = countDownDate - now;
+              var hours = Math.floor((untilDate%(1000*60*60*24))/(1000*60*60));
+              var minutes = Math.floor((untilDate % (1000*60*60))/(1000*60));
+              var seconds = Math.floor((untilDate % (1000*60))/1000);
+              document.getElementById("timer_countdown").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
+              if(untilDate < 0){
+                clearInterval(timerFunc);
+                document.getElementById("timer_countdown").innerHTML = "00h 00m 00s";
+              }
             }, 1000);
       .timer__right
         %h4.text-center Timer #2
