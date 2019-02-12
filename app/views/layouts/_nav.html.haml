@@ -17,13 +17,13 @@
         %a.nav__link{ href: "/" }= page
       - else
         %a.nav__link{ href: "##{page.downcase}" }= page
-<<<<<<< HEAD
+
     %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes'
 
-=======
+
     %a.nav__link{href: "/live"}= 'Live'
    
->>>>>>> 9f711e5... moved timer
+
   .nav__buttons
     - if current_user
       - if current_user.admin? || current_user.admin_limited_access?
