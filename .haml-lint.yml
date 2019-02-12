@@ -10,20 +10,23 @@ linters:
     enabled: true
 
   ClassesBeforeIds:
-    enabled: true
+    enabled: false
 
   ConsecutiveComments:
     enabled: true
 
   ConsecutiveSilentScripts:
     enabled: true
-    max_consecutive: 2
+    max_consecutive: 5
 
   EmptyScript:
     enabled: true
 
   HtmlAttributes:
     enabled: true
+
+  IdNames:
+    enabled: false
 
   ImplicitDiv:
     enabled: true
@@ -56,8 +59,7 @@ linters:
     enabled: true
 
   SpaceInsideHashAttributes:
-    enabled: true
-    style: space
+    enabled: false
 
   TagName:
     enabled: true
