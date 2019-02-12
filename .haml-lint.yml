@@ -9,12 +9,14 @@ linters:
   ClassAttributeWithStaticValue:
     enabled: true
 
+  # .class#id vs #id.class
   ClassesBeforeIds:
     enabled: false
 
   ConsecutiveComments:
     enabled: true
 
+  # use :ruby block instead of multiple "-" lines
   ConsecutiveSilentScripts:
     enabled: true
     max_consecutive: 5
@@ -25,6 +27,7 @@ linters:
   HtmlAttributes:
     enabled: true
 
+  # E.g. using lispCase instead of snake_case
   IdNames:
     enabled: false
 
@@ -58,6 +61,7 @@ linters:
   SpaceBeforeScript:
     enabled: true
 
+  # Space after/before curly brackets
   SpaceInsideHashAttributes:
     enabled: false
 
