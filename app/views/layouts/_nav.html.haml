@@ -2,7 +2,7 @@
 - if simplified_nav
   - pages = ['Home']
 - else
-  - pages = ['Timer', 'Announcements', 'Important Info', 'Schedule', 'Challenges', 'Slack']
+  - pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors']
 
 - api_list = current_page?(:controller => 'pages', :action => 'apilist')
 - if api_list
@@ -16,7 +16,8 @@
         %a.nav__link{ href: "/" }= page
       - else
         %a.nav__link{ href: "##{page.downcase}" }= page
-   
+    %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes'
+
   .nav__buttons
     - if current_user
       - if current_user.admin? || current_user.admin_limited_access?
