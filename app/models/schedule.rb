@@ -38,9 +38,9 @@ class Schedule
 
   def sheet_data
     # There's two levels of caching going on here.
-    # 1. "@_sheet_data ||=" which caches in memory for subsequent calls to sheet_data() within the same Schedule instance / web request
+    # 1. "@sheet_data ||=" which caches in memory for subsequent calls to sheet_data() within the same Schedule instance / web request
     # 2. "Rails.cache" which caches between requests (up until expiry)
-    @_sheet_data ||= Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
+    @sheet_data ||= Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
       response = HTTParty.get("#{SHEETS_URL}/#{@spreadsheet_id}?#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
       response ? response.parsed_response.to_hash : nil
     end
