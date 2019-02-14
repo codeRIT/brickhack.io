@@ -11,6 +11,11 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  should "render live successfully" do
+    get :live
+    assert_response :success
+  end
+
   should "render design_category successfully" do
     get :design_category
     assert_response :success
