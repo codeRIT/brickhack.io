@@ -36,23 +36,24 @@
 %a#mlh-trust-badge{:href => "https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray", :style => "display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000", :target => "_blank"}
   %img{:alt => "Major League Hacking 2019 Hackathon Season", :src => "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg", :style => "width:100%"}/
 
--# mobile nav
--# %nav.mobile
--#   %i.fa.fa-bars.mob-nav-header#hamburger-menu
--#   %h2.mob-nav-header{ style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
+-#
+  mobile nav
+  %nav.mobile
+    %i.fa.fa-bars.mob-nav-header#hamburger-menu
+    %h2.mob-nav-header{ style: 'font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300' } BrickHack
 
--#   #mobile-nav
--#     .nav-links
--#       %a.active{ href: '#' } BrickHack
+    #mobile-nav
+      .nav-links
+        %a.active{ href: '#' } BrickHack
 
--#       - pages.each do |page|
--#         %a{ href: "##{page.downcase}" }= page
+        - pages.each do |page|
+          %a{ href: "##{page.downcase}" }= page
 
--#       - if current_user
--#         - if current_user.admin
--#           = btn_link_to 'Manage', manage_dashboard_index_path
--#         - else
--#           = btn_link_to 'My Account', questionnaires_path, class: 'mobile'
--#       - else
--#         - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up / Sign In' : 'Sign In'
--#         = link_to text, new_user_registration_path, class: 'mobile'
+        - if current_user
+          - if current_user.admin
+            = btn_link_to 'Manage', manage_dashboard_index_path
+          - else
+            = btn_link_to 'My Account', questionnaires_path, class: 'mobile'
+        - else
+          - text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up / Sign In' : 'Sign In'
+          = link_to text, new_user_registration_path, class: 'mobile'

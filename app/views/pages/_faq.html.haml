@@ -1,17 +1,20 @@
-- @involved_link = 'mailto:hello@brickhack.io?subject=I&#39;d%20like%20to%20get%20involved!'
+:ruby
+  involved_link = 'mailto:hello@brickhack.io?subject=I&#39;d%20like%20to%20get%20involved!'
 
-- @faq_content = {'Do I need a team to join?' => 'While teams are often recommended and sometimes more fun, they\'re not required. We will be hosting a teambuilding event shortly after kickoff, but feel free to invite your friends! Teams are a max of 4 people. Each person must register individually.',
-  'What should I bring?' => 'Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup, and maybe an idea or two.',
-  'Who can participate in BrickHack?' => 'Anyone currently enrolled as a student can attend! If you don\'t fit that description, you\'re absolutely welcome to attend as a <a href='+@involved_link+'>mentor</a> or <a href='+@involved_link+'>volunteer</a>. All attendees must be 18 years or older.',
-  'Do RIT students need to apply?' => 'Yes, RIT students need to apply just like everyone else.',
-  'When will I know if I got in?' => 'Acceptance notifications will start being sent out January 16th on a rolling basis.',
-  'Should I bring my own bricks?' => 'We\'ve got you covered.',
-  'My question isn\'t answered here...' => 'Fret not! Feel free to reach out to us on <a href="https://twitter.com/brickhackrit">Twitter</a>, <a href="https://www.facebook.com/brickhackrit">Facebook</a>, or <a href="mailto:hello@brickhack.io">email</a>.'}
+  faq_content = {
+    "Do I need a team to join?" => "While teams are often recommended and sometimes more fun, they're not required. We will be hosting a teambuilding event shortly after kickoff, but feel free to invite your friends! Teams are a max of 4 people. Each person must register individually.",
+    "What should I bring?" => "Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup, and maybe an idea or two.",
+    "Who can participate in BrickHack?" => "Anyone currently enrolled as a student can attend! If you don't fit that description, you're absolutely welcome to attend as a <a href=\"#{involved_link}\">mentor</a> or <a href=\"#{involved_link}\">volunteer</a>. All attendees must be 18 years or older.",
+    "Do RIT students need to apply?" => "Yes, RIT students need to apply just like everyone else.",
+    "When will I know if I got in?" => "Acceptance notifications will start being sent out January 16th on a rolling basis.",
+    "Should I bring my own bricks?" => "We've got you covered.",
+    "My question isn't answered here..." => "Fret not! Feel free to reach out to us on <a href=\"https://twitter.com/brickhackrit\">Twitter</a>, <a href=\"https://www.facebook.com/brickhackrit\">Facebook</a>, or <a href=\"mailto:hello@brickhack.io\">email</a>."
+  }
 
 .faq__items
-  - @faq_content.each do |question, answer|
+  - faq_content.each do |question, answer|
     .faq__item
-      - if question == 'My question isn\'t answered here...'
+      - if question == "My question isn't answered here..."
         %br
         %br
         %p.faq__question

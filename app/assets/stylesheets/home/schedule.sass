@@ -119,12 +119,11 @@ $schedule-transition-ease: ease-out
   .schedule__line:after
     content: ""
     width: 10px
-    height: 25px
-    left: -1px
-    position: relative
+    height: 110px
+    margin-left: -1px
+    position: absolute
     display: block
     border-left: 1px solid $grey-light
-    bottom: -29px
     z-index: -1
 
 .schedule__section:last-of-type .schedule__row:last-child
@@ -163,3 +162,4 @@ $schedule-transition-ease: ease-out
   .schedule__desc
     max-height: 400px
     padding-top: $schedule-unit - 2px
+    line-height: 120%
