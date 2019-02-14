@@ -9,7 +9,7 @@
     .timer__column__container
       .timer__container
         %p.text-center#timer_submission
-        %p.text-center#submission_text UNTIL SUBMISSIONS DUE   
+        %p.text-center#submission_text UNTIL SUBMISSIONS DUE
       .timer__container
         %p.text-center#timer_hack
         %p.text-center#submission_text UNTIL HACKING IS DONE
@@ -44,7 +44,7 @@
               document.getElementById("timer_hack").innerHTML = "00h 00m 00s";
             }
           }, 1000);
- 
+
 .section#announce
   %h2.text-center Announcements
   .announce__column__container
@@ -52,7 +52,7 @@
       #twitter__container
         %a.twitter-timeline{"data-height" => "600", "data-width" => "500", :href => "https://twitter.com/codeRIT?ref_src=twsrc%5Etfw"} Tweets by codeRIT
         %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
-          
+
     .announce__right
 
 .section#info
@@ -72,11 +72,12 @@
       .info__box
         %h3.text-center WiFi
         %p.text-center SSID: <br>Password:
-.section#slack
-  %h2.text-center Join the Slack!      
-  .slack__container
-    %h1.text-center coderit.slack.com
-    
+
+.section.schedule#schedule
+  .schedule__wrapper
+    %h2.text-center Schedule
+    = render "schedule"
+
 .section.footer-break
 
 .section.footer

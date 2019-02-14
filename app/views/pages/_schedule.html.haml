@@ -2,9 +2,6 @@
 
 .page.white-section#schedule
   .home-content
-    %h2
-      .orange
-        Schedule
     - sections = event_schedule.sections
     - if sections.blank?
       %p.center Schedule temporarily unavailable - please check back later!
