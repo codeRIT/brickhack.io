@@ -78,13 +78,19 @@
     %h2.text-center Schedule
     = render "schedule"
 
-.section.schedule#challenges
+.section.schedule#challenges{style: 'max-width: 690px'}
   %h2.text-center Challenges
-  %p.text-center All prize categories can be found on Devpost.
-  %p.text-center Please submit your hack to Devpost by the submission deadline on Sunday!
+  %p.text.text-center There are a ton of categories to compete in! View on Devpost for the complete list.
+  %p.text.text-center
+    Several companies are sponsoring their own category as well.
+    %br
+    If you're interested, stop by their table!
+  %p.text.text-center
+    %strong Please submit your final project to Devpost
+    by the submission deadline on Sunday morning. Judging will take place Sunday afternoon, and all teams must be present to be considered.
   %br
   .text-center
-    = btn_link_to 'Devpost', 'https://brickhackv.devpost.com'
+    = btn_link_to 'Open Devpost &raquo;'.html_safe, 'https://brickhackv.devpost.com'
 
 
 .section.footer-break
