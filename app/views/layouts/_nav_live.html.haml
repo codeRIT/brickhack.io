@@ -1,22 +1,16 @@
-- simplified_nav = false if !defined?(simplified_nav)
-- if simplified_nav
-  - pages = ['Home']
-- else
-  - pages = ['Timer', 'Announcements', 'Important Info', 'Schedule', 'Challenges', 'Slack']
-
-- api_list = current_page?(:controller => 'pages', :action => 'apilist')
-- if api_list
-  - pages = ['Home']
-
+:ruby
+  pages = {
+    'Announcements' => '#announcements',
+    'Important Info' => '#important-info',
+    'Schedule' => '#schedule',
+    'Challenges' => '#challenges'
+  }
 
 %nav.section.nav
   .nav__links
-    - pages.each do |page|
-      - if api_list || simplified_nav
-        %a.nav__link{ href: "/" }= page
-      - else
-        %a.nav__link{ href: "##{page.downcase}" }= page
-   
+    - pages.each do |page, link|
+      %a.nav__link{ href: link }= page
+
   .nav__buttons
     - if current_user
       - if current_user.admin? || current_user.admin_limited_access?

@@ -50,7 +50,7 @@
   .announce__column__container
     .announce__left
       #twitter__container
-        %a.twitter-timeline{"data-height" => "600", "data-width" => "500", :href => "https://twitter.com/codeRIT?ref_src=twsrc%5Etfw"} Tweets by codeRIT
+        %a.twitter-timeline{"data-height" => "600", "data-width" => "500", :href => "https://twitter.com/brickhackrit?ref_src=twsrc%5Etfw"} Tweets by brickhackrit
         %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
 
     .announce__right
@@ -60,23 +60,49 @@
   .info__container
     .info__left
       .info__box
-        %h3.text-center Communications
-        %p.text-center Questions? Find us on Slack. <br> Message on the #help channel!
+        %h3.text.text-center Communications
+        %p.text.text-center
+          Let us know if you have any questions!
+          %br
+          Come by the info desk table, or message
+          = link_to '#infodesk', 'https://brickhackv.slack.com/messages/DG7N1D0UX/', target: 'blank'
+          on Slack.
       .info__box
-        %h3.text-center Our Locations
-        %p.text-center Location 1 <br> Location 2 <br> Location 3
+        %h3.text.text-center Map
+        .text.text-center
+          = btn_link_to 'BrickHack Map', image_path("map.pdf"), target: 'blank'
+          &nbsp;
+          = btn_link_to 'RIT Map', 'https://maps.rit.edu', target: 'blank'
     .info__right
       .info__box
-        %h3.text-center Links
-        %p.text-center Final Submissions due Sunday @ 12pm - <a href="">Click Here!</a> <br>Rent Hardware @ Thode 1st Floor: <a href="">Hardware List</a>
-      .info__box
-        %h3.text-center WiFi
-        %p.text-center SSID: <br>Password:
+        %br
+        %h3.text.text-center Hardware Lab
+        %p.text.text-center
+          MLH has provided a full lab of devices to check out during the weekend.
+          %br
+          Reserve your hardware online on MLH's hardware lab, then come by the hardware lab with a photo ID.
+        .text.text-center
+          = btn_link_to 'Hardware Lab', 'https://hardware.mlh.io', target: 'blank'
 
 .section.schedule#schedule
   .schedule__wrapper
     %h2.text-center Schedule
     = render "schedule"
+
+.section.schedule#challenges{style: 'max-width: 690px'}
+  %h2.text-center Challenges
+  %p.text.text-center There are a ton of categories to compete in! View on Devpost for the complete list.
+  %p.text.text-center
+    Several companies are sponsoring their own category as well.
+    %br
+    If you're interested, stop by their table!
+  %p.text.text-center
+    %strong Please submit your final project to Devpost
+    by the submission deadline on Sunday morning. Judging will take place Sunday afternoon, and all teams must be present to be considered.
+  %br
+  .text-center
+    = btn_link_to 'Open Devpost &raquo;'.html_safe, 'https://brickhackv.devpost.com'
+
 
 .section.footer-break
 
