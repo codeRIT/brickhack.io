@@ -1,4 +1,5 @@
 - event_schedule = Schedule.new("1Twk2i_aKYlYcW21eNikbdJwHVS3cWsFBr5JD4xvqMr4", 0)
+- current_time = Time.now
 
 .page.white-section#schedule
   .home-content
@@ -8,26 +9,32 @@
       %br
     - else
       - first_used = false
-      - sections.each do |section|
+      - sections.each_with_index do |section, section_index|
+        - section_date = Rails.configuration.hackathon['event_start_date'] + (section_index * 1.day)
         .schedule__section
           .schedule__day
             .schedule__day-text= section.shift
           .schedule__rows
             - section.each_with_index do |row, index|
+              - time, title, location, desc = row # row[0], [1], [2], and [3]
+              - parsed_time = Time.zone.parse("#{section_date.to_s} #{time}")
               - row_class = []
               - row_class << 'schedule__row--static' if row[2] && row[3] == ':static'
-              - row_class << 'schedule__row--selected' && first_used = true unless first_used
+              - if parsed_time < current_time
+                - row_class << 'schedule__row--past' && first_used = true
+              - elsif !first_used
+                - row_class << 'schedule__row--selected' && first_used = true
               - trigger_class = row[3] == ':static' ? '' : 'schedule__trigger'
               .schedule__row{ class: row_class.join(' ') }
-                .schedule__time{ class: trigger_class }= row[0]
+                .schedule__time{ class: trigger_class }= time
                 .schedule__line{ class: trigger_class }
                   .schedule__dot
                 .schedule__details
                   .schedule__title{ class: trigger_class }= row[1]
-                  - if row[2]
-                    .schedule__location= row[2]
-                  - if row[3] && row[3] != ':static'
-                    .schedule__desc= row[3].html_safe
+                  - if location
+                    .schedule__location= location
+                  - if desc && desc != ':static'
+                    .schedule__desc= desc.html_safe
     %p.grey
       %span.fa.fa-mouse-pointer.icon-space-r.icon-space-l
       Click on any event for more details

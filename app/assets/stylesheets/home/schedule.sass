@@ -3,7 +3,7 @@
 $schedule-unit: 15px
 $schedule-dot-size: 10px
 $schedule-breakpoint: 500px
-$schedule-transition-time: 0.2s
+$schedule-transition-time: 0.3s
 $schedule-transition-ease: ease-out
 
 .schedule__section
@@ -129,6 +129,18 @@ $schedule-transition-ease: ease-out
 .schedule__section:last-of-type .schedule__row:last-child
   .schedule__line
     height: 30px
+
+.schedule__row--past
+  .schedule__dot
+    background: #aaa
+    border-color: #aaa
+  .schedule__details
+    opacity: 0.5
+    transition: opacity $schedule-transition-time $schedule-transition-ease
+
+.schedule__row--past.schedule__row--selected
+  .schedule__details
+    opacity: 1.0
 
 .schedule__row--hover
   .schedule__title
