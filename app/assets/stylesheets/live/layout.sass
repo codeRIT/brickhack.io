@@ -36,6 +36,9 @@ body
     padding-left: 20px
     padding-right: 20px
 
+.info__container
+  margin-top: 25px
+
 /*
  * Timer
  */
@@ -44,30 +47,41 @@ body
   margin-top: 2%
 
 .timer__column__container
-  //display: flex
-
-.timer__left
-  //flex: 1
-
-.timer__right
-  //flex: 1
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-around
+  align-items: center
+  margin-bottom: 100px
 
 .timer__container
-  padding: 25px 0px 20px 0px
+  margin-left: 10px
+  margin-right: 10px
 
 #timer_submission
-  font-size: 125px
-  padding: 25px 0px 25px 0
+  font-size: 50px
+  padding: 25px 0px 0 0
 #submission_text
-  font-size: 40px
+  font-size: 24px
   color: #F98728
 #timer_hack
-  font-size: 125px
-  padding: 25px 0px 25px 0px
+  font-size: 50px
+  padding: 25px 0px 0 0px
+
+.section.schedule#schedule
+  margin-top: 100px
+
+#challenges
+  margin-top: 100px
+  margin-bottom: 150px
 
 /*
  * Announcements
  */
+#announcements
+  margin-top: 50px
+  @media (max-width: 850px)
+    margin-top: 0px
+
 .announce__column__container
   display: flex
   flex-flow: row wrap
@@ -75,19 +89,20 @@ body
   margin-left: -10px
   margin-right: -10px
 
-.announce__left
+.announce__left, .announce__right
   flex: 1
-  min-width: 300px
-  max-width: 500px
-  margin-left: 10px
-  margin-right: 10px
-.announce__right
-  flex: 1
-  margin-left: 10px
-  margin-right: 10px
-  max-height: 600px
+  width: 100%
+  padding-left: 10px
+  padding-right: 10px
+  padding-bottom: 10px
   display: flex
   flex-flow: column nowrap
+
+.announce__left
+  min-width: 300px
+  max-width: 500px
+.announce__right
+  max-height: 600px
 
 .button__wrapper
   text-align: center
