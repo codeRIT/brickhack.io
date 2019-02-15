@@ -1,14 +1,20 @@
 - slack_announcement = Slack.new
 
-.slack#announcement
 - sections = slack_announcement
-- if sections.blank?
-  %p.center Announcements temporarily unavailable - please check back later!
-  %br
-- else
-  - sections.response["messages"].each do |message| 
-    - text = message["text"].gsub('<!channel>', '@channel')
-    %p= text
-    - if !message["attachments"].nil?
-      - if !message["attachments"][0]["image_url"].nil?
-        %img{:src => message["attachments"][0]["image_url"]}
+  - if sections.blank?
+    %p.center Announcements temporarily unavailable - please check back later!
+    %br
+  - else 
+    %table
+      %tbody
+        %th 
+          Announcements
+        - sections.response["messages"].each do |message| 
+        - text = message["text"].gsub('<!channel>', '@channel')
+        %tr
+          %td
+            - if !message["attachments"].nil?
+              - if !message["attachments"][0]["image_url"].nil?
+                %img{:src => message["attachments"][0]["image_url"]}
+            - else 
+              =text
