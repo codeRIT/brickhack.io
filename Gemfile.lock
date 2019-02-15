@@ -152,7 +152,7 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
-    hackathon_manager (0.13.7)
+    hackathon_manager (0.13.8)
       ajax-datatables-rails (~> 0.4.0)
       aws-sdk-s3
       blazer
