@@ -14,7 +14,13 @@ class Slack
   end
 
   def response
-    response = HTTParty.get("#{SLACK_METHOD}?token=#{SLACK_TOKEN}&channel=#{CHANNEL}&count=#{COUNT}")
-    response ? response.parsed_response.to_hash : nil
+    # There's two levels of caching going on here.
+    # 1. "@response ||=" which caches in memory for subsequent calls to response() within the same Slack instance / web request
+    # 2. "Rails.cache" which caches between requests (up until expiry)
+    @response ||= Rails.cache.fetch(cache_key, expires_in: 1.minute) do
+      response = HTTParty.get("#{SLACK_METHOD}?token=#{SLACK_TOKEN}&channel=#{CHANNEL}&count=#{COUNT}")
+      # to_hash is used here to guarantee Rails/Redis can cache it properly
+      response ? response.parsed_response.to_hash : nil
+    end
   end
 end
