@@ -6,7 +6,7 @@ COUNT = 20.freeze
 
 class Slack
   def initialize
-    if !response || response["ok"] == false ?
+    if !response || response["ok"] == false
       Rails.logger.error "Error reading Slack. Response: #{response['error'].inspect}"
       return
     end
