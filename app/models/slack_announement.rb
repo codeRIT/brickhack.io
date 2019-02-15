@@ -2,7 +2,7 @@ require 'httparty'
 SLACK_TOKEN = ENV['SLACK_TOKEN']
 CHANNEL = "CEVDW26C8".freeze
 SLACK_METHOD = "https://slack.com/api/channels.history".freeze
-COUNT = 20.freeze
+COUNT = 20
 
 class Slack
   def initialize
