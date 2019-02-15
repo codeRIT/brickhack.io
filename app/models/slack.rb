@@ -1,16 +1,16 @@
 require 'httparty'
-SLACK_TOKEN = ENV['SLACK_TOKEN']
+SLACK_TOKEN = ENV['SLACK_API_TOKEN']
 CHANNEL = "CEVDW26C8".freeze
 SLACK_METHOD = "https://slack.com/api/channels.history".freeze
 COUNT = 20
 
 class Slack
-  def initialize
+  def initialize(sheet = 0)
     if !response || response["ok"] == false
       Rails.logger.error "Error reading Slack. Response: #{response['error'].inspect}"
       return
     end
-    @sheet = response["messages"].map(&:text)
+    @sheet = response["messages"].map { |message| message["text"] }
   end
 
   def response

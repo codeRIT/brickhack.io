@@ -1,0 +1,13 @@
+- slack_announcement = Slack.new
+
+- sections = slack_announcement
+- if sections.blank?
+  %p.center Announcements temporarily unavailable - please check back later!
+  %br
+- else
+  - sections.response["messages"].each do |message| 
+    - url = message["text"].match(/<http.*)?>/)
+    %p= message["text"]
+    - if !message["attachments"].nil?
+      - if !message["attachments"][0]["image_url"].nil?
+        %img{:src => message["attachments"][0]["image_url"]}
