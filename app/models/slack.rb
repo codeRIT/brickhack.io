@@ -5,7 +5,7 @@ SLACK_METHOD = "https://slack.com/api/channels.history".freeze
 COUNT = 20
 
 class Slack
-  def initialize(sheet = 0)
+  def initialize
     if !response || response["ok"] == false
       Rails.logger.error "Error reading Slack. Response: #{response['error'].inspect}"
       return
