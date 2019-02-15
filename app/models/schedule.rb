@@ -42,6 +42,7 @@ class Schedule
     # 2. "Rails.cache" which caches between requests (up until expiry)
     @sheet_data ||= Rails.cache.fetch(cache_key, expires_in: 5.minutes) do
       response = HTTParty.get("#{SHEETS_URL}/#{@spreadsheet_id}?#{SHEETS_FIELDS}&key=#{SHEETS_KEY}")
+      # to_hash is used here to guarantee Rails/Redis can cache it properly
       response ? response.parsed_response.to_hash : nil
     end
   end
