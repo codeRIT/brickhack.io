@@ -4,6 +4,20 @@
 = render "layouts/hackathon_manager/flashes"
 = render "layouts/nav_live"
 
+.section#announcements
+  %br
+  %br
+  %br
+  %h2.text-center Announcements
+  .announce__column__container
+    .announce__left
+      #twitter__container
+        %a.twitter-timeline{"data-height" => "600", "data-width" => "100%", :href => "https://twitter.com/brickhackrit?ref_src=twsrc%5Etfw"} Tweets by brickhackrit
+        %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
+
+    .announce__right
+      = render "slack_announcements"
+
 .section#timer
   .timer__section
     .timer__column__container
@@ -44,17 +58,6 @@
               document.getElementById("timer_hack").innerHTML = "00h 00m 00s";
             }
           }, 1000);
-
-.section#announcements
-  %h2.text-center Announcements
-  .announce__column__container
-    .announce__left
-      #twitter__container
-        %a.twitter-timeline{"data-height" => "600", "data-width" => "500", :href => "https://twitter.com/brickhackrit?ref_src=twsrc%5Etfw"} Tweets by brickhackrit
-        %script{:async => "", :charset => "utf-8", :src => "https://platform.twitter.com/widgets.js"}
-
-    .announce__right
-      = render "slack_announcements"
 
 .section#info
   %h2.text-center Important Information
