@@ -75,19 +75,20 @@ body
   margin-left: -10px
   margin-right: -10px
 
-.announce__left
+.announce__left, .announce__right
   flex: 1
-  min-width: 300px
-  max-width: 500px
-  margin-left: 10px
-  margin-right: 10px
-.announce__right
-  flex: 1
-  margin-left: 10px
-  margin-right: 10px
-  max-height: 600px
+  width: 100%
+  padding-left: 10px
+  padding-right: 10px
+  padding-bottom: 10px
   display: flex
   flex-flow: column nowrap
+
+.announce__left
+  min-width: 300px
+  max-width: 500px
+.announce__right
+  max-height: 600px
 
 .button__wrapper
   text-align: center
