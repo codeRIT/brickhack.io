@@ -6,8 +6,8 @@
   %br
 - else
   - sections.response["messages"].each do |message| 
-    - url = message["text"].match(/<http.*)?>/)
-    %p= message["text"]
+    - text = message["text"].gsub('<!channel>', '@channel')
+    %p= text
     - if !message["attachments"].nil?
       - if !message["attachments"][0]["image_url"].nil?
         %img{:src => message["attachments"][0]["image_url"]}
