@@ -23,4 +23,8 @@ class Slack
       response ? response.parsed_response.to_hash : nil
     end
   end
+
+  def cache_key
+    "slack/#{CHANNEL}"
+  end
 end
