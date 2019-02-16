@@ -14,6 +14,10 @@
           match = Regexp.last_match
           "<a href=\"https://brickhackv.slack.com/messages/#{match[1]}/\" target=\"_blank\">##{match[2]}</a>"
         end
+        text = text.gsub(/<(https?:\/\/.+)\|(.+)>/) do |_|
+          match = Regexp.last_match
+          "<a href=\"#{match[1]}\" target=\"_blank\">#{match[2]}</a>"
+        end
         text = text.gsub(/<(https?:\/\/.*)>/) do |_|
           match = Regexp.last_match
           "<a href=\"#{match[1]}\" target=\"_blank\">#{match[1]}</a>"
