@@ -16,46 +16,53 @@
     .announce__right
       = render "slack_announcements"
 
-.section#timer
-  .timer__section
-    .timer__column__container
-      .timer__container
-        %p.text-center#timer_submission
-        %p.text-center#submission_text UNTIL SUBMISSIONS DUE
-      .timer__container
-        %p.text-center#timer_hack
-        %p.text-center#submission_text UNTIL HACKING IS DONE
-        :javascript
-          var submissionEnds = "Feb 17 2019 09:30:00";
-          var timerFunc = setInterval(function() {
-            var countDownDate = new Date(submissionEnds).getTime();
-            var now = new Date().getTime();
-            var untilDate = countDownDate - now;
-            var hours = Math.floor((untilDate/(1000*3600))%3600);
-            //var hours = Math.floor((untilDate%(1000*60*60*24))/(1000*60*60));
-            var minutes = Math.floor((untilDate % (1000*60*60))/(1000*60));
-            var seconds = Math.floor((untilDate % (1000*60))/1000);
-            document.getElementById("timer_submission").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
-            if(untilDate < 0){
-              clearInterval(timerFunc);
-              document.getElementById("timer_submission").innerHTML = "00h 00m 00s";
-            }
-          }, 1000);
-          var hackEnds = "Feb 17 2019 12:00:00";
-          var timerFuncHack = setInterval(function() {
-            var countDownDateHack = new Date(hackEnds).getTime();
-            var now = new Date().getTime();
-            var untilDateHack = countDownDateHack - now;
-            var hoursHack = Math.floor((untilDateHack/(1000*3600))%3600);
-            //var hoursHack = Math.floor((untilDateHack%(1000*60*60*24))/(1000*60*60));
-            var minutesHack = Math.floor((untilDateHack % (1000*60*60))/(1000*60));
-            var secondsHack = Math.floor((untilDateHack % (1000*60))/1000);
-            document.getElementById("timer_hack").innerHTML = hoursHack + "h "+minutesHack+"m "+secondsHack+"s ";
-            if(untilDateHack < 0){
-              clearInterval(timerFuncHack);
-              document.getElementById("timer_hack").innerHTML = "00h 00m 00s";
-            }
-          }, 1000);
+- if Time.now > Time.zone.parse('2019-02-16 12:00pm')
+  .section#timer
+    .timer__section
+      .timer__column__container
+        .timer__container
+          %p.text-center#timer_submission
+          %p.text-center#submission_text UNTIL SUBMISSIONS DUE
+        .timer__container
+          %p.text-center#timer_hack
+          %p.text-center#submission_text UNTIL HACKING IS DONE
+          :javascript
+            var submissionEnds = "Feb 17 2019 09:30:00";
+            var timerFunc = setInterval(function() {
+              var countDownDate = new Date(submissionEnds).getTime();
+              var now = new Date().getTime();
+              var untilDate = countDownDate - now;
+              var hours = Math.floor((untilDate/(1000*3600))%3600);
+              //var hours = Math.floor((untilDate%(1000*60*60*24))/(1000*60*60));
+              var minutes = Math.floor((untilDate % (1000*60*60))/(1000*60));
+              var seconds = Math.floor((untilDate % (1000*60))/1000);
+              document.getElementById("timer_submission").innerHTML = hours + "h "+minutes+"m "+seconds+"s ";
+              if(untilDate < 0){
+                clearInterval(timerFunc);
+                document.getElementById("timer_submission").innerHTML = "00h 00m 00s";
+              }
+            }, 1000);
+            var hackEnds = "Feb 17 2019 12:00:00";
+            var timerFuncHack = setInterval(function() {
+              var countDownDateHack = new Date(hackEnds).getTime();
+              var now = new Date().getTime();
+              var untilDateHack = countDownDateHack - now;
+              var hoursHack = Math.floor((untilDateHack/(1000*3600))%3600);
+              //var hoursHack = Math.floor((untilDateHack%(1000*60*60*24))/(1000*60*60));
+              var minutesHack = Math.floor((untilDateHack % (1000*60*60))/(1000*60));
+              var secondsHack = Math.floor((untilDateHack % (1000*60))/1000);
+              document.getElementById("timer_hack").innerHTML = hoursHack + "h "+minutesHack+"m "+secondsHack+"s ";
+              if(untilDateHack < 0){
+                clearInterval(timerFuncHack);
+                document.getElementById("timer_hack").innerHTML = "00h 00m 00s";
+              }
+            }, 1000);
+- else
+  %br
+  %br
+  %br
+  %br
+  %br
 
 .section#info
   %h2.text-center Important Information
