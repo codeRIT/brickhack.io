@@ -18,6 +18,7 @@
             - section.each_with_index do |row, index|
               - time, title, location, desc = row # row[0], [1], [2], and [3]
               - parsed_time = Time.zone.parse("#{section_date.to_s} #{time}")
+              - parsed_time += 30.minutes
               - row_class = []
               - row_class << 'schedule__row--static' if row[2] && row[3] == ':static'
               - if parsed_time < current_time
