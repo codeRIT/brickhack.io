@@ -23,7 +23,7 @@
           "<a href=\"#{match[1]}\" target=\"_blank\">#{match[1]}</a>"
         end
       .slack__announcement
-        %span.slack__time= Time.at(message["ts"].to_i).strftime('%l:%M %P')
+        %span.slack__time= Time.zone.at(message["ts"].to_i).strftime('%l:%M %P')
         - if !message["attachments"].nil?
           - if !message["attachments"][0]["image_url"].nil?
             .slack__image
