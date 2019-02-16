@@ -1,5 +1,6 @@
 - content_for(:head) do
   = stylesheet_link_tag 'live.css'
+  %meta{"http-equiv" => "refresh", content: 2.minutes}
 
 = render "layouts/hackathon_manager/flashes"
 = render "layouts/nav_live"
