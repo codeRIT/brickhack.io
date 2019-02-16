@@ -19,9 +19,10 @@
         %a.nav__link{ href: "##{page.downcase}" }= page
 
 
-    %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes'
-    -# %a.nav__link{href: "/live"}= 'Live'
-   
+    / %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes'
+    - if Time.now > Time.zone.parse('2019-02-16 12:00pm')
+      = btn_link_to 'Live', '/live'
+
 
   .nav__buttons
     - if current_user
