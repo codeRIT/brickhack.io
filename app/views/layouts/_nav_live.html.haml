@@ -10,6 +10,7 @@
   .nav__links
     - pages.each do |page, link|
       %a.nav__link{ href: link }= page
+    = btn_link_to 'Table Numbers', 'http://expo.brickhack.io'
 
   .nav__buttons
     - if current_user
