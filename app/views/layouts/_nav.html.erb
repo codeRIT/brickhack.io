@@ -58,7 +58,7 @@
           </a>
         <% end %>
         <% if current_user %>
-          <% if current_user.admin %>
+          <% if current_user.admin? %>
             <%= btn_link_to 'Manage', manage_dashboard_index_path %>
           <% else %>
             <%= btn_link_to 'My Account', questionnaires_path, class: 'mobile' %>
