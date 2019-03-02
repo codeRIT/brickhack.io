@@ -1,0 +1,41 @@
+<div class="header">
+  <div class="header__wrapper account-nav__wrapper">
+    <% if Rails.configuration.hackathon['logo_asset'] %>
+      <div class="header-logo">
+        <%= link_to root_path do %>
+          <%= image_tag Rails.configuration.hackathon['logo_asset'], id: 'logo', alt: "#{Rails.configuration.hackathon['name']} logo", title: Rails.configuration.hackathon['name'], class: 'header-logo__image' %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="header-nav">
+        <%= btn_link_to "Home", root_path %>
+      </div>
+    <% end %>
+    <div class="header-nav">
+      <% if user_signed_in? %>
+        <% if current_user.admin? || current_user.admin_limited_access? %>
+          <%= btn_link_to "Manage", manage_root_path %>
+        <% end %>
+        <%= btn_link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <% end %>
+    </div>
+  </div>
+
+  <% first_name = current_user&.questionnaire&.first_name.presence %>
+  <% page_title = content_for(:page_title) %>
+  <% if (first_name || page_title) && controller.class.parent != Manage %>
+    <div class="page-banner">
+      <div class="page-banner__inner">
+        <span class="page-banner__text">
+          <% if first_name %>
+            Hello, #{first_name}
+          <% else %>
+            <%= page_title %>
+          <% end %>
+        </span>
+      </div>
+    </div>
+    <div class="page-banner__left-background"></div>
+    <div class="page-banner__right-background"></div>
+  <% end %>
+</div>

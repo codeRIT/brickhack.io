@@ -1,0 +1,38 @@
+<%
+  slack_announcement = Slack.new
+  sections = slack_announcement
+%>
+
+<% if sections.blank? %>
+  <p class="center">Announcements temporarily unavailable - please check back later!</p>
+  <br/>
+<% else %>
+  <div class="slack__header">Slack #announcements</div>
+  <div class="slack__announcements">
+    <% sections.response["messages"].each do |message|
+      text = message["text"]
+      text = text.gsub(/<#(\w+)\|([\w-]+)>/) do |_|
+        match = Regexp.last_match
+        "<a href=\"https://brickhackv.slack.com/messages/#{match[1]}/\" target=\"_blank\">##{match[2]}</a>"
+      end
+      text = text.gsub(/<(https?:\/\/.+)\|(.+)>/) do |_|
+        match = Regexp.last_match
+        "<a href=\"#{match[1]}\" target=\"_blank\">#{match[2]}</a>"
+      end
+      text = text.gsub(/<(https?:\/\/.*)>/) do |_|
+        match = Regexp.last_match
+        "<a href=\"#{match[1]}\" target=\"_blank\">#{match[1]}</a>"
+      end
+    %>
+      <div class="slack__announcement">
+        <span class="slack__time"><%= Time.zone.at(message["ts"].to_i).strftime('%l:%M %P') %></span>
+        <% if !message["attachments"].nil? && !message["attachments"][0]["image_url"].nil? %>
+            <div class="slack__image">
+              <img src="<%= message["attachments"][0]["image_url"] %>" />
+            </div>
+        <% end %>
+        <%= text.html_safe %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
