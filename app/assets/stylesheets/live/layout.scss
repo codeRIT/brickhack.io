@@ -224,6 +224,16 @@ body {
   a:hover {
     color: darken($orange, 20%);
   }
+
+  // Cells in even rows (2,4,6...) are one color
+
+  &:nth-child(even) {
+    background: #fff;
+  }
+
+  &:nth-child(odd) {
+    background: #f8f8f8;
+  }
 }
 
 .slack__time {
@@ -235,18 +245,6 @@ body {
   width: 100%;
   text-align: center;
   margin-top: 4px;
-}
-
-// Cells in even rows (2,4,6...) are one color
-
-.slack__announcement {
-  &:nth-child(even) {
-    background: #fff;
-  }
-
-  &:nth-child(odd) {
-    background: #f8f8f8;
-  }
 }
 
 // Hover cell effect!
