@@ -1,0 +1,30 @@
+.flashes {
+  display: block;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  opacity: 0;
+  animation: flashesFadeIn 400ms 100ms ease-out forwards;
+
+  .container {
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 18px 20px;
+    margin-top: 18px;
+    display: inline-block;
+  }
+}
+
+.flashes__icon {
+  margin-right: 6px;
+}
+
+@keyframes flashesFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
