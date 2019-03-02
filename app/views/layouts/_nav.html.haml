@@ -4,16 +4,12 @@
 - else
   - pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors']
 
-- api_list = current_page?(:controller => 'pages', :action => 'apilist')
 - live_path = current_page?(:controller => 'pages', :action =>'live')
-- if api_list
-  - pages = ['Home']
-
 
 %nav.section.nav
   .nav__links
     - pages.each do |page|
-      - if api_list || simplified_nav
+      - if simplified_nav
         %a.nav__link{ href: "/" }= page
       - else
         %a.nav__link{ href: "##{page.downcase}" }= page

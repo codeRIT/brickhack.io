@@ -16,16 +16,6 @@ class PagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  should "render design_category successfully" do
-    get :design_category
-    assert_response :success
-  end
-
-  should "render apilist successfully" do
-    get :apilist
-    assert_response :success
-  end
-
   context "while not authenticated" do
     should "not display incomplete notice" do
       get :index
