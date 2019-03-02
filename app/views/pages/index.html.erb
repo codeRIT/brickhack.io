@@ -1,0 +1,335 @@
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag 'home.css' %>
+<% end %>
+
+<%
+  if current_user && !current_user.admin?
+    q = current_user.questionnaire
+    if q.blank?
+      link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
+      flash[:notice] ||= "Your application is incomplete! #{link}"
+    elsif q.can_rsvp? && !q.did_rsvp?
+      link = link_to('RSVP now &raquo;'.html_safe, rsvp_path)
+      flash[:notice] ||= "We are awaiting your RSVP! #{link}"
+    end
+  end
+%>
+
+<%= render "layouts/hackathon_manager/flashes" %>
+<%= render "layouts/nav" %>
+
+<% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
+<% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
+
+<div class="section about" id="about">
+  <div class="about__wrapper">
+    <div class="about__left">
+      <div class="about__left-background"></div>
+
+      <%= image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo' %>
+
+      <p class="text subtitle">February 16-17, 2019 at the</p>
+      <p class="text subtitle">Rochester Institute of Technology</p>
+      <br/>
+
+      <% if Rails.configuration.hackathon['event_is_over'] %>
+        <h3>Thanks for a great BrickHack! See you next year!</h3>
+      <% elsif !Rails.configuration.hackathon['registration_is_open'] %>
+        <p class="text">Registration has closed</p>
+        <!-- = btn_link_to "Volunteer", volunteer_link -->
+        <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
+        <!-- = btn_link_to "Devpost", "https://brickhack4.devpost.com/" -->
+        <!-- = btn_link_to "Schedule", "#schedule" -->
+        <!-- %br -->
+        <!-- %br -->
+        <!-- %h3 Registration has closed. -->
+      <% end %>
+
+      <% if current_user %>
+        <% if current_user.admin? || current_user.admin_limited_access? %>
+          <%= btn_link_to "Manage", manage_dashboard_index_path %>
+        <% else %>
+          <%= btn_link_to "My Account", questionnaires_path %>
+        <% end %>
+      <% elsif Rails.configuration.hackathon['registration_is_open'] %>
+        <div>
+          <%= btn_link_to "Register Now", new_user_registration_path %>
+          <!-- = btn_link_to "Volunteer", volunteer_link -->
+        </div>
+      <% end %>
+
+      <% if Rails.configuration.hackathon['event_is_over'] %>
+        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
+        <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
+      <% end %>
+    </div>
+    <div class="about__right">
+      <div class="about__right-background"></div>
+      <h2 class="text-center">Brick City's Premiere Hackathon</h2>
+      <p class="text">
+        BrickHack brings
+        <b>designers, developers, and all sorts of makers</b>
+        together for 24 hours to create something from nothing.
+      </p>
+      <p class="text">
+        Mentors and industry representatives will lend expertise and watch as you dive into
+        <b>learning, developing, and producing a unique project.</b>
+      </p>
+      <p class="text">
+        Expect lots of free food, swag, coffee, and all-you-can-print 3D printers! From the novices to the experts, from designers to engineers,
+        <b>this one's for you!</b>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div class="section double-section">
+  <div class="video" id="video">
+    <div class="video__wrapper">
+      <div>
+        <p class="text video__description text-center">Watch a recap from last year</p>
+        <iframe allow="autoplay; encrypted-media" class="video__frame" frameborder="0" src="https://www.youtube-nocookie.com/embed/0fOUf1JwzBs"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="what" id="what">
+    <div class="what__wrapper">
+      <h2 class="text-center">
+        What is a <b>hackathon?</b>
+      </h2>
+      <p class="text">
+        A Hackathon is an invention marathon.
+        <b>Any student can attend!</b>
+        Really, any student...and it's completely <b>free.</b>
+        Don't worry about food, internet, or travel.
+      </p>
+      <p class="text">
+        Students work in teams and mentors are present to offer help. Sponsors attend to help, recruit, and promote their products. Teams compete in different categories and prizes are awarded, but
+        <b>everyone learns and everyone wins!</b>
+      </p>
+      <p class="text">
+        Come spend 24 hours with us at BrickHack and <b>dedicate time to learn, collaborate, build, and innovate.</b>
+      </p>
+      <p class="text">MLH has a great list of related questions over at <a href="https://mlh.io/faq" style="color: orange;">mlh.io/faq</a></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="section schedule" id="schedule">
+  <div class="schedule__wrapper">
+    <br/>
+    <h2 class="text-center">Schedule</h2>
+    <%= render "schedule" %>
+  </div>
+</div>
+
+
+<div class="section travel" id="travel">
+  <div class="travel__wrapper">
+    <h2 class="text-center">Travel</h2>
+    <div class="travel__text-wrapper">
+      <p class="text">
+        BrickHack V will be hosted at RIT in the
+        <b>Clark Gym</b>
+        \- 1 Lomb Memorial Dr, Rochester, NY.
+      </p>
+      <p class="text">We invite hackers from all over the US and Canada to join us for our annual event!</p>
+      <ul>
+        <li>
+          If you live in the Rochester, NY area or are driving to campus you can park in
+          <b>D lot.</b>
+        </li>
+        <li>
+          <b>Busses</b>
+          are being provided to a number of schools! If you're at one of these schools, you will see an option to sign up when you RSVP:
+          <ul>
+            <% BusList.all.pluck(:name).each do |name| %>
+              <li>
+                <%= name %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li>Don't see bus details when you RSVP? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a></li>
+      </ul>
+      <br/>
+      <p class="text">If you have any questions, please <a href="mailto:travel@brickhack.io" style="color: orange;">email us</a>!</p>
+      <p class="text">
+        To ensure the highest level of safety and security,
+        <b>all persons entering the venue will be subject to a security screening</b>
+        via the use of metal detectors and the inspection of bags.
+        To expedite the screening process, be prepared to remove belongings
+        made of metal from pockets upon entering the venue and be observant
+        of signage and the directions of security personnel
+        when entering the venue. No weapons (including knives of any kind,
+        style, or purpose) will be permitted in the venue.
+      </p>
+      <p class="text italic">Unfortunately we are unable to provide travel reimbursements at this time.</p>
+    </div>
+    <iframe class="map" frameborder="0" id="map" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1259.2930693215992!2d-77.67345753452042!3d43.08428833485804!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3f573101aa0cc496!2sGeorge+H+Clark+Gymnasium!5e1!3m2!1sen!2sus!4v1536014420677" style="border:0"></iframe>
+  </div>
+</div>
+
+
+<div class="section faq" id="faq">
+  <div class="faq__wrapper">
+    <h2 class="text-center">Frequently Asked Questions</h2>
+    <%= render "faq" %>
+  </div>
+</div>
+
+
+<div class="section sponsor" id="sponsors">
+  <div class="sponsor__wrapper">
+    <div class="sponsors">
+      <h2 class="text-center">Sponsors</h2>
+      <div class="sponsors-col sponsors-col-x-lg">
+        <a class="sponsor" href="https://www.datto.com" target="blank" title="Datto">
+          <%= image_tag 'sponsors/datto.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-lg">
+        <a class="sponsor" href="https://www.verizon.com/about/our-company/5g-labs" style="width:25%" target="blank" title="Verizon 5G Labs">
+          <%= image_tag 'sponsors_white/5g_labs_white.png' %>
+        </a>
+        <a class="sponsor" href="https://www.acvauctions.com/" style="width:40%" target="blank" title="ACV Auctions">
+          <%= image_tag 'sponsors/acv.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-lg">
+        <a class="sponsor" href="https://www.cbrands.com/" style="width:80%" target="blank" title="Constellation Brands">
+          <%= image_tag 'sponsors/constellation_brands.png' %>
+        </a>
+        <a class="sponsor" href="https://cloud.google.com" target="blank" title="Google Cloud Platform">
+          <%= image_tag 'sponsors_white/google_cloud_platform_white.png' %>
+        </a>
+        <a class="sponsor" href="https://www.wegmans.com/" style="width:75%" target="blank" title="Wegmans">
+          <%= image_tag 'sponsors_white/wegmans_white.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="https://www.tcgplayer.com/" style="width: 30%" target="blank" title="TCGplayer, Inc.">
+          <%= image_tag 'sponsors/tcg_player.png' %>
+        </a>
+        <a class="sponsor" href="https://readme.io/" style="width: 40%" target="blank" title="Readme">
+          <%= image_tag 'sponsors_white/readme_white.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="https://www.ainfosec.com/" style="width:20%" target="blank" title="Assured Information Security, Inc.">
+          <%= image_tag 'sponsors_white/ainfosec_white.png' %>
+        </a>
+        <a class="sponsor" href="https://unity3d.com" style="width:20%" target="blank" title="Unity">
+          <%= image_tag 'sponsors_white/unity_white.png' %>
+        </a>
+        <a class="sponsor" href="https://www.vuzix.com/" style="width:30%" target="blank" title="Vuzix">
+          <%= image_tag 'sponsors_white/vuzix_white.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="https://www.stickermule.com/uses/laptop-stickers?utm_source=sponsorship&utm_campaign=mlh-sponsorship&utm_medium=referral*" style="width:25%" target="blank" title="Sticker Mule">
+          <%= image_tag 'sponsors_white/stickermule_white.png' %>
+        </a>
+        <a class="sponsor" href="https://devpost.com" style="width:25%" target="blank" title="Devpost">
+          <%= image_tag 'sponsors_white/devpost_white.png' %>
+        </a>
+        <a class="sponsor" href="https://www.javascafe.com/" style="width:15%" target="blank" title="Java's Cafe">
+          <%= image_tag 'sponsors_white/javas_white.png' %>
+        </a>
+      </div>
+      <br/>
+      <br/>
+      <h2 class="text-center">Partners</h2>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="https://www.rit.edu/research/department/magic-center" style="width:30%" target="blank" title="MAGIC Center">
+          <%= image_tag 'sponsors/magic.gif' %>
+        </a>
+        <a class="sponsor" href="https://www.facebook.com/ritclubcafe/" style="width:20%" target="blank" title="RIT Club Cafe">
+          <%= image_tag 'sponsors_white/club_cafe_white.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="http://hack.rit.edu/" style="width: 40%" target="blank" title="The Construct @ RIT">
+          <%= image_tag 'sponsors/construct.png' %>
+        </a>
+        <a class="sponsor" href="https://www.rit.edu/studentaffairs/counseling/" style="width: 60%" target="blank" title="Counseling & Psychological Services">
+          <%= image_tag 'sponsors/counseling.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-med">
+        <a class="sponsor" href="http://www.rit.edu/research/simonecenter/" style="width:100%" target="blank" title="Simone Center for Innovation and Entrepreneurship">
+          <%= image_tag 'sponsors/simone.png' %>
+        </a>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <p class="text">
+      <b>Thinking about sponsoring?</b>
+    </p>
+    <p class="text" style="margin-bottom: 0.4em; line-height: 1.7;">BrickHack offers you the unique ability to connect directly with some of the top developer students.</p>
+    <br/>
+    <ul>
+      <li>Increase awareness of your brand amongst students of top talent.</li>
+      <li>Share your technology allowing students to utilize and expand on your products potential.</li>
+      <li>Advertise positions you're hiring for on our Devpost hackathon page.</li>
+      <li>Recruit student developers who share your company's passion.</li>
+    </ul>
+    <p class="text" style="margin-top: 0.4em; line-height: 1.7;">
+      Interested in sponsoring BrickHack? Contact
+      <%= link_to 'sponsorship@brickhack.io'.html_safe, 'mailto:sponsorship@brickhack.io?subject=BrickHack Sponsorship Inquiry', { style: 'color: orange;' } %>
+      to learn how to get started today!
+    </p>
+    <div class="button__wrapper">
+      <%= btn_link_to 'Learn More', image_path("BrickHackV.pdf"), { style: 'margin-bottom: 0px;', align: 'center' } %>
+    </div>
+  </div>
+</div>
+
+
+<div class="section footer-break"></div>
+
+
+<div class="section footer">
+  <div class="footer__rit">
+    <%= link_to 'https://rit.edu' do %>
+      <%= image_tag 'rit.svg', class: 'footer__rit-logo' %>
+    <% end %>
+    <p>
+      1 Lomb Memorial Drive
+      <br/>
+      Rochester, NY 14623
+    </p>
+  </div>
+  <div class="footer__about">
+    <p>
+      Student run by
+      <%= link_to 'https://codeRIT.org' do %>
+        <%= image_tag 'coderit_logo.png', class: 'footer__coderit-logo' %>
+      <% end %>
+    </p>
+    <p>
+      Find us on
+      <%= link_to 'GitHub', 'https://github.com/codeRIT/brickhack.io' %>
+    </p>
+  </div>
+  <div class="footer__contact">
+    <p>
+      <%= link_to 'Twitter', 'https://twitter.com/brickhackrit' %>
+    </p>
+    <p>
+      <%= link_to 'Facebook', 'https://www.facebook.com/brickhackrit' %>
+    </p>
+    <p>
+      <%= link_to 'Email', 'mailto:hello@brickhack.io' %>
+    </p>
+    <p>
+      <%= link_to 'Privacy Policy', image_path("Privacy_Policy.pdf") %>
+    </p>
+  </div>
+</div>
+<!-- Start of HubSpot Embed Code -->
+<script defer="defer" id="hs-script-loader" src="//js.hs-scripts.com/2104052.js" type="text/javascript"></script>
+<!-- End of HubSpot Embed Code -->
