@@ -1,0 +1,411 @@
+@import "variables";
+
+/* Base
+ */
+
+body, html {
+  height: 100%;
+  min-height: 250px;
+}
+
+body {
+  background: -moz-linear-gradient(#0F3F5D, #2A245F);
+  background: -ms-linear-gradient(#0F3F5D, #2A245F);
+  background: linear-gradient(#0F3F5D, #2A245F);
+  background-color: #2A245F;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: $white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: $font-light;
+  overflow-x: hidden;
+}
+
+/* Page components
+ */
+
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.double-section {
+  display: flex;
+  flex-flow: row wrap;
+  max-width: 1400px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* About section
+ */
+
+// .about
+//   height: calc(85% - 120px)
+
+.about__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  // height: 100%
+  justify-content: space-around;
+}
+
+.about__left, .about__right {
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-left: 20px;
+  margin-right: 20px;
+  min-height: calc(85vh - 120px);
+
+  @media (max-width: 1100px) {
+    min-height: calc(85vh - 80px);
+  }
+
+  @media (max-width: 480px) {
+    min-height: calc(105vh);
+    margin-top: -15vh;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.about__left {
+  text-align: center;
+
+  @media (max-width: 480px) {
+    height: 100%;
+  }
+}
+
+.about__right {
+  flex: 400px 1 1;
+  max-width: 500px;
+}
+
+.about__right p {
+  @media (min-width: 480px) {
+    padding-left: 10px;
+  }
+}
+
+.about__left-background {
+  background: asset-url("home/about-background-bricks.svg") no-repeat center center;
+  width: 600px;
+  height: 600px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.3;
+  background-size: 520px;
+
+  @media (max-width: 480px) {
+    background-image: asset-url("home/about-background-bricks-double.svg");
+    height: 1200px;
+    margin-top: 40px;
+  }
+}
+
+.about__right-background {
+  background: asset-url("home/about-background-circuit.svg") no-repeat center center;
+  width: 750px;
+  height: 590px;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.3;
+  background-size: 690px;
+  margin-top: 90px;
+  margin-left: 140px;
+}
+
+.about__logo {
+  width: 300px;
+  padding: 0 20px 20px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    width: 200px;
+  }
+}
+
+/* Video section
+ */
+
+.video {
+  padding-top: 49px;
+  padding-bottom: 50px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.video__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.video__frame {
+  margin-bottom: 15px;
+  width: 560px;
+  height: 315px;
+
+  @media (max-width: 1400px) {
+    width: 690px;
+    height: 390px;
+  }
+
+  @media (max-width: 680px) {
+    width: 560px;
+    height: 315px;
+  }
+
+  @media (max-width: 600px) {
+    width: 400px;
+    height: 225px;
+  }
+}
+
+.video__description {
+  font-style: italic;
+  font-size: 22px;
+}
+
+/* What section
+ */
+
+.what {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  @media (min-width: 1400px) {
+    width: 550px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  @media (max-width: 1400px) {
+    width: 100%;
+  }
+}
+
+.what__wrapper {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.what p {
+  @media (min-width: 1400px) {
+    padding-left: 20px;
+  }
+}
+
+/* Travel section
+ */
+
+.travel {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.travel__wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.travel__text-wrapper {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+/* FAQ section
+ */
+
+.faq {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.faq__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  height: 100%;
+  justify-content: space-around;
+}
+
+/* Sponsor section
+ */
+
+.sponsor {
+  padding-top: 50px;
+  padding-bottom: 7em;
+
+  @media (max-width: 480px) {
+    padding-bottom: 4em;
+  }
+}
+
+.sponsor a {
+  display:block {}
+}
+
+.sponsor__wrapper {
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.sponsors {
+  .sponsors-col {
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    .sponsor {
+      padding: 10px 10px;
+    }
+  }
+}
+
+.sponsors-col-x-lg {
+  margin-bottom: 50px;
+}
+
+.sponsors-col-x-lg img {
+  flex: 1 1;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsors-col-lg {
+  margin-bottom: 40px;
+}
+
+.sponsors-col-lg img {
+  flex: 2 2;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsors-col.sponsors-col-lg a {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsors-col-med {
+  margin-bottom: 30px;
+}
+
+.sponsors-col-med img {
+  flex: 2 2;
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsors-col-med a {
+  width: 70%;
+  display: block;
+  margin: 0 auto;
+}
+
+.sponsors-col-sm img {
+  flex-wrap: wrap;
+  flex: 2 2 100%;
+  width: 15%;
+  display: block;
+  margin: 0 auto;
+}
+
+.button__wrapper {
+  text-align: center;
+}
+
+/* Footer-break section
+ */
+
+.footer-break {
+  background: asset-url("home/background-bricks-wide.svg") no-repeat center center;
+  background-size: auto 120px;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 5em;
+  opacity: 0.75;
+
+  @media (max-width: 480px) {
+    background-size: auto 100px;
+    height: 100px;
+    margin-bottom: 3em;
+  }
+}
+
+/* Footer section
+ */
+
+.footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4em;
+}
+
+.footer, .footer p {
+  font-size: 14px;
+}
+
+.footer__rit-logo:hover, .footer__coderit-logo:hover {
+  opacity: 0.7;
+  transition: opacity 300ms ease-out;
+}
+
+.footer__rit-logo {
+  width: 90px;
+  margin-bottom: 0.5em;
+}
+
+.footer__coderit-logo {
+  margin-left: 1px;
+  margin-bottom: -5px;
+  width: 80px;
+}
+
+.footer__about {
+  text-align: center;
+}
+
+.footer__contact {
+  text-align: right;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    flex-flow: column nowrap;
+    justify-content: center;
+    padding-bottom: 3em;
+  }
+
+  .footer__rit, .footer__about, .footer__contact {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+}
