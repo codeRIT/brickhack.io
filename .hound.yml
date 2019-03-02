@@ -2,3 +2,5 @@ ruby:
   config_file: .rubocop.yml
 haml:
   config_file: .haml-lint.yml
+scss:
+  config_file: .scss-lint.yml
