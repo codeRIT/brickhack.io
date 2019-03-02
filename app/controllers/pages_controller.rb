@@ -8,10 +8,4 @@ class PagesController < ApplicationController
   def live
    # render(layout: nil)
   end
-
-  def design_category
-  end
-
-  def apilist
-  end
 end
