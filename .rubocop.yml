@@ -39,6 +39,9 @@ Style/ClassAndModuleChildren:
 Style/Documentation:
   Enabled: false
 
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
 Style/StringLiterals:
   Enabled: false
 
