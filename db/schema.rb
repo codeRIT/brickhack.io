@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_004941) do
+ActiveRecord::Schema.define(version: 2019_03_03_195317) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -218,6 +218,16 @@ ActiveRecord::Schema.define(version: 2019_02_14_004941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "questionnaire_count", default: 0
+  end
+
+  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "var", null: false
+    t.text "value"
+    t.integer "thing_id"
+    t.string "thing_type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
   end
 
   create_table "trackable_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
