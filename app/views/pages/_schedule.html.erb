@@ -1,6 +1,7 @@
 <%
   event_schedule = Schedule.new("1Twk2i_aKYlYcW21eNikbdJwHVS3cWsFBr5JD4xvqMr4", 0)
   current_time = Time.now
+  hackathon_start_date = Date.new(2019, 2, 16)
 %>
 
 <div class="page white-section" id="schedule">
@@ -12,7 +13,7 @@
     <% else %>
       <% first_used = false %>
       <% sections.each_with_index do |section, section_index| %>
-        <% section_date = Rails.configuration.hackathon['event_start_date'] + (section_index * 1.day) %>
+        <% section_date = hackathon_start_date + (section_index * 1.day) %>
         <div class="schedule__section">
           <div class="schedule__day">
             <div class="schedule__day-text">

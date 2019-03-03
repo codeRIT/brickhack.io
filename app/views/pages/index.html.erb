@@ -32,9 +32,9 @@
       <p class="text subtitle">Rochester Institute of Technology</p>
       <br/>
 
-      <% if Rails.configuration.hackathon['event_is_over'] %>
+      <% if EVENT_IS_OVER %>
         <h3>Thanks for a great BrickHack! See you next year!</h3>
-      <% elsif !Rails.configuration.hackathon['registration_is_open'] %>
+      <% elsif !REGISTRATION_IS_OPEN %>
         <p class="text">Registration has closed</p>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
         <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
@@ -51,14 +51,14 @@
         <% else %>
           <%= btn_link_to "My Account", questionnaires_path %>
         <% end %>
-      <% elsif Rails.configuration.hackathon['registration_is_open'] %>
+      <% elsif REGISTRATION_IS_OPEN %>
         <div>
           <%= btn_link_to "Register Now", new_user_registration_path %>
           <!-- = btn_link_to "Volunteer", volunteer_link -->
         </div>
       <% end %>
 
-      <% if Rails.configuration.hackathon['event_is_over'] %>
+      <% if EVENT_IS_OVER %>
         <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
         <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
       <% end %>
