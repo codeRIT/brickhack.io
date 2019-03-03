@@ -1,9 +1,9 @@
 <div class="header">
   <div class="header__wrapper account-nav__wrapper">
-    <% if Rails.configuration.hackathon['logo_asset'] %>
+    <% if HackathonConfig['logo_asset'] %>
       <div class="header-logo">
         <%= link_to root_path do %>
-          <%= image_tag Rails.configuration.hackathon['logo_asset'], id: 'logo', alt: "#{Rails.configuration.hackathon['name']} logo", title: Rails.configuration.hackathon['name'], class: 'header-logo__image' %>
+          <%= image_tag HackathonConfig['logo_asset'], id: 'logo', alt: "#{HackathonConfig['name']} logo", title: HackathonConfig['name'], class: 'header-logo__image' %>
         <% end %>
       </div>
     <% else %>
