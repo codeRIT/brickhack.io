@@ -32,7 +32,7 @@
         <%= btn_link_to 'My Account', questionnaires_path %>
       <% end %>
     <% else %>
-      <% if Rails.configuration.hackathon['registration_is_open'] %>
+      <% if REGISTRATION_IS_OPEN %>
         <%= btn_link_to 'Sign Up', new_user_registration_path %>
       <% else %>
         <%= link_to 'Sign In', new_user_session_path, class: 'nav__link' %>
@@ -64,7 +64,7 @@
             <%= btn_link_to 'My Account', questionnaires_path, class: 'mobile' %>
           <% end %>
         <% else %>
-          <% text = Rails.configuration.hackathon['registration_is_open'] ? 'Sign Up / Sign In' : 'Sign In' %>
+          <% text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In' %>
           <%= link_to text, new_user_registration_path, class: 'mobile' %>
         <% end %>
       </div>
