@@ -3,7 +3,7 @@
   sections = slack_announcement
 %>
 
-<% if sections.blank? %>
+<% if sections.blank? || sections.response.blank? || sections.response["messages"].blank? %>
   <p class="center">Announcements temporarily unavailable - please check back later!</p>
   <br/>
 <% else %>
