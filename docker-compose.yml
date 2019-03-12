@@ -29,18 +29,6 @@ services:
     environment:
       - REDIS_URL=redis://redis:6379
 
-  sidekiq:
-    build: .
-    command: sidekiq
-    depends_on:
-      - db
-      - redis
-    volumes:
-      - .:/app
-      - bundle_cache:/bundle
-    environment:
-      - REDIS_URL=redis://redis:6379
-
 volumes:
   bundle_cache:
   db_data:
