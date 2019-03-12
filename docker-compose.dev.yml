@@ -5,8 +5,3 @@ services:
       - ../hackathon_manager:/hackathon_manager
     environment:
       - HACKATHON_MANAGER_DEV=1
-  sidekiq:
-    volumes:
-      - ../hackathon_manager:/hackathon_manager
-    environment:
-      - HACKATHON_MANAGER_DEV=1
