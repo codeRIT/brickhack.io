@@ -2,9 +2,10 @@
 
 Rails.application.routes.draw do
   # Pages
+  get '', to: 'pages#thankyou'
   get '/live', to: 'pages#live'
   get '/comingsoon', to: 'pages#comingsoon'
-  get '/home', to: 'pages#index'
+  get '/home', to: 'pages#thankyou'
   get '/thankyou', to: 'pages#thankyou'
 
   # Homepage
