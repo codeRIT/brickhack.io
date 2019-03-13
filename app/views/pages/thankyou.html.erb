@@ -2,14 +2,13 @@
   <%= stylesheet_link_tag 'home.css' %>
 <% end %>
 
-
+<%= render "layouts/nav_ty" %>
 
 <div class="section about" id="about">
   <div class="about__wrapper">
     <div class="about__left">
       <div class="about__left-background"></div>
       <%= image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo' %>
-      <%= btn_link_to "Gallery", "/gallery" %>
     </div>
     <div class="about__right">
       <div class="about__right-background"></div>
