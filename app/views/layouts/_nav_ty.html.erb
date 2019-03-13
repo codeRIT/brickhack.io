@@ -5,7 +5,7 @@
 <nav class="section nav">
   <div class="nav__links">
     <% pages.each do |page| %>
-      <a class="nav__link" href="#<%= page.downcase %>">
+      <a class="nav__link" href="/<%= page.downcase %>">
         <%= page %>
       </a>
     <% end %>
