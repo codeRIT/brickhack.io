@@ -5,7 +5,7 @@
 <nav class="section nav">
   <div class="nav__links">
     <% pages.each do |page| %>
-      <a class="nav__link" href="/<%= page.downcase %>">
+      <a class="nav__link" href="/<%= page.downcase %>/">
         <%= page %>
       </a>
     <% end %>
@@ -24,30 +24,3 @@
 <a href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000" target="_blank">
   <img alt="Major League Hacking 2019 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" style="width:100%"/>
 </a>
-
-<!-- mobile nav
-  <nav class="mobile">
-    <i class="fa fa-bars mob-nav-header" id="hamburger-menu"></i>
-    <h2 class="mob-nav-header" style="font-size: 24px; text-align: left; color: white; padding:0; margin: 0; position: relative; top: -5px; font-weight: 300">BrickHack</h2>
-    <div id="mobile-nav">
-      <div class="nav-links">
-        <a class="active" href="#">BrickHack</a>
-        <% pages.each do |page| %>
-          <a href="#<%= page.downcase %>">
-            <%= page %>
-          </a>
-        <% end %>
-        <% if current_user %>
-          <% if current_user.admin? %>
-            <%= btn_link_to 'Manage', manage_dashboard_index_path %>
-          <% else %>
-            <%= btn_link_to 'My Account', questionnaires_path, class: 'mobile' %>
-          <% end %>
-        <% else %>
-          <% text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In' %>
-          <%= link_to text, new_user_registration_path, class: 'mobile' %>
-        <% end %>
-      </div>
-    </div>
-  </nav>
--->

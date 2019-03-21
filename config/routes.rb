@@ -2,14 +2,13 @@
 
 Rails.application.routes.draw do
   # Pages
-  get '', to: 'pages#thankyou'
   get '/live', to: 'pages#live'
   get '/comingsoon', to: 'pages#comingsoon'
-  get '/home', to: 'pages#thankyou'
+  get '/home', to: 'pages#index'
   get '/thankyou', to: 'pages#thankyou'
 
   # Homepage
 
   # root to: 'pages#index'
-  root to: 'pages#index'
+  root to: 'pages#thankyou'
 end
