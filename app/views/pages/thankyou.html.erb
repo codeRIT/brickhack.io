@@ -1,0 +1,23 @@
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag 'home.css' %>
+<% end %>
+
+<%= render "layouts/nav_ty" %>
+
+<div class="section about" id="about">
+  <div class="about__wrapper">
+    <div class="about__left">
+      <div class="about__left-background"></div>
+      <%= image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo' %>
+    </div>
+    <div class="about__right">
+      <div class="about__right-background"></div>
+      <center><h2>Thanks for a great BrickHack! <br> See you next year!</h2></center>
+      <p style = "margin-bottom: 10px">Join our mailing list!</p>
+      <%= btn_link_to "Subscribe", "http://eepurl.com/glscFj" %>
+    </div>
+  </div>
+</div>
+<!-- Start of HubSpot Embed Code -->
+<script defer="defer" id="hs-script-loader" src="//js.hs-scripts.com/2104052.js" type="text/javascript"></script>
+<!-- End of HubSpot Embed Code -->
