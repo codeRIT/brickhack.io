@@ -1,15 +1,11 @@
 <%
-  pages = ['Gallery', 'MLH Code of Conduct']
+  pages = ['Gallery'] 
 %>
 
 <nav class="section nav">
   <div class="nav__links">
     <% pages.each do |page| %>
-      <% if page.eql? 'MLH Code of Conduct' %>
-        <a class="nav__link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
-      <% else %>
       <a class="nav__link" href="/<%= page.downcase %>/">
-      <% end %>
         <%= page %>
       </a>
     <% end %>
