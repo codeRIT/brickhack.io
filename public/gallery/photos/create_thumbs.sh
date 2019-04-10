@@ -1,4 +1,5 @@
-#!/bin/bash -eo pipefail
+#!/bin/bash
+set -eo pipefail
 
 #
 # This script generates thumbnails for a year's gallery photos.
@@ -11,10 +12,10 @@
 YEAR_FOLDER=2019
 
 # Nothing below this line should need to be modified
-$FULL_FOLDER="${YEAR_FOLDER}/full"
-$THUMBS_FOLDER="${YEAR_FOLDER}/thumb"
+FULL_FOLDER="${YEAR_FOLDER}/full"
+THUMBS_FOLDER="${YEAR_FOLDER}/thumb"
 mkdir -p $THUMBS_FOLDER
-for file in "${FULL_FOLDER}/*"
+for file in ${FULL_FOLDER}/*
 do
   # next line checks the mime-type of the file
   CHECKTYPE=`file --mime-type -b "$file" | awk -F'/' '{print $1}'`
