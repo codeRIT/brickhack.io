@@ -1,6 +1,6 @@
 #!/bin/bash
-THUMBS_FOLDER=2018/thumb/*
-for file in 2018/full/*
+THUMBS_FOLDER=2019/thumb/*
+for file in 2019/full/*
 do
   # next line checks the mime-type of the file
   CHECKTYPE=`file --mime-type -b "$file" | awk -F'/' '{print $1}'`
