@@ -14,7 +14,7 @@ set -eo pipefail
 #     ./fix_full.sh 
 
 # UPDATE THIS FOR THE SPECIFIC YEAR TO GENERATE
-YEAR_FOLDER=2019
+YEAR_FOLDER=2018
 
 # Nothing below this line should need to be modified
 FULL_FOLDER="${YEAR_FOLDER}/full"
