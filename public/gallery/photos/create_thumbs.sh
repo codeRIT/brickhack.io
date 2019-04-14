@@ -26,11 +26,15 @@ do
   CHECKTYPE=`file --mime-type -b "$file" | awk -F'/' '{print $1}'`
   if [ "x$CHECKTYPE" == "ximage" ]; then
     #CHECKSIZE=`stat -f "%z" "$file"`               # this returns the filesize
-    #CHECKWIDTH=`identify -format "%W" "$file"`     # this returns the image width
+    CHECKWIDTH=`identify -format "%W" "$file"`     # this returns the image width
+    CHECKHEIGHT=`identify -format "%H" "$file"`     # this returns the image width
 
     # next 'if' is true if either filesize >= 200000 bytes  OR  if image width >=201
     #if [ $CHECKSIZE -ge  200000 ] || [ $CHECKWIDTH -ge 401 ]; then
-       convert -sample 400x300 "$file" "${THUMBS_FOLDER}/$(basename "$file")"
-    #fi
+    if [ $CHECKWIDTH -gt $CHECKHEIGHT ]; then
+       convert -resize 400x300 "$file" "${THUMBS_FOLDER}/$(basename "$file")"
+    else
+       convert -resize 400x603 "$file" "${THUMBS_FOLDER}/$(basename "$file")"
+    fi
   fi
 done

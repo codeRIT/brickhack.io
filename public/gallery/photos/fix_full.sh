@@ -6,12 +6,12 @@ set -eo pipefail
 # Run it like this:
 #
 #     cd /path/to/brickhack.io/public/gallery/photos/
-#     bash create_thumbs.sh
+#     bash fix_full.sh
 #
 #For Windows users, open docker and run:
 #     docker-compose run web bash
 #     cd public/gallery/photos
-#     ./create_thumbs.sh 
+#     ./fix_full.sh 
 
 # UPDATE THIS FOR THE SPECIFIC YEAR TO GENERATE
 YEAR_FOLDER=2019
@@ -29,9 +29,9 @@ do
     CHECKHEIGHT=`identify -format "%H" "$file"`
 
     if [ $CHECKWIDTH -gt $CHECKHEIGHT ]; then
-       convert -sample 1024x683 "$file" -auto-orient "${FULL_FOLDER}/$(basename "$file")"
+       convert -resize 1024x683 "$file" -auto-orient "${FULL_FOLDER}/$(basename "$file")"
     else
-       convert -sample 637x960 "$file" -auto-orient "${FULL_FOLDER}/$(basename "$file")"
+       convert -resize 637x960 "$file" -auto-orient "${FULL_FOLDER}/$(basename "$file")"
     fi
   fi
 done
