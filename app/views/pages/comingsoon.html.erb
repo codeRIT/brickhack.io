@@ -34,18 +34,6 @@
         </form>
       </div>
 
-      <% if current_user %>
-        <% if current_user.admin? || current_user.admin_limited_access? %>
-          <%= link_to manage_dashboard_index_path do %>
-            <div class="button">MANAGE</div>
-          <% end %>
-        <% else %>
-          <%= link_to questionnaires_path do %>
-            <div class="button">MY ACCOUNT</div>
-          <% end %>
-        <% end %>
-      <% end %>
-
       <%= btn_link_to 'Sponsor Info', image_path("BrickHack 4 Sponsorship Information.pdf"), { style: 'margin-bottom: 0px;' } %>
 
       <br/>

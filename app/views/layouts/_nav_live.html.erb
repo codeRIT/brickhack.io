@@ -17,13 +17,7 @@
     <%= btn_link_to 'Table Numbers', 'http://expo.brickhack.io' %>
   </div>
   <div class="nav__buttons">
-    <% if current_user %>
-      <% if current_user.admin? || current_user.admin_limited_access? %>
-        <%= btn_link_to 'Manage', manage_dashboard_index_path %>
-      <% else %>
-        <%= btn_link_to 'My Account', questionnaires_path %>
-      <% end %>
-    <% end %>
+    <%= btn_link_to 'My Account', 'https://apply.brickhack.io' %>
   </div>
 </nav>
 

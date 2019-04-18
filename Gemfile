@@ -9,6 +9,11 @@ gem 'puma'
 gem 'rails_12factor', group: :production
 gem 'test-unit', '~> 3.0'
 
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+gem 'font-awesome-rails', '~> 4.0'
+gem 'jquery-rails', '~> 4.3'
+
 gem 'rollbar', '~> 2.8'
 gem 'skylight'
 
