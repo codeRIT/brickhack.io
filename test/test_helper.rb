@@ -15,11 +15,7 @@ end
 
 require File.expand_path('../config/environment', __dir__)
 require "rails/test_help"
-require "strip_attributes/matchers"
 require "minitest/reporters"
-require "valid_attribute"
-require "sidekiq/testing"
-require "paperclip/matchers"
 
 if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
   module Kernel
@@ -44,13 +40,5 @@ Minitest::Reporters.use!
 # require "minitest/pride"
 
 class ActiveSupport::TestCase
-  extend StripAttributes::Matchers
-  include ValidAttribute::Method
-  extend Paperclip::Shoulda::Matchers
-
   # Add more helper methods to be used by all tests here...
-end
-
-class ActionController::TestCase
-  include Devise::Test::ControllerHelpers
 end
