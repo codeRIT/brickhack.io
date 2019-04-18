@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).chomp
 
 gem 'rails', '~> 5.2.0'
-gem 'mysql2', '>= 0.3.18', '< 0.5'
 
 gem 'puma'
 gem 'rails_12factor', group: :production

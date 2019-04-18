@@ -7,7 +7,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs
 
 # for mysql
-RUN apt-get install -y mysql-client
+# RUN apt-get install -y mysql-client
 
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
