@@ -91,24 +91,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Send email through Sparkpost API
-  config.action_mailer.delivery_method = :sparkpost
-
-  # Required for Devise
-  # RAILS_MAILER_DOMAIN allows staging to specify staging.brickhack.io instead of the default brickhack.io
-  mailer_domain = ENV['RAILS_MAILER_DOMAIN'].presence || 'brickhack.io'
-  config.action_mailer.default_url_options = { host: mailer_domain, protocol: 'https' }
-  config.action_mailer.asset_host = "https://#{mailer_domain}"
-
-  # Paperclip
-  config.paperclip_defaults = {
-    storage: :s3,
-    bucket: ENV['AWS_BUCKET'],
-    s3_credentials: {
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    s3_region: ENV['AWS_REGION']
-  }
 end

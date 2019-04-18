@@ -18,7 +18,6 @@ require "rails/test_help"
 require "strip_attributes/matchers"
 require "minitest/reporters"
 require "valid_attribute"
-require "factory_bot_rails"
 require "sidekiq/testing"
 require "paperclip/matchers"
 
@@ -36,7 +35,6 @@ if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
 end
 
 Minitest::Reporters.use!
-FactoryBot.reload
 
 # To add Capybara feature tests add `gem "minitest-rails-capybara"`
 # to the test group in the Gemfile and uncomment the following:
@@ -45,14 +43,9 @@ FactoryBot.reload
 # Uncomment for awesome colorful output
 # require "minitest/pride"
 
-def sample_file(filename = "sample_pdf.pdf")
-  File.new("test/fixtures/#{filename}")
-end
-
 class ActiveSupport::TestCase
   extend StripAttributes::Matchers
   include ValidAttribute::Method
-  include FactoryBot::Syntax::Methods
   extend Paperclip::Shoulda::Matchers
 
   # Add more helper methods to be used by all tests here...
