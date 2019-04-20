@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "dokku": {
-      "predeploy": "bin/rails db:create",
-      "postdeploy": "bin/rails db:migrate"
-    }
-  }
-}
