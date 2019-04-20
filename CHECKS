@@ -2,4 +2,3 @@ WAIT=10
 ATTEMPTS=20
 
 /               BrickHack
-/users/sign_in  Sign In

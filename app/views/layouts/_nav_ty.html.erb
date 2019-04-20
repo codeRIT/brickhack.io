@@ -1,5 +1,5 @@
 <%
-  pages = ['Gallery'] 
+  pages = ['Gallery']
 %>
 
 <nav class="section nav">
@@ -10,15 +10,7 @@
       </a>
     <% end %>
   </div>
-  <div class="nav__buttons">
-    <% if current_user %>
-      <% if current_user.admin? || current_user.admin_limited_access? %>
-        <%= btn_link_to 'Manage', manage_dashboard_index_path %>
-      <% else %>
-        <%= btn_link_to 'My Account', questionnaires_path %>
-      <% end %>
-    <% end %>
-  </div>
+  <div class="nav__buttons"></div>
 </nav>
 
 <a href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000" target="_blank">

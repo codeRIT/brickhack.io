@@ -25,19 +25,7 @@
     <%= btn_link_to 'Live', '/live' %>
   </div>
   <div class="nav__buttons">
-    <% if current_user %>
-      <% if current_user.admin? || current_user.admin_limited_access? %>
-        <%= btn_link_to 'Manage', manage_dashboard_index_path %>
-      <% else %>
-        <%= btn_link_to 'My Account', questionnaires_path %>
-      <% end %>
-    <% else %>
-      <% if REGISTRATION_IS_OPEN %>
-        <%= btn_link_to 'Sign Up', new_user_registration_path %>
-      <% else %>
-        <%= link_to 'Sign In', new_user_session_path, class: 'nav__link' %>
-      <% end %>
-    <% end %>
+    <%= btn_link_to 'Sign Up', 'https://apply.brickhack.io' %>
   </div>
 </nav>
 
@@ -57,16 +45,7 @@
             <%= page %>
           </a>
         <% end %>
-        <% if current_user %>
-          <% if current_user.admin? %>
-            <%= btn_link_to 'Manage', manage_dashboard_index_path %>
-          <% else %>
-            <%= btn_link_to 'My Account', questionnaires_path, class: 'mobile' %>
-          <% end %>
-        <% else %>
-          <% text = REGISTRATION_IS_OPEN ? 'Sign Up / Sign In' : 'Sign In' %>
-          <%= link_to text, new_user_registration_path, class: 'mobile' %>
-        <% end %>
+        <%= link_to 'Sign Up', 'https://apply.brickhack.io', class: 'mobile' %>
       </div>
     </div>
   </nav>

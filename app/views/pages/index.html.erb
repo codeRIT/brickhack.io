@@ -2,20 +2,6 @@
   <%= stylesheet_link_tag 'home.css' %>
 <% end %>
 
-<%
-  if current_user && !current_user.admin?
-    q = current_user.questionnaire
-    if q.blank?
-      link = link_to('Finish it now &raquo;'.html_safe, new_user_registration_path)
-      flash[:notice] ||= "Your application is incomplete! #{link}"
-    elsif q.can_rsvp? && !q.did_rsvp?
-      link = link_to('RSVP now &raquo;'.html_safe, rsvp_path)
-      flash[:notice] ||= "We are awaiting your RSVP! #{link}"
-    end
-  end
-%>
-
-<%= render "layouts/hackathon_manager/flashes" %>
 <%= render "layouts/nav" %>
 
 <% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
@@ -45,18 +31,11 @@
         <!-- %h3 Registration has closed. -->
       <% end %>
 
-      <% if current_user %>
-        <% if current_user.admin? || current_user.admin_limited_access? %>
-          <%= btn_link_to "Manage", manage_dashboard_index_path %>
-        <% else %>
-          <%= btn_link_to "My Account", questionnaires_path %>
-        <% end %>
-      <% elsif REGISTRATION_IS_OPEN %>
-        <div>
-          <%= btn_link_to "Register Now", new_user_registration_path %>
-          <!-- = btn_link_to "Volunteer", volunteer_link -->
-        </div>
-      <% end %>
+
+      <div>
+        <%= btn_link_to "Register Now", "https://apply.brickhack.io" %>
+        <!-- = btn_link_to "Volunteer", volunteer_link -->
+      </div>
 
       <% if EVENT_IS_OVER %>
         <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
@@ -145,11 +124,7 @@
           <b>Busses</b>
           are being provided to a number of schools! If you're at one of these schools, you will see an option to sign up when you RSVP:
           <ul>
-            <% BusList.all.pluck(:name).each do |name| %>
-              <li>
-                <%= name %>
-              </li>
-            <% end %>
+            TODO: update
           </ul>
         </li>
         <li>Don't see bus details when you RSVP? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a></li>

@@ -6,13 +6,9 @@
 [![Test Coverage](https://codeclimate.com/github/codeRIT/brickhack.io/badges/coverage.svg)](https://codeclimate.com/github/codeRIT/brickhack.io/coverage)
 [![security](https://hakiri.io/github/codeRIT/brickhack.io/develop.svg)](https://hakiri.io/github/codeRIT/brickhack.io/develop)
 
-The public facing site for BrickHack.
+The public facing website for BrickHack.
 
-* **Hacker applications:** Users sign up/in using [MyMLH](https://my.mlh.io/), which includes standard hackathon application info. This pre-fills the BrickHack application, so hackers don't have to duplicate information.
-* **Acceptance, RSVPs**: Manage applications & coordinate acceptance/waitlist/denials.
-* **Bus Lists:** Coordinate bus sign-ups during the RSVP process while communicating important information to riders & captains.
-* **Email communication**: Ensure hackers get consistent, timely information throughout their application process, while enabling the organizing team to communicate important information at any time.
-* **Statistics & Visualization:** Surface key information about the application base, distribution of applicants, progress towards attendance, etc.
+**Registration + management site: [hackathon_manager](https://github.com/codeRIT/hackathon_manager)**
 
 # Getting Started
 
@@ -35,55 +31,18 @@ You should then be able to open the code in your editor of choice.
 ```bash
 docker-compose up --build
 ```
-4. **In a new terminal window,** setup the database:
-```bash
-docker-compose run web rails db:setup
-```
 5. You should now be able to access the website at http://localhost:3000
 _**Windows users:** be sure to accept the security pop-ups - they might be hidden! The website will not start until you accept them._
 
 #### Running tests
 
-Most core functionality is provided by [hackathon_manager](https://github.com/codeRIT/hackathon_manager), leaving this repo solely to surface the homepage (and any other pages). The main goal with this is to make sure every page loads successfully - there isn't too much else to test.
+Tests validate all of our pages load correctly.
 
 1. Copy the sample environment variables (`cp .env.sample .env`)
 2. Run the test suite using Docker:
 ```bash
 docker-compose run web rails test
 ```
-
-## Authentication & Admin Testing
-
-You'll want to make an account & promote yourself to an admin in order to access the entire website.
-
-1. Visit http://localhost:3000/users/sign_up
-2. Sign up for a regular account
-3. Promote yourself to an admin:
-```bash
-docker-compose run web rails c
-# Wait for the console to start...
-Loading development environment (Rails 5.1.1)
-irb(main):001:0> User.last.update_attribute(:admin, true)
-```
-5. You should now be able to access [`/manage`](http://localhost:3000/manage) (with `docker-compose up` still running)
-
-#### MyMLH Authentication
-
-Login is optionally available through [MyMLH](https://my.mlh.io). To use MyMLH locally, you'll need to create a local account & add test MyMLH credentials.
-
-1. Copy the sample environment variables (`cp .env.sample .env`)
-2. Replace the values in `.env` with our test MyMLH credentials. *Contact a contributor to obtain these, or [create your own app](https://my.mlh.io/docs).*
-2. Start up the local server (`docker-compose up` or `docker-compose restart web`)
-3. Visit [`/manage`](https://localhost:3000/manage) and sign in with MyMLH. You'll be asked to sign in to MyMLH and authorize the applicaiton. Upon doing so, you'll be redirected back to your local server.
-4. Repeat [steps 3 & 4 from above](#authenticaiton-admin-testing).
-
-## Development Utilities
-
-* **Mail View** - Email templates can be previewed at http://localhost:3000/rails/mailers
-* **Mail Catcher** - When active, emails will be captured by MailCatcher instead of slipping into a black hole (no emails are ever sent in development). Visit [mailcatcher.me](http://mailcatcher.me/) and follow instructions under "How" to get setup.
-* **Guard** - Automatically runs tests based on the files you edit. `docker-compose run bundle exec guard`
-* **Coverage** - Test coverage can be manually generated via the `docker-compose run web rails coverage:run` command. Results are then made available in the `coverage/` directory.
-* **Sidekiq** - Run background jobs (such as emails) and view active & completed jobs. Sidekiq is automatically started with Docker - a dashboard is available at http://localhost:3000/sidekiq (*also available in production*).
 
 ### Browser Testing
 
@@ -97,37 +56,25 @@ Thanks to [BrowserStack's open source program](https://www.browserstack.com/open
 ```bash
 docker-compose restart web
 ```
-* If you need to restart Sidekiq, the background job worker that handles emails:
-```bash
-docker-compose restart sidekiq
-```
 * If you need to make changes to the Gemfile:
 ```bash
 # 1. Make your changes to Gemfile
 # 2. Run a `bundle install` to update the Gemfile.lock
 docker-compose run web bundle install
-# 3. Update the "web" and "sidekiq" docker images
-docker-compose build web sidekiq
-# 4. Start the new containers.
+# 3. Update the "web" docker image
+docker-compose build web
+# 4. Start the new container.
 #    If `docker-compose up` isn't already running, exclude "-d"
-docker-compose up -d web sidekiq
+docker-compose up -d web
 ```
 * If you make a change to the Gemfile, such as for installing a new gem:
 ```bash
 docker-compose run web bundle install
 docker-compose restart web
 ```
-* If you're working on the `hackathon_manager` locally:
+* If you need to update a gem:
 ```bash
-# hackathon_manager should be cloned to the same folder above brickhack.io
-git clone git@github.com:codeRIT/hackathon_manager.git ../hackathon_manager
-# Start up services with the development config
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
-```
-* If you need to update a gem, such as `hackathon_manager`:
-```bash
-# replace hackathon_manager with the gem's name
-docker-compose run web bundle update hackathon_manager
+docker-compose run web bundle update the-gem
 docker-compose restart web
 ```
 

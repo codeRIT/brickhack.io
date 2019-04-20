@@ -1,12 +1,5 @@
-version: '3'
+version: "3"
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - db_data:/var/lib/mysql
-    environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-
   redis:
     image: redis:4.0-alpine
 
@@ -21,7 +14,6 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
       - redis
     volumes:
       - .:/app
@@ -31,4 +23,3 @@ services:
 
 volumes:
   bundle_cache:
-  db_data:
