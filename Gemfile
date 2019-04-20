@@ -5,6 +5,7 @@ ruby IO.read(File.expand_path('.ruby-version', __dir__)).chomp
 gem 'rails', '~> 5.2.0'
 
 gem 'puma'
+gem 'uglifier', '>= 1.3.0'
 gem 'rails_12factor', group: :production
 gem 'test-unit', '~> 3.0'
 
