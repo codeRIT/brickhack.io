@@ -39,5 +39,3 @@ group :test do
   gem 'codeclimate-test-reporter', '~> 0.6.0', require: nil
   gem 'rails-controller-testing' # Rails 4 fallback
 end
-
-gem 'sparkpost_rails'
