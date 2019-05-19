@@ -15,9 +15,11 @@
   <div class="nav__links">
     <% pages.each do |page| %>
       <% if page == 'Live' %>
-        <a class="nav__link" href="/live">
-          <%= page %>
-        </a>
+        <div id="live__button" style="display:none">
+          <a class="nav__link" href="/live">
+            <%= page %>
+          </a>
+        </div>
       <% else %>
         <a class="nav__link" href="#<%= page.downcase %>">
           <%= page %>
@@ -33,7 +35,14 @@
 <a href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000" target="_blank">
   <img alt="Major League Hacking 2019 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" style="width:100%"/>
 </a>
-
+<script>
+  var now = new Date();
+  var start = new Date('Feb 07 2020 00:00');
+  var end = new Date('Feb 10 2020 00:00');
+  if (now >= start && now <= end){
+    document.getElementById("live__button").style.display = "block";
+  }
+</script>
 <!-- mobile nav
   <nav class="mobile">
     <i class="fa fa-bars mob-nav-header" id="hamburger-menu"></i>
