@@ -3,17 +3,20 @@
   if simplified_nav
     pages = ['Home']
   else
-    pages = ['Home', 'About', 'Schedule', 'Travel', 'FAQ', 'Sponsors']
+    pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors', 'Live']
   end
   live_path = current_page?(:controller => 'pages', :action =>'live')
 %>
 
 <nav class="section nav">
+  <a href="/">
+    <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6 Logo', class: 'nav__logo' %>
+  </a>
   <div class="nav__links">
     <% pages.each do |page| %>
-      <% if page == 'Home' %>
-        <a class="nav__link" href="/">
-          <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6 Logo', class: 'nav__logo' %>
+      <% if page == 'Live' %>
+        <a class="nav__link" href="/live">
+          <%= page %>
         </a>
       <% else %>
         <a class="nav__link" href="#<%= page.downcase %>">
@@ -21,11 +24,9 @@
         </a>
       <% end %>
     <% end %>
-    <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
-    <%= btn_link_to 'Live', '/live' %>
   </div>
-  <div class="nav__buttons">
-    <%= btn_link_to 'Sign Up', 'https://apply.brickhack.io' %>
+  <div class="nav__signup__button">
+    <%= btn_link_to 'Sign In', 'https://apply.brickhack.io' %>
   </div>
 </nav>
 
