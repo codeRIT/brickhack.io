@@ -15,7 +15,8 @@
   }
 
   &:hover {
+    color: $white;
     transform: scale(1.04);
-    text-shadow: 0 0 1px rgba($white, 0.6);
+    #text-shadow: 0 0 1px rgba($white, 0.6);
   }
 }
