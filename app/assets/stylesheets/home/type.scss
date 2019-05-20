@@ -21,13 +21,13 @@ h2 {
 }
 
 a, a:visited {
-  color: $white;
+  color: $orange;
   text-decoration: underline;
   transition: color 0.2s ease-out;
 }
 
 a:hover {
-  color: darken($white, 20%);
+  color: darken($orange, 20%);
 }
 
 /* Special variants

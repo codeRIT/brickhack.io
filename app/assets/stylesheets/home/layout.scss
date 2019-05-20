@@ -9,13 +9,13 @@ body, html {
 }
 
 body {
-  background: -moz-linear-gradient(#0F3F5D, #2A245F);
-  background: -ms-linear-gradient(#0F3F5D, #2A245F);
-  background: linear-gradient(#0F3F5D, #2A245F);
-  background-color: #2A245F;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  color: $white;
+  #background: -moz-linear-gradient(#0F3F5D, #2A245F);
+  #background: -ms-linear-gradient(#0F3F5D, #2A245F);
+  #background: linear-gradient(#0F3F5D, #2A245F);
+  #background-color: #2A245F;
+  #background-repeat: no-repeat;
+  #background-attachment: fixed;
+  color: #6A6A6A;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: $font-light;
@@ -103,7 +103,7 @@ body {
 }
 
 .about__left-background {
-  background: asset-url("home/about-background-bricks.svg") no-repeat center center;
+  #background: asset-url("home/about-background-bricks.svg") no-repeat center center;
   width: 600px;
   height: 600px;
   position: absolute;
@@ -119,7 +119,7 @@ body {
 }
 
 .about__right-background {
-  background: asset-url("home/about-background-circuit.svg") no-repeat center center;
+  #background: asset-url("home/about-background-circuit.svg") no-repeat center center;
   width: 750px;
   height: 590px;
   position: absolute;
