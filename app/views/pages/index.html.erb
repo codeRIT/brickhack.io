@@ -12,35 +12,14 @@
     <div class="about__left">
       <div class="about__left-background"></div>
 
-      <%= image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6', class: 'about__logo' %>
 
-      <p class="text subtitle">February 16-17, 2019 at the</p>
-      <p class="text subtitle">Rochester Institute of Technology</p>
-      <br/>
-
-      <% if EVENT_IS_OVER %>
-        <h3>Thanks for a great BrickHack! See you next year!</h3>
-      <% elsif !REGISTRATION_IS_OPEN %>
-        <p class="text">Registration has closed</p>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-        <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
-        <!-- = btn_link_to "Devpost", "https://brickhack4.devpost.com/" -->
-        <!-- = btn_link_to "Schedule", "#schedule" -->
-        <!-- %br -->
-        <!-- %br -->
-        <!-- %h3 Registration has closed. -->
-      <% end %>
-
-
+      <h4 class="subtitle"><strong>February 8-9, 2020</strong> at the<br>Rochester Institute of Technology's<br>Gordon Field House</h4>
+      
       <div>
         <%= btn_link_to "Register Now", "https://apply.brickhack.io" %>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-      </div>
-
-      <% if EVENT_IS_OVER %>
-        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
         <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
-      <% end %>
+      </div>
     </div>
     <div class="about__right">
       <div class="about__right-background"></div>
@@ -67,7 +46,7 @@
   <div class="video" id="video">
     <div class="video__wrapper">
       <div>
-        <p class="text video__description text-center">Watch a recap from last year</p>
+        <p class="text video__description text-center">Watch a Recap from BrickHack 4</p>
         <iframe allow="autoplay; encrypted-media" class="video__frame" frameborder="0" src="https://www.youtube-nocookie.com/embed/0fOUf1JwzBs"></iframe>
       </div>
     </div>

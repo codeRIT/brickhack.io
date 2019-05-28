@@ -34,8 +34,8 @@ a:hover {
  */
 
 .subtitle {
-  font-size: 20px;
-  margin-bottom: 0;
+  font-size: 25px;
+  margin-bottom: 20px;
 }
 
 /* On-demand style variations
@@ -76,9 +76,13 @@ ul ul > li {
   padding-bottom: 0;
 }
 
-b, strong, .bold {
+b, .bold {
   font-weight: 600;
   color: $orange;
+}
+
+strong{
+  font-weight: 600;
 }
 
 i, em, .italic {
