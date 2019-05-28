@@ -3,7 +3,7 @@
   if simplified_nav
     pages = ['Home']
   else
-    pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors', 'Live']
+    pages = ['About', 'Schedule', 'Travel', 'Gallery', 'FAQ', 'Sponsors', 'Live']
   end
   live_path = current_page?(:controller => 'pages', :action =>'live')
 %>
@@ -20,6 +20,17 @@
               <%= page %>
             </a>
           </div>
+        <% elsif page == 'Schedule' %>
+          <!--change display to 'block' when schedule is posted-->
+          <div id="schedule__button" style="display:none">
+            <a class="nav__link" href="#schedule">
+              <%= page %>
+            </a>
+          </div>          
+        <% elsif page == 'Gallery' %>
+          <a class="nav__link" href="/gallery/">
+            <%= page %>
+          </a>
         <% else %>
           <a class="nav__link" href="#<%= page.downcase %>">
             <%= page %>
