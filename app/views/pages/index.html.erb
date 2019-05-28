@@ -7,12 +7,12 @@
 <% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
 <% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
 
-<div class="section about" id="about">
-  <div class="about__wrapper">
-    <div class="about__left">
-      <div class="about__left-background"></div>
+<div class="section main">
+  <div class="main__wrapper">
+    <div class="main__left">
+      <div class="main__left-background"></div>
 
-      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6', class: 'main__logo' %>
 
       <h4 class="subtitle"><strong>February 8-9, 2020</strong> at the<br>Rochester Institute of Technology's<br>Gordon Field House</h4>
       
@@ -21,8 +21,8 @@
         <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
       </div>
     </div>
-    <div class="about__right">
-      <div class="about__right-background"></div>
+    <div class="main__right">
+      <div class="main__right-background"></div>
       <h2 class="text-center">Brick City's Premiere Hackathon</h2>
       <p class="text">
         BrickHack brings
@@ -42,7 +42,7 @@
 </div>
 
 
-<div class="section double-section">
+<div class="section about" id="about">
   <div class="video" id="video">
     <div class="video__wrapper">
       <div>
