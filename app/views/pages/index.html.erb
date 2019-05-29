@@ -7,43 +7,22 @@
 <% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
 <% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
 
-<div class="section about" id="about">
-  <div class="about__wrapper">
-    <div class="about__left">
-      <div class="about__left-background"></div>
+<div class="section main">
+  <div class="main__wrapper">
+    <div class="main__left">
+      <div class="main__left-background"></div>
 
-      <%= image_tag 'bh-logos/brickhack-5.svg', alt: 'BrickHack V', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6', class: 'main__logo' %>
 
-      <p class="text subtitle">February 16-17, 2019 at the</p>
-      <p class="text subtitle">Rochester Institute of Technology</p>
-      <br/>
-
-      <% if EVENT_IS_OVER %>
-        <h3>Thanks for a great BrickHack! See you next year!</h3>
-      <% elsif !REGISTRATION_IS_OPEN %>
-        <p class="text">Registration has closed</p>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-        <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
-        <!-- = btn_link_to "Devpost", "https://brickhack4.devpost.com/" -->
-        <!-- = btn_link_to "Schedule", "#schedule" -->
-        <!-- %br -->
-        <!-- %br -->
-        <!-- %h3 Registration has closed. -->
-      <% end %>
-
-
+      <h4 class="subtitle"><strong>February 8-9, 2020</strong> at the<br>Rochester Institute of Technology's<br>Gordon Field House</h4>
+      
       <div>
         <%= btn_link_to "Register Now", "https://apply.brickhack.io" %>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-      </div>
-
-      <% if EVENT_IS_OVER %>
-        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
         <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
-      <% end %>
+      </div>
     </div>
-    <div class="about__right">
-      <div class="about__right-background"></div>
+    <div class="main__right">
+      <div class="main__right-background"></div>
       <h2 class="text-center">Brick City's Premiere Hackathon</h2>
       <p class="text">
         BrickHack brings
@@ -63,11 +42,11 @@
 </div>
 
 
-<div class="section double-section">
+<div class="section about" id="about">
   <div class="video" id="video">
     <div class="video__wrapper">
       <div>
-        <p class="text video__description text-center">Watch a recap from last year</p>
+        <p class="text video__description text-center">Watch a Recap from BrickHack 4</p>
         <iframe allow="autoplay; encrypted-media" class="video__frame" frameborder="0" src="https://www.youtube-nocookie.com/embed/0fOUf1JwzBs"></iframe>
       </div>
     </div>
@@ -90,19 +69,19 @@
       <p class="text">
         Come spend 24 hours with us at BrickHack and <b>dedicate time to learn, collaborate, build, and innovate.</b>
       </p>
-      <p class="text">MLH has a great list of related questions over at <a href="https://mlh.io/faq" style="color: orange;">mlh.io/faq</a></p>
+      <p class="text">MLH has a great list of related questions over at <a href="https://mlh.io/faq">mlh.io/faq</a></p>
     </div>
   </div>
 </div>
 
 
-<div class="section schedule" id="schedule">
+<!--<div class="section schedule" id="schedule">
   <div class="schedule__wrapper">
     <br/>
     <h2 class="text-center">Schedule</h2>
     <%= render "schedule" %>
   </div>
-</div>
+</div>-->
 
 
 <div class="section travel" id="travel">
@@ -127,10 +106,10 @@
             TODO: update
           </ul>
         </li>
-        <li>Don't see bus details when you RSVP? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a></li>
+        <li>Don't see bus details when you RSVP? Email us at <a href="mailto:travel@brickhack.io">travel@brickhack.io</a></li>
       </ul>
       <br/>
-      <p class="text">If you have any questions, please <a href="mailto:travel@brickhack.io" style="color: orange;">email us</a>!</p>
+      <p class="text">If you have any questions, please <a href="mailto:travel@brickhack.io">email us</a>!</p>
       <p class="text">
         To ensure the highest level of safety and security,
         <b>all persons entering the venue will be subject to a security screening</b>
@@ -156,7 +135,7 @@
 </div>
 
 
-<div class="section sponsor" id="sponsors">
+<!--<div class="section sponsor" id="sponsors">
   <div class="sponsor__wrapper">
     <div class="sponsors">
       <h2 class="text-center">Sponsors</h2>
@@ -254,14 +233,14 @@
     </ul>
     <p class="text" style="margin-top: 0.4em; line-height: 1.7;">
       Interested in sponsoring BrickHack? Contact
-      <%= link_to 'sponsorship@brickhack.io'.html_safe, 'mailto:sponsorship@brickhack.io?subject=BrickHack Sponsorship Inquiry', { style: 'color: orange;' } %>
+      <%= link_to 'sponsorship@brickhack.io'.html_safe, 'mailto:sponsorship@brickhack.io?subject=BrickHack Sponsorship Inquiry' %>
       to learn how to get started today!
     </p>
     <div class="button__wrapper">
       <%= btn_link_to 'Learn More', image_path("BrickHackV.pdf"), { style: 'margin-bottom: 0px;', align: 'center' } %>
     </div>
   </div>
-</div>
+</div>-->
 
 
 <div class="section footer-break"></div>
