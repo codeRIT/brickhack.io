@@ -67,7 +67,7 @@ body {
   justify-content: center;
   display: flex;
   flex-flow: column;
-  align-items: center;
+  #align-items: center;
   margin-left: 20px;
   margin-right: 20px;
   min-height: calc(85vh - 120px);
@@ -85,7 +85,7 @@ body {
 }
 
 .main__left {
-  text-align: center;
+  #text-align: center;
 
   @media (max-width: 480px) {
     height: 100%;
