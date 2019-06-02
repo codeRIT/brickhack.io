@@ -1,3 +1,4 @@
+<%= javascript_include_tag "vendor/glider.min" %>
 <%
   involved_link = 'mailto:hello@brickhack.io?subject=I&#39;d%20like%20to%20get%20involved!'
 
@@ -11,23 +12,42 @@
     "My question isn't answered here..." => "Fret not! Feel free to reach out to us on <a href=\"https://twitter.com/brickhackrit\">Twitter</a>, <a href=\"https://www.facebook.com/brickhackrit\">Facebook</a>, or <a href=\"mailto:hello@brickhack.io\">email</a>."
   }
 %>
-<div class="faq__items">
-  <% faq_content.each do |question, answer| %>
-    <div class="faq__item">
-      <% if question == "My question isn't answered here..." %>
-        <br/>
-        <br/>
-        <p class="faq__question">
-          <%= question %>
+
+<div class="glider-contain multiple">
+  <div class="glider">
+    <% faq_content.each do |question, answer| %>
+      <div class="faq__item">
+        <% if question == "My question isn't answered here..." %>
+          <br/>
+          <br/>
+          <p class="faq__question">
+            <%= question %>
+          </p>
+        <% else %>
+          <p class="faq__question">
+            <%= question %>
+          </p>
+        <% end %>
+        <p class="faq__answer">
+          <%= raw answer %>
         </p>
-      <% else %>
-        <p class="faq__question">
-          <%= question %>
-        </p>
-      <% end %>
-      <p class="faq__answer">
-        <%= raw answer %>
-      </p>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
+  <button role="button" aria-label="Previous" class="glider-prev">«</button>
+  <button role="button" aria-label="Next" class="glider-next">»</button>
+  <div role="tablist" class="dots"></div>
 </div>
+
+<script>
+new Glider(document.querySelector('.glider'), {
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  dots: '.dots',
+  arrows: {
+    prev: '.glider-prev',
+    next: '.glider-next'
+  },
+  draggable: true
+});
+</script>
