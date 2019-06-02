@@ -7,22 +7,25 @@
 <% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
 <% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
 
-<div class="section main">
+<div class="main">
   <div class="main__wrapper">
     <div class="main__left">
       <div class="main__left-background"></div>
-
-      <h1 class="title">BrickHack 6</h1>
-      <h4 class="subtitle"><strong>February 8-9, 2020</strong> at the<br>Rochester Institute of Technology's<br>Gordon Field House</h4>
-      
-      <div>
-        <%= btn_link_to "Register Now", "https://apply.brickhack.io" %>
-        <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
+      <div class="main__left__content">
+        <h1 class="title">BrickHack 6</h1>
+        <h4 class="subtitle"><strong>February 8-9, 2020</strong> at the<br>Rochester Institute of Technology's<br>Gordon Field House</h4>
+        
+        <div>
+          <%= btn_link_to "Register Now", "https://apply.brickhack.io" %>
+          <%= btn_link_to "Help Organize", URI.escape("mailto:hello@brickhack.io?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
+        </div>
       </div>
     </div>
     <div class="main__right">
       <div class="main__right-background"></div>
-      <%= image_tag 'home/brickhack5_hackers.jpg', alt: 'Hackers at BrickHack 5.', class: 'main__logo' %>
+      <div class="main__right__content">
+        <%= image_tag 'home/brickhack5_hackers.jpg', alt: 'Hackers at BrickHack 5.', class: 'main__pic' %>
+      </div>
     </div>
   </div>
 </div>

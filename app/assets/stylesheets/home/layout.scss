@@ -47,14 +47,25 @@ body {
   align-items: center;
 }
 
-/* About section
+/* Main section
  */
 
-// .about
-//   height: calc(85% - 120px)
+.main {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 
 .main__wrapper {
-  padding-top: 75px;
+  padding-top: 150px;
+  padding-bottom: 75px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -86,13 +97,22 @@ body {
 
 .main__left {
   #text-align: center;
-
+  //margin-left: 250px;
   @media (max-width: 480px) {
     height: 100%;
   }
 }
 
+.main__left__content {
+  margin-left: 150px;
+}
+
+.main__right__content {
+  margin-left: -150px;
+}
+
 .main__right {
+  //margin-right: 150px;
   flex: 400px 1 1;
   max-width: 500px;
 }
@@ -104,13 +124,14 @@ body {
 }
 
 .main__left-background {
-  #background: asset-url("home/about-background-bricks.svg") no-repeat center center;
-  width: 600px;
-  height: 600px;
+  background: asset-url("home/main_left.png") no-repeat center center;
+  width: 750px;
+  height: 690px;
   position: absolute;
   z-index: -1;
   opacity: 0.3;
-  background-size: 520px;
+  background-size: 690px;
+  margin-left: -230px;
 
   @media (max-width: 480px) {
     background-image: asset-url("home/about-background-bricks-double.svg");
@@ -120,22 +141,23 @@ body {
 }
 
 .main__right-background {
-  #background: asset-url("home/about-background-circuit.svg") no-repeat center center;
+  background: asset-url("home/main_right.png") no-repeat center center;
   width: 750px;
-  height: 590px;
+  height: 1000px;
   position: absolute;
   z-index: -1;
   opacity: 0.3;
   background-size: 690px;
-  margin-top: 90px;
-  margin-left: 140px;
+  margin-top: 150px;
+  margin-left: -20px;
 }
 
-.main__logo {
-  width: 300px;
+.main__pic {
+  width: 550px;
   padding: 0 20px 20px;
   box-sizing: border-box;
   margin-bottom: 10px;
+  border-radius: 100px;
 
   @media (max-width: 480px) {
     width: 200px;
