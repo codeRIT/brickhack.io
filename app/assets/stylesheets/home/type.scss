@@ -38,6 +38,14 @@ a:hover {
   margin-bottom: 20px;
 }
 
+.title {
+  font-size: 40px;
+  font-weight: 900;
+  color: $black;
+  text-shadow: 1.5px 0 $black;
+  margin-bottom: 20px;
+}
+
 /* On-demand style variations
  */
 
@@ -45,7 +53,7 @@ a:hover {
   font-weight: bold;
 }
 
-.text-center {
+.center {
   text-align: center;
 }
 
@@ -76,6 +84,10 @@ ul ul > li {
   padding-bottom: 0;
 }
 
+o {
+  color: $orange;
+}
+
 b, .bold {
   font-weight: 600;
   color: $orange;
@@ -87,4 +99,12 @@ strong{
 
 i, em, .italic {
   font-style: italic;
+}
+
+.travel-text {
+  margin-bottom: 50px;
+}
+
+.faq-text {
+  margin-bottom: 50px;
 }
