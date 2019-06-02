@@ -17,17 +17,9 @@
   <div class="glider">
     <% faq_content.each do |question, answer| %>
       <div class="faq__item">
-        <% if question == "My question isn't answered here..." %>
-          <br/>
-          <br/>
-          <p class="faq__question">
-            <%= question %>
-          </p>
-        <% else %>
-          <p class="faq__question">
-            <%= question %>
-          </p>
-        <% end %>
+        <p class="faq__question">
+          <%= question %>
+        </p>
         <p class="faq__answer">
           <%= raw answer %>
         </p>
