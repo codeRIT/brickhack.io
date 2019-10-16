@@ -22,7 +22,7 @@ h2 {
 
 a, a:visited {
   color: $orange;
-  text-decoration: underline;
+  text-decoration: none;
   transition: color 0.2s ease-out;
 }
 
@@ -102,9 +102,9 @@ i, em, .italic {
 }
 
 .travel-text {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .faq-text {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
