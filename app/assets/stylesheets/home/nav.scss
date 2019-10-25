@@ -39,13 +39,13 @@ $nav-space: 20px;
   transition: all 0.15s ease-in-out 0s;
 
   &, &:visited {
-    color: white;
+    color: #6a6a6a;
     text-transform: uppercase;
     text-decoration: none;
   }
 
   &:hover {
-    color: white;
+    color: #6a6a6a;
     text-shadow: 0 0 1px rgba($white, 0.9);
   }
 
@@ -57,7 +57,7 @@ $nav-space: 20px;
     margin-bottom: -6px;
     bottom: 0;
     left: 0;
-    background-color: rgba($white, 0.8);
+    background-color: rgba(#6a6a6a, 0.8);
     visibility: hidden;
     transition: all 0.3s ease-out 0s;
   }
