@@ -9,13 +9,10 @@ body, html {
 }
 
 body {
-  background: -moz-linear-gradient(#0F3F5D, #2A245F);
-  background: -ms-linear-gradient(#0F3F5D, #2A245F);
-  background: linear-gradient(#0F3F5D, #2A245F);
-  background-color: #2A245F;
+  background-color: #ffffff;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  color: $white;
+  color: #6a6a6a;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: $font-light;
@@ -40,6 +37,7 @@ body {
 }
 
 .double-section {
+  padding-top: 100px;
   display: flex;
   flex-flow: row wrap;
   max-width: 1400px;
@@ -103,13 +101,14 @@ body {
 }
 
 .about__left-background {
-  background: asset-url("home/about-background-bricks.svg") no-repeat center center;
-  width: 600px;
-  height: 600px;
+  background: asset-url("home_asset_1.png") no-repeat left;
+  width: 700px;
+  height: 700px;
   position: absolute;
+  left: 10px;
   z-index: -1;
   opacity: 0.3;
-  background-size: 520px;
+  background-size: 700px;
 
   @media (max-width: 480px) {
     background-image: asset-url("home/about-background-bricks-double.svg");
@@ -119,15 +118,16 @@ body {
 }
 
 .about__right-background {
-  background: asset-url("home/about-background-circuit.svg") no-repeat center center;
-  width: 750px;
-  height: 590px;
+  background: asset-url("home_asset_2.png") no-repeat center center;
+  width: 800px;
+  height: 1040px;
   position: absolute;
+  right: -35px;
   z-index: -1;
   opacity: 0.3;
-  background-size: 690px;
-  margin-top: 90px;
-  margin-left: 140px;
+  background-size: 700px;
+  margin-left: 100px;
+  margin-top: 200px;
 }
 
 .about__logo {
