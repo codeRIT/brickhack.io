@@ -61,16 +61,14 @@ $nav-space: 20px;
   transition: all 0.15s ease-in-out 0s;
 
   &, &:visited {
-    color: #6A6A6A;
-    font-weight: 900;
+    color: #6a6a6a;
     text-transform: uppercase;
     text-decoration: none;
   }
 
   &:hover {
-    color: #6A6A6A;
-    font-weight: 900;
-    text-shadow: 0 0 1px rgba(#6A6A6A, 0.9);
+    color: #6a6a6a;
+    text-shadow: 0 0 1px rgba($white, 0.9);
   }
 
   &:before {
@@ -81,7 +79,7 @@ $nav-space: 20px;
     margin-bottom: -6px;
     bottom: 0;
     left: 0;
-    background-color: rgba(#6A6A6A, 0.8);
+    background-color: rgba(#6a6a6a, 0.8);
     visibility: hidden;
     transition: all 0.3s ease-out 0s;
   }

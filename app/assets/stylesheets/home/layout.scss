@@ -9,7 +9,10 @@ body, html {
 }
 
 body {
-  color: #6A6A6A;
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #6a6a6a;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: $font-light;
@@ -33,7 +36,8 @@ body {
   }
 }
 
-.about {
+.double-section {
+  padding-top: 100px;
   display: flex;
   flex-flow: row wrap;
   max-width: 1400px;
@@ -114,15 +118,15 @@ body {
   }
 }
 
-.main__left-background {
-  background: asset-url("home/main_left.png") no-repeat center center;
-  width: 750px;
-  height: 690px;
+.about__left-background {
+  background: asset-url("home_asset_1.png") no-repeat left;
+  width: 700px;
+  height: 700px;
   position: absolute;
+  left: 10px;
   z-index: -1;
   opacity: 0.3;
-  background-size: 690px;
-  margin-left: -230px;
+  background-size: 700px;
 
   @media (max-width: 480px) {
     background-image: asset-url("home/about-background-bricks-double.svg");
@@ -131,16 +135,17 @@ body {
   }
 }
 
-.main__right-background {
-  background: asset-url("home/main_right.png") no-repeat center center;
-  width: 750px;
-  height: 1000px;
+.about__right-background {
+  background: asset-url("home_asset_2.png") no-repeat center center;
+  width: 800px;
+  height: 1040px;
   position: absolute;
+  right: -35px;
   z-index: -1;
   opacity: 0.3;
-  background-size: 690px;
-  margin-top: 150px;
-  margin-left: 0px;
+  background-size: 700px;
+  margin-left: 100px;
+  margin-top: 200px;
 }
 
 .main__pic {
