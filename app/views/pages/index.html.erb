@@ -20,7 +20,6 @@
       <br/>
 
       <% if EVENT_IS_OVER %>
-        <h3>Thanks for a great BrickHack! See you next year!</h3>
       <% elsif !REGISTRATION_IS_OPEN %>
         <p class="text">Registration has closed</p>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
@@ -37,11 +36,6 @@
         <%= btn_link_to "Notify me", "http://eepurl.com/glscFj" %>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
       </div>
-
-      <% if EVENT_IS_OVER %>
-        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
-        <%= btn_link_to "Help Organize", URI.escape("mailto:hello@coderit.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
-      <% end %>
     </div>
     <div class="main__right">
       <div class="main__right-background"></div>
@@ -148,7 +142,11 @@
 <!--<div class="section sponsor" id="sponsors">
   <div class="sponsor__wrapper">
     <div class="sponsors">
+
       <h2 class="text-center">Sponsors</h2>
+
+      <!--
+
       <div class="sponsors-col sponsors-col-x-lg">
         <a class="sponsor" href="https://www.datto.com" target="blank" title="Datto">
           <%= image_tag 'sponsors/datto.png' %>
@@ -230,6 +228,9 @@
     </div>
     <br/>
     <br/>
+    
+    -->
+    
     <p class="text">
       <b>Thinking about sponsoring?</b>
     </p>
