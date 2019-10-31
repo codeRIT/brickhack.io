@@ -20,7 +20,6 @@
       <br/>
 
       <% if EVENT_IS_OVER %>
-        <h3>Thanks for a great BrickHack! See you next year!</h3>
       <% elsif !REGISTRATION_IS_OPEN %>
         <p class="text">Registration has closed</p>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
@@ -37,11 +36,6 @@
         <%= btn_link_to "Notify me", "http://eepurl.com/glscFj" %>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
       </div>
-
-      <% if EVENT_IS_OVER %>
-        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
-        <%= btn_link_to "Help Organize", URI.escape("mailto:hello@coderit.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
-      <% end %>
     </div>
     <div class="about__right">
       <div class="about__right-background"></div>
