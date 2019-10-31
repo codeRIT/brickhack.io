@@ -6,13 +6,13 @@ $nav-space: 20px;
   position: fixed;
   background: #ffffff;
   width: 100%;
-  height: 125px;
+  height: 100px;
   z-index: 1;
 }
 
 .nav__content{
   font-size: 18px;
-  padding-top: 75px;
+  padding-top: 50px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
