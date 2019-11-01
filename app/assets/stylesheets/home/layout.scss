@@ -140,7 +140,7 @@ body {
   opacity: 0.3;
   background-size: 690px;
   margin-top: 150px;
-  margin-left: 0px;
+  margin-left: -20px;
 }
 
 .main__pic {
@@ -148,7 +148,7 @@ body {
   padding: 0 20px 20px;
   box-sizing: border-box;
   margin-bottom: 10px;
-  border-radius: 50px;
+  border-radius: 100px;
 
   @media (max-width: 480px) {
     width: 200px;
@@ -174,8 +174,8 @@ body {
 
 .video__frame {
   margin-bottom: 15px;
-  width: 625px;
-  height: 350px;
+  width: 560px;
+  height: 315px;
 
   @media (max-width: 1400px) {
     width: 690px;
@@ -205,9 +205,9 @@ body {
   padding-bottom: 50px;
 
   @media (min-width: 1400px) {
-    width: 650px;
+    width: 550px;
     padding-right: 0;
-    padding-left: 25px;
+    padding-left: 0;
   }
 
   @media (max-width: 1400px) {
@@ -418,7 +418,7 @@ body {
 .footer__coderit-logo {
   margin-left: 1px;
   margin-bottom: -5px;
-  width: 125px;
+  width: 80px;
 }
 
 .footer__about {
