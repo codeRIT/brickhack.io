@@ -5,7 +5,6 @@
   else
     pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors']
   end
-  live_path = current_page?(:controller => 'pages', :action =>'live')
 %>
 
 <nav class="section nav">
@@ -22,7 +21,6 @@
       <% end %>
     <% end %>
     <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
-    <%= btn_link_to 'Live', '/live' %>
   </div>
 </nav>
 
