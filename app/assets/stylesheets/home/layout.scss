@@ -37,7 +37,7 @@ body {
 }
 
 .double-section {
-  padding-top: 100px;
+  padding-bottom: 100px;
   display: flex;
   flex-flow: row wrap;
   max-width: 1400px;
@@ -48,8 +48,9 @@ body {
 /* About section
  */
 
-// .about
-//   height: calc(85% - 120px)
+.about{
+  padding-top: 140px;
+}
 
 .about__wrapper {
   display: flex;

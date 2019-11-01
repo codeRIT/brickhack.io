@@ -7,20 +7,26 @@
   end
 %>
 
-<nav class="section nav">
-  <div class="nav__links">
-    <% pages.each do |page| %>
-      <% if simplified_nav %>
-        <a class="nav__link" href="/">
-          <%= page %>
-        </a>
-      <% else %>
-        <a class="nav__link" href="#<%= page.downcase %>">
-          <%= page %>
-        </a>
+<nav class="nav">
+  <div class="nav__content">
+    <div class="nav__links">
+      <% pages.each do |page| %>
+        <% if simplified_nav %>
+          <a class="nav__link" href="/">
+            <%= page %>
+          </a>
+        <% else %>
+          <a class="nav__link" href="#<%= page.downcase %>">
+            <%= page %>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
-    <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
+      <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
+      <%= btn_link_to 'Live', '/live' %>
+    </div>
+    <div class="nav__buttons">
+      <%= btn_link_to 'Sign Up', 'https://apply.brickhack.io' %>
+    </div>
   </div>
 </nav>
 
