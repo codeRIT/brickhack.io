@@ -3,34 +3,31 @@
   if simplified_nav
     pages = ['Home']
   else
-    pages = ['About', 'Schedule', 'Travel', 'FAQ', 'Sponsors']
+    pages = ['About', 'Travel', 'FAQ', 'Sponsors']
   end
-  live_path = current_page?(:controller => 'pages', :action =>'live')
 %>
 
-<nav class="section nav">
-  <div class="nav__links">
-    <% pages.each do |page| %>
-      <% if simplified_nav %>
-        <a class="nav__link" href="/">
-          <%= page %>
-        </a>
-      <% else %>
-        <a class="nav__link" href="#<%= page.downcase %>">
-          <%= page %>
-        </a>
+<nav class="nav">
+  <div class="nav__content">
+    <div class="nav__links">
+      <% pages.each do |page| %>
+        <% if simplified_nav %>
+          <a class="nav__link" href="/">
+            <%= page %>
+          </a>
+        <% else %>
+          <a class="nav__link" href="#<%= page.downcase %>">
+            <%= page %>
+          </a>
+        <% end %>
       <% end %>
-    <% end %>
-    <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
-    <%= btn_link_to 'Live', '/live' %>
-  </div>
-  <div class="nav__buttons">
-    <%= btn_link_to 'Sign Up', 'https://apply.brickhack.io' %>
+      <!-- %a.nav__link{ href: "https://brickhackv.devpost.com", target: 'blank' }= 'Prizes' -->
+    </div>
   </div>
 </nav>
 
-<a href="https://mlh.io/seasons/na-2019/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2019-season&utm_content=gray" id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000" target="_blank">
-  <img alt="Major League Hacking 2019 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-gray.svg" style="width:100%"/>
+<a href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2020-season&utm_content=gray" id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:30px;top:0;width:8%;z-index:10000" target="_blank">
+  <img alt="Major League Hacking 2020 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-gray.svg" style="width:100%"/>
 </a>
 
 <!-- mobile nav
