@@ -21,21 +21,21 @@ h2 {
 }
 
 a, a:visited {
-  color: $orange;
+  color: $white;
   text-decoration: underline;
   transition: color 0.2s ease-out;
 }
 
 a:hover {
-  color: darken($orange, 20%);
+  color: darken($white, 20%);
 }
 
 /* Special variants
  */
 
 .subtitle {
-  font-size: 25px;
-  margin-bottom: 20px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 /* On-demand style variations
@@ -76,13 +76,9 @@ ul ul > li {
   padding-bottom: 0;
 }
 
-b, .bold {
+b, strong, .bold {
   font-weight: 600;
   color: $orange;
-}
-
-strong{
-  font-weight: 600;
 }
 
 i, em, .italic {
