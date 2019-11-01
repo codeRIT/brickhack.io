@@ -112,7 +112,7 @@ body {
   background-size: 700px;
 
   @media (max-width: 480px) {
-    background-image: asset-url("home/about-background-bricks-double.svg");
+    /*background-image: asset-url("home/about-background-bricks-double.svg");*/
     height: 1200px;
     margin-top: 40px;
   }
