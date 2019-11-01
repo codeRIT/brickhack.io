@@ -12,15 +12,14 @@
     <div class="about__left">
       <div class="about__left-background"></div>
 
-      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack 6', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.svg', alt: 'BrickHack 6', class: 'about__logo' %>
 
-      <p class="text subtitle">February 6-9, 2020 at the</p>
-      <p class="text subtitle">Rochester Institute of Technology's</p>
+      <p class="text subtitle"><b>February 8-9, 2020</b></p>
       <p class="text subtitle">Gordon Field House</p>
+      <p class="text subtitle">Rochester Institute of Technology</p>
       <br/>
 
       <% if EVENT_IS_OVER %>
-        <h3>Thanks for a great BrickHack! See you next year!</h3>
       <% elsif !REGISTRATION_IS_OPEN %>
         <p class="text">Registration has closed</p>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
@@ -37,11 +36,6 @@
         <%= btn_link_to "Notify me", "http://eepurl.com/glscFj" %>
         <!-- = btn_link_to "Volunteer", volunteer_link -->
       </div>
-
-      <% if EVENT_IS_OVER %>
-        <%= btn_link_to "Submissions", "https://brickhack4.devpost.com/submissions/" %>
-        <%= btn_link_to "Help Organize", URI.escape("mailto:hello@coderit.org?subject=BrickHack Organizer Interest&body=Hey there! I'm interested in helping organize BrickHack. How can I help?") %>
-      <% end %>
     </div>
     <div class="about__right">
       <div class="about__right-background"></div>
@@ -125,7 +119,7 @@
           <b>Buses</b>
           are being provided to a number of schools! If you're at one of them, you'll see an option to sign up when you <a href = "https://apply.brickhack.io/">RSVP</a>!
         </li>
-        <li>Don't see bus details when you RSVP? Havy any other questions? Email us at <a href="mailto:travel@brickhack.io" style="color: orange;">travel@brickhack.io</a></li>
+        <li>Don't see bus details when you RSVP? Havy any other questions? Email us at <a href="mailto:travel@coderit.org" style="color: orange;">travel@coderit.org</a></li>
       </ul>
       <br/>
       <p class="text">If you have any questions, please <a href="mailto:travel@coderit.org" style="color: orange;">email us</a>!</p>
@@ -157,9 +151,11 @@
 <div class="section sponsor" id="sponsors">
   <div class="sponsor__wrapper">
     <div class="sponsors">
-     <!--
+
       <h2 class="text-center">Sponsors</h2>
-      
+
+      <!--
+
       <div class="sponsors-col sponsors-col-x-lg">
         <a class="sponsor" href="https://www.datto.com" target="blank" title="Datto">
           <%= image_tag 'sponsors/datto.png' %>
@@ -216,9 +212,6 @@
       </div>
       <br/>
       <br/>
-
-      -->
-      
       <h2 class="text-center">Partners</h2>
       <div class="sponsors-col sponsors-col-med">
         <a class="sponsor" href="https://www.rit.edu/research/department/magic-center" style="width:30%" target="blank" title="MAGIC Center">
@@ -244,6 +237,9 @@
     </div>
     <br/>
     <br/>
+    
+    -->
+    
     <p class="text">
       <b>Thinking about sponsoring?</b>
     </p>
