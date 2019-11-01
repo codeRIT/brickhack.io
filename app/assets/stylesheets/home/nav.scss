@@ -2,39 +2,18 @@
 
 $nav-space: 20px;
 
-.nav{
-  position: fixed;
-  background: #ffffff;
-  width:100%;
-  padding-bottom: 25px;
-}
-
-.nav__content {
-  max-width:1200px;
-  margin: 0 auto;
-  padding-left:40px;
-  padding-right:40px;
-  box-sizing: border-box;
+.nav {
   font-size: 18px;
   padding-top: 80px;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   align-items: center;
 
   @media (max-width: 1100px) {
     padding-top: 40px;
     padding-bottom: 20px;
   }
-}
-
-/* Nav Logo
- */
-
-.nav__logo{
-  height: 60px;
-  width: 75px;
-  margin-top:-25px;
-  margin-right: 40px;
 }
 
 /* Nav links
@@ -60,16 +39,14 @@ $nav-space: 20px;
   transition: all 0.15s ease-in-out 0s;
 
   &, &:visited {
-    color: #6A6A6A;
-    font-weight: 900;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
   }
 
   &:hover {
-    color: #6A6A6A;
-    font-weight: 900;
-    #text-shadow: 0 0 1px rgba(#6A6A6A, 0.9);
+    color: white;
+    text-shadow: 0 0 1px rgba($white, 0.9);
   }
 
   &:before {
@@ -80,7 +57,7 @@ $nav-space: 20px;
     margin-bottom: -6px;
     bottom: 0;
     left: 0;
-    background-color: rgba(#6A6A6A, 0.8);
+    background-color: rgba($white, 0.8);
     visibility: hidden;
     transition: all 0.3s ease-out 0s;
   }
@@ -94,8 +71,9 @@ $nav-space: 20px;
 /* Nav buttons
  */
 
-.nav__signup__button {
-  margin-left: auto;
+.nav__buttons {
+  flex: none;
+
   @media (max-width: 1300px) {
     margin-right: 50px;
   }
