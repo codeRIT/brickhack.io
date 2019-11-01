@@ -32,10 +32,10 @@ $nav-space: 20px;
  */
 
 .nav__logo{
-  height: 100px;
-  width: 100px;
-  margin-top: -50px;
-  margin-right: 50px;
+  height: 60px;
+  width: 75px;
+  margin-top:-25px;
+  margin-right: 40px;
 }
 
 /* Nav links
@@ -70,7 +70,7 @@ $nav-space: 20px;
   &:hover {
     color: #6A6A6A;
     font-weight: 900;
-    text-shadow: 0 0 1px rgba(#6A6A6A, 0.9);
+    #text-shadow: 0 0 1px rgba(#6A6A6A, 0.9);
   }
 
   &:before {
