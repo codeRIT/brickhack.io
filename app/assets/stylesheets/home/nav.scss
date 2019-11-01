@@ -3,13 +3,22 @@
 $nav-space: 20px;
 
 .nav {
+  position: fixed;
+  background: #ffffff;
+  width: 100%;
+  height: 75px;
+  z-index: 1;
+}
+
+.nav__content{
   font-size: 18px;
-  padding-top: 80px;
+  padding-top: 30px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-
+  font-weight: bold;
+  padding-right: 5%;
   @media (max-width: 1100px) {
     padding-top: 40px;
     padding-bottom: 20px;
@@ -20,10 +29,11 @@ $nav-space: 20px;
  */
 
 .nav__links {
+  padding-left: 20%;
   margin-left: -1 * $nav-space;
   margin-right: -1 * $nav-space;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -25px;
   display: flex;
   flex-flow: row wrap;
 
@@ -73,12 +83,17 @@ $nav-space: 20px;
 
 .nav__buttons {
   flex: none;
+  margin-top: -10px;
+  margin-bottom: -25px;
+
+  margin-right: 75px;
 
   @media (max-width: 1300px) {
-    margin-right: 50px;
+    margin-right: 75px;
   }
 
   @media (max-width: 1200px) {
+    padding-left: 25px;
     margin-right: 100px;
   }
 }
