@@ -6,13 +6,13 @@ $nav-space: 20px;
   position: fixed;
   background: #ffffff;
   width: 100%;
-  height: 100px;
+  height: 75px;
   z-index: 1;
 }
 
 .nav__content{
   font-size: 18px;
-  padding-top: 50px;
+  padding-top: 30px;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -86,7 +86,7 @@ $nav-space: 20px;
   margin-top: -10px;
   margin-bottom: -25px;
 
-  margin-right: 50px;
+  margin-right: 75px;
 
   @media (max-width: 1300px) {
     margin-right: 75px;
