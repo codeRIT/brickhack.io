@@ -1,45 +1,33 @@
-<%= javascript_include_tag "vendor/glider.min" %>
 <%
-  involved_link = 'mailto:hello@brickhack.io?subject=I&#39;d%20like%20to%20get%20involved!'
+involved_link = 'mailto:logistics@coderit.org?subject=I&#39;d%20like%20to%20get%20involved with BrickHack!'
 
   faq_content = {
+    "Who can participate in BrickHack?" => "Anyone currently enrolled as a student can attend! If you don't fit that description, you're absolutely welcome to attend as a <a href=\"#{involved_link}\">mentor</a> or <a href=\"#{involved_link}\">volunteer</a>. All attendees must be 18 years or older.",
     "Do I need a team to join?" => "While teams are often recommended and sometimes more fun, they're not required. We will be hosting a teambuilding event shortly after kickoff, but feel free to invite your friends! Teams are a max of 4 people. Each person must register individually.",
     "What should I bring?" => "Bring yourself, a photo ID, clothes, toiletries, a sleeping bag/blanket, your hacker setup, and maybe an idea or two.",
-    "Who can participate in BrickHack?" => "Anyone currently enrolled as a student can attend! If you don't fit that description, you're absolutely welcome to attend as a <a href=\"#{involved_link}\">mentor</a> or <a href=\"#{involved_link}\">volunteer</a>. All attendees must be 18 years or older.",
     "Do RIT students need to apply?" => "Yes, RIT students need to apply just like everyone else.",
-    "When will I know if I got in?" => "Acceptance notifications will start being sent out January 16th on a rolling basis.",
+    "When will I know if I got in?" => "Rolling acceptances will start in late December.",
     "Should I bring my own bricks?" => "We've got you covered.",
     "My question isn't answered here..." => "Fret not! Feel free to reach out to us on <a href=\"https://twitter.com/brickhackrit\">Twitter</a>, <a href=\"https://www.facebook.com/brickhackrit\">Facebook</a>, or <a href=\"mailto:hello@brickhack.io\">email</a>."
   }
 %>
-
-<div class="glider-contain multiple">
-  <div class="glider">
-    <% faq_content.each do |question, answer| %>
-      <div class="faq__item">
+<div class="faq__items">
+  <% faq_content.each do |question, answer| %>
+    <div class="faq__item">
+      <% if question == "My question isn't answered here..." %>
+        <br/>
+        <br/>
         <p class="faq__question">
           <%= question %>
         </p>
-        <p class="faq__answer">
-          <%= raw answer %>
+      <% else %>
+        <p class="faq__question">
+          <%= question %>
         </p>
-      </div>
-    <% end %>
-  </div>
-  <button role="button" aria-label="Previous" class="glider-prev">«</button>
-  <button role="button" aria-label="Next" class="glider-next">»</button>
-  <div role="tablist" class="dots"></div>
+      <% end %>
+      <p class="faq__answer">
+        <%= raw answer %>
+      </p>
+    </div>
+  <% end %>
 </div>
-
-<script>
-new Glider(document.querySelector('.glider'), {
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  dots: '.dots',
-  arrows: {
-    prev: '.glider-prev',
-    next: '.glider-next'
-  },
-  draggable: true
-});
-</script>
