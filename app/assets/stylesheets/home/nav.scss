@@ -2,49 +2,41 @@
 
 $nav-space: 20px;
 
-.nav{
+.nav {
   position: fixed;
   background: #ffffff;
-  width:100%;
-  padding-bottom: 25px;
+  width: 100%;
+  height: 75px;
+  z-index: 1;
+  @media (max-width: 850px) {
+    //position: static;
+  }
 }
 
-.nav__content {
-  max-width:1200px;
-  margin: 0 auto;
-  padding-left:40px;
-  padding-right:40px;
-  box-sizing: border-box;
+.nav__content{
   font-size: 18px;
-  padding-top: 80px;
+  padding-top: 30px;
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
   align-items: center;
-
+  font-weight: bold;
+  padding-right: 5%;
   @media (max-width: 1100px) {
     padding-top: 40px;
     padding-bottom: 20px;
   }
 }
 
-/* Nav Logo
- */
-
-.nav__logo{
-  height: 60px;
-  width: 75px;
-  margin-top:-25px;
-  margin-right: 40px;
-}
-
 /* Nav links
  */
 
 .nav__links {
+  padding-left: 20%;
   margin-left: -1 * $nav-space;
   margin-right: -1 * $nav-space;
   margin-top: -10px;
-  margin-bottom: -10px;
+  margin-bottom: -25px;
   display: flex;
   flex-flow: row wrap;
 
@@ -60,16 +52,14 @@ $nav-space: 20px;
   transition: all 0.15s ease-in-out 0s;
 
   &, &:visited {
-    color: #6A6A6A;
-    font-weight: 900;
+    color: #6a6a6a;
     text-transform: uppercase;
     text-decoration: none;
   }
 
   &:hover {
-    color: #6A6A6A;
-    font-weight: 900;
-    #text-shadow: 0 0 1px rgba(#6A6A6A, 0.9);
+    color: #6a6a6a;
+    text-shadow: 0 0 1px rgba($white, 0.9);
   }
 
   &:before {
@@ -80,7 +70,7 @@ $nav-space: 20px;
     margin-bottom: -6px;
     bottom: 0;
     left: 0;
-    background-color: rgba(#6A6A6A, 0.8);
+    background-color: rgba(#6a6a6a, 0.8);
     visibility: hidden;
     transition: all 0.3s ease-out 0s;
   }
@@ -94,13 +84,34 @@ $nav-space: 20px;
 /* Nav buttons
  */
 
-.nav__signup__button {
-  margin-left: auto;
+.nav__buttons {
+  flex: none;
+  margin-top: -10px;
+  margin-bottom: -25px;
+
+  margin-right: 75px;
+
   @media (max-width: 1300px) {
-    margin-right: 50px;
+    margin-right: 75px;
   }
 
   @media (max-width: 1200px) {
+    padding-left: 25px;
     margin-right: 100px;
+  }
+}
+
+.nav__mlh{
+  display:block;
+  max-width:100px;
+  min-width:60px;
+  position:fixed;
+  right:30px;
+  top:0;
+  width:8%;
+  z-index:10000;
+
+  @media (max-width: 850px) {
+    left: 30px;
   }
 }
