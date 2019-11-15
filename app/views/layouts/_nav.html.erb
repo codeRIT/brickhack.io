@@ -3,7 +3,7 @@
   if simplified_nav
     pages = ['Home']
   else
-    pages = ['About', 'Travel', 'FAQ', 'Sponsors']
+    pages = ['About', 'Travel', 'FAQ', 'Sponsors', 'Gallery']
   end
 %>
 
@@ -13,6 +13,10 @@
       <% pages.each do |page| %>
         <% if simplified_nav %>
           <a class="nav__link" href="/">
+            <%= page %>
+          </a>
+        <% elsif page == 'Gallery' %>
+          <a class="nav__link" href="/gallery/">
             <%= page %>
           </a>
         <% else %>
