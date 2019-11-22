@@ -8,6 +8,9 @@ $nav-space: 20px;
   width: 100%;
   height: 75px;
   z-index: 1;
+  @media (max-width: 850px) {
+    //position: static;
+  }
 }
 
 .nav__content{
@@ -95,5 +98,20 @@ $nav-space: 20px;
   @media (max-width: 1200px) {
     padding-left: 25px;
     margin-right: 100px;
+  }
+}
+
+.nav__mlh{
+  display:block;
+  max-width:100px;
+  min-width:60px;
+  position:fixed;
+  right:30px;
+  top:0;
+  width:8%;
+  z-index:10000;
+
+  @media (max-width: 850px) {
+    left: 30px;
   }
 }
