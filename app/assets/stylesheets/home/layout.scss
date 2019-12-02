@@ -219,9 +219,13 @@ body {
   max-width: 700px;
 }
 
-.what p {
+.what .text {
   @media (min-width: 1400px) {
     padding-left: 20px;
+  }
+
+  @media (min-width: 480px) {
+    text-align: center;
   }
 }
 
@@ -244,6 +248,11 @@ body {
   max-width: 700px;
 }
 
+.travel__text-wrapper .text {
+  @media (min-width: 480px) {
+    text-align: center;
+  }
+}
 /* FAQ section
  */
 
@@ -260,6 +269,12 @@ body {
   justify-content: space-around;
 }
 
+.faq_question, .faq_answer {
+  @media (min-width: 480px) {
+    text-align: center;
+    margin: auto;
+  }
+}
 /* Sponsor section
  */
 
@@ -350,6 +365,12 @@ body {
 
 .button__wrapper {
   text-align: center;
+}
+
+.sponsor .text {
+  @media (min-width: 480px) {
+    text-align: center;
+  }
 }
 
 /* Footer-break section
