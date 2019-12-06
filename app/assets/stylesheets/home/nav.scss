@@ -1,6 +1,7 @@
 @import "variables";
 
 $nav-space: 20px;
+$nav-space-tablet: 15px;
 
 .nav {
   position: fixed;
@@ -76,6 +77,10 @@ $nav-space: 20px;
     width: 100%;
   }
 
+  @media (max-width: 1300px) {
+    margin: 10px $nav-space-tablet;
+  }
+
   @media (max-width: 850px) {
     display: none;
   }
@@ -90,10 +95,6 @@ $nav-space: 20px;
   margin-bottom: -25px;
 
   margin-right: 75px;
-
-  @media (max-width: 1300px) {
-    margin-right: 75px;
-  }
 
   @media (max-width: 1200px) {
     padding-left: 25px;
@@ -118,7 +119,7 @@ $nav-space: 20px;
 
 .nav__signup__button{
   position: fixed;
-  right: 150px;
+  right: 140px;
   @media (max-width: 850px) {
     left: 120px;
     top: 30px;
