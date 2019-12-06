@@ -32,17 +32,13 @@ $nav-space: 20px;
  */
 
 .nav__links {
-  padding-left: 20%;
+  padding-left: 15%;
   margin-left: -1 * $nav-space;
   margin-right: -1 * $nav-space;
   margin-top: -10px;
   margin-bottom: -25px;
   display: flex;
   flex-flow: row wrap;
-
-  @media (max-width: 850px) {
-    display: none;
-  }
 }
 
 .nav__link {
@@ -79,6 +75,10 @@ $nav-space: 20px;
     visibility: visible;
     width: 100%;
   }
+
+  @media (max-width: 850px) {
+    display: none;
+  }
 }
 
 /* Nav buttons
@@ -113,5 +113,14 @@ $nav-space: 20px;
 
   @media (max-width: 850px) {
     left: 30px;
+  }
+}
+
+.nav__signup__button{
+  position: fixed;
+  right: 150px;
+  @media (max-width: 850px) {
+    left: 120px;
+    top: 30px;
   }
 }
