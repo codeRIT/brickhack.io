@@ -54,6 +54,9 @@ body {
 
 .about{
   padding-top: 140px;
+  @media (max-width: 1100px) {
+    padding-top: 175px;
+  }
 }
 
 .about__wrapper {
@@ -61,11 +64,12 @@ body {
   flex-flow: row wrap;
   align-items: center;
 
-  // height: 100%
+  //height: 100%;
   justify-content: space-around;
 }
 
 .about__left, .about__right {
+  text-align: justify;
   justify-content: center;
   display: flex;
   flex-flow: column;
@@ -75,7 +79,7 @@ body {
   min-height: calc(85vh - 120px);
 
   @media (max-width: 1100px) {
-    min-height: calc(85vh - 80px);
+    min-height: calc(45vh - 50px);
   }
 
   @media (max-width: 480px) {
@@ -97,15 +101,6 @@ body {
 .about__right {
   flex: 400px 1 1;
   max-width: 500px;
-  @media (max-width: 1100px) {
-    min-height: calc(85vh - 80px);
-  }
-}
-
-.about__right p {
-  @media (min-width: 480px) {
-    padding-left: 10px;
-  }
 }
 
 .about__left-background {
@@ -118,9 +113,12 @@ body {
   opacity: 0.3;
   background-size: 700px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 1100px) {
     /*background-image: asset-url("home/about-background-bricks-double.svg");*/
     height: 1200px;
+    opacity: 0.15;
+  }
+  @media (max-width: 480px) {
     margin-top: 40px;
   }
 }
@@ -164,6 +162,8 @@ body {
   width: 690px;
   height: 390px;
 
+  margin: 0 auto;
+
   @media (max-width: 680px) {
     width: 560px;
     height: 315px;
@@ -202,11 +202,11 @@ body {
 .what {
   padding-top: 50px;
   padding-bottom: 50px;
+  text-align: justify;
 
   @media (min-width: 1400px) {
     width: 500px;
-    padding-right: 0;
-    padding-left: 25px;
+    padding-right: 50px;
   }
 
   @media (max-width: 1400px) {
@@ -219,20 +219,11 @@ body {
   max-width: 700px;
 }
 
-.what .text {
-  @media (min-width: 1400px) {
-    padding-left: 20px;
-  }
-
-  @media (min-width: 480px) {
-    text-align: center;
-  }
-}
-
 /* Travel section
  */
 
 .travel {
+  text-align: justify;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -257,6 +248,7 @@ body {
  */
 
 .faq {
+  text-align: justify;
   padding-top: 50px;
   padding-bottom: 50px;
 }
@@ -279,6 +271,7 @@ body {
  */
 
 .sponsor {
+  text-align: justify;
   padding-top: 50px;
   padding-bottom: 7em;
 
@@ -377,12 +370,16 @@ body {
  */
 
 .footer-break {
-  background: asset-url("home/footer-background.png") no-repeat center center, asset-url("bh-logos/brickhack-6.png") no-repeat center center;
-  background-size: auto 120px;
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0) 40%,
+  rgba(255,255,255,0) 60%, rgba(255,255,255,0.9)), 
+    
+    asset-url("bh-logos/brickhack-6.png") no-repeat center center,
+    asset-url("home/footer-background.png") no-repeat center center; 
+  //background-size: auto 120px;
   width: 100%;
   height: 300px;
   margin-bottom: 5em;
-  opacity: 0.75;
+  opacity: 1;
   background-size: 1200px, 250px;
   z-index: 100;
 
