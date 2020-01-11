@@ -4,8 +4,8 @@
 
 <%= render "layouts/nav" %>
 
-<% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
-<% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
+<% register_link = "https://apply.brickhack.io".freeze %>
+<% volunteer_link = "https://forms.gle/4id7fkjxpAooh59B7".freeze %>
 
 <div class="section about" id="about">
   <div class="about__wrapper">
@@ -19,23 +19,12 @@
       <p class="text subtitle">Rochester Institute of Technology</p>
       <br/>
 
-      <% if EVENT_IS_OVER %>
-      <% elsif !REGISTRATION_IS_OPEN %>
-        <p class="text">Registration has closed</p>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-        <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
-        <!-- = btn_link_to "Devpost", "https://brickhack4.devpost.com/" -->
-        <!-- = btn_link_to "Schedule", "#schedule" -->
-        <!-- %br -->
-        <!-- %br -->
-        <!-- %h3 Registration has closed. -->
-      <% end %>
-
       <div>
-        <%= btn_link_to "Register", "https://apply.brickhack.io" %>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
+        <%= btn_link_to "Register", register_link %>
+        <%= btn_link_to "Volunteer", volunteer_link %>
       </div>
     </div>
+
     <div class="about__right">
       <div class="about__right-background"></div>
       <h2 class="text-center">Brick City's Premiere Hackathon</h2>
