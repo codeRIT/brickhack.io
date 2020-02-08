@@ -1,6 +1,7 @@
 @import "variables";
 
 $nav-space: 20px;
+$nav-space-tablet: 15px;
 
 .nav {
   position: fixed;
@@ -32,17 +33,13 @@ $nav-space: 20px;
  */
 
 .nav__links {
-  padding-left: 20%;
+  padding-left: 15%;
   margin-left: -1 * $nav-space;
   margin-right: -1 * $nav-space;
   margin-top: -10px;
   margin-bottom: -25px;
   display: flex;
   flex-flow: row wrap;
-
-  @media (max-width: 850px) {
-    display: none;
-  }
 }
 
 .nav__link {
@@ -79,6 +76,14 @@ $nav-space: 20px;
     visibility: visible;
     width: 100%;
   }
+
+  @media (max-width: 1300px) {
+    margin: 10px $nav-space-tablet;
+  }
+
+  @media (max-width: 850px) {
+    display: none;
+  }
 }
 
 /* Nav buttons
@@ -90,10 +95,6 @@ $nav-space: 20px;
   margin-bottom: -25px;
 
   margin-right: 75px;
-
-  @media (max-width: 1300px) {
-    margin-right: 75px;
-  }
 
   @media (max-width: 1200px) {
     padding-left: 25px;
@@ -113,5 +114,14 @@ $nav-space: 20px;
 
   @media (max-width: 850px) {
     left: 30px;
+  }
+}
+
+.nav__signup__button{
+  position: fixed;
+  right: 140px;
+  @media (max-width: 850px) {
+    left: 120px;
+    top: 30px;
   }
 }
