@@ -287,7 +287,7 @@ body {
 }
 
 .sponsor a {
-  display:block {}
+  display:block;
 }
 
 .sponsor__wrapper {
@@ -451,5 +451,18 @@ body {
   .footer__rit, .footer__about, .footer__contact {
     text-align: center;
     margin-bottom: 1em;
+  }
+}
+
+.goodbye__text__nonmobile{
+  display: flex;
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.goodbye__text__mobile{
+  @media (min-width: 480px) {
+    display: none;
   }
 }
