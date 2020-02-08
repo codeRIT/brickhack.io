@@ -120,8 +120,9 @@ $nav-space-tablet: 15px;
 .nav__signup__button{
   position: fixed;
   right: 140px;
+  width: 115px;
   @media (max-width: 850px) {
     left: 120px;
-    top: 30px;
+    top: 15px;
   }
 }
