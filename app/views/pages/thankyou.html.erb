@@ -1,4 +1,5 @@
-<% content_for(:head) do %> <%= stylesheet_link_tag 'ty.css' %>
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag 'home.css' %>
 <% end %>
 
 <%= render "layouts/nav_ty" %>
@@ -7,14 +8,13 @@
   <div class="about__wrapper">
     <div class="about__left">
       <div class="about__left-background"></div>
-      <%= image_tag 'bh-logos/brickhack-6.png', alt: 'BrickHack V', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.svg', alt: 'BrickHack V', class: 'about__logo' %>
     </div>
     <div class="about__right">
       <div class="about__right-background"></div>
-      <center><h2>BrickHack 6<br>Brick City's Premiere Hackathon</h2><br>
-      <h3>February 8th-9th, 2020<br>Gordon Field House<br>Rochester Institute of Technology</h3></center>
-      <p style = "margin-bottom: 10px"><br>Want to be notified?</p>
-      <%= btn_link_to "Notify Me", "http://eepurl.com/glscFj" %>
+      <center><h2>Thanks for a great BrickHack! <br> See you next year!</h2></center>
+      <p style = "margin-bottom: 10px">Join our mailing list!</p>
+      <%= btn_link_to "Subscribe", "http://eepurl.com/glscFj" %>
     </div>
   </div>
 </div>
