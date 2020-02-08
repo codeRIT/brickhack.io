@@ -4,8 +4,8 @@
 
 <%= render "layouts/nav" %>
 
-<% mentor_link = "https://goo.gl/forms/DmGMK7Jk5YNXfMGo1".freeze %>
-<% volunteer_link = "https://goo.gl/forms/UEhrcpqhJxBqDsuF3".freeze %>
+<% register_link = "https://apply.brickhack.io".freeze %>
+<% volunteer_link = "https://forms.gle/4id7fkjxpAooh59B7".freeze %>
 
 <div class="section about" id="about">
   <div class="about__wrapper">
@@ -19,23 +19,12 @@
       <p class="text subtitle">Rochester Institute of Technology</p>
       <br/>
 
-      <% if EVENT_IS_OVER %>
-      <% elsif !REGISTRATION_IS_OPEN %>
-        <p class="text">Registration has closed</p>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
-        <!-- = btn_link_to "Get Notified &raquo;".html_safe, "https://coderit.us11.list-manage.com/subscribe?u=122b09a8cef4c1f3888af8e40&id=be625a634d" -->
-        <!-- = btn_link_to "Devpost", "https://brickhack4.devpost.com/" -->
-        <!-- = btn_link_to "Schedule", "#schedule" -->
-        <!-- %br -->
-        <!-- %br -->
-        <!-- %h3 Registration has closed. -->
-      <% end %>
-
       <div>
-        <%= btn_link_to "Register", "https://apply.brickhack.io" %>
-        <!-- = btn_link_to "Volunteer", volunteer_link -->
+        <%= btn_link_to "Register", register_link %>
+        <%= btn_link_to "Volunteer", volunteer_link %>
       </div>
     </div>
+
     <div class="about__right">
       <div class="about__right-background"></div>
       <h2 class="text-center">Brick City's Premiere Hackathon</h2>
@@ -86,16 +75,14 @@
   </div>
 </div>
 
-
-<!--
 <div class="section schedule" id="schedule">
   <div class="schedule__wrapper">
     <br/>
     <h2 class="text-center">Schedule</h2>
+    <br/>
     <%= render "schedule" %>
   </div>
 </div>
--->
 
 <div class="section travel" id="travel">
   <div class="travel__wrapper">
@@ -114,6 +101,11 @@
         <li>
           <b>Buses</b>
           are being provided to a number of schools! If you're at one of them, you'll see an option to sign up when you <a href = "https://apply.brickhack.io/">RSVP</a>!
+          <ul>
+            <li>New York City, Cornell University, Binghamton University</li>
+            <li>University of Waterloo, University of Toronto</li>
+            <li>University at Buffalo</li>
+          </ul>
         </li>
       </ul>
       <br/>
@@ -147,101 +139,79 @@
   </div>
 </div>
 
-
 <div class="section sponsor" id="sponsors">
   <div class="sponsor__wrapper">
     <div class="sponsors">
-
       <h2 class="text-center">Sponsors</h2>
-
-      <!--
-
-      <div class="sponsors-col sponsors-col-x-lg">
-        <a class="sponsor" href="https://www.datto.com" target="blank" title="Datto">
+      <div class="sponsors-col sponsors-col-lg">
+        <a class="sponsor" href="https://www.wegmans.com" style="width:50%" target="blank" title="Wegmans Food Markets">
+          <%= image_tag 'sponsors/wegmans.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-lg">
+        <a class="sponsor" href="https://www.acvauctions.com/" style="width:40%" target="blank" title="ACV Auctions">
+          <%= image_tag 'sponsors/acv.png' %>
+        </a>
+        <a class="sponsor" href="https://www.cbrands.com" style="width:45%" target="blank" title="Constellation Brands">
+          <%= image_tag 'sponsors/constellationbrands.png' %>
+        </a>
+        <a class="sponsor" href="https://www.validity.com" style="width:40%" target="blank" title="Validity">
+          <%= image_tag 'sponsors/validity.png' %>
+        </a>
+      </div>
+      <div class="sponsors-col sponsors-col-lg">
+        <a class="sponsor" href="https://www.gremlin.com" style="width:35%" target="blank" title="Gremlin">
+          <%= image_tag 'sponsors/gremlin.png' %>
+        </a>
+        <a class="sponsor" href="https://www.datto.com" style="width:30%" target="blank" title="Datto">
           <%= image_tag 'sponsors/datto.png' %>
         </a>
       </div>
       <div class="sponsors-col sponsors-col-lg">
-        <a class="sponsor" href="https://www.verizon.com/about/our-company/5g-labs" style="width:25%" target="blank" title="Verizon 5G Labs">
-          <%= image_tag 'sponsors_white/5g_labs_white.png' %>
+        <a class="sponsor" href="https://www.publicissapient.com" style="width:20%" target="blank" title="Publicis Sapient">
+          <%= image_tag 'sponsors/publicis_sapient.svg' %>
         </a>
-        <a class="sponsor" href="https://www.acvauctions.com/" style="width:40%" target="blank" title="ACV Auctions">
-          <%= image_tag 'sponsors/acv.png' %>
+        <a class="sponsor" href="https://readme.io" style="width: 20%" target="blank" title="Readme">
+          <%= image_tag 'sponsors/readme.png' %>
         </a>
-      </div>
-      <div class="sponsors-col sponsors-col-lg">
-        <a class="sponsor" href="https://www.cbrands.com/" style="width:80%" target="blank" title="Constellation Brands">
-          <%= image_tag 'sponsors/constellation_brands.png' %>
-        </a>
-        <a class="sponsor" href="https://cloud.google.com" target="blank" title="Google Cloud Platform">
-          <%= image_tag 'sponsors_white/google_cloud_platform_white.png' %>
-        </a>
-        <a class="sponsor" href="https://www.wegmans.com/" style="width:75%" target="blank" title="Wegmans">
-          <%= image_tag 'sponsors_white/wegmans_white.png' %>
+        <a class="sponsor" href="https://www.mtb.com" style="width: 20%" target="blank" title="M&T Tech">
+          <%= image_tag 'sponsors/m&t-tech.png' %>
         </a>
       </div>
       <div class="sponsors-col sponsors-col-med">
-        <a class="sponsor" href="https://www.tcgplayer.com/" style="width: 30%" target="blank" title="TCGplayer, Inc.">
-          <%= image_tag 'sponsors/tcg_player.png' %>
+        <a class="sponsor" href="https://www.digitalocean.com" style="width:25%" target="blank" title="DigitalOcean">
+          <%= image_tag 'sponsors/digitalocean.png' %>
         </a>
-        <a class="sponsor" href="https://readme.io/" style="width: 40%" target="blank" title="Readme">
-          <%= image_tag 'sponsors_white/readme_white.png' %>
+        <a class="sponsor" href="https://ripplematch.com" style="width:25%" target="blank" title="RippleMatch">
+          <%= image_tag 'sponsors/ripplematch.png' %>
         </a>
-      </div>
-      <div class="sponsors-col sponsors-col-med">
-        <a class="sponsor" href="https://www.ainfosec.com/" style="width:20%" target="blank" title="Assured Information Security, Inc.">
-          <%= image_tag 'sponsors_white/ainfosec_white.png' %>
-        </a>
-        <a class="sponsor" href="https://unity3d.com" style="width:20%" target="blank" title="Unity">
-          <%= image_tag 'sponsors_white/unity_white.png' %>
-        </a>
-        <a class="sponsor" href="https://www.vuzix.com/" style="width:30%" target="blank" title="Vuzix">
-          <%= image_tag 'sponsors_white/vuzix_white.png' %>
-        </a>
-      </div>
-      <div class="sponsors-col sponsors-col-med">
-        <a class="sponsor" href="https://www.stickermule.com/uses/laptop-stickers?utm_source=sponsorship&utm_campaign=mlh-sponsorship&utm_medium=referral*" style="width:25%" target="blank" title="Sticker Mule">
-          <%= image_tag 'sponsors_white/stickermule_white.png' %>
-        </a>
-        <a class="sponsor" href="https://devpost.com" style="width:25%" target="blank" title="Devpost">
-          <%= image_tag 'sponsors_white/devpost_white.png' %>
-        </a>
-        <a class="sponsor" href="https://www.javascafe.com/" style="width:15%" target="blank" title="Java's Cafe">
-          <%= image_tag 'sponsors_white/javas_white.png' %>
+        <a class="sponsor" href="http://hackp.ac/mlh-stickermule-hackathons" style="width:25%" target="blank" title="Sticker Mule">
+          <%= image_tag 'sponsors/stickermule.png' %>
         </a>
       </div>
       <br/>
       <br/>
       <h2 class="text-center">Partners</h2>
       <div class="sponsors-col sponsors-col-med">
-        <a class="sponsor" href="https://www.rit.edu/research/department/magic-center" style="width:30%" target="blank" title="MAGIC Center">
-          <%= image_tag 'sponsors/magic.gif' %>
+        <a class="sponsor" href="https://www.rit.edu/studentgovernment/" style="width: 40%" target="blank" title="RIT Student Government">
+          <%= image_tag 'sponsors/rit-sg.png' %>
         </a>
-        <a class="sponsor" href="https://www.facebook.com/ritclubcafe/" style="width:20%" target="blank" title="RIT Club Cafe">
-          <%= image_tag 'sponsors_white/club_cafe_white.png' %>
-        </a>
-      </div>
-      <div class="sponsors-col sponsors-col-med">
         <a class="sponsor" href="http://hack.rit.edu/" style="width: 40%" target="blank" title="The Construct @ RIT">
           <%= image_tag 'sponsors/construct.png' %>
         </a>
-        <a class="sponsor" href="https://www.rit.edu/studentaffairs/counseling/" style="width: 60%" target="blank" title="Counseling & Psychological Services">
+        <a class="sponsor" href="https://www.rit.edu/studentaffairs/counseling/" style="width: 60%" target="blank" title="RIT Counseling & Psychological Services">
           <%= image_tag 'sponsors/counseling.png' %>
         </a>
+      
       </div>
       <div class="sponsors-col sponsors-col-med">
         <a class="sponsor" href="http://www.rit.edu/research/simonecenter/" style="width:100%" target="blank" title="Simone Center for Innovation and Entrepreneurship">
           <%= image_tag 'sponsors/simone.png' %>
         </a>
       </div>
-
-      -->
-      
     </div>
     <br/>
-    <br/>
-    
-    
+    <br/>    
     
     <p class="text">
       <b>Thinking about sponsoring?</b>
@@ -250,7 +220,7 @@
     <br/>
     <ul>
       <li>Increase awareness of your brand amongst students of top talent.</li>
-      <li>Share your technology allowing students to utilize and expand on your products potential.</li>
+      <li>Share your technology allowing students to utilize and expand on your product's potential.</li>
       <li>Advertise positions you're hiring for on our Devpost hackathon page.</li>
       <li>Recruit student developers who share your company's passion.</li>
     </ul>
@@ -281,12 +251,17 @@
     </p>
   </div>
   <div class="footer__about">
-    <p>
+    <p style="font-size:120%">
       Student run by
       <%= link_to 'https://codeRIT.org' do %>
         <%= image_tag 'coderit_logo.png', class: 'footer__coderit-logo' %>
       <% end %>
     </p>
+    <p>
+      Site hosted by
+      <%= image_tag 'csh.svg', class: 'footer__csh-logo' %>
+    </p>
+    <br/>
     <p>
       Find us on
       <%= link_to 'GitHub', 'https://github.com/codeRIT/brickhack.io' %>
