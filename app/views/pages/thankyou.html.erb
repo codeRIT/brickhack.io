@@ -8,13 +8,18 @@
   <div class="about__wrapper">
     <div class="about__left">
       <div class="about__left-background"></div>
-      <%= image_tag 'bh-logos/brickhack-6.svg', alt: 'BrickHack V', class: 'about__logo' %>
+      <%= image_tag 'bh-logos/brickhack-6.svg', alt: 'BrickHack VI', class: 'about__logo' %>
+      <div class="goodbye__text__mobile"
+        <center><h2>Thanks for a great BrickHack! <br> See you next year!</h2></center>
+        <p style = "margin-bottom: 10px">Join our mailing list!</p>
+        <%= btn_link_to "Subscribe", "http://eepurl.com/glscFj" %>
+      </div>
     </div>
-    <div class="about__right">
+    <div class="about__right goodbye__text__nonmobile">
       <div class="about__right-background"></div>
-      <center><h2>Thanks for a great BrickHack! <br> See you next year!</h2></center>
-      <p style = "margin-bottom: 10px">Join our mailing list!</p>
-      <%= btn_link_to "Subscribe", "http://eepurl.com/glscFj" %>
+        <center><h2>Thanks for a great BrickHack! <br> See you next year!</h2></center>
+        <p style = "margin-bottom: 10px">Join our mailing list!</p>
+        <%= btn_link_to "Subscribe", "http://eepurl.com/glscFj" %>
     </div>
   </div>
 </div>
