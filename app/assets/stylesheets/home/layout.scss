@@ -156,6 +156,18 @@ body {
   }
 }
 
+.ricky__sticker {
+  width: 500px;
+  padding: 0 20px 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    width: 200px;
+  }
+}
+
 /* Video section
  */
 
