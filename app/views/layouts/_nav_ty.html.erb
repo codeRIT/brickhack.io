@@ -1,20 +1,21 @@
 <%
-  pages = ['Gallery', 'MLH Code of Conduct']
+  pages = ['']
 %>
 
-<nav class="section nav">
-  <div class="nav__links">
-    <% pages.each do |page| %>
-      <% if page.eql? 'MLH Code of Conduct' %>
-        <a class="nav__link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
-      <% else %>
-      <a class="nav__link" href="/<%= page.downcase %>/">
+<nav class="nav">
+  <div class="nav__content">
+    <div class="nav__links">
+      <% pages.each do |page| %>
+        <% if page.eql? 'MLH Code of Conduct' %>
+          <a class="nav__link" href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">
+        <% else %>
+        <a class="nav__link" href="/<%= page.downcase %>/">
+        <% end %>
+          <%= page %>
+        </a>
       <% end %>
-        <%= page %>
-      </a>
-    <% end %>
+    </div>
   </div>
-  <div class="nav__buttons"></div>
 </nav>
 
 <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" 
