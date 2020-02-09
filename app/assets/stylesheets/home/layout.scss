@@ -156,6 +156,18 @@ body {
   }
 }
 
+.ricky__sticker {
+  width: 500px;
+  padding: 0 0px 0px;
+  box-sizing: border-box;
+  margin-top: -40px;
+  margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    width: 300px;
+  }
+}
+
 /* Video section
  */
 
@@ -284,10 +296,6 @@ body {
   @media (max-width: 480px) {
     padding-bottom: 4em;
   }
-}
-
-.sponsor a {
-  display:block {}
 }
 
 .sponsor__wrapper {
@@ -451,5 +459,18 @@ body {
   .footer__rit, .footer__about, .footer__contact {
     text-align: center;
     margin-bottom: 1em;
+  }
+}
+
+.goodbye__text__nonmobile{
+  display: flex;
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.goodbye__text__mobile{
+  @media (min-width: 480px) {
+    display: none;
   }
 }
