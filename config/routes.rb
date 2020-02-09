@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   # Homepage
 
   # root to: 'pages#index'
-  root to: 'pages#index'
+  root to: 'pages#thankyou'
 end
