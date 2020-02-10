@@ -114,12 +114,18 @@ body {
   background-size: 700px;
 
   @media (max-width: 1100px) {
-    /*background-image: asset-url("home/about-background-bricks-double.svg");*/
-    height: 1200px;
+    background: asset-url("home_asset_1_2.png") no-repeat left;
+    height: 200%;
+    width: 100%;
     opacity: 0.15;
+    margin-top: 100px;
   }
   @media (max-width: 480px) {
-    margin-top: 40px;
+    background-size: 450px;
+    margin-top: 0px;
+  }
+  @media (max-width: 400px) {
+    margin-top: 50px;
   }
 }
 
@@ -147,6 +153,18 @@ body {
 
   @media (max-width: 480px) {
     width: 200px;
+  }
+}
+
+.ricky__sticker {
+  width: 500px;
+  padding: 0 0px 0px;
+  box-sizing: border-box;
+  margin-top: -40px;
+  margin-bottom: 10px;
+
+  @media (max-width: 480px) {
+    width: 300px;
   }
 }
 
@@ -278,10 +296,6 @@ body {
   @media (max-width: 480px) {
     padding-bottom: 4em;
   }
-}
-
-.sponsor a {
-  display:block {}
 }
 
 .sponsor__wrapper {
@@ -445,5 +459,18 @@ body {
   .footer__rit, .footer__about, .footer__contact {
     text-align: center;
     margin-bottom: 1em;
+  }
+}
+
+.goodbye__text__nonmobile{
+  display: flex;
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.goodbye__text__mobile{
+  @media (min-width: 480px) {
+    display: none;
   }
 }
