@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby IO.read(File.expand_path('.ruby-version', __dir__)).chomp
 
-gem 'rails', '~> 6.0.2.2'
+gem 'rails', '~> 6.0.3'
 
 gem 'puma'
 gem 'uglifier', '>= 1.3.0'
