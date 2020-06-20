@@ -1,3 +1,9 @@
+:root{
+    --dullblue: rgb(50,75,150);
+    --purple: rgb(125,100,200);
+    --white: rgb(255,255,255);
+}
+
 body{
     font-family: Roboto;
     margin: 0px;
@@ -12,7 +18,7 @@ body{
 }
 .left-half{
     flex: 40%;
-    vertical-align: top;
+    vertical-align: bottom;
 }
 .right-half{
     flex: 60%;
@@ -22,21 +28,25 @@ body{
     width: 100%;
     height: 500px;
     border-radius: 20px;
+    background-color: var(--purple);
 }
 
 #hackathon-name{
     height: 65px;
     font-size: 60px;
     font-weight: 900;
+    color: var(--dullblue);
 }
 #hackathon-description{
     height: 35px;
     font-size: 25px;
     font-weight: 700;
+    color: var(--dullblue);
 }
 #hackathon-info{
     height: 30px;
     font-size: 15px;
+    color: var(--purple);
 }
 
 .button-container{
@@ -54,7 +64,8 @@ body{
     font-family: Poppins;
     font-weight: 200;
     font-size: 18px;
-    color: rgb(255,255,255);
+    background-color: var(--purple);
+    color: var(--white);
 }
 
 @media (max-width: 480px) {
