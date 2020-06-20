@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="app">
+            <div class="section">
+                <div class="flex-container">
+                    <div class="left-half">
+                        <div id="hackathon-name" :style="{color: dullblue}">
+                            {{title}}
+                        </div>
+                        <div id="hackathon-description" :style="{color: dullblue}">
+                            {{description}}
+                        </div>
+                        <div id="hackathon-info" :style="{color: purple}">
+                            {{info}}
+                        </div>
+                        
+                        <div class="button-container flex-container">
+                            <button class="hackathon-button" :style="{'background-color': purple}">
+                                stay updated
+                            </button>
+                            <button class="hackathon-button" :style="{'background-color': purple}">
+                                sponsor us
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="right-half">
+                        <div id="placeholder" :style="{'background-color': purple}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+     <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+</html>
