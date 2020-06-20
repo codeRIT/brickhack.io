@@ -9,12 +9,14 @@ body{
     margin: 0px;
 }
 .section{
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     text-align: center;
     margin: auto;
 }
 .flex-container{
     display: flex;
+    align-items: center;
 }
 .left-half{
     flex: 40%;
@@ -44,13 +46,13 @@ body{
     color: var(--dullblue);
 }
 #hackathon-info{
-    height: 30px;
+    height: 15px;
     font-size: 15px;
     color: var(--purple);
 }
 
 .button-container{
-    width: 95%;
+    width: 400px;
     margin: auto;
 }
 .hackathon-button{
@@ -68,15 +70,18 @@ body{
     color: var(--white);
 }
 
-@media (max-width: 480px) {
-    .section{
-        width: 100%;
+@media (max-width: 1000px) {
+    .right-half{
+        display: none;
     }
     .left-half{
         flex:100%;
     }
-    .right-half{
-        display: none;
+}
+
+@media (max-width: 480px) {
+    .section{
+        width: 100%;
     }
     #hackathon-name{
         font-size: 15vw;
@@ -88,9 +93,15 @@ body{
     }
     #hackathon-info{
         font-size: 3.6vw;
-        height: 5vw;
+        height: 4vw;
+    }
+    .button-container{
+        width: 100%;
+        margin: auto;
     }
     .hackathon-button{
+        flex: 50%;
+        height: 40px;
         height: 30px;
         border-radius: 15px;
         font-size: 14px;
