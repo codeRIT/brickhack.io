@@ -6,13 +6,21 @@
 
 body{
     font-family: Roboto;
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+#app {
+    flex: 1 0 auto;
+}
+
 .section{
     width: 100%;
     max-width: 1000px;
     text-align: center;
     margin: auto;
+    
 }
 .flex-container{
     display: flex;
@@ -68,6 +76,16 @@ body{
     font-size: 18px;
     background-color: var(--purple);
     color: var(--white);
+}
+
+#footer {
+    height: 50px;
+    margin-top: -50px;
+    size: 100%;
+    margin: 0;
+    background-color: blueviolet;
+    color: white;
+    flex-shrink: 0;
 }
 
 @media (max-width: 1000px) {
