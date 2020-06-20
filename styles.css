@@ -20,7 +20,6 @@ body{
 }
 .left-half{
     flex: 40%;
-    vertical-align: bottom;
 }
 .right-half{
     flex: 60%;
@@ -46,7 +45,7 @@ body{
     color: var(--dullblue);
 }
 #hackathon-info{
-    height: 15px;
+    height: 20px;
     font-size: 15px;
     color: var(--purple);
 }
@@ -70,19 +69,13 @@ body{
     color: var(--white);
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .right-half{
         display: none;
     }
-    .left-half{
-        flex:100%;
-    }
 }
 
-@media (max-width: 480px) {
-    .section{
-        width: 100%;
-    }
+@media (max-width: 500px) {
     #hackathon-name{
         font-size: 15vw;
         height: 15.5vw;
