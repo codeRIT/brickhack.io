@@ -6,10 +6,28 @@
 
 .header {
     padding: 10px 16px 20px 0;
-    margin-bottom: 2rem;
-    background: var(--purple);
+    background: var(--blue);
     color: var(--white);
     text-align: center;
+}
+
+.nav {
+    color: var(--blue);
+    margin: auto;
+    font-weight: bold;
+}
+
+.nav ul {
+    list-style-type: none;
+    float: right;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    padding: 16px 20px 16px;
 }
 
 body{
