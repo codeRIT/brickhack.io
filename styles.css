@@ -5,11 +5,13 @@
 }
 
 body{
-    font-family: Roboto;
     display: flex;
     flex-direction: column;
+
     height: 100%;
     margin: 0;
+
+    font-family: Roboto;
 }
 
 .banner{
@@ -24,10 +26,11 @@ body{
     background-color: var(--blue);
     color: var(--white);
 }
- /*--------NAV BAR--------*/
- .nav{
-    width: 100%;
+
+.nav{
     display: inline-block;
+
+    width: 100%;
 
     font-size: 15px;
     font-weight: 500;

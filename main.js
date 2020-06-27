@@ -1,24 +1,6 @@
-<<<<<<< HEAD
 //import React from 'react';
 //import { Button } from '@material-ui/core';
-=======
-/*import React from 'react';
-import { Button } from '@material-ui/core';*/
->>>>>>> 5a90a607646d5733313c86a8dcfce174887940cf
 
-window.onscroll = function() {myFunction()};
-
-var navbar = document.getElementById("navbar");
-
-var sticky = navbar.offsetTop;
-
-function myFunction() {
-    if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")                                              lassList.add("sticky");
-    } else {
-        navbar.classList.remove("sticky");
-    }
-}
 /*
 Vue.component('hackathon-button', {
     data: function () {
@@ -33,9 +15,6 @@ var app = new Vue({
     el: '#app',
     data: {
     },
-<<<<<<< HEAD
-})*/
-=======
 })
 
 /* for elements fixed at the top
@@ -57,4 +36,3 @@ children.forEach(child => {
     fixedContainer.append(child);
     fixedContainer.append(clone);
 });
->>>>>>> 5a90a607646d5733313c86a8dcfce174887940cf
