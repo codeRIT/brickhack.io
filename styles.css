@@ -26,6 +26,9 @@ body{
     background-color: var(--blue);
     color: var(--white);
 }
+.banner span{
+    font-weight: 400;
+}
 
 .nav{
     display: inline-block;
