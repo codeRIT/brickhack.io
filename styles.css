@@ -148,7 +148,7 @@ body{
     }
     .nav ul li{
         flex: 100%;
-        padding: 15px;
+        padding: 15px 0px;
         margin: 0px;
     }
     
@@ -167,7 +167,6 @@ body{
     .nav ul li {
         width: 100%;
         border-bottom: solid 1px var(--blue);
-        margin: 0px;
     }
 
     #hackathon-name{
