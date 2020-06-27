@@ -1,5 +1,5 @@
 :root{
-    --dullblue: rgb(50,75,150);
+    --blue: rgb(71,85,143);
     --purple: rgb(125,100,200);
     --white: rgb(255,255,255);
 }
@@ -46,44 +46,45 @@ body{
     width: 100%;
     height: 500px;
     border-radius: 20px;
-    background-color: var(--purple);
+    background-color: var(--blue);
 }
 
 #hackathon-name{
     height: 65px;
     font-size: 60px;
     font-weight: 900;
-    color: var(--dullblue);
+    color: var(--blue);
 }
 #hackathon-description{
-    height: 35px;
-    font-size: 25px;
+    height: 30px;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--dullblue);
+    color: var(--blue);
 }
 #hackathon-info{
     height: 20px;
-    font-size: 15px;
-    color: var(--purple);
+    font-size: 13px;
+    color: var(--blue);
 }
 
-.button-container{
-    width: 400px;
+.input-container{
+    width: 375px;
     margin: auto;
 }
-.hackathon-button{
+.hackathon-input{
     flex: 50%;
     height: 40px;
     margin: 10px;
 
-    border: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--blue);
     border-radius: 20px;
 
-    font-family: Poppins;
-    font-weight: 200;
-    font-size: 18px;
-    background-color: var(--purple);
-    color: var(--white);
+    text-align: center;
+}
+::placeholder{
+    color: var(--blue);
 }
 
 @media (max-width: 1000px) {
@@ -95,17 +96,17 @@ body{
 @media (max-width: 500px) {
     #hackathon-name{
         font-size: 15vw;
-        height: 15.5vw;
+        height: 16vw;
     }
     #hackathon-description{
-        font-size: 6vw;
+        font-size: 5.5vw;
         height: 8vw;
     }
     #hackathon-info{
-        font-size: 3.6vw;
+        font-size: 3.9vw;
         height: 4vw;
     }
-    .button-container{
+    .input-container{
         width: 95%;
         margin: auto;
     }
