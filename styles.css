@@ -4,39 +4,47 @@
     --white: rgb(255,255,255);
 }
 
-.header {
-    padding: 10px 16px 20px 0;
-    background: var(--blue);
-    color: var(--white);
-    text-align: center;
-}
-
-.nav {
-    height: 100%;
-    color: var(--blue);
-    margin: auto;
-    font-weight: bold;
-}
-
-.nav ul {
-    list-style-type: none;
-    float: right;
-    display: inline-flex;
-    flex-direction: row;
-    margin: 0;
-    padding: 0;
-}
-
-.nav ul li {
-    padding: 16px 25px 16px;
-}
-
 body{
     font-family: Roboto;
     display: flex;
     flex-direction: column;
     height: 100%;
     margin: 0;
+}
+
+.filler{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    padding: 12px;
+    
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.nav{
+    width: 100%;
+
+    font-weight: 500;
+    color: var(--blue);
+}
+.nav ul {
+    list-style-type: none;
+    float: right;
+
+    margin: 0;
+    padding: 0;
+}
+.nav ul li {
+    padding: 25px 25px;
+    font-size: 15px;
+    margin-right: 50px;
 }
 
 #app {
@@ -48,7 +56,6 @@ body{
     max-width: 1000px;
     text-align: center;
     margin: auto;
-    
 }
 .flex-container{
     display: flex;
@@ -106,29 +113,36 @@ body{
     color: var(--blue);
 }
 
-@media (max-width: 1000px) {
-    .nav {
-        display: flex;
-        flex-direction: column;
+@media (max-width: 1100px) {
+    .nav ul{
+        float: none;
+        align-items: center;
         text-align: center;
-        width: 100%;
+    }
+    .nav ul li{
+        flex: 100%;
+        padding: 15px;
+        margin: 0px;
     }
     
-    .nav ul {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nav ul li {
-        border-bottom: solid 1px var(--blue);
-    }
-
     .right-half{
         display: none;
     }
 }
 
 @media (max-width: 500px) {
+    .nav {
+        flex-direction: column;
+    }
+    .nav ul {
+        flex-direction: column;
+    }
+    .nav ul li {
+        width: 100%;
+        border-bottom: solid 1px var(--blue);
+    }
+
+
     #hackathon-name{
         font-size: 15vw;
         height: 16vw;
@@ -144,12 +158,5 @@ body{
     .input-container{
         width: 95%;
         margin: auto;
-    }
-    .hackathon-button{
-        flex: 50%;
-        height: 40px;
-        height: 30px;
-        border-radius: 15px;
-        font-size: 14px;
     }
 }
