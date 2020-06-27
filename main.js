@@ -13,6 +13,5 @@ Vue.component('hackathon-button', {
 var app = new Vue({
     el: '#app',
     data: {
-        info: 'hello!',
     },
 })
