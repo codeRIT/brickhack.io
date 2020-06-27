@@ -4,11 +4,20 @@
     --white: rgb(255,255,255);
 }
 
+.header {
+    padding: 10px 16px 20px 0;
+    margin-bottom: 2rem;
+    background: var(--purple);
+    color: var(--white);
+    text-align: center;
+}
+
 body{
     font-family: Roboto;
     display: flex;
     flex-direction: column;
     height: 100%;
+    margin: 0;
 }
 
 #app {
@@ -75,16 +84,6 @@ body{
     font-size: 18px;
     background-color: var(--purple);
     color: var(--white);
-}
-
-#footer {
-    height: 50px;
-    margin-top: -50px;
-    size: 100%;
-    margin: 0;
-    background-color: blueviolet;
-    color: white;
-    flex-shrink: 0;
 }
 
 @media (max-width: 1000px) {
