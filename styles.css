@@ -98,14 +98,14 @@ body{
 @media (max-width: 500px) {
     #hackathon-name{
         font-size: 15vw;
-        height: 15.5vw;
+        height: 16vw;
     }
     #hackathon-description{
-        font-size: 6vw;
+        font-size: 5.5vw;
         height: 8vw;
     }
     #hackathon-info{
-        font-size: 3.6vw;
+        font-size: 3.9vw;
         height: 4vw;
     }
     .input-container{
