@@ -12,6 +12,7 @@
 }
 
 .nav {
+    height: 100%;
     color: var(--blue);
     margin: auto;
     font-weight: bold;
