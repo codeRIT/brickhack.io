@@ -1,8 +1,18 @@
+import React from 'react';
+import { Button } from '@material-ui/core';
+
+Vue.component('Button', {
+    data: function () {
+      return {
+        count: 0
+      }
+    },
+    template: 'SSSS<Button color="primary">Hello World</Button>'  
+})
+
 var app = new Vue({
     el: '#app',
     data: {
-        title: 'BRICKHACK 7',
-        description: "Brick City's Premiere Hackathon",
-        info: "Feb xx - xx | ROCHESTER INSTITUTE OF TECHNOLOGY",
+        info: 'hello!',
     },
 })
