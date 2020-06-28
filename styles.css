@@ -74,7 +74,9 @@ body{
     width: 100%;
     height: 500px;
     border-radius: 20px;
-    background-color: var(--blue);
+    background-image: url("img/PreRegisteringPage-01.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 #hackathon-name{
@@ -113,6 +115,7 @@ body{
 }
 ::placeholder{
     color: var(--blue);
+    /* background-image: url("../../Pictures/PreRegisteringPage-01.svg"); */
 }
 
 @media (max-width: 1000px) {
