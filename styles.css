@@ -40,7 +40,6 @@ body{
     
     color: var(--blue);
     background-color: var(--white);
-    display: inline;
 }
 .nav ul {
     list-style-type: none;
@@ -52,6 +51,7 @@ body{
 .nav ul li {
     padding: 25px 25px;
 }
+
 
 .section{
     width: 100%;
