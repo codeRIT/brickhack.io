@@ -3,23 +3,25 @@
     <head>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <link rel="stylesheet" type="text/css" href="styles.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
     </head>
     <body>
         <div id="app">
-            <span id="fixed-container">
-                <div class="banner" id="banner">
+            <div id="fixed-container">
+                <div class="desktop-banner mobile-hide" id="desktop-banner">
                     <span>COVID-19 Notice:</span> We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state.
                 </div>
                 <div class="nav" id="nav">
                     <ul class="flex-container">
-                        <li>MLH CODE OF CONDUCT</li>
+                        <li class="mobile-hide">MLH CODE OF CONDUCT</li>
                         <li>GALLERY</li>
                         <li>SPONSOR US</li>
                     </ul>
+                    <a href="https://mlh.io/seasons/na-2020/events?utm_source=na-hackathon&amp;utm_medium=TrustBadge&amp;utm_campaign=2020-season&amp;utm_content=gray">
+                        <img id="mlh-badge" alt="Major League Hacking 2020 Hackathon Season" src="https://s3.amazonaws.com/logged-assets/trust-badge/2020/mlh-trust-badge-2020-gray.svg">
+                    </a>
                 </div>
-            </span>
+            </div>
 
             <div class="section flex-container content">
                 <div class="left-half">
@@ -32,13 +34,18 @@
                     <div id="hackathon-info">
                         Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                     </div>
+
+                    <img id="preregister-img" class="desktop-hide" src="assets/preregister.svg" alt="A decorative background image.">
                     
                     <div class="input-container flex-container">
                         <input class="hackathon-input" placeholder="enter your email to stay updated">
                     </div>
+
+                    <span class="mobile-banner desktop-hide">COVID-19 Notice</span>
                 </div>
-                <div class="right-half">
-                    <div id="placeholder"></div>
+
+                <div class="right-half mobile-hide">
+                    <img id="preregister-img" src="assets/preregister.svg" alt="A decorative background image.">
                 </div>
             </div>
         </div>

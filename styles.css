@@ -1,7 +1,6 @@
 :root{
-    --blue: rgb(71,85,143);
-    --purple: rgb(125,100,200);
-    --white: rgb(255,255,255);
+    --blue: #465491;
+    --white: #FFFFFF;
 }
 
 body{
@@ -11,10 +10,10 @@ body{
     height: 100%;
     margin: 0;
 
-    font-family: Roboto;
+    font-family: Poppins;
 }
 
-.banner{
+.desktop-banner{
     width: 100%;
 
     padding: 12px 0px;
@@ -26,8 +25,14 @@ body{
     background-color: var(--blue);
     color: var(--white);
 }
-.banner span{
+.desktop-banner span{
     font-weight: 400;
+}
+
+#mlh-badge{
+    position: fixed;
+    width: 100px;
+    margin-left: 50px;
 }
 
 .nav{
@@ -40,7 +45,6 @@ body{
     
     color: var(--blue);
     background-color: var(--white);
-    display: inline;
 }
 .nav ul {
     list-style-type: none;
@@ -51,6 +55,7 @@ body{
 }
 .nav ul li {
     padding: 25px 25px;
+    text-align: center;
 }
 
 .section{
@@ -63,26 +68,18 @@ body{
     display: flex;
     align-items: center;
 }
-.left-half{
-    flex: 40%;
-}
-.right-half{
-    flex: 60%;
+.left-half, .right-half{
+    flex: 50%;
 }
 
-#placeholder{
+#preregister-img{
     width: 100%;
-    height: 500px;
-    border-radius: 20px;
-    background-image: url("img/PreRegisteringPage-01.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 #hackathon-name{
-    height: 65px;
+    height: 70px;
     font-size: 60px;
-    font-weight: 900;
+    font-weight: 700;
     color: var(--blue);
 }
 #hackathon-description{
@@ -93,7 +90,7 @@ body{
 }
 #hackathon-info{
     height: 20px;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--blue);
 }
 
@@ -106,61 +103,91 @@ body{
     height: 40px;
     margin: 10px;
 
+    text-align: center;
+
     border-style: solid;
     border-width: 1px;
     border-color: var(--blue);
     border-radius: 20px;
-
-    text-align: center;
 }
-::placeholder{
+
+.mobile-banner{
+    border-bottom-style: solid;
+
+    font-size: 14px;
+    font-weight: 500;
     color: var(--blue);
-    /* background-image: url("../../Pictures/PreRegisteringPage-01.svg"); */
 }
 
-@media (max-width: 1000px) {
-    .nav ul{
-        float: none;
-        align-items: center;
-        text-align: center;
-    }
-    .nav ul li{
-        flex: 100%;
-        padding: 15px 0px;
-        margin: 0px;
-    }
-    
-    .right-half{
+@media (min-width: 1100px){
+    .desktop-hide{
         display: none;
     }
 }
 
-@media (max-width: 500px) {
-    .nav {
+@media (max-width: 1100px){
+    .mobile-hide{
+        display: none;
+    }
+    
+    #mlh-badge{
+        width: 80px;
+        margin-left: 40px;
+    }
+
+    .nav{
+        font-size: 12px;
+        font-weight: 400;
+
+        color: var(--white);
+        background-color: var(--blue);
+
+        margin-bottom: 30px;
+    }
+    .nav ul{
+        float: right;
+    }
+    .nav ul li{
+        width: 75px;
+        padding: 25px 15px;
+    }
+   
+    .section{
         flex-direction: column;
     }
-    .nav ul {
-        flex-direction: column;
-    }
-    .nav ul li {
+    .right-half{
         width: 100%;
-        border-bottom: solid 1px var(--blue);
+    }
+}
+
+@media (max-width: 600px){
+    #mlh-badge{
+        width: 60px;
+        margin-left: 15px;
     }
 
     #hackathon-name{
-        font-size: 15vw;
-        height: 16vw;
+        height: 16.5vw;
+        font-size: 14vw;
     }
     #hackathon-description{
-        font-size: 5.5vw;
-        height: 8vw;
+        height: 6.5vw;
+        font-size: 4.5vw;
     }
     #hackathon-info{
-        font-size: 3.9vw;
         height: 4vw;
+        font-size: 3.3vw; 
     }
+
     .input-container{
-        width: 95%;
+        width: 90vw;
         margin: auto;
+    }
+    .hackathon-input{
+        height: 8vw;
+        font-size: 3.5vw;
+    }
+    .mobile-banner{
+        font-size: 3.5vw;
     }
 }
