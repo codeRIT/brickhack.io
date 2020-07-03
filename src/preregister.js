@@ -41,7 +41,9 @@ class PreRegister extends React.Component {
                         <input class="hackathon-input" placeholder="enter your email to stay updated"/>
                     </div>
 
-                    <span class="mobile-banner desktop-hide">COVID-19 Notice</span>
+                    <a href="#" title="COVID-19 Notice" data-toggle="popover" data-placement="top" data-content="Content">
+                        <span class="mobile-banner desktop-hide">COVID-19 Notice</span>
+                    </a>
                 </div>
 
                 <div class="right-half mobile-hide">
