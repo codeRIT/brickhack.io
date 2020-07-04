@@ -2,15 +2,20 @@ import React from 'react';
 import './index.css';
 import PreregisterImage from './preregister.svg';
 import { ReactSVG } from 'react-svg';
+import Popover from '@material-ui/core/Popover'
 
-class PreRegister extends React.Component {    
+
+
+class PreRegister extends React.Component {
+    
     render() {
         return (
         <div id="app">
             <div id="fixed-container">
                 <div class="desktop-banner mobile-hide" id="desktop-banner">
-                    <span>COVID-19 Notice:</span> We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state.
-                    </div>
+                        <span>COVID-19 Notice:</span> We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state.
+                </div>
+                    
                 <div class="nav" id="nav">
                     <ul class="flex-container">
                         <li class="mobile-hide">MLH CODE OF CONDUCT</li>
@@ -44,6 +49,17 @@ class PreRegister extends React.Component {
                     <a href="#" title="COVID-19 Notice" data-toggle="popover" data-placement="top" data-content="Content">
                         <span class="mobile-banner desktop-hide">COVID-19 Notice</span>
                     </a>
+                    <Popover 
+                        anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                    }}>
+                    We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state.
+                    </Popover>
                 </div>
 
                 <div class="right-half mobile-hide">
