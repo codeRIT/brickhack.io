@@ -186,15 +186,15 @@ body{
   }
   #hackathon-name{
     height: 16.5vw;
-    font-size: 14vw;
+    font-size: 13vw;
   }
   #hackathon-description{
     height: 6.5vw;
-    font-size: 4.5vw;
+    font-size: 4.2vw;
   }
   #hackathon-info{
     height: 4vw;
-    font-size: 3.3vw; 
+    font-size: 3vw; 
   }
 
   .input-container{
@@ -207,5 +207,6 @@ body{
   }
   .mobile-banner{
     font-size: 3.5vw;
+    margin-top: 1em;
   }
 }
