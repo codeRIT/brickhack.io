@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import MailchimpInput from "./mailchimp-input.js"
 import CovidPopover from "./covidpopover.js";
 
 const PopoverStyle = {
@@ -43,12 +44,12 @@ class PreRegister extends React.Component {
                     
                     <img class="preregister-img desktop-hide" src={PreregisterImage} alt="A decorative background image."/>
         
-                    <div class="input-container flex-container">
-                        <input class="hackathon-input" placeholder="enter your email to stay updated"/>
-                    </div>
+                    <MailchimpInput/>
 
                     <a href="#" title="COVID-19 Notice">
-                        <span class="mobile-banner desktop-hide"><CovidPopover/></span>
+                        <span class="mobile-banner desktop-hide">
+                            <CovidPopover/>
+                        </span>
                     </a>
                     
                     {/* We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state. */}

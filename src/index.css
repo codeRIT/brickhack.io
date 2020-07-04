@@ -97,20 +97,36 @@ body{
 }
 
 .input-container{
+  height: 40px;
   width: 375px;
   margin: auto;
-}
-.hackathon-input{
-  flex: 50%;
-  height: 40px;
-  margin: 10px;
 
-  text-align: center;
+  margin-top: 10px;
 
   border-style: solid;
   border-width: 1px;
   border-color: var(--blue);
   border-radius: 20px;
+}
+.mailchimp-input{
+  flex: 50%;
+  height: 30px;
+  margin: 10px;
+
+  text-align: center;
+  border-style: none;
+}
+.mailchimp-button{
+  height: 30px;
+  width: 30px;
+
+  border: none;
+  border-radius: 15px;
+
+  margin-right: 5px;
+
+  background-color: var(--white);
+  background-image: url(./input-arrow.svg);
 }
 
 .mobile-banner{
@@ -123,75 +139,72 @@ body{
 
 @media (min-width: 1100px){
   .desktop-hide{
-      display: none;
+    display: none;
   }
 }
 
 @media (max-width: 1100px){
   .mobile-hide{
-      display: none;
+    display: none;
   }
   
   #mlh-badge{
-      width: 80px;
-      margin-left: 40px;
+    width: 80px;
+    margin-left: 40px;
   }
 
   .nav{
-      font-size: 12px;
-      font-weight: 400;
+    font-size: 12px;
+    font-weight: 400;
 
-      color: var(--white);
-      background-color: var(--blue);
+    color: var(--white);
+    background-color: var(--blue);
 
-      margin-bottom: 30px;
+    margin-bottom: 30px;
   }
   .nav ul{
-      float: right;
+    float: right;
   }
   .nav ul li{
-      width: 75px;
-      padding: 25px 15px;
+    width: 75px;
+    padding: 25px 15px;
   }
  
   .section{
-      flex-direction: column;
+    flex-direction: column;
   }
   .right-half{
-      width: 100%;
+    width: 100%;
   }
 }
 
 @media (max-width: 720px){
   #mlh-badge{
-      width: 60px;
-      margin-left: 15px;
-  }
-  #fixed-container {
-    margin-bottom: 1em;
+    width: 60px;
+    margin-left: 15px;
   }
   #hackathon-name{
-      height: 16.5vw;
-      font-size: 14vw;
+    height: 16.5vw;
+    font-size: 14vw;
   }
   #hackathon-description{
-      height: 6.5vw;
-      font-size: 4.5vw;
+    height: 6.5vw;
+    font-size: 4.5vw;
   }
   #hackathon-info{
-      height: 4vw;
-      font-size: 3.3vw; 
+    height: 4vw;
+    font-size: 3.3vw; 
   }
 
   .input-container{
-      width: 90vw;
-      margin: auto;
+    width: 90vw;
+    margin: auto;
   }
   .hackathon-input{
-      height: 8vw;
-      font-size: 3.5vw;
+    height: 8vw;
+    font-size: 3.5vw;
   }
   .mobile-banner{
-      font-size: 3.5vw;
+    font-size: 3.5vw;
   }
 }
