@@ -1,12 +1,12 @@
 import React from 'react';
 import './index.css';
-import PreregisterImage from './preregister.svg';
-import { ReactSVG } from 'react-svg';
 import CovidPopover from "./covidpopover.js";
 
 const PopoverStyle = {
     top: '50px'
 };
+
+var PreregisterImage = require('./preregister.svg');
 
 class PreRegister extends React.Component {
     render() {
@@ -40,9 +40,9 @@ class PreRegister extends React.Component {
                     <div id="hackathon-info">
                         Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                     </div>
-
-                    <ReactSVG class="preregister-img desktop-hide" src="{PreregisterImage}" alt="A decorative background image."/>
                     
+                    <img class="preregister-img desktop-hide" src={PreregisterImage} alt="A decorative background image."/>
+        
                     <div class="input-container flex-container">
                         <input class="hackathon-input" placeholder="enter your email to stay updated"/>
                     </div>
@@ -55,7 +55,7 @@ class PreRegister extends React.Component {
                 </div>
 
                 <div class="right-half mobile-hide">
-                    <ReactSVG class="preregister-img" src="{PreregisterImage}" alt="A decorative background image."/>
+                    <img class="preregister-img" src={PreregisterImage} alt="A decorative background image."/>
                 </div>
             </div>
         </div>

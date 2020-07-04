@@ -10,8 +10,7 @@
     "material-ui-popup-state": "^1.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "react-svg": "^11.0.28"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
