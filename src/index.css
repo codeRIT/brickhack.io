@@ -130,6 +130,7 @@ body{
 }
 
 .mobile-banner{
+  position: relative;
   border-bottom-style: solid;
 
   font-size: 14px;
