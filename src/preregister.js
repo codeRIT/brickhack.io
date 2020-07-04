@@ -2,12 +2,13 @@ import React from 'react';
 import './index.css';
 import PreregisterImage from './preregister.svg';
 import { ReactSVG } from 'react-svg';
-import Popover from '@material-ui/core/Popover'
+import CovidPopover from "./covidpopover.js";
 
-
+const PopoverStyle = {
+    top: '50px'
+};
 
 class PreRegister extends React.Component {
-    
     render() {
         return (
         <div id="app">
@@ -46,20 +47,11 @@ class PreRegister extends React.Component {
                         <input class="hackathon-input" placeholder="enter your email to stay updated"/>
                     </div>
 
-                    <a href="#" title="COVID-19 Notice" data-toggle="popover" data-placement="top" data-content="Content">
-                        <span class="mobile-banner desktop-hide">COVID-19 Notice</span>
+                    <a href="#" title="COVID-19 Notice">
+                        <span class="mobile-banner desktop-hide"><CovidPopover/></span>
                     </a>
-                    <Popover 
-                        anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                    }}>
-                    We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state.
-                    </Popover>
+                    
+                    {/* We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state. */}
                 </div>
 
                 <div class="right-half mobile-hide">
