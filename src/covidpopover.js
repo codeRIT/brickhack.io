@@ -32,9 +32,9 @@ class CovidPopover extends Component {
                     </Popover>
                     }
                 >
-                <a href="#" id="mypopover">
+                <span>
                     COVID-19 Notice
-                </a>
+                </span>
               </OverlayTrigger>
           );
       }
