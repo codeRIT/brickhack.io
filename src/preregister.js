@@ -18,7 +18,7 @@ class PreRegister extends React.Component {
                         <span>COVID-19 Notice:</span> We will publish relevant information upon receiving updates from RIT and NY state.
                 </div>
                     
-                <div class="nav" id="nav">
+                <div class="navigation" id="navigation">
                     <ul class="flex-container">
                         <li class="mobile-hide"><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH CODE OF CONDUCT</a></li>
                         <li><a href="https://brickhack.io/gallery/">GALLERY</a></li>

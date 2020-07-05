@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
 :root{
-  --blue: #465491;
+  --dullblue: #465491;
   --white: #FFFFFF;
 }
 
@@ -24,7 +24,7 @@ body{
   font-weight: 300;
   text-align: center;
 
-  background-color: var(--blue);
+  background-color: var(--dullblue);
   color: var(--white);
 }
 .desktop-banner span{
@@ -37,7 +37,7 @@ body{
   margin-left: 50px;
 }
 
-.nav{
+.navigation{
   display: inline-block;
 
   width: 100%;
@@ -45,24 +45,24 @@ body{
   font-size: 15px;
   font-weight: 500;
   
-  color: var(--blue);
+  color: var(--dullblue);
   background-color: var(--white);
 }
-.nav ul {
+.navigation ul {
   list-style-type: none;
   float: right;
 
   margin: 0;
   padding: 0;
 }
-.nav ul li {
+.navigation ul li {
   padding: 25px 25px;
   text-align: center;
 }
 
-.nav ul li a {
+.navigation ul li a {
   text-decoration: none;
-  color: var(--blue)
+  color: var(--dullblue)
 }
 
 .section{
@@ -87,18 +87,18 @@ body{
   height: 70px;
   font-size: 60px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--dullblue);
 }
 #hackathon-description{
   height: 30px;
   font-size: 20px;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--dullblue);
 }
 #hackathon-info{
   height: 20px;
   font-size: 14px;
-  color: var(--blue);
+  color: var(--dullblue);
 }
 
 .input-container{
@@ -110,7 +110,7 @@ body{
 
   border-style: solid;
   border-width: 1px;
-  border-color: var(--blue);
+  border-color: var(--dullblue);
   border-radius: 20px;
 }
 .mailchimp-input{
@@ -140,7 +140,7 @@ body{
 
   font-size: 14px;
   font-weight: 500;
-  color: var(--blue);
+  color: var(--dullblue);
 }
 
 @media (min-width: 1100px){
@@ -159,24 +159,24 @@ body{
     margin-left: 40px;
   }
 
-  .nav{
+  .navigation{
     font-size: 12px;
     font-weight: 400;
 
     color: var(--white);
-    background-color: var(--blue);
+    background-color: var(--dullblue);
 
     margin-bottom: 30px;
   }
-  .nav ul{
+  .navigation ul{
     float: right;
   }
-  .nav ul li{
+  .navigation ul li{
     width: 75px;
     padding: 25px 15px;
   }
 
-  .nav ul li a {
+  .navigation ul li a {
     text-decoration: none;
     color: var(--white)
   }
