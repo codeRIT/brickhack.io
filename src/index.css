@@ -60,6 +60,11 @@ body{
   text-align: center;
 }
 
+.nav ul li a {
+  text-decoration: none;
+  color: var(--blue)
+}
+
 .section{
   width: 100%;
   max-width: 1100px;
@@ -169,6 +174,11 @@ body{
   .nav ul li{
     width: 75px;
     padding: 25px 15px;
+  }
+
+  .nav ul li a {
+    text-decoration: none;
+    color: var(--white)
   }
  
   .section{
