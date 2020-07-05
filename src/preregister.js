@@ -3,11 +3,7 @@ import './index.css';
 import MailchimpInput from "./mailchimp-input.js"
 import CovidPopover from "./covidpopover.js";
 
-const PopoverStyle = {
-    top: '50px'
-};
-
-var PreregisterImage = require('./preregister.svg');
+var HeroImage = require('./hero.svg');
 
 class PreRegister extends React.Component {
     render() {
@@ -41,21 +37,19 @@ class PreRegister extends React.Component {
                         Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                     </div>
                     
-                    <img class="preregister-img desktop-hide" src={PreregisterImage} alt="A decorative background image."/>
+                    <img class="hero-img desktop-hide" src={HeroImage} alt="A decorative background image."/>
         
                     <MailchimpInput/>
 
-                    <a href="#" title="COVID-19 Notice">
-                        <span class="mobile-banner desktop-hide">
-                            <CovidPopover/>
-                        </span>
-                    </a>
+                    <div class="mobile-banner desktop-hide">
+                       <CovidPopover/>
+                    </div>
                     
                     {/* We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state. */}
                 </div>
 
                 <div class="right-half mobile-hide">
-                    <img class="preregister-img" src={PreregisterImage} alt="A decorative background image."/>
+                    <img class="hero-img" src={HeroImage} alt="A decorative background image."/>
                 </div>
             </div>
         </div>
