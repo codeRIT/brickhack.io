@@ -5,6 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
     <PreRegister/>,
-    document.getElementById('root')
+    document.getElementById('root'),
 );
 

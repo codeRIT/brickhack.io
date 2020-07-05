@@ -3,14 +3,16 @@
 :root{
   --dullblue: #465491;
 }
-
-body{
+html, body, #root, #app, .full-height{
+  height: 100%;
+}
+.full-height{
+  height: calc(100% - 445px); /* minus height of content, this is probably a bad way to do it*/
   display: flex;
   flex-direction: column;
-
-  height: 100%;
+}
+body{
   margin: 0;
-
   font-family: Poppins;
 }
 
@@ -222,7 +224,7 @@ body{
     border-radius: 5vw;
   }
   .mailchimp-input{
-    height: 8vw;
+    height: 7vw;
     font-size: 3.5vw;
   }
   .mailchimp-button{
