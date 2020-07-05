@@ -59,9 +59,6 @@ body{
 .navigation ul li {
   padding: 25px 25px;
   text-align: center;
-}
-
-.navigation ul li a {
   text-decoration: none;
   color: var(--dullblue)
 }
@@ -170,11 +167,8 @@ body{
     float: right;
   }
   .navigation ul li{
-    width: 75px;
+    width: 100%;
     padding: 25px 15px;
-  }
-
-  .navigation ul li a {
     text-decoration: none;
     color: var(--white)
   }
