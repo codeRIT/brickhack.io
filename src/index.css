@@ -150,6 +150,9 @@ html, body, #root, #app, .full-height{
   border-style: none;
 
   outline: none;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
 }
 .mailchimp-button{
   height: 30px;
@@ -257,7 +260,7 @@ html, body, #root, #app, .full-height{
     font-size: 13vw;
   }
   #hackathon-description{
-    height: 8.0vw;
+    height: 8.5vw;
     font-size: 6.4vw;
   }
   #hackathon-info{
@@ -273,7 +276,7 @@ html, body, #root, #app, .full-height{
   }
   .mailchimp-input{
     height: 7vw;
-    font-size: 3.5vw;
+    font-size: 3.0vw;
   }
   .mailchimp-button{
     height: 8vw;
