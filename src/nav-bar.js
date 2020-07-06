@@ -1,7 +1,7 @@
 import React from 'react';
 
 class NavBar extends React.Component {
-    componentDidMount() {
+    componentDidMount(){
         var fixedContainer = document.getElementById("fixed-container");
         var children = Array.from(fixedContainer.children);
 
@@ -19,13 +19,13 @@ class NavBar extends React.Component {
     render(){
         return(
             <div id="fixed-container">
-                <div class="desktop-banner mobile-hide" id="desktop-banner">
+                <div className="desktop-banner mobile-hide" id="desktop-banner">
                     <span>COVID-19 Notice:</span> We will publish relevant information upon receiving updates from RIT and NY state.
                 </div>
                     
-                <div class="navigation" id="navigation">
-                    <ul class="flex-container">
-                        <li class="mobile-hide"><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH CODE OF CONDUCT</a></li>
+                <div className="navigation" id="navigation">
+                    <ul className="flex-container">
+                        <li className="mobile-hide"><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH CODE OF CONDUCT</a></li>
                         <li><a href="https://brickhack.io/gallery/">GALLERY</a></li>
                     </ul>
                     <a href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&amp;utm_medium=TrustBadge&amp;utm_campaign=2020-season&amp;utm_content=gray">

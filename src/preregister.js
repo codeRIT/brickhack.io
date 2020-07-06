@@ -9,11 +9,10 @@ class PreRegister extends React.Component {
     render() {
         return (
         <div id="app">
-            <NavBar/>
-
-            <div class="full-height">
-                <div class="section flex-container">
-                    <div class="left-half">
+            <div className="full-height">
+                <NavBar/>
+                <div className="section flex-container">
+                    <div className="left-half">
                         <div id="hackathon-name">
                             BRICKHACK 7
                         </div>
@@ -24,17 +23,15 @@ class PreRegister extends React.Component {
                             Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                         </div>
                         
-                        <img class="hero-img desktop-hide" src={HeroImage} alt="A decorative background image."/>
+                        <img className="hero-img desktop-hide" src={HeroImage} alt="A decorative background image."/>
             
                         <MailchimpInput/>
 
-                        <div class="mobile-banner desktop-hide">
-                            <CovidPopover/>
-                        </div>
+                        <CovidPopover/>
                     </div>
 
-                    <div class="right-half mobile-hide">
-                        <img class="hero-img" src={HeroImage} alt="A decorative background image."/>
+                    <div className="right-half mobile-hide">
+                        <img className="hero-img" src={HeroImage} alt="A decorative background image."/>
                     </div>
                 </div>
             </div>
