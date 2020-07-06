@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import NavBar from "./nav-bar.js";
 import MailchimpInput from "./mailchimp-input.js";
 import CovidPopover from "./covid-popover.js";

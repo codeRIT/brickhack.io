@@ -1,8 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
+/*
+if there is any unexpected styling (esp. coloring), 
+check node_modules\bootstrap\dist\css
+(you'll have to restart the app for changes to show)
+*/
+
 :root{
   --dullblue: #465491;
+
+  /*for hover transparency transitions*/
+  --dullblueRGBA1: rgba(70,84,145,0);
+  --dullblueRGBA2: rgba(70,84,145,1);
+
+  --whiteRGBA1: rgba(255,255,255,0);
+  --whiteRGBA2: rgba(255,255,255,1);
 }
+
+a{
+  text-decoration: none;
+}
+
+body{
+  margin: 0;
+  font-family: Poppins;
+}
+
 html, body, #root, #app, .full-height{
   height: 100%;
 }
@@ -11,11 +34,6 @@ html, body, #root, #app, .full-height{
   display: flex;
   flex-direction: column;
 }
-body{
-  margin: 0;
-  font-family: Poppins;
-}
-
 .desktop-banner{
   width: 100%;
 
@@ -60,8 +78,19 @@ body{
   padding: 25px 25px;
   text-align: center;
   text-decoration: none;
-  color: var(--dullblue)
 }
+.navigation ul li a{
+  color: var(--dullblue);
+
+  border-bottom-style: solid;
+  border-color: var(--dullblueRGBA1);
+  transition: border-color 0.25s;
+}
+.navigation ul li a:hover{
+  border-color: var(--dullblueRGBA2);
+  transition: border-color 0.25s;
+}
+
 
 .section{
   width: 100%;
@@ -119,6 +148,8 @@ body{
 
   text-align: center;
   border-style: none;
+
+  outline: none;
 }
 .mailchimp-button{
   height: 30px;
@@ -134,8 +165,19 @@ body{
   background-color: var(--white);
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
-  background-position: 3.5px;
+  background-position: 3.75px;
   background-size: 18px;
+
+  outline: none;
+  transition: 0.1s;
+}
+.mailchimp-button:hover{
+  background-position: 5.25px;
+  transition: 0.1s;
+}
+
+::placeholder{
+  color: var(--dullblue);
 }
 
 @media (min-width: 1100px){
@@ -170,7 +212,13 @@ body{
     width: 100%;
     padding: 25px 15px;
     text-decoration: none;
-    color: var(--white)
+  }
+  .navigation ul li a{
+    color: var(--white);
+    border-color: var(--whiteRGBA1);
+  }
+  .navigation ul li a:hover{
+    border-color: var(--whiteRGBA2)
   }
  
   .section{
