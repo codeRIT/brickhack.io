@@ -1,5 +1,0 @@
-deploy:
-  id: <%= ENV['GIT_REV'] %>
-  git_sha: <%= ENV['GIT_REV'] %>
-production: # Rails environment
-  env: <%= ENV['SKYLIGHT_ENV'] || 'production' %> # Skylight environment
