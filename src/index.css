@@ -12,8 +12,8 @@ if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\
   --dullblueRGBA1: #46549100;
   --dullblueRGBA2: #465491FF;
 
-  --whiteRGBA1: #FFFFFFFF;
-  --whiteRGBA2: #FFFFFF00;
+  --whiteRGBA1: #FFFFFF00;
+  --whiteRGBA2: #FFFFFFFF;
 }
 
 a{
