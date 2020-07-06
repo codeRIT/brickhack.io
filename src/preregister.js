@@ -9,8 +9,9 @@ class PreRegister extends React.Component {
     render() {
         return (
         <div id="app">
+            <NavBar/>
+
             <div class="full-height">
-                <NavBar/>
                 <div class="section flex-container">
                     <div class="left-half">
                         <div id="hackathon-name">
@@ -30,8 +31,6 @@ class PreRegister extends React.Component {
                         <div class="mobile-banner desktop-hide">
                             <CovidPopover/>
                         </div>
-                        
-                        {/* We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY state. */}
                     </div>
 
                     <div class="right-half mobile-hide">
