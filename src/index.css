@@ -102,6 +102,9 @@ html, body, #root, #app, .full-height{
 .left-half, .right-half{
   flex: 50%;
 }
+.left-half{
+  margin-bottom: 2.5vh;
+}
 
 .hero-img{
   width: 100%;
@@ -208,8 +211,6 @@ mobile has scaling widths and font sizes
 
     color: var(--white);
     background-color: var(--dullblue);
-
-    margin-bottom: calc(5px + 5vh);
   }
   .navigation ul li{
     padding: 25px 15px;
@@ -241,8 +242,11 @@ mobile has scaling widths and font sizes
 }
 
 @media (max-width: 720px){
+  .navigation{
+    margin-bottom: calc(3vh);
+  }
   #mlh-badge{
-    width: 60px;
+    width: calc(30px + 2.5vh + 2.5vw);
     margin-left: 15px;
   }
   #hackathon-name{
