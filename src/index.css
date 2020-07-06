@@ -49,7 +49,7 @@ html, body, #root, #app, .full-height{
 }
 
 #mlh-badge{
-  position: fixed;
+  position: absolute;
   width: 100px;
   margin-left: 50px;
 }
