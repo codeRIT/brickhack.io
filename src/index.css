@@ -132,7 +132,7 @@ html, body, #root, #app, .full-height{
   margin: auto;
 
   margin-top: 10px;
-
+  
   border-style: solid;
   border-width: 1px;
   border-color: var(--dullblue);
@@ -209,7 +209,7 @@ mobile has scaling widths and font sizes
     color: var(--white);
     background-color: var(--dullblue);
 
-    margin-bottom: 12.5vh;
+    margin-bottom: calc(5px + 5vh);
   }
   .navigation ul li{
     padding: 25px 15px;
@@ -225,12 +225,9 @@ mobile has scaling widths and font sizes
   .section{
     flex-direction: column;
   }
-  .hero-img{
-    margin-bottom: 2.5vh;
-  }
 
   .mobile-banner{
-    margin-top: 2.5vh;
+    margin-top: 1.5vh;
     display: inline-block;
 
     border-bottom-style: solid;
@@ -249,7 +246,7 @@ mobile has scaling widths and font sizes
     margin-left: 15px;
   }
   #hackathon-name{
-    height: 14.0vw;
+    height: 14.1vw;
     font-size: 13vw;
   }
   #hackathon-description{
@@ -258,11 +255,13 @@ mobile has scaling widths and font sizes
   }
   #hackathon-info{
     height: 4vw;
-    font-size: 3vw; 
+    font-size: 3.1vw; 
   }
 
   .mailchimp-container{
     width: 70vw;
+
+    margin-top: calc(1vh);
 
     height: 10vw;
     border-radius: 5vw;
