@@ -228,7 +228,7 @@ mobile has scaling widths and font sizes
   }
 
   .mobile-banner{
-    margin-top: 1.5vh;
+    margin-top: 1vh;
     display: inline-block;
 
     border-bottom-style: solid;
@@ -255,12 +255,16 @@ mobile has scaling widths and font sizes
   }
   #hackathon-description{
     height: 8.5vw;
-    font-size: 6.4vw;
+    font-size: 6.6vw;
   }
   #hackathon-info{
     height: 4vw;
     font-size: 3.1vw; 
   }
+
+  .hero-img{
+    width: 90%;
+  }  
 
   .mailchimp-container{
     width: 70vw;
