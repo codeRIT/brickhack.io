@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
 /*
-if there is any unexpected styling (esp. coloring), 
-check node_modules\bootstrap\dist\css
+if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\dist\bootstrap.css
 (you'll have to restart the app for changes to show)
 */
 
@@ -10,11 +9,11 @@ check node_modules\bootstrap\dist\css
   --dullblue: #465491;
 
   /*for hover transparency transitions*/
-  --dullblueRGBA1: rgba(70,84,145,0);
-  --dullblueRGBA2: rgba(70,84,145,1);
+  --dullblueRGBA1: #46549100;
+  --dullblueRGBA2: #465491FF;
 
-  --whiteRGBA1: rgba(255,255,255,0);
-  --whiteRGBA2: rgba(255,255,255,1);
+  --whiteRGBA1: #FFFFFFFF;
+  --whiteRGBA2: #FFFFFF00;
 }
 
 a{
@@ -30,7 +29,7 @@ html, body, #root, #app, .full-height{
   height: 100%;
 }
 .full-height{
-  height: calc(100% - 445px); /* minus height of content, this is probably a bad way to do it*/
+  height: calc(100% - 445px); /* not really a good way to do it, will probably change to flex column layout */
   display: flex;
   flex-direction: column;
 }
@@ -74,7 +73,7 @@ html, body, #root, #app, .full-height{
   margin: 0;
   padding: 0;
 }
-.navigation ul li {
+.navigation ul li{
   padding: 25px 25px;
   text-align: center;
   text-decoration: none;
@@ -90,7 +89,6 @@ html, body, #root, #app, .full-height{
   border-color: var(--dullblueRGBA2);
   transition: border-color 0.25s;
 }
-
 
 .section{
   width: 100%;
@@ -129,7 +127,7 @@ html, body, #root, #app, .full-height{
   color: var(--dullblue);
 }
 
-.input-container{
+.mailchimp-container{
   height: 40px;
   width: 375px;
   margin: auto;
@@ -150,7 +148,7 @@ html, body, #root, #app, .full-height{
   border-style: none;
 
   outline: none;
-  font-family: Poppins;
+  font-family: inherit;
   font-size: 14px;
   font-weight: 500;
 }
@@ -173,13 +171,13 @@ html, body, #root, #app, .full-height{
 
   outline: none;
   transition: 0.1s;
-}
+} /* arrow moves slightly to the right on hover */
 .mailchimp-button:hover{
   background-position: 5.25px;
   transition: 0.1s;
 }
 
-::placeholder{
+::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
   color: var(--dullblue);
 }
 
@@ -188,6 +186,12 @@ html, body, #root, #app, .full-height{
     display: none;
   }
 }
+
+/* 
+tablet & mobile have the column layout
+tablet has fixed widths and font sizes
+mobile has scaling widths and font sizes
+*/
 
 @media (max-width: 1100px){
   .mobile-hide{
@@ -208,13 +212,8 @@ html, body, #root, #app, .full-height{
 
     margin-bottom: 12.5vh;
   }
-  .navigation ul{
-    float: right;
-  }
   .navigation ul li{
-    width: 100%;
     padding: 25px 15px;
-    text-decoration: none;
   }
   .navigation ul li a{
     color: var(--white);
@@ -227,17 +226,12 @@ html, body, #root, #app, .full-height{
   .section{
     flex-direction: column;
   }
-  .right-half{
-    width: 100%;
-  }
   .hero-img{
     margin-bottom: 2.5vh;
   }
 
-  .input-container{
-    margin-bottom: 2.5vh;
-  }
   .mobile-banner{
+    margin-top: 2.5vh;
     display: inline-block;
 
     border-bottom-style: solid;
@@ -268,7 +262,7 @@ html, body, #root, #app, .full-height{
     font-size: 3vw; 
   }
 
-  .input-container{
+  .mailchimp-container{
     width: 70vw;
 
     height: 10vw;
@@ -287,8 +281,12 @@ html, body, #root, #app, .full-height{
     margin-right: 1vw;
 
     background-position: 1vw;
-    background-size: 4.5vw;
+    background-size: 5vw;
   }
+  .mailchimp-button:hover{
+    background-position: 1.5vw;
+  }
+  
   .mobile-banner{
     font-size: 3.5vw;
   }

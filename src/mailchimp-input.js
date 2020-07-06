@@ -1,10 +1,10 @@
 import React from 'react';
 
-class CovidPopover extends React.Component {
+class MailchimpInput extends React.Component {
     render(){
         return(
             <form action="https://coderit.us11.list-manage.com/subscribe/post?u=122b09a8cef4c1f3888af8e40&amp;id=4c1af7f783" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                <div class="input-container flex-container">
+                <div class="mailchimp-container flex-container">
                     <input type="email" name="EMAIL" class="mailchimp-input" placeholder="enter your email to stay updated" required/>
                     
                     {/* real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
@@ -16,4 +16,4 @@ class CovidPopover extends React.Component {
     }
 };
 
-export default CovidPopover;
+export default MailchimpInput;
