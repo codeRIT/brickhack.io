@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import { OverlayTrigger, Popover, PopoverTitle, PopoverContent } from "react-bootstrap";
 
 class CovidPopover extends React.Component {

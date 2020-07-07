@@ -16,7 +16,7 @@ if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\
   --whiteRGBA2: #FFFFFFFF;
 }
 
-a{
+a:hover{
   text-decoration: none;
 }
 
@@ -111,13 +111,13 @@ html, body, #root, #app, .full-height{
 }
 
 #hackathon-name{
-  height: 70px;
+  height: 65px;
   font-size: 60px;
   font-weight: 700;
   color: var(--dullblue);
 }
 #hackathon-description{
-  height: 40px;
+  height: 35px;
   font-size: 28.0px;
   font-weight: 700;
   color: var(--dullblue);
