@@ -23,7 +23,7 @@ class PreRegister extends React.Component {
                             Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                         </div>
                         
-                        <img className="hero-img desktop-hide" src={HeroImage} alt="A decorative background image."/>
+                        <img className="hero-img desktop-hide" src={HeroImage} alt="A decorative background hero graphic."/>
             
                         <MailchimpInput/>
 
@@ -31,7 +31,7 @@ class PreRegister extends React.Component {
                     </div>
 
                     <div className="right-half mobile-hide">
-                        <img className="hero-img" src={HeroImage} alt="A decorative background image."/>
+                        <img className="hero-img" src={HeroImage} alt="A decorative background hero graphic."/>
                     </div>
                 </div>
             </div>
