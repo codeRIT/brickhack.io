@@ -111,14 +111,14 @@ html, body, #root, #app, .full-height{
 }
 
 #hackathon-name{
-  height: 65px;
+  height: 70px;
   font-size: 60px;
   font-weight: 700;
   color: var(--dullblue);
 }
 #hackathon-description{
   height: 40px;
-  font-size: 29.5px;
+  font-size: 28.0px;
   font-weight: 700;
   color: var(--dullblue);
 }
@@ -249,13 +249,18 @@ mobile has scaling widths and font sizes
     width: calc(30px + 2.5vh + 2.5vw);
     margin-left: 15px;
   }
+
+  /*
+  note: mobile does not have all the font-weights!
+  it might look like it overflows on inspect element's device toolbar but doesn't actually
+  */
   #hackathon-name{
     height: 14.1vw;
     font-size: 13vw;
   }
   #hackathon-description{
     height: 8.5vw;
-    font-size: 6.8vw;
+    font-size: 7.0vw;
   }
   #hackathon-info{
     height: 4vw;
