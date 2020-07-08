@@ -4,13 +4,21 @@ node_js:
 cache:
   directories:
   - node_modules
+before_script:
+  - echo -e "Host csh-cloud.oweb.co\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
   - npm run build
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $gh_deploy_token
-  local_dir: build
-  on:
-    branch: develop
+  - provider: script
+    script: .travis/deploy_stage.sh
+    on:
+      branch: develop
+      repo: codeRIT/brickhack.io
+  - provider: pages
+    skip_cleanup: true
+    github_token: $gh_deploy_token
+    local_dir: build
+    on:
+      branch: master
+      repo: codeRIT/brickhack.io
