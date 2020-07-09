@@ -15,10 +15,3 @@ deploy:
     on:
       branch: develop
       repo: codeRIT/brickhack.io
-  - provider: pages
-    skip_cleanup: true
-    github_token: $gh_deploy_token
-    local_dir: build
-    on:
-      branch: master
-      repo: codeRIT/brickhack.io
