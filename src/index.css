@@ -244,10 +244,18 @@ mobile has scaling widths and font sizes
 
 @media (max-width: 720px){
   .navigation{
-    margin-bottom: calc(3vh);
+    /* no scaling for very short devices,
+    scaling matching the mlh badge scaling for avg devices,
+    high scaling for very tall devices
+    */
+    margin-bottom: max(0px, 10vh - 40px, 0px, 30vh - 190px);
   }
   #mlh-badge{
-    width: calc(30px + 2.5vh + 2.5vw);
+    /*68 px is the current height of the nav bar
+    will think of a better way to structure this later*/
+    height: max(68px, 35px + 10vh);
+    width: auto;
+  
     margin-left: 15px;
   }
 
@@ -269,11 +277,13 @@ mobile has scaling widths and font sizes
   }
 
   .hero-img{
-    width: 90%;
+    /* slightly smaller hero img for shorter screens */
+    min-width: 80%;
+    width: min(50vh, 90%);
   }  
 
   .mailchimp-container{
-    width: 75vw;
+    width: 80vw;
 
     margin-top: calc(1vh);
 
@@ -297,5 +307,6 @@ mobile has scaling widths and font sizes
   }
   .mobile-banner{
     font-size: 3.5vw;
+    margin-bottom: 2.5vh;
   }
 }
