@@ -11,7 +11,7 @@ script:
 
 deploy:
   - provider: script
-    script: .travis/deploy_stage.sh
+    script: bash .travis/deploy_stage.sh
     on:
       branch: develop
       repo: codeRIT/brickhack.io
