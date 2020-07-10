@@ -7,6 +7,7 @@ if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\
 
 :root{
   --dullblue: #465491;
+  --white: #FFFFFF;
 
   /*for hover transparency transitions*/
   --dullblueRGBA1: #46549100;
@@ -27,6 +28,13 @@ body{
 html, body, #root, #app, .full-height{
   height: 100%;
 }
+
+.flex-container{
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .full-height{
   height: calc(100% - 445px); /* not really a good way to do it, will probably change to flex column layout */
   display: flex;
@@ -50,7 +58,7 @@ html, body, #root, #app, .full-height{
 
 #mlh-badge{
   position: absolute;
-  width: 100px;
+  height: 175px;
   margin-left: 50px;
 }
 
@@ -94,10 +102,6 @@ html, body, #root, #app, .full-height{
   max-width: 1100px;
   text-align: center;
   margin: auto;
-}
-.flex-container{
-  display: flex;
-  align-items: center;
 }
 .left-half, .right-half{
   flex: 50%;
@@ -202,7 +206,7 @@ mobile has scaling widths and font sizes
   }
   
   #mlh-badge{
-    width: 80px;
+    height: 150px;
     margin-left: 40px;
   }
 
@@ -253,9 +257,9 @@ mobile has scaling widths and font sizes
   #mlh-badge{
     /*68 px is the current height of the nav bar
     will think of a better way to structure this later*/
+    width: default;
     height: max(68px, 35px + 10vh);
-    width: auto;
-  
+    
     margin-left: 15px;
   }
 
