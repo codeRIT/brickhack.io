@@ -8,7 +8,7 @@ a:hover{
 }
 body{
   margin: 0;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
 html, body, #root, #app, .full-height{
   height: 100%;
@@ -142,6 +142,14 @@ html, body, #root, #app, .full-height{
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
+
+  &::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
+    color: $blue;
+    transition: color 0.4s;
+  }
+  &:focus::placeholder{
+    color: transparent;
+  }
 }
 .mailchimp-button{
   height: 30px;
@@ -162,10 +170,6 @@ html, body, #root, #app, .full-height{
 
   outline: none;
   transition: 0.1s; /* see: min-width: media query */
-} 
-
-::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
-  color: $blue;
 }
 
 /*desktop only*/
