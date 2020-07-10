@@ -17,7 +17,7 @@ if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\
 
   /*#FFFFFF*/
   --whiteRGBA1: rgba(255,255,255,0);
-  --whiteRGBA2: rgba(255,255,255,0);
+  --whiteRGBA2: rgba(255,255,255,1);
 }
 
 a:hover{
@@ -76,7 +76,7 @@ html, body, #root, #app, .full-height{
   color: var(--dullblue);
   background-color: var(--white);
 }
-.navigation ul {
+.navigation ul{
   list-style-type: none;
   float: right;
 
@@ -93,11 +93,11 @@ html, body, #root, #app, .full-height{
 
   border-bottom-style: solid;
   border-color: var(--dullblueRGBA1);
-  transition: border-color 0.25s;
+  transition: border-color 0.2s;
 }
 .navigation ul li a:hover{
   border-color: var(--dullblueRGBA2);
-  transition: border-color 0.25s;
+  transition: border-color 0.2s;
 }
 
 .section{
