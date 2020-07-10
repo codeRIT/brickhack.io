@@ -10,11 +10,14 @@ if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\
   --white: #FFFFFF;
 
   /*for hover transparency transitions*/
-  --dullblueRGBA1: #46549100;
-  --dullblueRGBA2: #465491FF;
+  
+  /*ie11 does not support hex rgba*/
+  --dullblueRGBA1: rgba(70,84,145,0);
+  --dullblueRGBA2: rgba(70,84,145,1);
 
-  --whiteRGBA1: #FFFFFF00;
-  --whiteRGBA2: #FFFFFFFF;
+  /*#FFFFFF*/
+  --whiteRGBA1: rgba(255,255,255,0);
+  --whiteRGBA2: rgba(255,255,255,0);
 }
 
 a:hover{
