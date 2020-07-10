@@ -1,0 +1,13 @@
+$desktop-width: 1100px
+$tablet-width: 720px
+
+@mixin tablet 
+    @media(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1})
+        @content
+
+@mixin desktop
+    @media(min-width: #{$desktop-width})
+        @content
+
+.navigation 
+    margin-bottom: calc(3vh)
