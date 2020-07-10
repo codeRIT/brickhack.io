@@ -1,29 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
-/*
-if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\dist\bootstrap.css
-(you'll have to restart the app for changes to show)
-*/
-
-:root{
-  --dullblue: #465491;
-  --white: #FFFFFF;
-
-  /*for hover transparency transitions*/
-  
-  /*ie11 does not support hex rgba*/
-  --dullblueRGBA1: rgba(70,84,145,0);
-  --dullblueRGBA2: rgba(70,84,145,1);
-
-  /*#FFFFFF*/
-  --whiteRGBA1: rgba(255,255,255,0);
-  --whiteRGBA2: rgba(255,255,255,1);
-}
+$blue: #465491;
+$white: #FFFFFF;
 
 a:hover{
   text-decoration: none;
 }
-
 body{
   margin: 0;
   font-family: Poppins;
@@ -38,8 +20,8 @@ html, body, #root, #app, .full-height{
   flex-shrink: 0;
 }
 
-.full-height{
-  height: calc(100% - 445px); /* not really a good way to do it, will probably change to flex column layout */
+.full-height{ /* not really a good way to do it, will probably change to flex column layout */
+  height: calc(100% - 445px);
   display: flex;
   flex-direction: column;
 }
@@ -52,8 +34,8 @@ html, body, #root, #app, .full-height{
   font-weight: 300;
   text-align: center;
 
-  background-color: var(--dullblue);
-  color: var(--white);
+  background-color: $blue;
+  color: $white;
 }
 .desktop-banner span{
   font-weight: 400;
@@ -73,8 +55,8 @@ html, body, #root, #app, .full-height{
   font-size: 15px;
   font-weight: 500;
   
-  color: var(--dullblue);
-  background-color: var(--white);
+  color: $blue;
+  background-color: $white;
 }
 .navigation ul{
   list-style-type: none;
@@ -89,14 +71,14 @@ html, body, #root, #app, .full-height{
   text-decoration: none;
 }
 .navigation ul li a{
-  color: var(--dullblue);
+  color: $blue;
 
   border-bottom-style: solid;
-  border-color: var(--dullblueRGBA1);
+  border-color: transparentize($blue, 1);
   transition: border-color 0.2s;
 }
 .navigation ul li a:hover{
-  border-color: var(--dullblueRGBA2);
+  border-color: transparentize($blue, 0);
   transition: border-color 0.2s;
 }
 
@@ -121,19 +103,19 @@ html, body, #root, #app, .full-height{
   height: 65px;
   font-size: 60px;
   font-weight: 700;
-  color: var(--dullblue);
+  color: $blue;
 }
 #hackathon-description{
   height: 37px;
   font-size: 28.0px;
   font-weight: 700;
-  color: var(--dullblue);
+  color: $blue;
 }
 #hackathon-info{
   height: 20px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--dullblue);
+  color: $blue;
 }
 
 .mailchimp-container{
@@ -145,7 +127,7 @@ html, body, #root, #app, .full-height{
   
   border-style: solid;
   border-width: 1px;
-  border-color: var(--dullblue);
+  border-color: $blue;
   border-radius: 20px;
 }
 .mailchimp-input{
@@ -169,10 +151,10 @@ html, body, #root, #app, .full-height{
 
   border-style: solid;
   border-width: 1px;
-  border-color: var(--dullblue);
+  border-color: $blue;
   border-radius: 15px;
 
-  background-color: var(--white);
+  background-color: $white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
   background-position: 3.75px;
@@ -183,9 +165,10 @@ html, body, #root, #app, .full-height{
 } 
 
 ::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
-  color: var(--dullblue);
+  color: $blue;
 }
 
+/*desktop only*/
 @media (min-width: 1100px){
   .desktop-hide{
     display: none;
@@ -203,11 +186,11 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
+/*non-desktop*/
 @media (max-width: 1100px){
   .mobile-hide{
     display: none;
   }
-  
   #mlh-badge{
     height: 150px;
     margin-left: 40px;
@@ -217,62 +200,49 @@ mobile has scaling widths and font sizes
     font-size: 12px;
     font-weight: 400;
 
-    color: var(--white);
-    background-color: var(--dullblue);
+    color: $white;
+    background-color: $blue;
   }
   .navigation ul li{
     padding: 25px 15px;
   }
   .navigation ul li a{
-    color: var(--white);
+    color: $white;
     border-bottom-style: solid;
-    border-color: var(--whiteRGBA1);
+    border-color: transparentize($white, 1);
   }
   .navigation ul li a:hover{
-    border-color: var(--whiteRGBA1);
+    border-color: transparentize($white, 1);
   }
   .navigation ul li a:active{
-    border-color: var(--whiteRGBA2);
+    border-color: transparentize($white, 0);
   }
  
   .section{
     flex-direction: column;
   }
-
-  .mobile-banner{
-    margin-top: 1vh;
-    display: inline-block;
-
-    border-bottom-style: solid;
-
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--dullblue);
-
-    font-size: 15px;
-  }
 }
 
+/*mobile*/
 @media (max-width: 720px){
   .navigation{
-    /* no scaling for very short devices,
+    /*no scaling for very short devices,
     scaling matching the mlh badge scaling for avg devices,
     high scaling for very tall devices
     */
-    margin-bottom: max(0px, 10vh - 40px, 0px, 30vh - 190px);
+    margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
   }
   #mlh-badge{
     /*68 px is the current height of the nav bar
     will think of a better way to structure this later*/
     width: default;
-    height: max(68px, 35px + 10vh);
-    
+    height: unquote("max(68px, 35px + 10vh)");
     margin-left: 15px;
   }
 
   /*
-  note: mobile does not have all the font-weights!
-  it might look like it overflows on inspect element's device toolbar but doesn't actually
+  note: development on a mac may not have all font-weights, 
+  lines of text may be wider than they appear
   */
   #hackathon-name{
     height: 14.1vw;
@@ -290,13 +260,13 @@ mobile has scaling widths and font sizes
   .hero-img{
     /* slightly smaller hero img for shorter screens */
     min-width: 80%;
-    width: min(50vh, 90%);
+    width: unquote("min(50vh, 90%)");
   }  
 
   .mailchimp-container{
     width: 80vw;
 
-    margin-top: calc(1vh);
+    margin-top: 1vh;
 
     height: 12vw;
     border-radius: 6vw;
@@ -317,7 +287,15 @@ mobile has scaling widths and font sizes
     background-size: 5vw;
   }
   .mobile-banner{
-    font-size: 3.5vw;
+    display: inline-block;
+  
+    margin-top: 1vh;
     margin-bottom: 2.5vh;
+
+    border-bottom-style: solid;
+
+    font-size: 3.5vw;
+    font-weight: 500;
+    color: $blue;
   }
 }
