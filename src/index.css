@@ -225,10 +225,14 @@ mobile has scaling widths and font sizes
   }
   .navigation ul li a{
     color: var(--white);
+    border-bottom-style: solid;
     border-color: var(--whiteRGBA1);
   }
   .navigation ul li a:hover{
-    border-color: var(--whiteRGBA2)
+    border-color: var(--whiteRGBA1);
+  }
+  .navigation ul li a:active{
+    border-color: var(--whiteRGBA2);
   }
  
   .section{
