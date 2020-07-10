@@ -1,5 +1,7 @@
 $desktop-width: 1100px
 $tablet-width: 720px
+$dullblue = #465491
+$white = #ffffff
 
 @mixin tablet 
     @media(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1})
@@ -10,4 +12,16 @@ $tablet-width: 720px
         @content
 
 .navigation 
-    margin-bottom: calc(3vh)
+  display: inline-block
+  width: 100%
+  margin-bottom: calc(3vh)
+  font-size: 12px
+  font-weight: 400
+  color: $white
+  background-color: $dullblue
+  ul
+      list-style-type: none
+      float: right
+      
+
+
