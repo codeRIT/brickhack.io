@@ -118,20 +118,19 @@ html, body, #root, #app, .full-height{
 }
 
 .desktop-banner{
-  width: 100%;
-
-  padding: 12px 0px;
-  
-  font-size: 14px;
-  font-weight: 300;
-  text-align: center;
-
-  background-color: $blue;
-  color: white;
-  
-  span{
+  @include desktop {
+    display: block;
+    width: 100%;
+    padding: 12px 0px;
+    font-size: 14px;
+    font-weight: 300;
     text-align: center;
-    font-weight: 400;
+    background-color: $blue;
+    color: $white;
+    span{
+      text-align: center;
+      font-weight: 400;
+    }
   }
 }
 
