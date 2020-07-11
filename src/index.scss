@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
 $blue: #465491;
-$white: #FFFFFF;
 
 a:hover{
   text-decoration: none;
@@ -35,7 +34,7 @@ html, body, #root, #app, .full-height{
   text-align: center;
 
   background-color: $blue;
-  color: $white;
+  color: white;
 }
 .desktop-banner span{
   font-weight: 400;
@@ -56,7 +55,6 @@ html, body, #root, #app, .full-height{
   font-weight: 500;
   
   color: $blue;
-  background-color: $white;
 }
 .navigation ul{
   list-style-type: none;
@@ -162,7 +160,7 @@ html, body, #root, #app, .full-height{
   border-color: $blue;
   border-radius: 15px;
 
-  background-color: $white;
+  background-color: white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
   background-position: 3.75px;
@@ -204,22 +202,22 @@ mobile has scaling widths and font sizes
     font-size: 12px;
     font-weight: 400;
 
-    color: $white;
+    color: white;
     background-color: $blue;
   }
   .navigation ul li{
     padding: 25px 15px;
   }
   .navigation ul li a{
-    color: $white;
+    color: white;
     border-bottom-style: solid;
-    border-color: transparentize($white, 1);
+    border-color: transparentize(white, 1);
   }
   .navigation ul li a:hover{
-    border-color: transparentize($white, 1);
+    border-color: transparentize(white, 1);
   }
   .navigation ul li a:active{
-    border-color: transparentize($white, 0);
+    border-color: transparentize(white, 0);
   }
  
   .section{
