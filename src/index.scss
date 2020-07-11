@@ -1,34 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
-/*
-if there's any unexpected styling (esp. coloring), check node_modules\bootstrap\dist\bootstrap.css
-(you'll have to restart the app for changes to show)
-*/
-
-:root{
-  --dullblue: #465491;
-
-  /*for hover transparency transitions*/
-  --dullblueRGBA1: #46549100;
-  --dullblueRGBA2: #465491FF;
-
-  --whiteRGBA1: #FFFFFF00;
-  --whiteRGBA2: #FFFFFFFF;
-}
+$blue: #465491;
 
 a:hover{
   text-decoration: none;
 }
-
 body{
   margin: 0;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
 html, body, #root, #app, .full-height{
   height: 100%;
 }
-.full-height{
-  height: calc(100% - 445px); /* not really a good way to do it, will probably change to flex column layout */
+
+.flex-container{
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.full-height{ /* not really a good way to do it, will probably change to flex column layout */
+  height: calc(100% - 445px);
   display: flex;
   flex-direction: column;
 }
@@ -41,8 +33,8 @@ html, body, #root, #app, .full-height{
   font-weight: 300;
   text-align: center;
 
-  background-color: var(--dullblue);
-  color: var(--white);
+  background-color: $blue;
+  color: white;
 }
 .desktop-banner span{
   font-weight: 400;
@@ -50,7 +42,7 @@ html, body, #root, #app, .full-height{
 
 #mlh-badge{
   position: absolute;
-  width: 100px;
+  height: 175px;
   margin-left: 50px;
 }
 
@@ -62,10 +54,9 @@ html, body, #root, #app, .full-height{
   font-size: 15px;
   font-weight: 500;
   
-  color: var(--dullblue);
-  background-color: var(--white);
+  color: $blue;
 }
-.navigation ul {
+.navigation ul{
   list-style-type: none;
   float: right;
 
@@ -78,15 +69,15 @@ html, body, #root, #app, .full-height{
   text-decoration: none;
 }
 .navigation ul li a{
-  color: var(--dullblue);
+  color: $blue;
 
   border-bottom-style: solid;
-  border-color: var(--dullblueRGBA1);
-  transition: border-color 0.25s;
+  border-color: transparentize($blue, 1);
+  transition: border-color 0.2s;
 }
 .navigation ul li a:hover{
-  border-color: var(--dullblueRGBA2);
-  transition: border-color 0.25s;
+  border-color: transparentize($blue, 0);
+  transition: border-color 0.2s;
 }
 
 .section{
@@ -94,10 +85,6 @@ html, body, #root, #app, .full-height{
   max-width: 1100px;
   text-align: center;
   margin: auto;
-}
-.flex-container{
-  display: flex;
-  align-items: center;
 }
 .left-half, .right-half{
   flex: 50%;
@@ -114,19 +101,19 @@ html, body, #root, #app, .full-height{
   height: 65px;
   font-size: 60px;
   font-weight: 700;
-  color: var(--dullblue);
+  color: $blue;
 }
 #hackathon-description{
   height: 37px;
   font-size: 28.0px;
   font-weight: 700;
-  color: var(--dullblue);
+  color: $blue;
 }
 #hackathon-info{
   height: 20px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--dullblue);
+  color: $blue;
 }
 
 .mailchimp-container{
@@ -138,13 +125,13 @@ html, body, #root, #app, .full-height{
   
   border-style: solid;
   border-width: 1px;
-  border-color: var(--dullblue);
+  border-color: $blue;
   border-radius: 20px;
 }
 .mailchimp-input{
   flex: 50%;
   height: 30px;
-  margin: 10px;
+  margin-left: 10px;
 
   text-align: center;
   border-style: none;
@@ -153,6 +140,14 @@ html, body, #root, #app, .full-height{
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
+
+  &::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
+    color: $blue;
+    transition: color 0.4s;
+  }
+  &:focus::placeholder{
+    color: transparent;
+  }
 }
 .mailchimp-button{
   height: 30px;
@@ -162,30 +157,28 @@ html, body, #root, #app, .full-height{
 
   border-style: solid;
   border-width: 1px;
-  border-color: var(--dullblue);
+  border-color: $blue;
   border-radius: 15px;
 
-  background-color: var(--white);
+  background-color: white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
   background-position: 3.75px;
   background-size: 18px;
 
   outline: none;
-  transition: 0.1s;
-} /* arrow moves slightly to the right on hover */
-.mailchimp-button:hover{
-  background-position: 5.25px;
-  transition: 0.1s;
+  transition: 0.1s; /* see: min-width: media query */
 }
 
-::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
-  color: var(--dullblue);
-}
-
+/*desktop only*/
 @media (min-width: 1100px){
   .desktop-hide{
     display: none;
+  }
+  /* arrow moves slightly to the right on hover */
+  .mailchimp-button:hover{
+    background-position: 5.25px;
+    transition: 0.1s;
   }
 }
 
@@ -195,13 +188,13 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
+/*non-desktop*/
 @media (max-width: 1100px){
   .mobile-hide{
     display: none;
   }
-  
   #mlh-badge{
-    width: 80px;
+    height: 150px;
     margin-left: 40px;
   }
 
@@ -209,50 +202,49 @@ mobile has scaling widths and font sizes
     font-size: 12px;
     font-weight: 400;
 
-    color: var(--white);
-    background-color: var(--dullblue);
+    color: white;
+    background-color: $blue;
   }
   .navigation ul li{
     padding: 25px 15px;
   }
   .navigation ul li a{
-    color: var(--white);
-    border-color: var(--whiteRGBA1);
+    color: white;
+    border-bottom-style: solid;
+    border-color: transparentize(white, 1);
   }
   .navigation ul li a:hover{
-    border-color: var(--whiteRGBA2)
+    border-color: transparentize(white, 1);
+  }
+  .navigation ul li a:active{
+    border-color: transparentize(white, 0);
   }
  
   .section{
     flex-direction: column;
   }
-
-  .mobile-banner{
-    margin-top: 1vh;
-    display: inline-block;
-
-    border-bottom-style: solid;
-
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--dullblue);
-
-    font-size: 15px;
-  }
 }
 
+/*mobile*/
 @media (max-width: 720px){
   .navigation{
-    margin-bottom: calc(3vh);
+    /*no scaling for very short devices,
+    scaling matching the mlh badge scaling for avg devices,
+    high scaling for very tall devices
+    */
+    margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
   }
   #mlh-badge{
-    width: calc(30px + 2.5vh + 2.5vw);
+    /*68 px is the current height of the nav bar
+    will think of a better way to structure this later*/
+    width: default;
+    height: unquote("max(68px, 35px + 10vh)");
     margin-left: 15px;
   }
 
   /*
-  note: mobile does not have all the font-weights!
-  it might look like it overflows on inspect element's device toolbar but doesn't actually
+  note: development on a mac may not have all font-weights, 
+  lines of text may be wider than they appear
   */
   #hackathon-name{
     height: 14.1vw;
@@ -268,37 +260,44 @@ mobile has scaling widths and font sizes
   }
 
   .hero-img{
-    width: 90%;
+    /* slightly smaller hero img for shorter screens */
+    min-width: 80%;
+    width: unquote("min(50vh, 90%)");
   }  
 
   .mailchimp-container{
-    width: 70vw;
+    width: 80vw;
 
-    margin-top: calc(1vh);
+    margin-top: 1vh;
 
-    height: 10vw;
-    border-radius: 5vw;
+    height: 12vw;
+    border-radius: 6vw;
   }
   .mailchimp-input{
     height: 7vw;
-    font-size: 3.0vw;
+    font-size: 3.25vw;
   }
   .mailchimp-button{
-    height: 8vw;
-    width: 8vw;
+    height: 9vw;
+    width: 9vw;
 
-    border-radius: 4vw;
+    border-radius: 4.5vw;
 
-    margin-right: 1vw;
+    margin-right: 1.5vw;
 
-    background-position: 1vw;
+    background-position: 1.5vw;
     background-size: 5vw;
   }
-  .mailchimp-button:hover{
-    background-position: 1.5vw;
-  }
-  
   .mobile-banner{
+    display: inline-block;
+  
+    margin-top: 1vh;
+    margin-bottom: 2.5vh;
+
+    border-bottom-style: solid;
+
     font-size: 3.5vw;
+    font-weight: 500;
+    color: $blue;
   }
 }
