@@ -12,7 +12,7 @@ mobile has scaling widths and font sizes
 */
 
 @mixin tablet {
-  @media(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1}) { @content; }
+  @media(min-width: #{$tablet-width}) { @content; }
 }
 
 @mixin desktop {
@@ -215,11 +215,6 @@ html, body, #root, #app, .full-height{
     height: 65px;
     font-size: 60px;
   }
-
-  @include desktop {
-    height: 65px;
-    font-size: 60px;
-  }
 }
 
 #hackathon-description{
@@ -232,11 +227,6 @@ html, body, #root, #app, .full-height{
     height: 37px;
     font-size: 28.0px;
   }
-  @include desktop {
-    height: 37px;
-    font-size: 28.0px;
-    
-  }
 }
 
 #hackathon-info{
@@ -246,10 +236,6 @@ html, body, #root, #app, .full-height{
   color: $blue;
   
   @include tablet {
-    height: 20px;
-    font-size: 14px;
-  }
-  @include desktop {
     height: 20px;
     font-size: 14px;
   }
@@ -266,13 +252,6 @@ html, body, #root, #app, .full-height{
   border-color: $blue;
 
   @include tablet {
-    height: 40px;
-    width: 375px;
-    margin-top: 10px;
-    border-radius: 20px;
-  }
-  
-  @include desktop {
     height: 40px;
     width: 375px;
     margin-top: 10px;
@@ -295,11 +274,6 @@ html, body, #root, #app, .full-height{
   font-weight: 500;
 
   @include tablet {
-    height: 30px;
-    font-size: 14px;
-  }
-
-  @include desktop {
     height: 30px;
     font-size: 14px;
   }
@@ -334,13 +308,6 @@ html, body, #root, #app, .full-height{
   }
 
   @include desktop {
-    height: 30px;
-    width: 30px;
-    margin-right: 5px;
-    border-radius: 15px;
-    background-position: 3.75px;
-    background-size: 18px;
-    
     /* arrow moves slightly to the right on hover */
     :hover{
       background-position: 5.25px;
