@@ -5,16 +5,11 @@ $tablet-width: 720px;
 $blue: #465491;
 $white: #FFFFFF;
 
-//save until later.
-// %main-palette {
-//   color: $blue;
-//   background-color: $white;
-// }
-
-// %alternate-palette {
-//   color: $white;
-//   background-color: $blue;
-// }
+/* 
+tablet & mobile have the column layout
+tablet has fixed widths and font sizes
+mobile has scaling widths and font sizes
+*/
 
 @mixin tablet {
   @media(min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1}) { @content; }
@@ -113,7 +108,9 @@ html, body, #root, #app, .full-height{
   flex-direction: column;
 }
 .desktop-banner{
+  display: none;
   @include desktop {
+    display: flex;
     width: 100%;
     padding: 12px 0px;
     
@@ -124,6 +121,7 @@ html, body, #root, #app, .full-height{
     background-color: $blue;
     color: $white;
     span{
+      text-align: center;
       font-weight: 400;
     }
   }
@@ -152,17 +150,26 @@ html, body, #root, #app, .full-height{
 
 #mlh-badge{
   position: absolute;
-  height: 175px;
-  margin-left: 50px;
+  width: default;
+  height: unquote("max(68px, 35px + 10vh)");
+  margin-left: 15px;
+  @include tablet {
+    height: 150px;
+    margin-left: 40px;
+  }
+  @include desktop {
+    height: 175px;
+    margin-left: 50px;
+  }
 }
 
 .section{
   flex-direction: column;
+  text-align: center;
   @include desktop {
     flex-direction: row;
     max-width: 1100px;
     width: 100%;
-    text-align: center;
     margin: auto;
   }
 }
@@ -177,7 +184,7 @@ html, body, #root, #app, .full-height{
 .hero-img{
   /* slightly smaller hero img for shorter screens */
   min-width: 80%;
-  width: unquote("min(50vh, 90%)");
+  @include tablet {width: unquote("min(50vh, 90%)");}
   @include desktop {width: 100%;}
 }
 
@@ -186,7 +193,6 @@ html, body, #root, #app, .full-height{
   lines of text may be wider than they appear
 */
 #hackathon-name{
-  text-align: center;
   height: 14.1vw;
   font-size: 13vw;
   font-weight: 700;
@@ -202,7 +208,6 @@ html, body, #root, #app, .full-height{
   }
 }
 #hackathon-description{
-  text-align: center;
   height: 8.2vw;
   font-size: 6.3vw;
   font-weight: 700;
@@ -218,7 +223,6 @@ html, body, #root, #app, .full-height{
   }
 }
 #hackathon-info{
-  text-align: center;
   height: 4vw;
   font-size: 3.2vw; 
   font-weight: 500;
@@ -234,20 +238,31 @@ html, body, #root, #app, .full-height{
 }
 
 .mailchimp-container{
-  height: 40px;
-  width: 375px;
-  margin: auto;
+  width: 80vw;
+  margin: 1vh auto auto;
+  height: 12vw;
 
-  margin-top: 10px;
-  
+  border-radius: 6vw;
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
-  border-radius: 20px; 
+
+  @include tablet {
+    height: 40px;
+    width: 375px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
+  
+  @include desktop {
+    height: 40px;
+    width: 375px;
+    margin-top: 10px;
+    border-radius: 20px;
+  }
 }
 .mailchimp-input{
   flex: 50%;
-  height: 30px;
   margin-left: 10px;
 
   text-align: center;
@@ -255,90 +270,62 @@ html, body, #root, #app, .full-height{
 
   outline: none;
   font-family: inherit;
-  font-size: 14px;
+  
+  height: 7vw;
+  font-size: 3.25vw;
   font-weight: 500;
+
+  @include tablet {
+    height: 30px;
+    font-size: 14px;
+  }
+  @include desktop {
+    height: 30px;
+    font-size: 14px;
+  }
 }
 .mailchimp-button{
-  height: 30px;
-  width: 30px;
-
-  margin-right: 5px;
-
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
-  border-radius: 15px;
 
   background-color: $white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
-  background-position: 3.75px;
-  background-size: 18px;
 
   outline: none;
   transition: 0.1s; /* see: min-width: media query */
+  
+  height: 9vw;
+  width: 9vw;
+  border-radius: 4.5vw;
+  margin-right: 1.5vw;
+  background-position: 1.5vw;
+  background-size: 5vw;
+
+  @include tablet {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    border-radius: 15px;
+    background-position: 3.75px;
+    background-size: 18px;
+  }
+  @include desktop {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+    border-radius: 15px;
+    background-position: 3.75px;
+    background-size: 18px;
+    /* arrow moves slightly to the right on hover */
+    :hover{
+      background-position: 5.25px;
+      transition: 0.1s;
+    }
+  }
 } 
 
 ::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
   color: $blue;
-}
-
-/*desktop only*/
-@media (min-width: 1100px){
-
-  /* arrow moves slightly to the right on hover */
-  .mailchimp-button:hover{
-    background-position: 5.25px;
-    transition: 0.1s;
-  }
-}
-
-/* 
-tablet & mobile have the column layout
-tablet has fixed widths and font sizes
-mobile has scaling widths and font sizes
-*/
-
-/*non-desktop*/
-@media (max-width: 1100px){
-  #mlh-badge{
-    height: 150px;
-    margin-left: 40px;
-  }
-}
-
-/*mobile*/
-@media (max-width: 720px){
-  #mlh-badge{
-    /*68 px is the current height of the nav bar
-    will think of a better way to structure this later*/
-    width: default;
-    height: unquote("max(68px, 35px + 10vh)");
-    margin-left: 15px;
-  }
-
-  .mailchimp-container{
-    width: 80vw;
-
-    margin-top: 1vh;
-
-    height: 12vw;
-    border-radius: 6vw;
-  }
-  .mailchimp-input{
-    height: 7vw;
-    font-size: 3.25vw;
-  }
-  .mailchimp-button{
-    height: 9vw;
-    width: 9vw;
-
-    border-radius: 4.5vw;
-
-    margin-right: 1.5vw;
-
-    background-position: 1.5vw;
-    background-size: 5vw;
-  }
-  
 }
