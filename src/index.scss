@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
 $blue: #465491;
-$white: #fff;
 /* 
 tablet & mobile have the column layout
 tablet has fixed widths and font sizes
@@ -65,7 +64,7 @@ html, body, #root, #app, .full-height {
   text-align: center;
 
   background-color: $blue;
-  color: $white;
+  color: white;
 }
 .desktop-banner span {
   font-weight: 400;
@@ -131,21 +130,21 @@ html, body, #root, #app, .full-height {
     font-size: 12px;
     font-weight: 400;
 
-    color: $white;
+    color: white;
     background-color: $blue;
 
     ul li {
       padding: 25px 15px;
       a {
-        color: $white;
+        color: white;
         border-bottom-style: solid;
-        border-color: transparentize($white, 1);
+        border-color: transparentize(white, 1);
 
         &:hover {
-          border-color: transparentize($white, 1);
+          border-color: transparentize(white, 1);
         }
         &:active {
-          border-color: transparentize($white, 0);
+          border-color: transparentize(white, 0);
         }
       }
     }
@@ -159,17 +158,18 @@ html, body, #root, #app, .full-height {
     margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
   }
 }
-
 .section {
   width: 100%;
   max-width: 1100px;
   text-align: center;
   margin: auto;
+  
 
   @include tablet {
     flex-direction: column;
   }
 }
+
 .right-half {
   flex: 50%;
 }
@@ -284,7 +284,7 @@ lines of text may be wider than they appear
   border-color: $blue;
   border-radius: 15px;
 
-  background-color: $white;
+  background-color: white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
   background-position: 3.75px;
@@ -310,7 +310,6 @@ lines of text may be wider than they appear
 }
 
 .mobile-banner {
-    display: none;
     @include tablet {
         display: inline-block;
         margin-top: 1vh;
