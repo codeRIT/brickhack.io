@@ -18,7 +18,6 @@ class PreRegister extends React.Component {
                     title={desktopNotice}
                     content={noticeContent}
                 />
-
                 <div className="section flex-container">
                     <div className="left-half">
                         <div id="hackathon-name">
