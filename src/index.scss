@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
-$desktop-width: 1100px;
-$tablet-width: 720px;
 $blue: #465491;
-$white: #FFFFFF;
 
 /* 
 tablet & mobile have the column layout
@@ -11,98 +8,40 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
-@mixin tablet {
-  @media(min-width: #{$tablet-width}) { @content; }
+$desktop-width: 1100px;
+$mobile-width: 720px;
+
+@mixin desktop{
+  @media(min-width: #{$desktop-width}) { @content; }
 }
-
-@mixin desktop {
-  @media(min-width: #{$desktop-width}) { @content }
+/*tablet mixin also applies to mobile*/
+@mixin tablet{
+  @media(max-width: #{$desktop-width}) { @content; }
 }
-
-.mobile-hide {
-  display: none;
-  @include desktop{
-    display: flex;
-  }
-}
-
-.desktop-hide {
-  display: flex;
-  
-  @include desktop{
-    display: none;
-  }
-}
-
-.navigation {
-  display: inline-block;
-  width: 100%;
-  /*
-    no scaling for very short devices,
-    scaling matching the mlh badge scaling for avg devices,
-    high scaling for very tall devices
-  */
-  margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
-  font-size: 12px;
-  font-weight: 400;
-  color: $white;
-  background-color: $blue;
-  
-  @include desktop {
-    margin: 0;
-    font-size: 12px;
-    font-weight: 400;
-    color: $blue;
-    background-color: $white;
-  }
-
-  ul {
-    list-style-type: none;
-    float: right;
-    margin: 0;
-    padding: 0;
-  }
-    
-    li {
-      padding: 25px 15px;
-      text-align: center;
-      text-decoration: none;
-      @include desktop {
-        padding: 25px 25px;
-      }
-    }
-      
-      a {
-        color: $white;
-        border-bottom-style: solid;
-        border-color: transparentize($white, 1);
-        @include desktop {
-          color: $blue;
-        }
-      }
-      
-      a:hover {
-        border-color: transparentize($white, 1);
-        transition: border-color 0.2s;
-      }
-      
-      a:active {
-        border-color: transparentize($white, 0);
-        transition: border-color 0.2s;
-      }
+@mixin mobile{
+  @media(max-width: #{$mobile-width}) { @content; }
 }
 
 a:hover{
   text-decoration: none;
 }
-
 body{
   margin: 0;
-  font-family: Poppins;
+  font-family: Poppins, sans-serif;
 }
-
 html, body, #root, #app, .full-height{
   height: 100%;
+}
+
+.desktop-hide{
+  @include desktop{
+    display: none;
+  }
+}
+.mobile-hide{
+  @include tablet{
+    display: none;
+  }
 }
 
 .flex-container{
@@ -116,151 +55,200 @@ html, body, #root, #app, .full-height{
   display: flex;
   flex-direction: column;
 }
-
 .desktop-banner{
-  @include desktop {
-    display: block;
-    width: 100%;
-    padding: 12px 0px;
-    font-size: 14px;
-    font-weight: 300;
-    text-align: center;
-    background-color: $blue;
-    color: $white;
-    span{
-      text-align: center;
-      font-weight: 400;
-    }
-  }
-}
+  width: 100%;
 
-.mobile-banner{
-  display: inline-block;
-
-  margin-top: 1vh;
-  margin-bottom: 2.5vh;
-
-  border-bottom-style: solid;
-
-  font-size: 3.5vw;
-  font-weight: 500;
-  color: $blue;
+  padding: 12px 0px;
   
-  @include tablet{
-    font-size: 1rem;
-    font-weight: 400;
-  }
+  font-size: 14px;
+  font-weight: 300;
+  text-align: center;
 
-  @include desktop {
-    display: none;
-  }
+  background-color: $blue;
+  color: white;
+}
+.desktop-banner span{
+  font-weight: 400;
 }
 
 #mlh-badge{
   position: absolute;
-  width: default;
-  height: unquote("max(68px, 35px + 10vh)");
-  margin-left: 15px;
-  
-  @include tablet {
+  height: 175px;
+  margin-left: 50px;
+
+  @include tablet{
     height: 150px;
     margin-left: 40px;
   }
+  
+  @include mobile{
+    /*68 px is the current height of the nav bar
+    will think of a better way to structure this later*/
+    width: default;
+    height: unquote("max(68px, 35px + 10vh)");
+    margin-left: 15px;
+  }
+}
 
-  @include desktop {
-    height: 175px;
-    margin-left: 50px;
+.navigation{
+  display: inline-block;
+
+  width: 100%;
+
+  font-size: 15px;
+  font-weight: 500;
+  
+  color: $blue;
+
+  ul{
+    list-style-type: none;
+    float: right;
+  
+    margin: 0;
+    padding: 0;
+
+    li{
+      padding: 25px 25px;
+      text-align: center;
+      text-decoration: none;
+
+      a{
+        color: $blue;
+      
+        border-bottom-style: solid;
+        border-color: transparentize($blue, 1);
+        transition: border-color 0.2s;
+
+        &:hover{
+          border-color: transparentize($blue, 0);
+          transition: border-color 0.2s;
+        }
+      }
+    }
+  }
+
+  @include tablet{
+    font-size: 12px;
+    font-weight: 400;
+
+    color: white;
+    background-color: $blue;
+
+    ul li{
+      padding: 25px 15px;
+      a{
+        color: white;
+        border-bottom-style: solid;
+        border-color: transparentize(white, 1);
+
+        &:hover{
+          border-color: transparentize(white, 1);
+        }
+        &:active{
+          border-color: transparentize(white, 0);
+        }
+      }
+    }
+  }
+
+  @include mobile{
+    /*no scaling for very short devices,
+    scaling matching the mlh badge scaling for avg devices,
+    high scaling for very tall devices
+    */
+    margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
   }
 }
 
 .section{
-  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
   text-align: center;
-  
-  @include desktop {
-    flex-direction: row;
-    max-width: 1100px;
-    width: 100%;
-    margin: auto;
+  margin: auto;
+
+  @include tablet{
+    flex-direction: column;
   }
 }
-.right-half{
+.left-half, .right-half{
   flex: 50%;
 }
 .left-half{
-  @extend .right-half;
   margin-bottom: 2.5vh;
 }
 
 .hero-img{
-  /* slightly smaller hero img for shorter screens */
-  min-width: 80%;
-  
-  @include tablet {width: unquote("min(50vh, 90%)");}
-  
-  @include desktop {width: 100%;}
+  width: 100%;
+
+  @include mobile{
+    /* slightly smaller hero img for shorter screens */
+    min-width: 80%;
+    width: unquote("min(50vh, 90%)");
+  }
 }
 
 /*
-  note: development on a mac may not have all font-weights, 
-  lines of text may be wider than they appear
+note: development on a mac may not have all font-weights, 
+lines of text may be wider than they appear
 */
 #hackathon-name{
-  height: 14.1vw;
-  font-size: 13vw;
+  height: 65px;
+  font-size: 60px;
   font-weight: 700;
   color: $blue;
-  
-  @include tablet {
-    height: 65px;
-    font-size: 60px;
+
+  @include mobile{
+    height: 14.1vw;
+    font-size: 13vw;
   }
 }
-
 #hackathon-description{
-  height: 8.2vw;
-  font-size: 6.3vw;
+  height: 37px;
+  font-size: 28.0px;
   font-weight: 700;
   color: $blue;
-  
-  @include tablet {
-    height: 37px;
-    font-size: 28.0px;
+
+  @include mobile{
+    height: 8.2vw;
+    font-size: 6.3vw;
   }
 }
-
 #hackathon-info{
-  height: 4vw;
-  font-size: 3.2vw; 
+  height: 20px;
+  font-size: 14px;
   font-weight: 500;
   color: $blue;
-  
-  @include tablet {
-    height: 20px;
-    font-size: 14px;
+
+  @include mobile{
+    height: 4vw;
+    font-size: 3.2vw; 
   }
 }
 
 .mailchimp-container{
-  width: 80vw;
-  margin: 1vh auto auto;
-  height: 12vw;
+  height: 40px;
+  width: 375px;
+  margin: auto;
 
-  border-radius: 6vw;
+  margin-top: 10px;
+  
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
+  border-radius: 20px;
 
-  @include tablet {
-    height: 40px;
-    width: 375px;
-    margin-top: 10px;
-    border-radius: 20px;
+  @include mobile{
+    width: 80vw;
+
+    margin-top: 1vh;
+
+    height: 12vw;
+    border-radius: 6vw;
   }
 }
-
 .mailchimp-input{
   flex: 50%;
+  height: 30px;
   margin-left: 10px;
 
   text-align: center;
@@ -268,54 +256,72 @@ html, body, #root, #app, .full-height{
 
   outline: none;
   font-family: inherit;
-  
-  height: 7vw;
-  font-size: 3.25vw;
+  font-size: 14px;
   font-weight: 500;
 
-  @include tablet {
-    height: 30px;
-    font-size: 14px;
+  &::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
+    color: $blue;
+    transition: color 0.4s;
+  }
+  &:focus::placeholder{
+    color: transparent;
+  }
+
+  @include mobile{
+    height: 7vw;
+    font-size: 3.25vw;
   }
 }
-
 .mailchimp-button{
+  height: 30px;
+  width: 30px;
+
+  margin-right: 5px;
+
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
+  border-radius: 15px;
 
-  background-color: $white;
+  background-color: white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
+  background-position: 3.75px;
+  background-size: 18px;
 
   outline: none;
-  transition: 0.1s; /* see: min-width: media query */
-  
-  height: 9vw;
-  width: 9vw;
-  border-radius: 4.5vw;
-  margin-right: 1.5vw;
-  background-position: 1.5vw;
-  background-size: 5vw;
+  transition: 0.1s;
 
-  @include tablet {
-    height: 30px;
-    width: 30px;
-    margin-right: 5px;
-    border-radius: 15px;
-    background-position: 3.75px;
-    background-size: 18px;
-  }
-
-  @include desktop {
-    /* arrow moves slightly to the right on hover */
-    :hover{
+  @include desktop{
+    &:hover{
       background-position: 5.25px;
-      transition: 0.1s;
     }
   }
-} 
+  
+  @include mobile{
+    height: 9vw;
+    width: 9vw;
 
-::placeholder{ /* this refers to the input placeholder text (enter your email...)*/
-  color: $blue;
+    border-radius: 4.5vw;
+
+    margin-right: 1.5vw;
+
+    background-position: 1.5vw;
+    background-size: 5vw;
+  }
+}
+
+.mobile-banner{
+  @include mobile{
+    display: inline-block;
+    
+    margin-top: 1vh;
+    margin-bottom: 2.5vh;
+
+    border-bottom-style: solid;
+
+    font-size: 3.5vw;
+    font-weight: 500;
+    color: $blue;
+  }
 }
