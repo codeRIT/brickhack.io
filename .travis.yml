@@ -1,23 +1,24 @@
-language: ruby
-cache: bundler
-sudo: false
-bundler_args: --path vendor --local --without development
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+  - node_modules
 before_script:
   - echo -e "Host csh-cloud.oweb.co\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
-  - RUN_COVERAGE=travis bin/rails test
-  - bin/rails coverage:report
+  - npm run build
+
 deploy:
   - provider: script
-    script: .travis/deploy_stage.sh
+    script: bash .travis/deploy_stage.sh
     on:
       branch: develop
       repo: codeRIT/brickhack.io
-  - provider: script
-    script: .travis/deploy_prod.sh
+  - provider: pages
+    skip_cleanup: true
+    github_token: $gh_deploy_token
+    local_dir: build
     on:
       branch: master
       repo: codeRIT/brickhack.io
-addons:
-  code_climate:
-    repo_token: c13cf427384c2291d3fac2745b3b4012541adab0993853175d89f91671762ddb
