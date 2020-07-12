@@ -165,7 +165,7 @@ html, body, #root, #app, .full-height {
     high scaling for very tall devices
     */
 
-    margin-bottom: max(0px, calc(10vh - 40px), calc(30vh - 190px));
+    margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
   }
 }
 .section {
