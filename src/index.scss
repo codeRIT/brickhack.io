@@ -11,22 +11,26 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
-@mixin tablet {
-  @media(min-width: #{$tablet-width}) { @content; }
+@mixin tablet{
+  @media(min-width: #{$tablet-width}){ @content; }
 }
 
-@mixin desktop {
-  @media(min-width: #{$desktop-width}) { @content }
+@mixin desktop{
+  @media(min-width: #{$desktop-width}){ @content }
 }
 
-.mobile-hide {
+@mixin mobile{
+    
+}
+
+.mobile-hide{
   display: none;
   @include desktop{
     display: flex;
   }
 }
 
-.desktop-hide {
+.desktop-hide{
   display: flex;
   
   @include desktop{
@@ -34,7 +38,7 @@ mobile has scaling widths and font sizes
   }
 }
 
-.navigation {
+.navigation{
   display: inline-block;
   width: 100%;
   /*
@@ -48,7 +52,7 @@ mobile has scaling widths and font sizes
   color: $white;
   background-color: $blue;
   
-  @include desktop {
+  @include desktop{
     margin: 0;
     font-size: 12px;
     font-weight: 400;
@@ -56,37 +60,37 @@ mobile has scaling widths and font sizes
     background-color: $white;
   }
 
-  ul {
+  ul{
     list-style-type: none;
     float: right;
     margin: 0;
     padding: 0;
   }
     
-    li {
+    li{
       padding: 25px 15px;
       text-align: center;
       text-decoration: none;
-      @include desktop {
+      @include desktop{
         padding: 25px 25px;
       }
     }
       
-      a {
+      a{
         color: $white;
         border-bottom-style: solid;
         border-color: transparentize($white, 1);
-        @include desktop {
+        @include desktop{
           color: $blue;
         }
       }
       
-      a:hover {
+      a:hover{
         border-color: transparentize($white, 1);
         transition: border-color 0.2s;
       }
       
-      a:active {
+      a:active{
         border-color: transparentize($white, 0);
         transition: border-color 0.2s;
       }
@@ -118,7 +122,7 @@ html, body, #root, #app, .full-height{
 }
 
 .desktop-banner{
-  @include desktop {
+  @include desktop{
     display: block;
     width: 100%;
     padding: 12px 0px;
@@ -151,7 +155,7 @@ html, body, #root, #app, .full-height{
     font-weight: 400;
   }
 
-  @include desktop {
+  @include desktop{
     display: none;
   }
 }
@@ -162,12 +166,12 @@ html, body, #root, #app, .full-height{
   height: unquote("max(68px, 35px + 10vh)");
   margin-left: 15px;
   
-  @include tablet {
+  @include tablet{
     height: 150px;
     margin-left: 40px;
   }
 
-  @include desktop {
+  @include desktop{
     height: 175px;
     margin-left: 50px;
   }
@@ -177,7 +181,7 @@ html, body, #root, #app, .full-height{
   flex-direction: column;
   text-align: center;
   
-  @include desktop {
+  @include desktop{
     flex-direction: row;
     max-width: 1100px;
     width: 100%;
@@ -196,9 +200,9 @@ html, body, #root, #app, .full-height{
   /* slightly smaller hero img for shorter screens */
   min-width: 80%;
   
-  @include tablet {width: unquote("min(50vh, 90%)");}
+  @include tablet{width: unquote("min(50vh, 90%)");}
   
-  @include desktop {width: 100%;}
+  @include desktop{width: 100%;}
 }
 
 /*
@@ -211,7 +215,7 @@ html, body, #root, #app, .full-height{
   font-weight: 700;
   color: $blue;
   
-  @include tablet {
+  @include tablet{
     height: 65px;
     font-size: 60px;
   }
@@ -223,7 +227,7 @@ html, body, #root, #app, .full-height{
   font-weight: 700;
   color: $blue;
   
-  @include tablet {
+  @include tablet{
     height: 37px;
     font-size: 28.0px;
   }
@@ -235,7 +239,7 @@ html, body, #root, #app, .full-height{
   font-weight: 500;
   color: $blue;
   
-  @include tablet {
+  @include tablet{
     height: 20px;
     font-size: 14px;
   }
@@ -251,7 +255,7 @@ html, body, #root, #app, .full-height{
   border-width: 1px;
   border-color: $blue;
 
-  @include tablet {
+  @include tablet{
     height: 40px;
     width: 375px;
     margin-top: 10px;
@@ -273,7 +277,7 @@ html, body, #root, #app, .full-height{
   font-size: 3.25vw;
   font-weight: 500;
 
-  @include tablet {
+  @include tablet{
     height: 30px;
     font-size: 14px;
   }
@@ -298,7 +302,7 @@ html, body, #root, #app, .full-height{
   background-position: 1.5vw;
   background-size: 5vw;
 
-  @include tablet {
+  @include tablet{
     height: 30px;
     width: 30px;
     margin-right: 5px;
@@ -307,7 +311,7 @@ html, body, #root, #app, .full-height{
     background-size: 18px;
   }
 
-  @include desktop {
+  @include desktop{
     /* arrow moves slightly to the right on hover */
     :hover{
       background-position: 5.25px;
