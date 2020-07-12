@@ -300,15 +300,12 @@ lines of text may be wider than they appear
   }
   
   @include mobile {
-    height: 9vw;
-    width: 9vw;
-
-    border-radius: 4.5vw;
-
-    margin-right: 1.5vw;
-
-    background-position: 1.5vw;
-    background-size: 5vw;
+      height: 9vw;
+      width: 9vw;
+      border-radius: 4.5vw;
+      margin-right: 1.5vw;
+      background-position: 1.5vw;
+      background-size: 5vw;
   }
 }
 
