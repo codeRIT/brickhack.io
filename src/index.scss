@@ -316,15 +316,13 @@ lines of text may be wider than they appear
     display: none;
     @include tablet {
         display: inline-block;
-        
         margin-top: 1vh;
         margin-bottom: 2.5vh;
-
         border-bottom-style: solid;
+        color: $blue;
 
         font-size: 1rem;
         font-weight: 400;
-        color: $blue;
     }
 
     @include mobile {

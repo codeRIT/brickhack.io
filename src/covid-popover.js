@@ -25,7 +25,6 @@ class CovidPopover extends React.Component {
                 <OverlayTrigger
                     trigger="click"
                     placement="top"
-                    show={true}
                     overlay={
                         <Popover id="popover-basic" >
                             <PopoverTitle as="h3">{this.props.title}</PopoverTitle>
