@@ -84,7 +84,7 @@ html, body, #root, #app, .full-height {
     /*68 px is the current height of the nav bar
     will think of a better way to structure this later*/
     width: default;
-    height: unquote("max(68px, 35px + 10vh)");
+    height: unquote("max(68px, calc(35px + 10vh))");
     margin-left: 15px;
   }
 }
@@ -155,7 +155,8 @@ html, body, #root, #app, .full-height {
     scaling matching the mlh badge scaling for avg devices,
     high scaling for very tall devices
     */
-    margin-bottom: unquote("max(0px, 10vh - 40px, 0px, 30vh - 190px)");
+
+    margin-bottom: unquote("max(calc(0px), calc(10vh - 40px), calc(30vh - 190px))");
   }
 }
 .section {
