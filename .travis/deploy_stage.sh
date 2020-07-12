@@ -3,4 +3,5 @@ openssl aes-256-cbc -K $encrypted_fb724e9ad24a_key -iv $encrypted_fb724e9ad24a_i
 chmod 600 .travis/marketing_rsa # this key should have push access
 ssh-add .travis/marketing_rsa
 git remote add deploy dokku@csh-cloud.oweb.co:brickhack-stage
+git fetch --unshallow
 git push --force deploy develop:master
