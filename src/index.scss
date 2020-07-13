@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
 $blue: #465491;
+
 /* 
 tablet & mobile have the column layout
 tablet has fixed widths and font sizes
@@ -19,6 +20,14 @@ $mobile-width: 720px;
 }
 @mixin mobile {
   @media(max-width: #{$mobile-width}) { @content; }
+}
+
+//override sass min() & max(), use css
+@function min($numbers...) {
+  @return m#{i}n(#{$numbers});
+}
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
 }
 
 a:hover {
@@ -84,7 +93,7 @@ html, body, #root, #app, .full-height {
     /*68 px is the current height of the nav bar
     will think of a better way to structure this later*/
     width: default;
-    height: unquote("max(68px, calc(35px + 10vh))");
+    height: max(68px, calc(35px + 10vh));
     margin-left: 15px;
   }
 }
@@ -156,7 +165,7 @@ html, body, #root, #app, .full-height {
     high scaling for very tall devices
     */
 
-    margin-bottom: unquote("max(calc(0px), calc(10vh - 40px), calc(30vh - 190px))");
+    margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
   }
 }
 .section {
@@ -185,7 +194,7 @@ html, body, #root, #app, .full-height {
   @include mobile {
     /* slightly smaller hero img for shorter screens */
     min-width: 80%;
-    width: unquote("min(50vh, 90%)");
+    width: min(50vh, 90%);
   }
 }
 
