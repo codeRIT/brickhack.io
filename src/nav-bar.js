@@ -31,7 +31,7 @@ class NavBar extends React.Component {
                     </a>
 
                     <ul className="flex-container">
-                        <li className="mobile-hide"><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH CODE OF CONDUCT</a></li>
+                        <li><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH CODE OF CONDUCT</a></li>
                         <li><a href="https://brickhack.io/gallery/">GALLERY</a></li>
                     </ul>
                 </div>
