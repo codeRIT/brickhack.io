@@ -14,12 +14,13 @@ class PreRegister extends React.Component {
     render() {
         return (
         <div id="app">
-            <div className="full-height">
-                <NavBar 
-                    title={desktopNotice}
-                    content={noticeContent}
-                />
-                <div className="section flex-container">
+            <NavBar 
+                title={desktopNotice}
+                content={noticeContent}
+            />
+
+            <div className="section">
+                <div className="content flex-container">
                     <div className="left-half">
                         <div id="hackathon-name">
                             BRICKHACK 7
@@ -43,7 +44,6 @@ class PreRegister extends React.Component {
                     </div>
                 </div>
             </div>
-
         </div>
         );
     }
