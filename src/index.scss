@@ -239,10 +239,7 @@ lines of text may be wider than they appear
 .mailchimp-container {
   height: 40px;
   width: 375px;
-  margin: auto;
-
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px auto;
 
   border-style: solid;
   border-width: 1px;
@@ -252,7 +249,8 @@ lines of text may be wider than they appear
   @include mobile {
     width: 80vw;
 
-    margin-top: 1vh;
+    // On mobile, only enforce top margin
+    margin: 1vh auto auto auto;
 
     height: 12vw;
     border-radius: 6vw;
