@@ -1,6 +1,6 @@
 # brickhack.io
 
-[![Build Status](https://travis-ci.org/codeRIT/brickhack.io.svg?branch=develop)](https://travis-ci.org/codeRIT/brickhack.io)
+[![Build Status](https://travis-ci.com/codeRIT/brickhack.io.svg?branch=develop)](https://travis-ci.com/codeRIT/brickhack.io)
 
 The public facing website for BrickHack.
 
