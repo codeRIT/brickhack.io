@@ -40,7 +40,7 @@ class PreRegister extends React.Component {
                     </div>
 
                     <div className="right-half mobile-hide">
-                        <img className="hero-img" src={heroImage} alt={heroImageAlt}/>
+                        <img className="hero-img mobile-hide" src={heroImage} alt={heroImageAlt}/>
                     </div>
                 </div>
             </div>

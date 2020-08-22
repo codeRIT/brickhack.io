@@ -203,6 +203,10 @@ html, body, #root, #app, .full-height {
   }
 }
 
+.hero-img.mobile-hide { //temporary, push up the desktop hero image a bit
+  margin-bottom: 75px;
+}
+
 /*
 note: development on a mac may not have all font-weights, 
 lines of text may be wider than they appear
