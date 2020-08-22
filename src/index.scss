@@ -2,7 +2,7 @@
 
 $blue: #465491;
 
-/* 
+/*
 tablet & mobile have the column layout
 tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
@@ -62,7 +62,7 @@ html, body, #root, #app, .full-height {
   width: 100%;
 
   padding: 12px 0px;
-  
+
   font-size: 14px;
   font-weight: 300;
   text-align: center;
@@ -84,7 +84,7 @@ html, body, #root, #app, .full-height {
     height: 150px;
     margin-left: 40px;
   }
-  
+
   @include mobile {
     /*68 px is the current height of the nav bar
     will think of a better way to structure this later*/
@@ -99,14 +99,14 @@ html, body, #root, #app, .full-height {
 
   font-size: 15px;
   font-weight: 500;
-  
+
   color: $blue;
   background-color: white;
 
   ul {
     list-style-type: none;
     float: right;
-  
+
     margin: 0;
     padding: 0;
 
@@ -117,7 +117,7 @@ html, body, #root, #app, .full-height {
 
       a {
         color: $blue;
-      
+
         border-bottom-style: solid;
         border-color: transparentize($blue, 1);
         transition: border-color 0.2s;
@@ -178,6 +178,10 @@ html, body, #root, #app, .full-height {
   max-width: $desktop-width;
   text-align: center;
   margin: auto;
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 
   @include tablet {
     flex-direction: column;
@@ -208,7 +212,7 @@ html, body, #root, #app, .full-height {
 }
 
 /*
-note: development on a mac may not have all font-weights, 
+note: development on a mac may not have all font-weights,
 lines of text may be wider than they appear
 */
 #hackathon-name {
@@ -241,7 +245,7 @@ lines of text may be wider than they appear
 
   @include mobile {
     height: 4vw;
-    font-size: 3.2vw; 
+    font-size: 3.2vw;
   }
 }
 
@@ -251,7 +255,8 @@ lines of text may be wider than they appear
   margin: auto;
 
   margin-top: 10px;
-  
+  margin-bottom: 10px;
+
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
@@ -317,7 +322,7 @@ lines of text may be wider than they appear
       background-position: 6.5px;
     }
   }
-  
+
   @include mobile {
       height: 9vw;
       width: 9vw;
@@ -344,4 +349,11 @@ lines of text may be wider than they appear
         font-size: 3.5vw;
         font-weight: 500;
     }
+}
+
+#contact {
+
+  p {
+    margin: 0;
+  }
 }
