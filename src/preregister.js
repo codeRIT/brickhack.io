@@ -33,8 +33,8 @@ class PreRegister extends React.Component {
                         </div>
                         <img className="hero-img desktop-hide" src={heroImage} alt={heroImageAlt}/>
                         <MailchimpInput/>
-                        
-                        <div id="contact">
+
+                        <div id="contact" className="mobile-hide">
                             <p>interested in sponsoring?</p>
                             <p>email <a href="mailto:sponsorship@coderit.org">sponsorship@coderit.org</a></p>
                         </div>
