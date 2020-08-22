@@ -3,8 +3,8 @@ import NavBar from "./nav-bar.js";
 import MailchimpInput from "./mailchimp-input.js";
 import CovidPopover from "./covid-popover.js";
 
-var HeroImage = require('./hero.svg');
-var HeroImageAlt = "A decorative hero graphic."
+var heroImage = require('./hero.svg');
+var heroImageAlt = "A decorative hero graphic."
 
 var desktopNotice = "COVID-19 Notice: "
 var mobileNotice = "COVID-19 Notice"
@@ -31,7 +31,7 @@ class PreRegister extends React.Component {
                         <div id="hackathon-info">
                             Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                         </div>
-                        <img className="hero-img desktop-hide" src={HeroImage} alt={HeroImageAlt}/>
+                        <img className="hero-img desktop-hide" src={heroImage} alt={heroImageAlt}/>
                         <MailchimpInput/>
                         <CovidPopover 
                             title={mobileNotice}
@@ -40,7 +40,7 @@ class PreRegister extends React.Component {
                     </div>
 
                     <div className="right-half mobile-hide">
-                        <img className="hero-img" src={HeroImage} alt={HeroImageAlt}/>
+                        <img className="hero-img" src={heroImage} alt={heroImageAlt}/>
                     </div>
                 </div>
             </div>
