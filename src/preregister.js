@@ -6,8 +6,6 @@ import CovidPopover from "./covid-popover.js";
 var heroImage = require('./hero.svg');
 var heroImageAlt = "A decorative hero graphic."
 
-var desktopNotice = "COVID-19 Notice: "
-var mobileNotice = "COVID-19 Notice"
 var noticeContent = "We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY State."
 
 class PreRegister extends React.Component {
@@ -15,7 +13,6 @@ class PreRegister extends React.Component {
         return (
         <div id="app">
             <NavBar 
-                title={desktopNotice}
                 content={noticeContent}
             />
 
@@ -40,7 +37,6 @@ class PreRegister extends React.Component {
                         </div>
 
                         <CovidPopover 
-                            title={mobileNotice}
                             content={noticeContent}
                         />
                     </div>

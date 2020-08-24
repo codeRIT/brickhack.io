@@ -22,7 +22,7 @@ class NavBar extends React.Component {
             <div id="navigation-container">
                 <div className="navigation" id="navigation">
                     <div className="desktop-banner mobile-hide" id="desktop-banner">
-                        <span>{this.props.title}</span>{this.props.content}
+                        <span>COVID-19 Notice: </span>{this.props.content}
                     </div>
 
                     <a href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&amp;utm_medium=TrustBadge&amp;utm_campaign=2020-season&amp;utm_content=gray">
