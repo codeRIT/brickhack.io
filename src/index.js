@@ -12,6 +12,7 @@ If you’d like to work on this website and other cool projects with hackathons,
 
 console.log(hiringMessage);
 
+//comment generated via javascript instead of in HTML so the hiring message text is only in one place
 const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
