@@ -27,7 +27,7 @@ class CovidPopover extends React.Component {
                     placement="top"
                     overlay={
                         <Popover id="popover-basic" >
-                            <PopoverTitle as="h3">{this.props.title}</PopoverTitle>
+                            <PopoverTitle as="h3">COVID-19 Notice</PopoverTitle>
                             <PopoverContent>
                                 {this.props.content}
                             </PopoverContent>
