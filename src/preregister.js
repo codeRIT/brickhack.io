@@ -32,8 +32,8 @@ class PreRegister extends React.Component {
                         <MailchimpInput/>
 
                         <div id="contact" className="mobile-hide">
-                            <p>interested in sponsoring?</p>
-                            <p>email <a href="mailto:sponsorship@coderit.org">sponsorship@coderit.org</a></p>
+                            <p>Interested in Sponsoring?</p>
+                            <p><a href="mailto:sponsorship@coderit.org">sponsorship@coderit.org</a></p>
                         </div>
 
                         <CovidPopover 

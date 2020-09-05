@@ -346,8 +346,13 @@ lines of text may be wider than they appear
 }
 
 #contact {
-
   p {
     margin: 0;
+    font-weight: 500;
+    font-size: 20px;
+    height: 25px;
+    a{
+      font-size: 16px;
+    }
   }
 }
