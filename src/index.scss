@@ -22,7 +22,7 @@ $mobile-width: 720px;
   @media(max-width: #{$mobile-width}) { @content; }
 }
 
-//override sass min() & max(), use css
+//override sass min() & max() fn's, use css's
 @function min($numbers...) {
   @return m#{i}n(#{$numbers});
 }
@@ -58,11 +58,6 @@ html, body, #root, #app, .full-height {
   flex-shrink: 0;
 }
 
-.full-height { /* not really a good way to do it, will probably change to flex column layout */
-  height: calc(100% - 445px);
-  display: flex;
-  flex-direction: column;
-}
 .desktop-banner {
   width: 100%;
 
@@ -74,9 +69,10 @@ html, body, #root, #app, .full-height {
 
   background-color: $blue;
   color: white;
-}
-.desktop-banner span {
-  font-weight: 400;
+
+  span {
+    font-weight: 400;
+  }
 }
 
 #mlh-badge {
@@ -99,14 +95,13 @@ html, body, #root, #app, .full-height {
 }
 
 .navigation {
-  display: inline-block;
-
   width: 100%;
 
   font-size: 15px;
   font-weight: 500;
 
   color: $blue;
+  background-color: white;
 
   ul {
     list-style-type: none;
@@ -136,6 +131,8 @@ html, body, #root, #app, .full-height {
   }
 
   @include tablet {
+    display: inline-block;
+    
     font-size: 12px;
     font-weight: 400;
 
@@ -168,15 +165,23 @@ html, body, #root, #app, .full-height {
     margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
   }
 }
+
 .section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
   width: 100%;
-  max-width: 1100px;
+  
+  max-width: $desktop-width;
   text-align: center;
   margin: auto;
 
-
   @include tablet {
     flex-direction: column;
+    margin: 0px;
   }
 }
 
@@ -198,13 +203,17 @@ html, body, #root, #app, .full-height {
   }
 }
 
+.hero-img.mobile-hide { //temporary, push up the desktop hero image a bit
+  margin-bottom: 75px;
+}
+
 /*
 note: development on a mac may not have all font-weights,
 lines of text may be wider than they appear
 */
 #hackathon-name {
-  height: 65px;
-  font-size: 60px;
+  height: 75px;
+  font-size: 70px;
   font-weight: 700;
   color: $blue;
 
@@ -214,8 +223,8 @@ lines of text may be wider than they appear
   }
 }
 #hackathon-description {
-  height: 37px;
-  font-size: 28.0px;
+  height: 43px;
+  font-size: 34px;
   font-weight: 700;
   color: $blue;
 
@@ -225,8 +234,8 @@ lines of text may be wider than they appear
   }
 }
 #hackathon-info {
-  height: 20px;
-  font-size: 14px;
+  height: 25px;
+  font-size: 17px;
   font-weight: 500;
   color: $blue;
 
@@ -237,14 +246,14 @@ lines of text may be wider than they appear
 }
 
 .mailchimp-container {
-  height: 40px;
-  width: 375px;
+  height: 50px;
+  width: 450px;
   margin: 20px auto;
-
+  
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
-  border-radius: 20px;
+  border-radius: 25px;
 
   @include mobile {
     width: 80vw;
@@ -266,7 +275,7 @@ lines of text may be wider than they appear
 
   outline: none;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
 
   &::placeholder { /* this refers to the input placeholder text (enter your email...)*/
@@ -283,28 +292,28 @@ lines of text may be wider than they appear
   }
 }
 .mailchimp-button {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
 
   margin-right: 5px;
 
   border-style: solid;
   border-width: 1px;
   border-color: $blue;
-  border-radius: 15px;
+  border-radius: 20px;
 
   background-color: white;
   background-image: url(./input-arrow.svg);
   background-repeat: no-repeat;
-  background-position: 3.75px;
-  background-size: 18px;
+  background-position: 4.5px;
+  background-size: 25px;
 
   outline: none;
   transition: 0.1s;
 
   @include desktop {
     &:hover {
-      background-position: 5.25px;
+      background-position: 6.5px;
     }
   }
 
@@ -337,8 +346,13 @@ lines of text may be wider than they appear
 }
 
 #contact {
-
   p {
     margin: 0;
+    font-weight: 500;
+    font-size: 20px;
+    height: 25px;
+    a{
+      font-size: 16px;
+    }
   }
 }
