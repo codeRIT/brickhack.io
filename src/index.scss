@@ -8,7 +8,7 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
-$desktop-width: 1050px;
+$desktop-width: 1165px;
 $mobile-width: 750px;
 
 @mixin desktop {
@@ -348,10 +348,12 @@ lines of text may be wider than they appear
 
 #contact {
   p {
-    margin: 0;
-    font-weight: 500;
-    font-size: 20px;
     height: 25px;
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 500;
+    color: $blue;
     a{
       font-size: 16px;
     }
