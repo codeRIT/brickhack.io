@@ -171,14 +171,14 @@ html, body, #root, #app, .full-height {
   display: flex;
   flex-direction: column;
   @include desktop{
-    min-height: 800px;
+    min-height: 750px;
   }
 }
 
 .content {
   width: 100%;
   
-  max-width: $desktop-width;
+  max-width: 1050px;
   text-align: center;
   margin: auto;
 
