@@ -8,7 +8,7 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
-$desktop-width: 1200px;
+$desktop-width: 1210px;
 $mobile-width: 750px;
 
 @mixin desktop {
@@ -183,6 +183,7 @@ html, body, #root, #app, .full-height {
   margin: auto;
 
   @include tablet {
+    max-width: 100%;
     flex-direction: column;
     margin: 0px;
   }
