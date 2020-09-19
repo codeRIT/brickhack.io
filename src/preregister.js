@@ -6,7 +6,7 @@ import CovidPopover from "./covid-popover.js";
 var heroImage = require('./hero.svg');
 var heroImageAlt = "A decorative hero graphic."
 
-var noticeContent = "We're planning BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY State."
+var noticeContent = "We're planning for BrickHack 7 to be the best and safest event possible. We will publish relevant information upon receiving updates from RIT and NY State."
 
 class PreRegister extends React.Component {
     render() {
