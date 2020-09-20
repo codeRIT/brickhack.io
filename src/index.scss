@@ -171,7 +171,7 @@ html, body, #root, #app, .full-height {
 	display: flex;
 	flex-direction: column;
 	@include desktop{
-		
+		min-height: 775px;
 	}
 }
 
