@@ -8,194 +8,207 @@ tablet has fixed widths and font sizes
 mobile has scaling widths and font sizes
 */
 
-$desktop-width: 1100px;
-$mobile-width: 720px;
+$desktop-width: 1210px;
+$mobile-width: 750px;
 
 @mixin desktop {
-  @media(min-width: #{$desktop-width}) { @content; }
+	@media(min-width: #{$desktop-width}) { @content; }
 }
 /*tablet mixin also applies to mobile*/
 @mixin tablet {
-  @media(max-width: #{$desktop-width}) { @content; }
+	@media(max-width: #{$desktop-width}) { @content; }
 }
 @mixin mobile {
-  @media(max-width: #{$mobile-width}) { @content; }
+	@media(max-width: #{$mobile-width}) { @content; }
 }
 
-//override sass min() & max(), use css
+//override sass min() & max() fn's, use css's
 @function min($numbers...) {
-  @return m#{i}n(#{$numbers});
+	@return m#{i}n(#{$numbers});
 }
 @function max($numbers...) {
-  @return m#{a}x(#{$numbers});
+	@return m#{a}x(#{$numbers});
 }
 
 a:hover {
-  text-decoration: none;
+	text-decoration: none;
 }
 body {
-  margin: 0;
-  font-family: Poppins, sans-serif;
+	margin: 0;
+	font-family: Poppins, sans-serif;
 }
 html, body, #root, #app, .full-height {
-  height: 100%;
+	height: 100%;
 }
 
 .desktop-hide {
-  @include desktop {
-    display: none;
-  }
+	@include desktop {
+		display: none;
+	}
 }
 .mobile-hide {
-  @include tablet {
-    display: none;
-  }
+	@include tablet {
+		display: none;
+	}
 }
 
 .flex-container {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
 }
 
-.full-height { /* not really a good way to do it, will probably change to flex column layout */
-  height: calc(100% - 445px);
-  display: flex;
-  flex-direction: column;
-}
 .desktop-banner {
-  width: 100%;
+	width: 100%;
 
-  padding: 12px 0px;
+	padding: 12px 0px;
 
-  font-size: 14px;
-  font-weight: 300;
-  text-align: center;
+	font-size: 14px;
+	font-weight: 300;
+	text-align: center;
 
-  background-color: $blue;
-  color: white;
-}
-.desktop-banner span {
-  font-weight: 400;
+	background-color: $blue;
+	color: white;
+
+	span {
+		font-weight: 400;
+	}
 }
 
 #mlh-badge {
-  position: absolute;
-  height: 175px;
-  margin-left: 50px;
+	position: absolute;
+	height: 175px;
+	margin-left: 50px;
 
-  @include tablet {
-    height: 150px;
-    margin-left: 40px;
-  }
+	@include tablet {
+		height: 150px;
+		margin-left: 40px;
+	}
 
-  @include mobile {
-    /*68 px is the current height of the nav bar
-    will think of a better way to structure this later*/
-    width: default;
-    height: max(68px, calc(35px + 10vh));
-    margin-left: 15px;
-  }
+	@include mobile {
+		/*68 px is the current height of the nav bar
+		will think of a better way to structure this later*/
+		width: default;
+		height: max(68px, calc(35px + 10vh));
+		margin-left: 15px;
+	}
 }
 
 .navigation {
-  display: inline-block;
+	width: 100%;
 
-  width: 100%;
+	font-size: 15px;
+	font-weight: 500;
 
-  font-size: 15px;
-  font-weight: 500;
+	color: $blue;
+	background-color: white;
 
-  color: $blue;
+	ul {
+		list-style-type: none;
+		float: right;
 
-  ul {
-    list-style-type: none;
-    float: right;
+		margin: 0;
+		padding: 0;
 
-    margin: 0;
-    padding: 0;
+		li {
+			padding: 25px 25px;
+			text-align: center;
+			text-decoration: none;
 
-    li {
-      padding: 25px 25px;
-      text-align: center;
-      text-decoration: none;
+			a {
+				color: $blue;
 
-      a {
-        color: $blue;
+				border-bottom-style: solid;
+				border-color: transparentize($blue, 1);
+				transition: border-color 0.2s;
 
-        border-bottom-style: solid;
-        border-color: transparentize($blue, 1);
-        transition: border-color 0.2s;
+				&:hover {
+					border-color: transparentize($blue, 0);
+					transition: border-color 0.2s;
+				}
+			}
+		}
+	}
 
-        &:hover {
-          border-color: transparentize($blue, 0);
-          transition: border-color 0.2s;
-        }
-      }
-    }
-  }
+	@include tablet {
+		display: inline-block;
+		
+		font-size: 12px;
+		font-weight: 400;
 
-  @include tablet {
-    font-size: 12px;
-    font-weight: 400;
+		color: white;
+		background-color: $blue;
 
-    color: white;
-    background-color: $blue;
+		ul li {
+			padding: 25px 15px;
+			a {
+				color: white;
+				border-bottom-style: solid;
+				border-color: transparentize(white, 1);
 
-    ul li {
-      padding: 25px 15px;
-      a {
-        color: white;
-        border-bottom-style: solid;
-        border-color: transparentize(white, 1);
+				&:hover {
+					border-color: transparentize(white, 1);
+				}
+				&:active {
+					border-color: transparentize(white, 0);
+				}
+			}
+		}
+	}
 
-        &:hover {
-          border-color: transparentize(white, 1);
-        }
-        &:active {
-          border-color: transparentize(white, 0);
-        }
-      }
-    }
-  }
+	@include mobile {
+		/*no scaling for very short devices,
+		scaling matching the mlh badge scaling for avg devices,
+		high scaling for very tall devices
+		*/
 
-  @include mobile {
-    /*no scaling for very short devices,
-    scaling matching the mlh badge scaling for avg devices,
-    high scaling for very tall devices
-    */
-
-    margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
-  }
+		margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
+	}
 }
+
 .section {
-  width: 100%;
-  max-width: 1100px;
-  text-align: center;
-  margin: auto;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	@include desktop {
+		min-height: 775px;
+	}
+}
 
+.content {
+	width: 100%;
+	
+	max-width: 1050px;
+	text-align: center;
+	margin: auto;
 
-  @include tablet {
-    flex-direction: column;
-  }
+	@include tablet {
+		max-width: 100%;
+		flex-direction: column;
+		margin: 0px;
+	}
 }
 
 .right-half {
-  flex: 50%;
+	flex: 50%;
 }
 .left-half {
-    @extend .right-half;
-    margin-bottom: 2.5vh;
+	@extend .right-half;
+	margin-bottom: 2.5vh;
 }
 
 .hero-img {
-  width: 100%;
+	width: 100%;
 
-  @include mobile {
-    /* slightly smaller hero img for shorter screens */
-    min-width: 80%;
-    width: min(50vh, 90%);
-  }
+	@include mobile {
+		/* slightly smaller hero img for shorter screens */
+		min-width: 80%;
+		width: min(50vh, 90%);
+	}
+}
+
+.hero-img.mobile-hide { //temporary, push up the desktop hero image a bit
+	margin-bottom: 75px;
 }
 
 /*
@@ -203,142 +216,149 @@ note: development on a mac may not have all font-weights,
 lines of text may be wider than they appear
 */
 #hackathon-name {
-  height: 65px;
-  font-size: 60px;
-  font-weight: 700;
-  color: $blue;
+	height: 75px;
+	font-size: 70px;
+	font-weight: 700;
+	color: $blue;
 
-  @include mobile {
-    height: 14.1vw;
-    font-size: 13vw;
-  }
+	@include mobile {
+		height: 14.1vw;
+		font-size: 13vw;
+	}
 }
 #hackathon-description {
-  height: 37px;
-  font-size: 28.0px;
-  font-weight: 700;
-  color: $blue;
+	height: 43px;
+	font-size: 34px;
+	font-weight: 700;
+	color: $blue;
 
-  @include mobile {
-    height: 8.2vw;
-    font-size: 6.3vw;
-  }
+	@include mobile {
+		height: 8.2vw;
+		font-size: 6.3vw;
+	}
 }
 #hackathon-info {
-  height: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  color: $blue;
+	height: 25px;
+	font-size: 17px;
+	font-weight: 500;
+	color: $blue;
 
-  @include mobile {
-    height: 4vw;
-    font-size: 3.2vw;
-  }
+	@include mobile {
+		height: 4vw;
+		font-size: 3.2vw;
+	}
 }
 
 .mailchimp-container {
-  height: 40px;
-  width: 375px;
-  margin: 20px auto;
+	height: 50px;
+	width: 450px;
+	margin: 20px auto;
+	
+	border-style: solid;
+	border-width: 1px;
+	border-color: $blue;
+	border-radius: 25px;
 
-  border-style: solid;
-  border-width: 1px;
-  border-color: $blue;
-  border-radius: 20px;
+	@include mobile {
+		width: 80vw;
 
-  @include mobile {
-    width: 80vw;
+		// On mobile, only enforce top margin
+		margin: 1vh auto auto auto;
 
-    // On mobile, only enforce top margin
-    margin: 1vh auto auto auto;
-
-    height: 12vw;
-    border-radius: 6vw;
-  }
+		height: 12vw;
+		border-radius: 6vw;
+	}
 }
 .mailchimp-input {
-  flex: 50%;
-  height: 30px;
-  margin-left: 10px;
+	flex: 50%;
+	height: 30px;
+	margin-left: 10px;
 
-  text-align: center;
-  border-style: none;
+	text-align: center;
+	border-style: none;
 
-  outline: none;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
+	outline: none;
+	font-family: inherit;
+	font-size: 17px;
+	font-weight: 500;
 
-  &::placeholder { /* this refers to the input placeholder text (enter your email...)*/
-    color: $blue;
-    transition: color 0.4s;
-  }
-  &:focus::placeholder {
-    color: transparent;
-  }
+	&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
+		color: $blue;
+		transition: color 0.4s;
+	}
+	&:focus::placeholder {
+		color: transparent;
+	}
 
-  @include mobile {
-    height: 7vw;
-    font-size: 3.25vw;
-  }
+	@include mobile {
+		height: 7vw;
+		font-size: 3.25vw;
+	}
 }
 .mailchimp-button {
-  height: 30px;
-  width: 30px;
+	height: 40px;
+	width: 40px;
 
-  margin-right: 5px;
+	margin-right: 5px;
 
-  border-style: solid;
-  border-width: 1px;
-  border-color: $blue;
-  border-radius: 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $blue;
+	border-radius: 20px;
 
-  background-color: white;
-  background-image: url(./input-arrow.svg);
-  background-repeat: no-repeat;
-  background-position: 3.75px;
-  background-size: 18px;
+	background-color: white;
+	background-image: url(./input-arrow.svg);
+	background-repeat: no-repeat;
+	background-position: 4.5px;
+	background-size: 25px;
 
-  outline: none;
-  transition: 0.1s;
+	outline: none;
+	transition: 0.1s;
 
-  @include desktop {
-    &:hover {
-      background-position: 5.25px;
-    }
-  }
+	@include desktop {
+		&:hover {
+			background-position: 6.5px;
+		}
+	}
 
-  @include mobile {
-      height: 9vw;
-      width: 9vw;
-      border-radius: 4.5vw;
-      margin-right: 1.5vw;
-      background-position: 1.5vw;
-      background-size: 5vw;
-  }
+	@include mobile {
+		height: 9vw;
+		width: 9vw;
+		border-radius: 4.5vw;
+		margin-right: 1.5vw;
+		background-position: 1.5vw;
+		background-size: 5vw;
+	}
 }
 
 .mobile-banner {
-    @include tablet {
-        display: inline-block;
-        margin-top: 1vh;
-        margin-bottom: 2.5vh;
-        border-bottom-style: solid;
-        color: $blue;
+	@include tablet {
+		display: inline-block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border-bottom-style: solid;
+		color: $blue;
 
-        font-size: 1rem;
-        font-weight: 400;
-    }
+		font-size: 1rem;
+		font-weight: 400;
+	}
 
-    @include mobile {
-        font-size: 3.5vw;
-        font-weight: 500;
-    }
+	@include mobile {
+		font-size: 3.5vw;
+		font-weight: 500;
+	}
 }
 
 #contact {
+	p {
+		height: 25px;
+		margin: 0;
 
-  p {
-    margin: 0;
-  }
+		font-size: 20px;
+		font-weight: 500;
+		color: $blue;
+		a{
+			font-size: 16px;
+		}
+	}
 }
