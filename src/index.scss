@@ -14,6 +14,9 @@ $mobile-width: 750px;
 @mixin desktop {
 	@media(min-width: #{$desktop-width}) { @content; }
 }
+@mixin tablet-only {
+	@media(max-width: #{$desktop-width}) { @media(min-width: #{$mobile-width}) {@content; } }
+}
 /*tablet mixin also applies to mobile*/
 @mixin tablet {
 	@media(max-width: #{$desktop-width}) { @content; }
@@ -167,11 +170,13 @@ html, body, #root, #app, .full-height {
 }
 
 .section {
-	height: 100%;
 	display: flex;
 	flex-direction: column;
 	@include desktop {
-		min-height: 775px;
+		min-height: 750px;
+	}
+	@include tablet-only {
+		height: calc(100% - 74.5px);
 	}
 }
 
@@ -196,7 +201,7 @@ html, body, #root, #app, .full-height {
 	@extend .right-half;
 	margin-bottom: 2.5vh;
 
-	@include tablet {
+	@include tablet-only {
 		margin-bottom: 20vh;
 	}
 }
