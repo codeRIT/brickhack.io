@@ -185,7 +185,7 @@ html, body, #root, #app, .full-height {
 	@include tablet {
 		max-width: 100%;
 		flex-direction: column;
-		margin: 0px;
+		margin: auto;
 	}
 }
 
@@ -195,6 +195,10 @@ html, body, #root, #app, .full-height {
 .left-half {
 	@extend .right-half;
 	margin-bottom: 2.5vh;
+
+	@include tablet {
+		margin-bottom: 20vh;
+	}
 }
 
 .hero-img {
