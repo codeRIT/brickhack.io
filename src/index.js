@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PreRegister from './preregister';
+import Site from './bh7-full/index';
+
 import 'bootstrap/dist/css/bootstrap.css';
-import './index.scss';
+import './bh7-full/index.scss';
+
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 const hiringMessage = `Hey, you.
 You’re finally awake.
@@ -17,6 +20,8 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 ReactDOM.render(
-    <PreRegister/>,
+    <ParallaxProvider>
+        <Site/>
+    </ParallaxProvider>,
     document.getElementById('root'),
 );
