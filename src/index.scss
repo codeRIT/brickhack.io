@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
-$blue: #465491;
+$dark-blue: #1B315E;
+$blue: #2A3E7F;
+$light-blue: #455296;
 
 /*
 tablet & mobile have the column layout
@@ -30,17 +32,6 @@ $mobile-width: 750px;
 	@return m#{a}x(#{$numbers});
 }
 
-a:hover {
-	text-decoration: none;
-}
-body {
-	margin: 0;
-	font-family: Poppins, sans-serif;
-}
-html, body, #root, #app, .full-height {
-	height: 100%;
-}
-
 .desktop-hide {
 	@include desktop {
 		display: none;
@@ -52,163 +43,46 @@ html, body, #root, #app, .full-height {
 	}
 }
 
-.flex-container {
-	display: flex;
-	align-items: center;
-	flex-shrink: 0;
-}
-
-.desktop-banner {
-	width: 100%;
-
-	padding: 12px 0px;
-
-	font-size: 14px;
-	font-weight: 300;
-	text-align: center;
-
-	background-color: $blue;
+body {
+	margin: 0;
+	font-family: Poppins, sans-serif;
+	font-size: 2vw;
 	color: white;
-
-	span {
-		font-weight: 400;
-	}
 }
-
-#mlh-badge {
-	position: absolute;
-	height: 175px;
-	margin-left: 50px;
-
-	@include tablet {
-		height: 150px;
-		margin-left: 40px;
-	}
-
-	@include mobile {
-		/*68 px is the current height of the nav bar
-		will think of a better way to structure this later*/
-		width: default;
-		height: max(68px, calc(35px + 10vh));
-		margin-left: 15px;
-	}
-}
-
-.navigation {
-	width: 100%;
-
-	font-size: 15px;
-	font-weight: 500;
-
-	color: $blue;
-	background-color: white;
-
-	ul {
-		list-style-type: none;
-		float: right;
-
-		margin: 0;
-		padding: 0;
-
-		li {
-			padding: 25px 25px;
-			text-align: center;
-			text-decoration: none;
-
-			a {
-				color: $blue;
-
-				border-bottom-style: solid;
-				border-color: transparentize($blue, 1);
-				transition: border-color 0.2s;
-
-				&:hover {
-					border-color: transparentize($blue, 0);
-					transition: border-color 0.2s;
-				}
-			}
-		}
-	}
-
-	@include tablet {
-		display: inline-block;
-		
-		font-size: 12px;
-		font-weight: 400;
-
-		color: white;
-		background-color: $blue;
-
-		ul li {
-			padding: 25px 15px;
-			a {
-				color: white;
-				border-bottom-style: solid;
-				border-color: transparentize(white, 1);
-
-				&:hover {
-					border-color: transparentize(white, 1);
-				}
-				&:active {
-					border-color: transparentize(white, 0);
-				}
-			}
-		}
-	}
-
-	@include mobile {
-		/*no scaling for very short devices,
-		scaling matching the mlh badge scaling for avg devices,
-		high scaling for very tall devices
-		*/
-
-		margin-bottom: max(1px, calc(10vh - 40px), calc(30vh - 190px));
-	}
-}
-
-.section {
+html, body, #root, #app {
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-	@include desktop {
-		min-height: 775px;
+}
+
+@include desktop {
+	section {
+		position: relative;
+		display: block;
+		height: 100%;
+		width: 100%;
+		background-color: $dark-blue;
 	}
-}
 
-.content {
-	width: 100%;
-	
-	max-width: 1050px;
-	text-align: center;
-	margin: auto;
+	#main {
+		background-color: $light-blue;
 
-	@include tablet {
-		max-width: 100%;
-		flex-direction: column;
-		margin: 0px;
+		#hero-image {
+			position: fixed;
+			width: 75vw;
+			right: 0;
+		}
+		
+		#shelf {
+			z-index: 0;
+			position: absolute;
+			bottom: 0px;
+
+			width: 100%;
+			height: 10vw;
+
+			background-color: $dark-blue;
+			border-style: none;
+		}
 	}
-}
-
-.right-half {
-	flex: 50%;
-}
-.left-half {
-	@extend .right-half;
-	margin-bottom: 2.5vh;
-}
-
-.hero-img {
-	width: 100%;
-
-	@include mobile {
-		/* slightly smaller hero img for shorter screens */
-		min-width: 80%;
-		width: min(50vh, 90%);
-	}
-}
-
-.hero-img.mobile-hide { //temporary, push up the desktop hero image a bit
-	margin-bottom: 75px;
 }
 
 /*
@@ -307,7 +181,7 @@ lines of text may be wider than they appear
 	border-radius: 20px;
 
 	background-color: white;
-	background-image: url(./input-arrow.svg);
+	background-image: url(./bh7-assets/input-arrow.svg);
 	background-repeat: no-repeat;
 	background-position: 4.5px;
 	background-size: 25px;
@@ -328,37 +202,5 @@ lines of text may be wider than they appear
 		margin-right: 1.5vw;
 		background-position: 1.5vw;
 		background-size: 5vw;
-	}
-}
-
-.mobile-banner {
-	@include tablet {
-		display: inline-block;
-		margin-top: 10px;
-		margin-bottom: 10px;
-		border-bottom-style: solid;
-		color: $blue;
-
-		font-size: 1rem;
-		font-weight: 400;
-	}
-
-	@include mobile {
-		font-size: 3.5vw;
-		font-weight: 500;
-	}
-}
-
-#contact {
-	p {
-		height: 25px;
-		margin: 0;
-
-		font-size: 20px;
-		font-weight: 500;
-		color: $blue;
-		a{
-			font-size: 16px;
-		}
 	}
 }
