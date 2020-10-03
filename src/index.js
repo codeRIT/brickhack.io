@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Site from './bh7-full/index';
+import Site from './site';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './bh7-full/index.scss';
+import './index.scss';
 
 import { ParallaxProvider } from 'react-scroll-parallax';
 
