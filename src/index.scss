@@ -3,6 +3,10 @@
 $dark-blue: #1B315E;
 $blue: #2A3E7F;
 $light-blue: #455296;
+$red: #F1646B;
+$orange: #F9A36A;
+$pink: #F9C3BC;
+$beige: #F4ECE0;
 
 /*
 tablet & mobile have the column layout
@@ -43,8 +47,13 @@ $mobile-width: 750px;
 	}
 }
 
+a:hover {
+	text-decoration: none;
+}
 body {
 	margin: 0;
+	padding: 0;
+
 	font-family: Poppins, sans-serif;
 	font-size: 2vw;
 	color: white;
@@ -53,154 +62,109 @@ html, body, #root, #app {
 	height: 100%;
 }
 
-@include desktop {
-	section {
-		position: relative;
-		display: block;
-		height: 100%;
-		width: 100%;
-		background-color: $dark-blue;
+nav {
+	position: fixed;
+	z-index: 1;
+
+	width: 100vw;
+
+	background-color: transparentize(white, 0.95);
+	
+	#logo {
+		content:url('./bh7-assets/logo.svg');
+		width: 5vw;
+		margin: 0vw 2vw;
+	}
+	
+	ul {
+		display: flex;
+		list-style-type: none;
+
+		/* overwrite edge browser styles */
+		margin-block-start: 0;
+		margin-block-end: 0;
+		margin-inline-start: 0;
+		margin-inline-end: 0;
+		padding-inline-start: 0;
+
+			a li {
+				$nav-vertical-padding: 2vw;
+				$nav-horizontal-padding: 0.5vw;
+				$nav-border: 0.3vw;
+				$nav-font-size: 1.25vw;
+
+				padding: $nav-vertical-padding - $nav-border $nav-horizontal-padding;
+				margin-right: 2vw;
+
+				font-size: 1.25vw;
+				font-weight: 400;
+
+				color: white;
+
+				border-top-style: solid;
+				border-width: $nav-border;
+				border-color: transparentize($orange, 1);
+
+				transition: font-weight 0.1s, color 0.2s, border-color 0.3s;
+				&:hover {
+					font-weight: 600;
+					color: $orange;
+					border-color: transparentize($orange, 0);
+				}
+			}
+		
 	}
 
-	#main {
+	#mlh-badge {
+		position: absolute;
+		top: 0;
+		height: 13.5vw;
+		right: 2vw;
+	}
+
+	@include tablet {
+		background-color: transparentize(white, 0.85);
+	}
+}
+
+section {
+	position: relative;
+	display: block;
+
+	height: 60vw;
+	min-width: $desktop-width;
+	width: 100%;
+
+	background-color: $dark-blue;
+
+	@include tablet {
+		height: 100vh;
+	}
+}
+
+#main {
+
+	#hero-image {
+		position: fixed;
+		width: 80vw;
+		right: 0;
+
 		background-color: $light-blue;
 
-		#hero-image {
-			position: fixed;
-			width: 75vw;
-			right: 0;
+		@include tablet {
+			width: 100vw;
 		}
+	}
 		
-		#shelf {
-			z-index: 0;
-			position: absolute;
-			bottom: 0px;
+	#shelf {
+		z-index: 0;
+		position: absolute;
+		bottom: -1px;
 
-			width: 100%;
-			height: 10vw;
+		width: 100%;
+		height: 10%;
 
-			background-color: $dark-blue;
-			border-style: none;
-		}
-	}
-}
-
-/*
-note: development on a mac may not have all font-weights,
-lines of text may be wider than they appear
-*/
-#hackathon-name {
-	height: 75px;
-	font-size: 70px;
-	font-weight: 700;
-	color: $blue;
-
-	@include mobile {
-		height: 14.1vw;
-		font-size: 13vw;
-	}
-}
-#hackathon-description {
-	height: 43px;
-	font-size: 34px;
-	font-weight: 700;
-	color: $blue;
-
-	@include mobile {
-		height: 8.2vw;
-		font-size: 6.3vw;
-	}
-}
-#hackathon-info {
-	height: 25px;
-	font-size: 17px;
-	font-weight: 500;
-	color: $blue;
-
-	@include mobile {
-		height: 4vw;
-		font-size: 3.2vw;
-	}
-}
-
-.mailchimp-container {
-	height: 50px;
-	width: 450px;
-	margin: 20px auto;
-	
-	border-style: solid;
-	border-width: 1px;
-	border-color: $blue;
-	border-radius: 25px;
-
-	@include mobile {
-		width: 80vw;
-
-		// On mobile, only enforce top margin
-		margin: 1vh auto auto auto;
-
-		height: 12vw;
-		border-radius: 6vw;
-	}
-}
-.mailchimp-input {
-	flex: 50%;
-	height: 30px;
-	margin-left: 10px;
-
-	text-align: center;
-	border-style: none;
-
-	outline: none;
-	font-family: inherit;
-	font-size: 17px;
-	font-weight: 500;
-
-	&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
-		color: $blue;
-		transition: color 0.4s;
-	}
-	&:focus::placeholder {
-		color: transparent;
-	}
-
-	@include mobile {
-		height: 7vw;
-		font-size: 3.25vw;
-	}
-}
-.mailchimp-button {
-	height: 40px;
-	width: 40px;
-
-	margin-right: 5px;
-
-	border-style: solid;
-	border-width: 1px;
-	border-color: $blue;
-	border-radius: 20px;
-
-	background-color: white;
-	background-image: url(./bh7-assets/input-arrow.svg);
-	background-repeat: no-repeat;
-	background-position: 4.5px;
-	background-size: 25px;
-
-	outline: none;
-	transition: 0.1s;
-
-	@include desktop {
-		&:hover {
-			background-position: 6.5px;
-		}
-	}
-
-	@include mobile {
-		height: 9vw;
-		width: 9vw;
-		border-radius: 4.5vw;
-		margin-right: 1.5vw;
-		background-position: 1.5vw;
-		background-size: 5vw;
+		background-color: $dark-blue;
+		border-style: none;
 	}
 }

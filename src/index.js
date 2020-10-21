@@ -5,8 +5,6 @@ import Site from './site';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
 
-import { ParallaxProvider } from 'react-scroll-parallax';
-
 const hiringMessage = `Hey, you.
 You’re finally awake.
 You were trying to see the code, right?
@@ -20,8 +18,6 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 ReactDOM.render(
-    <ParallaxProvider>
-        <Site/>
-    </ParallaxProvider>,
+    <Site/>,
     document.getElementById('root'),
 );
