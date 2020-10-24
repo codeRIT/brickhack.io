@@ -142,12 +142,13 @@ section {
 	}
 }
 
-#main {
+#general {
 
 	#hero-image {
 		position: fixed;
-		width: 80vw;
+		width: 100vw;
 		right: 0;
+		bottom: -12vw;
 
 		background-color: $light-blue;
 
@@ -166,5 +167,121 @@ section {
 
 		background-color: $dark-blue;
 		border-style: none;
+	}
+
+	#hackathon-name {
+		height: 75px;
+		font-size: 70px;
+		font-weight: 700;
+		color: $blue;
+	
+		@include mobile {
+			height: 14.1vw;
+			font-size: 13vw;
+		}
+	}
+	#hackathon-description {
+		height: 43px;
+		font-size: 34px;
+		font-weight: 700;
+		color: $blue;
+	
+		@include mobile {
+			height: 8.2vw;
+			font-size: 6.3vw;
+		}
+	}
+	#hackathon-info {
+		height: 25px;
+		font-size: 17px;
+		font-weight: 500;
+		color: $blue;
+	
+		@include mobile {
+			height: 4vw;
+			font-size: 3.2vw;
+		}
+	}
+
+	.mailchimp-container {
+		height: 50px;
+		width: 450px;
+		margin: 20px auto;
+		
+		border-style: solid;
+		border-width: 1px;
+		border-color: $blue;
+		border-radius: 25px;
+	
+		@include mobile {
+			width: 80vw;
+	
+			// On mobile, only enforce top margin
+			margin: 1vh auto auto auto;
+	
+			height: 12vw;
+			border-radius: 6vw;
+		}
+	}
+	.mailchimp-input {
+		flex: 50%;
+		height: 30px;
+		margin-left: 10px;
+	
+		text-align: center;
+		border-style: none;
+	
+		outline: none;
+		font-family: inherit;
+		font-size: 17px;
+		font-weight: 500;
+	
+		&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
+			color: $blue;
+			transition: color 0.4s;
+		}
+		&:focus::placeholder {
+			color: transparent;
+		}
+	
+		@include mobile {
+			height: 7vw;
+			font-size: 3.25vw;
+		}
+	}
+	.mailchimp-button {
+		height: 40px;
+		width: 40px;
+	
+		margin-right: 5px;
+	
+		border-style: solid;
+		border-width: 1px;
+		border-color: $blue;
+		border-radius: 20px;
+	
+		background-color: white;
+		background-image: url(./bh7-assets/input-arrow.svg);
+		background-repeat: no-repeat;
+		background-position: 4.5px;
+		background-size: 25px;
+	
+		outline: none;
+		transition: 0.1s;
+	
+		@include desktop {
+			&:hover {
+				background-position: 6.5px;
+			}
+		}
+	
+		@include mobile {
+			height: 9vw;
+			width: 9vw;
+			border-radius: 4.5vw;
+			margin-right: 1.5vw;
+			background-position: 1.5vw;
+			background-size: 5vw;
+		}
 	}
 }
