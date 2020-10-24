@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Nav from "./nav.js";
-import Main from './main.js'
+import General from './general.js'
 import About from './about.js'
 
 class Site extends React.Component {
@@ -9,7 +9,7 @@ class Site extends React.Component {
         return (
         <div id="app">
             <Nav/>
-            <Main/>
+            <General/>
             <About/>
         </div>
         );
