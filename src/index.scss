@@ -115,14 +115,31 @@ nav {
 		
 	}
 
+<<<<<<< HEAD
 	#mlh-badge {
 		position: absolute;
 		top: 0;
 		height: 13.5vw;
 		right: 2vw;
+=======
+.section {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	
+	@include desktop {
+		min-height: 750px;
+	}
+	@include tablet {
+		height: calc(100% - 74.5px);
+	}
+	@include mobile {
+		height: 0%;
+>>>>>>> develop
 	}
 
 	@include tablet {
+<<<<<<< HEAD
 		background-color: transparentize(white, 0.85);
 	}
 }
@@ -130,6 +147,25 @@ nav {
 section {
 	position: relative;
 	display: block;
+=======
+		max-width: 100%;
+		flex-direction: column;
+		margin: auto;
+	}
+}
+
+.right-half {
+	flex: 50%;
+}
+.left-half {
+	@extend .right-half;
+	margin-bottom: 2.5vh;
+
+	@include tablet {
+		margin-bottom: 15vh;
+	}
+}
+>>>>>>> develop
 
 	height: 60vw;
 	min-width: $desktop-width;
