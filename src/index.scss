@@ -170,8 +170,15 @@ html, body, #root, #app, .full-height {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	
 	@include desktop {
-		min-height: 775px;
+		min-height: 750px;
+	}
+	@include tablet {
+		height: calc(100% - 74.5px);
+	}
+	@include mobile {
+		height: 0%;
 	}
 }
 
@@ -185,7 +192,7 @@ html, body, #root, #app, .full-height {
 	@include tablet {
 		max-width: 100%;
 		flex-direction: column;
-		margin: 0px;
+		margin: auto;
 	}
 }
 
@@ -195,6 +202,10 @@ html, body, #root, #app, .full-height {
 .left-half {
 	@extend .right-half;
 	margin-bottom: 2.5vh;
+
+	@include tablet {
+		margin-bottom: 15vh;
+	}
 }
 
 .hero-img {
