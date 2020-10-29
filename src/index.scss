@@ -157,7 +157,7 @@ section {
 	#content {
 		display: inline-block;
 		margin-left: 7.5vw;
-		margin-top: 16vw;
+		margin-top: 13vw;
 
 		text-align: center;
 		#hackathon-name {
@@ -183,7 +183,7 @@ section {
 			}
 		}
 		#hackathon-info {
-			height: 25px;
+			height: 1.5vw;
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
@@ -243,14 +243,14 @@ section {
 				margin-right: 0.5vw;
 			
 				border-style: solid;
-				border-width: 1px;
+				border-width: 0.075vw;
 				border-color: $blue;
 				border-radius: 1.25vw;
 			
 				background-color: white;
 				background-image: url(./bh7-assets/input-arrow.svg);
 				background-repeat: no-repeat;
-				background-position: 0.3vw;
+				background-position: 0.25vw;
 				background-size: 1.25vw;
 			
 				outline: none;
@@ -258,7 +258,7 @@ section {
 			
 				@include desktop {
 					&:hover {
-						background-position: 0.4vw;
+						background-position: 0.35vw;
 					}
 				}
 			
@@ -288,7 +288,7 @@ section {
 	#shelf {
 		z-index: 0;
 		position: absolute;
-		bottom: -1px;
+		bottom: 0;
 
 		width: 100%;
 		height: 10%;
