@@ -24,9 +24,9 @@ class Nav extends React.Component {
         return(
             <nav>
                 <ul>
-                    <img id="logo"/>
+                    <img id="logo" alt="BrickHack Logo"/>
                     <a href=""><li>GENERAL</li></a>
-                    <a href="#about"><li>ABOUT</li></a>
+                    <a href="/#about"><li>ABOUT</li></a>
                 </ul>
 
                 <a href="https://mlh.io/seasons/na-2021/events?utm_source=na-hackathon&amp;utm_medium=TrustBadge&amp;utm_campaign=2020-season&amp;utm_content=gray">
