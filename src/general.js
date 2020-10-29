@@ -1,8 +1,5 @@
 import React from 'react';
 
-var backgroundImage = require('./bh7-assets/hero.svg');
-var backgroundImageAlt = "A decorative background graphic of a monitor on a desk."
-
 class MailchimpInput extends React.Component {
     componentDidMount(){
         var form = document.getElementById("mc-embedded-subscribe-form");
