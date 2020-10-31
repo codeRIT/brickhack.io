@@ -24,16 +24,16 @@ class General extends React.Component {
     render(){
         return(
             <section id="general">
-                <div id="wire"/>
+                <div id="wire" className="desktop-hide"/>
                 <div id="general-content">
                     <div id="hackathon-name">
-                            BRICKHACK 7
+                        BRICKHACK 7
                     </div>
                     <div id="hackathon-description">
-                            RIT's Premiere Hackathon
+                        RIT's Premiere Hackathon
                     </div>
                     <div id="hackathon-info">
-                            Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
+                        Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                     </div>
                     <MailchimpInput/>
                 </div>
