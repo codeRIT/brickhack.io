@@ -24,7 +24,8 @@ class General extends React.Component {
     render(){
         return(
             <section id="general">
-                <div id="content">
+                <div id="wire"/>
+                <div id="general-content">
                     <div id="hackathon-name">
                             BRICKHACK 7
                     </div>
@@ -36,8 +37,6 @@ class General extends React.Component {
                     </div>
                     <MailchimpInput/>
                 </div>
-                {/*<img id="hero-image" src={backgroundImage} alt={backgroundImageAlt}/>*/}
-                <div id="shelf"/>
             </section>
         );
     }

@@ -3,29 +3,22 @@
 import React from 'react';
 
 class Nav extends React.Component {
-    /*
     componentDidMount(){
-        var fixedContainer = document.getElementsByTagName("nav")[0];
-        var children = Array.from(fixedContainer.children);
-
-        children.forEach(child => {
-            var clone = child.cloneNode(true);
-            clone.removeAttribute("id");
-            clone.style.visibility = "hidden";
-            clone.classList.add("desktop-hide");
-            
-            child.style.position = "fixed";
-
-            fixedContainer.append(child);
-            fixedContainer.append(clone);
-        });
+        var nav = document.getElementsByTagName("nav")[0];
+        /*
+        var clone = nav.cloneNode(true);
+        clone.removeAttribute("id");
+        clone.style.visibility = "hidden";
+        clone.classList.add("desktop-hide");
+        nav.parentNode.insertBefore(clone, nav.nextSibling)
+        nav.style.position = "fixed";
+        */
     }
-    */
 
     render(){
         return(
             <nav>
-                <ul>
+                <ul className="mobile-hide">
                     <img id="logo" alt="BrickHack Logo"/>
                     <a href=""><li>GENERAL</li></a>
                     <a href="/#about"><li>ABOUT</li></a>
