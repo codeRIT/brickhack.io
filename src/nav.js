@@ -3,18 +3,6 @@
 import React from 'react';
 
 class Nav extends React.Component {
-    componentDidMount(){
-        var nav = document.getElementsByTagName("nav")[0];
-        /*
-        var clone = nav.cloneNode(true);
-        clone.removeAttribute("id");
-        clone.style.visibility = "hidden";
-        clone.classList.add("desktop-hide");
-        nav.parentNode.insertBefore(clone, nav.nextSibling)
-        nav.style.position = "fixed";
-        */
-    }
-
     render(){
         return(
             <nav>
