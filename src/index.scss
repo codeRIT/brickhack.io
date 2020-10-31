@@ -16,13 +16,18 @@ mobile has scaling widths and font sizes
 
 $desktop-width: 1210px;
 $mobile-width: 750px;
+$mobile-ratio: 75vh;
 
 @mixin desktop {
 	@media(min-width: #{$desktop-width}) { @content; }
 }
 /*tablet mixin also applies to mobile*/
 @mixin tablet {
-	@media(max-width: #{$desktop-width}) { @content; }
+	@media(max-width: #{$desktop-width}) { 
+		@media(max-width: #{$mobile-ratio}) {
+			@content;
+		}
+	}
 }
 @mixin mobile {
 	@media(max-width: #{$mobile-width}) { @content; }
@@ -136,12 +141,16 @@ section {
 	position: relative;
 	display: block;
 
-	height: 60vw;
+	min-height: 60vw;
+	max-height: 80vw;
+
+	height: 100%;
 	width: 100%;
 
 	background-color: $dark-blue;
 
 	@include tablet {
+		max-height: 100vh;
 		height: 100vh;
 	}
 }
@@ -166,7 +175,7 @@ section {
 			font-weight: 700;
 			color: white;
 		
-			@include mobile {
+			@include tablet {
 				height: 14.1vw;
 				font-size: 13vw;
 			}
@@ -177,7 +186,7 @@ section {
 			font-weight: 700;
 			color: white;
 		
-			@include mobile {
+			@include tablet {
 				height: 8.2vw;
 				font-size: 6.3vw;
 			}
@@ -188,7 +197,7 @@ section {
 			font-weight: 500;
 			color: white;
 		
-			@include mobile {
+			@include tablet {
 				height: 4vw;
 				font-size: 3.2vw;
 			}
@@ -200,7 +209,7 @@ section {
 			border-radius: 1.5vw; // 25
 			background-color: white;
 		
-			@include mobile {
+			@include tablet {
 				width: 80vw;
 		
 				// On mobile, only enforce top margin
@@ -231,7 +240,7 @@ section {
 					color: transparent;
 				}
 			
-				@include mobile {
+				@include tablet {
 					height: 7vw;
 					font-size: 3.25vw;
 				}
@@ -262,7 +271,7 @@ section {
 					}
 				}
 			
-				@include mobile {
+				@include tablet {
 					height: 9vw;
 					width: 9vw;
 					border-radius: 4.5vw;
