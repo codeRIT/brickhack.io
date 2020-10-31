@@ -137,7 +137,7 @@ section {
 	position: relative;
 	display: block;
 
-	min-height: 60vw; // min. ratio of ~1.66 slightly less than 16:9 (1.77) to account for browser window, etc.
+	min-height: 55vw; // min. ratio of ~1.66 slightly less than 16:9 (1.77) to account for browser window, etc.
 	max-height: 75vw; // max. ratio of ~1.33 to handle horizontal tablet sizing (ipad)
 
 	height: 100vh;
