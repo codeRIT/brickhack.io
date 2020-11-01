@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Site from './site';
+
+import Nav from "./nav.js";
+import Hero from './hero.js'
+import About from './about.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
@@ -18,6 +21,10 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 ReactDOM.render(
-    <Site/>,
+    <div id="app">
+        <Nav/>
+        <Hero/>
+        <About/>
+    </div>,
     document.getElementById('root'),
 );
