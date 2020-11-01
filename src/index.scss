@@ -24,18 +24,6 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 		}
 	}
 }
-// unused, tentative
-@mixin small-mobile {
-	@media(max-width: #{$mobile-width}) { @content; }
-}
-
-//override sass min() & max() fn's, use css's
-@function min($numbers...) {
-	@return m#{i}n(#{$numbers});
-}
-@function max($numbers...) {
-	@return m#{a}x(#{$numbers});
-}
 
 .desktop-hide {
 	@include desktop {
@@ -56,6 +44,10 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 a:hover {
 	text-decoration: none;
 }
+
+html, body, #root, #app {
+	height: 100%;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -64,9 +56,7 @@ body {
 	font-size: 2vw;
 	color: white;
 }
-html, body, #root, #app {
-	height: 100%;
-}
+
 
 nav {
 	position: fixed;
@@ -99,24 +89,22 @@ nav {
 			height: 100%;
 			margin: 0vw 2vw;
 
-			color: white;
-
 			font-size: 1.25vw;
 			font-weight: 400;
+			
+			color: white;
 
-			transition: font-weight 0.1s, color 0.2s, border-color 0.3s;
+			transition: font-weight 0.1s, color 0.2s;
 			
 			&:hover {
 				font-weight: 600;
 				color: $orange;
-				border-color: transparentize($orange, 0);
 			}
 		}	
 	}
 
 	#mlh-badge {
 		position: absolute;
-		top: 0;
 		height: 13.5vw;
 		right: 2vw;
 	}
@@ -147,17 +135,16 @@ section {
 
 	@include mobile {
 		max-height: 100vh;
-		height: 100vh;
 	}
 }
 
-#general {
+#hero {
 	background-color: $light-blue;
 	
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100vw, 85vw;
-	background-position: 0 130%, 24.2vw 75%;
+	background-position: 0 130%, 162% 75%;
 
 	@include mobile {
 		background-size: 100vw, 120vw;
@@ -175,7 +162,7 @@ section {
 		background-color: $dark-blue;
 	}
 
-	#general-content {
+	#hero-content {
 		position: absolute;
 		display: inline-block;
 		
@@ -218,10 +205,10 @@ section {
 			}
 		}
 		.mailchimp-container {
-			height: 3vw; // 50
-			width: 29vw; // 450
- 			margin: 1vw auto; // 20
-			border-radius: 1.5vw; // 25
+			height: 3vw;
+			width: 29vw;
+ 			margin: 1vw auto;
+			border-radius: 1.5vw;
 			background-color: white;
 
 			.mailchimp-input {

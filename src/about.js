@@ -1,7 +1,7 @@
 import React from 'react';
 
 class About extends React.Component {
-    render(){
+    render() {
         return(
             <section id="about">
             </section>
