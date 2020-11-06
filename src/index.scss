@@ -11,7 +11,6 @@ $beige: #F4ECE0;
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
-$mobile-width: 750px;
 $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
 
 @mixin desktop {
@@ -80,8 +79,7 @@ nav {
 	}
 
 	ul {
-		display: flex;
-		align-items: center;
+		@extend .flex-container;
 
 		list-style-type: none;
 
@@ -89,8 +87,7 @@ nav {
 		padding-inline-start: 0;
 
 		a {
-			display: flex;
-			align-items: center;
+			@extend .flex-container;
 
 			height: 100%;
 			margin: 0vw 2vw;
@@ -210,6 +207,8 @@ section {
 			}
 		}
 		.mailchimp-container {
+			@extend .flex-container;
+
 			height: 3vw;
 			width: 29vw;
  			margin: 1vw auto;
