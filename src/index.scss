@@ -165,27 +165,28 @@ section {
 		display: inline-block;
 		
 		margin-left: 7.5vw;
-		margin-top: 16vw;
+		// margin-top: 16vw;
+		top: 27.5%;
 
 		text-align: center;
 
 		@include mobile {
-			margin-top: 30vw;
+			top: 20%;
 		}
 
 		#hackathon-name {
-			height: 4.8vw;
+			height: 5.1vw;
 			font-size: 4.5vw;
 			font-weight: 700;
 			color: white;
 		
 			@include mobile {
-				height: 14.1vw;
+				height: 14.2vw;
 				font-size: 13vw;
 			}
 		}
 		#hackathon-description {
-			height: 2.8vw;
+			height: 3.0vw;
 			font-size: 2.15vw;
 			font-weight: 700;
 			color: white;
@@ -196,7 +197,7 @@ section {
 			}
 		}
 		#hackathon-info {
-			height: 1.1vw;
+			height: 1.4vw;
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
