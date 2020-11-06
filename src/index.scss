@@ -66,7 +66,13 @@ nav {
 	height: 5vw;
 
 	background-color: transparentize(white, 0.95);
+	backdrop-filter: blur(0.4vw);
 	
+	@include mobile {
+		height: 20vw;
+		background-color: transparentize(white, 0.85);
+	}
+
 	#logo {
 		content:url('./bh7-assets/logo.svg');
 		height: 100%;
@@ -107,13 +113,8 @@ nav {
 		position: absolute;
 		height: 13.5vw;
 		right: 2vw;
-	}
 
-	@include mobile {
-		background-color: transparentize(white, 0.85);
-		height: 20vw;
-		
-		#mlh-badge {
+		@include mobile {
 			top: 0;
 			height: 28vw;
 			left: 5vw;
@@ -144,11 +145,11 @@ section {
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100vw, 85vw;
-	background-position: 0 130%, 162% 75%;
+	background-position: left bottom -10vw, right -9.2vw top 75%;
 
 	@include mobile {
 		background-size: 100vw, 120vw;
-		background-position: 0 100%, -6vw 100%;
+		background-position: 0 101%, -6vw 100%;
 	}
 
 	#wire {
@@ -170,6 +171,10 @@ section {
 		margin-top: 16vw;
 
 		text-align: center;
+
+		@include mobile {
+			margin-top: 30vw;
+		}
 
 		#hackathon-name {
 			height: 4.8vw;
@@ -211,6 +216,12 @@ section {
 			border-radius: 1.5vw;
 			background-color: white;
 
+			@include mobile {
+				width: 80vw;
+				height: 12vw;
+				border-radius: 6vw;
+			}
+
 			.mailchimp-input {
 				flex: 0%;
 				height: 2.5vw;
@@ -230,6 +241,11 @@ section {
 				}
 				&:focus::placeholder {
 					color: transparent;
+				}
+
+				@include mobile {
+					height: 7vw;
+					font-size: 3.25vw;
 				}
 			}
 			.mailchimp-button {
@@ -257,19 +273,8 @@ section {
 						background-position: 0.35vw;
 					}
 				}
-			}
 
-			@include mobile {
-				width: 80vw;
-		
-				height: 12vw;
-				border-radius: 6vw;
-
-				.mailchimp-input {
-					height: 7vw;
-					font-size: 3.25vw;
-				}
-				.mailchimp-button {
+				@include mobile {
 					height: 9vw;
 					width: 9vw;
 					border-radius: 4.5vw;
@@ -278,10 +283,6 @@ section {
 					background-size: 5vw;
 				}
 			}
-		}
-
-		@include mobile {
-			margin-top: 30vw;
 		}
 	}
 }
