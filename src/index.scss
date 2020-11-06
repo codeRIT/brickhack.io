@@ -165,13 +165,13 @@ section {
 		display: inline-block;
 		
 		margin-left: 7.5vw;
-		// margin-top: 16vw;
 		top: 27.5%;
 
 		text-align: center;
 
 		@include mobile {
 			top: 20%;
+			text-shadow: 0 0 1vw $dark-blue;
 		}
 
 		#hackathon-name {
@@ -192,7 +192,7 @@ section {
 			color: white;
 		
 			@include mobile {
-				height: 8.2vw;
+				height: 8.6vw;
 				font-size: 6.3vw;
 			}
 		}
@@ -203,7 +203,7 @@ section {
 			color: white;
 		
 			@include mobile {
-				height: 5vw;
+				height: 5.4vw;
 				font-size: 3.2vw;
 			}
 		}
@@ -213,8 +213,11 @@ section {
 			height: 3vw;
 			width: 29vw;
  			margin: 1vw auto;
+			
 			border-radius: 1.5vw;
 			background-color: white;
+			
+			box-shadow: 0 0 1vw 0 transparentize($light-blue, 0.6);
 
 			@include mobile {
 				width: 80vw;
