@@ -56,7 +56,6 @@ body {
 	color: white;
 }
 
-
 nav {
 	position: fixed;
 	z-index: 1;
@@ -210,18 +209,18 @@ section {
 		.mailchimp-container {
 			@extend .flex-container;
 
-			height: 3vw;
+			height: 3.5vw;
 			width: 29vw;
  			margin: 1vw auto;
 			
-			border-radius: 1.5vw;
+			border-radius: 1.75vw;
 			background-color: white;
 			
 			box-shadow: 0 0 1vw 0 transparentize($light-blue, 0.6);
 
 			@include mobile {
-				width: 80vw;
 				height: 12vw;
+				width: 80vw;
 				border-radius: 6vw;
 			}
 
@@ -237,7 +236,7 @@ section {
 				font-family: inherit;
 				font-size: 1.1vw;
 				font-weight: 500;
-			
+				
 				&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
 					color: $blue;
 					transition: color 0.4s;
@@ -245,28 +244,42 @@ section {
 				&:focus::placeholder {
 					color: transparent;
 				}
-
+				&:-webkit-autofill {
+					-webkit-box-shadow: 0 0 0 100vw white inset;
+					box-shadow: 0 0 0 100vw white inset;
+					
+					&::first-line {
+						font-size: 1.1vw;
+						font-weight: 500;
+					}
+				}
+				
 				@include mobile {
 					height: 7vw;
 					font-size: 3.25vw;
+					
+					&:-webkit-autofill::first-line {
+						height: 7vw;
+						font-size: 3.25vw;
+					}
 				}
 			}
 			.mailchimp-button {
-				height: 2vw;
-				width: 2vw;
+				height: 2.25vw;
+				width: 2.25vw;
 			
-				margin-right: 0.5vw;
+				margin-right: 0.6vw;
 			
 				border-style: solid;
 				border-width: 0.075vw;
-				border-color: $blue;
 				border-radius: 1.25vw;
+				border-color: $blue;
 			
 				background-color: white;
 				background-image: url(./bh7-assets/input-arrow.svg);
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
-				background-size: 1.25vw;
+				background-size: 1.5vw;
 			
 				outline: none;
 				transition: 0.1s;
@@ -280,8 +293,12 @@ section {
 				@include mobile {
 					height: 9vw;
 					width: 9vw;
-					border-radius: 4.5vw;
+					
 					margin-right: 1.5vw;
+
+					border-width: 0.2vw;
+					border-radius: 4.5vw;
+					
 					background-position: 1.5vw;
 					background-size: 5vw;
 				}
