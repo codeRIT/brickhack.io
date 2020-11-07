@@ -160,27 +160,32 @@ section {
 	}
 
 	#hero-content {
-		position: absolute;
 		display: inline-block;
+		position: absolute;
 		
-		margin-left: 7.5vw;
+		margin-left: clamp(7.5vw, 9vw, 12vh);
 		top: 27.5%;
 
 		text-align: center;
 
 		@include mobile {
+			display: block;
+			position: relative;
+
 			top: 20%;
+			margin: auto;
+			
 			text-shadow: 0 0 1vw $dark-blue;
 		}
 
 		#hackathon-name {
-			height: 5.1vw;
+			height: 5.2vw;
 			font-size: 4.5vw;
 			font-weight: 700;
 			color: white;
 		
 			@include mobile {
-				height: 14.2vw;
+				height: 14.6vw;
 				font-size: 13vw;
 			}
 		}
@@ -196,13 +201,13 @@ section {
 			}
 		}
 		#hackathon-info {
-			height: 1.4vw;
+			height: 1.2vw;
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
 		
 			@include mobile {
-				height: 5.4vw;
+				height: 5.6vw;
 				font-size: 3.2vw;
 			}
 		}
