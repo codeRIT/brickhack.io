@@ -275,21 +275,21 @@ section {
 			
 				border-style: solid;
 				border-width: 0.075vw;
-				border-radius: 1.25vw;
+				border-radius: 1.125vw;
 				border-color: $blue;
 			
 				background-color: white;
 				background-image: url(./bh7-assets/input-arrow.svg);
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
-				background-size: 1.5vw;
+				background-size: 1.4vw;
 			
 				outline: none;
 				transition: 0.1s;
 			
 				@include desktop {
 					&:hover {
-						background-position: 0.35vw;
+						background-position: 0.4vw;
 					}
 				}
 
@@ -299,11 +299,11 @@ section {
 					
 					margin-right: 1.5vw;
 
-					border-width: 0.2vw;
+					border-width: 0.25vw;
 					border-radius: 4.5vw;
 					
-					background-position: 1.5vw;
-					background-size: 5vw;
+					background-position: 1.25vw;
+					background-size: 5.5vw;
 				}
 			}
 		}
