@@ -107,13 +107,13 @@ nav {
 
 	#mlh-badge {
 		position: absolute;
-		height: 13.5vw;
+		height: 12.5vw;
 		right: 2vw;
 
 		@include mobile {
 			top: 0;
-			height: 28vw;
-			left: 5vw;
+			height: 29vw;
+			left: 4vw;
 		}
 	}
 }
@@ -160,19 +160,17 @@ section {
 	}
 
 	#hero-content {
-		display: inline-block;
 		position: absolute;
-		
-		margin-left: clamp(7.5vw, 9vw, 12vh);
 		top: 27.5%;
+
+		margin-left: clamp(7.5vw, 9vw, 12vh);
 
 		text-align: center;
 
 		@include mobile {
-			display: block;
 			position: relative;
-
 			top: 20%;
+			
 			margin: auto;
 			
 			text-shadow: 0 0 1vw $dark-blue;
