@@ -63,8 +63,9 @@ nav {
 	width: 100vw;
 	height: 5vw;
 
-	background-color: transparentize(white, 0.95);
-	backdrop-filter: blur(0.4vw);
+	background-color: transparentize(desaturate(lighten($light-blue, 5), 5), 0.4);
+	//background-color: transparentize(white, 0.95);
+	//backdrop-filter: blur(0.4vw);
 	
 	@include mobile {
 		height: 20vw;
@@ -72,7 +73,7 @@ nav {
 	}
 
 	#logo {
-		content:url('./bh7-assets/logo.svg');
+		content:url($assets+'logo.svg');
 		height: 100%;
 		margin: 0vw 2vw;
 	}
@@ -279,7 +280,7 @@ section {
 				border-color: $blue;
 			
 				background-color: white;
-				background-image: url(./bh7-assets/input-arrow.svg);
+				background-image: url($assets+'/input-arrow.svg');
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
 				background-size: 1.4vw;
