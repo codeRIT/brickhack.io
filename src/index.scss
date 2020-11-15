@@ -150,16 +150,16 @@ section {
 
 	@include mobile {
 		background-size: 100vw, 110vw;
-		background-position: 0 101%, -10vw 100%;
+		background-position: 0 calc(100% + 6vw), -10vw calc(100% + 10.25vw);
 	}
 
 	#wire {
 		position: absolute;
 
-		left: 58.65vw;
+		left: 58.715vw;
 
 		width: 1.5vw;
-		height: calc(100% - 96vw);
+		height: calc(100% - 86vw);
 
 		background-color: $dark-blue;
 	}
