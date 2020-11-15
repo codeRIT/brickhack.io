@@ -11,16 +11,15 @@ $beige: #F4ECE0;
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
+$mobile-width: 750px;
 $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
 
 @mixin desktop {
 	@media(min-width: #{$desktop-width}) { @content; }
 }
 @mixin mobile {
-	@media(max-width: #{$desktop-width}) { 
-		@media(max-width: #{$mobile-ratio}) {
-			@content;
-		}
+	@media(max-width: #{$mobile-width}), (max-width: #{$desktop-width}) and (max-width: #{$mobile-ratio}){ 
+		@content;
 	}
 }
 
@@ -80,6 +79,8 @@ nav {
 
 	ul {
 		@extend .flex-container;
+
+		justify-content: flex-start;
 
 		list-style-type: none;
 
@@ -141,21 +142,21 @@ section {
 	
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
-	background-size: 100vw, 85vw;
-	background-position: left bottom -10vw, right -9.2vw top 75%;
+	background-size: 100vw, 76vw;
+	background-position: left bottom -10vw, right 0 top 70%;
 
 	@include mobile {
-		background-size: 100vw, 120vw;
-		background-position: 0 101%, -6vw 100%;
+		background-size: 100vw, 110vw;
+		background-position: 0 101%, -10vw 100%;
 	}
 
 	#wire {
 		position: absolute;
 
-		left: 60.7vw;
+		left: 58.65vw;
 
 		width: 1.5vw;
-		height: calc(100% - 91vw);
+		height: calc(100% - 96vw);
 
 		background-color: $dark-blue;
 	}
@@ -173,8 +174,6 @@ section {
 			top: 20%;
 			
 			margin: auto;
-			
-			text-shadow: 0 0 1vw $dark-blue;
 		}
 
 		#hackathon-name {
