@@ -133,6 +133,7 @@ section {
 	background-color: $dark-blue;
 
 	@include mobile {
+		min-height: 133vw;
 		max-height: 100vh;
 	}
 }
