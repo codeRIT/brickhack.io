@@ -68,7 +68,9 @@ nav {
 	
 	@include mobile {
 		height: 20vw;
-		background-color: transparentize(white, 0.85);
+
+		background-color: transparentize(desaturate(lighten($light-blue, 15), 6), 0.4);
+		//background-color: transparentize(white, 0.85);
 	}
 
 	#logo {
