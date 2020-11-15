@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Nav from "./nav.js";
 import Hero from './hero.js'
 import About from './about.js'
+import Schedule from './schedule.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Nav/>
         <Hero/>
         <About/>
+        <Schedule/>
     </div>,
     document.getElementById('root'),
 );

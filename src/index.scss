@@ -8,6 +8,11 @@ $orange: #F9A36A;
 $pink: #F9C3BC;
 $beige: #F4ECE0;
 
+$tape: transparentize(#F2C7C1, 0.5);
+$schedule-date: #F2C7C1;
+$schedule-event-primary: #5E5E5E;
+$schedule-event-secondary: transparentize(#5E5E5E, 0.25);
+
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
@@ -38,6 +43,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 .flex-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	flex-shrink: 0;
 }
 
@@ -57,6 +63,13 @@ body {
 	color: white;
 }
 
+.title {
+	font-weight: 600;
+
+	@include mobile {
+		font-size: 6vw;
+	}
+}
 
 nav {
 	position: fixed;
@@ -288,4 +301,202 @@ section {
 
 #about {
 	background-color: white;
+}
+
+#schedule {
+	@extend .flex-container;
+	flex-direction: column;
+
+	max-height: none;
+	min-height: 100%;
+	height: auto;
+
+	.content {
+		@extend .flex-container;
+		flex-direction: column;
+
+		height: 100%;
+		width: 100%;
+
+		padding: 5vw;
+
+		@include mobile {
+			padding: 10vw;
+		}
+
+		.title {
+			align-self: start;
+			margin-bottom: 5vw;
+
+			@include mobile {
+				align-self: center;
+
+				position: absolute;
+				top: 5vw;
+			}
+		}
+
+		.schedule {
+			@extend .flex-container;
+
+			position: relative;
+
+			width: 60%;
+
+			border-radius: 1.5vw;
+			background-color: $light-blue;
+
+			@include mobile {
+				margin-top: 12.5vw;
+
+				flex-direction: column;
+				width: 85vw;
+				border-radius: 5vw;
+			}
+
+			.tape {
+				position: absolute;
+
+				height: 3vw;
+				width: 100%;
+
+				top: -1.75vw;
+
+				$bp-1: 17.5%; // tape start
+				$bp-2: 40%; // tape end
+
+				background: linear-gradient(to right, transparent $bp-1, 
+					$tape $bp-1, $tape $bp-2, 
+					transparent $bp-2,transparent 100-$bp-2,
+					$tape 100-$bp-2,$tape 100-$bp-1,
+					transparent 100-$bp-1);
+
+				@include mobile {
+					height: 8vw;
+					top: -5vw;
+
+					$bp-3: 40%;	// mobile tape width
+					background: linear-gradient(to right, 
+						transparent 50-$bp-3/2, $tape 50-$bp-3/2, 
+						$tape 50+$bp-3/2, transparent 50+$bp-3/2);
+				}
+			}
+
+			.dates {
+				@extend .flex-container;
+				flex-direction: column;
+
+				align-self: start;
+
+				flex: 20;
+
+				height: 100%;
+
+				margin-left: 2vw;
+
+				color: $schedule-date;
+
+				@include mobile {
+					flex-direction: row;
+					justify-content: space-between;
+
+					align-self: auto;
+
+					width: 80%;
+
+					margin: 2.5vw 0;					
+				}
+
+				.date {
+					flex: 100;
+					align-self: start;
+
+					@include mobile {
+						flex: none;
+					}
+					.day {
+						height: 8vw;
+
+						font-size: 7vw;
+						font-weight: 600;
+
+						@include mobile {
+							height: 16vw;
+							font-size: 14vw;
+						}
+					}
+					.weekday {
+						font-size: 1.6vw;
+						font-weight: 300;
+
+						@include mobile {
+							font-size: 3.2vw;
+						}
+					}
+				}
+			}
+
+			.events {
+				flex: 30;
+				margin: 3vw 3vw 3vw 0;
+
+				@include mobile {
+					width: 80%;
+					margin: 0 0 8vw 0;
+				}
+
+				.event {
+					@extend .flex-container;
+
+					align-items: flex-start;
+
+					flex-direction: column;
+
+					width: 100%;
+
+					padding: 1vw 0 0.75vw 2.25vw;
+
+					margin: 0.75vw 0;
+
+					border-radius: 1vw;
+
+					background: linear-gradient(to right, $red 1.25vw, white 1vw, white);
+
+					box-shadow: 0 0 0.5vw 0 $dark-blue;
+
+					@include mobile {
+						padding: 2.25vw 1.5vw 2vw 5.5vw;
+
+						margin: 1.75vw 0;
+
+						border-radius: 2vw;
+
+						background: linear-gradient(to right, $red 2.5vw, white 1vw, white);
+
+						box-shadow: 0 0 1vw 0 $dark-blue;
+					}
+
+					.time {
+						font-weight: 400;
+						font-size: 0.9vw;
+						color: $schedule-event-secondary;
+
+						@include mobile {
+							font-size: 2.2vw;
+						}
+					}
+
+					.details {
+						font-weight: 500;
+						font-size: 1.2vw;
+						color: $schedule-event-primary;
+
+						@include mobile {
+							font-size: 3vw;
+						}
+					}
+				}
+			}
+		}
+	}
 }
