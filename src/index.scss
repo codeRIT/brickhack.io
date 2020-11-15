@@ -145,12 +145,12 @@ section {
 	
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
-	background-size: 100vw, 76vw;
+	background-size: 100%, 76.5vw;
 	background-position: left bottom -10vw, right 0 top 70%;
 
 	@include mobile {
-		background-size: 100vw, 110vw;
-		background-position: 0 calc(100% + 6vw), -10vw calc(100% + 10.25vw);
+		background-size: 100%, 110vw;
+		background-position: 0 calc(100% + 6vw), -10vw calc(100% + 10.5vw);
 	}
 
 	#wire {
