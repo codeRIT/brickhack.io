@@ -16,7 +16,6 @@ $schedule-event-secondary: transparentize(#5E5E5E, 0.25);
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
-$mobile-width: 750px;
 $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
 
 @mixin desktop {

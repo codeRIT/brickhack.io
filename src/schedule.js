@@ -2,6 +2,10 @@
 import React from 'react';
 
 class Schedule extends React.Component {
+
+    time = "10-10:30am"
+    text = "Lorem ipsum dolor sit amet";
+
     render() {
         return(
             <section id="schedule">
@@ -9,10 +13,8 @@ class Schedule extends React.Component {
                     <span class="title">
                         Schedule
                     </span>
-
                     <div class="schedule">
                         <div class="tape"/>
-
                         <div class="dates">
                             <div class="date">
                                 <div class="day">
@@ -32,11 +34,11 @@ class Schedule extends React.Component {
                             </div>
                         </div>
                         <div class="events">
-                            <Event/>
-                            <Event/>
-                            <Event/>
-                            <Event/>
-                            <Event/>
+                            <Event time={this.time} text={this.text}/>
+                            <Event time={this.time} text={this.text}/>
+                            <Event time={this.time} text={this.text}/>
+                            <Event time={this.time} text={this.text}/>
+                            <Event time={this.time} text={this.text}/>
                         </div>
                     </div>
                 </div>
@@ -50,10 +52,10 @@ class Event extends React.Component {
         return(
             <div class="event">
                 <div class="time">
-                    10-10:30am
+                    {this.props.time}
                 </div>
                 <div class="details">
-                    Lorem ipsum dolor sit amet
+                    {this.props.text}
                 </div>
             </div>
         );
