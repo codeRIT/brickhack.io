@@ -20,7 +20,7 @@ class Schedule extends React.Component {
                                 <div class="day">
                                     20
                                 </div>
-                                <div class="weekday">
+                                <div class="day-name">
                                     SATURDAY
                                 </div>
                             </div>
@@ -28,7 +28,7 @@ class Schedule extends React.Component {
                                 <div class="day">
                                     21
                                 </div>
-                                <div class="weekday">
+                                <div class="day-name">
                                     SUNDAY
                                 </div>
                             </div>
