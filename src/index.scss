@@ -306,9 +306,9 @@ section {
 	@extend .flex-container;
 	flex-direction: column;
 
-	max-height: none;
-	min-height: 100%;
-	height: auto;
+	// max-height: none;
+	// min-height: 100%;
+	// height: auto;
 
 	.content {
 		@extend .flex-container;
@@ -322,19 +322,19 @@ section {
 		@include mobile {
 			padding: 10vw;
 		}
-
 		.title {
 			align-self: start;
-			margin-bottom: 5vw;
+			margin: 2.5vw 0;
 
 			@include mobile {
 				align-self: center;
 
 				position: absolute;
 				top: 5vw;
+
+				margin: 0 0 5vw 0;
 			}
 		}
-
 		.schedule {
 			@extend .flex-container;
 
@@ -352,7 +352,6 @@ section {
 				width: 85vw;
 				border-radius: 5vw;
 			}
-
 			.tape {
 				position: absolute;
 
@@ -361,26 +360,26 @@ section {
 
 				top: -1.75vw;
 
-				$bp-1: 17.5%; // tape start
-				$bp-2: 40%; // tape end
+				$tape-start: 17.5%; // should be less than tape-end
+				$tape-end: 40%; // should be sub 50%
 
-				background: linear-gradient(to right, transparent $bp-1, 
-					$tape $bp-1, $tape $bp-2, 
-					transparent $bp-2,transparent 100-$bp-2,
-					$tape 100-$bp-2,$tape 100-$bp-1,
-					transparent 100-$bp-1);
+				background: linear-gradient(to right, transparent $tape-start, 
+					$tape $tape-start, $tape $tape-end, 
+					transparent $tape-end,transparent 100-$tape-end,
+					$tape 100-$tape-end,$tape 100-$tape-start,
+					transparent 100-$tape-start);
 
 				@include mobile {
 					height: 8vw;
 					top: -5vw;
 
-					$bp-3: 40%;	// mobile tape width
+					$tape-width: 40%; // mobile tape width
+					$tape-width: $tape-width / 2;
 					background: linear-gradient(to right, 
-						transparent 50-$bp-3/2, $tape 50-$bp-3/2, 
-						$tape 50+$bp-3/2, transparent 50+$bp-3/2);
+						transparent 50-$tape-width, $tape 50-$tape-width, 
+						$tape 50+$tape-width, transparent 50+$tape-width);
 				}
 			}
-
 			.dates {
 				@extend .flex-container;
 				flex-direction: column;
@@ -424,7 +423,7 @@ section {
 							font-size: 14vw;
 						}
 					}
-					.weekday {
+					.day-name {
 						font-size: 1.6vw;
 						font-weight: 300;
 
@@ -434,7 +433,6 @@ section {
 					}
 				}
 			}
-
 			.events {
 				flex: 30;
 				margin: 3vw 3vw 3vw 0;
@@ -443,15 +441,12 @@ section {
 					width: 80%;
 					margin: 0 0 8vw 0;
 				}
-
 				.event {
 					@extend .flex-container;
 
 					align-items: flex-start;
 
 					flex-direction: column;
-
-					width: 100%;
 
 					padding: 1vw 0 0.75vw 2.25vw;
 
@@ -474,7 +469,6 @@ section {
 
 						box-shadow: 0 0 1vw 0 $dark-blue;
 					}
-
 					.time {
 						font-weight: 400;
 						font-size: 0.9vw;
@@ -484,7 +478,6 @@ section {
 							font-size: 2.2vw;
 						}
 					}
-
 					.details {
 						font-weight: 500;
 						font-size: 1.2vw;
