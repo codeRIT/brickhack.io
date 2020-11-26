@@ -10,6 +10,7 @@ class Schedule extends React.Component {
 
 	time = "10-10:30am";
 	text = "Lorem ipsum dolor sit amet";
+	text2 = "Bees?";
 
 	defaultColor = "#FFFFFF";
 	selectedColor = "#F2C7C1";
@@ -26,6 +27,25 @@ class Schedule extends React.Component {
 		var saturdayColor = this.state.selected === "SATURDAY" ? this.selectedColor : this.defaultColor;
 		var sundayColor = this.state.selected === "SUNDAY" ? this.selectedColor : this.defaultColor;
 
+		var events = this.state.selected === "SATURDAY" ? 
+			// saturday events
+			<div className="events">
+				<Event time={this.time} text={this.text}/>
+				<Event time={this.time} text={this.text}/>
+				<Event time={this.time} text={this.text}/>
+				<Event time={this.time} text={this.text}/>
+				<Event time={this.time} text={this.text}/> 
+			</div>
+			:
+			// sunday events
+			<div className="events">
+				<Event time={this.time} text={this.text2}/>
+				<Event time={this.time} text={this.text2}/>
+				<Event time={this.time} text={this.text2}/>
+				<Event time={this.time} text={this.text2}/>
+				<Event time={this.time} text={this.text2}/> 
+			</div>;
+
 		return(
 			<section id="schedule">
 				<div className="content">
@@ -38,13 +58,8 @@ class Schedule extends React.Component {
 							<Day day="20" dayName="SATURDAY" color={saturdayColor} buttonClick={this.changeSelected.bind(this, "SATURDAY")}/>
 							<Day day="21" dayName="SUNDAY" color={sundayColor} buttonClick={this.changeSelected.bind(this, "SUNDAY")}/>
 						</div>
-						<div className="events">
-							<Event time={this.time} text={this.text}/>
-							<Event time={this.time} text={this.text}/>
-							<Event time={this.time} text={this.text}/>
-							<Event time={this.time} text={this.text}/>
-							<Event time={this.time} text={this.text}/>
-						</div>
+						
+						{events}
 					</div>
 				</div>
 			</section>
