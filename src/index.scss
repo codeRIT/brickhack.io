@@ -391,6 +391,7 @@ section {
 			}
 			.dates {
 				@extend .flex-container;
+
 				flex-direction: column;
 
 				align-self: start;
@@ -419,13 +420,11 @@ section {
 
 					flex: 100;
 
-					width: 10vw;
-
 					text-align: inherit;
 					
 					padding: 0;
 
-					transition: color 0.1s;
+					transition: color 0.2s;
 
 					@include mobile {
 						flex: none;
