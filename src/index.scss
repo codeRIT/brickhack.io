@@ -9,7 +9,6 @@ $pink: #F9C3BC;
 $beige: #F4ECE0;
 
 $tape: transparentize(#F2C7C1, 0.5);
-$schedule-date: #F2C7C1;
 $schedule-event-primary: #5E5E5E;
 $schedule-event-secondary: transparentize(#5E5E5E, 0.25);
 
@@ -60,6 +59,16 @@ body {
 	font-family: Poppins, sans-serif;
 	font-size: 2vw;
 	color: white;
+}
+
+button {
+	color: inherit;
+	background-color: inherit;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
 }
 
 .title {
@@ -392,8 +401,6 @@ section {
 
 				margin-left: 2vw;
 
-				color: $schedule-date;
-
 				@include mobile {
 					flex-direction: row;
 					justify-content: space-between;
@@ -406,8 +413,19 @@ section {
 				}
 
 				.date {
-					flex: 100;
+					flex-direction: column;
+
 					align-self: start;
+
+					flex: 100;
+
+					width: 10vw;
+
+					text-align: inherit;
+					
+					padding: 0;
+
+					transition: color 0.1s;
 
 					@include mobile {
 						flex: none;

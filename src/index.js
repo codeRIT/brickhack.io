@@ -22,11 +22,11 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 ReactDOM.render(
-    <div id="app">
-        <Nav/>
-        <Hero/>
-        <About/>
-        <Schedule/>
-    </div>,
-    document.getElementById('root'),
+	<div id="app">
+		<Nav/>
+		<Hero/>
+		<About/>
+		<Schedule/>
+	</div>,
+	document.getElementById('root'),
 );
