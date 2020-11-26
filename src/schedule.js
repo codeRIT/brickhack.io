@@ -1,65 +1,85 @@
-  
 import React from 'react';
 
 class Schedule extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selected: null,
+		};
+	};
 
-    time = "10-10:30am"
-    text = "Lorem ipsum dolor sit amet";
+	time = "10-10:30am";
+	text = "Lorem ipsum dolor sit amet";
 
-    render() {
-        return(
-            <section id="schedule">
-                <div class="content">
-                    <span class="title">
-                        Schedule
-                    </span>
-                    <div class="schedule">
-                        <div class="tape"/>
-                        <div class="dates">
-                            <div class="date">
-                                <div class="day">
-                                    20
-                                </div>
-                                <div class="day-name">
-                                    SATURDAY
-                                </div>
-                            </div>
-                            <div class="date">
-                                <div class="day">
-                                    21
-                                </div>
-                                <div class="day-name">
-                                    SUNDAY
-                                </div>
-                            </div>
-                        </div>
-                        <div class="events">
-                            <Event time={this.time} text={this.text}/>
-                            <Event time={this.time} text={this.text}/>
-                            <Event time={this.time} text={this.text}/>
-                            <Event time={this.time} text={this.text}/>
-                            <Event time={this.time} text={this.text}/>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
-    }
+	defaultColor = "#FFFFFF";
+	selectedColor = "#F2C7C1";
+
+	componentDidMount() {
+		this.setState({selected: "SATURDAY"});
+	}
+
+	changeSelected(event) {
+		this.setState({selected: event});
+	}
+
+	render() {
+		var saturdayColor = this.state.selected === "SATURDAY" ? this.selectedColor : this.defaultColor;
+		var sundayColor = this.state.selected === "SUNDAY" ? this.selectedColor : this.defaultColor;
+
+		return(
+			<section id="schedule">
+				<div className="content">
+					<span className="title">
+						Schedule
+					</span>
+					<div className="schedule">
+						<div className="tape"/>
+						<div className="dates">
+							<Day day="20" dayName="SATURDAY" color={saturdayColor} buttonClick={this.changeSelected.bind(this, "SATURDAY")}/>
+							<Day day="21" dayName="SUNDAY" color={sundayColor} buttonClick={this.changeSelected.bind(this, "SUNDAY")}/>
+						</div>
+						<div className="events">
+							<Event time={this.time} text={this.text}/>
+							<Event time={this.time} text={this.text}/>
+							<Event time={this.time} text={this.text}/>
+							<Event time={this.time} text={this.text}/>
+							<Event time={this.time} text={this.text}/>
+						</div>
+					</div>
+				</div>
+			</section>
+		);
+	}
 };
 
+class Day extends React.Component {
+	render() {
+		return(
+			<button className="date" style={{color: this.props.color}} onClick={this.props.buttonClick}>
+				<div className="day">
+					{this.props.day}
+				</div>
+				<div className="day-name">
+					{this.props.dayName}
+				</div>
+			</button>
+		)
+	}
+}
+
 class Event extends React.Component {
-    render() {
-        return(
-            <div class="event">
-                <div class="time">
-                    {this.props.time}
-                </div>
-                <div class="details">
-                    {this.props.text}
-                </div>
-            </div>
-        );
-    }
+	render() {
+		return(
+			<div className="event">
+				<div className="time">
+					{this.props.time}
+				</div>
+				<div className="details">
+					{this.props.text}
+				</div>
+			</div>
+		);
+	}
 }
 
 export default Schedule;
