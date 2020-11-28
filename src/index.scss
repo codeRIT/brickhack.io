@@ -345,21 +345,23 @@ section {
 			}
 		}
 		.schedule {
-			@extend .flex-container;
-
+			@extend .flex-container;			
 			position: relative;
 
 			width: 60%;
 
 			border-radius: 1.5vw;
+			
 			background-color: $light-blue;
 
 			@include mobile {
-				margin-top: 12.5vw;
-
 				flex-direction: column;
+
 				width: 85vw;
+
 				border-radius: 5vw;
+
+				margin-top: 12.5vw;
 			}
 			.tape {
 				position: absolute;
@@ -382,8 +384,7 @@ section {
 					height: 8vw;
 					top: -5vw;
 
-					$tape-width: 40%; // mobile tape width
-					$tape-width: $tape-width / 2;
+					$tape-width: 40% / 2; // mobile tape width
 					background: linear-gradient(to right, 
 						transparent 50-$tape-width, $tape 50-$tape-width, 
 						$tape 50+$tape-width, transparent 50+$tape-width);
@@ -412,13 +413,14 @@ section {
 
 					margin: 2.5vw 0;					
 				}
-
 				.date {
 					flex-direction: column;
 
 					align-self: start;
 
 					flex: 100;
+					
+					width: 10vw;
 
 					text-align: inherit;
 					
