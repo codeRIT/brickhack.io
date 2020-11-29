@@ -157,7 +157,7 @@ section {
 	.title {
 		align-self: start;
 
-		margin: 2.5vw 0;
+		margin-bottom: 5vw;
 
 		font-weight: 700;
 		font-size: 2.5vw;
@@ -166,7 +166,7 @@ section {
 			align-self: center;
 
 			position: absolute;
-			top: 4vw;
+			top: 6vw;
 
 			font-size: 5.75vw;
 			text-align: center;
@@ -344,9 +344,9 @@ section {
 	max-height: none; // if section has content that can expand past screen height
 	height: auto;
 
-	background-color: darken($dark-blue, 10);
+	background-color: darken($dark-blue, 10); // placeholder bg color
 	
-	@include mobile { // centers on mobile
+	@include mobile { // centers accordions on mobile
 		display: flex;
 		align-items: center;
 		min-height: 100%;
@@ -356,7 +356,7 @@ section {
 
 		.title {
 			@include mobile {
-				top: 1vw;
+				top: 3svw;
 				width: 75vw;
 			}
 		}
@@ -376,11 +376,11 @@ section {
 
 					display: flex;
 
-					width: calc(100% - 0.75vw);
+					width: calc(100% - 1vw);
 
 					padding: 1.5vw 2.5vw 0.75vw 2vw;
 
-					margin-bottom: 0.75vw;
+					margin-bottom: 1vw;
 
 					border: 0.05vw solid transparentize(white, 0.5);
 					border-radius: 0.5vw;
@@ -423,9 +423,9 @@ section {
 
 					color: $darker-blue;
 					i {
-						color: $dark-blue;
+						color: $darker-blue;
 						&::before {
-							content: '\f068';
+							content: '\f068'; // minus symbol
 						}
 					}
 					.text .answer {
@@ -438,6 +438,7 @@ section {
 			align-self: start;
 			margin-top: 2.5vw;
 			font-size: 1.5vw;
+
 			@include mobile {
 				align-self: center;
 				font-size: 3.25vw;
