@@ -290,114 +290,240 @@ section {
 	.wire{
 		position: absolute;
 		width:100%;
-		height:8px;
-		left:0px;
-		top: 84px;
-		background:#FAC5BF;
+		height:.5vw;
+		top: 4vw;
+		background: $pink;
+		z-index: 2;
+		@include mobile{
+			height: .9vw;
+			top: 7.1vw;
+		}
+	}
+
+	#clip_two{
+		position: absolute;
+		left: 42vw;
+		top: 3.5vw;
+	}
+	#clip_three{
+		position: absolute;
+		left: 59.7vw;
+		top: 3.5vw;
+	}
+	#clip_four{
+		position: absolute;
+		left: 77.4vw;
+		top: 3.5vw;
+	}
+	#clip_five{
+		position: absolute;
+		left: 95.1vw;
+		top: 3.5vw;
+	}
+	#clip_six{
+		position: absolute;
+		left: 6vw;
+		top: 3.5vw;
+	}
+	#clip_seven{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left: 23.7vw;
+		top:3.9vw;
+	}
+	#clip_eight{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left:41.4vw;
+		top:3.9vw
+	}
+	#clip_nine{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left:59.1vw;
+		top:3.9vw
+	}
+	#clip_ten{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left:76.8vw;
+		top:3.9vw
+	}
+	#clip_eleven{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left:94.5vw;
+		top:3.9vw
+	}
+	#clip_twelve{
+		position: absolute;
+		background: $red;
+		width:.7vw;
+		height:2vw;
+		left:5.4vw;
+		top:3.9vw
 	}
 	.slides {
 		position: relative;
+		z-index: 2;
 		.slick-slide {
-			text-align: center;
-			color: brown;
-			// width: 309px;
-			height: 309px;
+			height: 15vw;
+			width: 15vw;
 			background: rgba(255, 255, 255, 0.75);
-			margin: 113px 22px 0 22px;
-		}
-		/* the parent */
-		.slick-list {
-			// margin: 0 -10px;
+			margin: 5.4vw 1.4vw 0 1.4vw;
+			@include mobile{
+				height: 34.1vw;
+				width: 34.1vw;
+				background: rgba(255, 255, 255, 0.75);
+				margin: 9.2vw 1.8vw 0 1.8vw;
+			}
 		}
 		.slick-arrow{
-		  position: absolute;
-		  top: 32%;
+			position: absolute;
+			width: 3.9vw;
+			height: 3.9vw;
+			top: 12.8vw;
+			background-color: $blue;
+			border: 1px solid #A3A9CA;
+			box-sizing: border-box;
+			border-radius: .7vw;	
+			@include mobile{
+				display: none !important;
+			}
+
 	
 		}
 		.slick-prev {
-			left: 3% !important;
-			z-index: 1;
-			// background: #465395;
-			 
+			z-index:1;
+			left: 3vw;
 		}
 		.slick-next {
-			right: 3% !important;
 			z-index: 1;
-			// background: #465395;
+			left: 92vw;
 		}
-		.slick-dots{
+		.slick-prev::before{
 			position: absolute;
-			top: 50%
+			font-size:2vw;
+			top: 1.1vw;
+			left: .9vw;
 		}
-	
+		.slick-next::before{
+			position: absolute;
+			font-size: 2vw;
+			top: 1.1vw;
+			left: .9vw;
+		}
 	  }
+	  .content{
+		width: 50%;
+		margin: 25vw 49vw 6.4vw 7.4vw
+
+	}
+	.buttons{
+		width: 50%;
+		margin: 31.4vw 9.5vw 5.4vw 58.5vw;
+	}
 	  #header{
 		  position: absolute;
-		  width: 43%;
-		  height: 30px;
-		  left: 119px;
-		  top: 523px;
+		  width: 79vw;
+		  height: 3.9vw;
+		  left: 5vw;
+		  top: 25vw;
+		  @include mobile{
+			  width: 87.4vw;
+			  height: 4.4vw;
+			  left: -6vw;
+			  top: 49.5vw
+		  }
 	  }
 	  #title {
 		font-style: normal;
 		font-weight: bold;
-		font-size: 42px;
-	  	}
+		font-size: 2.7vw;
+		@include mobile{
+			font-size: 5vw;
+			line-height: 5.3vw;
+			text-align: center;
+		}
+	  }
 	  
 	  #para{
 		  position: absolute;
-		  width:39%;
-		  height: 260px;
-		  left: 8%;
-		  top: 627px;
+		  width:40vw;
+		  height: 12.3vw;
+		  left:5.1vw;
+		  top: 30vw;
 		  font-style: normal;
-		  font-weight: normal;
-		  font-size: 17px;
+		  font-weight: 200;
+		  font-size: 1.4vw;
+		  line-height: 1.9vw;
+		  @include mobile{
+			width:60.9vw;
+			height: 35.3vw;
+			left: 10vw;
+			top: 64.3vw;
+			font-size: 2.4vw;
+			line-height: 2.1vw;
+			text-align: center;
+		  }
 	  }
 	  .blue_box{
 		  position: absolute;
-		  width: 396px;
-		  height: 110px;
-		  left:898px;
-		  top:656px;
-		  background: #465395;
-		  border: 1px solid rgba(255, 255, 255, 0.75);
+		  width: 25.7vw;
+		  height: 5.4vw;
+		  left:58.5vw;
+		  top:31.4vw;
+		  background:$light-blue;
+		  border: .07vw solid rgba(255, 255, 255, 0.75);
 		  box-sizing: border-box;
 		  box-shadow: 0px 4px 8px rgba(70, 83, 149, 0.25);
-		  border-radius: 10px;
+		  border-radius: .7vw;
+		  @include mobile{
+			  display: none !important;
+		  }
 	  }
 	  #MLH_box{
-		  top: 797px;
+		  top: 38.3vw;
 
 	  }
 	  .arrow_orange{
 		  position: absolute;
-		  top:28px;
-		  left: 49px;
+		  top:1.1vw;
+		  left: 1.8vw;
 		  border: solid $orange;
-		  border-width: 0 3px 3px 0;
+		  border-width: 0 .2vw .2vw 0;
 		  display: inline-block;
-		  padding: 6px;
+		  padding: .4vw;
 		  transform: rotate(-45deg);
 		 -webkit-transform: rotate(-45deg);
 	  }
 	  .arrow_red{
 		position: absolute;
-		top:28px;
-		left: 49px;
+		top:1.1vw;
+		left: 1.8vw;
 		border: solid $red;
-		border-width: 0 3px 3px 0;
+		border-width: 0 .2vw .2vw 0;
 		display: inline-block;
-		padding: 6px;
+		padding: .4vw;
 		transform: rotate(-45deg);
 	   -webkit-transform: rotate(-45deg);
 	}
 	  .line{
 		  position: absolute;
-		  width: 20px;
-		  height: 3px;
-		  left:44px;
-		  top: 34px; 
+		  width: 1.3vw;
+		  height: .2vw;
+		  left:1.5vw;
+		  top: 1.5vw; 
 	  }
 
 	  .orange_line{
@@ -407,28 +533,29 @@ section {
 		  background: $red;
 	  }
 	  .text_box{
-		  width: 298px;
-		  height: 71px;
+		  width: 19.4vw;
+		  height: 4.6vw;
 	  }
 	  #comm_text{
 		position: absolute;
 		font-style: normal;
 		font-weight: 500;
-		font-size: 24px;
-		line-height: 36px;
-		color:#FFFFFF;
-		left: 92px;
-		top: 19px;
+		font-size: 1.6vw;
+		line-height: 2.3vw;
+		color:$beige;
+		left: 6vw;
+		top: .2vw;
+		padding: 0.5vw 0;
 	  }
 	  #MLH_text{
 		position: absolute;
 		font-style: normal;
 		font-weight: 500;
-		font-size: 24px;
-		line-height: 36px;
-		color:#FFFFFF;
-		left: 92px;
-		top: 18px;
+		font-size: 1.6vw;
+		line-height: 2.3vw;
+		color:$beige;
+		left: 6vw;
+		top: .2vw;
 	  }
 
 	
