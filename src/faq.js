@@ -2,25 +2,29 @@ import React from 'react';
 
 class FAQ extends React.Component {
 
-	placeholderQuestion = "Who can Participate in Brickhack?";
+	placeholderQuestion = "Who can participate in Brickhack?";
 	placeholderText = "Anyone currently enrolled as a student can attend! If you don't fit that description,you're absolutely welcome to attend as a mentor or volunteer. All attendees must be 18 years or older."
 
 	render() {
 		return(
 			<section id="faq">
-				<h1>Frequently Asked Questions</h1>
-				<div class="content">
-					<div class="column">
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
+				<div className="content">
+					<h1 className="title">
+						Frequently Asked Questions
+					</h1>
+					<div className="accordion-columns">
+						<div className="accordion-column">
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+						</div>
+						<div className="accordion-column">
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+						</div>
 					</div>
-					<div class="column">
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
-						<Accordion question={this.placeholderQuestion} content={this.placeholderText}/>
-					</div>
-					<p> Don't see your question here? Feel free to <a href="url">Contact Us</a></p>
+					<p>Don't see your question here? <a href="#jk">CONTACT US</a></p>
 				</div>
 			</section>
 		);
@@ -28,16 +32,42 @@ class FAQ extends React.Component {
 };
 
 class Accordion extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selected: false,
+		};
+	};
+
+	componentDidMount() {
+		this.setState({selected: false});
+	}
+
+	toggleSelected() {
+		this.setState({selected: !this.state.selected});
+	}
+
 	render() {
-		return (
-			<div class="dropcontent">
-				<button type="button" class="dropbutton">
-					Who can Participate in Brickhack?
-				</button>
-				<p>
-					{this.props.content}
+		var accordionClasses = "accordion";
+
+		if (this.state.selected) {
+			accordionClasses = "accordion selected";
+		}
+
+		var accordion = <div className={accordionClasses} onClick={this.toggleSelected.bind(this)}>
+			<i className="fas fa-plus"></i>
+			<div className="text">
+				<h5 className="question">
+					{this.props.question}
+				</h5>
+				<p className="answer">
+					{this.props.answer}
 				</p>
 			</div>
+		</div>;
+
+		return (
+			accordion
 		);
 	}
 }

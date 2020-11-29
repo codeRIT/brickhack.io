@@ -5,9 +5,11 @@ import Nav from "./nav.js";
 import Hero from './hero.js'
 import About from './about.js'
 import FAQ from './faq.js'
+import Schedule from './schedule.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
+import '@fortawesome/fontawesome-free/css/all.css'
 
 const hiringMessage = `Hey, you.
 You’re finally awake.
@@ -27,6 +29,7 @@ ReactDOM.render(
         <Hero/>
         <About/>
 		<FAQ/>
+		<Schedule/>
     </div>,
     document.getElementById('root'),
 );
