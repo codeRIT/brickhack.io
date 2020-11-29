@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
+$darker-blue: #2A407D;
 $dark-blue: #1B315E;
 $blue: #2A3E7F;
 $light-blue: #455296;
@@ -8,14 +9,21 @@ $orange: #F9A36A;
 $pink: #F9C3BC;
 $beige: #F4ECE0;
 
+$tape: transparentize(#F2C7C1, 0.5);
+$schedule-event-primary: #5E5E5E;
+$schedule-event-secondary: transparentize(#5E5E5E, 0.25);
+
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
-$mobile-width: 750px;
 $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
 
 @mixin desktop {
-	@media(min-width: #{$desktop-width}) { @content; }
+	@media(min-width: #{$desktop-width}) { 
+		@media(min-width: #{$mobile-ratio}) { 
+			@content; 
+		}
+	}
 }
 @mixin mobile {
 	@media(max-width: #{$desktop-width}) { 
@@ -38,6 +46,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 .flex-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	flex-shrink: 0;
 }
 
@@ -57,6 +66,15 @@ body {
 	color: white;
 }
 
+button {
+	color: inherit;
+	background-color: inherit;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}
 
 nav {
 	position: fixed;
@@ -135,6 +153,38 @@ section {
 
 	@include mobile {
 		max-height: 100vh;
+	}
+	.title {
+		align-self: start;
+
+		margin: 2.5vw 0;
+
+		font-weight: 700;
+		font-size: 2.5vw;
+
+		@include mobile {
+			align-self: center;
+
+			position: absolute;
+			top: 4vw;
+
+			font-size: 5.75vw;
+			text-align: center;
+		}
+	}
+}
+.flex-section-content {
+	@extend .flex-container;
+
+	flex-direction: column;
+
+	height: 100%;
+	width: 100%;
+
+	padding: 5vw;
+
+	@include mobile {
+		padding: 10vw;
 	}
 }
 
@@ -291,6 +341,118 @@ section {
 }
 
 #faq {
+	max-height: none; // if section has content that can expand past screen height
+	height: auto;
+
+	background-color: darken($dark-blue, 10);
+	
+	@include mobile { // centers on mobile
+		display: flex;
+		align-items: center;
+		min-height: 100%;
+	}
+	.content {
+		@extend .flex-section-content;
+
+		.title {
+			@include mobile {
+				top: 1vw;
+				width: 75vw;
+			}
+		}
+		.accordion-columns {
+			display: flex;
+			width: 100%;
+		
+			@include mobile {
+				flex-direction: column;
+				margin-top: 15vw;
+			}
+			.accordion-column{
+				flex: 1;
+
+				.accordion {
+					cursor: pointer;
+
+					display: flex;
+
+					width: calc(100% - 0.75vw);
+
+					padding: 1.5vw 2.5vw 0.75vw 2vw;
+
+					margin-bottom: 0.75vw;
+
+					border: 0.05vw solid transparentize(white, 0.5);
+					border-radius: 0.5vw;
+
+					background-color: $light-blue;
+					
+					@include mobile {
+						margin-bottom: 2.5vw;
+						padding: 2.25vw 2.5vw 0.75vw 2vw;
+					}
+					i { 
+						font-size: 1.5vw;
+						color: $pink;
+						@include mobile {
+							font-size: 3vw;
+							margin: 0.5vw 1vw 0 1vw;
+						}
+					}
+					.text {
+						margin: 0 2vw;
+						.question {
+							font-weight: 500;
+							font-size: 1.5vw;
+							@include mobile {
+								font-size: 3.5vw;
+							}
+						}
+						.answer {
+							display: none;
+							margin-top: 1vw;
+							font-size: 1.25vw;
+							@include mobile {
+								font-size: 3vw;
+							}
+						}
+					}
+				}
+				.selected {
+					background-color: white;
+
+					color: $darker-blue;
+					i {
+						color: $dark-blue;
+						&::before {
+							content: '\f068';
+						}
+					}
+					.text .answer {
+						display: block;
+					}
+				}
+			}
+		}
+		p {
+			align-self: start;
+			margin-top: 2.5vw;
+			font-size: 1.5vw;
+			@include mobile {
+				align-self: center;
+				font-size: 3.25vw;
+			}
+			a {
+				border-bottom: 0.25vw solid $red;
+
+				font-weight: 700;
+				color: $red;
+			}
+		}
+	}
+}
+
+#schedule {
 	@extend .flex-container;
 
 	flex-direction: column;
@@ -300,39 +462,173 @@ section {
 	// height: auto;
 
 	.content {
-		@extend .flex-container;
+		@extend .flex-section-content;
 
-		flex-direction: column;
+		.schedule {
+			@extend .flex-container;
 
-		height: 100%;
-		width: 100%;
+			position: relative;
 
-		padding: 5vw;
+			width: 60%;
 
-		@include mobile {
-			padding: 10vw;
-    	}
-		.column {
-			flex:1;
-			.dropcontent {
-				background-color: $light-blue;
-				.dropbutton {
-					font-size: 2vw;
-					button:focus {
-						background-color: #F4ECE0;
-						color: $blue;
-						&:before {
-							content: '\2012'; // changing + to -
+			border-radius: 1.5vw;
+			
+			background-color: $light-blue;
+			
+			@include mobile {
+				flex-direction: column;
+
+				width: 85vw;
+
+				border-radius: 5vw;
+
+				margin-top: 20vw;
+			}
+			.tape {
+				position: absolute;
+
+				height: 3vw;
+				width: 100%;
+
+				top: -1.75vw;
+
+				$tape-start: 17.5%; // should be less than tape-end
+				$tape-end: 40%; // should be sub 50%
+
+				background: linear-gradient(to right, transparent $tape-start, 
+					$tape $tape-start, $tape $tape-end, 
+					transparent $tape-end,transparent 100-$tape-end,
+					$tape 100-$tape-end,$tape 100-$tape-start,
+					transparent 100-$tape-start);
+
+				@include mobile {
+					height: 8vw;
+					top: -5vw;
+
+					$tape-width: 40% / 2; // mobile tape width
+					background: linear-gradient(to right, 
+						transparent 50-$tape-width, $tape 50-$tape-width, 
+						$tape 50+$tape-width, transparent 50+$tape-width);
+				}
+			}
+			.dates {
+				@extend .flex-container;
+
+				flex-direction: column;
+
+				align-self: start;
+
+				flex: 20;
+
+				height: 100%;
+
+				margin-left: 2vw;
+
+				@include mobile {
+					flex-direction: row;
+					justify-content: space-between;
+
+					align-self: auto;
+
+					width: 80%;
+
+					margin: 2.5vw 0;					
+				}
+				.date {
+					flex-direction: column;
+
+					align-self: start;
+
+					flex: 100;
+					
+					width: 10vw;
+
+					text-align: inherit;
+					
+					padding: 0;
+
+					transition: color 0.2s;
+
+					@include mobile {
+						flex: none;
+					}
+					.day {
+						height: 8vw;
+
+						font-size: 7vw;
+						font-weight: 600;
+
+						@include mobile {
+							height: 16vw;
+							font-size: 14vw;
+						}
+					}
+					.day-name {
+						font-size: 1.6vw;
+						font-weight: 300;
+
+						@include mobile {
+							font-size: 3.2vw;
 						}
 					}
 				}
-				p {
-					font-size: 1vw; // is this the correct size??
+			}
+			.events {
+				flex: 30;
+				margin: 3vw 3vw 3vw 0;
+
+				@include mobile {
+					width: 80%;
+					margin: 0 0 8vw 0;
+				}
+				.event {
+					@extend .flex-container;
+
+					align-items: flex-start;
+
+					flex-direction: column;
+
+					padding: 1vw 0 0.75vw 2.25vw;
+
+					margin: 0.75vw 0;
+
+					border-radius: 1vw;
+
+					background: linear-gradient(to right, $red 1.25vw, white 1vw, white);
+
+					box-shadow: 0 0 0.5vw 0 $dark-blue;
+
+					@include mobile {
+						padding: 2.25vw 1.5vw 2vw 5.5vw;
+
+						margin: 1.75vw 0;
+
+						border-radius: 2vw;
+
+						background: linear-gradient(to right, $red 2.5vw, white 1vw, white);
+
+						box-shadow: 0 0 1vw 0 $dark-blue;
+					}
+					.time {
+						font-weight: 400;
+						font-size: 0.9vw;
+						color: $schedule-event-secondary;
+
+						@include mobile {
+							font-size: 2.2vw;
+						}
+					}
+					.details {
+						font-weight: 500;
+						font-size: 1.2vw;
+						color: $schedule-event-primary;
+
+						@include mobile {
+							font-size: 3vw;
+						}
+					}
 				}
 			}
-		}
-		a {
-			color: $red;
 		}
 	}
 }
