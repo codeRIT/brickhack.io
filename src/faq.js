@@ -17,6 +17,7 @@ class FAQ extends React.Component {
 							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
 							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
 							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
+							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
 						</div>
 						<div className="accordion-column">
 							<Accordion question={this.placeholderQuestion} answer={this.placeholderText}/>
