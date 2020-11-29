@@ -287,6 +287,7 @@ section {
 }
 
 #about {
+	padding-top: 40px;
 	.wire {
 		width:100%;
 		height:.5vw;
@@ -304,7 +305,7 @@ section {
 			height: 15vw;
 			width: 15vw;
 			background: rgba(255, 255, 255, 0.75);
-			margin: 20px;
+			margin: 20px 20px 0 20px;
 		}
 		.slick-arrow{
 			width: 3.9vw;
@@ -316,8 +317,7 @@ section {
 			@include mobile{
 				display: none;
 			}
-			
-			
+				
 		}
 		.slick-prev {
 			z-index:1;
@@ -342,39 +342,39 @@ section {
 	}
 	.content {
 		width: 50%;
-		margin: 13vw;
-		
+		margin: 100px 0 0 100px;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 17px;	
+		h2 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 42px;
+			line-height: 63px;
+		}
 	}
 	.buttons {
 		width: 50%;
-		margin: 13vw;
-	}
-	#header {
-	}
-	#title {
-		
+		float: right;
 	}
 	
-	#para {
-		
-	}
-	.blue_box{
-		width: 25.7vw;
-		height: 5.4vw;
-		background:$light-blue;
+	.blue_box {
+		width: 280px;
+		height: 80px;
+		background: $light-blue;
 		border: .07vw solid rgba(255, 255, 255, 0.75);
 		box-sizing: border-box;
 		box-shadow: 0px 4px 8px rgba(70, 83, 149, 0.25);
 		border-radius: .7vw;
-		@include mobile{
-			display: none !important;
+		@include mobile {
+			display: none;
 		}
 	}
-	#MLH_box{
-		margin-top: 38.3vw;
+	#MLH_box {
+		
 		
 	}
-	.arrow_orange{
+	.arrow_orange {
 		top:1.1vw;
 		left: 1.8vw;
 		border: solid $orange;
@@ -384,7 +384,7 @@ section {
 		transform: rotate(-45deg);
 		-webkit-transform: rotate(-45deg);
 	}
-	.arrow_red{
+	.arrow_red {
 		position: absolute;
 		top:1.1vw;
 		left: 1.8vw;
