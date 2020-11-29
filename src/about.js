@@ -16,7 +16,8 @@ class About  extends React.Component {
         };
         return(
             <section id="about">
-                    <div className ="wire"></div>
+                    <div class="wire"></div>
+                    <img src="bh7-assets/clip.svg"/>
                     <Slider {...settings}>
                         <div>
                         </div>
