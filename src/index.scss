@@ -290,7 +290,7 @@ section {
 	padding-top: 40px;
 	.wire {
 		width:100%;
-		height:.5vw;
+		height:8px;
 		background: $pink;
 		z-index: 2;
 		@include mobile{
@@ -300,12 +300,19 @@ section {
 	}
 	.slides {
 		position: relative;
-		z-index: 2;
+		z-index: 3;
 		.slick-slide {
 			height: 300px;
 			width: 300px;
 			background: rgba(255, 255, 255, 0.75);
 			margin: 20px 20px 0 20px;
+			img {
+				position: relative;
+				margin: 0 auto;
+				top: -50px;
+				z-index: 300;
+
+			}
 		}
 		.slick-arrow{
 			width: 3.9vw;
