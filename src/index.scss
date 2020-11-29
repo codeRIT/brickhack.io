@@ -289,8 +289,10 @@ section {
 #about {
 	background-color: white;
 }
+
 #faq {
 	@extend .flex-container;
+
 	flex-direction: column;
 
 	// max-height: none;
@@ -299,6 +301,7 @@ section {
 
 	.content {
 		@extend .flex-container;
+
 		flex-direction: column;
 
 		height: 100%;
@@ -308,11 +311,11 @@ section {
 
 		@include mobile {
 			padding: 10vw;
-    }
-    .column {
+    	}
+		.column {
 			flex:1;
 			.dropcontent {
-				background-color: $blue;
+				background-color: $light-blue;
 				.dropbutton {
 					font-size: 2vw;
 					button:focus {
@@ -327,27 +330,9 @@ section {
 					font-size: 1vw; // is this the correct size??
 				}
 			}
-			#participate, #apply {
-				&:before {
-					color: $pink;
-					content: '\002B'; // adding + before the question text
-				}
-			}
-			#team, #gotin {
-				&:before {
-					color: $red;
-					content: '\002B'; // adding + before the question text
-				}
-			}
-			#bring, #bricks {
-				&:before {
-					color: $orange;
-					content: '\002B'; // adding + before the question text
-				}
-			}
-    }
-    a {
-      color: $red;
-    }
+		}
+		a {
+			color: $red;
+		}
 	}
 }
