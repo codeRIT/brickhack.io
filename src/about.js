@@ -16,19 +16,24 @@ class About  extends React.Component {
         return(
             <section id="about">
                     <div class="wire"></div>
-                    <img src={require("./bh7-assets/clip.svg")}/>
                     <Slider {...settings}>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                         <div>
+                            <img src={require("./bh7-assets/clip.svg")}/>
                         </div>
                     </Slider>
                     <div class="content">
