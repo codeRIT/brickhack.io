@@ -43,21 +43,23 @@ class About  extends React.Component {
                         <br></br>
                         <p>Come spend 24 hours with us at BrickHack and dedicate time to learn, collaborate, build, and innovate.</p>
                     </div>
-                    <div class="buttons">
-                        <div class="blue_box" id="community_box">
+                    <div class="buttons-container">
+                        {/* <a href =""><div class="blue_box" id="community_box">
                                 <div class ="arrow_orange"></div>
                                 <div class ="line orange_line"></div> 
                             <div class="text-box">
                                 <p>Connect with the BrickHack community</p>
                             </div>
                         </div>
-                        <div class="blue_box" id="MLH_box">
+                        </a> */}
+                        <a href ="https://mlh.io/" target = "_blank"><div class="blue_box" id="MLH_box">
                                 <div class="arrow_red"></div>
                                 <div class="line red_line"></div> 
                             <div class="text-box">
                                 <p>Visit Major League Hacking (MLH)</p>
                             </div>
                         </div>
+                        </a>
                     </div>
             </section>
         );
