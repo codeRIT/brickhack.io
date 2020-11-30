@@ -293,30 +293,41 @@ section {
 		width:100%;
 		height:.8vw;
 		background: $pink;
-		z-index: 2;
+		z-index: 3;
 	}
 	.slides {
-		position: relative;
-		z-index: 3;
 		.slick-slide {
+			position: relative;
 			height: 14.7vw;
 			width: 14.7vw;
 			background: rgba(255, 255, 255, 0.75);
 			margin: 1.3vw 1.3vw 0 1.3vw;
-			z-index: 4;
-			img {
-				height: 4vw;
-				margin: -7vw auto;
-				z-index: 8;
+			z-index: 5;
+			.back_clip {
+				margin-top: -4.9vw;
+				margin-left: calc(50% - 25px);
+				z-index: 2;
 				@include mobile {
-					height: 10vw;
-					margin: -6vw auto;
+					// height: 8vw;
+					margin-top: -11vw;
+					margin-left: calc(50% - 24px);
+				}
+			}
+			.front_clip {
+				margin: -4.4vw auto;
+				z-index: 6;
+				@include mobile {
+					// height: 10vw;
+					margin: -5vw auto;
 				}
 			}
 			@include mobile {
 				height: 30vw;
 				width: 30vw;
 			}
+		}
+		.slick-list {
+			overflow: visible;
 		}
 		.slick-arrow{
 			width: 3.9vw;
@@ -327,11 +338,7 @@ section {
 			border-radius: .7vw;	
 			@include mobile{
 				display: none !important;
-			}
-		.slick-list {
-			overflow: visible;
-		}
-				
+			}	
 		}
 		.slick-prev {
 			z-index:1;

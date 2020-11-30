@@ -18,22 +18,28 @@ class About  extends React.Component {
                     <div class="wire"></div>
                     <Slider {...settings}>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class = "back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class="back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class="back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class = "back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class = "back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                         <div>
-                            <img src={require("./bh7-assets/clip.svg")}/>
+                            <img class="front_clip" src={require("./bh7-assets/front_clip.svg")}/>
+                            <img class = "back_clip" src={require("./bh7-assets/back_clip.svg")}/>
                         </div>
                     </Slider>
                     <div class="content">
