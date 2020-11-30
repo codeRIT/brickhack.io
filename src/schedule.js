@@ -49,7 +49,6 @@ class Schedule extends React.Component {
 		}
 
 		return(
-			<div>
 			<section id="schedule">
 				<div className="content">
 					<h3 className="title">
@@ -74,19 +73,6 @@ class Schedule extends React.Component {
 					</div>
 				</div>
 			</section>
-							<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-			</div>
 		);
 	}
 };
