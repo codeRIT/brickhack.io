@@ -369,8 +369,10 @@ section {
 		}
 	}
 	.content {
+		padding: 100px;
+	}
+	.what-is-hackathon {
 		width: 50%;
-		padding: 60px 0 0 100px;
 		font-style: normal;
 		font-weight: normal;
 		float: left;
@@ -396,7 +398,6 @@ section {
 	.buttons-container {
 		width: 50%;
 		float: right;
-		padding-top: 100px;
 		display: flex;
 		flex-direction: column;
 		@include mobile {
