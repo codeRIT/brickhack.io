@@ -334,7 +334,12 @@ section {
 		}
 
 		.slick-list {
-			overflow: visible;
+			// Slider depends on having the overflow-x hidden,
+			// CSS (per spec) doesn't allow separate overflow-y and x.
+			// So, we add some padding to cheat it.
+			// (https://css-tricks.com/popping-hidden-overflow/)
+			padding-top: 20px;
+			margin-top: -40px;
 		}
 		.slick-arrow {
 			width: 3.9vw;
