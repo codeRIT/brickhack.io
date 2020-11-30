@@ -52,6 +52,7 @@ a:hover {
 html, body, #root, #app {
 	height: 100%;
 }
+
 body {
 	margin: 0;
 	padding: 0;
@@ -59,6 +60,10 @@ body {
 	font-family: Poppins, sans-serif;
 	font-size: 2vw;
 	color: white;
+}
+
+p {
+	margin: 0;
 }
 
 button {
@@ -316,22 +321,18 @@ section {
 	.content {
 		@extend .flex-container;
 		flex-direction: column;
-
-		height: 100%;
 		width: 100%;
 
-		padding: 5vw;
-
-		@include mobile {
-			padding: 10vw;
-		}
 		.title {
 			align-self: start;
-			margin: 2.5vw 0;
+			font-size: 42px;
+			font-style: normal;
+			font-weight: bold;
+			margin: 90px;
+			margin-top: 0;
 
 			@include mobile {
 				align-self: center;
-				position: absolute;
 				top: 5vw;
 				margin: 0 0 5vw 0;
 			}
@@ -342,6 +343,7 @@ section {
 			width: 60%;
 			border-radius: 1.5vw;
 			background-color: $light-blue;
+			padding: 5%; // Padding for all elements inside
 
 			@include mobile {
 				flex-direction: column;
@@ -378,23 +380,21 @@ section {
 				@extend .flex-container;
 
 				flex-direction: column;
-				align-self: start;
+				align-items: center;
 				flex: 20;
 				height: 100%;
-				margin-left: 2vw;
 
 				@include mobile {
 					flex-direction: row;
-					justify-content: space-between;
+					justify-content: space-around;
+					width: 70%;
 					align-self: auto;
-					width: 80%;
-					margin: 2.5vw 0;
+					padding-bottom: 20px;
 				}
 				.date {
 					flex-direction: column;
 					align-self: start;
 					flex: 100;
-					width: 10vw;
 					text-align: inherit;
 					padding: 0;
 					transition: color 0.2s;
@@ -404,21 +404,25 @@ section {
 					}
 
 					.day {
-						height: 8vw;
-						font-size: 7vw;
-						font-weight: 600;
 
-						@include mobile {
-							height: 16vw;
-							font-size: 14vw;
+						h1 {
+							height: 8vw;
+							font-size: 7vw;
+							font-weight: 600;
+
+							@include mobile {
+								height: 16vw;
+								font-size: 14vw;
+							}
 						}
-					}
-					.day-name {
-						font-size: 1.6vw;
-						font-weight: 300;
 
-						@include mobile {
-							font-size: 3.2vw;
+						p {
+							font-size: 1.6vw;
+							font-weight: 300;
+
+							@include mobile {
+								font-size: 3.2vw;
+							}
 						}
 					}
 				}
@@ -426,11 +430,9 @@ section {
 
 			.events {
 				flex: 30;
-				margin: 3vw 3vw 3vw 0;
 
 				@include mobile {
 					width: 80%;
-					margin: 0 0 8vw 0;
 				}
 				.event {
 					@extend .flex-container;
@@ -459,7 +461,7 @@ section {
 							font-size: 2.2vw;
 						}
 					}
-					.details {
+					.eventTitle {
 						font-weight: 500;
 						font-size: 1.2vw;
 						color: $schedule-event-primary;

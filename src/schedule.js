@@ -35,7 +35,7 @@ class Schedule extends React.Component {
 				<Event time={this.time} text={this.text}/>
 				<Event time={this.time} text={this.text}/>
 				<Event time={this.time} text={this.text}/>
-				<Event time={this.time} text={this.text}/> 
+				<Event time={this.time} text={this.text}/>
 			</div>;
 		} else {
 			// sunday events
@@ -44,11 +44,12 @@ class Schedule extends React.Component {
 				<Event time={this.time} text={this.text2}/>
 				<Event time={this.time} text={this.text2}/>
 				<Event time={this.time} text={this.text2}/>
-				<Event time={this.time} text={this.text2}/> 
+				<Event time={this.time} text={this.text2}/>
 			</div>;
 		}
 
 		return(
+			<div>
 			<section id="schedule">
 				<div className="content">
 					<h3 className="title">
@@ -57,22 +58,35 @@ class Schedule extends React.Component {
 					<div className="schedule">
 						<div className="tape"></div>
 						<div className="dates">
-							<Day day="20" 
+							<Day day="20"
 								dayName="SATURDAY"
-								color={saturdayColor} 
+								color={saturdayColor}
 								buttonClick={this.changeSelected.bind(this, "SATURDAY")}
 							/>
-							<Day day="21" 
-								dayName="SUNDAY" 
-								color={sundayColor} 
+							<Day day="21"
+								dayName="SUNDAY"
+								color={sundayColor}
 								buttonClick={this.changeSelected.bind(this, "SUNDAY")}
 							/>
 						</div>
-						
+
 						{events}
 					</div>
 				</div>
 			</section>
+							<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+				<br />
+			</div>
 		);
 	}
 };
@@ -82,10 +96,8 @@ class Day extends React.Component {
 		return(
 			<button className="date" style={{color: this.props.color}} onClick={this.props.buttonClick}>
 				<div className="day">
-					{this.props.day}
-				</div>
-				<div className="day-name">
-					{this.props.dayName}
+					<h1>{this.props.day}</h1>
+					<p>{this.props.dayName}</p>
 				</div>
 			</button>
 		)
@@ -96,12 +108,8 @@ class Event extends React.Component {
 	render() {
 		return(
 			<div className="event">
-				<span className="time">
-					{this.props.time}
-				</span>
-				<span className="details">
-					{this.props.text}
-				</span>
+				<p class="time">{this.props.time}</p>
+				<p class="eventTitle">{this.props.text}</p>
 			</div>
 		);
 	}
