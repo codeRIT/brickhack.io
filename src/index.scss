@@ -89,14 +89,10 @@ nav {
 	width: 100vw;
 	height: 5vw;
 	background-color: transparentize(desaturate(lighten($light-blue, 5), 5), 0.4);
-	//background-color: transparentize(white, 0.95);
-	//backdrop-filter: blur(0.4vw);
 
 	@include mobile {
 		height: 20vw;
-
 		background-color: transparentize(desaturate(lighten($light-blue, 15), 6), 0.4);
-		//background-color: transparentize(white, 0.85);
 	}
 
 	#logo {
@@ -177,12 +173,9 @@ section {
 
 	#wire {
 		position: absolute;
-
 		left: 58.715vw;
-
 		width: 1.5vw;
 		height: calc(100% - 86vw);
-
 		background-color: $dark-blue;
 	}
 
