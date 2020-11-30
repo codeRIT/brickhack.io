@@ -60,7 +60,7 @@ body {
 
 nav {
 	position: fixed;
-	z-index: 1;
+	z-index: 5;
 	
 	width: 100vw;
 	height: 5vw;
@@ -289,29 +289,33 @@ section {
 #about {
 	padding-top: 40px;
 	.wire {
+		position: absolute;
 		width:100%;
-		height:8px;
+		height:.8vw;
 		background: $pink;
 		z-index: 2;
-		@include mobile{
-			height: .9vw;
-			top: 7.1vw;
-		}
 	}
 	.slides {
 		position: relative;
 		z-index: 3;
 		.slick-slide {
-			height: 300px;
-			width: 300px;
+			height: 14.7vw;
+			width: 14.7vw;
 			background: rgba(255, 255, 255, 0.75);
-			margin: 20px 20px 0 20px;
+			margin: 1.3vw 1.3vw 0 1.3vw;
+			z-index: 4;
 			img {
-				position: relative;
-				margin: 0 auto;
-				top: -50px;
-				z-index: 300;
-
+				height: 4vw;
+				margin: -7vw auto;
+				z-index: 8;
+				@include mobile {
+					height: 10vw;
+					margin: -6vw auto;
+				}
+			}
+			@include mobile {
+				height: 30vw;
+				width: 30vw;
 			}
 		}
 		.slick-arrow{
@@ -322,8 +326,11 @@ section {
 			box-sizing: border-box;
 			border-radius: .7vw;	
 			@include mobile{
-				display: none;
+				display: none !important;
 			}
+		.slick-list {
+			overflow: visible;
+		}
 				
 		}
 		.slick-prev {
@@ -359,7 +366,17 @@ section {
 			font-weight: bold;
 			font-size: 42px;
 			line-height: 63px;
-
+			@include mobile {
+				font-size: 36px;
+				line-height: 54px;
+				text-align: center;
+			}
+		}
+		@include mobile {
+			width: 100%;
+			line-height: 25px;
+			text-align: center;
+			padding: 35px;
 		}
 	}
 	.buttons-container {
@@ -368,6 +385,9 @@ section {
 		padding-top: 100px;
 		display: flex;
 		flex-direction: column;
+		@include mobile {
+			display: none;
+		}
 	}
 	
 	.blue_box {
