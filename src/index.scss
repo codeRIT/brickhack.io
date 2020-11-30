@@ -288,7 +288,6 @@ section {
 
 #about {
 	padding-top: 40px;
-
 	.slides {
 
 		.slick-slide {
@@ -318,6 +317,7 @@ section {
 
 				position: relative;
 				z-index: 3;
+				
 			}
 
 			.back_clip {
@@ -340,6 +340,7 @@ section {
 			// (https://css-tricks.com/popping-hidden-overflow/)
 			padding-top: 20px;
 			margin-top: -40px;
+			overflow: visible;
 		}
 		.slick-arrow {
 			width: 3.9vw;
@@ -375,6 +376,9 @@ section {
 	}
 	.content {
 		padding: 100px;
+		@include mobile {
+			padding: 10px 0;
+		}
 	}
 	.what-is-hackathon {
 		width: 50%;
@@ -435,10 +439,7 @@ section {
 			display: none;
 		}
 	}
-	#MLH_box {
 
-
-	}
 	.text_box{
 		font-style: normal;
 		font-weight: 500;
@@ -446,11 +447,5 @@ section {
 		color:$beige;
 		padding: 0.5vw 0;
 	}
-	#comm_text{
-
-	}
-	#MLH_text{
-	}
-
 
 }
