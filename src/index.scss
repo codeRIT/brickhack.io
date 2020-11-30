@@ -12,13 +12,13 @@ $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
 $mobile-width: 750px;
-$mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
+$mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)
 
 @mixin desktop {
 	@media(min-width: #{$desktop-width}) { @content; }
 }
 @mixin mobile {
-	@media(max-width: #{$desktop-width}) { 
+	@media(max-width: #{$desktop-width}) {
 		@media(max-width: #{$mobile-ratio}) {
 			@content;
 		}
@@ -51,7 +51,7 @@ html, body, #root, #app {
 body {
 	margin: 0;
 	padding: 0;
-	
+
 	font-family: Poppins, sans-serif;
 	font-size: 2vw;
 	color: white;
@@ -61,58 +61,58 @@ body {
 nav {
 	position: fixed;
 	z-index: 5;
-	
+
 	width: 100vw;
 	height: 5vw;
-	
+
 	background-color: transparentize(white, 0.95);
-	
+
 	#logo {
 		content:url('./bh7-assets/logo.svg');
 		height: 100%;
 		margin: 0vw 2vw;
 	}
-	
+
 	ul {
 		display: flex;
 		align-items: center;
-		
+
 		list-style-type: none;
-		
+
 		height: 100%;
 		padding-inline-start: 0;
-		
+
 		a {
 			display: flex;
 			align-items: center;
-			
+
 			height: 100%;
 			margin: 0vw 2vw;
-			
+
 			font-size: 1.25vw;
 			font-weight: 400;
-			
+
 			color: white;
-			
+
 			transition: font-weight 0.1s, color 0.2s;
-			
+
 			&:hover {
 				font-weight: 600;
 				color: $orange;
 			}
-		}	
+		}
 	}
-	
+
 	#mlh-badge {
 		position: absolute;
 		height: 13.5vw;
 		right: 2vw;
 	}
-	
+
 	@include mobile {
 		background-color: transparentize(white, 0.85);
 		height: 20vw;
-		
+
 		#mlh-badge {
 			top: 0;
 			height: 28vw;
@@ -124,15 +124,15 @@ nav {
 section {
 	position: relative;
 	display: block;
-	
+
 	min-height: 55vw; // min. ratio of ~1.66 slightly less than 16:9 (1.77) to account for browser window, etc.
 	max-height: 75vw; // max. ratio of ~1.33 to handle horizontal tablet sizing (ipad)
-	
+
 	height: 100vh;
 	width: 100%; // cut off background image
-	
+
 	background-color: $dark-blue;
-	
+
 	@include mobile {
 		max-height: 100vh;
 	}
@@ -140,43 +140,43 @@ section {
 
 #hero {
 	background-color: $light-blue;
-	
+
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100vw, 85vw;
 	background-position: 0 130%, 162% 75%;
-	
+
 	@include mobile {
 		background-size: 100vw, 120vw;
 		background-position: 0 100%, -6vw 100%;
 	}
-	
+
 	#wire {
 		position: absolute;
-		
+
 		left: 60.7vw;
-		
+
 		width: 1.5vw;
 		height: calc(100% - 91vw);
-		
+
 		background-color: $dark-blue;
 	}
-	
+
 	#hero-content {
 		position: absolute;
 		display: inline-block;
-		
+
 		margin-left: 7.5vw;
 		margin-top: 16vw;
-		
+
 		text-align: center;
-		
+
 		#hackathon-name {
 			height: 4.8vw;
 			font-size: 4.5vw;
 			font-weight: 700;
 			color: white;
-			
+
 			@include mobile {
 				height: 14.1vw;
 				font-size: 13vw;
@@ -187,7 +187,7 @@ section {
 			font-size: 2.15vw;
 			font-weight: 700;
 			color: white;
-			
+
 			@include mobile {
 				height: 8.2vw;
 				font-size: 6.3vw;
@@ -198,7 +198,7 @@ section {
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
-			
+
 			@include mobile {
 				height: 5vw;
 				font-size: 3.2vw;
@@ -210,20 +210,20 @@ section {
 			margin: 1vw auto;
 			border-radius: 1.5vw;
 			background-color: white;
-			
+
 			.mailchimp-input {
 				flex: 0%;
 				height: 2.5vw;
 				margin-left: 1vw;
-				
+
 				text-align: center;
 				border-style: none;
-				
+
 				outline: none;
 				font-family: inherit;
 				font-size: 1.1vw;
 				font-weight: 500;
-				
+
 				&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
 					color: $blue;
 					transition: color 0.4s;
@@ -235,36 +235,36 @@ section {
 			.mailchimp-button {
 				height: 2vw;
 				width: 2vw;
-				
+
 				margin-right: 0.5vw;
-				
+
 				border-style: solid;
 				border-width: 0.075vw;
 				border-color: $blue;
 				border-radius: 1.25vw;
-				
+
 				background-color: white;
 				background-image: url(./bh7-assets/input-arrow.svg);
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
 				background-size: 1.25vw;
-				
+
 				outline: none;
 				transition: 0.1s;
-				
+
 				@include desktop {
 					&:hover {
 						background-position: 0.35vw;
 					}
 				}
 			}
-			
+
 			@include mobile {
 				width: 80vw;
-				
+
 				height: 12vw;
 				border-radius: 6vw;
-				
+
 				.mailchimp-input {
 					height: 7vw;
 					font-size: 3.25vw;
@@ -279,7 +279,7 @@ section {
 				}
 			}
 		}
-		
+
 		@include mobile {
 			margin-top: 30vw;
 		}
@@ -288,57 +288,64 @@ section {
 
 #about {
 	padding-top: 40px;
-	.wire {
-		position: absolute;
-		width:100%;
-		height:.8vw;
-		background: $pink;
-		z-index: 3;
-	}
+
 	.slides {
+
 		.slick-slide {
-			position: relative;
 			height: 14.7vw;
 			width: 14.7vw;
 			background: rgba(255, 255, 255, 0.75);
 			margin: 1.3vw 1.3vw 0 1.3vw;
-			z-index: 5;
-			.back_clip {
-				margin-top: -4.9vw;
-				margin-left: calc(50% - 25px);
-				z-index: 2;
-				@include mobile {
-					// height: 8vw;
-					margin-top: -11vw;
-					margin-left: calc(50% - 24px);
-				}
+
+			.wire {
+				width: 200%;
+				margin: 0;
+				height: 0.8vw;
+				background: $pink;
+
+				top: -20px;
+				position: relative;
+				z-index: 1;
 			}
+
 			.front_clip {
-				margin: -4.4vw auto;
-				z-index: 6;
-				@include mobile {
-					// height: 10vw;
-					margin: -5vw auto;
-				}
+				width: 30px;
+				height: 60px;
+				background-color: #f9a56f;
+
+				margin: 0 auto;
+				top: -50px;
+
+				position: relative;
+				z-index: 3;
 			}
-			@include mobile {
-				height: 30vw;
-				width: 30vw;
+
+			.back_clip {
+				width: 10px;
+				height: 30px;
+				background-color: #f1656d;
+
+				top: -100px;
+				margin-left: calc(50% - 25px);
+
+				position: relative;
+				z-index: 0;
 			}
 		}
+
 		.slick-list {
 			overflow: visible;
 		}
-		.slick-arrow{
+		.slick-arrow {
 			width: 3.9vw;
 			height: 3.9vw;
 			background-color: $blue;
 			border: 1px solid #A3A9CA;
 			box-sizing: border-box;
-			border-radius: .7vw;	
-			@include mobile{
+			border-radius: .7vw;
+			@include mobile {
 				display: none !important;
-			}	
+			}
 		}
 		.slick-prev {
 			z-index:1;
@@ -366,7 +373,7 @@ section {
 		padding: 60px 0 0 100px;
 		font-style: normal;
 		font-weight: normal;
-		float: left;	
+		float: left;
 		font-size: 17px;
 		h2 {
 			font-style: normal;
@@ -396,7 +403,7 @@ section {
 			display: none;
 		}
 	}
-	
+
 	.blue_box {
 		margin: 100px auto;
 		width: 340px;
@@ -423,8 +430,8 @@ section {
 		}
 	}
 	#MLH_box {
-		
-		
+
+
 	}
 	.text_box{
 		font-style: normal;
@@ -438,6 +445,6 @@ section {
 	}
 	#MLH_text{
 	}
-	
-	
+
+
 }
