@@ -15,13 +15,13 @@ $schedule-event-secondary: transparentize(#5E5E5E, 0.25);
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
-$mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)  
+$mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)
 
 @mixin desktop {
 	@media(min-width: #{$desktop-width}) { @content; }
 }
 @mixin mobile {
-	@media(max-width: #{$desktop-width}) { 
+	@media(max-width: #{$desktop-width}) {
 		@media(max-width: #{$mobile-ratio}) {
 			@content;
 		}
@@ -82,12 +82,10 @@ button {
 nav {
 	position: fixed;
 	z-index: 1;
-
 	width: 100vw;
 	height: 5vw;
-
 	background-color: transparentize(white, 0.95);
-	
+
 	#logo {
 		content:url('./bh7-assets/logo.svg');
 		height: 100%;
@@ -106,22 +104,18 @@ nav {
 		a {
 			display: flex;
 			align-items: center;
-
 			height: 100%;
 			margin: 0vw 2vw;
-
 			font-size: 1.25vw;
 			font-weight: 400;
-			
 			color: white;
-
 			transition: font-weight 0.1s, color 0.2s;
-			
+
 			&:hover {
 				font-weight: 600;
 				color: $orange;
 			}
-		}	
+		}
 	}
 
 	#mlh-badge {
@@ -133,7 +127,7 @@ nav {
 	@include mobile {
 		background-color: transparentize(white, 0.85);
 		height: 20vw;
-		
+
 		#mlh-badge {
 			top: 0;
 			height: 28vw;
@@ -161,7 +155,7 @@ section {
 
 #hero {
 	background-color: $light-blue;
-	
+
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100vw, 85vw;
@@ -186,7 +180,7 @@ section {
 	#hero-content {
 		position: absolute;
 		display: inline-block;
-		
+
 		margin-left: 7.5vw;
 		margin-top: 16vw;
 
@@ -197,7 +191,7 @@ section {
 			font-size: 4.5vw;
 			font-weight: 700;
 			color: white;
-		
+
 			@include mobile {
 				height: 14.1vw;
 				font-size: 13vw;
@@ -208,7 +202,7 @@ section {
 			font-size: 2.15vw;
 			font-weight: 700;
 			color: white;
-		
+
 			@include mobile {
 				height: 8.2vw;
 				font-size: 6.3vw;
@@ -219,7 +213,7 @@ section {
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
-		
+
 			@include mobile {
 				height: 5vw;
 				font-size: 3.2vw;
@@ -236,15 +230,15 @@ section {
 				flex: 0%;
 				height: 2.5vw;
 				margin-left: 1vw;
-			
+
 				text-align: center;
 				border-style: none;
-			
+
 				outline: none;
 				font-family: inherit;
 				font-size: 1.1vw;
 				font-weight: 500;
-			
+
 				&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
 					color: $blue;
 					transition: color 0.4s;
@@ -256,23 +250,23 @@ section {
 			.mailchimp-button {
 				height: 2vw;
 				width: 2vw;
-			
+
 				margin-right: 0.5vw;
-			
+
 				border-style: solid;
 				border-width: 0.075vw;
 				border-color: $blue;
 				border-radius: 1.25vw;
-			
+
 				background-color: white;
 				background-image: url(./bh7-assets/input-arrow.svg);
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
 				background-size: 1.25vw;
-			
+
 				outline: none;
 				transition: 0.1s;
-			
+
 				@include desktop {
 					&:hover {
 						background-position: 0.35vw;
@@ -282,7 +276,6 @@ section {
 
 			@include mobile {
 				width: 80vw;
-		
 				height: 12vw;
 				border-radius: 6vw;
 
@@ -315,6 +308,7 @@ section {
 	@extend .flex-container;
 	flex-direction: column;
 
+	// This is used if we decide to have the schedule expand instead of scroll.
 	// max-height: none;
 	// min-height: 100%;
 	// height: auto;
@@ -337,45 +331,35 @@ section {
 
 			@include mobile {
 				align-self: center;
-
 				position: absolute;
 				top: 5vw;
-
 				margin: 0 0 5vw 0;
 			}
 		}
 		.schedule {
-			@extend .flex-container;			
+			@extend .flex-container;
 			position: relative;
-
 			width: 60%;
-
 			border-radius: 1.5vw;
-			
 			background-color: $light-blue;
 
 			@include mobile {
 				flex-direction: column;
-
 				width: 85vw;
-
 				border-radius: 5vw;
-
 				margin-top: 12.5vw;
 			}
 			.tape {
 				position: absolute;
-
 				height: 3vw;
 				width: 100%;
-
 				top: -1.75vw;
 
 				$tape-start: 17.5%; // should be less than tape-end
-				$tape-end: 40%; // should be sub 50%
+				$tape-end: 40%;     // should be sub 50%
 
-				background: linear-gradient(to right, transparent $tape-start, 
-					$tape $tape-start, $tape $tape-end, 
+				background: linear-gradient(to right, transparent $tape-start,
+					$tape $tape-start, $tape $tape-end,
 					transparent $tape-end,transparent 100-$tape-end,
 					$tape 100-$tape-end,$tape 100-$tape-start,
 					transparent 100-$tape-start);
@@ -384,9 +368,9 @@ section {
 					height: 8vw;
 					top: -5vw;
 
-					$tape-width: 40% / 2; // mobile tape width
-					background: linear-gradient(to right, 
-						transparent 50-$tape-width, $tape 50-$tape-width, 
+					$tape-width: 20%; // mobile tape width
+					background: linear-gradient(to right,
+						transparent 50-$tape-width, $tape 50-$tape-width,
 						$tape 50+$tape-width, transparent 50+$tape-width);
 				}
 			}
@@ -394,46 +378,33 @@ section {
 				@extend .flex-container;
 
 				flex-direction: column;
-
 				align-self: start;
-
 				flex: 20;
-
 				height: 100%;
-
 				margin-left: 2vw;
 
 				@include mobile {
 					flex-direction: row;
 					justify-content: space-between;
-
 					align-self: auto;
-
 					width: 80%;
-
-					margin: 2.5vw 0;					
+					margin: 2.5vw 0;
 				}
 				.date {
 					flex-direction: column;
-
 					align-self: start;
-
 					flex: 100;
-					
 					width: 10vw;
-
 					text-align: inherit;
-					
 					padding: 0;
-
 					transition: color 0.2s;
 
 					@include mobile {
 						flex: none;
 					}
+
 					.day {
 						height: 8vw;
-
 						font-size: 7vw;
 						font-weight: 600;
 
@@ -452,6 +423,7 @@ section {
 					}
 				}
 			}
+
 			.events {
 				flex: 30;
 				margin: 3vw 3vw 3vw 0;
@@ -462,31 +434,21 @@ section {
 				}
 				.event {
 					@extend .flex-container;
-
 					align-items: flex-start;
-
 					flex-direction: column;
-
 					padding: 1vw 0 0.75vw 2.25vw;
-
 					margin: 0.75vw 0;
-
 					border-radius: 1vw;
-
 					background: linear-gradient(to right, $red 1.25vw, white 1vw, white);
-
 					box-shadow: 0 0 0.5vw 0 $dark-blue;
 
 					@include mobile {
 						padding: 2.25vw 1.5vw 2vw 5.5vw;
-
 						margin: 1.75vw 0;
-
 						border-radius: 2vw;
-
 						background: linear-gradient(to right, $red 2.5vw, white 1vw, white);
-
 						box-shadow: 0 0 1vw 0 $dark-blue;
+
 					}
 					.time {
 						font-weight: 400;
