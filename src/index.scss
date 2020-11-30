@@ -292,18 +292,18 @@ section {
 	.slides {
 
 		.slick-slide {
-			height: 14.7vw;
-			width: 14.7vw;
+			height: 200px;
+			width: 200px;
 			background: rgba(255, 255, 255, 0.75);
 			margin: 1.3vw 1.3vw 0 1.3vw;
 
 			.wire {
 				width: 200%;
 				margin: 0;
-				height: 0.8vw;
+				height: 15px;
 				background: $pink;
 
-				top: -20px;
+				top: -30px;
 				position: relative;
 				z-index: 1;
 			}
@@ -314,7 +314,7 @@ section {
 				background-color: #f9a56f;
 
 				margin: 0 auto;
-				top: -50px;
+				top: -60px;
 
 				position: relative;
 				z-index: 3;
@@ -322,10 +322,10 @@ section {
 
 			.back_clip {
 				width: 10px;
-				height: 30px;
+				height: 35px;
 				background-color: #f1656d;
 
-				top: -100px;
+				top: -110px;
 				margin-left: calc(50% - 25px);
 
 				position: relative;
