@@ -165,11 +165,10 @@ nav {
 		height: 13.5vw;
 	}
 
-		@include mobile {
-			top: 0;
-			height: 29vw;
-			left: 4vw;
-		}
+	@include mobile {
+		top: 0;
+		height: 29vw;
+		left: 4vw;
 	}
 }
 
@@ -214,12 +213,10 @@ section {
 
 	#hero-content {
 		position: absolute;
-		top: 27.5%;
 		margin-left: clamp(7.5vw, 9vw, 12vh);
 		text-align: center;
 		margin-left: 7.5vw;
 		margin-top: 15vw;
-		}
 
 		#hackathon-name {
 			height: 5.2vw;
