@@ -6,10 +6,14 @@ class Nav extends React.Component {
     render() {
         return(
             <nav>
-                <div class="links mobile-hide">
-                    <img id="logo" alt="BrickHack Logo"/>
-                    <a href="#hero"><li>GENERAL</li></a>
-                    <a href="#about"><li>ABOUT</li></a>
+                <div className="links">
+                    <img id="logo" className="mobile-hide" alt="BrickHack Logo"/>
+                    <a href="#hero">
+                        <li className="mobile-hide">GENERAL</li>
+                    </a>
+                    <a href="#about">
+                        <li className="mobile-hide">ABOUT</li>
+                    </a>
                 </div>
                 <div class="login-and-banner">
                     <a href="https://apply.brickhack.io/" id="login">LOGIN</a>
