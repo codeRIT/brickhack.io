@@ -178,7 +178,6 @@ nav {
 			align-self: center;
 			margin-right: 0;
 			padding: 3.4vw 4.4vw;
-
 		}
 	}
 
@@ -282,6 +281,10 @@ section {
 			width: 65%;
 			background-color: $red;
 			font-size: 1.8rem;
+
+			@include mobile {
+				padding: 4vw 4vw;
+			}
 		}
 	}
 }
