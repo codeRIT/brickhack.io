@@ -241,14 +241,14 @@ section {
 			color: white;
 			border-radius: 10vw;
 			font-weight: 400;
-			font-size: 1.6vw;
+			font-size: 1.8rem;
 			cursor: pointer;
-			box-shadow: 6px 6px rgba($pink, 0.4);
 			transition: 0.2s all;
+			&:hover {
+				background-color: lighten($red, 3%);
+			}
 			&:active {
-				transform: translate(6px, 6px);
-				transition: 0.2s all;
-				box-shadow: none;
+				transform: translateY(4px);
 			}
 		}
 
