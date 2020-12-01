@@ -15,7 +15,7 @@ class Hero extends React.Component {
                     <div id="hackathon-info">
                         Feb 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY
                     </div>
-                    <a id="register">REGISTER</a>
+                    <a href="https://apply.brickhack.io/users/sign_up" id="register">REGISTER</a>
                 </div>
             </section>
         );

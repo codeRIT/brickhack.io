@@ -28,6 +28,25 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	}
 }
 
+@mixin button {
+	text-decoration: none;
+	user-select: none;
+	display: inline-block;
+	margin: 1vw;
+	padding: 1.1vw 2.0vw;
+	color: white;
+	border-radius: 10vw;
+	font-weight: 400;
+	cursor: pointer;
+	transition: 0.2s all;
+	&:hover {
+		background-color: lighten($red, 3%);
+	}
+	&:active {
+		transform: translateY(4px);
+	}
+}
+
 .desktop-hide {
 	@include desktop {
 		display: none;
@@ -95,19 +114,18 @@ nav {
 	width: 100vw;
 	height: 5vw;
 	background-color: transparentize(white, 0.95);
+	display: flex;
+	justify-content: space-between;
 
 	#logo {
 		content:url('./bh7-assets/logo.svg');
 		height: 100%;
-		margin: 0vw 2vw;
 	}
 
-	ul {
+	.links {
+		margin-left: 2vw;
 		display: flex;
-		align-items: center;
-
 		list-style-type: none;
-
 		height: 100%;
 		padding-inline-start: 0;
 
@@ -115,8 +133,8 @@ nav {
 			display: flex;
 			align-items: center;
 			height: 100%;
-			margin: 0vw 2vw;
-			font-size: 1.25vw;
+			margin-left: 2vw;
+			font-size: 1.3vw;
 			font-weight: 400;
 			color: white;
 			transition: font-weight 0.1s, color 0.2s;
@@ -128,10 +146,20 @@ nav {
 		}
 	}
 
+	.login-and-banner {
+		display: flex;
+		margin-right: 2vw;
+	}
+
+	#login {
+		@include button;
+		background-color: $red;
+		font-size: 1.3vw;
+		margin-right: 20px;
+	}
+
 	#mlh-badge {
-		position: absolute;
 		height: 13.5vw;
-		right: 2vw;
 	}
 
 	@include mobile {
@@ -231,25 +259,10 @@ section {
 		}
 
 		#register {
-			text-decoration: none;
-			user-select: none;
-			display: inline-block;
+			@include button;
 			width: 65%;
-			margin: 1vw;
-			padding: 1.1vw 2.0vw;
 			background-color: $red;
-			color: white;
-			border-radius: 10vw;
-			font-weight: 400;
 			font-size: 1.8rem;
-			cursor: pointer;
-			transition: 0.2s all;
-			&:hover {
-				background-color: lighten($red, 3%);
-			}
-			&:active {
-				transform: translateY(4px);
-			}
 		}
 
 		@include mobile {
