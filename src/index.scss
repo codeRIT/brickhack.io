@@ -45,9 +45,10 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	flex-shrink: 0;
 }
 
-a:hover {
-	text-decoration: none;
+* {
+	line-height: 0.6;
 }
+
 
 html, body, #root, #app {
 	height: 100%;
@@ -64,6 +65,10 @@ body {
 
 p {
 	margin: 0;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 button {
@@ -187,7 +192,7 @@ section {
 		display: inline-block;
 
 		margin-left: 7.5vw;
-		margin-top: 16vw;
+		margin-top: 15vw;
 
 		text-align: center;
 
@@ -224,78 +229,26 @@ section {
 				font-size: 3.2vw;
 			}
 		}
-		.mailchimp-container {
-			height: 3vw;
-			width: 29vw;
- 			margin: 1vw auto;
-			border-radius: 1.5vw;
-			background-color: white;
 
-			.mailchimp-input {
-				flex: 0%;
-				height: 2.5vw;
-				margin-left: 1vw;
-
-				text-align: center;
-				border-style: none;
-
-				outline: none;
-				font-family: inherit;
-				font-size: 1.1vw;
-				font-weight: 500;
-
-				&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
-					color: $blue;
-					transition: color 0.4s;
-				}
-				&:focus::placeholder {
-					color: transparent;
-				}
-			}
-			.mailchimp-button {
-				height: 2vw;
-				width: 2vw;
-
-				margin-right: 0.5vw;
-
-				border-style: solid;
-				border-width: 0.075vw;
-				border-color: $blue;
-				border-radius: 1.25vw;
-
-				background-color: white;
-				background-image: url(./bh7-assets/input-arrow.svg);
-				background-repeat: no-repeat;
-				background-position: 0.25vw;
-				background-size: 1.25vw;
-
-				outline: none;
-				transition: 0.1s;
-
-				@include desktop {
-					&:hover {
-						background-position: 0.35vw;
-					}
-				}
-			}
-
-			@include mobile {
-				width: 80vw;
-				height: 12vw;
-				border-radius: 6vw;
-
-				.mailchimp-input {
-					height: 7vw;
-					font-size: 3.25vw;
-				}
-				.mailchimp-button {
-					height: 9vw;
-					width: 9vw;
-					border-radius: 4.5vw;
-					margin-right: 1.5vw;
-					background-position: 1.5vw;
-					background-size: 5vw;
-				}
+		#register {
+			text-decoration: none;
+			user-select: none;
+			display: inline-block;
+			width: 65%;
+			margin: 1vw;
+			padding: 1.1vw 2.0vw;
+			background-color: $red;
+			color: white;
+			border-radius: 10vw;
+			font-weight: 400;
+			font-size: 1.6vw;
+			cursor: pointer;
+			box-shadow: 6px 6px rgba($pink, 0.4);
+			transition: 0.2s all;
+			&:active {
+				transform: translate(6px, 6px);
+				transition: 0.2s all;
+				box-shadow: none;
 			}
 		}
 
