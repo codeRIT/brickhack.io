@@ -64,7 +64,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 }
 
 * {
-	line-height: 0.6;
+	line-height: 0.8;
 }
 
 
@@ -117,7 +117,7 @@ nav {
 	background-color: transparentize(desaturate(lighten($light-blue, 5), 5), 0.4);
 
 	@include mobile {
-		height: 20vw;
+		height: 15vw;
 		background-color: transparentize(desaturate(lighten($light-blue, 15), 6), 0.4);
 	}
 
@@ -132,6 +132,10 @@ nav {
 		list-style-type: none;
 		height: 100%;
 		padding-inline-start: 0;
+
+		@include mobile {
+			display: none;
+		}
 
 		a {
 			@extend .flex-container;
@@ -152,6 +156,14 @@ nav {
 	.login-and-banner {
 		display: flex;
 		margin-right: 2vw;
+
+		@include mobile {
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			margin-right: 0; // Flipped order on mobile, this no longer applies
+			margin: 0 20px;
+			width: 100%;
+		}
 	}
 
 	#login {
@@ -159,16 +171,23 @@ nav {
 		background-color: $red;
 		font-size: 1.3vw;
 		margin-right: 20px;
+
+		@include mobile {
+			font-size: 1.3rem;
+			border-radius: 5vw;
+			align-self: center;
+			margin-right: 0;
+			padding: 3.4vw 4.4vw;
+
+		}
 	}
 
 	#mlh-badge {
 		height: 13.5vw;
-	}
 
-	@include mobile {
-		top: 0;
-		height: 29vw;
-		left: 4vw;
+		@include mobile {
+			height: 30vw;
+		}
 	}
 }
 
@@ -217,6 +236,12 @@ section {
 		text-align: center;
 		margin-left: 7.5vw;
 		margin-top: 15vw;
+
+		@include mobile {
+			position: relative;
+			top: 20%;
+			margin: auto;
+		}
 
 		#hackathon-name {
 			height: 5.2vw;
