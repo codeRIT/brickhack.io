@@ -19,7 +19,9 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            .circleci/deploy_stage.sh
+            git remote add deploy dokku@csh-cloud.oweb.co:brickhack-stage
+            git fetch --unshallow
+            git push --force deploy develop:master
 
 workflows:
   build-test:
