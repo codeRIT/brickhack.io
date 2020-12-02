@@ -51,9 +51,9 @@ class Schedule extends React.Component {
 		return(
 			<section id="schedule">
 				<div className="content">
-					<h3 className="title">
+					<h1 className="title">
 						Schedule
-					</h3>
+					</h1>
 					<div className="schedule">
 						<div className="tape"></div>
 						<div className="dates">

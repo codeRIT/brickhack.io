@@ -4,10 +4,12 @@ import ReactDOM from 'react-dom';
 import Nav from "./nav.js";
 import Hero from './hero.js'
 import About from './about.js'
+import FAQ from './faq.js'
 import Schedule from './schedule.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.scss';
+import '@fortawesome/fontawesome-free/css/all.css'
 
 const hiringMessage = `Hey, you.
 You’re finally awake.
@@ -22,11 +24,12 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 ReactDOM.render(
-	<div id="app">
-		<Nav/>
-		<Hero/>
-		<About/>
-		<Schedule/>
-	</div>,
-	document.getElementById('root'),
+    <div id="app">
+        <Nav/>
+        <Hero/>
+        <About/>
+        <FAQ/>
+        <Schedule/>
+    </div>,
+    document.getElementById('root'),
 );
