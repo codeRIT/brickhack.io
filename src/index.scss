@@ -317,7 +317,7 @@ section {
 
 				position: relative;
 				z-index: 3;
-				
+
 			}
 
 			.back_clip {
@@ -340,7 +340,7 @@ section {
 			// (https://css-tricks.com/popping-hidden-overflow/)
 			padding-top: 20px;
 			margin-top: -40px;
-			overflow: visible;
+			overflow: hidden;
 		}
 		.slick-arrow {
 			width: 3.9vw;
@@ -361,13 +361,13 @@ section {
 			z-index: 1;
 			left: 92vw;
 		}
-		.slick-prev::before{
+		.slick-prev::before {
 			position: absolute;
 			font-size:2vw;
 			top: 1.1vw;
 			left: .9vw;
 		}
-		.slick-next::before{
+		.slick-next::before {
 			position: absolute;
 			font-size: 2vw;
 			top: 1.1vw;
@@ -440,7 +440,7 @@ section {
 		}
 	}
 
-	.text_box{
+	.text_box {
 		font-style: normal;
 		font-weight: 500;
 		font-size: 2em;
