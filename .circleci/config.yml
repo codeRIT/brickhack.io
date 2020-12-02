@@ -16,8 +16,9 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - run:
-          name: Deploy Over SSH
+          name: Deploy to Staging
           command: |
             git remote add deploy dokku@csh-cloud.oweb.co:brickhack-stage
             git fetch --unshallow
