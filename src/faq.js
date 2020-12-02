@@ -9,7 +9,7 @@ class FAQ extends React.Component {
 		return(
 			<section id="faq">
 				<div className="content">
-					<h1 className="title">
+					<h1 className="faq-title">
 						Frequently Asked Questions
 					</h1>
 					<div className="accordion-columns">
