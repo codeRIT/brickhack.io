@@ -8,6 +8,10 @@ $orange: #F9A36A;
 $pink: #F9C3BC;
 $beige: #F4ECE0;
 
+$tape: transparentize(#F2C7C1, 0.5);
+$schedule-event-primary: #5E5E5E;
+$schedule-event-secondary: transparentize(#5E5E5E, 0.25);
+
 $assets: './bh7-assets/';
 
 $desktop-width: 1200px;
@@ -18,10 +22,8 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	@media(min-width: #{$desktop-width}) { @content; }
 }
 @mixin mobile {
-	@media(max-width: #{$desktop-width}) {
-		@media(max-width: #{$mobile-ratio}) {
-			@content;
-		}
+	@media (max-width: #{$mobile-width}), (max-width: #{$desktop-width}) and (max-width: #{$mobile-ratio}) {
+		@content;
 	}
 }
 
@@ -38,6 +40,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 .flex-container {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	flex-shrink: 0;
 }
 
@@ -48,6 +51,7 @@ a:hover {
 html, body, #root, #app {
 	height: 100%;
 }
+
 body {
 	margin: 0;
 	padding: 0;
@@ -57,25 +61,50 @@ body {
 	color: white;
 }
 
+p {
+	margin: 0;
+}
+
+button {
+	color: inherit;
+	background-color: inherit;
+	border: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.title {
+	font-weight: 600;
+
+	@include mobile {
+		font-size: 6vw;
+	}
+}
 
 nav {
 	position: fixed;
-	z-index: 5;
-
+	z-index: 1;
 	width: 100vw;
 	height: 5vw;
+	background-color: transparentize(desaturate(lighten($light-blue, 5), 5), 0.4);
 
-	background-color: transparentize(white, 0.95);
+	@include mobile {
+		height: 20vw;
+		background-color: transparentize(desaturate(lighten($light-blue, 15), 6), 0.4);
+	}
 
 	#logo {
-		content:url('./bh7-assets/logo.svg');
+		content:url($assets+'logo.svg');
 		height: 100%;
 		margin: 0vw 2vw;
 	}
 
 	ul {
-		display: flex;
-		align-items: center;
+		@extend .flex-container;
+
+		justify-content: flex-start;
 
 		list-style-type: none;
 
@@ -83,17 +112,12 @@ nav {
 		padding-inline-start: 0;
 
 		a {
-			display: flex;
-			align-items: center;
-
+			@extend .flex-container;
 			height: 100%;
 			margin: 0vw 2vw;
-
 			font-size: 1.25vw;
 			font-weight: 400;
-
 			color: white;
-
 			transition: font-weight 0.1s, color 0.2s;
 
 			&:hover {
@@ -105,18 +129,13 @@ nav {
 
 	#mlh-badge {
 		position: absolute;
-		height: 13.5vw;
+		height: 12.5vw;
 		right: 2vw;
-	}
 
-	@include mobile {
-		background-color: transparentize(white, 0.85);
-		height: 20vw;
-
-		#mlh-badge {
+		@include mobile {
 			top: 0;
-			height: 28vw;
-			left: 5vw;
+			height: 29vw;
+			left: 4vw;
 		}
 	}
 }
@@ -134,6 +153,7 @@ section {
 	background-color: $dark-blue;
 
 	@include mobile {
+		min-height: 133vw;
 		max-height: 100vh;
 	}
 }
@@ -143,73 +163,83 @@ section {
 
 	background-image: url($assets+'shelf.svg'), url($assets+'desk.svg');
 	background-repeat: no-repeat, no-repeat;
-	background-size: 100vw, 85vw;
-	background-position: 0 130%, 162% 75%;
+	background-size: 100%, 76.5vw;
+	background-position: left bottom -10vw, right 0 top 70%;
 
 	@include mobile {
-		background-size: 100vw, 120vw;
-		background-position: 0 100%, -6vw 100%;
+		background-size: 100%, 110vw;
+		background-position: 0 calc(100% + 6vw), -10vw calc(100% + 10.5vw);
 	}
 
 	#wire {
 		position: absolute;
-
-		left: 60.7vw;
-
+		left: 58.715vw;
 		width: 1.5vw;
-		height: calc(100% - 91vw);
-
+		height: calc(100% - 86vw);
 		background-color: $dark-blue;
 	}
 
 	#hero-content {
 		position: absolute;
-		display: inline-block;
-
-		margin-left: 7.5vw;
-		margin-top: 16vw;
-
+		top: 27.5%;
+		margin-left: clamp(7.5vw, 9vw, 12vh);
 		text-align: center;
 
+		@include mobile {
+			position: relative;
+			top: 20%;
+
+			margin: auto;
+		}
+
 		#hackathon-name {
-			height: 4.8vw;
+			height: 5.2vw;
 			font-size: 4.5vw;
 			font-weight: 700;
 			color: white;
 
 			@include mobile {
-				height: 14.1vw;
+				height: 14.6vw;
 				font-size: 13vw;
 			}
 		}
 		#hackathon-description {
-			height: 2.8vw;
+			height: 3.0vw;
 			font-size: 2.15vw;
 			font-weight: 700;
 			color: white;
 
 			@include mobile {
-				height: 8.2vw;
+				height: 8.6vw;
 				font-size: 6.3vw;
 			}
 		}
 		#hackathon-info {
-			height: 1.1vw;
+			height: 1.2vw;
 			font-size: 1.06vw;
 			font-weight: 500;
 			color: white;
 
 			@include mobile {
-				height: 5vw;
+				height: 5.6vw;
 				font-size: 3.2vw;
 			}
 		}
 		.mailchimp-container {
-			height: 3vw;
+			@extend .flex-container;
+
+			height: 3.5vw;
 			width: 29vw;
-			margin: 1vw auto;
-			border-radius: 1.5vw;
+ 			margin: 1vw auto;
+			border-radius: 1.75vw;
 			background-color: white;
+			box-shadow: 0 0 1vw 0 transparentize($light-blue, 0.6);
+
+			@include mobile {
+				height: 12vw;
+				width: 80vw;
+				border-radius: 6vw;
+			}
 
 			.mailchimp-input {
 				flex: 0%;
@@ -231,57 +261,61 @@ section {
 				&:focus::placeholder {
 					color: transparent;
 				}
+				&:-webkit-autofill {
+					-webkit-box-shadow: 0 0 0 100vw white inset;
+					box-shadow: 0 0 0 100vw white inset;
+
+					&::first-line {
+						font-size: 1.1vw;
+						font-weight: 500;
+					}
+				}
+
+				@include mobile {
+					height: 7vw;
+					font-size: 3.25vw;
+
+					&:-webkit-autofill::first-line {
+						height: 7vw;
+						font-size: 3.25vw;
+					}
+				}
 			}
 			.mailchimp-button {
-				height: 2vw;
-				width: 2vw;
+				height: 2.25vw;
+				width: 2.25vw;
 
-				margin-right: 0.5vw;
-
+				margin-right: 0.6vw;
 				border-style: solid;
 				border-width: 0.075vw;
+				border-radius: 1.125vw;
 				border-color: $blue;
-				border-radius: 1.25vw;
-
 				background-color: white;
-				background-image: url(./bh7-assets/input-arrow.svg);
+				background-image: url($assets+'/input-arrow.svg');
 				background-repeat: no-repeat;
 				background-position: 0.25vw;
-				background-size: 1.25vw;
-
+				background-size: 1.4vw;
 				outline: none;
 				transition: 0.1s;
 
 				@include desktop {
 					&:hover {
-						background-position: 0.35vw;
+						background-position: 0.4vw;
 					}
 				}
-			}
-
-			@include mobile {
-				width: 80vw;
-
-				height: 12vw;
-				border-radius: 6vw;
-
-				.mailchimp-input {
-					height: 7vw;
-					font-size: 3.25vw;
-				}
-				.mailchimp-button {
+				@include mobile {
 					height: 9vw;
 					width: 9vw;
-					border-radius: 4.5vw;
+
 					margin-right: 1.5vw;
+
+					border-width: 0.25vw;
+					border-radius: 4.5vw;
+
 					background-position: 1.5vw;
-					background-size: 5vw;
+					background-size: 5.4vw;
 				}
 			}
-		}
-
-		@include mobile {
-			margin-top: 30vw;
 		}
 	}
 }
@@ -448,4 +482,171 @@ section {
 		padding: 0.5vw 0;
 	}
 
+}
+
+#schedule {
+	@extend .flex-container;
+	flex-direction: column;
+
+	// This is used if we decide to have the schedule expand instead of scroll.
+	// max-height: none;
+	// min-height: 100%;
+	// height: auto;
+
+	.content {
+		@extend .flex-container;
+		flex-direction: column;
+		width: 100%;
+
+		.title {
+			align-self: start;
+			font-size: 42px;
+			font-style: normal;
+			font-weight: bold;
+			margin: 90px;
+			margin-top: 0;
+
+			@include mobile {
+				align-self: center;
+				top: 5vw;
+				margin: 0 0 5vw 0;
+			}
+		}
+		.schedule {
+			@extend .flex-container;
+			position: relative;
+			width: 60%;
+			border-radius: 1.5vw;
+			background-color: $light-blue;
+			padding: 5%; // Padding for all elements inside
+
+			@include mobile {
+				flex-direction: column;
+				width: 85vw;
+				border-radius: 5vw;
+				margin-top: 12.5vw;
+			}
+			.tape {
+				position: absolute;
+				height: 3vw;
+				width: 100%;
+				top: -1.75vw;
+
+				$tape-start: 17.5%; // should be less than tape-end
+				$tape-end: 40%;     // should be sub 50%
+
+				background: linear-gradient(to right, transparent $tape-start,
+					$tape $tape-start, $tape $tape-end,
+					transparent $tape-end,transparent 100-$tape-end,
+					$tape 100-$tape-end,$tape 100-$tape-start,
+					transparent 100-$tape-start);
+
+				@include mobile {
+					height: 8vw;
+					top: -5vw;
+
+					$tape-width: 20%; // mobile tape width
+					background: linear-gradient(to right,
+						transparent 50-$tape-width, $tape 50-$tape-width,
+						$tape 50+$tape-width, transparent 50+$tape-width);
+				}
+			}
+			.dates {
+				@extend .flex-container;
+
+				flex-direction: column;
+				align-items: center;
+				flex: 20;
+				height: 100%;
+
+				@include mobile {
+					flex-direction: row;
+					justify-content: space-around;
+					width: 70%;
+					align-self: auto;
+					padding-bottom: 20px;
+				}
+				.date {
+					flex-direction: column;
+					align-self: start;
+					flex: 100;
+					text-align: inherit;
+					padding: 0;
+					transition: color 0.2s;
+
+					@include mobile {
+						flex: none;
+					}
+
+					.day {
+
+						h1 {
+							height: 8vw;
+							font-size: 7vw;
+							font-weight: 600;
+
+							@include mobile {
+								height: 16vw;
+								font-size: 14vw;
+							}
+						}
+
+						p {
+							font-size: 1.6vw;
+							font-weight: 300;
+
+							@include mobile {
+								font-size: 3.2vw;
+							}
+						}
+					}
+				}
+			}
+
+			.events {
+				flex: 30;
+
+				@include mobile {
+					width: 80%;
+				}
+				.event {
+					@extend .flex-container;
+					align-items: flex-start;
+					flex-direction: column;
+					padding: 1vw 0 0.75vw 2.25vw;
+					margin: 0.75vw 0;
+					border-radius: 1vw;
+					background: linear-gradient(to right, $red 1.25vw, white 1vw, white);
+					box-shadow: 0 0 0.5vw 0 $dark-blue;
+
+					@include mobile {
+						padding: 2.25vw 1.5vw 2vw 5.5vw;
+						margin: 1.75vw 0;
+						border-radius: 2vw;
+						background: linear-gradient(to right, $red 2.5vw, white 1vw, white);
+						box-shadow: 0 0 1vw 0 $dark-blue;
+
+					}
+					.time {
+						font-weight: 400;
+						font-size: 0.9vw;
+						color: $schedule-event-secondary;
+
+						@include mobile {
+							font-size: 2.2vw;
+						}
+					}
+					.eventTitle {
+						font-weight: 500;
+						font-size: 1.2vw;
+						color: $schedule-event-primary;
+
+						@include mobile {
+							font-size: 3vw;
+						}
+					}
+				}
+			}
+		}
+	}
 }
