@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  test:
+  test-build:
     executor:
       name: node/default
       tag: '13.14'
@@ -11,9 +11,9 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: npm run test
+          command: npm run build
 
 workflows:
-  test_my_app:
+  build-test:
     jobs:
-      - test
+      - test-build
