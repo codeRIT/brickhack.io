@@ -24,10 +24,7 @@ jobs:
             git push --force deploy develop:master
 
 workflows:
-  build-test:
-    jobs:
-      - test-build
-  deploy-staging:
+  build-and-deploy:
     jobs:
       - test-build
       - deploy-staging:
@@ -36,4 +33,3 @@ workflows:
           filters:
             branches:
               only: develop
-
