@@ -28,8 +28,8 @@ ReactDOM.render(
         <Nav/>
         <Hero/>
         <About/>
-		<FAQ/>
-		<Schedule/>
+        <FAQ/>
+        <Schedule/>
     </div>,
     document.getElementById('root'),
 );
