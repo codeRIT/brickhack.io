@@ -26,11 +26,12 @@ workflows:
     jobs:
       - test-build
   deploy-staging:
-    triggers:
-      schedule:
-        filters:
-          branches:
-            only:
-              - develop
     jobs:
-      - deploy-staging
+      - test-build
+      - deploy-staging:
+          requires:
+            - test-build
+          filters:
+            branches:
+              only: develop
+
