@@ -4,4 +4,12 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test
+      test:
+        executor:
+          name: node/default
+          tag: '13.14'
+        steps:
+          - checkout
+          - node/install-packages
+          - run:
+              command: npm run test
