@@ -12,8 +12,26 @@ jobs:
       - node/install-packages
       - run:
           command: npm run build
+  deploy-staging:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            .circleci/deploy_stage.sh
 
 workflows:
   build-test:
     jobs:
       - test-build
+  deploy-staging:
+    jobs:
+      - test-build
+      - deploy-staging:
+          requires:
+            - test-build
+          filters:
+            branches:
+              only: develop
+
