@@ -88,7 +88,7 @@ nav {
 	#logo {
 		content:url('./bh7-assets/logo.svg');
 		height: 100%;
-		margin: 0vw 2vw;
+	margin: 0vw 2vw;
 	}
 
 	ul {
@@ -156,18 +156,14 @@ section {
 	}
 	.title {
 		align-self: start;
-
 		margin-bottom: 5vw;
-
 		font-weight: 700;
 		font-size: 2.5vw;
 
 		@include mobile {
 			align-self: center;
-
 			position: absolute;
 			top: 6vw;
-
 			font-size: 5.75vw;
 			text-align: center;
 		}
@@ -175,14 +171,10 @@ section {
 }
 .flex-section-content {
 	@extend .flex-container;
-
 	flex-direction: column;
-
 	height: 100%;
 	width: 100%;
-
 	padding: 5vw;
-
 	@include mobile {
 		padding: 10vw;
 	}
@@ -371,18 +363,12 @@ section {
 
 				.accordion {
 					cursor: pointer;
-
 					display: flex;
-
 					width: calc(100% - 1vw);
-
 					padding: 1.5vw 2.5vw 0.75vw 2vw;
-
 					margin-bottom: 1vw;
-
 					border: 0.05vw solid transparentize(white, 0.5);
 					border-radius: 0.5vw;
-
 					background-color: $light-blue;
 
 					@include mobile {

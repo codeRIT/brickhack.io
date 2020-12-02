@@ -58,12 +58,8 @@ class Accordion extends React.Component {
 		var accordion = <div className={accordionClasses} onClick={this.toggleSelected.bind(this)}>
 			<i className="fas fa-plus"></i>
 			<div className="text">
-				<h5 className="question">
-					{this.props.question}
-				</h5>
-				<p className="answer">
-					{this.props.answer}
-				</p>
+				<h5 className="question">{this.props.question}</h5>
+				<p className="answer">{this.props.answer}</p>
 			</div>
 		</div>;
 
