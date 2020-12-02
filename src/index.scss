@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900;1000&display=swap');
 
+$darker-blue: #2A407D;
 $dark-blue: #1B315E;
 $blue: #2A3E7F;
 $light-blue: #455296;
@@ -19,7 +20,11 @@ $mobile-width: 750px;
 $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical ipad are exactly 1.33x)
 
 @mixin desktop {
-	@media(min-width: #{$desktop-width}) { @content; }
+	@media(min-width: #{$desktop-width}) {
+		@media(min-width: #{$mobile-ratio}) {
+			@content;
+		}
+	}
 }
 @mixin mobile {
 	@media (max-width: #{$mobile-width}), (max-width: #{$desktop-width}) and (max-width: #{$mobile-ratio}) {
@@ -75,14 +80,6 @@ button {
 	}
 }
 
-.title {
-	font-weight: 600;
-
-	@include mobile {
-		font-size: 6vw;
-	}
-}
-
 nav {
 	position: fixed;
 	z-index: 1;
@@ -98,7 +95,7 @@ nav {
 	#logo {
 		content:url($assets+'logo.svg');
 		height: 100%;
-		margin: 0vw 2vw;
+	margin: 0vw 2vw;
 	}
 
 	ul {
@@ -155,6 +152,30 @@ section {
 	@include mobile {
 		min-height: 133vw;
 		max-height: 100vh;
+	}
+	.title {
+		align-self: start;
+		margin-bottom: 5vw;
+		font-weight: 700;
+		font-size: 2.5vw;
+
+		@include mobile {
+			align-self: center;
+			position: absolute;
+			top: 6vw;
+			font-size: 5.75vw;
+			text-align: center;
+		}
+	}
+}
+.flex-section-content {
+	@extend .flex-container;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	padding: 5vw;
+	@include mobile {
+		padding: 10vw;
 	}
 }
 
@@ -286,7 +307,6 @@ section {
 			.mailchimp-button {
 				height: 2.25vw;
 				width: 2.25vw;
-
 				margin-right: 0.6vw;
 				border-style: solid;
 				border-width: 0.075vw;
@@ -326,34 +346,134 @@ section {
 	background-color: white;
 }
 
-#schedule {
-	@extend .flex-container;
-	flex-direction: column;
+#faq {
+	max-height: none; // if section has content that can expand past screen height
+	height: auto;
+
+	background-color: darken($dark-blue, 10); // placeholder bg color
 
 	// This is used if we decide to have the schedule expand instead of scroll.
 	// max-height: none;
 	// min-height: 100%;
 	// height: auto;
 
-	.content {
-		@extend .flex-container;
-		flex-direction: column;
-		width: 100%;
+	@include mobile { // centers accordions on mobile
+		display: flex;
+		align-items: center;
+		// min-height: 100%;
+	}
 
-		.title {
+	.content {
+
+		@extend .flex-section-content;
+
+		.faq-title {
+			align-self: flex-start;
+			margin-bottom: 5vw;
+			font-weight: 700;
+			font-size: 2.2vw;
+			margin-top: 30px;
+
+			@include mobile {
+				font-size: 5.5vw;
+				width: 75vw;
+				text-align: center;
+			}
+		}
+		.accordion-columns {
+			display: flex;
+			width: 100%;
+
+			@include mobile {
+				flex-direction: column;
+			}
+			.accordion-column {
+				flex: 1;
+
+				.accordion {
+					cursor: pointer;
+					display: flex;
+					width: calc(100% - 1vw);
+					padding: 1.5vw 2.5vw 0.75vw 2vw;
+					margin-bottom: 1vw;
+					border: 0.05vw solid transparentize(white, 0.5);
+					border-radius: 0.5vw;
+					background-color: $light-blue;
+
+					@include mobile {
+						margin-bottom: 2.5vw;
+						padding: 2.25vw 2.5vw 0.75vw 2vw;
+					}
+					i {
+						font-size: 1.5vw;
+						color: $pink;
+						@include mobile {
+							font-size: 3vw;
+							margin: 0.5vw 1vw 0 1vw;
+						}
+					}
+					.text {
+						margin: 0 2vw;
+						.question {
+							font-weight: 500;
+							font-size: 1.5vw;
+							@include mobile {
+								font-size: 3.5vw;
+							}
+						}
+						.answer {
+							display: none;
+							margin-top: 1vw;
+							font-size: 1.25vw;
+							@include mobile {
+								font-size: 3vw;
+							}
+						}
+					}
+				}
+				.selected {
+					background-color: white;
+
+					color: $darker-blue;
+					i {
+						color: $darker-blue;
+						&::before {
+							content: '\f068'; // minus symbol
+						}
+					}
+					.text .answer {
+						display: block;
+					}
+				}
+			}
+		}
+		p {
 			align-self: start;
-			font-size: 42px;
-			font-style: normal;
-			font-weight: bold;
-			margin: 90px;
-			margin-top: 0;
+			margin-top: 2.5vw;
+			font-size: 1.5vw;
 
 			@include mobile {
 				align-self: center;
-				top: 5vw;
-				margin: 0 0 5vw 0;
+				font-size: 3.25vw;
+			}
+			a {
+				border-bottom: 0.25vw solid $red;
+
+				font-weight: 700;
+				color: $red;
 			}
 		}
+	}
+}
+
+#schedule {
+	@extend .flex-container;
+
+	flex-direction: column;
+
+	.content {
+		@extend .flex-section-content;
+
 		.schedule {
 			@extend .flex-container;
 			position: relative;
@@ -386,7 +506,6 @@ section {
 				@include mobile {
 					height: 8vw;
 					top: -5vw;
-
 					$tape-width: 20%; // mobile tape width
 					background: linear-gradient(to right,
 						transparent 50-$tape-width, $tape 50-$tape-width,
