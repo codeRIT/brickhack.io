@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  test-build:
+  build:
     executor:
       name: node/default
       tag: '13.14'
@@ -26,10 +26,10 @@ jobs:
 workflows:
   build-and-deploy:
     jobs:
-      - test-build
+      - build
       - deploy-staging:
           requires:
-            - test-build
+            - build
           filters:
             branches:
               only: develop
