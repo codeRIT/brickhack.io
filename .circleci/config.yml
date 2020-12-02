@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  test-build:
+  build:
     executor:
       name: node/default
       tag: '13.14'
@@ -16,22 +16,21 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - run:
-          name: Deploy Over SSH
+          name: Deploy to Staging
           command: |
-            .circleci/deploy_stage.sh
+            git remote add deploy dokku@csh-cloud.oweb.co:brickhack-stage
+            git fetch --unshallow
+            git push --force deploy develop:master
 
 workflows:
-  build-test:
+  build-and-deploy:
     jobs:
-      - test-build
-  deploy-staging:
-    jobs:
-      - test-build
+      - build
       - deploy-staging:
           requires:
-            - test-build
+            - build
           filters:
             branches:
               only: develop
-
