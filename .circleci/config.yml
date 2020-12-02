@@ -14,12 +14,12 @@ jobs:
           command: npm run build
   deploy-staging:
     machine:
-       enabled: true
-     steps:
-       - run:
-           name: Deploy Over SSH
-           command: |
-             .circleci/deploy_stage.sh
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            .circleci/deploy_stage.sh
 
 workflows:
   build-test:
