@@ -4,5 +4,4 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test:
-          version: stable
+      - node/test
