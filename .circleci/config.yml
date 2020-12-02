@@ -26,9 +26,11 @@ workflows:
     jobs:
       - test-build
   deploy-staging:
-    filters:
-      branches:
-        only:
-          - develop
+    triggers:
+      schedule:
+        filters:
+          branches:
+            only:
+              - develop
     jobs:
       - deploy-staging
