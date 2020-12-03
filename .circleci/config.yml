@@ -3,7 +3,7 @@ orbs:
   node: circleci/node@3.0.0
 
 jobs:
-  test-build:
+  build:
     executor:
       name: node/default
       tag: '13.14'
@@ -12,8 +12,25 @@ jobs:
       - node/install-packages
       - run:
           command: npm run build
+  deploy-staging:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Staging
+          command: |
+            git remote add deploy dokku@csh-cloud.oweb.co:brickhack-stage
+            git push --force deploy develop:master
+          no_output_timeout: 1h
 
 workflows:
-  build-test:
+  build-and-deploy:
     jobs:
-      - test-build
+      - build
+      - deploy-staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
