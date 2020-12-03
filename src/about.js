@@ -69,7 +69,8 @@ class About extends React.Component {
                             </div>
                         </div>
                         </a> */}
-                        <a href ="https://mlh.io/" target = "_blank"><div class="blue_box" id="MLH_box">
+                        <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
+                            <div class="blue_box" id="MLH_box">
                                 <div class="arrow_red"></div>
                                 <div class="line red_line"></div>
                             <div class="text-box">
