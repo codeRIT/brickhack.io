@@ -32,6 +32,25 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	}
 }
 
+@mixin button {
+	text-decoration: none;
+	user-select: none;
+	display: inline-block;
+	margin: 1vw;
+	padding: 1vw 2vw;
+	color: white;
+	border-radius: 10vw;
+	font-weight: 400;
+	cursor: pointer;
+	transition: 0.2s all;
+	&:hover {
+		background-color: lighten($red, 3%);
+	}
+	&:active {
+		transform: translateY(4px);
+	}
+}
+
 .desktop-hide {
 	@include desktop {
 		display: none;
@@ -49,9 +68,10 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	flex-shrink: 0;
 }
 
-a:hover {
-	text-decoration: none;
+* {
+	line-height: 1.5;
 }
+
 
 html, body, #root, #app {
 	height: 100%;
@@ -70,6 +90,10 @@ p {
 	margin: 0;
 }
 
+a:hover {
+	text-decoration: none;
+}
+
 button {
 	color: inherit;
 	background-color: inherit;
@@ -85,34 +109,36 @@ nav {
 	z-index: 1;
 	width: 100vw;
 	height: 5vw;
+	display: flex;
+	justify-content: space-between;
 	background-color: transparentize(desaturate(lighten($light-blue, 5), 5), 0.4);
 
 	@include mobile {
-		height: 20vw;
+		height: 15vw;
 		background-color: transparentize(desaturate(lighten($light-blue, 15), 6), 0.4);
 	}
 
 	#logo {
 		content:url($assets+'logo.svg');
 		height: 100%;
-	margin: 0vw 2vw;
 	}
 
-	ul {
-		@extend .flex-container;
-
-		justify-content: flex-start;
-
+	.links {
+		margin-left: 2vw;
+		display: flex;
 		list-style-type: none;
-
 		height: 100%;
 		padding-inline-start: 0;
+
+		@include mobile {
+			display: none;
+		}
 
 		a {
 			@extend .flex-container;
 			height: 100%;
-			margin: 0vw 2vw;
-			font-size: 1.25vw;
+			margin-left: 2vw;
+			font-size: 1.3vw;
 			font-weight: 400;
 			color: white;
 			transition: font-weight 0.1s, color 0.2s;
@@ -124,15 +150,39 @@ nav {
 		}
 	}
 
-	#mlh-badge {
-		position: absolute;
-		height: 12.5vw;
-		right: 2vw;
+	.login-and-banner {
+		display: flex;
+		margin-right: 2vw;
 
 		@include mobile {
-			top: 0;
-			height: 29vw;
-			left: 4vw;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			margin-right: 0; // Flipped order on mobile, this no longer applies
+			margin: 0 20px;
+			width: 100%;
+		}
+	}
+
+	#login {
+		@include button;
+		align-self: center;
+		background-color: $red;
+		font-size: 1.3vw;
+
+		@include mobile {
+			font-size: 1.3rem;
+			border-radius: 5vw;
+			align-self: center;
+			margin-right: 0;
+			padding: 3.4vw 4.4vw;
+		}
+	}
+
+	#mlh-badge {
+		height: 13.5vw;
+
+		@include mobile {
+			height: 30vw;
 		}
 	}
 }
@@ -202,14 +252,14 @@ section {
 
 	#hero-content {
 		position: absolute;
-		top: 27.5%;
 		margin-left: clamp(7.5vw, 9vw, 12vh);
 		text-align: center;
+		margin-left: 7.5vw;
+		margin-top: 15vw;
 
 		@include mobile {
 			position: relative;
 			top: 20%;
-
 			margin: auto;
 		}
 
@@ -246,95 +296,14 @@ section {
 				font-size: 3.2vw;
 			}
 		}
-		.mailchimp-container {
-			@extend .flex-container;
-
-			height: 3.5vw;
-			width: 29vw;
- 			margin: 1vw auto;
-			border-radius: 1.75vw;
-			background-color: white;
-			box-shadow: 0 0 1vw 0 transparentize($light-blue, 0.6);
+		#register {
+			@include button;
+			width: 65%;
+			background-color: $red;
+			font-size: 1.8rem;
 
 			@include mobile {
-				height: 12vw;
-				width: 80vw;
-				border-radius: 6vw;
-			}
-
-			.mailchimp-input {
-				flex: 0%;
-				height: 2.5vw;
-				margin-left: 1vw;
-
-				text-align: center;
-				border-style: none;
-
-				outline: none;
-				font-family: inherit;
-				font-size: 1.1vw;
-				font-weight: 500;
-
-				&::placeholder { /* this refers to the input placeholder text (enter your email...)*/
-					color: $blue;
-					transition: color 0.4s;
-				}
-				&:focus::placeholder {
-					color: transparent;
-				}
-				&:-webkit-autofill {
-					-webkit-box-shadow: 0 0 0 100vw white inset;
-					box-shadow: 0 0 0 100vw white inset;
-
-					&::first-line {
-						font-size: 1.1vw;
-						font-weight: 500;
-					}
-				}
-
-				@include mobile {
-					height: 7vw;
-					font-size: 3.25vw;
-
-					&:-webkit-autofill::first-line {
-						height: 7vw;
-						font-size: 3.25vw;
-					}
-				}
-			}
-			.mailchimp-button {
-				height: 2.25vw;
-				width: 2.25vw;
-				margin-right: 0.6vw;
-				border-style: solid;
-				border-width: 0.075vw;
-				border-radius: 1.125vw;
-				border-color: $blue;
-				background-color: white;
-				background-image: url($assets+'/input-arrow.svg');
-				background-repeat: no-repeat;
-				background-position: 0.25vw;
-				background-size: 1.4vw;
-				outline: none;
-				transition: 0.1s;
-
-				@include desktop {
-					&:hover {
-						background-position: 0.4vw;
-					}
-				}
-				@include mobile {
-					height: 9vw;
-					width: 9vw;
-
-					margin-right: 1.5vw;
-
-					border-width: 0.25vw;
-					border-radius: 4.5vw;
-
-					background-position: 1.5vw;
-					background-size: 5.4vw;
-				}
+				padding: 4vw 4vw;
 			}
 		}
 	}
@@ -518,7 +487,6 @@ section {
 	@include mobile { // centers accordions on mobile
 		display: flex;
 		align-items: center;
-		// min-height: 100%;
 	}
 
 	.content {
