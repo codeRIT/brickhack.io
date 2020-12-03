@@ -37,7 +37,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 	user-select: none;
 	display: inline-block;
 	margin: 1vw;
-	padding: 1.1vw 2.0vw;
+	padding: 1vw 2vw;
 	color: white;
 	border-radius: 10vw;
 	font-weight: 400;
@@ -69,7 +69,7 @@ $mobile-ratio: 75vh; // width must be >= 1.33 * height (surface duo and vertical
 }
 
 * {
-	line-height: 0.8;
+	line-height: 1.5;
 }
 
 
@@ -165,9 +165,9 @@ nav {
 
 	#login {
 		@include button;
+		align-self: center;
 		background-color: $red;
 		font-size: 1.3vw;
-		margin-right: 20px;
 
 		@include mobile {
 			font-size: 1.3rem;
@@ -487,7 +487,6 @@ section {
 	@include mobile { // centers accordions on mobile
 		display: flex;
 		align-items: center;
-		// min-height: 100%;
 	}
 
 	.content {
