@@ -1,5 +1,90 @@
 
 
+// Variables
+$dark-blue: #1B315E;
+$blue: #2A407D;
+$light-blue: #465395;
+$red: #F1656E;
+$orange: #F9A56F;
+$pink: #FAC5BF;
+
+$nav-fontsize: 1.2em;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+// Mixins
+@mixin button {
+    background-color: $red;
+    text-decoration: none;
+    user-select: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s all;
+    &:hover {
+        background-color: lighten($red, 3%);
+    }
+    &:active {
+        transform: translateY(4px);
+    }
+}
+
+// General
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
 body {
-    background-color: purple;
+    background-color: $dark-blue;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+// Nav
+nav {
+    background-color: $light-blue;
+    display: flex;
+    justify-content: space-between;
+    font-size: $nav-fontsize;
+
+    .left, .right {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        padding: 0px 5px;
+        margin: 0px 10px;
+    }
+
+    .link:hover {
+        // Top border doesn't push content,
+        // for some reason border-box doesn't work here?
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid white;
+    }
+
+    #login {
+        @include button;
+    }
+
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #mlh-badge {
+        // TODO: Needs sizing/overflow fix
+        width: 100px;
+        height: 100px;
+    }
 }
