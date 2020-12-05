@@ -190,7 +190,6 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: $section-padding;
-    padding-bottom: $section-padding / 2;
     align-items: center;
 
     div {
@@ -234,7 +233,7 @@ nav {
 }
 
 #leadership {
-    padding: ($section-padding / 2) $section-padding;
+    padding: $section-padding;
     background-color: $light-blue;
 
     h1 {
@@ -242,14 +241,7 @@ nav {
     }
 
     #leaders {
-
-        // Flex vs. Grid
-        // (Grid works way better!)
-
-        // display: flex;
-        // justify-content: space-evenly;
-        // flex-flow: row wrap;
-        // align-content: space-around;
+        // Grid is easier than flex here
         display: grid;
         grid-template-columns: repeat(5, 150px);
         gap: 30px;
