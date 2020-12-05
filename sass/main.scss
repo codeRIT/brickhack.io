@@ -185,3 +185,13 @@ nav {
 #hackathon {
     background-color: purple;
 }
+
+
+@media screen and (max-width: 1200px) {
+
+    // Scaling idea, key is clip
+    #shelf {
+        width: 800px;
+        overflow: clip;
+    }
+}
