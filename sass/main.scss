@@ -8,7 +8,7 @@ $red: #F1656E;
 $orange: #F9A56F;
 $pink: #FAC5BF;
 
-$nav-fontsize: 1.2em;
+$nav-fontsize: 1.3em;
 $nav-height: 90px;
 
 $section-padding: 140px;
@@ -17,6 +17,8 @@ $section-padding: 140px;
 $font-bold: 700;
 $font-medium: 500;
 $font-regular: 400;
+
+// Size for all titles on page
 $title-size: 3em;
 
 // Fonts
@@ -52,7 +54,7 @@ $title-size: 3em;
 }
 
 body {
-    background-color: $dark-blue;
+    background-color: $light-blue;
 }
 
 a {
@@ -62,9 +64,7 @@ a {
 
 // Nav
 nav {
-    height: 90px;
-    // background-color: rgba(white, 0);
-    background-color: lighten($light-blue, 5%);
+    background-color: rgba(white, 5%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
@@ -152,7 +152,7 @@ nav {
         height: 100%;
         width: 100%;
         right: 0;
-        top: -10px; // SVG a bit too short
+        top: -10px; // SVG crop issues?
         z-index: 1;
         background-image: url("../assets/desk1.svg");
         background-repeat: no-repeat;
@@ -162,14 +162,13 @@ nav {
     #shelf {
         position: absolute;
         width: 100%;
-        height: 200px;
+        height: 230px;
         left: 0;
         right: 0;
-        bottom: 0;
-        z-index: 1;
+        bottom: -20px; // SVG crop issues?
         background-image: url("../assets/shelf-crop.svg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: bottom center;
         background-size: cover;
     }
 
@@ -191,6 +190,7 @@ nav {
     justify-content: space-between;
     padding: $section-padding;
     align-items: center;
+    background-color: $dark-blue;
 
     div {
         width: 50%;
