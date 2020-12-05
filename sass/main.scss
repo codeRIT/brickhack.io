@@ -9,6 +9,12 @@ $orange: #F9A56F;
 $pink: #FAC5BF;
 
 $nav-fontsize: 1.2em;
+$nav-height: 90px;
+
+// Just to make it more semantic
+$font-bold: 700;
+$font-medium: 500;
+$font-regular: 400;
 
 // Fonts
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
@@ -38,6 +44,7 @@ $nav-fontsize: 1.2em;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    color: white;
 }
 
 body {
@@ -51,6 +58,7 @@ a {
 
 // Nav
 nav {
+    height: 90px;
     background-color: $light-blue;
     display: flex;
     justify-content: space-between;
@@ -86,5 +94,46 @@ nav {
         // TODO: Needs sizing/overflow fix
         width: 100px;
         height: 100px;
+    }
+}
+
+#hero {
+    // SASS needs to parse variable value inline
+    height: calc(100vh - #{$nav-height});
+    display: flex;
+    align-items: center;
+    // background-color: $red;
+    margin-left: 140px;
+
+    p, a {
+        margin-bottom: 30px;
+    }
+
+    p {
+        // This and the margin-bottom for {p, a}
+        // lets the different h elements
+        // appear to be equally spaced.
+        line-height: 0.7;
+    }
+
+    #bh7 {
+        font-size: 6em;
+        font-weight: $font-bold;
+    }
+
+    #premiere {
+        font-size: 3em;
+        font-weight: $font-medium;
+    }
+
+    #dates {
+        font-size: 2em;
+        font-weight: $font-regular;
+    }
+
+    #register {
+        @include button;
+        padding: 10px 80px;
+        font-size: 2em;
     }
 }
