@@ -112,6 +112,7 @@ nav {
 
     #hero-text {
         z-index: 2;
+        width: 40%;
     }
 
     p, a {
@@ -126,12 +127,12 @@ nav {
     }
 
     #bh7 {
-        font-size: 6em;
+        font-size: 5.4em;
         font-weight: $font-bold;
     }
 
     #premiere {
-        font-size: 3em;
+        font-size: 2.5em;
         font-weight: $font-medium;
     }
 
@@ -162,7 +163,7 @@ nav {
     #shelf {
         position: absolute;
         width: 100%;
-        height: 230px;
+        height: 300px;
         left: 0;
         right: 0;
         bottom: -20px; // SVG crop issues?
