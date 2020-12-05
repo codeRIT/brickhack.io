@@ -11,6 +11,8 @@ $pink: #FAC5BF;
 $nav-fontsize: 1.2em;
 $nav-height: 90px;
 
+$left-align: 140px;
+
 // Just to make it more semantic
 $font-bold: 700;
 $font-medium: 500;
@@ -104,7 +106,7 @@ nav {
     background-color: $light-blue;
     display: flex;
     align-items: center;
-    padding-left: 140px;
+    padding-left: $left-align;
 
     #hero-text {
         z-index: 2;
@@ -183,7 +185,42 @@ nav {
 
 
 #hackathon {
-    background-color: purple;
+    display: flex;
+    justify-content: space-around;
+    padding: $left-align;
+    align-items: center;
+
+    div {
+        width: 50%;
+    }
+
+    h2 {
+        font-size: 3em;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 1.2em;
+    }
+
+    #mlh {
+        @include button;
+        background-color: $light-blue;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        padding: 30px;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: lighten($light-blue, 5%);
+        }
+
+        a {
+            font-size: 1.2em;
+            font-weight: $font-medium;
+        }
+    }
 }
 
 
