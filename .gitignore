@@ -25,3 +25,9 @@ yarn.lock
 
 # Visual Studeio Code
 /.vscode
+
+# Local Environment
+.env
+
+# CircleCI Local Builds
+process.yml
