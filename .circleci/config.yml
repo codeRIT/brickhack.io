@@ -9,10 +9,12 @@ jobs:
       CIRCLE_REPOSITORY_URL=https://github.com/codeRIT/brickhack.io
     steps:
       # Fix for local builds https://github.com/CircleCI-Public/circleci-cli/issues/281
-      - run: |
-          if [[ ${CIRCLE_SHELL_ENV} =~ "localbuild" ]]; then
-            git clone $CIRCLE_REPOSITORY_URL /tmp/_circleci_local_build_repo
-          fi
+      - run: 
+          name: Check if localbuild
+          command: |
+            if [[ ${CIRCLE_SHELL_ENV} =~ "localbuild" ]]; then
+              git clone $CIRCLE_REPOSITORY_URL /tmp/_circleci_local_build_repo
+            fi
       - checkout
       - node/install:
           node-version: '15.3.0'
