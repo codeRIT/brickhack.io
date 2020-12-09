@@ -1,0 +1,284 @@
+
+
+// Variables
+$dark-blue: #1B315E;
+$blue: #2A407D;
+$light-blue: #465395;
+$red: #F1656E;
+$orange: #F9A56F;
+$pink: #FAC5BF;
+
+$nav-fontsize: 1.3em;
+$nav-height: 90px;
+
+$section-padding: 140px;
+
+// Just to make it more semantic
+$font-bold: 700;
+$font-medium: 500;
+$font-regular: 400;
+
+// Size for all titles on page
+$title-size: 3em;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+// Mixins
+@mixin button {
+    background-color: $red;
+    text-decoration: none;
+    user-select: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s all;
+    &:hover {
+        background-color: lighten($red, 5%);
+    }
+    &:active {
+        transform: translateY(4px);
+    }
+}
+
+// General
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    z-index: 2; // Allows for elements "below" std z-index
+}
+
+body {
+    background-color: $light-blue;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+// Nav
+nav {
+    background-color: rgba(white, 5%);
+    display: flex;
+    justify-content: space-between;
+    font-size: $nav-fontsize;
+
+    .left, .right {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        padding: 0px 5px;
+        margin: 0px 10px;
+    }
+
+    .link:hover {
+        // Top border doesn't push content,
+        // for some reason border-box doesn't work here?
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid white;
+    }
+
+    #login {
+        @include button;
+    }
+
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #mlh-badge {
+        // TODO: Needs sizing/overflow fix
+        width: 100px;
+        height: 100px;
+    }
+}
+
+#hero {
+    // SASS needs to parse variable value inline
+    height: calc(100vh - #{$nav-height});
+    background-color: $light-blue;
+    display: flex;
+    align-items: center;
+    padding-left: $section-padding;
+
+    #hero-text {
+        z-index: 2;
+        width: 40%;
+    }
+
+    p, a {
+        margin-bottom: 30px;
+    }
+
+    p {
+        // This and the margin-bottom for {p, a}
+        // lets the different h elements
+        // appear to be equally spaced.
+        line-height: 0.7;
+    }
+
+    #bh7 {
+        font-size: 5.4em;
+        font-weight: $font-bold;
+    }
+
+    #premiere {
+        font-size: 2.5em;
+        font-weight: $font-medium;
+    }
+
+    #dates {
+        font-size: 1.3em;
+        font-weight: $font-regular;
+    }
+
+    #register {
+        @include button;
+        padding: 10px 80px;
+        font-size: 2em;
+    }
+
+    // Shelf things!
+    #desk {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        right: 0;
+        top: -10px; // SVG crop issues?
+        z-index: 1;
+        background-image: url("../assets/desk1.svg");
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    #shelf {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        left: 0;
+        right: 0;
+        bottom: -20px; // SVG crop issues?
+        background-image: url("../assets/shelf.svg");
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+    }
+
+    #shapes {
+        position: relative;
+        height: 900px;
+        width: 900px;
+        margin-top: -80px;
+        z-index: 1;
+        background-image: url("../assets/shapes.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+
+#hackathon {
+    display: flex;
+    justify-content: space-between;
+    padding: $section-padding;
+    align-items: center;
+    background-color: $dark-blue;
+
+    div {
+        width: 50%;
+    }
+
+    h2 {
+        font-size: $title-size;
+    }
+
+    p {
+        margin-bottom: 20px;
+        font-size: 1.2em;
+    }
+
+    #mlh {
+        @include button;
+        background-color: $light-blue;
+        display: inline-block;
+        width: auto;
+        height: auto;
+        padding: 30px;
+        border-radius: 20px;
+
+        &:hover {
+            background-color: lighten($light-blue, 5%);
+        }
+
+        a {
+            font-size: 1.2em;
+            font-weight: $font-medium;
+        }
+
+        // TODO: Needs better alignment.
+        i.fa-arrow-right {
+            font-size: 1.6em;
+            color: $red;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+#leadership {
+    padding: $section-padding;
+    background-color: $light-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #leaders {
+        // Grid is easier than flex here
+        display: grid;
+        grid-template-columns: repeat(5, 150px);
+        gap: 30px;
+        justify-items: center;
+        justify-content: center;
+
+        margin-top: 40px;
+
+        .leader {
+
+            width: 150px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+
+            img {
+                border-radius: 20px;
+            }
+
+            .leader-tape {
+                position: relative;
+                margin: 0px auto -10px auto;
+                height: 20px;
+                width: 50%;
+                background-color: rgba($red, 50%);
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+
+    // Scaling idea, key is clip
+    #shelf {
+        width: 800px;
+        overflow: clip;
+    }
+}
