@@ -14,6 +14,8 @@ $nav-height: 90px;
 
 $section-padding: 140px;
 
+$wire-height: 15px;
+
 // Just to make it more semantic
 $font-bold: 700;
 $font-medium: 500;
@@ -202,7 +204,7 @@ nav {
     }
 
     .carousel {
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         margin-top: 40px;
 
@@ -215,7 +217,7 @@ nav {
             // CSS (per spec) doesn't allow separate overflow-y and x.
             // So, we add some padding to cheat it.
             // (https://css-tricks.com/popping-hidden-overflow/)
-            padding-top: 20px;
+            padding-top: 40px;
             margin-top: -40px;
             overflow: hidden;
         }
@@ -224,42 +226,44 @@ nav {
             border: 3px solid purple;
             height: 300px;
             width: 300px;
-            margin: 20px;
+            margin-right: 20px; // Same margin as wire top calculation
 
             .wire {
                 width: 200%;
                 margin: 0;
-                height: 15px;
+                height: $wire-height;
                 background: $pink;
 
-                top: -30px;
+                top: -($wire-height + 20px);
                 position: relative;
                 z-index: 1;
             }
 
             .front_clip {
-                width: 30px;
-                height: 60px;
-                background-color: $orange;
-
-                margin: 0 auto;
-                top: -60px;
-
                 position: relative;
+                width: 30px;
+                height: 80px;
+                background-color: $orange;
+                margin: 0 auto;
+                top: -70px;
                 z-index: 3;
-
             }
 
             .back_clip {
                 width: 10px;
-                height: 35px;
+                height: 40px;
                 background-color: $red;
-
-                top: -110px;
+                top: -130px;
                 margin-left: calc(50% - 25px);
-
                 position: relative;
                 z-index: 0;
+            }
+
+            // Clip is easier as rel, so this is abs.
+            img {
+                position: absolute;
+                top: 0;
+                bottom: 0;
             }
         }
 
@@ -270,6 +274,11 @@ nav {
             border: 1px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
+        }
+
+        // Make sure these appear over the slides!
+        .slick-prev, .slick-next {
+            z-index: 3;
         }
 
         // Use FontAwesome as pseudo-element so we don't
@@ -286,14 +295,14 @@ nav {
         }
 
         .slick-prev {
-            left: -100px;
+            left: 1%;
             &::before {
                 content: "\f060";
             }
         }
 
         .slick-next {
-            right: -100px;
+            right: 1%;
             &::before {
                 content: "\f061";
             }
