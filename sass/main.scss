@@ -7,6 +7,7 @@ $light-blue: #465395;
 $red: #F1656E;
 $orange: #F9A56F;
 $pink: #FAC5BF;
+$light-gray: #a2a8cd;
 
 $nav-fontsize: 1.3em;
 $nav-height: 90px;
@@ -203,13 +204,101 @@ nav {
     .carousel {
         width: 80%;
         margin: 0 auto;
+        margin-top: 40px;
+
+        // Temp for debugging numbers
+        // FIXME: Dont pull a byebug :)
+        text-align: center;
+
+        .slick-list {
+            // Slider depends on having the overflow-x hidden,
+            // CSS (per spec) doesn't allow separate overflow-y and x.
+            // So, we add some padding to cheat it.
+            // (https://css-tricks.com/popping-hidden-overflow/)
+            padding-top: 20px;
+            margin-top: -40px;
+            overflow: hidden;
+        }
 
         .slick-slide {
             border: 3px solid purple;
             height: 300px;
             width: 300px;
             margin: 20px;
+
+            .wire {
+                width: 200%;
+                margin: 0;
+                height: 15px;
+                background: $pink;
+
+                top: -30px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .front_clip {
+                width: 30px;
+                height: 60px;
+                background-color: $orange;
+
+                margin: 0 auto;
+                top: -60px;
+
+                position: relative;
+                z-index: 3;
+
+            }
+
+            .back_clip {
+                width: 10px;
+                height: 35px;
+                background-color: $red;
+
+                top: -110px;
+                margin-left: calc(50% - 25px);
+
+                position: relative;
+                z-index: 0;
+            }
         }
+
+        .slick-arrow {
+            width: 60px;
+            height: 60px;
+            background-color: $blue;
+            border: 1px solid #A3A9CA;
+            box-sizing: border-box;
+            border-radius: 50%;
+        }
+
+        // Use FontAwesome as pseudo-element so we don't
+        // have to fork slick-carousel.
+        // (https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements)
+        .slick-prev::before, .slick-next::before {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        .slick-prev {
+            left: -100px;
+            &::before {
+                content: "\f060";
+            }
+        }
+
+        .slick-next {
+            right: -100px;
+            &::before {
+                content: "\f061";
+            }
+        }
+
     }
 
     #hackathon-content {
@@ -219,7 +308,7 @@ nav {
         align-items: center;
 
         div {
-            width: 50%;
+            width: 40%;
         }
     }
 
