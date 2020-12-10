@@ -214,13 +214,6 @@ nav {
         margin: 0 auto;
         padding-top: $section-padding;
 
-        // Temp for debugging numbers
-        // FIXME: Dont pull a byebug :)
-        h2 {
-            text-align: center;
-            margin-top: -20px;
-        }
-
         .slick-list {
             // Slider depends on having the overflow-x hidden,
             // CSS (per spec) doesn't allow separate overflow-y and x.
