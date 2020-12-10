@@ -3,7 +3,7 @@
 
 name: CI - Build
 
-on: 
+on:
   pull_request:
     branches: [ master, develop ]
 
