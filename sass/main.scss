@@ -423,6 +423,18 @@ footer {
     }
 }
 
+@media screen and (max-width: 1440px) {
+    #hero {    
+        #bh7 {
+            margin-top: -217px;
+        }
+        #hero-text {
+            width: 57%;
+        }
+    }
+
+}
+
 @media screen and (max-width: 1200px) {
 
     // Scaling idea, key is clip
@@ -430,4 +442,6 @@ footer {
         width: 800px;
         overflow: clip;
     }
+
 }
+
