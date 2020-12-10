@@ -20,7 +20,8 @@ $leadership-size: 220px;
 $wire-height: 15px;
 
 // Just to make it more semantic
-$font-bold: 700;
+$font-extrabold: 700;
+$font-bold: 600;
 $font-medium: 500;
 $font-regular: 400;
 
@@ -28,7 +29,7 @@ $font-regular: 400;
 $title-size: 3em;
 
 // Fonts and other imports
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
 
@@ -139,7 +140,7 @@ nav {
 
     #bh7 {
         font-size: 5.4em;
-        font-weight: $font-bold;
+        font-weight: $font-extrabold;
     }
 
     #premiere {
@@ -362,8 +363,8 @@ nav {
     #schedule-block {
         // TODO: make margin consistent across other element
         margin: 40px auto 0px auto;
-        // width: 1000px;
-        width: 100%;
+        width: 1000px;
+        // width: 100%;
         background-color: $light-blue;
         border-radius: $img-border-radius;
         position: relative;
@@ -372,12 +373,14 @@ nav {
     #schedule-tapes {
         display: flex;
         justify-content: space-around;
+        position: absolute;
+        width: 100%;
 
         .tape {
             // For some reason, margin doesn't work on #schedule-tapes.
-            margin-top: -15px; // Half of tape height
-            height: 30px;
-            width: 20%;
+            margin-top: -20px; // Half of tape height
+            height: 40px;
+            width: 25%;
             background-color: rgba($red, 60%);
         }
     }
@@ -385,24 +388,24 @@ nav {
     #schedule-content {
         display: flex;
         justify-content: space-around;
-        margin: 0px 50px;
+        padding: 60px;
 
-
-        #days, #events {
-            width: 50%;
+        #days, .events {
+            // border: 3px solid yellow;
         }
 
         #days {
-            // border: 3px solid $light-gray;
+            width: 40%;
             display: flex;
             justify-content: space-around;
             flex-direction: column;
+            user-select: none;
+            cursor: pointer;
 
             .day {
-
                 .number {
                     font-size: 6em;
-                    font-weight: $font-medium;
+                    font-weight: $font-bold;
                     line-height: 1; // TODO: Can this be done cleaner?
                 }
 
@@ -411,11 +414,25 @@ nav {
                     font-weight: $font-regular;
                 }
             }
+
+            // Class set by JS in index.js on click
+            .day-active {
+                .number, .name {
+                    color: $orange;
+                }
+            }
         }
 
-        #events {
+        #times {
+            // width: 10%;
+            // margin-top: ;
+        }
+
+        .events {
+            width: 60%;
 
             .event {
+                height: 100px;
                 background-color: white;
                 border-radius: 15px;
                 margin: 10px 0px;
