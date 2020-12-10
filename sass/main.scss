@@ -13,6 +13,8 @@ $nav-height: 90px;
 
 $section-padding: 140px;
 
+$leadership-size: 220px;
+
 // Just to make it more semantic
 $font-bold: 700;
 $font-medium: 500;
@@ -244,7 +246,7 @@ nav {
     #leaders {
         // Grid is easier than flex here
         display: grid;
-        grid-template-columns: repeat(5, 150px);
+        grid-template-columns: repeat(5, $leadership-size);
         gap: 30px;
         justify-items: center;
         justify-content: center;
@@ -253,13 +255,15 @@ nav {
 
         .leader {
 
-            width: 150px;
+            width: $leadership-size;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
 
             img {
                 border-radius: 20px;
+                width: $leadership-size;
+                height: $leadership-size;
             }
 
             .leader-tape {
@@ -267,7 +271,7 @@ nav {
                 margin: 0px auto -10px auto;
                 height: 20px;
                 width: 50%;
-                background-color: rgba($red, 50%);
+                background-color: rgba($red, 60%);
             }
         }
     }
