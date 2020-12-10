@@ -7,14 +7,19 @@ on:
   push: master
 
 jobs:
-  build:
-
+  deploy-production:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
       with:
-        node-version: 14.x
-    - run: npm ci
-    - run: npm run build --if-present
+        ref: master
+    - run: node --version
+    - name: Install dependencies
+      run: npm ci
+    - name: Builder
+      run: npm run build
+    - name: Deployyyyy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        publish_dir: ./build
+        allow_empty_commit: true
