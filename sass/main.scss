@@ -28,6 +28,10 @@ $font-regular: 400;
 // Size for all titles on page
 $title-size: 3em;
 
+// MAX events (across either day)
+// TODO: Make this more dynamic via JS?
+$event-count: 6;
+
 // Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
@@ -56,11 +60,6 @@ $title-size: 3em;
     @return nth($colors, random(length($colors)))
 }
 
-$event-count: 5;
-
-// @function rand-events($colors...) {
-
-// }
 
 // General
 * {
@@ -431,7 +430,6 @@ nav {
 
         .events {
             width: 60%;
-
 
             // Sequentially assign colors to all elements
             $colors: $red, $orange, $light-gray;
