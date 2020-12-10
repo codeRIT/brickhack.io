@@ -55,7 +55,10 @@ $title-size: 3em;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
-    z-index: 2; // Allows for elements "below" std z-index
+     // Allows for elements "below" std z-index
+     // (note: only set if child adopts explicit position value)
+    z-index: 2;
+
 }
 
 body {
@@ -208,7 +211,6 @@ nav {
         margin: 0 auto;
         padding-top: $section-padding;
 
-
         // Temp for debugging numbers
         // FIXME: Dont pull a byebug :)
         h2 {
@@ -227,7 +229,6 @@ nav {
         }
 
         .slick-slide {
-            border: 3px solid purple;
             height: 300px;
             width: 300px;
             margin-right: 20px; // Same margin as wire top calculation
@@ -237,10 +238,8 @@ nav {
                 margin: 0;
                 height: $wire-height;
                 background: $pink;
-
                 top: -($wire-height + 20px);
                 position: relative;
-                z-index: 1;
             }
 
             .front_clip {
@@ -250,7 +249,6 @@ nav {
                 background-color: $orange;
                 margin: 0 auto;
                 top: -70px;
-                z-index: 3;
             }
 
             .back_clip {
@@ -268,6 +266,7 @@ nav {
                 position: absolute;
                 top: 0;
                 bottom: 0;
+                z-index: 1;
             }
         }
 
