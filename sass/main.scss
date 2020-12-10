@@ -14,6 +14,9 @@ $nav-height: 90px;
 
 $section-padding: 140px;
 
+$img-border-radius: 20px;
+$leadership-size: 220px;
+
 $wire-height: 15px;
 
 // Just to make it more semantic
@@ -211,13 +214,6 @@ nav {
         margin: 0 auto;
         padding-top: $section-padding;
 
-        // Temp for debugging numbers
-        // FIXME: Dont pull a byebug :)
-        h2 {
-            text-align: center;
-            margin-top: -20px;
-        }
-
         .slick-list {
             // Slider depends on having the overflow-x hidden,
             // CSS (per spec) doesn't allow separate overflow-y and x.
@@ -366,7 +362,7 @@ nav {
     #leaders {
         // Grid is easier than flex here
         display: grid;
-        grid-template-columns: repeat(5, 150px);
+        grid-template-columns: repeat(5, $leadership-size);
         gap: 30px;
         justify-items: center;
         justify-content: center;
@@ -375,13 +371,15 @@ nav {
 
         .leader {
 
-            width: 150px;
+            width: $leadership-size;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
 
             img {
                 border-radius: 20px;
+                width: $leadership-size;
+                height: $leadership-size;
             }
 
             .leader-tape {
@@ -389,7 +387,7 @@ nav {
                 margin: 0px auto -10px auto;
                 height: 20px;
                 width: 50%;
-                background-color: rgba($red, 50%);
+                background-color: rgba($red, 60%);
             }
         }
     }
