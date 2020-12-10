@@ -37,3 +37,18 @@ for (let i = 0; i < acc.length; i++) {
         }
     });
 }
+
+// Schedule toggle code
+$('.day-second-events').hide();
+$('.day-first').click(function() {
+    $('.day-first-events').show();
+    $('.day-first').addClass('day-active');
+    $('.day-second-events').hide();
+    $('.day-second').removeClass('day-active');
+});
+$('.day-second').click(function() {
+    $('.day-first-events').hide();
+    $('.day-first').removeClass('day-active');
+    $('.day-second-events').show();
+    $('.day-second').addClass('day-active');
+});
