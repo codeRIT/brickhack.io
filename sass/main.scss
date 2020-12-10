@@ -206,11 +206,15 @@ nav {
     .carousel {
         width: 100%;
         margin: 0 auto;
-        margin-top: 40px;
+        padding-top: $section-padding;
+
 
         // Temp for debugging numbers
         // FIXME: Dont pull a byebug :)
-        text-align: center;
+        h2 {
+            text-align: center;
+            margin-top: -20px;
+        }
 
         .slick-list {
             // Slider depends on having the overflow-x hidden,
@@ -268,10 +272,11 @@ nav {
         }
 
         .slick-arrow {
+            margin-top: 70px;
             width: 60px;
             height: 60px;
             background-color: $blue;
-            border: 1px solid #A3A9CA;
+            border: 2px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
         }
