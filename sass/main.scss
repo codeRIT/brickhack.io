@@ -351,6 +351,72 @@ nav {
     }
 }
 
+#schedule {
+    padding: $section-padding;
+    background-color: $blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #schedule-block {
+        // TODO: make margin consistnet across other element
+        margin: 0 auto;
+        width: 100%;
+        background-color: $light-blue;
+        border-radius: $img-border-radius;
+        position: relative;
+    }
+
+    #schedule-tapes {
+        display: flex;
+        width: 100%;
+        border: 3px solid yellow;
+        justify-content: space-around;
+
+        .tape {
+            height: 20px;
+            width: 20%;
+            background-color: rgba($red, 60%);
+        }
+    }
+
+    #schedule-content {
+        display: flex;
+        justify-content: space-around;
+
+
+        #days, #events {
+            width: 50%;
+        }
+
+        #days {
+            border: 3px solid $light-gray;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+
+            .day {
+                .number {
+                    font-size: 4em;
+                    font-weight: $font-medium;
+                }
+
+                .name {
+                    font-size: 1em;
+                    font-weight: $font-regular;
+                }
+            }
+        }
+
+        #events {
+            border: 3px solid $light-gray;
+        }
+
+    }
+
+}
+
 #leadership {
     padding: $section-padding;
     background-color: $light-blue;
