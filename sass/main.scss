@@ -351,6 +351,77 @@ nav {
     }
 }
 
+#faq-content {
+    padding: $section-padding;
+    background-color: $dark-blue;
+    #faq-wrapper {
+        h1 {
+            font-size: $title-size;
+            margin-bottom: 4rem;
+        }
+        #faq-cards {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            margin: auto;
+            .card {
+                width: 49%;
+                .accordion {
+                    transition: 0.4s;
+                    text-align: left;
+                    cursor: pointer;
+                    padding: 1rem 1.5rem;
+                    background-color: #455296;
+                    border-radius: 7px;
+                    border: 1px solid $light-blue;
+                    align-self: start;
+                    outline: none;
+                    width: 100%;
+                    &::before {
+                        content: '\002B';
+                        margin-right: 1rem;
+                    }
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+                .panel {
+                    display: block;
+                    margin: 0 0 2rem;
+                    background-color: #fff;
+                    overflow: hidden;
+                    border-bottom-left-radius: 7px;
+                    border-bottom-right-radius: 7px;
+                    padding: 0 18px;
+                    p {
+                        color: $dark-blue
+                    }
+                }
+                
+                .active {
+                    background-color: #fff;
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+                
+                .active, 
+                .active:before {
+                    content: "\2796";
+                    margin-right: 1rem;
+                }
+            }
+        }
+        #contact {
+            margin: 4rem 0 0;
+            a {
+                text-transform: uppercase;
+                color: $red;
+                font-weight: $font-bold;
+            }
+        }
+    }
+}
+
 #leadership {
     padding: $section-padding;
     background-color: $light-blue;
