@@ -361,10 +361,16 @@ nav {
         #faq-cards {
             display: flex;
             flex-flow: row wrap;
-            justify-content: space-between;
-            margin: auto;
-            .card {
+            &-left {
                 width: 49%;
+                margin-right: .5rem;
+            }
+            &-right {
+                width: 49%;
+                margin-left: .5rem;
+            }
+            .card {
+                width: 100%;
                 .accordion {
                     text-align: left;
                     padding: 1rem 1.5rem;
@@ -388,7 +394,6 @@ nav {
                         &-orange {
                             color: $orange;
                         }
-
                     }
                     &:hover {
                         cursor: pointer;
@@ -407,7 +412,6 @@ nav {
                         line-height: 23px;
                     }
                 }
-
                 .active {
                     background-color: #fff;
                     border-bottom-left-radius: 0;
@@ -415,7 +419,6 @@ nav {
                     margin-bottom: 0;
                     color: $dark-blue;
                 }
-
                 .active:before {
                     content: "\2796";
                     margin-right: 1rem;
