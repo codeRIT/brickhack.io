@@ -12,13 +12,13 @@ import 'slick-carousel'
 $(document).ready(function() {
     $('.carousel').slick({
         infinite: true,
-        speed: 200,
         swipeToSlide: true,
         variableWidth: true,
         slidesToShow: 3,
         slidesToScroll: 2,
-        cssEase: 'ease-in-out'
-        // autoplay: true,
-        // autoplaySpeed: 200
+        cssEase: 'ease-in-out',
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 1000,
     });
 });

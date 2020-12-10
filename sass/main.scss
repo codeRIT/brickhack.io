@@ -264,9 +264,12 @@ nav {
             // Clip is easier as rel, so this is abs.
             img {
                 position: absolute;
+                width: 300px;
+                height: 300px;
                 top: 0;
                 bottom: 0;
                 z-index: 1;
+                border-radius: 20px;
             }
         }
 
