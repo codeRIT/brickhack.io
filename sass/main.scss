@@ -27,8 +27,7 @@ $font-regular: 400;
 // Size for all titles on page
 $title-size: 3em;
 
-// Fonts and other imports
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+// Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
 
@@ -476,6 +475,36 @@ nav {
     }
 }
 
+footer {
+    width: 100%;
+    height: 300px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../assets/footer.svg");
+    background-repeat: repeat no-repeat;
+    background-position: bottom center;
+    background-size: auto 300px;
+    overflow-x: clip;
+
+    #footer-content {
+        width: 400px;
+        height: 240px;
+        margin: auto;
+        padding: 30px;
+        text-align: center;
+
+        p, a, i {
+            margin-bottom: 10px;
+        }
+
+        // FA brand icons
+        i {
+            font-size: 3em;
+            padding-right: 10px;
+        }
+    }
+}
 
 @media screen and (max-width: 1200px) {
 
