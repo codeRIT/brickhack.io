@@ -20,12 +20,17 @@ $leadership-size: 220px;
 $wire-height: 15px;
 
 // Just to make it more semantic
-$font-bold: 700;
+$font-extrabold: 700;
+$font-bold: 600;
 $font-medium: 500;
 $font-regular: 400;
 
 // Size for all titles on page
 $title-size: 3em;
+
+// MAX events (across either day)
+// TODO: Make this more dynamic via JS?
+$event-count: 6;
 
 // Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
@@ -50,6 +55,12 @@ $title-size: 3em;
     }
 }
 
+// Functions for random color selection (hero)
+@function rand-color($colors...) {
+    @return nth($colors, random(length($colors)))
+}
+
+
 // General
 * {
     margin: 0;
@@ -70,6 +81,10 @@ body {
 a {
     text-decoration: none;
     color: white;
+}
+
+p {
+    font-size: 1.2em;
 }
 
 // Nav
@@ -138,7 +153,7 @@ nav {
 
     #bh7 {
         font-size: 5.4em;
-        font-weight: $font-bold;
+        font-weight: $font-extrabold;
     }
 
     #premiere {
@@ -205,7 +220,6 @@ nav {
 
     p {
         margin-bottom: 20px;
-        font-size: 1.2em;
     }
 
     .carousel {
@@ -348,6 +362,103 @@ nav {
             vertical-align: text-bottom;
         }
     }
+}
+
+#schedule {
+    padding: $section-padding;
+    background-color: $blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #schedule-block {
+        // TODO: make margin consistent across other element
+        margin: 40px auto 0px auto;
+        width: 1000px;
+        background-color: $light-blue;
+        border-radius: $img-border-radius;
+        position: relative;
+    }
+
+    #schedule-tapes {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        width: 100%;
+
+        .tape {
+            // For some reason, margin doesn't work on #schedule-tapes.
+            margin-top: -20px; // Half of tape height
+            height: 40px;
+            width: 25%;
+            background-color: rgba($red, 60%);
+        }
+    }
+
+    #schedule-content {
+        display: flex;
+        justify-content: space-around;
+        padding: 60px 100px;
+
+        #days {
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            user-select: none;
+            cursor: pointer;
+
+            .day {
+                .number {
+                    font-size: 6.5em;
+                    font-weight: $font-bold;
+                    line-height: 1; // TODO: Can this be done cleaner?
+                }
+
+                .name {
+                    font-size: 2em;
+                    font-weight: $font-regular;
+                }
+            }
+
+            // Class set by JS in index.js on click
+            .day-active {
+                .number, .name {
+                    color: $orange;
+                }
+            }
+        }
+
+        .events {
+            width: 60%;
+
+            // Sequentially assign colors to all elements
+            $colors: $red, $orange, $light-gray;
+            @for $i from 1 through $event-count {
+                .event:nth-child(#{$i}) {
+                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                }
+            }
+
+            .event {
+                background-color: white;
+                border-radius: 15px;
+                margin: 10px 0px;
+                padding: 10px;
+
+                .time {
+                    color: $light-blue;
+                }
+                .title {
+                    color: black;
+                    font-size: 1.3em;
+                }
+            }
+        }
+
+    }
+
 }
 
 #leadership {
