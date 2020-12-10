@@ -377,6 +377,7 @@ nav {
                     align-self: start;
                     outline: none;
                     width: 100%;
+                    margin-bottom: 1rem;
                     &::before {
                         content: '\002B';
                         margin-right: 1rem;
@@ -386,7 +387,7 @@ nav {
                     }
                 }
                 .panel {
-                    display: block;
+                    display: none;
                     margin: 0 0 2rem;
                     background-color: #fff;
                     overflow: hidden;
@@ -394,17 +395,18 @@ nav {
                     border-bottom-right-radius: 7px;
                     padding: 0 18px;
                     p {
-                        color: $dark-blue
+                        color: $dark-blue;
                     }
                 }
-                
+
                 .active {
                     background-color: #fff;
                     border-bottom-left-radius: 0;
                     border-bottom-right-radius: 0;
+                    margin-bottom: 0;
                 }
-                
-                .active, 
+
+                .active,
                 .active:before {
                     content: "\2796";
                     margin-right: 1rem;
