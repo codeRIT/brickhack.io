@@ -223,8 +223,8 @@ nav {
             // CSS (per spec) doesn't allow separate overflow-y and x.
             // So, we add some padding to cheat it.
             // (https://css-tricks.com/popping-hidden-overflow/)
-            padding-top: 40px;
-            margin-top: -40px;
+            padding-top: 60px;
+            margin-top: -60px;
             overflow: hidden;
         }
 
@@ -245,17 +245,17 @@ nav {
             .front_clip {
                 position: relative;
                 width: 30px;
-                height: 80px;
+                height: 90px;
                 background-color: $orange;
                 margin: 0 auto;
-                top: -70px;
+                top: -90px;
             }
 
             .back_clip {
                 width: 10px;
-                height: 40px;
+                height: 60px;
                 background-color: $red;
-                top: -130px;
+                top: -155px;
                 margin-left: calc(50% - 25px);
                 position: relative;
                 z-index: 0;
