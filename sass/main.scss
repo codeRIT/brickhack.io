@@ -360,8 +360,9 @@ nav {
     }
 
     #schedule-block {
-        // TODO: make margin consistnet across other element
-        margin: 0 auto;
+        // TODO: make margin consistent across other element
+        margin: 40px auto 0px auto;
+        // width: 1000px;
         width: 100%;
         background-color: $light-blue;
         border-radius: $img-border-radius;
@@ -370,12 +371,12 @@ nav {
 
     #schedule-tapes {
         display: flex;
-        width: 100%;
-        border: 3px solid yellow;
         justify-content: space-around;
 
         .tape {
-            height: 20px;
+            // For some reason, margin doesn't work on #schedule-tapes.
+            margin-top: -15px; // Half of tape height
+            height: 30px;
             width: 20%;
             background-color: rgba($red, 60%);
         }
@@ -384,6 +385,7 @@ nav {
     #schedule-content {
         display: flex;
         justify-content: space-around;
+        margin: 0px 50px;
 
 
         #days, #events {
@@ -391,26 +393,43 @@ nav {
         }
 
         #days {
-            border: 3px solid $light-gray;
+            // border: 3px solid $light-gray;
             display: flex;
             justify-content: space-around;
             flex-direction: column;
 
             .day {
+
                 .number {
-                    font-size: 4em;
+                    font-size: 6em;
                     font-weight: $font-medium;
+                    line-height: 1; // TODO: Can this be done cleaner?
                 }
 
                 .name {
-                    font-size: 1em;
+                    font-size: 1.5em;
                     font-weight: $font-regular;
                 }
             }
         }
 
         #events {
-            border: 3px solid $light-gray;
+
+            .event {
+                background-color: white;
+                border-radius: 15px;
+                margin: 10px 0px;
+                padding: 10px;
+                border-left: 30px solid $red;
+
+                .time {
+                    color: $light-blue;
+                }
+                .title {
+                    color: black;
+                    font-size: 1.3em;
+                }
+            }
         }
 
     }
