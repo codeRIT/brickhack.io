@@ -28,8 +28,7 @@ $font-regular: 400;
 // Size for all titles on page
 $title-size: 3em;
 
-// Fonts and other imports
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+// Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
 
