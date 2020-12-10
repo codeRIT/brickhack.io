@@ -389,10 +389,6 @@ nav {
         justify-content: space-around;
         padding: 60px;
 
-        #days, .events {
-            // border: 3px solid yellow;
-        }
-
         #days {
             width: 40%;
             display: flex;
@@ -422,16 +418,10 @@ nav {
             }
         }
 
-        #times {
-            // width: 10%;
-            // margin-top: ;
-        }
-
         .events {
             width: 60%;
 
             .event {
-                height: 100px;
                 background-color: white;
                 border-radius: 15px;
                 margin: 10px 0px;
