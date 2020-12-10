@@ -83,6 +83,10 @@ a {
     color: white;
 }
 
+p {
+    font-size: 1.2em;
+}
+
 // Nav
 nav {
     background-color: rgba(white, 5%);
@@ -216,7 +220,6 @@ nav {
 
     p {
         margin-bottom: 20px;
-        font-size: 1.2em;
     }
 
     .carousel {
@@ -373,7 +376,6 @@ nav {
         // TODO: make margin consistent across other element
         margin: 40px auto 0px auto;
         width: 1000px;
-        // width: 100%;
         background-color: $light-blue;
         border-radius: $img-border-radius;
         position: relative;
@@ -397,7 +399,7 @@ nav {
     #schedule-content {
         display: flex;
         justify-content: space-around;
-        padding: 60px;
+        padding: 60px 100px;
 
         #days {
             width: 40%;
@@ -409,13 +411,13 @@ nav {
 
             .day {
                 .number {
-                    font-size: 6em;
+                    font-size: 6.5em;
                     font-weight: $font-bold;
                     line-height: 1; // TODO: Can this be done cleaner?
                 }
 
                 .name {
-                    font-size: 1.5em;
+                    font-size: 2em;
                     font-weight: $font-regular;
                 }
             }
