@@ -51,6 +51,17 @@ $title-size: 3em;
     }
 }
 
+// Functions for random color selection (hero)
+@function rand-color($colors...) {
+    @return nth($colors, random(length($colors)))
+}
+
+$event-count: 5;
+
+// @function rand-events($colors...) {
+
+// }
+
 // General
 * {
     margin: 0;
@@ -421,12 +432,20 @@ nav {
         .events {
             width: 60%;
 
+
+            // Sequentially assign colors to all elements
+            $colors: $red, $orange, $light-gray;
+            @for $i from 1 through $event-count {
+                .event:nth-child(#{$i}) {
+                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                }
+            }
+
             .event {
                 background-color: white;
                 border-radius: 15px;
                 margin: 10px 0px;
                 padding: 10px;
-                border-left: 30px solid $red;
 
                 .time {
                     color: $light-blue;
