@@ -15,9 +15,11 @@ $nav-height: 90px;
 $section-padding: 140px;
 
 $img-border-radius: 20px;
-$leadership-size: 220px;
 
 $wire-height: 15px;
+
+$leadership-size: 220px;
+$leadership-size-mobile: 180px;
 
 // Just to make it more semantic
 $font-extrabold: 700;
@@ -84,7 +86,7 @@ a {
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 // Nav
@@ -364,6 +366,101 @@ nav {
     }
 }
 
+#faq {
+    padding: $section-padding;
+    background-color: $dark-blue;
+    #faq-wrapper {
+        h1 {
+            font-size: $title-size;
+            margin-bottom: 4rem;
+        }
+        #faq-cards {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            // TODO: This can be cleaner.
+            $card-m: 20px;
+            &-left {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-right: $card-m / 2;
+            }
+            &-right {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-left: $card-m / 2;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: $card-m;
+                border-radius: 7px;
+                background-color: $light-blue;
+                &:hover {
+                    background-color: lighten($light-blue, 5%);
+                }
+                .accordion-header {
+                    background-color: transparent;
+                    cursor: pointer;
+                    text-align: left;
+                    padding: 20px 30px;
+                    border: none;
+                    width: 100%;
+                    font-size: $nav-fontsize;
+
+                    .fa-plus, .fa-minus {
+                        margin-right: 10px;
+                    }
+                    .fa-plus {
+                        &-red    { color: $red; }
+                        &-pink   { color: $pink; }
+                        &-orange { color: $orange; }
+                    }
+                    .fa-minus {
+                        color: $blue;
+                    }
+                }
+                .panel {
+                    display: none; // Toggled in JS
+                    margin-top: -30px;
+                    padding: 20px 30px;
+                    font-size: 0.8em;
+                    // Align w/ header text, not sure if this can be made cleaner.
+                    margin-left: 35px;
+
+                    p {
+                        color: $dark-blue;
+                        line-height: 23px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        color: $red;
+                    }
+                }
+            }
+            .active {
+                background-color: white;
+
+                // Need to explicitly set for some reason
+                .accordion-header, .panel {
+                    color: $dark-blue;
+                }
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+        #contact {
+            a {
+                text-transform: uppercase;
+                color: $red;
+                font-weight: $font-bold;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
 #schedule {
     padding: $section-padding;
     background-color: $blue;
@@ -462,32 +559,33 @@ nav {
 }
 
 #leadership {
-    padding: $section-padding;
     background-color: $light-blue;
 
     h1 {
         font-size: $title-size;
     }
 
+    #leadership-content {
+        padding: $section-padding;
+    }
+
     #leaders {
         // Grid is easier than flex here
         display: grid;
         grid-template-columns: repeat(5, $leadership-size);
-        gap: 30px;
+        gap: 50px;
         justify-items: center;
         justify-content: center;
-
         margin-top: 40px;
 
         .leader {
-
             width: $leadership-size;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
 
             img {
-                border-radius: 20px;
+                border-radius: $img-border-radius;
                 width: $leadership-size;
                 height: $leadership-size;
             }
@@ -498,6 +596,10 @@ nav {
                 height: 20px;
                 width: 50%;
                 background-color: rgba($red, 60%);
+            }
+
+            .nowrap {
+                white-space: nowrap;
             }
         }
     }
@@ -534,20 +636,18 @@ footer {
     }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 1500px) {
+
     #hero {
-	padding-left: 40px;    
-        #bh7 {
-            margin-top: -200px;
-        }
-        #hero-text {
-            width: 70%;
+        padding-left: 40px;
+            #bh7 {
+                margin-top: -200px;
+            }
+            #hero-text {
+                width: 70%;
+            }
         }
     }
-
-}
-
-@media screen and (max-width: 1200px) {
 
     // Scaling idea, key is clip
     #shelf {
@@ -555,4 +655,26 @@ footer {
         overflow: clip;
     }
 
+    #leadership #leaders {
+        justify-content: space-between;
+        grid-template-columns: repeat(5, $leadership-size-mobile);
+        width: 100%;
+        gap: 30px;
+
+        .leader {
+            width: $leadership-size-mobile;
+
+            img {
+                width: $leadership-size-mobile;
+                height: $leadership-size-mobile;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+
+    #leadership #leaders {
+        justify-content: space-between;
+    }
 }
