@@ -142,29 +142,27 @@ nav {
     height: calc(100vh - #{$nav-height});
     background-color: $light-blue;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
     padding-left: $section-padding;
+    // border: 3px solid yellow;
 
     #hero-text {
         z-index: 2;
-        width: 40%;
-    }
-
-    p, a {
-        margin-bottom: 30px;
+        white-space: nowrap;
+        margin-top: 13%;
+        // border: 3px solid yellow;
     }
 
     p {
-        // This and the margin-bottom for {p, a}
-        // lets the different h elements
+        // This lets the different h elements
         // appear to be equally spaced.
         line-height: 0.7;
+        margin-bottom: 30px;
     }
 
     #bh7 {
         font-size: 5.4em;
         font-weight: $font-extrabold;
-        margin-top: -200px;
     }
 
     #premiere {
@@ -193,7 +191,7 @@ nav {
         z-index: 1;
         background-image: url("../assets/desk1.svg");
         background-repeat: no-repeat;
-        background-position: right;
+        background-position: bottom right;
     }
 
     #shelf {
@@ -210,7 +208,8 @@ nav {
     }
 
     #shapes {
-        position: relative;
+        position: absolute;
+        right: 0;
         height: 900px;
         width: 900px;
         margin-top: -80px;
@@ -650,8 +649,43 @@ footer {
     }
 }
 
+// TODO: Make standard breakpoint widths with vars
 @media screen and (max-width: 1500px) {
+    #hero {
+        padding-left: 50px;
 
+        #hero-text {
+            margin-top: 5%;
+        }
+
+        #bh7 {
+            font-size: 5.0em;
+        }
+
+        #premiere {
+            font-size: 2.0em;
+        }
+
+        #dates {
+            font-size: 1.3em;
+        }
+
+        #desk {
+            height: 100%;
+            width: 1000px;
+            bottom: 0;
+            overflow: clip;
+            top: auto;
+            border: 3px solid yellow;
+        }
+
+        #shapes {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1500px) {
 
     // Scaling idea, key is clip
     #shelf {
@@ -676,17 +710,8 @@ footer {
     }
 }
 
-@media screen and (max-width: 1630px) {
 
-    #hero {
-        padding-left: 100px;
-        #bh7 {
-            margin-top: -340px;
-        }
-        #hero-text {
-            width: 70%;
-        }
-    }
+@media screen and (max-width: 1630px) {
 
     #leadership #leaders {
         justify-content: space-between;
