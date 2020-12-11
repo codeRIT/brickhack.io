@@ -18,5 +18,6 @@ jobs:
     - name: Push to Staging
       uses: dokku/github-action@master
       with:
+        git_push_flags: '--force'
         git_remote_url: 'ssh://dokku@csh-cloud.oweb.co:22/brickhack-stage'
         ssh_private_key: ${{ secrets.CODERIT_CLOUD_SSH_PRIVATE_KEY }}
