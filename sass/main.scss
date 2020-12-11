@@ -719,6 +719,15 @@ footer {
         }
     }
 
+    #faq #faq-wrapper #faq-cards {
+        flex-direction: column;
+
+        &-left, &-right {
+            margin: 0;
+            width: 100%;
+        }
+    }
+
     #leadership #leaders {
         justify-content: space-between;
         grid-template-columns: repeat(3, $leadership-size-mobile);
