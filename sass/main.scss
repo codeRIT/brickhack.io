@@ -15,9 +15,11 @@ $nav-height: 90px;
 $section-padding: 140px;
 
 $img-border-radius: 20px;
-$leadership-size: 220px;
 
 $wire-height: 15px;
+
+$leadership-size: 220px;
+$leadership-size-mobile: 180px;
 
 // Just to make it more semantic
 $font-extrabold: 700;
@@ -557,32 +559,33 @@ nav {
 }
 
 #leadership {
-    padding: $section-padding;
     background-color: $light-blue;
 
     h1 {
         font-size: $title-size;
     }
 
+    #leadership-content {
+        padding: $section-padding;
+    }
+
     #leaders {
         // Grid is easier than flex here
         display: grid;
         grid-template-columns: repeat(5, $leadership-size);
-        gap: 30px;
+        gap: 50px;
         justify-items: center;
         justify-content: center;
-
         margin-top: 40px;
 
         .leader {
-
             width: $leadership-size;
             text-align: center;
             margin-left: auto;
             margin-right: auto;
 
             img {
-                border-radius: 20px;
+                border-radius: $img-border-radius;
                 width: $leadership-size;
                 height: $leadership-size;
             }
@@ -593,6 +596,10 @@ nav {
                 height: 20px;
                 width: 50%;
                 background-color: rgba($red, 60%);
+            }
+
+            .nowrap {
+                white-space: nowrap;
             }
         }
     }
@@ -629,11 +636,38 @@ footer {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
+
+    section {
+        // padding: $section-padding / 2;
+    }
 
     // Scaling idea, key is clip
     #shelf {
         width: 800px;
         overflow: clip;
+    }
+
+    #leadership #leaders {
+        justify-content: space-between;
+        grid-template-columns: repeat(5, $leadership-size-mobile);
+        width: 100%;
+        gap: 30px;
+
+        .leader {
+            width: $leadership-size-mobile;
+
+            img {
+                width: $leadership-size-mobile;
+                height: $leadership-size-mobile;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+
+    #leadership #leaders {
+        justify-content: space-between;
     }
 }
