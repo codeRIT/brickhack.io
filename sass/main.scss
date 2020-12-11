@@ -343,7 +343,6 @@ nav {
     #mlh {
         @include button;
         background-color: $light-blue;
-        display: inline-block;
         margin: 0 auto;
         padding: 30px;
         border-radius: 20px;
@@ -352,7 +351,11 @@ nav {
             background-color: lighten($light-blue, 5%);
         }
 
-        a {
+        i, p {
+            display: inline;
+        }
+
+        p {
             font-size: 1.2em;
             font-weight: $font-medium;
         }
@@ -362,6 +365,7 @@ nav {
             font-size: 1.6em;
             color: $red;
             vertical-align: text-bottom;
+            padding-right: 10px;
         }
     }
 }
