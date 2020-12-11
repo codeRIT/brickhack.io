@@ -651,14 +651,22 @@ footer {
 }
 
 // TODO: Make standard breakpoint widths with vars
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1100px) {
+
+    #hero #hero-text {
+        margin: 30% auto 0% auto;
+        text-align: center;
+        margin-top: 10%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
     #hero {
-        padding: 0;
+        padding: 50px;
 
         #hero-text {
             padding: 0;
-            margin: 30% auto 0% auto;
-            text-align: center;
         }
 
         #bh7 {
@@ -670,7 +678,7 @@ footer {
         }
 
         #dates {
-            font-size: 1.3em;
+            font-size: 1.1em;
         }
 
         #desk {
