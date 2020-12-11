@@ -385,48 +385,43 @@ nav {
             }
             .card {
                 width: 100%;
-                .accordion {
+                margin-bottom: 20px;
+                border-radius: 7px;
+                background-color: $light-blue;
+
+                &:hover {
+                    // transition: all 400ms ease;
+                    background-color: lighten($light-blue, 5%);
+                }
+
+                .accordion-header {
+                    background-color: transparent;
+                    cursor: pointer;
                     text-align: left;
                     padding: 1rem 1.5rem;
-                    background-color: #455296;
-                    border-radius: 7px;
                     border: none;
                     outline: none;
                     width: 100%;
                     font-size: $nav-fontsize;
-                    margin-bottom: 1rem;
-                    .fa-plus {
-                        content: '\02795';
+
+                    .fa-plus, .fa-minus {
                         margin-right: 1rem;
-                        &-red {
-                            color: $red;
-                        }
-                        
-                        &-pink {
-                            color: $pink;
-                        }
-                        &-orange {
-                            color: $orange;
-                        }
                     }
-                    &:hover {
-                        cursor: pointer;
-                        transition: all 400ms ease;
-                        &:hover {
-                            background-color: lighten($red, 5%);
-                        }
-                        &:active {
-                            transform: translateY(4px);
-                        }
+
+                    .fa-plus {
+                        &-red    { color: $red; }
+                        &-pink   { color: $pink; }
+                        &-orange { color: $orange; }
+                    }
+
+                    .fa-minus {
+                        color: $blue;
                     }
                 }
                 .panel {
                     display: none;
                     margin: 0 0 2rem;
-                    background-color: #fff;
                     overflow: hidden;
-                    border-bottom-left-radius: 7px;
-                    border-bottom-right-radius: 7px;
                     padding: 0 3.5rem 1rem 4.1rem;
                     font-size: 12px;
                     p {
@@ -435,16 +430,18 @@ nav {
                         transition: top .5s ease-in-out;
                     }
                 }
-                .active {
-                    background-color: #fff;
-                    border-bottom-left-radius: 0;
-                    border-bottom-right-radius: 0;
-                    margin-bottom: 0;
+            }
+            .active {
+                margin-bottom: 0;
+                background-color: white;
+
+                // Need to explicitly set for some reason
+                .accordion-header, .panel {
                     color: $dark-blue;
                 }
-                .active:before {
-                    content: "\2796";
-                    margin-right: 1rem;
+
+                &:hover {
+                    background-color: white;
                 }
             }
         }

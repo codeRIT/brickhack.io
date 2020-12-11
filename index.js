@@ -23,17 +23,26 @@ $(document).ready(function() {
     });
 });
 
-let acc = document.getElementsByClassName("accordion");
-for (let i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        let panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-            this.getElementsByTagName("i")[0].style.display = "inline-block";
+let card = document.getElementsByClassName("card");
+for (let i = 0; i < card.length; i++) {
+    let accordion = card[i].getElementsByClassName("accordion-header")[0];
+    // Click should only work on accordion-header of each card
+    accordion.addEventListener("click", function() {
+
+        card[i].classList.toggle("active");
+
+        let panel = card[i].getElementsByClassName("panel")[0];
+        let fa = this.getElementsByTagName("i")[0]
+
+        // Toggle panel and plus/minus on click of header
+        if ($(panel).css("display") == "none") {
+            $(panel).show();
+            $(fa).removeClass("fa-plus");
+            $(fa).addClass("fa-minus");
         } else {
-            panel.style.display = "block";
-            this.getElementsByTagName("i")[0].style.display = "none";
+            $(panel).hide();
+            $(fa).addClass("fa-plus");
+            $(fa).removeClass("fa-minus");
         }
     });
 }
