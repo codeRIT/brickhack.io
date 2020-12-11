@@ -390,7 +390,6 @@ nav {
                 background-color: $light-blue;
 
                 &:hover {
-                    // transition: all 400ms ease;
                     background-color: lighten($light-blue, 5%);
                 }
 
@@ -420,7 +419,6 @@ nav {
                 }
                 .panel {
                     display: none;
-                    margin: 0 0 2rem;
                     overflow: hidden;
                     padding: 0 3.5rem 1rem 4.1rem;
                     font-size: 12px;
@@ -432,7 +430,6 @@ nav {
                 }
             }
             .active {
-                margin-bottom: 0;
                 background-color: white;
 
                 // Need to explicitly set for some reason

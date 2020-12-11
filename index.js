@@ -35,15 +35,14 @@ for (let i = 0; i < card.length; i++) {
         let fa = this.getElementsByTagName("i")[0]
 
         // Toggle panel and plus/minus on click of header
-        if ($(panel).css("display") == "none") {
-            $(panel).show();
-            $(fa).removeClass("fa-plus");
-            $(fa).addClass("fa-minus");
+        if ($(card[i]).hasClass("active")) {
+            $(panel).slideDown(200);
         } else {
-            $(panel).hide();
-            $(fa).addClass("fa-plus");
-            $(fa).removeClass("fa-minus");
+            $(panel).slideUp(200);
         }
+
+        $(fa).toggleClass("fa-plus");
+        $(fa).toggleClass("fa-minus");
     });
 }
 
