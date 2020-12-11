@@ -156,6 +156,7 @@ nav {
     #bh7 {
         font-size: 5.4em;
         font-weight: $font-extrabold;
+        margin-top: -200px;
     }
 
     #premiere {
@@ -638,16 +639,6 @@ footer {
 
 @media screen and (max-width: 1500px) {
 
-    #hero {
-        padding-left: 40px;
-            #bh7 {
-                margin-top: -200px;
-            }
-            #hero-text {
-                width: 70%;
-            }
-        }
-    }
 
     // Scaling idea, key is clip
     #shelf {
@@ -672,7 +663,17 @@ footer {
     }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1630px) {
+
+    #hero {
+        padding-left: 100px;
+        #bh7 {
+            margin-top: -340px;
+        }
+        #hero-text {
+            width: 70%;
+        }
+    }
 
     #leadership #leaders {
         justify-content: space-between;
