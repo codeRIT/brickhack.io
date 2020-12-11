@@ -1,24 +1,22 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Build
+name: Deploy - Staging
 
 on:
-  pull_request:
+  push:
     branches:
-      - master
       - develop
 
 jobs:
-  build:
-
+  deploy-staging:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js 12
-      uses: actions/setup-node@v1
       with:
-        node-version: '12'
-    - run: npm ci
-    - run: npm run build --if-present
+        ref: develop
+    - name: Push to Staging
+      uses: dokku/github-action@master
+      with:
+        git_remote_url: 'dokku@csh-cloud.oweb.co:brickhack-stage'
+        ssh_private_key: ${{ secrets.CODERIT_CLOUD_SSH_PRIVATE_KEY }}
