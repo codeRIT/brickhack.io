@@ -48,9 +48,13 @@ $event-count: 6;
     display: inline-block;
     color: white;
     cursor: pointer;
+    @include button-effect($red);
+}
+
+@mixin button-effect($color) {
     transition: 0.2s all;
     &:hover {
-        background-color: lighten($red, 5%);
+        background-color: lighten($color, 5%);
     }
     &:active {
         transform: translateY(4px);
@@ -286,13 +290,17 @@ nav {
         }
 
         .slick-arrow {
-            margin-top: 70px;
+            margin-top: 50px;
             width: 60px;
             height: 60px;
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
+
+            // slick-theme has a transform we don't need!
+            transform: none;
+            @include button-effect($blue);
         }
 
         // Make sure these appear over the slides!
@@ -342,14 +350,11 @@ nav {
 
     #mlh {
         @include button;
+        @include button-effect($light-blue);
         background-color: $light-blue;
         margin: 0 auto;
         padding: 30px;
         border-radius: 20px;
-
-        &:hover {
-            background-color: lighten($light-blue, 5%);
-        }
 
         i, p {
             display: inline;
@@ -398,8 +403,9 @@ nav {
                 margin-bottom: $card-m;
                 border-radius: 7px;
                 background-color: $light-blue;
-                &:hover {
-                    background-color: lighten($light-blue, 5%);
+                @include button-effect($light-blue);
+                &:active {
+                    transform: none;
                 }
                 .accordion-header {
                     background-color: transparent;
