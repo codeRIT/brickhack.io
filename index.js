@@ -23,6 +23,29 @@ $(document).ready(function() {
     });
 });
 
+let card = document.getElementsByClassName("card");
+for (let i = 0; i < card.length; i++) {
+    let accordion = card[i].getElementsByClassName("accordion-header")[0];
+    // Click should only work on accordion-header of each card
+    accordion.addEventListener("click", function() {
+
+        card[i].classList.toggle("active");
+
+        let panel = card[i].getElementsByClassName("panel")[0];
+        let fa = this.getElementsByTagName("i")[0];
+
+        // Toggle panel and plus/minus on click of header
+        if ($(card[i]).hasClass("active")) {
+            $(panel).slideDown(200);
+        } else {
+            $(panel).slideUp(200);
+        }
+
+        $(fa).toggleClass("fa-plus");
+        $(fa).toggleClass("fa-minus");
+    });
+}
+
 // Schedule toggle code
 $('.day-second-events').hide();
 $('.day-first').click(function() {
