@@ -335,8 +335,8 @@ nav {
         padding: $section-padding;
         align-items: center;
 
-        div {
-            width: 40%;
+        #hackathon-text {
+            width: 60%;
         }
     }
 
@@ -344,8 +344,7 @@ nav {
         @include button;
         background-color: $light-blue;
         display: inline-block;
-        width: auto;
-        height: auto;
+        margin: 0 auto;
         padding: 30px;
         border-radius: 20px;
 
