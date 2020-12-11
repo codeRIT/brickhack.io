@@ -499,6 +499,10 @@ nav {
                 width: 50%;
                 background-color: rgba($red, 60%);
             }
+
+            .nowrap {
+                white-space: nowrap;
+            }
         }
     }
 }
