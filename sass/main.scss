@@ -391,9 +391,9 @@ nav {
                     background-color: #455296;
                     border-radius: 7px;
                     border: none;
-                    align-self: start;
                     outline: none;
                     width: 100%;
+                    font-size: $nav-fontsize;
                     margin-bottom: 1rem;
                     .fa-plus {
                         content: '\02795';
@@ -411,6 +411,13 @@ nav {
                     }
                     &:hover {
                         cursor: pointer;
+                        transition: all 400ms ease;
+                        &:hover {
+                            background-color: lighten($red, 5%);
+                        }
+                        &:active {
+                            transform: translateY(4px);
+                        }
                     }
                 }
                 .panel {
@@ -420,10 +427,12 @@ nav {
                     overflow: hidden;
                     border-bottom-left-radius: 7px;
                     border-bottom-right-radius: 7px;
-                    padding: 0 3.5rem 1rem 3.5rem;
+                    padding: 0 3.5rem 1rem 4.1rem;
+                    font-size: 12px;
                     p {
                         color: $dark-blue;
                         line-height: 23px;
+                        transition: top .5s ease-in-out;
                     }
                 }
                 .active {
@@ -445,6 +454,9 @@ nav {
                 text-transform: uppercase;
                 color: $red;
                 font-weight: $font-bold;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }
