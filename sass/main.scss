@@ -653,10 +653,12 @@ footer {
 // TODO: Make standard breakpoint widths with vars
 @media screen and (max-width: 1500px) {
     #hero {
-        padding-left: 50px;
+        padding: 0;
 
         #hero-text {
-            margin-top: 30%;
+            padding: 0;
+            margin: 30% auto 0% auto;
+            text-align: center;
         }
 
         #bh7 {
@@ -674,8 +676,8 @@ footer {
         #desk {
             height: 100%;
             width: 1000px;
-            bottom: 0;
             overflow: clip;
+            background-image: url("../assets/desk1-mobile.svg");
         }
 
         #shapes {
