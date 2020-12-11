@@ -413,6 +413,7 @@ nav {
                 .accordion-header {
                     background-color: transparent;
                     cursor: pointer;
+                    outline: none;
                     text-align: left;
                     padding: 20px 30px;
                     border: none;
@@ -655,7 +656,7 @@ footer {
         padding-left: 50px;
 
         #hero-text {
-            margin-top: 5%;
+            margin-top: 30%;
         }
 
         #bh7 {
@@ -675,12 +676,15 @@ footer {
             width: 1000px;
             bottom: 0;
             overflow: clip;
-            top: auto;
         }
 
         #shapes {
             display: none;
         }
+    }
+
+    #schedule #schedule-block {
+        width: 100%;
     }
 }
 
@@ -692,9 +696,22 @@ footer {
         overflow: clip;
     }
 
+    #hackathon {
+        .carousel .slick-arrow {
+            // TODO: this can be refactored to be unnessecary
+            margin-top: 10px;
+        }
+        #hackathon-content {
+            flex-direction: column;
+            #hackathon-text {
+                width: 100%;
+            }
+        }
+    }
+
     #leadership #leaders {
         justify-content: space-between;
-        grid-template-columns: repeat(5, $leadership-size-mobile);
+        grid-template-columns: repeat(4, $leadership-size-mobile);
         width: 100%;
         gap: 30px;
 
