@@ -1,0 +1,694 @@
+
+
+// Variables
+$dark-blue: #1B315E;
+$blue: #2A407D;
+$light-blue: #465395;
+$red: #F1656E;
+$orange: #F9A56F;
+$pink: #FAC5BF;
+$light-gray: #a2a8cd;
+
+$nav-fontsize: 1.3em;
+$nav-height: 90px;
+
+$section-padding: 140px;
+
+$img-border-radius: 20px;
+
+$wire-height: 15px;
+
+$leadership-size: 220px;
+$leadership-size-mobile: 180px;
+
+// Just to make it more semantic
+$font-extrabold: 700;
+$font-bold: 600;
+$font-medium: 500;
+$font-regular: 400;
+
+// Size for all titles on page
+$title-size: 3em;
+
+// MAX events (across either day)
+// TODO: Make this more dynamic via JS?
+$event-count: 6;
+
+// Import carousel
+@import '../node_modules/slick-carousel/slick/slick.css';
+@import '../node_modules/slick-carousel/slick/slick-theme.css';
+
+// Mixins
+@mixin button {
+    background-color: $red;
+    text-decoration: none;
+    user-select: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    @include button-effect($red);
+}
+
+@mixin button-effect($color) {
+    transition: 0.2s all;
+    &:hover {
+        background-color: lighten($color, 5%);
+    }
+    &:active {
+        transform: translateY(4px);
+    }
+}
+
+// Functions for random color selection (hero)
+@function rand-color($colors...) {
+    @return nth($colors, random(length($colors)))
+}
+
+
+// General
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: white;
+     // Allows for elements "below" std z-index
+     // (note: only set if child adopts explicit position value)
+    z-index: 2;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $light-blue;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+p {
+    font-size: 1.3em;
+}
+
+// Nav
+nav {
+    background-color: rgba(white, 5%);
+    display: flex;
+    justify-content: space-between;
+    font-size: $nav-fontsize;
+
+    .left, .right {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        padding: 0px 5px;
+        margin: 0px 10px;
+    }
+
+    .link:hover {
+        // Top border doesn't push content,
+        // for some reason border-box doesn't work here?
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid white;
+    }
+
+    #login {
+        @include button;
+    }
+
+    #logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    #mlh-badge {
+        // TODO: Needs sizing/overflow fix
+        width: 100px;
+        height: 100px;
+    }
+}
+
+#hero {
+    // SASS needs to parse variable value inline
+    height: calc(100vh - #{$nav-height});
+    background-color: $light-blue;
+    display: flex;
+    align-items: center;
+    padding-left: $section-padding;
+
+    #hero-text {
+        z-index: 2;
+        width: 40%;
+    }
+
+    p, a {
+        margin-bottom: 30px;
+    }
+
+    p {
+        // This and the margin-bottom for {p, a}
+        // lets the different h elements
+        // appear to be equally spaced.
+        line-height: 0.7;
+    }
+
+    #bh7 {
+        font-size: 5.4em;
+        font-weight: $font-extrabold;
+        margin-top: -200px;
+    }
+
+    #premiere {
+        font-size: 2.5em;
+        font-weight: $font-medium;
+    }
+
+    #dates {
+        font-size: 1.3em;
+        font-weight: $font-regular;
+    }
+
+    #register {
+        @include button;
+        padding: 10px 80px;
+        font-size: 2em;
+    }
+
+    // Shelf things!
+    #desk {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        right: 0;
+        top: -10px; // SVG crop issues?
+        z-index: 1;
+        background-image: url("../assets/desk1.svg");
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    #shelf {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        left: 0;
+        right: 0;
+        bottom: -20px; // SVG crop issues?
+        background-image: url("../assets/shelf.svg");
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+    }
+
+    #shapes {
+        position: relative;
+        height: 900px;
+        width: 900px;
+        margin-top: -80px;
+        z-index: 1;
+        background-image: url("../assets/shapes.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+
+#hackathon {
+    background-color: $dark-blue;
+
+    h2 {
+        font-size: $title-size;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .carousel {
+        width: 100%;
+        margin: 0 auto;
+        padding-top: $section-padding;
+
+        .slick-list {
+            // Slider depends on having the overflow-x hidden,
+            // CSS (per spec) doesn't allow separate overflow-y and x.
+            // So, we add some padding to cheat it.
+            // (https://css-tricks.com/popping-hidden-overflow/)
+            padding-top: 60px;
+            margin-top: -60px;
+            overflow: hidden;
+        }
+
+        .slick-slide {
+            height: 300px;
+            width: 300px;
+            margin-right: 20px; // Same margin as wire top calculation
+
+            .wire {
+                width: 200%;
+                margin: 0;
+                height: $wire-height;
+                background: $pink;
+                top: -($wire-height + 20px);
+                position: relative;
+            }
+
+            .front_clip {
+                position: relative;
+                width: 30px;
+                height: 90px;
+                background-color: $orange;
+                margin: 0 auto;
+                top: -90px;
+            }
+
+            .back_clip {
+                width: 10px;
+                height: 60px;
+                background-color: $red;
+                top: -155px;
+                margin-left: calc(50% - 25px);
+                position: relative;
+                z-index: 0;
+            }
+
+            // Clip is easier as rel, so this is abs.
+            img {
+                position: absolute;
+                width: 300px;
+                height: 300px;
+                top: 0;
+                bottom: 0;
+                z-index: 1;
+                border-radius: 20px;
+            }
+        }
+
+        .slick-arrow {
+            margin-top: 50px;
+            width: 60px;
+            height: 60px;
+            background-color: $blue;
+            border: 2px solid #A3A9CA;
+            box-sizing: border-box;
+            border-radius: 50%;
+
+            // slick-theme has a transform we don't need!
+            transform: none;
+            @include button-effect($blue);
+        }
+
+        // Make sure these appear over the slides!
+        .slick-prev, .slick-next {
+            z-index: 3;
+        }
+
+        // Use FontAwesome as pseudo-element so we don't
+        // have to fork slick-carousel.
+        // (https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements)
+        .slick-prev::before, .slick-next::before {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        .slick-prev {
+            left: 1%;
+            &::before {
+                content: "\f060";
+            }
+        }
+
+        .slick-next {
+            right: 1%;
+            &::before {
+                content: "\f061";
+            }
+        }
+
+    }
+
+    #hackathon-content {
+        display: flex;
+        justify-content: space-between;
+        padding: $section-padding;
+        align-items: center;
+
+        #hackathon-text {
+            width: 60%;
+        }
+    }
+
+    #mlh {
+        @include button;
+        @include button-effect($light-blue);
+        background-color: $light-blue;
+        margin: 0 auto;
+        padding: 30px;
+        border-radius: 20px;
+
+        i, p {
+            display: inline;
+        }
+
+        p {
+            font-size: 1.2em;
+            font-weight: $font-medium;
+        }
+
+        // TODO: Needs better alignment.
+        i.fa-arrow-right {
+            font-size: 1.6em;
+            color: $red;
+            vertical-align: text-bottom;
+            padding-right: 10px;
+        }
+    }
+}
+
+#faq {
+    padding: $section-padding;
+    background-color: $dark-blue;
+    #faq-wrapper {
+        h1 {
+            font-size: $title-size;
+            margin-bottom: 40px;
+        }
+        #faq-cards {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            // TODO: This can be cleaner.
+            $card-m: 20px;
+            &-left {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-right: $card-m / 2;
+            }
+            &-right {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-left: $card-m / 2;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: $card-m;
+                border-radius: 7px;
+                background-color: $light-blue;
+                @include button-effect($light-blue);
+                &:active {
+                    transform: none;
+                }
+                .accordion-header {
+                    background-color: transparent;
+                    cursor: pointer;
+                    text-align: left;
+                    padding: 20px 30px;
+                    border: none;
+                    width: 100%;
+                    font-size: $nav-fontsize;
+
+                    .fa-plus, .fa-minus {
+                        margin-right: 10px;
+                    }
+                    .fa-plus {
+                        &-red    { color: $red; }
+                        &-pink   { color: $pink; }
+                        &-orange { color: $orange; }
+                    }
+                    .fa-minus {
+                        color: $blue;
+                    }
+                }
+                .panel {
+                    display: none; // Toggled in JS
+                    margin-top: -30px;
+                    padding: 20px 30px;
+                    font-size: 0.8em;
+                    // Align w/ header text, not sure if this can be made cleaner.
+                    margin-left: 35px;
+
+                    p {
+                        color: $dark-blue;
+                        line-height: 23px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        color: $red;
+                    }
+                }
+            }
+            .active {
+                background-color: white;
+
+                // Need to explicitly set for some reason
+                .accordion-header, .panel {
+                    color: $dark-blue;
+                }
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+        #contact {
+            a {
+                text-transform: uppercase;
+                color: $red;
+                font-weight: $font-bold;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+#schedule {
+    padding: $section-padding;
+    background-color: $blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #schedule-block {
+        // TODO: make margin consistent across other element
+        margin: 40px auto 0px auto;
+        width: 1000px;
+        background-color: $light-blue;
+        border-radius: $img-border-radius;
+        position: relative;
+    }
+
+    #schedule-tapes {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        width: 100%;
+
+        .tape {
+            // For some reason, margin doesn't work on #schedule-tapes.
+            margin-top: -20px; // Half of tape height
+            height: 40px;
+            width: 25%;
+            background-color: rgba($red, 60%);
+        }
+    }
+
+    #schedule-content {
+        display: flex;
+        justify-content: space-around;
+        padding: 60px 100px;
+
+        #days {
+            width: 40%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            user-select: none;
+            cursor: pointer;
+
+            .day {
+                .number {
+                    font-size: 6.5em;
+                    font-weight: $font-bold;
+                    line-height: 1; // TODO: Can this be done cleaner?
+                }
+
+                .name {
+                    font-size: 2em;
+                    font-weight: $font-regular;
+                }
+            }
+
+            // Class set by JS in index.js on click
+            .day-active {
+                .number, .name {
+                    color: $orange;
+                }
+            }
+        }
+
+        .events {
+            width: 60%;
+
+            // Sequentially assign colors to all elements
+            $colors: $red, $orange, $light-gray;
+            @for $i from 1 through $event-count {
+                .event:nth-child(#{$i}) {
+                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                }
+            }
+
+            .event {
+                background-color: white;
+                border-radius: 15px;
+                margin: 10px 0px;
+                padding: 10px;
+
+                .time {
+                    color: $light-blue;
+                }
+                .title {
+                    color: black;
+                    font-size: 1.3em;
+                }
+            }
+        }
+
+    }
+
+}
+
+#leadership {
+    background-color: $light-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #leadership-content {
+        padding: $section-padding;
+    }
+
+    #leaders {
+        // Grid is easier than flex here
+        display: grid;
+        grid-template-columns: repeat(5, $leadership-size);
+        gap: 50px;
+        justify-items: center;
+        justify-content: center;
+        margin-top: 40px;
+
+        .leader {
+            width: $leadership-size;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+
+            img {
+                border-radius: $img-border-radius;
+                width: $leadership-size;
+                height: $leadership-size;
+            }
+
+            .leader-tape {
+                position: relative;
+                margin: 0px auto -10px auto;
+                height: 20px;
+                width: 50%;
+                background-color: rgba($red, 60%);
+            }
+
+            .nowrap {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    height: 300px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../assets/footer.svg");
+    background-repeat: repeat no-repeat;
+    background-position: bottom center;
+    background-size: auto 300px;
+    overflow-x: clip;
+
+    #footer-content {
+        width: 400px;
+        height: 240px;
+        margin: auto;
+        padding: 30px;
+        text-align: center;
+
+        p, a, i {
+            margin-bottom: 10px;
+        }
+
+        // FA brand icons
+        i {
+            font-size: 3em;
+            padding-right: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 1500px) {
+
+
+    // Scaling idea, key is clip
+    #shelf {
+        width: 800px;
+        overflow: clip;
+    }
+
+    #leadership #leaders {
+        justify-content: space-between;
+        grid-template-columns: repeat(5, $leadership-size-mobile);
+        width: 100%;
+        gap: 30px;
+
+        .leader {
+            width: $leadership-size-mobile;
+
+            img {
+                width: $leadership-size-mobile;
+                height: $leadership-size-mobile;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1630px) {
+
+    #hero {
+        padding-left: 100px;
+        #bh7 {
+            margin-top: -340px;
+        }
+        #hero-text {
+            width: 70%;
+        }
+    }
+
+    #leadership #leaders {
+        justify-content: space-between;
+    }
+}
