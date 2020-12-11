@@ -464,11 +464,14 @@ nav {
 }
 
 #leadership {
-    padding: $section-padding;
     background-color: $light-blue;
 
     h1 {
         font-size: $title-size;
+    }
+
+    #leadership-content {
+        padding: $section-padding;
     }
 
     #leaders {
@@ -538,7 +541,11 @@ footer {
     }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1500px) {
+
+    section {
+        // padding: $section-padding / 2;
+    }
 
     // Scaling idea, key is clip
     #shelf {
@@ -547,7 +554,9 @@ footer {
     }
 
     #leadership #leaders {
+        justify-content: space-between;
         grid-template-columns: repeat(5, $leadership-size-mobile);
+        width: 100%;
         gap: 30px;
 
         .leader {
@@ -558,5 +567,12 @@ footer {
                 height: $leadership-size-mobile;
             }
         }
+    }
+}
+
+@media screen and (max-width: 1600px) {
+
+    #leadership #leaders {
+        justify-content: space-between;
     }
 }
