@@ -84,7 +84,7 @@ a {
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 // Nav
@@ -420,6 +420,9 @@ nav {
                     p {
                         color: $dark-blue;
                         line-height: 23px;
+                    }
+                    a {
+                        color: $red;
                     }
                 }
             }
