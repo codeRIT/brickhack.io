@@ -86,7 +86,7 @@ a {
 }
 
 p {
-    font-size: 1.2em;
+    font-size: 1.3em;
 }
 
 // Nav
@@ -362,6 +362,101 @@ nav {
             font-size: 1.6em;
             color: $red;
             vertical-align: text-bottom;
+        }
+    }
+}
+
+#faq {
+    padding: $section-padding;
+    background-color: $dark-blue;
+    #faq-wrapper {
+        h1 {
+            font-size: $title-size;
+            margin-bottom: 4rem;
+        }
+        #faq-cards {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            // TODO: This can be cleaner.
+            $card-m: 20px;
+            &-left {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-right: $card-m / 2;
+            }
+            &-right {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-left: $card-m / 2;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: $card-m;
+                border-radius: 7px;
+                background-color: $light-blue;
+                &:hover {
+                    background-color: lighten($light-blue, 5%);
+                }
+                .accordion-header {
+                    background-color: transparent;
+                    cursor: pointer;
+                    text-align: left;
+                    padding: 20px 30px;
+                    border: none;
+                    width: 100%;
+                    font-size: $nav-fontsize;
+
+                    .fa-plus, .fa-minus {
+                        margin-right: 10px;
+                    }
+                    .fa-plus {
+                        &-red    { color: $red; }
+                        &-pink   { color: $pink; }
+                        &-orange { color: $orange; }
+                    }
+                    .fa-minus {
+                        color: $blue;
+                    }
+                }
+                .panel {
+                    display: none; // Toggled in JS
+                    margin-top: -30px;
+                    padding: 20px 30px;
+                    font-size: 0.8em;
+                    // Align w/ header text, not sure if this can be made cleaner.
+                    margin-left: 35px;
+
+                    p {
+                        color: $dark-blue;
+                        line-height: 23px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        color: $red;
+                    }
+                }
+            }
+            .active {
+                background-color: white;
+
+                // Need to explicitly set for some reason
+                .accordion-header, .panel {
+                    color: $dark-blue;
+                }
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+        #contact {
+            a {
+                text-transform: uppercase;
+                color: $red;
+                font-weight: $font-bold;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }
