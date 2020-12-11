@@ -375,18 +375,21 @@ nav {
         #faq-cards {
             display: flex;
             flex-flow: row wrap;
-            margin-bottom: 3rem;
+            justify-content: space-between;
+
+            // TODO: This can be cleaner.
+            $card-m: 20px;
             &-left {
-                width: 49%;
-                margin-right: .5rem;
+                width: calc(50% - (#{$card-m} / 2));
+                margin-right: $card-m / 2;
             }
             &-right {
-                width: 49%;
-                margin-left: .5rem;
+                width: calc(50% - (#{$card-m} / 2));
+                margin-left: $card-m / 2;
             }
             .card {
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: $card-m;
                 border-radius: 7px;
                 background-color: $light-blue;
                 &:hover {
@@ -396,13 +399,14 @@ nav {
                     background-color: transparent;
                     cursor: pointer;
                     text-align: left;
-                    padding: 1rem 1.5rem;
+                    padding: 20px 30px;
                     border: none;
                     outline: none;
                     width: 100%;
                     font-size: $nav-fontsize;
+
                     .fa-plus, .fa-minus {
-                        margin-right: 1rem;
+                        margin-right: 10px;
                     }
                     .fa-plus {
                         &-red    { color: $red; }
@@ -414,12 +418,17 @@ nav {
                     }
                 }
                 .panel {
-                    display: none;
-                    padding: 0 3.5rem 1rem 4.1rem;
-                    font-size: 12px;
+                    display: none; // Toggled in JS
+                    margin-top: -30px;
+                    padding: 20px 30px;
+                    font-size: 0.8em;
+                    // Align w/ header text, not sure if this can be made cleaner.
+                    margin-left: 35px;
+
                     p {
                         color: $dark-blue;
                         line-height: 23px;
+                        margin-bottom: 10px;
                     }
                     a {
                         color: $red;
