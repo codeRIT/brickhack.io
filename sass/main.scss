@@ -535,12 +535,13 @@ footer {
 }
 
 @media screen and (max-width: 1440px) {
-    #hero {    
+    #hero {
+	padding-left: 100px;    
         #bh7 {
-            margin-top: -217px;
+            margin-top: -200px;
         }
         #hero-text {
-            width: 57%;
+            width: 70%;
         }
     }
 
@@ -555,4 +556,3 @@ footer {
     }
 
 }
-
