@@ -20,14 +20,6 @@ $(document).ready(function() {
         autoplay: true,
         autoplaySpeed: 2000,
         speed: 1000,
-        responsive: [
-            {
-                breakpoint: 1000,
-                settings: {
-                    centerMode: true
-                }
-            }
-        ]
     });
 });
 

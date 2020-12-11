@@ -142,27 +142,29 @@ nav {
     height: calc(100vh - #{$nav-height});
     background-color: $light-blue;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding-left: $section-padding;
-    // border: 3px solid yellow;
 
     #hero-text {
         z-index: 2;
-        white-space: nowrap;
-        margin-top: 13%;
-        // border: 3px solid yellow;
+        width: 40%;
+    }
+
+    p, a {
+        margin-bottom: 30px;
     }
 
     p {
-        // This lets the different h elements
+        // This and the margin-bottom for {p, a}
+        // lets the different h elements
         // appear to be equally spaced.
         line-height: 0.7;
-        margin-bottom: 30px;
     }
 
     #bh7 {
         font-size: 5.4em;
         font-weight: $font-extrabold;
+        margin-top: -200px;
     }
 
     #premiere {
@@ -191,7 +193,7 @@ nav {
         z-index: 1;
         background-image: url("../assets/desk1.svg");
         background-repeat: no-repeat;
-        background-position: bottom right;
+        background-position: right;
     }
 
     #shelf {
@@ -208,8 +210,7 @@ nav {
     }
 
     #shapes {
-        position: absolute;
-        right: 0;
+        position: relative;
         height: 900px;
         width: 900px;
         margin-top: -80px;
@@ -413,7 +414,6 @@ nav {
                 .accordion-header {
                     background-color: transparent;
                     cursor: pointer;
-                    outline: none;
                     text-align: left;
                     padding: 20px 30px;
                     border: none;
@@ -650,55 +650,8 @@ footer {
     }
 }
 
-// TODO: Make standard breakpoint widths with vars
-@media screen and (max-width: 1100px) {
-
-    #hero #hero-text {
-        margin: 30% auto 0% auto;
-        text-align: center;
-        margin-top: 10%;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-
-    #hero {
-        padding: 50px;
-
-        #hero-text {
-            padding: 0;
-        }
-
-        #bh7 {
-            font-size: 5.0em;
-        }
-
-        #premiere {
-            font-size: 2.0em;
-        }
-
-        #dates {
-            font-size: 1.1em;
-        }
-
-        #desk {
-            height: 100%;
-            width: 1000px;
-            overflow: clip;
-            background-image: url("../assets/desk1-mobile.svg");
-        }
-
-        #shapes {
-            display: none;
-        }
-    }
-
-    #schedule #schedule-block {
-        width: 100%;
-    }
-}
-
 @media screen and (max-width: 1500px) {
+
 
     // Scaling idea, key is clip
     #shelf {
@@ -706,31 +659,9 @@ footer {
         overflow: clip;
     }
 
-    #hackathon {
-        .carousel .slick-arrow {
-            // TODO: this can be refactored to be unnessecary
-            margin-top: 10px;
-        }
-        #hackathon-content {
-            flex-direction: column;
-            #hackathon-text {
-                width: 100%;
-            }
-        }
-    }
-
-    #faq #faq-wrapper #faq-cards {
-        flex-direction: column;
-
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
-        }
-    }
-
     #leadership #leaders {
         justify-content: space-between;
-        grid-template-columns: repeat(3, $leadership-size-mobile);
+        grid-template-columns: repeat(5, $leadership-size-mobile);
         width: 100%;
         gap: 30px;
 
@@ -745,8 +676,17 @@ footer {
     }
 }
 
-
 @media screen and (max-width: 1630px) {
+
+    #hero {
+        padding-left: 100px;
+        #bh7 {
+            margin-top: -340px;
+        }
+        #hero-text {
+            width: 70%;
+        }
+    }
 
     #leadership #leaders {
         justify-content: space-between;
