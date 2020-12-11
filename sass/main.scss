@@ -48,9 +48,13 @@ $event-count: 6;
     display: inline-block;
     color: white;
     cursor: pointer;
+    @include button-effect($red);
+}
+
+@mixin button-effect($color) {
     transition: 0.2s all;
     &:hover {
-        background-color: lighten($red, 5%);
+        background-color: lighten($color, 5%);
     }
     &:active {
         transform: translateY(4px);
@@ -290,13 +294,17 @@ nav {
         }
 
         .slick-arrow {
-            margin-top: 70px;
+            margin-top: 50px;
             width: 60px;
             height: 60px;
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
+
+            // slick-theme has a transform we don't need!
+            transform: none;
+            @include button-effect($blue);
         }
 
         // Make sure these appear over the slides!
@@ -339,25 +347,24 @@ nav {
         padding: $section-padding;
         align-items: center;
 
-        div {
-            width: 40%;
+        #hackathon-text {
+            width: 60%;
         }
     }
 
     #mlh {
         @include button;
+        @include button-effect($light-blue);
         background-color: $light-blue;
-        display: inline-block;
-        width: auto;
-        height: auto;
+        margin: 0 auto;
         padding: 30px;
         border-radius: 20px;
 
-        &:hover {
-            background-color: lighten($light-blue, 5%);
+        i, p {
+            display: inline;
         }
 
-        a {
+        p {
             font-size: 1.2em;
             font-weight: $font-medium;
         }
@@ -367,6 +374,7 @@ nav {
             font-size: 1.6em;
             color: $red;
             vertical-align: text-bottom;
+            padding-right: 10px;
         }
     }
 }
@@ -399,8 +407,9 @@ nav {
                 margin-bottom: $card-m;
                 border-radius: 7px;
                 background-color: $light-blue;
-                &:hover {
-                    background-color: lighten($light-blue, 5%);
+                @include button-effect($light-blue);
+                &:active {
+                    transform: none;
                 }
                 .accordion-header {
                     background-color: transparent;
