@@ -80,6 +80,10 @@ $event-count: 6;
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: $light-blue;
 }
