@@ -12,8 +12,6 @@ $light-gray: #a2a8cd;
 $nav-fontsize: 1.3em;
 $nav-height: 90px;
 
-$section-padding: 140px;
-
 $img-border-radius: 20px;
 
 $wire-height: 15px;
@@ -97,6 +95,20 @@ p {
     font-size: 1.3em;
 }
 
+// Padding for all sections where needed
+.section-pad {
+    padding: 140px;
+}
+
+.section-pad-top {
+    padding-top: 140px;
+}
+
+.section-pad-left {
+    padding-left: 140px;
+}
+
+
 // Nav
 nav {
     background-color: rgba(white, 5%);
@@ -143,14 +155,11 @@ nav {
     background-color: $light-blue;
     display: flex;
     justify-content: space-between;
-    padding-left: $section-padding;
-    // border: 3px solid yellow;
 
     #hero-text {
         z-index: 2;
         white-space: nowrap;
         margin-top: 13%;
-        // border: 3px solid yellow;
     }
 
     p {
@@ -235,7 +244,6 @@ nav {
     .carousel {
         width: 100%;
         margin: 0 auto;
-        padding-top: $section-padding;
 
         .slick-list {
             // Slider depends on having the overflow-x hidden,
@@ -343,7 +351,6 @@ nav {
     #hackathon-content {
         display: flex;
         justify-content: space-between;
-        padding: $section-padding;
         align-items: center;
 
         #hackathon-text {
@@ -379,7 +386,6 @@ nav {
 }
 
 #faq {
-    padding: $section-padding;
     background-color: $dark-blue;
     #faq-wrapper {
         h1 {
@@ -476,7 +482,6 @@ nav {
 }
 
 #schedule {
-    padding: $section-padding;
     background-color: $blue;
 
     h1 {
@@ -579,10 +584,6 @@ nav {
         font-size: $title-size;
     }
 
-    #leadership-content {
-        padding: $section-padding;
-    }
-
     #leaders {
         // Grid is easier than flex here
         display: grid;
@@ -650,17 +651,14 @@ footer {
     }
 }
 
-// TODO: Make standard breakpoint widths with vars
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1630px) {
 
-    #hero #hero-text {
-        margin: 30% auto 0% auto;
-        text-align: center;
-        margin-top: 10%;
+    #leadership #leaders {
+        justify-content: space-between;
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
 
     #hero {
         padding: 50px;
@@ -693,19 +691,6 @@ footer {
         }
     }
 
-    #schedule #schedule-block {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 1500px) {
-
-    // Scaling idea, key is clip
-    #shelf {
-        width: 800px;
-        overflow: clip;
-    }
-
     #hackathon {
         .carousel .slick-arrow {
             // TODO: this can be refactored to be unnessecary
@@ -716,8 +701,22 @@ footer {
             #hackathon-text {
                 width: 100%;
             }
+            a {
+                margin-top: 40px;
+            }
         }
     }
+
+    #schedule #schedule-block {
+        width: 100%;
+    }
+
+    // Scaling idea, key is clip
+    #shelf {
+        width: 800px;
+        overflow: clip;
+    }
+
 
     #faq #faq-wrapper #faq-cards {
         flex-direction: column;
@@ -746,9 +745,13 @@ footer {
 }
 
 
-@media screen and (max-width: 1630px) {
+@media screen and (max-width: 1100px) {
 
-    #leadership #leaders {
-        justify-content: space-between;
+    #hero #hero-text {
+        margin-top: 10%;
     }
 }
+
+
+
+
