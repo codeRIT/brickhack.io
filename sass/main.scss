@@ -156,6 +156,8 @@ nav {
     background-color: $light-blue;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    overflow: hidden;
 
     #hero-text {
         z-index: 2;
@@ -693,8 +695,7 @@ footer {
 
         #desk {
             height: 120%;
-            width: 1000px;
-            overflow: clip;
+            right: -100px;
         }
 
         #shelf {
@@ -767,10 +768,24 @@ footer {
 }
 
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
 
-    #hero #hero-text {
-        // margin-top: 10%;
+    #hero {
+        overflow: hidden;
+
+        #hero-text {
+            margin-top: 20%;
+        }
+
+        #desk {
+            height: 90%;
+            right: -100px;
+
+        }
+
+        #shelf {
+            height: 200px;
+        }
     }
 }
 
