@@ -144,13 +144,11 @@ nav {
     display: flex;
     justify-content: space-between;
     padding-left: $section-padding;
-    // border: 3px solid yellow;
 
     #hero-text {
         z-index: 2;
         white-space: nowrap;
         margin-top: 13%;
-        // border: 3px solid yellow;
     }
 
     p {
@@ -653,10 +651,16 @@ footer {
 // TODO: Make standard breakpoint widths with vars
 @media screen and (max-width: 1100px) {
 
-    #hero #hero-text {
-        margin: 30% auto 0% auto;
-        text-align: center;
-        margin-top: 10%;
+    #hero {
+        // iOS don't cutoff behind Safari tab bar
+        height: -webkit-fill-available;
+
+        #hero-text {
+            margin: 30% auto 0% auto;
+            text-align: center;
+            margin-top: 40%;
+            // background-color: $light-blue;
+        }
     }
 }
 
