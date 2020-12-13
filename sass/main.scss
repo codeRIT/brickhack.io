@@ -223,6 +223,7 @@ nav {
 
 #hackathon {
     background-color: $dark-blue;
+    padding-top: $section-padding / 2;
 
     h2 {
         font-size: $title-size;
@@ -235,14 +236,14 @@ nav {
     .carousel {
         width: 100%;
         margin: 0 auto;
-        padding-top: $section-padding;
+        margin-top: $section-padding;
 
         .slick-list {
             // Slider depends on having the overflow-x hidden,
             // CSS (per spec) doesn't allow separate overflow-y and x.
             // So, we add some padding to cheat it.
             // (https://css-tricks.com/popping-hidden-overflow/)
-            padding-top: 60px;
+            padding-top: 60px !important; // overrides slick.css
             margin-top: -60px;
             overflow: hidden;
         }
@@ -293,9 +294,9 @@ nav {
         }
 
         .slick-arrow {
-            margin-top: 50px;
             width: 60px;
             height: 60px;
+            
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
@@ -652,7 +653,6 @@ footer {
 
 // TODO: Make standard breakpoint widths with vars
 @media screen and (max-width: 1100px) {
-
     #hero #hero-text {
         margin: 30% auto 0% auto;
         text-align: center;
@@ -707,10 +707,6 @@ footer {
     }
 
     #hackathon {
-        .carousel .slick-arrow {
-            // TODO: this can be refactored to be unnessecary
-            margin-top: 10px;
-        }
         #hackathon-content {
             flex-direction: column;
             #hackathon-text {
