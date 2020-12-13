@@ -22,7 +22,7 @@ $(document).ready(function() {
         speed: 1000,
         responsive: [
             {
-                breakpoint: 1000,
+                breakpoint: 1100,
                 settings: {
                     centerMode: true
                 }
