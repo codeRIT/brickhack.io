@@ -72,6 +72,7 @@ $event-count: 6;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
+    // transition: 1s all ease;
      // Allows for elements "below" std z-index
      // (note: only set if child adopts explicit position value)
     z-index: 2;
@@ -116,6 +117,12 @@ nav {
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
+    height: $nav-height;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
 
     .left, .right {
         display: flex;
@@ -152,12 +159,17 @@ nav {
 
 #hero {
     // SASS needs to parse variable value inline
-    height: calc(100vh - #{$nav-height});
+    height: 100vh;
     background-color: $light-blue;
-    display: flex;
-    justify-content: space-between;
     position: relative;
     overflow: hidden;
+
+    #hero-content {
+        height: calc(100vh - #{$nav-height});
+        margin-top: $nav-height;
+        display: flex;
+        // border: 3px solid yellow;
+    }
 
     #hero-text {
         z-index: 2;
@@ -196,7 +208,7 @@ nav {
     // Shelf things!
     #desk {
         position: absolute;
-        height: 140%;
+        height: 100%;
         width: 100%;
         right: 0;
         bottom: 0;
@@ -654,6 +666,10 @@ footer {
     }
 }
 
+
+// Meida queries for mobile
+
+
 @media screen and (max-width: 1630px) {
 
     #leadership #leaders {
@@ -690,19 +706,18 @@ footer {
         }
 
         #shapes {
-            display: none;
+            opacity: 0;
+            right: -100px;
         }
 
         #desk {
-            height: 120%;
+            height: 90%;
             right: -100px;
         }
 
         #shelf {
             height: 250px;
         }
-
-
     }
 
     #hackathon {
@@ -771,10 +786,9 @@ footer {
 @media screen and (max-width: 1000px) {
 
     #hero {
-        overflow: hidden;
 
         #hero-text {
-            margin-top: 20%;
+            margin-top: 10%;
         }
 
         #desk {
