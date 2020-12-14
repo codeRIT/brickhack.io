@@ -72,6 +72,7 @@ $event-count: 6;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
+    transition: all 2s ease;
     // transition: 1s all ease;
      // Allows for elements "below" std z-index
      // (note: only set if child adopts explicit position value)
@@ -168,7 +169,6 @@ nav {
         height: calc(100vh - #{$nav-height});
         margin-top: $nav-height;
         display: flex;
-        // border: 3px solid yellow;
     }
 
     #hero-text {
@@ -206,16 +206,32 @@ nav {
     }
 
     // Shelf things!
-    #desk {
+    #desk-container {
         position: absolute;
         height: 100%;
         width: 100%;
         right: 0;
         bottom: 0;
         z-index: 1;
-        background-image: url("../assets/desk1.svg");
-        background-repeat: no-repeat;
-        background-position: right;
+
+        #desk, #wire {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-position: bottom right;
+        }
+
+        #desk {
+            background-image: url("../assets/desk1.svg");
+            background-repeat: no-repeat;
+            z-index: 3;
+        }
+
+        #wire {
+            background-size: auto;
+            background-image: url("../assets/wire.svg");
+            background-repeat: repeat-y;
+        }
     }
 
     #shelf {
@@ -706,13 +722,14 @@ footer {
         }
 
         #shapes {
-            opacity: 0;
             right: -100px;
         }
 
-        #desk {
-            height: 90%;
+        #desk-container {
             right: -100px;
+
+            #desk {
+            }
         }
 
         #shelf {
@@ -791,8 +808,7 @@ footer {
             margin-top: 10%;
         }
 
-        #desk {
-            height: 90%;
+        #desk-container {
             right: -100px;
 
         }
