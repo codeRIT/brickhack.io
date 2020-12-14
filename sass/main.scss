@@ -101,12 +101,18 @@ p {
 nav {
     background-color: rgba(white, 5%);
     display: flex;
-    justify-content: space-between;
     font-size: $nav-fontsize;
 
-    .left, .right {
+    #nav-flex {
+        flex: 100;
+        
         display: flex;
-        align-items: center;
+        justify-content: space-between;
+        
+        .left, .right {
+            display: flex;
+            align-items: center;
+        }
     }
 
     a {
@@ -131,9 +137,10 @@ nav {
     }
 
     #mlh-badge {
-        // TODO: Needs sizing/overflow fix
-        width: 100px;
-        height: 100px;
+        width: 125px;
+        height: 0;
+
+        white-space: nowrap;
     }
 }
 
