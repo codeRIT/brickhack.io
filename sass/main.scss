@@ -283,7 +283,7 @@ nav {
             // CSS (per spec) doesn't allow separate overflow-y and x.
             // So, we add some padding to cheat it.
             // (https://css-tricks.com/popping-hidden-overflow/)
-            padding-top: 60px;
+            padding-top: 60px !important; // overrides slick.css
             margin-top: -60px;
             overflow: hidden;
         }
@@ -292,6 +292,10 @@ nav {
             height: 300px;
             width: 300px;
             margin-right: 20px; // Same margin as wire top calculation
+
+            &:focus {
+                outline: none;
+            }
 
             .wire {
                 width: 200%;
@@ -334,9 +338,9 @@ nav {
         }
 
         .slick-arrow {
-            margin-top: 50px;
             width: 60px;
             height: 60px;
+
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
