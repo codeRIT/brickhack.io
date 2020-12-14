@@ -72,11 +72,13 @@ $event-count: 6;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
-    transition: all 2s ease;
-    // transition: 1s all ease;
      // Allows for elements "below" std z-index
      // (note: only set if child adopts explicit position value)
     z-index: 2;
+
+    &::not(#faq) {
+        transition: all 2s ease;
+    }
 
 }
 
@@ -555,6 +557,7 @@ nav {
             flex-direction: column;
             user-select: none;
             cursor: pointer;
+            transition: none;
 
             .day {
                 .number {
@@ -727,13 +730,11 @@ footer {
 
         #desk-container {
             right: -100px;
-
-            #desk {
-            }
         }
 
         #shelf {
             height: 250px;
+            overflow: hidden;
         }
     }
 
@@ -766,13 +767,6 @@ footer {
         width: 90%;
     }
 
-    // Scaling idea, key is clip
-    #shelf {
-        width: 800px;
-        overflow: clip;
-    }
-
-
     #faq #faq-wrapper #faq-cards {
         // flex-direction: column;
 
@@ -784,7 +778,7 @@ footer {
 
     #leadership #leaders {
         justify-content: space-between;
-        grid-template-columns: repeat(5, $leadership-size-mobile);
+        grid-template-columns: repeat(4, $leadership-size-mobile);
         width: 100%;
         gap: 30px;
 
@@ -800,25 +794,87 @@ footer {
 }
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 900px) {
+
+    h1, section > p {
+        text-align: center;
+    }
+
+    .section-pad {
+        padding: 30px;
+    }
+
+    .section-pad-left {
+        padding: 20px;
+    }
 
     #hero {
 
+        #bh7 {
+            font-size: 4.2em;
+        }
+
+        #premiere {
+            font-size: 2.0em;
+        }
+
+        #dates {
+            font-size: 1.1em;
+        }
+
         #hero-text {
-            margin-top: 10%;
+            margin-top: 40%;
         }
 
         #desk-container {
-            right: -100px;
-
+            right: -200px;
+            width: 120%;
         }
 
         #shelf {
             height: 200px;
         }
     }
+
+    #schedule {
+
+        #schedule-block {
+            width: 100%;
+        }
+
+        #schedule-content {
+            padding: 20px;
+            flex-direction: column;
+
+            #days {
+                width: auto;
+                flex-direction: row;
+            }
+
+            .events {
+                width: auto;
+            }
+        }
+    }
+
+    #faq #faq-wrapper #faq-cards {
+        flex-direction: column;
+
+        &-left, &-right {
+            margin: 0;
+            width: 100%;
+        }
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(3, $leadership-size-mobile);
+        gap: 20px;
+    }
 }
 
-
-
-
+@media screen and (max-width: 650px) {
+    #leadership #leaders {
+        justify-content: space-around;
+        grid-template-columns: repeat(2, $leadership-size-mobile);
+    }
+}
