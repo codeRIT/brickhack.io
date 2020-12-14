@@ -103,16 +103,13 @@ nav {
     background-color: rgba(white, 5%);
     font-size: $nav-fontsize;
 
-    #nav-content {
-        flex: 100;
-        
+    .left, .right {
         display: flex;
-        justify-content: space-between;
-        
-        .left, .right {
-            display: flex;
-            align-items: center;
-        }
+        align-items: center;
+    }
+
+    .left {
+        flex-grow: 1;
     }
 
     a {
