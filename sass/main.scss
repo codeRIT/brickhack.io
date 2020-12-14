@@ -253,6 +253,10 @@ nav {
             width: 300px;
             margin-right: 20px; // Same margin as wire top calculation
 
+            &:focus {
+                outline: none;
+            }
+
             .wire {
                 width: 200%;
                 margin: 0;
@@ -296,7 +300,7 @@ nav {
         .slick-arrow {
             width: 60px;
             height: 60px;
-            
+
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
