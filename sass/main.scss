@@ -99,17 +99,14 @@ p {
 
 // Nav
 nav {
-    display: flex;
     background-color: rgba(white, 5%);
+    display: flex;
+    justify-content: space-between;
     font-size: $nav-fontsize;
 
     .left, .right {
         display: flex;
         align-items: center;
-    }
-
-    .left {
-        flex-grow: 1;
     }
 
     a {
@@ -133,7 +130,8 @@ nav {
     }
 
     #mlh-badge {
-        width: 125px;
+        align-self: flex-start;
+        width: 100px;
         height: 0;
     }
 }
