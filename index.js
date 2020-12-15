@@ -31,6 +31,25 @@ $(document).ready(function() {
     });
 });
 
+// opens modal when img is clicked
+$(document).on('click', "img",function(){
+    $("#modal").css("display", "block");
+    $("#modal-content").attr("src", this.src)
+});
+
+//closes modal when X is clicked
+$(document).on('click', '#close',function(){
+    $("#modal").css("display", "none");
+});
+
+//closes modal when window is clicked
+$(window).on('click', function(){
+    if (event.target == modal) {
+        $("#modal").css("display", "none")
+    }
+});
+
+
 let card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("accordion-header")[0];
