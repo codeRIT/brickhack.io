@@ -151,13 +151,12 @@ nav {
 
     #logo {
         width: 100px;
-        height: 100px;
     }
 
     #mlh-badge {
-        // TODO: Needs sizing/overflow fix
+        align-self: flex-start;
         width: 100px;
-        height: 100px;
+        height: 0;
     }
 }
 
@@ -671,20 +670,28 @@ footer {
     overflow-x: clip;
 
     #footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
         width: 400px;
-        height: 240px;
+        height: 235px;
         margin: auto;
-        padding: 30px;
+        padding: 15px;
         text-align: center;
 
-        p, a, i {
-            margin-bottom: 10px;
+        h2 {
+            margin-bottom: -5px;
+        }
+
+        p {
+            font-size: 1em;
         }
 
         // FA brand icons
         i {
             font-size: 3em;
-            padding-right: 10px;
+            padding: 0px 5px;
         }
     }
 }
