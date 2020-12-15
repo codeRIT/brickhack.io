@@ -18,6 +18,7 @@ $wire-height: 15px;
 
 $leadership-size: 220px;
 $leadership-size-mobile: 180px;
+$leadership-size-mobile-sm: 140px;
 
 // Just to make it more semantic
 $font-extrabold: 700;
@@ -629,7 +630,6 @@ nav {
         gap: 50px;
         justify-items: center;
         justify-content: center;
-        margin-top: 40px;
 
         .leader {
             width: $leadership-size;
@@ -781,8 +781,8 @@ footer {
     }
 
     #leadership #leaders {
+        grid-template-columns: repeat(5, $leadership-size-mobile);
         justify-content: space-between;
-        grid-template-columns: repeat(4, $leadership-size-mobile);
         width: 100%;
         gap: 30px;
 
@@ -797,6 +797,13 @@ footer {
     }
 }
 
+@media screen and (max-width: 1200px) {
+
+    #leadership #leaders {
+        grid-template-columns: repeat(4, $leadership-size-mobile);
+        justify-content: space-between;
+    }
+}
 
 @media screen and (max-width: 900px) {
 
@@ -804,8 +811,20 @@ footer {
         text-align: center;
     }
 
+    h1 {
+        font-size: 2.5em !important; // FIXME
+    }
+
+    p {
+        font-size: 1em;
+    }
+
     .section-pad {
-        padding: 30px;
+        padding: 40px;
+    }
+
+    .section-pad-top {
+        padding-top: 30px;
     }
 
     .section-pad-left {
@@ -872,13 +891,27 @@ footer {
 
     #leadership #leaders {
         grid-template-columns: repeat(3, $leadership-size-mobile);
+        justify-content: space-around;
         gap: 20px;
     }
 }
 
 @media screen and (max-width: 650px) {
+
+    .section-pad {
+        padding: 20px;
+    }
+
     #leadership #leaders {
-        justify-content: space-around;
-        grid-template-columns: repeat(2, $leadership-size-mobile);
+        grid-template-columns: repeat(2, $leadership-size-mobile-sm);
+
+        .leader {
+            width: $leadership-size-mobile-sm;
+
+            img {
+                width: $leadership-size-mobile-sm;
+                height: $leadership-size-mobile-sm;
+            }
+        }
     }
 }
