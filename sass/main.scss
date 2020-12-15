@@ -856,17 +856,45 @@ footer {
             width: 100%;
         }
 
+        #schedule-tapes {
+            justify-content: center;
+
+            .tape {
+                margin-top: -10px; //Half of tape height
+                height: 20px;
+            }
+        }
+
         #schedule-content {
-            padding: 20px;
             flex-direction: column;
+            padding: 20px;
 
             #days {
                 width: auto;
+                margin-top: 10px;
                 flex-direction: row;
+
+                .day {
+                    .number {
+                        font-size: 5em;
+                        text-align: center;
+                    }
+                    .name {
+                        font-size: 1.5em;
+                    }
+                }
             }
 
             .events {
                 width: auto;
+
+                .event {
+                    // margin: 10px;
+                    padding: 5px;
+                    .title {
+                        font-size: 1em;
+                    }
+                }
             }
         }
     }
