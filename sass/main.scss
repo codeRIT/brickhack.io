@@ -414,7 +414,7 @@ nav {
         }
 
         // TODO: Needs better alignment.
-        i.fa-arrow-right {
+        i {
             font-size: 1.6em;
             color: $red;
             vertical-align: text-bottom;
@@ -936,6 +936,17 @@ footer {
 
     .section-pad {
         padding: 20px;
+    }
+
+    #hackathon #mlh {
+        padding: 20px;
+
+        i {
+            font-size: 1.5em;
+        }
+        p {
+            font-size: 1em;
+        }
     }
 
     #leadership #leaders {
