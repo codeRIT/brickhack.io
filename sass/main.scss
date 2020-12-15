@@ -850,6 +850,22 @@ footer {
         }
     }
 
+    #hackathon .carousel {
+
+        .slick-list {
+            margin-top: 0;
+        }
+        .slick-slide, .slick-slide img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .slick-arrow {
+            // TODO: this can be refactored to be unnessecary
+            margin-top: 10px;
+        }
+    }
+
     #schedule {
 
         #schedule-block {
