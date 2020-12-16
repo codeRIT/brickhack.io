@@ -31,21 +31,21 @@ $(document).ready(function() {
     });
 });
 
-// opens modal when img is clicked
-$(document).on('click', "img",function(){
-    $("#modal").css("display", "block");
-    $("#modal-content").attr("src", this.src)
+// Opens modal when img is clicked
+$(document).on('click', '.slide-image', function() {
+    $('#modal').show();
+    $('#modal-content').attr('src', this.src);
 });
 
-//closes modal when X is clicked
-$(document).on('click', '#close',function(){
-    $("#modal").css("display", "none");
+// Closes modal when X is clicked
+$(document).on('click', '#close', function() {
+    $('#modal').hide();
 });
 
-//closes modal when window is clicked
-$(window).on('click', function(){
+// Closes modal when window is clicked
+$(window).on('click', function() {
     if (event.target == modal) {
-        $("#modal").css("display", "none")
+        $('#modal').hide();
     }
 });
 
