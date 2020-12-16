@@ -99,7 +99,7 @@ nav {
     background-color: rgba(white, 5%);
     display: flex;
     justify-content: space-between;
-    font-size: 1.5em; //$nav-fontsize;
+    font-size: $nav-fontsize;
 
     .left, .right {
         display: flex;
@@ -157,24 +157,24 @@ nav {
     }
 
     #bh7 {
-        font-size: 6.4em; //5.4em;
+        font-size: 5.4em;
         font-weight: $font-extrabold;
     }
 
     #premiere {
-        font-size: 3.0em; //2.5em;
+        font-size: 2.5em;
         font-weight: $font-medium;
     }
 
     #dates {
-        font-size: 1.57em; //1.3em
+        font-size: 1.3em;
         font-weight: $font-regular;
     }
 
     #register {
         @include button;
         padding: 10px 80px;
-        font-size: 2.5em;
+        font-size: 2em;
     }
 
     // Shelf things!
@@ -663,7 +663,6 @@ footer {
         }
     }
 }
-
 // TODO: Make standard breakpoint widths with vars
 @media screen and (max-width: 1100px) {
     #hero #hero-text {
@@ -759,5 +758,56 @@ footer {
 
     #leadership #leaders {
         justify-content: space-between;
+    }
+
+}
+
+@media screen and (min-width: 1700px) {
+    nav {
+        font-size: 1.5em;
+
+        #login {
+	    padding: 15px 30px;
+	}
+
+	#logo {
+	    width: 120px;
+	    height: 120px;
+	}
+
+	#mlh-badge{
+	    width: 140px;
+	}
+
+    }
+
+    #hero {
+        #desk {
+	    height: 110%;
+	    width: 110%;
+	    top: -50px;
+	}
+
+        #shapes {
+	    height: 1000px;
+	    width: 1000px;
+	    margin-top: -140px;
+	}
+
+        #bh7 {
+            font-size: 6.4em;
+        }
+    
+        #premiere {
+            font-size: 3em;
+        }
+
+        #dates {
+            font-size: 1.57em;
+        }
+
+        #register {
+            font-size: 2.3em;
+        }
     }
 }
