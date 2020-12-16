@@ -16,8 +16,6 @@ $section-padding: 140px;
 
 $img-border-radius: 20px;
 
-$wire-height: 15px;
-
 $leadership-size: 220px;
 $leadership-size-mobile: 180px;
 
@@ -76,7 +74,6 @@ $event-count: 6;
     color: white;
      // Allows for elements "below" std z-index
      // (note: only set if child adopts explicit position value)
-    z-index: 2;
 
 }
 
@@ -127,13 +124,12 @@ nav {
 
     #logo {
         width: 100px;
-        height: 100px;
     }
 
     #mlh-badge {
-        // TODO: Needs sizing/overflow fix
+        align-self: flex-start;
         width: 100px;
-        height: 100px;
+        height: 0;
     }
 }
 
@@ -188,10 +184,10 @@ nav {
         width: 100%;
         right: 0;
         top: -10px; // SVG crop issues?
-        z-index: 1;
         background-image: url("../assets/desk1.svg");
         background-repeat: no-repeat;
         background-position: bottom right;
+        z-index: 1;
     }
 
     #shelf {
@@ -205,6 +201,7 @@ nav {
         background-repeat: no-repeat;
         background-position: bottom center;
         background-size: cover;
+        z-index: 2;
     }
 
     #shapes {
@@ -213,10 +210,10 @@ nav {
         height: 900px;
         width: 900px;
         margin-top: -80px;
-        z-index: 1;
         background-image: url("../assets/shapes.svg");
         background-repeat: no-repeat;
         background-position: center;
+        z-index: 1;
     }
 }
 
@@ -236,21 +233,21 @@ nav {
     .carousel {
         width: 100%;
         margin: 0 auto;
-        margin-top: $section-padding;
+        margin-top: $section-padding / 2;
 
         .slick-list {
             // Slider depends on having the overflow-x hidden,
             // CSS (per spec) doesn't allow separate overflow-y and x.
             // So, we add some padding to cheat it.
             // (https://css-tricks.com/popping-hidden-overflow/)
-            padding-top: 60px !important; // overrides slick.css
+            padding-top: 60px !important; // Overrides slick.css
             margin-top: -60px;
             overflow: hidden;
         }
 
         .slick-slide {
-            height: 300px;
-            width: 300px;
+            $slide-size: 300px;
+            height: $slide-size;
             margin-right: 20px; // Same margin as wire top calculation
 
             &:focus {
@@ -258,42 +255,46 @@ nav {
             }
 
             .wire {
+                position: absolute;
                 width: 200%;
                 margin: 0;
-                height: $wire-height;
+                height: 15px;
                 background: $pink;
-                top: -($wire-height + 20px);
-                position: relative;
+                top: -(15px + 20px); // Emphasize 20px margin on 15px height
+                z-index: 2;
             }
 
-            .front_clip {
-                position: relative;
+            // Offset clips above the carousel image
+            .front-clip, .back-clip {
+                position: absolute;
+                top: -60px;
+            }
+
+            .front-clip {
+                margin-left: ($slide-size / 2);
                 width: 30px;
-                height: 90px;
+                height: 80px;
                 background-color: $orange;
-                margin: 0 auto;
-                top: -90px;
+                z-index: 3;
             }
 
-            .back_clip {
-                width: 10px;
+            .back-clip {
+                $width: 10px;
+                width: $width;
                 height: 60px;
                 background-color: $red;
-                top: -155px;
-                margin-left: calc(50% - 25px);
-                position: relative;
+                margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                margin-top: 10px; // Vertical offset from top clip
                 z-index: 0;
             }
 
-            // Clip is easier as rel, so this is abs.
             img {
-                position: absolute;
-                width: 300px;
-                height: 300px;
+                position: relative;
                 top: 0;
-                bottom: 0;
-                z-index: 1;
+                width: $slide-size;
+                height: $slide-size;
                 border-radius: 20px;
+                z-index: 2;
             }
         }
 
@@ -637,20 +638,28 @@ footer {
     overflow-x: clip;
 
     #footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
         width: 400px;
-        height: 240px;
+        height: 235px;
         margin: auto;
-        padding: 30px;
+        padding: 15px;
         text-align: center;
 
-        p, a, i {
-            margin-bottom: 10px;
+        h2 {
+            margin-bottom: -5px;
+        }
+
+        p {
+            font-size: 1em;
         }
 
         // FA brand icons
         i {
             font-size: 3em;
-            padding-right: 10px;
+            padding: 0px 5px;
         }
     }
 }
