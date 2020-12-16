@@ -753,15 +753,24 @@ footer {
 
     #hackathon {
         .carousel {
+            .slick-slide {
+                $slide-size: 250px;
+                height: $slide-size;
 
-            .slick-slide, .slick-slide img {
-                width: 250px;
-                height: 250px;
-            }
+                .front-clip {
+                    margin-left: ($slide-size / 2);
+                }
 
-            .slick-arrow {
-                // TODO: this can be refactored to be unnessecary
-                margin-top: 10px;
+                .back-clip {
+                    $width: 10px;
+                    width: $width;
+                    margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+                }
             }
         }
 
@@ -864,14 +873,35 @@ footer {
         .slick-list {
             margin-top: 0;
         }
-        .slick-slide, .slick-slide img {
-            width: 200px;
-            height: 200px;
+        .slick-slide {
+            $slide-size: 200px;
+            height: $slide-size;
+
+            .front-clip, .back-clip {
+                top: -50px;
+            }
+
+            .front-clip {
+                margin-left: ($slide-size / 2);
+                width: 25px;
+                height: 70px;
+            }
+
+            .back-clip {
+                $width: 10px;
+                width: $width;
+                margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+            }
+
+            img {
+                width: $slide-size;
+                height: $slide-size;
+            }
         }
 
         .slick-arrow {
             // TODO: this can be refactored to be unnessecary
-            margin-top: 10px;
+            // margin-top: 10px;
         }
     }
 
