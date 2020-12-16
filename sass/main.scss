@@ -788,7 +788,7 @@ footer {
             #hackathon-text {
                 width: 100%;
             }
-            a {
+            #mlh {
                 margin-top: 40px;
             }
         }
@@ -983,27 +983,34 @@ footer {
         }
     }
 
-    #faq #faq-wrapper #faq-cards {
-        flex-direction: column;
+    #faq #faq-wrapper {
 
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
+        h1 {
+            margin-bottom: 20px;
         }
 
-        .card {
-            .accordion-header {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-            .panel {
-                padding: 20px;
-                margin-left: 30px;
-                 // TODO: Why does padding: 10px not look good?
-                padding-bottom: 10px;
+        #faq-cards {
+            flex-direction: column;
 
-                p {
-                    margin-bottom: 0;
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+
+            .card {
+                .accordion-header {
+                    padding: 10px 20px;
+                    font-size: 1em;
+                }
+                .panel {
+                    padding: 20px;
+                    margin-left: 30px;
+                     // TODO: Why does padding: 10px not look good?
+                    padding-bottom: 10px;
+
+                    p {
+                        margin-bottom: 0;
+                    }
                 }
             }
         }
@@ -1058,7 +1065,8 @@ footer {
             display: none !important; // Overrides slick.css
         }
 
-        #mlh {
+        #hackathon-content #mlh {
+            margin: 0;
             padding: 20px;
 
             i {
@@ -1067,6 +1075,15 @@ footer {
             p {
                 font-size: 1em;
             }
+        }
+    }
+
+    #faq #faq-wrapper {
+        a {
+            white-space: nowrap;
+        }
+        p  {
+            text-align: center;
         }
     }
 
