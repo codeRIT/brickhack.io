@@ -147,7 +147,16 @@ nav {
     }
 
     #logo {
-        width: 100px;
+        align-self: flex-start;
+        width: $nav-height;
+        height: $nav-height;
+        img {
+            width: $nav-height;
+            height: $nav-height;
+            position: relative;
+            bottom: 0;
+            top: 0;
+        }
     }
 
     #mlh-badge {
