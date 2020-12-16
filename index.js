@@ -17,7 +17,7 @@ $(document).ready(function() {
         slidesToShow: 3,
         slidesToScroll: 2,
         cssEase: 'ease-in-out',
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000,
         speed: 1000,
         responsive: [
