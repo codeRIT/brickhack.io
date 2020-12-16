@@ -357,29 +357,63 @@ nav {
         }
     }
 
-    #mlh {
-        @include button;
-        @include button-effect($light-blue);
-        background-color: $light-blue;
+    #hackathon-buttons {
+        display: flex;
+        flex-direction: column;
         margin: 0 auto;
-        padding: 30px;
-        border-radius: 20px;
+        align-items: flex-start;
 
-        i, p {
-            display: inline;
+        #mlh {
+            @include button;
+            @include button-effect($light-blue);
+            background-color: $light-blue;
+            margin: 1.5em 0;
+            padding: 30px;
+            border-radius: 20px;
+    
+            i, p {
+                display: inline;
+            }
+    
+            p {
+                font-size: 1.2em;
+                font-weight: $font-medium;
+            }
+    
+            // TODO: Needs better alignment.
+            i.fa-arrow-right {
+                font-size: 1.6em;
+                color: $red;
+                vertical-align: text-bottom;
+                padding-right: 10px;
+            }
         }
-
-        p {
-            font-size: 1.2em;
-            font-weight: $font-medium;
-        }
-
-        // TODO: Needs better alignment.
-        i.fa-arrow-right {
-            font-size: 1.6em;
-            color: $red;
-            vertical-align: text-bottom;
-            padding-right: 10px;
+    
+        #gallery {
+            @include button;
+            @include button-effect($light-blue);
+            background-color: $light-blue;
+            opacity: 0.5;
+            margin: 1.5em 0;
+            padding: 30px;
+            border-radius: 20px;
+    
+            i, p {
+                display: inline;
+            }
+    
+            p {
+                font-size: 1.2em;
+                font-weight: $font-medium;
+            }
+    
+            // TODO: Needs better alignment.
+            i.fa-arrow-right {
+                font-size: 1.6em;
+                color: $red;
+                vertical-align: text-bottom;
+                padding-right: 10px;
+            }
         }
     }
 }
@@ -671,6 +705,10 @@ footer {
         text-align: center;
         margin-top: 10%;
     }
+
+    #hackathon #hackathon-buttons {
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -724,6 +762,21 @@ footer {
             flex-direction: column;
             #hackathon-text {
                 width: 100%;
+            }
+        }
+
+        #hackathon-buttons {
+            margin: 0;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+            #mlh {
+                margin: 1.5em 1em;
+            }
+
+            #gallery {
+                margin: 1.5em 1em;
             }
         }
     }
