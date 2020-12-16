@@ -102,7 +102,7 @@ nav {
     background-color: rgba(white, 5%);
     display: flex;
     justify-content: space-between;
-    font-size: $nav-fontsize;
+    font-size: 1.5em; //$nav-fontsize;
 
     .left, .right {
         display: flex;
@@ -161,24 +161,24 @@ nav {
     }
 
     #bh7 {
-        font-size: 5.4em;
+        font-size: 6.4em; //5.4em;
         font-weight: $font-extrabold;
     }
 
     #premiere {
-        font-size: 2.5em;
+        font-size: 3.0em; //2.5em;
         font-weight: $font-medium;
     }
 
     #dates {
-        font-size: 1.3em;
+        font-size: 1.57em; //1.3em
         font-weight: $font-regular;
     }
 
     #register {
         @include button;
         padding: 10px 80px;
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     // Shelf things!
