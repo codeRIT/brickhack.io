@@ -816,6 +816,9 @@ footer {
 
 @media screen and (max-width: 900px) {
 
+    // Redefine only for mobile
+    $nav-height: 60px;
+
     h1, section > p {
         text-align: center;
     }
@@ -840,7 +843,23 @@ footer {
         padding: 20px;
     }
 
+    nav {
+        height: $nav-height;
+
+        #logo, #mlh-badge {
+            width: 70px;
+        }
+
+        .link, #login {
+            display: none;
+        }
+    }
+
     #hero {
+
+        #hero-content {
+            height: calc(100vh - #{$nav-height});
+        }
 
         #bh7 {
             font-size: 4.2em;
@@ -855,7 +874,7 @@ footer {
         }
 
         #hero-text {
-            margin-top: 40%;
+            margin-top: 10%;
         }
 
         #desk-container {
@@ -864,7 +883,7 @@ footer {
         }
 
         #shelf {
-            height: 200px;
+            height: 130px;
         }
     }
 
@@ -993,14 +1012,52 @@ footer {
         padding: 20px;
     }
 
-    #hackathon #mlh {
-        padding: 20px;
+    #hero {
 
-        i {
+        p {
+            line-height: 0.4;
+        }
+
+        #bh7 {
+            font-size: 2.4em;
+        }
+
+        #premiere {
             font-size: 1.5em;
         }
-        p {
-            font-size: 1em;
+
+        #dates {
+            font-size: 0.7em;
+        }
+
+        #desk-container {
+            right: -160px;
+            width: 160%;
+        }
+
+        #register {
+           @include button;
+            padding: 10px 40px;
+            font-size: 1.2em;
+        }
+
+    }
+
+    #hackathon {
+
+        .carousel .slick-arrow {
+            display: none;
+        }
+
+        #mlh {
+            padding: 20px;
+
+            i {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 1em;
+            }
         }
     }
 
