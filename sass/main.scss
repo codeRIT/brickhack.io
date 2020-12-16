@@ -675,8 +675,6 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
-        width: 400px;
         height: 235px;
         margin: auto;
         padding: 15px;
@@ -1044,9 +1042,8 @@ footer {
     }
 
     #hackathon {
-
         .carousel .slick-arrow {
-            display: none;
+            display: none !important; // Overrides slick.css
         }
 
         #mlh {
@@ -1070,6 +1067,23 @@ footer {
             img {
                 width: $leadership-size-mobile-sm;
                 height: $leadership-size-mobile-sm;
+            }
+        }
+    }
+
+    footer {
+        height: 200px;
+        background-size: auto 200px;
+
+        #footer-content {
+            height: 160px;
+
+            p {
+                font-size: 0.8em;
+            }
+
+            i {
+                font-size: 2em;
             }
         }
     }
