@@ -853,8 +853,13 @@ footer {
     nav {
         height: $nav-height;
 
-        #logo, #mlh-badge {
-            width: 70px;
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            height: 60px;
         }
 
         .link, #login {
@@ -924,11 +929,6 @@ footer {
                 height: $slide-size;
             }
         }
-
-        .slick-arrow {
-            // TODO: this can be refactored to be unnessecary
-            // margin-top: 10px;
-        }
     }
 
     #schedule {
@@ -970,7 +970,6 @@ footer {
                 width: auto;
 
                 .event {
-                    // margin: 10px;
                     padding: 5px;
                     .title {
                         font-size: 1em;
