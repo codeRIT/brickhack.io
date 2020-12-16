@@ -14,6 +14,10 @@ $nav-height: 90px;
 
 $img-border-radius: 20px;
 
+// Clip width (here so it can cascade to media queries)
+$front-width: 30px;
+$back-width: 10px;
+
 $leadership-size: 220px;
 $leadership-size-mobile: 180px;
 $leadership-size-mobile-sm: 140px;
@@ -321,19 +325,18 @@ nav {
             }
 
             .front-clip {
-                margin-left: ($slide-size / 2);
-                width: 30px;
+                margin-left: ($slide-size / 2) - ($front-width / 2);
+                width: $front-width;
                 height: 80px;
                 background-color: $orange;
                 z-index: 3;
             }
 
             .back-clip {
-                $width: 10px;
-                width: $width;
+                width: $back-width;
                 height: 60px;
                 background-color: $red;
-                margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
                 margin-top: 10px; // Vertical offset from top clip
                 z-index: 0;
             }
@@ -345,6 +348,7 @@ nav {
                 height: $slide-size;
                 border-radius: 20px;
                 z-index: 2;
+
             }
         }
 
@@ -765,15 +769,13 @@ footer {
                 height: $slide-size;
 
                 .front-clip {
-                    margin-left: ($slide-size / 2);
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
                 }
-
                 .back-clip {
-                    $width: 10px;
-                    width: $width;
-                    margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                    $back-width: 10px;
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
                 }
-
                 img {
                     width: $slide-size;
                     height: $slide-size;
@@ -905,6 +907,8 @@ footer {
             margin-top: 0;
         }
         .slick-slide {
+            $front-width: 25px;
+            $back-width: 10px;
             $slide-size: 200px;
             height: $slide-size;
 
@@ -912,16 +916,16 @@ footer {
                 top: -50px;
             }
 
+
             .front-clip {
-                margin-left: ($slide-size / 2);
-                width: 25px;
+                margin-left: ($slide-size / 2) - ($front-width / 2);
+                width: $front-width;
                 height: 70px;
             }
 
             .back-clip {
-                $width: 10px;
-                width: $width;
-                margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                width: $back-width;
+                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
             }
 
             img {
