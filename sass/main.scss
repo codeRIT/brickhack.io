@@ -363,7 +363,7 @@ nav {
         margin: 0 auto;
         align-items: flex-start;
 
-        #mlh {
+        #mlh, #gallery {
             @include button;
             @include button-effect($light-blue);
             background-color: $light-blue;
@@ -379,35 +379,9 @@ nav {
                 font-size: 1.2em;
                 font-weight: $font-medium;
             }
-    
+
             // TODO: Needs better alignment.
-            i.fa-arrow-right {
-                font-size: 1.6em;
-                color: $red;
-                vertical-align: text-bottom;
-                padding-right: 10px;
-            }
-        }
-    
-        #gallery {
-            @include button;
-            @include button-effect($light-blue);
-            background-color: $light-blue;
-            margin: 24px 0;
-            padding: 30px;
-            border-radius: 20px;
-    
-            i, p {
-                display: inline;
-            }
-    
-            p {
-                font-size: 1.2em;
-                font-weight: $font-medium;
-            }
-    
-            // TODO: Needs better alignment.
-            i.fa-tools {
+            i.fa-arrow-right, i.fa-tools {
                 font-size: 1.6em;
                 color: $red;
                 vertical-align: text-bottom;
