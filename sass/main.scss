@@ -367,7 +367,7 @@ nav {
             @include button;
             @include button-effect($light-blue);
             background-color: $light-blue;
-            margin: 1.5em 0;
+            margin: 24px 0;
             padding: 30px;
             border-radius: 20px;
     
@@ -393,8 +393,7 @@ nav {
             @include button;
             @include button-effect($light-blue);
             background-color: $light-blue;
-            opacity: 0.5;
-            margin: 1.5em 0;
+            margin: 24px 0;
             padding: 30px;
             border-radius: 20px;
     
