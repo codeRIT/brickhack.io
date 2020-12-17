@@ -319,12 +319,16 @@ nav {
             }
 
             // Offset clips above the carousel image
+            // Pos: abs because pos: rel causes the two clips,
+            // despite having different offsets,
+            // to interfere with each other when trying to adjust their offset.
             .front-clip, .back-clip {
                 position: absolute;
                 top: -60px;
             }
 
             .front-clip {
+                // Front clip: move to center of slide, and center the clip.
                 margin-left: ($slide-size / 2) - ($front-width / 2);
                 width: $front-width;
                 height: 80px;
@@ -336,7 +340,9 @@ nav {
                 width: $back-width;
                 height: 60px;
                 background-color: $red;
-                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
+                // Back clip: move to center of slide, center clip,
+                // then do left offset from top clip
+                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
                 margin-top: 10px; // Vertical offset from top clip
                 z-index: 0;
             }
