@@ -123,7 +123,7 @@ nav {
     justify-content: space-between;
     font-size: $nav-fontsize;
     height: $nav-height;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -415,28 +415,28 @@ nav {
         margin: 0px auto;
         align-items: flex-start;
 
-        #mlh, #gallery {
+        a {
             @include button;
             @include button-effect($light-blue);
             display: flex;
             align-items: center;
             background-color: $light-blue;
-            margin: 24px 0px;
+            margin: 20px 0px;
             padding: 30px;
             border-radius: $img-border-radius;
             width: 100%;
+        }
 
-            p {
-                margin: 0px;
-                font-size: 1.2em;
-                font-weight: $font-medium;
-            }
+        p {
+            margin: 0px;
+            font-size: 1.2em;
+            font-weight: $font-medium;
+        }
 
-            i.fa-arrow-right, i.fa-tools {
-                font-size: 1.6em;
-                color: $red;
-                padding-right: 10px;
-            }
+        i.fa-arrow-right, i.fa-tools {
+            font-size: 1.6em;
+            color: $red;
+            padding-right: 10px;
         }
     }
 }
@@ -796,8 +796,14 @@ footer {
                 width: 100%;
             }
 
-            #mlh {
-                margin-top: 40px;
+            #hackathon-buttons {
+                flex-direction: row;
+                justify-content: center;
+                width: 70%;
+
+                a {
+                    margin: 10px;
+                }
             }
         }
     }
@@ -823,7 +829,11 @@ footer {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1220px) {
+
+    #hackathon #hackathon-content #hackathon-buttons {
+        width: 100%;
+    }
 
     #leadership #leaders {
         grid-template-columns: repeat(4, $leadership-size-mobile);
@@ -879,7 +889,6 @@ footer {
     }
 
     #hero {
-
         #hero-content {
             height: calc(100vh - #{$nav-height});
         }
@@ -910,37 +919,48 @@ footer {
         }
     }
 
-    #hackathon .carousel {
+    #hackathon {
+        .carousel {
+            .slick-list {
+                margin-top: 0;
+            }
 
-        .slick-list {
-            margin-top: 0;
+            .slick-slide {
+                $front-width: 25px;
+                $back-width: 10px;
+                $slide-size: 200px;
+                height: $slide-size;
+
+                .front-clip, .back-clip {
+                    top: -50px;
+                }
+
+
+                .front-clip {
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
+                    width: $front-width;
+                    height: 70px;
+                }
+
+                .back-clip {
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+                }
+            }
+
         }
 
-        .slick-slide {
-            $front-width: 25px;
-            $back-width: 10px;
-            $slide-size: 200px;
-            height: $slide-size;
+        #hackathon-content #hackathon-buttons {
+            flex-direction: column;
+            width: 60%;
 
-            .front-clip, .back-clip {
-                top: -50px;
-            }
-
-
-            .front-clip {
-                margin-left: ($slide-size / 2) - ($front-width / 2);
-                width: $front-width;
-                height: 70px;
-            }
-
-            .back-clip {
-                width: $back-width;
-                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
-            }
-
-            img {
-                width: $slide-size;
-                height: $slide-size;
+            a {
+                margin-left: 0;
             }
         }
     }
@@ -1077,7 +1097,7 @@ footer {
             display: none !important; // Overrides slick.css
         }
 
-        #hackathon-content #mlh {
+        #hackathon-content {
             margin: 0;
             padding: 20px;
 
@@ -1087,6 +1107,10 @@ footer {
 
             p {
                 font-size: 1em;
+            }
+
+            #hackathon-buttons {
+                width: 100%;
             }
         }
     }
