@@ -75,10 +75,10 @@ $event-count: 6;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
-     // Allows for elements "below" std z-index
-     // (note: only set if child adopts explicit position value)
-
-    &:not(#faq) {
+    // Transition all elements on the screen
+    // (except FAQ panel, which already has a transition,
+    // and the section days, which need no transition.)
+    &:not(.panel):not(#days):not(.number) {
         transition: all 1s ease;
     }
 
@@ -154,6 +154,7 @@ nav {
         align-self: flex-start;
         width: $nav-height;
         height: $nav-height;
+
         img {
             width: $nav-height;
             height: $nav-height;
@@ -365,7 +366,6 @@ nav {
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
-
             // slick-theme has a transform we don't need!
             transform: none;
             @include button-effect($blue);
@@ -391,6 +391,7 @@ nav {
 
         .slick-prev {
             left: 1%;
+
             &::before {
                 content: "\f060";
             }
@@ -398,6 +399,7 @@ nav {
 
         .slick-next {
             right: 1%;
+
             &::before {
                 content: "\f061";
             }
@@ -586,10 +588,11 @@ nav {
             flex-direction: column;
             user-select: none;
             cursor: pointer;
-            transition: none;
-
+            color: white;
+            // transition: none;
             .day {
                 .number {
+                    // transition: none;
                     font-size: 6.5em;
                     font-weight: $font-bold;
                     line-height: 1; // TODO: Can this be done cleaner?
