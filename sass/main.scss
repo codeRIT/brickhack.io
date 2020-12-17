@@ -410,29 +410,34 @@ nav {
         }
     }
 
-    #mlh {
-        @include button;
-        @include button-effect($light-blue);
-        background-color: $light-blue;
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 20px;
+    #hackathon-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+        align-items: flex-start;
 
-        i, p {
-            display: inline;
-        }
+        #mlh, #gallery {
+            @include button;
+            @include button-effect($light-blue);
+            display: flex;
+            align-items: center;
+            background-color: $light-blue;
+            margin: 24px 0px;
+            padding: 30px;
+            border-radius: $img-border-radius;
+            width: 100%;
 
-        p {
-            font-size: 1.2em;
-            font-weight: $font-medium;
-        }
+            p {
+                margin: 0px;
+                font-size: 1.2em;
+                font-weight: $font-medium;
+            }
 
-        // TODO: Needs better alignment.
-        i {
-            font-size: 1.6em;
-            color: $red;
-            vertical-align: text-bottom;
-            padding-right: 10px;
+            i.fa-arrow-right, i.fa-tools {
+                font-size: 1.6em;
+                color: $red;
+                padding-right: 10px;
+            }
         }
     }
 }
