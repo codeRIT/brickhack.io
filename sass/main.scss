@@ -704,10 +704,6 @@ footer {
         text-align: center;
         margin-top: 10%;
     }
-
-    #hackathon #hackathon-buttons {
-        flex-wrap: wrap;
-    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -761,21 +757,6 @@ footer {
             flex-direction: column;
             #hackathon-text {
                 width: 100%;
-            }
-        }
-
-        #hackathon-buttons {
-            margin: 0;
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-evenly;
-
-            #mlh {
-                margin: 1.5em 1em;
-            }
-
-            #gallery {
-                margin: 1.5em 1em;
             }
         }
     }
