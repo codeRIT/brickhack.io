@@ -362,7 +362,12 @@ nav {
     }
 
     #modal-content {
+        position: absolute;
         margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         display: block;
         width: 80%;
         max-width: 700px;
@@ -373,15 +378,15 @@ nav {
 
     @keyframes zoom {
         from {transform:scale(0)}
-        to {transform: scale(1);}
+        to { transform: scale(1); }
     }
 
     #close {
         position: absolute;
-        top: 50px;
-        right: 160px;
+        top: 15px;
+        right: 35px;
         color:white;
-        font-size: 2em;
+        font-size: 1.5em;
         font-weight: bold;
         transition: 0.3s;
     }
@@ -392,8 +397,6 @@ nav {
         text-decoration: none;
         cursor: pointer;
     }
-
-
 
     #hackathon-content {
         display: flex;
@@ -774,15 +777,6 @@ footer {
             #hackathon-text {
                 width: 100%;
             }
-        }
-        #modal-content {
-            width: 100%;
-        }
-        #close {
-            top: 50px;
-            right: 25px;
-            color: white;
-            font-size: 1.5em;
         }
     }
 

@@ -43,8 +43,15 @@ $(document).on('click', '#close', function() {
 });
 
 // Closes modal when window is clicked
-$(window).on('click', function() {
+$(window).on('click', function(event) {
     if (event.target == modal) {
+        $('#modal').hide();
+    }
+});
+
+// Closes modal when esc key is pressed
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
         $('#modal').hide();
     }
 });
