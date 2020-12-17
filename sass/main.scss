@@ -123,7 +123,7 @@ nav {
     justify-content: space-between;
     font-size: $nav-fontsize;
     height: $nav-height;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -355,7 +355,6 @@ nav {
         .slick-arrow {
             width: 60px;
             height: 60px;
-
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
@@ -715,7 +714,7 @@ footer {
 }
 
 
-// Meida queries for mobile
+// Media queries for mobile
 
 
 @media screen and (max-width: 1630px) {
@@ -776,11 +775,13 @@ footer {
                 .front-clip {
                     margin-left: ($slide-size / 2) - ($front-width / 2);
                 }
+
                 .back-clip {
                     $back-width: 10px;
                     width: $back-width;
                     margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
                 }
+
                 img {
                     width: $slide-size;
                     height: $slide-size;
@@ -790,9 +791,11 @@ footer {
 
         #hackathon-content {
             flex-direction: column;
+
             #hackathon-text {
                 width: 100%;
             }
+
             #mlh {
                 margin-top: 40px;
             }
@@ -859,6 +862,7 @@ footer {
 
     nav {
         height: $nav-height;
+        position: absolute;
 
         #logo img {
             width: $nav-height;
@@ -911,6 +915,7 @@ footer {
         .slick-list {
             margin-top: 0;
         }
+
         .slick-slide {
             $front-width: 25px;
             $back-width: 10px;
@@ -969,6 +974,7 @@ footer {
                         font-size: 5em;
                         text-align: center;
                     }
+
                     .name {
                         font-size: 1.5em;
                     }
@@ -980,6 +986,7 @@ footer {
 
                 .event {
                     padding: 5px;
+
                     .title {
                         font-size: 1em;
                     }
@@ -1007,11 +1014,11 @@ footer {
                     padding: 10px 20px;
                     font-size: 1em;
                 }
+
                 .panel {
                     padding: 20px;
                     margin-left: 30px;
-                     // TODO: Why does padding: 10px not look good?
-                    padding-bottom: 10px;
+                    padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
 
                     p {
                         margin-bottom: 0;
@@ -1058,7 +1065,7 @@ footer {
         }
 
         #register {
-           @include button;
+            @include button;
             padding: 10px 40px;
             font-size: 1.2em;
         }
@@ -1077,6 +1084,7 @@ footer {
             i {
                 font-size: 1.5em;
             }
+
             p {
                 font-size: 1em;
             }
@@ -1084,10 +1092,11 @@ footer {
     }
 
     #faq #faq-wrapper {
-        // Only center the
+        // Only center the "contact" string in the FAQ
         a {
             white-space: nowrap;
         }
+
         #contact  {
             text-align: center;
         }
