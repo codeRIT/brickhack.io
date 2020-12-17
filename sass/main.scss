@@ -1169,3 +1169,10 @@ footer {
         }
     }
 }
+
+@media screen and (max-width: 320px) {
+
+    #hero #premiere {
+        font-size: 1.2em;
+    }
+}
