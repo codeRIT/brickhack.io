@@ -328,7 +328,7 @@ nav {
             }
 
             .front-clip {
-                // Front clip: move to center of slide, and center the clip.
+                // Front clip: center left edge, then center the clip itself.
                 margin-left: ($slide-size / 2) - ($front-width / 2);
                 width: $front-width;
                 height: 80px;
@@ -340,7 +340,7 @@ nav {
                 width: $back-width;
                 height: 60px;
                 background-color: $red;
-                // Back clip: move to center of slide, center clip,
+                // Back clip: center left edge, then center the clip itself,
                 // then do left offset from top clip
                 margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
                 margin-top: 10px; // Vertical offset from top clip
@@ -889,7 +889,7 @@ footer {
             width: 90px;
         }
 
-        .link, #login {
+        .link {
             display: none;
         }
     }
@@ -1065,6 +1065,12 @@ footer {
 
     .section-pad {
         padding: 20px;
+    }
+
+    nav #login {
+        padding: 8px 30px;
+        margin: 0;
+        font-size: 0.8em;
     }
 
     #hero {
