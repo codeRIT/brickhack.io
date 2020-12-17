@@ -1,13 +1,23 @@
-
-
 import './sass/main.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-
 // slick-carousel configuration
-
 import $ from 'jquery'
 import 'slick-carousel'
+
+
+const hiringMessage = `Hey, you.
+You’re finally awake.
+You were trying to see the code, right?
+Walked right into that hiring message, same as us.
+If you’d like to work on this website and other cool projects with hackathons, send an email over to engineering@coderit.org!`
+
+console.log(hiringMessage);
+
+// comment generated via js instead of directly in HTML so the hiring message text is only in one place
+const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
+document.insertBefore(comment, document.firstChild);
+
 
 $(document).ready(function() {
     $('.carousel').slick({
