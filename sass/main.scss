@@ -360,14 +360,14 @@ nav {
     #hackathon-buttons {
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
+        margin: 0px auto;
         align-items: flex-start;
 
         #mlh, #gallery {
             @include button;
             @include button-effect($light-blue);
             background-color: $light-blue;
-            margin: 24px 0;
+            margin: 24px 0px;
             padding: 30px;
             border-radius: 20px;
             width: 100%;
