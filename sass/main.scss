@@ -278,7 +278,7 @@ nav {
 #hackathon {
     background-color: $dark-blue;
 
-    h2 {
+    h1 {
         font-size: $title-size;
     }
 
@@ -589,10 +589,8 @@ nav {
             user-select: none;
             cursor: pointer;
             color: white;
-            // transition: none;
             .day {
                 .number {
-                    // transition: none;
                     font-size: 6.5em;
                     font-weight: $font-bold;
                     line-height: 1; // TODO: Can this be done cleaner?
@@ -859,8 +857,8 @@ footer {
         text-align: center;
     }
 
-    h1 {
-        font-size: 2.5em !important; // FIXME
+    #leadership h1, #faq #faq-wrapper h1, #schedule h1, #hackathon h1 {
+        font-size: 2.5em;
     }
 
     p {
