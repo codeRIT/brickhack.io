@@ -366,26 +366,23 @@ nav {
         #mlh, #gallery {
             @include button;
             @include button-effect($light-blue);
+            display: flex;
+            align-items: center;
             background-color: $light-blue;
             margin: 24px 0px;
             padding: 30px;
             border-radius: $img-border-radius;
             width: 100%;
 
-            i, p {
-                display: inline;
-            }
-
             p {
+                margin: 0px;
                 font-size: 1.2em;
                 font-weight: $font-medium;
             }
 
-            // TODO: Needs better alignment.
             i.fa-arrow-right, i.fa-tools {
                 font-size: 1.6em;
                 color: $red;
-                vertical-align: text-bottom;
                 padding-right: 10px;
             }
         }
