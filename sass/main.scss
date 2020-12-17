@@ -78,8 +78,8 @@ $event-count: 6;
      // Allows for elements "below" std z-index
      // (note: only set if child adopts explicit position value)
 
-    &::not(#faq) {
-        transition: all 2s ease;
+    &:not(#faq) {
+        transition: all 1s ease;
     }
 
 }
