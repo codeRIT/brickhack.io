@@ -468,7 +468,7 @@ nav {
                 }
             }
         }
-        #contact {
+        .contact {
             a {
                 text-transform: uppercase;
                 color: $red;
@@ -478,6 +478,12 @@ nav {
                 }
             }
         }
+	#contact-desktop {
+	    display: block;
+	}
+	#contact-laptop {
+	    display: none;
+	}
     }
 }
 
@@ -728,13 +734,21 @@ footer {
         }
     }
 
-    #faq #faq-wrapper #faq-cards {
-        flex-direction: column;
+    #faq #faq-wrapper { 
+        #faq-cards {
+            flex-direction: column;
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
 
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
+	    #contact-desktop {
+	        display: none;
+	    }
         }
+	#contact-laptop {
+	    display: block;
+	}
     }
 
     #leadership #leaders {
