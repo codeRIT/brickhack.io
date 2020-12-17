@@ -297,7 +297,9 @@ nav {
                 transition: 0.3s;
             }
 
-            img:hover {opacity: 0.7;}
+            img:hover {
+                opacity: 0.7;
+            }
         }
 
         .slick-arrow {
@@ -371,14 +373,13 @@ nav {
         display: block;
         width: 80%;
         max-width: 700px;
-        filter: blur(0);
         animation-name: zoom;
         animation-duration: 0.6s;
     }
 
     @keyframes zoom {
-        from {transform:scale(0)}
-        to { transform: scale(1); }
+        from { transform: scale(0); }
+        to   { transform: scale(1); }
     }
 
     #close {
