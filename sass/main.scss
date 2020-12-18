@@ -596,12 +596,12 @@ nav {
                 }
             }
         }
-	#contact-desktop {
-	    display: block;
-	}
-	#contact-laptop {
-	    display: none;
-	}
+        #contact-desktop {
+            display: block;
+        }
+        #contact-laptop {
+            display: none;
+        }
     }
 }
 
@@ -868,30 +868,30 @@ footer {
             flex-direction: row;
             justify-content: center;
             width: 70%;
-            
+
             a {
                 margin: 10px;
             }
         }
     }
-    
-    #faq #faq-wrapper { 
+
+    #faq #faq-wrapper {
         #faq-cards {
             flex-direction: column;
-            
+
             &-left, &-right {
                 margin: 0;
                 width: 100%;
             }
-
-	    #contact-desktop {
-	        display: none;
-	    }
         }
-	      
+
+        #contact-desktop {
+            display: none;
+        }
+
         #contact-laptop {
-	    display: block;
-	}
+            display: block;
+        }
     }
 
     #schedule #schedule-block {
@@ -1213,7 +1213,7 @@ footer {
             white-space: nowrap;
         }
 
-        #contact  {
+        #contact-laptop  {
             text-align: center;
         }
     }
