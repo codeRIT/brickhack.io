@@ -1,11 +1,39 @@
-
-
 import './sass/main.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 
-// slick-carousel configuration
+// Hiring message
+const hiringMessage = `Hey, you.
+You’re finally awake.
+You were trying to see the code, right?
+Walked right into that hiring message, same as us.
+If you’d like to work on this website and other cool projects with hackathons, send an email over to engineering@coderit.org!`
 
+console.log(hiringMessage);
+
+// Comment generated via js instead of directly in HTML so the hiring message text is only in one place
+const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
+document.insertBefore(comment, document.firstChild);
+
+
+// Random hero SVG on each page load
+import desk1 from './assets/desk1.svg'
+import desk2 from './assets/desk2.svg'
+import desk3 from './assets/desk3.svg'
+
+$(document).ready(function() {
+    var deskIndex = parseInt(localStorage.getItem('deskIndex'));
+    if (!deskIndex) {
+        deskIndex = 0;
+        localStorage.setItem('deskIndex', 0);
+    }
+    var desks = [desk1, desk2, desk3]
+    $('#desk').css('background-image', 'url(' + desks[deskIndex % desks.length] + ')');
+    localStorage.setItem('deskIndex', deskIndex + 1);
+});
+
+
+// Slick-carousel
 import $ from 'jquery'
 import 'slick-carousel'
 
@@ -17,12 +45,12 @@ $(document).ready(function() {
         slidesToShow: 3,
         slidesToScroll: 2,
         cssEase: 'ease-in-out',
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000,
         speed: 1000,
         responsive: [
             {
-                breakpoint: 1000,
+                breakpoint: 1500,
                 settings: {
                     centerMode: true
                 }
@@ -31,6 +59,33 @@ $(document).ready(function() {
     });
 });
 
+// Opens modal when img is clicked
+$(document).on('click', '.slide-image', function() {
+    $('#modal').show();
+    $('#modal-content').attr('src', this.src);
+});
+
+// Closes modal when X is clicked
+$(document).on('click', '#close', function() {
+    $('#modal').hide();
+});
+
+// Closes modal when window is clicked
+$(window).on('click', function(event) {
+    if (event.target == modal) {
+        $('#modal').hide();
+    }
+});
+
+// Closes modal when esc key is pressed
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
+        $('#modal').hide();
+    }
+});
+
+
+// FAQ Cards hide/show
 let card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("accordion-header")[0];
@@ -53,6 +108,7 @@ for (let i = 0; i < card.length; i++) {
         $(fa).toggleClass("fa-minus");
     });
 }
+
 
 // Schedule toggle code
 $('.day-second-events').hide();
