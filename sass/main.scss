@@ -862,7 +862,8 @@ footer {
             #hackathon-text {
                 width: 100%;
             }
-          
+        }
+
         #hackathon-buttons {
             flex-direction: row;
             justify-content: center;
@@ -883,14 +884,14 @@ footer {
                 width: 100%;
             }
 
-	          #contact-desktop {
-	              display: none;
-	          }
+	    #contact-desktop {
+	        display: none;
+	    }
         }
 	      
         #contact-laptop {
-	          display: block;
-	      }
+	    display: block;
+	}
     }
 
     #schedule #schedule-block {
