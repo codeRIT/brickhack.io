@@ -16,6 +16,23 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 
+// Random hero SVG on each page load
+import desk1 from './assets/desk1.svg'
+import desk2 from './assets/desk2.svg'
+import desk3 from './assets/desk3.svg'
+
+$(document).ready(function() {
+    var deskIndex = parseInt(localStorage.getItem('deskIndex'));
+    if (!deskIndex) {
+        deskIndex = 0;
+        localStorage.setItem('deskIndex', 0);
+    }
+    var desks = [desk1, desk2, desk3]
+    $('#desk').css('background-image', 'url(' + desks[deskIndex % desks.length] + ')');
+    localStorage.setItem('deskIndex', deskIndex + 1);
+});
+
+
 // Slick-carousel
 import $ from 'jquery'
 import 'slick-carousel'
