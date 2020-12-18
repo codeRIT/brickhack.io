@@ -231,6 +231,7 @@ nav {
             height: 100%;
             width: 100%;
             background-position: bottom right;
+            background-attachment: fixed;
         }
 
         #desk {
@@ -823,7 +824,12 @@ footer {
         }
 
         #desk-container {
-            right: -100px;
+            //original
+            //right: -100px;
+
+            #desk, #wire {
+                background-position: calc(100% + 100px) bottom;
+            }
         }
 
         #shelf {
@@ -995,8 +1001,14 @@ footer {
         }
 
         #desk-container {
-            right: -200px;
-            width: 120%;
+            //original
+            //right: -200px;
+            //width: 120%;
+
+            #desk, #wire {
+                background-position: calc(100% + 200px) bottom;
+                background-size: 120%
+            }
         }
 
         #shelf {
@@ -1171,8 +1183,14 @@ footer {
         }
 
         #desk-container {
-            right: -160px;
-            width: 160%;
+            //original
+            //right: -160px;
+            //width: 160%;
+
+            #desk, #wire {
+                background-position: calc(100% + 160px) bottom;
+                background-size: 160%
+            }
         }
 
         #register {
