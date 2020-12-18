@@ -586,7 +586,7 @@ nav {
                 }
             }
         }
-        #contact {
+        .contact {
             a {
                 text-transform: uppercase;
                 color: $red;
@@ -596,6 +596,12 @@ nav {
                 }
             }
         }
+	      #contact-desktop {
+	          display: block;
+	      }
+	      #contact-laptop {
+	          display: none;
+	      }
     }
 }
 
@@ -856,17 +862,36 @@ footer {
             #hackathon-text {
                 width: 100%;
             }
+        }
 
-            #hackathon-buttons {
-                flex-direction: row;
-                justify-content: center;
-                width: 70%;
-
-                a {
-                    margin: 10px;
-                }
+        #hackathon-buttons {
+            flex-direction: row;
+            justify-content: center;
+            width: 70%;
+            
+            a {
+                margin: 10px;
             }
         }
+    }
+    
+    #faq #faq-wrapper { 
+        #faq-cards {
+            flex-direction: column;
+            
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+
+	    #contact-desktop {
+	        display: none;
+	    }
+        }
+	      
+        #contact-laptop {
+	    display: block;
+	}
     }
 
     #schedule #schedule-block {
