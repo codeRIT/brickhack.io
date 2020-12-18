@@ -78,7 +78,7 @@ $event-count: 6;
     // Transition all elements on the screen
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
-    &:not(.panel):not(#days):not(.number):not(#desk) {
+    &:not(nav.link):not(.panel):not(#days):not(.number):not(#desk) {
         transition: all 1s ease;
     }
 
@@ -118,16 +118,16 @@ p {
 
 // Nav
 nav {
-    background-color: rgba(white, 5%);
+    background-color: rgba(#5864a5, 50%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
     height: $nav-height;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 4;
 
     .left, .right {
         display: flex;
@@ -136,7 +136,7 @@ nav {
 
     a {
         padding: 0px 5px;
-        margin: 0px 10px;
+        margin-left: 10px;
     }
 
     .link:hover {
@@ -151,9 +151,8 @@ nav {
     }
 
     #logo {
-        align-self: flex-start;
-        width: $nav-height;
         height: $nav-height;
+        align-self: flex-start;
 
         img {
             width: $nav-height;
@@ -225,7 +224,7 @@ nav {
         width: 100%;
         right: 0;
         bottom: 0;
-        z-index: 1;
+        z-index: 2;
 
         #desk, #wire {
             position: absolute;
