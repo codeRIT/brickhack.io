@@ -140,7 +140,7 @@ nav {
 
         li a {
             border-bottom: 3px solid rgba(white, 0);
-            transition: border-bottom 0.2s;
+            transition: border-bottom-color 0.2s;
 
             &.active, &:hover {
                 border-bottom-color: rgba(white, 1);
