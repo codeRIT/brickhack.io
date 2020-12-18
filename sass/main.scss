@@ -925,6 +925,17 @@ footer {
         width: 100%;
     }
 
+    #hero {
+        #desk-container {
+            right: -100px;
+
+            #desk, #wire {
+                background-attachment: scroll;
+                background-position: right bottom;
+            }
+        }
+    }
+
     #leadership #leaders {
         grid-template-columns: repeat(4, $leadership-size-mobile);
         justify-content: space-between;
@@ -1000,10 +1011,8 @@ footer {
         }
 
         #desk-container {
-            #desk, #wire {
-                background-position: calc(100% + 200px) bottom;
-                background-size: 120%
-            }
+            right: -200px;
+            width: 120%;
         }
 
         #shelf {
@@ -1178,10 +1187,8 @@ footer {
         }
 
         #desk-container {
-            #desk, #wire {
-                background-position: calc(100% + 160px) bottom;
-                background-size: 160%
-            }
+            right: -160px;
+            width: 160%;
         }
 
         #register {
