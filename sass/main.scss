@@ -136,7 +136,7 @@ nav {
 
     a {
         padding: 0px 5px;
-        margin: 0px 10px;
+        margin-left: 10px;
     }
 
     .link:hover {
@@ -151,9 +151,8 @@ nav {
     }
 
     #logo {
-        align-self: flex-start;
-        width: $nav-height;
         height: $nav-height;
+        align-self: flex-start;
 
         img {
             width: $nav-height;
