@@ -16,6 +16,7 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 
+// Nav highlighting on scroll
 import ActiveMenuLink from "active-menu-link";
 
 let options = {
