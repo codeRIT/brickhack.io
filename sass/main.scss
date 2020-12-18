@@ -139,11 +139,16 @@ nav {
         margin-left: 10px;
     }
 
-    .link:hover {
-        // Top border doesn't push content,
-        // for some reason border-box doesn't work here?
-        border-top: 3px solid transparent;
-        border-bottom: 3px solid white;
+    ul {
+        list-style-type: none;
+
+        li {
+            a.active, a:hover {
+                border-top: 3px solid transparent;
+                border-bottom: 3px solid white;
+            }
+
+        }
     }
 
     #login {

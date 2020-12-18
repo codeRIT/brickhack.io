@@ -16,6 +16,15 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 
+import ActiveMenuLink from "active-menu-link";
+
+let options = {
+    scrollOffset: -90, // nav height
+};
+
+new ActiveMenuLink("nav", options);
+
+
 // Random hero SVG on each page load
 import desk1 from './assets/desk1.svg'
 import desk2 from './assets/desk2.svg'
