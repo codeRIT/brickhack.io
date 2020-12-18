@@ -217,7 +217,7 @@ nav {
         font-size: 2em;
     }
 
-    // Shelf things!
+    // Hero Graphics
     #desk-container {
         position: absolute;
         height: 100%;
@@ -269,7 +269,9 @@ nav {
         margin-top: -80px;
         background-image: url("../assets/shapes.svg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: 100% 30%;
+        background-attachment: fixed;
+        background-size: 900px;
         z-index: 1;
     }
 }
@@ -824,9 +826,6 @@ footer {
         }
 
         #desk-container {
-            //original
-            //right: -100px;
-
             #desk, #wire {
                 background-position: calc(100% + 100px) bottom;
             }
@@ -1001,10 +1000,6 @@ footer {
         }
 
         #desk-container {
-            //original
-            //right: -200px;
-            //width: 120%;
-
             #desk, #wire {
                 background-position: calc(100% + 200px) bottom;
                 background-size: 120%
@@ -1183,10 +1178,6 @@ footer {
         }
 
         #desk-container {
-            //original
-            //right: -160px;
-            //width: 160%;
-
             #desk, #wire {
                 background-position: calc(100% + 160px) bottom;
                 background-size: 160%
