@@ -41,6 +41,32 @@ $(document).ready(function() {
     });
 });
 
+// Opens modal when img is clicked
+$(document).on('click', '.slide-image', function() {
+    $('#modal').show();
+    $('#modal-content').attr('src', this.src);
+});
+
+// Closes modal when X is clicked
+$(document).on('click', '#close', function() {
+    $('#modal').hide();
+});
+
+// Closes modal when window is clicked
+$(window).on('click', function(event) {
+    if (event.target == modal) {
+        $('#modal').hide();
+    }
+});
+
+// Closes modal when esc key is pressed
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
+        $('#modal').hide();
+    }
+});
+
+
 let card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("accordion-header")[0];
