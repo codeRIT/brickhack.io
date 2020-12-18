@@ -12,12 +12,15 @@ $light-gray: #a2a8cd;
 $nav-fontsize: 1.3em;
 $nav-height: 90px;
 
-$section-padding: 140px;
-
 $img-border-radius: 20px;
+
+// Clip width (here so it can cascade to media queries)
+$front-width: 30px;
+$back-width: 10px;
 
 $leadership-size: 220px;
 $leadership-size-mobile: 180px;
+$leadership-size-mobile-sm: 140px;
 
 // Just to make it more semantic
 $font-extrabold: 700;
@@ -72,8 +75,12 @@ $event-count: 6;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
     color: white;
-     // Allows for elements "below" std z-index
-     // (note: only set if child adopts explicit position value)
+    // Transition all elements on the screen
+    // (except FAQ panel, which already has a transition,
+    // and the section days, which need no transition.)
+    &:not(.panel):not(#days):not(.number) {
+        transition: all 1s ease;
+    }
 
 }
 
@@ -94,12 +101,33 @@ p {
     font-size: 1.3em;
 }
 
+// Padding for all sections where needed
+// (modified on media queries only)
+.section-pad {
+    padding: 140px;
+}
+
+.section-pad-top {
+    padding-top: 140px;
+}
+
+.section-pad-left {
+    padding-left: 140px;
+}
+
+
 // Nav
 nav {
     background-color: rgba(white, 5%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
+    height: $nav-height;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
 
     .left, .right {
         display: flex;
@@ -123,7 +151,17 @@ nav {
     }
 
     #logo {
-        width: 100px;
+        align-self: flex-start;
+        width: $nav-height;
+        height: $nav-height;
+
+        img {
+            width: $nav-height;
+            height: $nav-height;
+            position: relative;
+            bottom: 0;
+            top: 0;
+        }
     }
 
     #mlh-badge {
@@ -135,18 +173,21 @@ nav {
 
 #hero {
     // SASS needs to parse variable value inline
-    height: calc(100vh - #{$nav-height});
+    height: 100vh;
     background-color: $light-blue;
-    display: flex;
-    justify-content: space-between;
-    padding-left: $section-padding;
-    // border: 3px solid yellow;
+    position: relative;
+    overflow: hidden;
+
+    #hero-content {
+        height: calc(100vh - #{$nav-height});
+        margin-top: $nav-height;
+        display: flex;
+    }
 
     #hero-text {
         z-index: 2;
         white-space: nowrap;
         margin-top: 13%;
-        // border: 3px solid yellow;
     }
 
     p {
@@ -178,16 +219,32 @@ nav {
     }
 
     // Shelf things!
-    #desk {
+    #desk-container {
         position: absolute;
         height: 100%;
         width: 100%;
         right: 0;
-        top: -10px; // SVG crop issues?
-        background-image: url("../assets/desk1.svg");
-        background-repeat: no-repeat;
-        background-position: bottom right;
+        bottom: 0;
         z-index: 1;
+
+        #desk, #wire {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-position: bottom right;
+        }
+
+        #desk {
+            background-image: url("../assets/desk1.svg");
+            background-repeat: no-repeat;
+            z-index: 3;
+        }
+
+        #wire {
+            background-size: auto;
+            background-image: url("../assets/wire.svg");
+            background-repeat: repeat-y;
+        }
     }
 
     #shelf {
@@ -220,9 +277,8 @@ nav {
 
 #hackathon {
     background-color: $dark-blue;
-    padding-top: $section-padding / 2;
 
-    h2 {
+    h1 {
         font-size: $title-size;
     }
 
@@ -233,7 +289,6 @@ nav {
     .carousel {
         width: 100%;
         margin: 0 auto;
-        margin-top: $section-padding / 2;
 
         .slick-list {
             // Slider depends on having the overflow-x hidden,
@@ -265,25 +320,30 @@ nav {
             }
 
             // Offset clips above the carousel image
+            // Pos: abs because pos: rel causes the two clips,
+            // despite having different offsets,
+            // to interfere with each other when trying to adjust their offset.
             .front-clip, .back-clip {
                 position: absolute;
                 top: -60px;
             }
 
             .front-clip {
-                margin-left: ($slide-size / 2);
-                width: 30px;
+                // Front clip: center left edge, then center the clip itself.
+                margin-left: ($slide-size / 2) - ($front-width / 2);
+                width: $front-width;
                 height: 80px;
                 background-color: $orange;
                 z-index: 3;
             }
 
             .back-clip {
-                $width: 10px;
-                width: $width;
+                width: $back-width;
                 height: 60px;
                 background-color: $red;
-                margin-left: ($slide-size / 2) - $width; // Peek out from top clip
+                // Back clip: center left edge, then center the clip itself,
+                // then do left offset from top clip
+                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
                 margin-top: 10px; // Vertical offset from top clip
                 z-index: 0;
             }
@@ -294,19 +354,23 @@ nav {
                 width: $slide-size;
                 height: $slide-size;
                 border-radius: 20px;
+                cursor: pointer;
+                transition: 0.3s;
                 z-index: 2;
+            }
+
+            img:hover {
+                opacity: 0.7;
             }
         }
 
         .slick-arrow {
             width: 60px;
             height: 60px;
-
             background-color: $blue;
             border: 2px solid #A3A9CA;
             box-sizing: border-box;
             border-radius: 50%;
-
             // slick-theme has a transform we don't need!
             transform: none;
             @include button-effect($blue);
@@ -332,6 +396,7 @@ nav {
 
         .slick-prev {
             left: 1%;
+
             &::before {
                 content: "\f060";
             }
@@ -339,6 +404,7 @@ nav {
 
         .slick-next {
             right: 1%;
+
             &::before {
                 content: "\f061";
             }
@@ -346,10 +412,58 @@ nav {
 
     }
 
+    #modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        padding: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(black, 0.9);
+    }
+
+    #modal-content {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0); }
+        to   { transform: scale(1); }
+    }
+
+    #close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color:white;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    #close:hover,
+    #close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
     #hackathon-content {
         display: flex;
         justify-content: space-between;
-        padding: $section-padding;
         align-items: center;
 
         #hackathon-text {
@@ -357,35 +471,39 @@ nav {
         }
     }
 
-    #mlh {
-        @include button;
-        @include button-effect($light-blue);
-        background-color: $light-blue;
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 20px;
+    #hackathon-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+        align-items: flex-start;
 
-        i, p {
-            display: inline;
+        a {
+            @include button;
+            @include button-effect($light-blue);
+            display: flex;
+            align-items: center;
+            background-color: $light-blue;
+            margin: 20px 0px;
+            padding: 30px;
+            border-radius: $img-border-radius;
+            width: 100%;
         }
 
         p {
+            margin: 0px;
             font-size: 1.2em;
             font-weight: $font-medium;
         }
 
-        // TODO: Needs better alignment.
-        i.fa-arrow-right {
+        i.fa-arrow-right, i.fa-tools {
             font-size: 1.6em;
             color: $red;
-            vertical-align: text-bottom;
             padding-right: 10px;
         }
     }
 }
 
 #faq {
-    padding: $section-padding;
     background-color: $dark-blue;
     #faq-wrapper {
         h1 {
@@ -478,17 +596,16 @@ nav {
                 }
             }
         }
-	#contact-desktop {
-	    display: block;
-	}
-	#contact-laptop {
-	    display: none;
-	}
+	      #contact-desktop {
+	          display: block;
+	      }
+	      #contact-laptop {
+	          display: none;
+	      }
     }
 }
 
 #schedule {
-    padding: $section-padding;
     background-color: $blue;
 
     h1 {
@@ -531,7 +648,7 @@ nav {
             flex-direction: column;
             user-select: none;
             cursor: pointer;
-
+            color: white;
             .day {
                 .number {
                     font-size: 6.5em;
@@ -591,10 +708,6 @@ nav {
         font-size: $title-size;
     }
 
-    #leadership-content {
-        padding: $section-padding;
-    }
-
     #leaders {
         // Grid is easier than flex here
         display: grid;
@@ -602,7 +715,6 @@ nav {
         gap: 50px;
         justify-items: center;
         justify-content: center;
-        margin-top: 40px;
 
         .leader {
             width: $leadership-size;
@@ -647,8 +759,6 @@ footer {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
-        width: 400px;
         height: 235px;
         margin: auto;
         padding: 15px;
@@ -670,23 +780,32 @@ footer {
     }
 }
 
-// TODO: Make standard breakpoint widths with vars
-@media screen and (max-width: 1100px) {
-    #hero #hero-text {
-        margin: 30% auto 0% auto;
-        text-align: center;
-        margin-top: 10%;
+
+// Media queries for mobile
+
+
+@media screen and (max-width: 1630px) {
+
+    #leadership #leaders {
+        justify-content: space-between;
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
+
+    .section-pad {
+        padding: 80px;
+    }
+
+    .section-pad-top {
+        padding-top: 80px;
+    }
+
+    .section-pad-left {
+        padding-left: 80px;
+    }
 
     #hero {
-        padding: 50px;
-
-        #hero-text {
-            padding: 0;
-        }
 
         #bh7 {
             font-size: 5.0em;
@@ -700,60 +819,87 @@ footer {
             font-size: 1.1em;
         }
 
-        #desk {
-            height: 100%;
-            width: 1000px;
-            overflow: clip;
-            background-image: url("../assets/desk1-mobile.svg");
-        }
-
         #shapes {
-            display: none;
+            right: -100px;
         }
-    }
 
-    #schedule #schedule-block {
-        width: 100%;
-    }
-}
+        #desk-container {
+            right: -100px;
+        }
 
-@media screen and (max-width: 1500px) {
-
-    // Scaling idea, key is clip
-    #shelf {
-        width: 800px;
-        overflow: clip;
+        #shelf {
+            height: 250px;
+            overflow: hidden;
+        }
     }
 
     #hackathon {
+        .carousel {
+            .slick-slide {
+                $slide-size: 250px;
+                height: $slide-size;
+
+                .front-clip {
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
+                }
+
+                .back-clip {
+                    $back-width: 10px;
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+                }
+            }
+        }
+
         #hackathon-content {
             flex-direction: column;
+
             #hackathon-text {
                 width: 100%;
             }
+          
+        #hackathon-buttons {
+            flex-direction: row;
+            justify-content: center;
+            width: 70%;
+            
+            a {
+                margin: 10px;
+            }
         }
     }
-
+    
     #faq #faq-wrapper { 
         #faq-cards {
             flex-direction: column;
+            
             &-left, &-right {
                 margin: 0;
                 width: 100%;
             }
 
-	    #contact-desktop {
-	        display: none;
-	    }
+	          #contact-desktop {
+	              display: none;
+	          }
         }
-	#contact-laptop {
-	    display: block;
-	}
+	      
+        #contact-laptop {
+	          display: block;
+	      }
+    }
+
+    #schedule #schedule-block {
+        width: 90%;
     }
 
     #leadership #leaders {
+        grid-template-columns: repeat(5, $leadership-size-mobile);
         justify-content: space-between;
-        grid-template-columns: repeat(3, $leadership-size-mobile);
         width: 100%;
         gap: 30px;
 
@@ -768,10 +914,343 @@ footer {
     }
 }
 
+@media screen and (max-width: 1220px) {
 
-@media screen and (max-width: 1630px) {
+    #hackathon #hackathon-content #hackathon-buttons {
+        width: 100%;
+    }
 
     #leadership #leaders {
+        grid-template-columns: repeat(4, $leadership-size-mobile);
         justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    // Redefine only for mobile
+    $nav-height: 60px;
+
+    h1, section > p {
+        text-align: center;
+    }
+
+    #leadership h1, #faq #faq-wrapper h1, #schedule h1, #hackathon h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .section-pad {
+        padding: 40px;
+    }
+
+    .section-pad-top {
+        padding-top: 30px;
+    }
+
+    .section-pad-left {
+        padding: 20px;
+    }
+
+    nav {
+        height: $nav-height;
+        position: absolute;
+
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            width: 90px;
+        }
+
+        .link {
+            display: none;
+        }
+    }
+
+    #hero {
+        #hero-content {
+            height: calc(100vh - #{$nav-height});
+        }
+
+        #bh7 {
+            font-size: 4.2em;
+        }
+
+        #premiere {
+            font-size: 2.0em;
+        }
+
+        #dates {
+            font-size: 1.1em;
+        }
+
+        #hero-text {
+            margin-top: 10vh;
+        }
+
+        #desk-container {
+            right: -200px;
+            width: 120%;
+        }
+
+        #shelf {
+            height: 130px;
+        }
+    }
+
+    #hackathon {
+        .carousel {
+            .slick-list {
+                margin-top: 0;
+            }
+
+            .slick-slide {
+                $front-width: 25px;
+                $back-width: 10px;
+                $slide-size: 200px;
+                height: $slide-size;
+
+                .front-clip, .back-clip {
+                    top: -50px;
+                }
+
+
+                .front-clip {
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
+                    width: $front-width;
+                    height: 70px;
+                }
+
+                .back-clip {
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+                }
+            }
+
+        }
+
+        #hackathon-content #hackathon-buttons {
+            flex-direction: column;
+            width: 60%;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    #schedule {
+
+        #schedule-block {
+            width: 100%;
+        }
+
+        #schedule-tapes {
+            justify-content: center;
+
+            .tape {
+                margin-top: -10px; //Half of tape height
+                height: 20px;
+            }
+        }
+
+        #schedule-content {
+            flex-direction: column;
+            padding: 20px;
+
+            #days {
+                width: auto;
+                margin-top: 10px;
+                flex-direction: row;
+
+                .day {
+                    .number {
+                        font-size: 5em;
+                        text-align: center;
+                    }
+
+                    .name {
+                        font-size: 1.5em;
+                    }
+                }
+            }
+
+            .events {
+                width: auto;
+
+                .event {
+                    padding: 5px;
+
+                    .title {
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+
+    #faq #faq-wrapper {
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+
+            .card {
+                .accordion-header {
+                    padding: 10px 20px;
+                    font-size: 1em;
+                }
+
+                .panel {
+                    padding: 20px;
+                    margin-left: 30px;
+                    padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
+
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(3, $leadership-size-mobile);
+        justify-content: space-around;
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .section-pad {
+        padding: 20px;
+    }
+
+    nav #login {
+        padding: 8px 30px;
+        margin: 0;
+        font-size: 0.8em;
+    }
+
+    #hero {
+
+        p {
+            line-height: 0.4;
+        }
+
+        #bh7 {
+            font-size: 2.4em;
+        }
+
+        #premiere {
+            font-size: 1.5em;
+        }
+
+        #dates {
+            font-size: 0.7em;
+        }
+
+        #desk-container {
+            right: -160px;
+            width: 160%;
+        }
+
+        #register {
+            @include button;
+            padding: 10px 40px;
+            font-size: 1.2em;
+        }
+
+    }
+
+    #hackathon {
+        .carousel .slick-arrow {
+            display: none !important; // Overrides slick.css
+        }
+
+        #hackathon-content {
+            margin: 0;
+            padding: 20px;
+
+            i {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            #hackathon-buttons {
+                width: 100%;
+            }
+        }
+    }
+
+    #faq #faq-wrapper {
+        // Only center the "contact" string in the FAQ
+        a {
+            white-space: nowrap;
+        }
+
+        #contact  {
+            text-align: center;
+        }
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(2, $leadership-size-mobile-sm);
+
+        .leader {
+            width: $leadership-size-mobile-sm;
+
+            img {
+                width: $leadership-size-mobile-sm;
+                height: $leadership-size-mobile-sm;
+            }
+        }
+    }
+
+    footer {
+        height: 200px;
+        background-size: auto 200px;
+
+        #footer-content {
+            height: 160px;
+
+            p {
+                font-size: 0.8em;
+            }
+
+            i {
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    #hero #premiere {
+        font-size: 1.2em;
     }
 }
