@@ -118,7 +118,7 @@ p {
 
 // Nav
 nav {
-    background-color: rgba(white, 5%);
+    background-color: rgba(#5864a5, 50%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
@@ -127,7 +127,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 4;
 
     .left, .right {
         display: flex;
