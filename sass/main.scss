@@ -78,7 +78,7 @@ $event-count: 6;
     // Transition all elements on the screen
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
-    &:not(.panel):not(#days):not(.number):not(#desk) {
+    &:not(nav.link):not(.panel):not(#days):not(.number):not(#desk) {
         transition: all 1s ease;
     }
 
