@@ -3,8 +3,7 @@
 <head>
     <title>BrickHack 7</title>
     <meta charset="utf-8"/>
-    <!-- Disabled, see Issue #1027 -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="hackathons, hackathon, hack-a-thon, programming, hardware, development, design, rit"/>
     <meta name="theme-color" content="#000000"/>
 
@@ -28,8 +27,8 @@
 <body>
     <nav>
         <div class="left">
-            <a href="https://brickhack.io">
-                <img id="logo" src="assets/logo.svg" alt="BrickHack 7 Logo" />
+            <a id="logo" href="https://brickhack.io">
+                <img src="assets/logo.svg" alt="BrickHack 7 Logo" />
             </a>
             <a class="link" href="#hackathon-content">GENERAL</a>
             <a class="link" href="#faq">FAQ</a>
@@ -43,103 +42,116 @@
             </a>
         </div>
     </nav>
-    <section id="hero">
-        <!-- Background images due to easier positioning. -->
-        <div id="desk"></div>
-        <div id="shelf"></div>
-        <div id="hero-text">
-            <p id="bh7">BRICKHACK 7</p>
-            <p id="premiere">RIT's Premiere Hackathon</p>
-            <p id="dates">FEB 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY</p>
-            <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER</a>
+    <section id="hero" class="section-pad-left">
+        <div id="desk-container">
+            <div id="desk"></div>
+            <div id="wire"></div>
         </div>
+        <div id="shelf"></div>
         <div id="shapes"></div>
+        <div id="hero-content">
+            <!-- Background images due to easier positioning. -->
+            <div id="hero-text">
+                <p id="bh7">BRICKHACK 7</p>
+                <p id="premiere">RIT's Premiere Hackathon</p>
+                <p id="dates">FEB 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY</p>
+                <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER</a>
+            </div>
+        </div>
     </section>
     <section id="hackathon">
-        <div class="carousel">
+        <div class="carousel section-pad-top">
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/1.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/1.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/2.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/2.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/3.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/3.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/4.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/4.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/5.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/5.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/6.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/6.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/7.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/7.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/8.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/8.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/9.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/9.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/10.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/10.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/11.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/imgs/11.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
         </div>
-        <div id="hackathon-content">
+        <div id="modal">
+            <span id="close"><i id="close" class="fas fa-times"></i></span>
+            <img id="modal-content" alt="image from carousel">
+        </div>
+        <div id="hackathon-content" class="section-pad">
             <div id="hackathon-text">
-                <h2>What is a Hackathon?</h2>
+                <h1>What is a Hackathon?</h1>
                 <p>A Hackathon is an invention marathon. Any student can attend! Really, any student... and it's completely free.</p>
                 <p>Students work in teams and mentors are present to offer help. Sponsors attend to help, recruit, and promote their products. Teams compete in different categories and prizes are awarded, but everyone learns and everyone wins!</p>
                 <p>Come spend 24 hours with us at BrickHack and dedicate time to learn, collaborate, build, and innovate.</p>
             </div>
-            <a href="https://mlh.io/" id="mlh" target="_blank" rel="noopener noreferrer">
-                <div>
+            <div id="hackathon-buttons">
+                <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-arrow-right"></i>
-                    <p>Visit Major League Hacking (MLH)</p>
-                </div>
-            </a>
+                    <p>Visit Major League Hacking</p>
+                </a>
+                <a href="javascript:void(0);" rel="noopener noreferrer">
+                    <i class="fas fa-tools"></i>
+                    <p>Gallery (coming soon!)</p>
+                </a>
+            </div>
         </div>
     </section>
-    <section id="schedule">
+    <section id="schedule" class="section-pad">
         <h1>Schedule</h1>
         <p>More events coming soon!</p>
         <div id="schedule-block">
@@ -197,7 +209,7 @@
             </div>
         </div>
     </section>
-    <section id="faq">
+    <section id="faq" class="section-pad">
         <div id="faq-wrapper">
             <h1>Frequently Asked Questions</h1>
             <div id="faq-cards">
@@ -244,6 +256,8 @@
                             <p>Maybe next year we'll have AI run the event...</p>
                         </div>
                     </div>
+		    <p id="contact-desktop" class="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
+
                 </div>
                 <div id="faq-cards-right">
                     <div class="card">
@@ -288,13 +302,13 @@
                     </div>
                 </div>
             </div>
-            <p id="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
+            <p id="contact-laptop" class="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
         </div>
     </section>
     <section id="leadership">
-        <div id="leadership-content">
+        <div id="leadership-content" class="section-pad">
             <h1>Leadership Team</h1>
-            <div id="leaders">
+            <div id="leaders" class="section-pad-top">
                 <div class="leader">
                     <div class="leader-tape"></div>
                     <img src="./assets/leadership/michael.jpg" alt="Michael's photo"/>
@@ -364,7 +378,7 @@
         <div id="footer-content">
             <div>
                 <h2>contact us</h2>
-                <p>hello@coderit.org</p>
+                <p><a href="mailto:hello@coderit.org">hello@coderit.org</a></p>
             </div>
             <div>
                 <a href="https://twitter.com/coderit" target="_blank">
