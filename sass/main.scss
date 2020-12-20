@@ -78,7 +78,7 @@ $event-count: 6;
     // Transition all elements on the screen
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
-    &:not(.panel):not(#days):not(.number) {
+    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire) {
         transition: all 1s ease;
     }
 
@@ -118,16 +118,16 @@ p {
 
 // Nav
 nav {
-    background-color: rgba(white, 5%);
+    background-color: rgba(#5864a5, 50%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
     height: $nav-height;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 3;
+    z-index: 4;
 
     .left, .right {
         display: flex;
@@ -136,7 +136,7 @@ nav {
 
     a {
         padding: 0px 5px;
-        margin: 0px 10px;
+        margin-left: 10px;
     }
 
     .link:hover {
@@ -151,9 +151,8 @@ nav {
     }
 
     #logo {
-        align-self: flex-start;
-        width: $nav-height;
         height: $nav-height;
+        align-self: flex-start;
 
         img {
             width: $nav-height;
@@ -218,20 +217,21 @@ nav {
         font-size: 2em;
     }
 
-    // Shelf things!
+    // Hero Graphics
     #desk-container {
         position: absolute;
         height: 100%;
         width: 100%;
         right: 0;
         bottom: 0;
-        z-index: 1;
+        z-index: 2;
 
         #desk, #wire {
             position: absolute;
             height: 100%;
             width: 100%;
             background-position: bottom right;
+            background-attachment: fixed;
         }
 
         #desk {
@@ -264,12 +264,14 @@ nav {
     #shapes {
         position: absolute;
         right: 0;
-        height: 900px;
+        height: 110%;
         width: 900px;
         margin-top: -80px;
         background-image: url("../assets/shapes.svg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: 100% 30%;
+        background-attachment: fixed;
+        background-size: 900px;
         z-index: 1;
     }
 }
@@ -596,12 +598,12 @@ nav {
                 }
             }
         }
-	      #contact-desktop {
-	          display: block;
-	      }
-	      #contact-laptop {
-	          display: none;
-	      }
+        #contact-desktop {
+            display: block;
+        }
+        #contact-laptop {
+            display: none;
+        }
     }
 }
 
@@ -782,7 +784,6 @@ footer {
 
 // Media queries for mobile
 
-
 @media screen and (max-width: 1630px) {
 
     #leadership #leaders {
@@ -823,7 +824,9 @@ footer {
         }
 
         #desk-container {
-            right: -100px;
+            #desk, #wire {
+                background-position: calc(100% + 100px) bottom;
+            }
         }
 
         #shelf {
@@ -867,30 +870,30 @@ footer {
             flex-direction: row;
             justify-content: center;
             width: 70%;
-            
+
             a {
                 margin: 10px;
             }
         }
     }
-    
-    #faq #faq-wrapper { 
+
+    #faq #faq-wrapper {
         #faq-cards {
             flex-direction: column;
-            
+
             &-left, &-right {
                 margin: 0;
                 width: 100%;
             }
-
-	    #contact-desktop {
-	        display: none;
-	    }
         }
-	      
+
+        #contact-desktop {
+            display: none;
+        }
+
         #contact-laptop {
-	    display: block;
-	}
+            display: block;
+        }
     }
 
     #schedule #schedule-block {
@@ -918,6 +921,17 @@ footer {
 
     #hackathon #hackathon-content #hackathon-buttons {
         width: 100%;
+    }
+
+    #hero {
+        #desk-container {
+            right: -100px;
+
+            #desk, #wire {
+                background-attachment: scroll;
+                background-position: right bottom;
+            }
+        }
     }
 
     #leadership #leaders {
@@ -1263,7 +1277,7 @@ footer {
             white-space: nowrap;
         }
 
-        #contact  {
+        .contact  {
             text-align: center;
         }
     }
