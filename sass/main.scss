@@ -135,17 +135,15 @@ nav {
         margin-left: 10px;
     }
 
-    ul {
-        list-style-type: none;
+    .link {
+        border-bottom: 3px solid rgba(white, 0);
+        transition: all 0.2s;
 
-        li a {
-            border-bottom: 3px solid rgba(white, 0);
-            transition: border-bottom-color 0.2s;
-
-            &.active, &:hover {
-                border-bottom-color: rgba(white, 1);
-            }
-
+        &.active {
+            border-bottom-color: rgba(white, 1);
+        }
+        &:hover {
+            transform: translateY(2px);
         }
     }
 
@@ -987,7 +985,7 @@ footer {
             width: 90px;
         }
 
-        ul li {
+        .link {
             display: none;
         }
     }

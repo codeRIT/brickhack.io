@@ -20,7 +20,10 @@ document.insertBefore(comment, document.firstChild);
 import ActiveMenuLink from "active-menu-link";
 
 let options = {
+    itemTag: "",
     scrollOffset: -90, // nav height
+    scrollDuration: 1000,
+    ease: "out-quart",
 };
 
 new ActiveMenuLink("nav", options);
