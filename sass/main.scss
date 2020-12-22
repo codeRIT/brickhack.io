@@ -141,10 +141,8 @@ nav {
 
         transition: all 0.2s;
 
-        &:focus {
-            border-bottom-color: rgba(white, 0);
-        }
         &:not(:focus):hover, &.active {
+            // underline upon hover, disable hover upon click
             border-bottom-color: rgba(white, 1);
         }
     }
