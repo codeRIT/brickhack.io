@@ -24,6 +24,7 @@ let options = {
     scrollOffset: -90, // nav height
     scrollDuration: 1000,
     ease: "out-quart",
+    showHash: false,
 };
 
 new ActiveMenuLink("nav", options);

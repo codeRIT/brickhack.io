@@ -136,7 +136,9 @@ nav {
     }
 
     .link {
-        border-bottom: 3px solid rgba(white, 0);
+        border: 3px rgba(white, 0);
+        border-style: solid none;
+
         transition: all 0.2s;
 
         &.active {
