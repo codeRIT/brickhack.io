@@ -141,11 +141,11 @@ nav {
 
         transition: all 0.2s;
 
-        &.active {
-            border-bottom-color: rgba(white, 1);
+        &:focus {
+            border-bottom-color: rgba(white, 0);
         }
-        &:hover {
-            transform: translateY(2px);
+        &:not(:focus):hover, &.active {
+            border-bottom-color: rgba(white, 1);
         }
     }
 
