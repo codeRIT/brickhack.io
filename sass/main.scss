@@ -786,6 +786,56 @@ footer {
 // Media queries for mobile
 
 
+@media screen and (min-width: 1700px) {
+    nav {
+        font-size: 1.5em;
+
+        #login {
+	    padding: 15px 30px;
+	}
+
+	#logo {
+	    width: 120px;
+	    height: 120px;
+	}
+
+	#mlh-badge{
+	    width: 140px;
+	}
+
+    }
+
+    #hero {
+        #desk {
+	    height: 110%;
+	    width: 110%;
+	    top: -50px;
+	}
+
+        #shapes {
+	    height: 1000px;
+	    width: 1000px;
+	    margin-top: -140px;
+	}
+
+        #bh7 {
+            font-size: 6.4em;
+        }
+    
+        #premiere {
+            font-size: 3em;
+        }
+
+        #dates {
+            font-size: 1.57em;
+        }
+
+        #register {
+            font-size: 2.3em;
+        }
+    }
+}
+
 @media screen and (max-width: 1630px) {
 
     #leadership #leaders {
@@ -943,55 +993,6 @@ footer {
 
 }
 
-@media screen and (min-width: 1700px) {
-    nav {
-        font-size: 1.5em;
-
-        #login {
-	    padding: 15px 30px;
-	}
-
-	#logo {
-	    width: 120px;
-	    height: 120px;
-	}
-
-	#mlh-badge{
-	    width: 140px;
-	}
-
-    }
-
-    #hero {
-        #desk {
-	    height: 110%;
-	    width: 110%;
-	    top: -50px;
-	}
-
-        #shapes {
-	    height: 1000px;
-	    width: 1000px;
-	    margin-top: -140px;
-	}
-
-        #bh7 {
-            font-size: 6.4em;
-        }
-    
-        #premiere {
-            font-size: 3em;
-        }
-
-        #dates {
-            font-size: 1.57em;
-        }
-
-        #register {
-            font-size: 2.3em;
-        }
-    }
-}
 
 @media screen and (max-width: 900px) {
 
