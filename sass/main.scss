@@ -857,6 +857,10 @@ footer {
                     width: $slide-size;
                     height: $slide-size;
                 }
+
+                img:hover {
+                    opacity: 1;
+                }
             }
         }
 
