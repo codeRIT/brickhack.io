@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-static-files-copy": "^2.5.0",
-    "sass": "^1.30.0"
+    "sass": "^1.32.0"
   },
   "staticFiles": {
     "staticPath": "resources"
