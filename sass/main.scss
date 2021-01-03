@@ -762,6 +762,18 @@ nav {
         margin: 20px;
     }
 
+    p {
+        text-align: center;
+
+        a {
+            color: $red;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
     #sponsor-grid, #partner-grid {
         display: flex;
         justify-content: center;
@@ -769,7 +781,6 @@ nav {
     }
 
     #partner-grid {
-
         img {
             width: 100px;
         }
