@@ -59,7 +59,7 @@ $(document).ready(function() {
         slidesToShow: 3,
         slidesToScroll: 2,
         cssEase: 'ease-in-out',
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 2000,
         speed: 1000,
         responsive: [
