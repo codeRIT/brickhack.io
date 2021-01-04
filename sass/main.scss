@@ -775,13 +775,15 @@ nav {
         width: 400px;
         margin: 40px;
         background-repeat: no-repeat;
+        // background-size: a;
 
         img {
             transition: opacity 0.1s;
+            opacity: 1;
+        }
 
-            &:hover {
-                opacity: 0;
-            }
+        &:hover img {
+            opacity: 0;
         }
     }
 
