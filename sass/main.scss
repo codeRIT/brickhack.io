@@ -79,7 +79,7 @@ $event-count: 6;
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
     &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire) {
-        transition: all 1s ease;
+        // transition: all 1s ease;
     }
 
 }
@@ -759,10 +759,57 @@ nav {
         color: $red;
     }
 
-    img {
+    #sponsor-grid, #partner-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #partner-grid {
+        .logo {
+            width: 200px;
+        }
+    }
+
+    .logo {
         width: 400px;
         margin: 40px;
+        background-repeat: no-repeat;
+
+        img {
+            transition: opacity 0.1s;
+
+            &:hover {
+                opacity: 0;
+            }
+        }
     }
+
+    // Show color version of logo on hover
+    // only possible when done via CSS background-img
+    // to be supported on all browsers.
+    .cbrands:hover {
+        background-image: url("/assets/sponsors/logos/cbrands.svg");
+    }
+
+    .mtbank:hover {
+        background-image: url("/assets/sponsors/logos/mtbank.svg");
+    }
+
+    .readme:hover {
+        background-image: url("/assets/sponsors/logos/readme.svg");
+    }
+
+    .pinnacle:hover {
+        background-image: url("/assets/sponsors/logos/pinnacle.svg");
+    }
+
+    .mlh:hover {
+        background-image: url("/assets/sponsors/logos/mlh.svg");
+    }
+
+
+
 
     #prospectus {
         margin-top: 50px;
@@ -780,19 +827,6 @@ nav {
             }
         }
     }
-
-    #sponsor-grid, #partner-grid {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #partner-grid {
-        img {
-            width: 200px;
-        }
-    }
-
 }
 
 footer {
