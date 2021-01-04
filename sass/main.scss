@@ -755,15 +755,22 @@ nav {
     h2 {
         text-align: center;
         margin-top: 50px;
+        font-size: 2em;
+        color: $orange;
     }
 
     img {
-        width: 500px;
-        margin: 20px;
+        width: 400px;
+        margin: 40px;
     }
 
-    p {
-        text-align: center;
+    #prospectus {
+        margin-top: 50px;
+        margin-bottom: -50px;
+
+        p {
+            text-align: center;
+        }
 
         a {
             color: $red;
@@ -782,7 +789,7 @@ nav {
 
     #partner-grid {
         img {
-            width: 100px;
+            width: 200px;
         }
     }
 
