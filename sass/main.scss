@@ -786,6 +786,32 @@ footer {
 // Media queries for mobile
 
 
+@media screen and (min-width: 1700px) {
+    nav {
+        #mlh-badge {
+            width: 140px;
+        }
+    }
+
+    #hero {
+        #bh7 {
+            font-size: 6.4em;
+        }
+
+        #premiere {
+            font-size: 3em;
+        }
+
+        #dates {
+            font-size: 1.6em;
+        }
+
+        #register {
+            font-size: 2.3em;
+        }
+    }
+}
+
 @media screen and (max-width: 1630px) {
 
     #leadership #leaders {
