@@ -46,6 +46,9 @@ $(document).ready(function() {
     localStorage.setItem('deskIndex', deskIndex + 1);
 });
 
+// Parallax functionality
+import Rellax from 'rellax';
+var rellax = new Rellax('.rellax');
 
 // Slick-carousel
 import $ from 'jquery'
