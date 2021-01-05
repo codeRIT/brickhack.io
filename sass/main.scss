@@ -84,10 +84,6 @@ $event-count: 6;
 
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     background-color: $light-blue;
 }
@@ -139,11 +135,15 @@ nav {
         margin-left: 10px;
     }
 
-    .link:hover {
-        // Top border doesn't push content,
-        // for some reason border-box doesn't work here?
-        border-top: 3px solid transparent;
-        border-bottom: 3px solid white;
+    .link {
+        border: 3px rgba(white, 0);
+        border-style: solid none;
+        transition: all 0.2s;
+
+        &:not(:focus):hover, &.active {
+            // underline upon hover, disable hover upon click
+            border-bottom-color: rgba(white, 1);
+        }
     }
 
     #login {
