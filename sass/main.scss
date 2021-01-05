@@ -359,10 +359,10 @@ nav {
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 2;
-            }
 
-            img:hover {
-                opacity: 0.7;
+                &:hover {
+                    filter: brightness(125%);
+                }
             }
         }
 
@@ -856,10 +856,6 @@ footer {
                 img {
                     width: $slide-size;
                     height: $slide-size;
-                }
-
-                img:hover {
-                    opacity: 1;
                 }
             }
         }
