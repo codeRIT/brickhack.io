@@ -27,7 +27,7 @@ let options = {
     showHash: false,
 };
 
-new ActiveMenuLink("nav", options);
+new ActiveMenuLink(".navbar-items", options);
 
 
 // Random hero SVG on each page load
