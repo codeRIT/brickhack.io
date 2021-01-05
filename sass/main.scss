@@ -414,9 +414,17 @@ nav {
 
     }
 
+    // Note that older versions of iOS (<14?)
+    // require `cursor: pointer` to be set
+    // in order for click events to be captured
+    // by our intended HTML (here, #modal).
+    // The cursor is reset on the #modal-content,
+    // as on desktop, no action is possible on the image.
+    // https://stackoverflow.com/a/16006333/1431900
     #modal {
         display: none;
         position: fixed;
+        cursor: pointer;
         z-index: 100;
         padding: 100px;
         left: 0;
@@ -437,6 +445,7 @@ nav {
         display: block;
         width: 80%;
         max-width: 700px;
+        cursor: default;
         animation-name: zoom;
         animation-duration: 0.6s;
     }
