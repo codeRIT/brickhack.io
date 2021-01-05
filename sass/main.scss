@@ -766,7 +766,7 @@ nav {
     }
 
     #partner-grid {
-        .logo {
+        .logo, .logo img {
             width: 200px;
         }
     }
@@ -775,7 +775,6 @@ nav {
         width: 400px;
         margin: 40px;
         background-repeat: no-repeat;
-        // background-size: a;
 
         img {
             transition: opacity 0.1s;
