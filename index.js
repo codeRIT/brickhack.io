@@ -47,6 +47,11 @@ $(document).ready(function() {
 });
 
 
+// Parallax
+import Rellax from 'rellax';
+var rellax = new Rellax('.rellax');
+
+
 // Slick-carousel
 import $ from 'jquery'
 import 'slick-carousel'

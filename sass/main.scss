@@ -79,7 +79,7 @@ $event-count: 6;
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
     &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire) {
-        transition: all 1s ease;
+        // transition: all 1s ease;
     }
 
 }
@@ -231,7 +231,7 @@ nav {
             height: 100%;
             width: 100%;
             background-position: bottom right;
-            background-attachment: fixed;
+            // background-attachment: fixed;
         }
 
         #desk {
@@ -270,7 +270,7 @@ nav {
         background-image: url("../assets/shapes.svg");
         background-repeat: no-repeat;
         background-position: 100% 30%;
-        background-attachment: fixed;
+        // background-attachment: fixed;
         background-size: 900px;
         z-index: 1;
     }
@@ -930,7 +930,7 @@ footer {
             right: -100px;
 
             #desk, #wire {
-                background-attachment: scroll;
+                // background-attachment: scroll;
                 background-position: right bottom;
             }
         }
