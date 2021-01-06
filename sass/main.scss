@@ -1086,6 +1086,10 @@ footer {
                 img {
                     width: $slide-size;
                     height: $slide-size;
+
+                    &:hover {
+                        filter: none;
+                    }
                 }
             }
 
