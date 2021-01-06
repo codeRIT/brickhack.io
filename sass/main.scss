@@ -1062,6 +1062,36 @@ footer {
         grid-template-columns: repeat(4, $leadership-size-mobile);
         justify-content: space-between;
     }
+
+    #sponsors {
+        #sponsor-grid, #partner-grid {
+            flex-wrap: wrap;
+        }
+
+        #partner-grid {
+            .logo, .logo img {
+                width: 150px;
+            }
+        }
+
+        // Different sponsors get different size logos
+        .brick .logo {
+            width: 350px;
+
+            // Their logo is a little too big...
+            &.cbrands {
+                width: 300px;
+            }
+        }
+
+        .gold .logo {
+            width: 200px;
+        }
+
+        #prospectus {
+            margin: 0;
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
