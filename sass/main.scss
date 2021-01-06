@@ -767,12 +767,11 @@ nav {
 
     #partner-grid {
         .logo, .logo img {
-            width: 200px;
+            width: 150px;
         }
     }
 
     .logo {
-        width: 400px;
         margin: 40px;
         background-repeat: no-repeat;
 
@@ -784,6 +783,20 @@ nav {
         &:hover img {
             opacity: 0;
         }
+    }
+
+    // Different sponsors get different size logos
+    .brick .logo {
+        width: 500px;
+
+        // Their logo is a little too big...
+        &.cbrands {
+            width: 400px;
+        }
+    }
+
+    .gold .logo {
+        width: 300px;
     }
 
     // Show color version of logo on hover
@@ -808,9 +821,6 @@ nav {
     .mlh:hover {
         background-image: url("/assets/sponsors/logos/mlh.svg");
     }
-
-
-
 
     #prospectus {
         margin-top: 50px;
