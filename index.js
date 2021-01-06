@@ -16,6 +16,20 @@ const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
 
+// Nav highlighting on scroll
+import ActiveMenuLink from "active-menu-link";
+
+let options = {
+    itemTag: "",
+    scrollOffset: -90, // nav height
+    scrollDuration: 1000,
+    ease: "out-quart",
+    showHash: false,
+};
+
+new ActiveMenuLink(".navbar-items", options);
+
+
 // Random hero SVG on each page load
 import desk1 from './assets/desk1.svg'
 import desk2 from './assets/desk2.svg'
@@ -45,7 +59,7 @@ $(document).ready(function() {
         slidesToShow: 3,
         slidesToScroll: 2,
         cssEase: 'ease-in-out',
-        autoplay: false,
+        autoplay: true,
         autoplaySpeed: 2000,
         speed: 1000,
         responsive: [
