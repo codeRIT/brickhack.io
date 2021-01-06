@@ -78,7 +78,7 @@ $event-count: 6;
     // Transition all elements on the screen
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
-    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire) {
+    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire):not(.logo img) {
         transition: all 1s ease;
     }
 
@@ -704,7 +704,7 @@ nav {
 }
 
 #leadership {
-    background-color: $light-blue;
+    background-color: $blue;
 
     h1 {
         font-size: $title-size;
@@ -745,12 +745,89 @@ nav {
     }
 }
 
+#sponsors {
+    background-color: $light-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 2.5em;
+        color: $red;
+    }
+
+    #sponsor-grid, #partner-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #partner-grid {
+        .logo, .logo img {
+            width: 150px;
+        }
+    }
+
+    .logo {
+        margin: 40px;
+        background-repeat: no-repeat;
+
+        // Hover effect that sets opacity: 0
+        // is applied in the @meida (hover: hover) query
+        // due to mobile devices having a sticky hover
+        // (more details in the @media query)
+        img {
+            transition: opacity 0.1s;
+            opacity: 1;
+        }
+
+    }
+
+    // Different sponsors get different size logos
+    .brick .logo {
+        width: 500px;
+
+        // Their logo is a little too big...
+        &.cbrands {
+            width: 400px;
+        }
+    }
+
+    .gold .logo {
+        width: 300px;
+    }
+
+    // Sponsor logo color version being set on hover
+    // is also done in the @media(hover: hover) query
+    // for the same reason as above.
+
+    #prospectus {
+        margin-top: 20px;
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: $red;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 footer {
     width: 100%;
     height: 300px;
     left: 0;
     right: 0;
     bottom: 0;
+    margin-top: 20px;
     background-image: url("../assets/footer.svg");
     background-repeat: repeat no-repeat;
     background-position: bottom center;
@@ -785,6 +862,40 @@ footer {
 
 // Media queries for mobile
 
+
+// Mobile has sticky hover,
+// so special hover effects need to go in here.
+// https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
+@media (hover: hover) {
+    #sponsors {
+        .logo:hover img {
+            opacity: 0;
+        }
+
+        // Show color version of logo on hover
+        // only possible when done via CSS background-img
+        // to be supported on all browsers.
+        .cbrands:hover {
+            background-image: url("/assets/sponsors/logos/cbrands.svg");
+        }
+
+        .mtbank:hover {
+            background-image: url("/assets/sponsors/logos/mtbank.svg");
+        }
+
+        .readme:hover {
+            background-image: url("/assets/sponsors/logos/readme.svg");
+        }
+
+        .pinnacle:hover {
+            background-image: url("/assets/sponsors/logos/pinnacle.svg");
+        }
+
+        .mlh:hover {
+            background-image: url("/assets/sponsors/logos/mlh.svg");
+        }
+    }
+}
 
 @media screen and (min-width: 1700px) {
     nav {
@@ -965,6 +1076,36 @@ footer {
     #leadership #leaders {
         grid-template-columns: repeat(4, $leadership-size-mobile);
         justify-content: space-between;
+    }
+
+    #sponsors {
+        #sponsor-grid, #partner-grid {
+            flex-wrap: wrap;
+        }
+
+        #partner-grid {
+            .logo, .logo img {
+                width: 150px;
+            }
+        }
+
+        // Different sponsors get different size logos
+        .brick .logo {
+            width: 350px;
+
+            // Their logo is a little too big...
+            &.cbrands {
+                width: 300px;
+            }
+        }
+
+        .gold .logo {
+            width: 200px;
+        }
+
+        #prospectus {
+            margin: 0;
+        }
     }
 }
 
