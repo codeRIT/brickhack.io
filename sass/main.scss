@@ -181,6 +181,8 @@ nav {
         height: calc(100vh - #{$nav-height});
         margin-top: $nav-height;
         display: flex;
+        z-index: 4;
+        position: relative;
     }
 
     #hero-text {
