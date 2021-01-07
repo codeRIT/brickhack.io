@@ -78,7 +78,7 @@ $event-count: 6;
     // Transition all elements on the screen
     // (except FAQ panel, which already has a transition,
     // and the section days, which need no transition.)
-    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire):not(.logo img) {
+    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire):not(.rellax):not(.logo img) {
         transition: all 1s ease;
     }
 
@@ -123,7 +123,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 4;
+    z-index: 5;
 
     .left, .right {
         display: flex;
@@ -181,6 +181,8 @@ nav {
         height: calc(100vh - #{$nav-height});
         margin-top: $nav-height;
         display: flex;
+        z-index: 4;
+        position: relative;
     }
 
     #hero-text {
@@ -231,7 +233,6 @@ nav {
             height: 100%;
             width: 100%;
             background-position: bottom right;
-            background-attachment: fixed;
         }
 
         #desk {
@@ -258,7 +259,7 @@ nav {
         background-repeat: no-repeat;
         background-position: bottom center;
         background-size: cover;
-        z-index: 2;
+        z-index: 4;
     }
 
     #shapes {
@@ -270,7 +271,6 @@ nav {
         background-image: url("../assets/shapes.svg");
         background-repeat: no-repeat;
         background-position: 100% 30%;
-        background-attachment: fixed;
         background-size: 900px;
         z-index: 1;
     }
@@ -359,10 +359,10 @@ nav {
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 2;
-            }
 
-            img:hover {
-                opacity: 0.7;
+                &:hover {
+                    filter: brightness(125%);
+                }
             }
         }
 
@@ -414,9 +414,17 @@ nav {
 
     }
 
+    // Note that older versions of iOS (<14?)
+    // require `cursor: pointer` to be set
+    // in order for click events to be captured
+    // by our intended HTML (here, #modal).
+    // The cursor is reset on the #modal-content,
+    // as on desktop, no action is possible on the image.
+    // https://stackoverflow.com/a/16006333/1431900
     #modal {
         display: none;
         position: fixed;
+        cursor: pointer;
         z-index: 100;
         padding: 100px;
         left: 0;
@@ -437,6 +445,7 @@ nav {
         display: block;
         width: 80%;
         max-width: 700px;
+        cursor: default;
         animation-name: zoom;
         animation-duration: 0.6s;
     }
@@ -1067,7 +1076,6 @@ footer {
             right: -100px;
 
             #desk, #wire {
-                background-attachment: scroll;
                 background-position: right bottom;
             }
         }
@@ -1218,6 +1226,10 @@ footer {
                 img {
                     width: $slide-size;
                     height: $slide-size;
+
+                    &:hover {
+                        filter: none;
+                    }
                 }
             }
 
