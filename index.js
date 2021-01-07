@@ -48,7 +48,9 @@ $(document).ready(function() {
 
 // Parallax functionality
 import Rellax from 'rellax';
-var rellax = new Rellax('.rellax');
+var rellax = new Rellax('.rellax', {
+    breakpoints:[0, 0, 900],
+});
 
 // Slick-carousel
 import $ from 'jquery'
