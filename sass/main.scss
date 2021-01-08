@@ -76,10 +76,10 @@ $event-count: 6;
     font-family: "Poppins", sans-serif;
     color: white;
     // Transition all elements on the screen
-    // (except FAQ panel, which already has a transition,
-    // and the section days, which need no transition.)
-    &:not(.link):not(.panel):not(#days):not(.number):not(#desk):not(#wire):not(.rellax):not(.logo img) {
-        transition: all 1s ease;
+    // (except FAQ panel, which has conflicting transitions)
+    &:not(.panel) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
     }
 
 }
