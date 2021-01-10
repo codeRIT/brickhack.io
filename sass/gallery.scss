@@ -4,17 +4,13 @@
     box-sizing: border-box;
 }
 
-.orange {
+.header {
     background-color: #F98728;
     width: 100%;
     height: 300px;
     left: 0px;
     top: 90px;
     padding: 20px
-}
-
-.info {
-    margin: 20px;
 }
 
 h1, p {
@@ -33,11 +29,7 @@ p {
     line-height: 20px;
 }
 
-#underline {
-    text-decoration: underline;
-}
-
-#rectangle {
+#logo {
     margin:auto;
     width: 100px;
     height: 100px;
