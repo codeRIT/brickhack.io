@@ -55,6 +55,7 @@ p {
     height: 100%;
     position: fixed;
     z-index: 1;
+    display: none;
 }
 
 #modal {
@@ -67,6 +68,7 @@ p {
     width: 70%;
     position: absolute;
     z-index: 2;
+    display: none;
 
     i, p {
         color: #F98728;
@@ -79,7 +81,7 @@ p {
     }
 }
 
-#closeModal {
+#close-modal {
     width: calc(100% - 40px);
     display: block;
     text-align: right;
