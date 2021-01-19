@@ -65,7 +65,6 @@ $event-count: 6;
 @mixin hero-fontsize($size) {
     #bh7 {
         font-size: $size;
-        font-weight: $font-extrabold;
 
         &::first-letter {
             margin-left: -$size * 0.006;
@@ -74,7 +73,6 @@ $event-count: 6;
 
     #premiere {
         font-size: $size * 0.51;
-        font-weight: $font-medium;
 
         &::first-letter {
             margin-left: -$size * 0.005;
@@ -83,12 +81,9 @@ $event-count: 6;
 
     #dates {
         font-size: $size * 0.265;
-        font-weight: $font-regular;
     }
 
     #register {
-        @include button;
-        padding: 10px 80px;
         font-size: $size * 0.4;
     }
 }
@@ -227,6 +222,23 @@ nav {
         // appear to be equally spaced.
         line-height: 0.7;
         margin-bottom: 30px;
+    }
+
+    #bh7 {
+        font-weight: $font-extrabold;
+    }
+
+    #premiere {
+        font-weight: $font-medium;
+    }
+
+    #dates {
+        font-weight: $font-regular;
+    }
+
+    #register {
+        @include button;
+        padding: 10px 80px;
     }
 
     @include hero-fontsize(5em);
