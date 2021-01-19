@@ -62,6 +62,37 @@ $event-count: 6;
     }
 }
 
+@mixin hero-fontsize($size) {
+    #bh7 {
+        font-size: $size;
+        font-weight: $font-extrabold;
+
+        &::first-letter {
+            margin-left: -$size * 0.006;
+        }
+    }
+
+    #premiere {
+        font-size: $size * 0.51;
+        font-weight: $font-medium;
+
+        &::first-letter {
+            margin-left: -$size * 0.005;
+        }
+    }
+
+    #dates {
+        font-size: $size * 0.265;
+        font-weight: $font-regular;
+    }
+
+    #register {
+        @include button;
+        padding: 10px 80px;
+        font-size: $size * 0.4;
+    }
+}
+
 // Functions for random color selection (hero)
 @function rand-color($colors...) {
     @return nth($colors, random(length($colors)))
@@ -198,26 +229,7 @@ nav {
         margin-bottom: 30px;
     }
 
-    #bh7 {
-        font-size: 5.4em;
-        font-weight: $font-extrabold;
-    }
-
-    #premiere {
-        font-size: 2.5em;
-        font-weight: $font-medium;
-    }
-
-    #dates {
-        font-size: 1.3em;
-        font-weight: $font-regular;
-    }
-
-    #register {
-        @include button;
-        padding: 10px 80px;
-        font-size: 2em;
-    }
+    @include hero-fontsize(5em);
 
     // Hero Graphics
     #desk-container {
@@ -914,21 +926,7 @@ footer {
     }
 
     #hero {
-        #bh7 {
-            font-size: 6.4em;
-        }
-
-        #premiere {
-            font-size: 3em;
-        }
-
-        #dates {
-            font-size: 1.6em;
-        }
-
-        #register {
-            font-size: 2.3em;
-        }
+        @include hero-fontsize(8em);
     }
 }
 
@@ -954,18 +952,7 @@ footer {
     }
 
     #hero {
-
-        #bh7 {
-            font-size: 5.0em;
-        }
-
-        #premiere {
-            font-size: 2.0em;
-        }
-
-        #dates {
-            font-size: 1.1em;
-        }
+        @include hero-fontsize(5em);
 
         #shapes {
             right: -100px;
@@ -1143,7 +1130,7 @@ footer {
     }
 
     .section-pad-left {
-        padding: 20px;
+        padding: 50px;
     }
 
     nav {
@@ -1169,21 +1156,11 @@ footer {
             height: calc(100vh - #{$nav-height});
         }
 
-        #bh7 {
-            font-size: 4.2em;
-        }
-
-        #premiere {
-            font-size: 2.0em;
-        }
-
-        #dates {
-            font-size: 1.1em;
-        }
-
         #hero-text {
             margin-top: 10vh;
         }
+
+        @include hero-fontsize(4.2em);
 
         #desk-container {
             right: -200px;
@@ -1341,6 +1318,10 @@ footer {
         padding: 20px;
     }
 
+    .section-pad-left {
+        padding: 20px;
+    }
+
     nav #login {
         padding: 8px 30px;
         margin: 0;
@@ -1348,22 +1329,11 @@ footer {
     }
 
     #hero {
-
         p {
             line-height: 0.4;
         }
 
-        #bh7 {
-            font-size: 2.4em;
-        }
-
-        #premiere {
-            font-size: 1.5em;
-        }
-
-        #dates {
-            font-size: 0.7em;
-        }
+        @include hero-fontsize(3em);
 
         #desk-container {
             right: -160px;
@@ -1443,9 +1413,8 @@ footer {
     }
 }
 
-@media screen and (max-width: 320px) {
-
-    #hero #premiere {
-        font-size: 1.2em;
+@media screen and (max-width: 350px) {
+    #hero {
+        @include hero-fontsize(1.2em);
     }
 }
