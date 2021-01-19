@@ -1,30 +1,29 @@
 import './sass/gallery.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
+import $ from 'jquery'
+
 // Navbar functionality
-var navlinks = document.getElementsByClassName("navlinks");
-var toggler = document.getElementsByClassName("fa-bars")[0];
-toggler.addEventListener("click", function() {
-    if (navlinks[0].className === "navlinks") {
-        for (var i = 0; i < navlinks.length; i++) {
-            navlinks[i].className = "navlinks show-menu";
-        }
-        toggler.className = "fas fa-times";
+$(document).on('click', '#toggler', function() {
+    console.log($('.navlinks').attr('class'));
+    if ($('.navlinks').hasClass('show-menu')) {
+        console.log('close menu');
+        $('.navlinks').removeClass('show-menu');
+        $('#toggler').removeClass('fa-times');
+        $('#toggler').addClass('fa-bars');
     } else {
-        for (var i = 0; i < navlinks.length; i++) {
-            navlinks[i].className = "navlinks";
-        }
-        toggler.className = "fas fa-bars";
+        console.log('opening menu');
+        $('.navlinks').addClass('show-menu');
+        $('#toggler').removeClass('fa-bars');
+        $('#toggler').addClass('fa-times');
     }
 });
 // Closing the navbar when a navigation link is clicked
-for (var i = 0; i < navlinks.length; i++) {
-    navlinks[i].addEventListener("click", function() {
-        if (navlinks[0].className === "navlinks show-menu") {
-            for (var i = 0; i < navlinks.length; i++) {
-                navlinks[i].className = "navlinks";
-            }
-            toggler.className = "fas fa-bars";
-        }
-    });
-}
+$(window).on('click', function(event) {
+    if ($(event.target).hasClass('navlink')) {
+        console.log('close menu');
+        $('.navlinks').removeClass('show-menu');
+        $('#toggler').removeClass('fa-times');
+        $('#toggler').addClass('fa-bars');
+    }
+});
