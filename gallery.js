@@ -3,7 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import $ from 'jquery'
 
-//Opening modal
+// Opening modal
 $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
@@ -11,13 +11,13 @@ $(document).on('click', function(event) {
     }
 });
 
-//Closing modal with x
+// Closing modal with x
 $('#close-modal').on('click', function() {
     $('#modal').hide();
     $('#modal-background').hide();
 });
 
-//Closing modal with background
+// Closing modal with background
 $('#modal-background').on('click', function() {
     $('#modal').hide();
     $('#modal-background').hide();
