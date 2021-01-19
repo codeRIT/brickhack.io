@@ -938,7 +938,7 @@ footer {
     }
 
     #hero {
-        @include hero-fontsize(8em);
+        @include hero-fontsize(6.4em);
     }
 }
 
@@ -1353,11 +1353,8 @@ footer {
         }
 
         #register {
-            @include button;
             padding: 10px 40px;
-            font-size: 1.2em;
         }
-
     }
 
     #hackathon {
