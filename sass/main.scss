@@ -65,18 +65,12 @@ $event-count: 6;
 @mixin hero-fontsize($size) {
     #bh7 {
         font-size: $size;
-
-        &::first-letter {
-            margin-left: -$size * 0.006;
-        }
+        margin-left: -$size * 0.006;
     }
 
     #premiere {
         font-size: $size * 0.51;
-
-        &::first-letter {
-            margin-left: -$size * 0.005;
-        }
+        margin-left: -$size * 0.005;
     }
 
     #dates {
