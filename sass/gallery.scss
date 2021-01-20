@@ -24,10 +24,11 @@ nav {
         text-decoration: none;
         font-size: 25px;
         margin: 10px;
-        border-bottom: 3px solid #F9872800;
+        border-bottom: 3px solid rgba(#F98728, 0%);
+        border-top: 3px solid rgba(#F98728, 0%); // for balance
 
         &:hover, &:active {
-            border-bottom: 3px solid #F98728ff;
+            border-bottom: 3px solid rgba(#F98728, 100%);;
         }
     }
 
@@ -49,6 +50,10 @@ nav {
 
 #mobile-menu {
     display: none;
+}
+
+#toggler:hover {
+    cursor: pointer;
 }
 
 .header {
