@@ -25,7 +25,7 @@ nav {
         font-size: 25px;
         margin: 10px;
         border-bottom: 3px solid rgba(#F98728, 0%);
-        border-top: 3px solid rgba(#F98728, 0%); // for balance
+        border-top: 3px solid transparent; // for balance
 
         &:hover, &:active {
             border-bottom: 3px solid rgba(#F98728, 100%);
