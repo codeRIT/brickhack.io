@@ -38,13 +38,17 @@ p {
 .images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 30%);
     gap: 20px;
     padding: 20px;
-    justify-items: stretch;
-    justify-content: center;
-}
+    align-items: center;
 
-.images img {
-    width: 100%;
-    height: 285px;
+    div {
+        overflow: hidden;
+        max-height: 100%;
+
+        img {
+            max-width: 100%;
+        }
+    }
 }
