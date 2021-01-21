@@ -7,6 +7,8 @@ import $ from 'jquery'
 $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
+        var top = (window.scrollY + 60) + 'px';
+        $('#modal').css('top', top);
         $('#modal-background').show();
     }
 });
