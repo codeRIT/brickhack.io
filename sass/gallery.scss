@@ -140,10 +140,10 @@ p {
     img {
         display: block;
         max-width: 100%;
-        max-height: calc(90vh - 40px);
+        max-height: calc(90vh - 40px); // 40px from the padding of modal (20 top + 20 bottom)
         width: auto;
         height: auto;
-        padding: 50px 40px 50px 40px;
+        padding: 50px 40px;
     }
 }
 
