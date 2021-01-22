@@ -17,6 +17,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="modal">
+        <i class="fas fa-times" id="close-modal"></i>
+        <img src="https://images.unsplash.com/photo-1595173425119-1c54835c1874?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80" alt="image"/>
+        <div id="modal-controls">
+            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+    </div>
+    <div id="modal-background"></div>
     <nav>
         <div id="mobile-menu">
             <i class="fas fa-bars" id="toggler"></i>
@@ -43,15 +52,15 @@
         <p>40 schools - 590 hackers - 24 hours</p>
     </div>
     <div class="images">
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
-        <img src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
+        <img class="image" src="https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80" alt="image"/>
     </div>
     <!-- BH5 -->
     <div class="header">
