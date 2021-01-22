@@ -122,21 +122,28 @@ p {
     background-color: #F9F6F3;
     border-radius: 20px;
     padding: 20px;
-    top: 60px;
-    left: 15%;
-    width: 70%;
+    top: 10%;
+    margin: auto;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 90%;
     position: absolute;
     z-index: 3;
     display: none;
 
-    i, p {
+    i {
         color: #F98728;
-        font-size: 20px;
+        font-size: 40px;
     }
 
     img {
-        width: 100%;
-        padding: 30px 30px 15px 30px;
+        display: block;
+        max-width: 100%;
+        max-height: calc(90vh - 40px);
+        width: auto;
+        height: auto;
+        padding: 50px 40px 50px 40px;
     }
 }
 

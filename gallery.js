@@ -7,7 +7,7 @@ import $ from 'jquery'
 $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
-        var top = (window.scrollY + 60) + 'px';
+        var top = 'calc(5% + ' + (window.scrollY) + 'px)';
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
