@@ -1,3 +1,7 @@
+// Variables
+$orange: #F98728;
+$white: #F9F6F3;
+
 * {
     padding: 0;
     margin: 0;
@@ -5,36 +9,36 @@
 }
 
 body {
-    background-color: #F9F6F3;
+    background-color: $white;
 }
 
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #F9F6F3;
-    border-bottom: 3px solid #F98728;
+    background-color: $white;
+    border-bottom: 3px solid $orange;
     display: flex;
     justify-content: space-between;
     padding: 0px 20px;
     z-index: 1;
 
     a {
-        color: #F98728;
+        color: $orange;
         font-family: Roboto, sans-serif;
         text-decoration: none;
         font-size: 25px;
         margin: 10px;
-        border-bottom: 3px solid rgba(#F98728, 0%);
+        border-bottom: 3px solid rgba($orange, 0%);
         border-top: 3px solid transparent; // for balance
 
         &:hover, &:active {
-            border-bottom: 3px solid rgba(#F98728, 100%);
+            border-bottom: 3px solid rgba($orange, 100%);
         }
     }
 
     i {
-        color: #F98728;
+        color: $orange;
         font-size: 35px;
         margin: 10px;
     }
@@ -58,7 +62,7 @@ nav {
 }
 
 .header {
-    background-color: #F98728;
+    background-color: $orange;
     width: 100%;
     padding: 30px;
 }
@@ -69,7 +73,7 @@ nav {
 
 h1, p {
     text-align: center;
-    color: white;
+    color: $white;
     font-family: Roboto, sans-serif;
 }
 
@@ -87,26 +91,29 @@ p {
     margin: auto;
     width: 100px;
     height: 100px;
-    background: #F9F6F3;
+    background: $white;
     border-radius: 25px;
 }
 
 .images {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 30%);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     padding: 20px;
     align-items: center;
 
-.images img {
-    width: 100%;
-    height: 285px;
-    cursor: pointer;
+    .image {
+        cursor: pointer;
+        width: 100%;
+        height: 40vh;
+        background-size: cover;
+        background-position: center center;
+        background-image: url(https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2938&q=80);
+    }
 }
 
 #modal-background {
-    background-color: #000000dd;
+    background-color: rgba(black, 85%);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -118,7 +125,7 @@ p {
 
 #modal {
     text-align: center;
-    background-color: #F9F6F3;
+    background-color: $white;
     border-radius: 20px;
     padding: 20px;
     top: 10%;
@@ -132,7 +139,7 @@ p {
     display: none;
 
     i {
-        color: #F98728;
+        color: $orange;
         font-size: 40px;
     }
 
@@ -166,6 +173,24 @@ p {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 1800px) {
+    .images {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .images {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media screen and (max-width: 660px) {
     #mobile-menu {
         display: flex;
@@ -183,11 +208,15 @@ p {
         flex-direction: column;
         align-items: center;
         display: none;
-        border-top: 3px solid #F98728ff;
+        border-top: 3px solid $orange;
         width: 100%;
     }
 
     .show-menu {
         display: flex;
+    }
+
+    .images {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
