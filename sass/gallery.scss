@@ -1,6 +1,6 @@
 // Variables
 $orange: #F98728;
-$white: #F9F6F3;
+$off-white: #F9F6F3;
 
 * {
     padding: 0;
@@ -9,14 +9,14 @@ $white: #F9F6F3;
 }
 
 body {
-    background-color: $white;
+    background-color: $off-white;
 }
 
 nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: $white;
+    background-color: $off-white;
     border-bottom: 3px solid $orange;
     display: flex;
     justify-content: space-between;
@@ -73,7 +73,7 @@ nav {
 
 h1, p {
     text-align: center;
-    color: $white;
+    color: $off-white;
     font-family: Roboto, sans-serif;
 }
 
@@ -91,11 +91,11 @@ p {
     margin: auto;
     width: 100px;
     height: 100px;
-    background: $white;
+    background: $off-white;
     border-radius: 25px;
 }
 
-.images {
+.image-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
@@ -125,7 +125,7 @@ p {
 
 #modal {
     text-align: center;
-    background-color: $white;
+    background-color: $off-white;
     border-radius: 20px;
     padding: 20px;
     top: 10%;
@@ -218,5 +218,15 @@ p {
 
     .images {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    #modal {
+        width: 80%;
+        max-height: none;
+
+        img {
+            width: 100%;
+            max-height: none;
+        }
     }
 }
