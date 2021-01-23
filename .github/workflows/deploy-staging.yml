@@ -1,3 +1,5 @@
+# Deploys a preview page for each PR on FeaturePeek
+
 name: Deploy - Staging
 
 on: push
