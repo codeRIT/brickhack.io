@@ -3,6 +3,38 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import $ from 'jquery'
 
+// Getting images onto the page
+viewAlbum('bh6');
+var albumBucketName = 'brickhack-gallery';
+// Service Object
+var s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: {Bucket: albumBucketName}
+});
+// Used to create HTML for our images
+function getHtml(template) {
+    return template.join('\n');
+}
+function viewAlbum(albumName) {
+    var albumPhotosKey = encodeURIComponent(albumName) + '/';
+    s3.listObjects({Prefix: albumPhotosKey}, function(err, data) {
+        if (err) {
+            return alert('Oopsie! There was an error viewing ' + albumName + ': ' + err.message);
+        }
+
+        var href = this.request.httpRequest.endpoint.href;
+        var bucketUrl = href + albumBucketName + '/';
+
+        var photos = data.Contents.map(function(photo) {
+            var photoKey = photo.Key;
+            var photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            return getHtml([
+                'fuck idk',
+            ]);
+        });
+    });
+}
+
 // Opening modal
 $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
