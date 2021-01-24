@@ -3,11 +3,62 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import $ from 'jquery'
 
+var AWS = require('aws-sdk');
+import {identityPoolId} from './keys.js';
+
+// Getting images onto the page
+var albumBucketName = 'brickhack-gallery';
+// Credentials
+
+// TODO: Load from env variables so GH pages can access
+AWS.config.region = 'us-east-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: identityPoolId
+});
+
+// Service Object
+var s3 = new AWS.S3({
+    apiVersion: '2006-03-01',
+    params: {Bucket: albumBucketName}
+});
+
+viewAlbum('bh6');
+viewAlbum('bh5');
+// Used to create HTML for our images
+function getHtml(template) {
+    return template.join('\n');
+}
+function viewAlbum(albumName) {
+    var albumPhotosKey = encodeURIComponent(albumName) + '/full/';
+    s3.listObjects({Prefix: albumPhotosKey}, function(err, data) {
+        if (err) {
+            return alert('Oopsie! There was an error viewing ' + albumName + ': ' + err.message);
+        }
+
+        var href = this.request.httpRequest.endpoint.href;
+        var bucketUrl = href + albumBucketName + '/';
+
+        var photos = data.Contents.map(function(photo) {
+            var photoKey = photo.Key;
+            var photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            // Seeing if there is actually an image (s3 adds a blank to count the number of images at the beginning)
+            if (photo.Size == 0) {
+                return;
+            }
+            return getHtml([
+                '<div class="image" style="background-image: url(' + photoUrl + ');" data-url="' + photoUrl + '"></div>',
+            ]);
+        });
+        document.getElementById(albumName).innerHTML = getHtml(photos);
+    });
+}
+
 // Opening modal
 $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
+        $('#modal-img').attr('src', $(event.target).attr('data-url'));
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
