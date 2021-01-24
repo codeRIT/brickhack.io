@@ -4,16 +4,18 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import $ from 'jquery'
 
 var AWS = require('aws-sdk');
+import {identityPoolId} from './keys.js';
 
 // Getting images onto the page
 var albumBucketName = 'brickhack-gallery';
 // Credentials
-AWS.config.update({
-    region: 'us-east-1',
-    credentials: new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: '',
-    })
+
+// TODO: Load from env variables so GH pages can access
+AWS.config.region = 'us-east-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    IdentityPoolId: identityPoolId
 });
+
 // Service Object
 var s3 = new AWS.S3({
     apiVersion: '2006-03-01',
