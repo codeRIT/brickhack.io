@@ -41,7 +41,7 @@ function viewAlbum(albumName) {
         var photos = data.Contents.map(function(photo) {
             var photoKey = photo.Key;
             var photoUrl = bucketUrl + encodeURIComponent(photoKey);
-            //Seeing if there is actually an image (amazon adds a blank to count the number of images at the beginning)
+            // Seeing if there is actually an image (s3 adds a blank to count the number of images at the beginning)
             if (photo.Size == 0) {
                 return;
             }
