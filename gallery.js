@@ -21,7 +21,9 @@ var s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: {Bucket: albumBucketName}
 });
+
 viewAlbum('bh6');
+viewAlbum('bh5');
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');
@@ -39,6 +41,9 @@ function viewAlbum(albumName) {
         var photos = data.Contents.map(function(photo) {
             var photoKey = photo.Key;
             var photoUrl = bucketUrl + encodeURIComponent(photoKey);
+            if (photo.Size == 0) {
+                return;
+            }
             return getHtml([
                 '<div class="image" style="background-image: url(' + photoUrl + ');" data-url="' + photoUrl + '"></div>',
             ]);
