@@ -20,10 +20,11 @@
     <div id="modal">
         <i class="fas fa-times" id="close-modal"></i>
         <img src="https://images.unsplash.com/photo-1595173425119-1c54835c1874?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80" alt="image"/>
-        <div id="modal-controls">
+        <!-- Commenting out modal (carousel) controls for later implementation -->
+        <!-- <div id="modal-controls">
             <i class="fas fa-chevron-left"></i>
             <i class="fas fa-chevron-right"></i>
-        </div>
+        </div> -->
     </div>
     <div id="modal-background"></div>
     <nav>
@@ -51,7 +52,7 @@
         <p>February 8-9 2020</p>
         <p>40 schools - 590 hackers - 24 hours</p>
     </div>
-    <div class="image-container">
+    <div class="image-container" id="bh6">
         <div class="image"></div>
         <div class="image"></div>
         <div class="image"></div>
@@ -82,8 +83,6 @@
         <div class="image"></div>
         <div class="image"></div>
     </div>
-    <!-- Adding AWS SDK for image access -->
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.831.0.min.js"></script>
     <!-- This is where Parcel imports are located! (SASS, etc.) -->
     <script src="./gallery.js"></script>
 </body>

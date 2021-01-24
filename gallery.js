@@ -3,20 +3,29 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import $ from 'jquery'
 
+var AWS = require('aws-sdk');
+
 // Getting images onto the page
-viewAlbum('bh6');
 var albumBucketName = 'brickhack-gallery';
+// Credentials
+AWS.config.update({
+    region: 'us-east-1',
+    credentials: new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: '',
+    })
+});
 // Service Object
 var s3 = new AWS.S3({
     apiVersion: '2006-03-01',
     params: {Bucket: albumBucketName}
 });
+viewAlbum('bh6');
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');
 }
 function viewAlbum(albumName) {
-    var albumPhotosKey = encodeURIComponent(albumName) + '/';
+    var albumPhotosKey = encodeURIComponent(albumName) + '/full/';
     s3.listObjects({Prefix: albumPhotosKey}, function(err, data) {
         if (err) {
             return alert('Oopsie! There was an error viewing ' + albumName + ': ' + err.message);
@@ -29,9 +38,10 @@ function viewAlbum(albumName) {
             var photoKey = photo.Key;
             var photoUrl = bucketUrl + encodeURIComponent(photoKey);
             return getHtml([
-                'fuck idk',
+                '<div class="image" style="background-image: url(' + photoUrl + ');"></div>',
             ]);
         });
+        document.getElementById(albumName).innerHTML = getHtml(photos);
     });
 }
 
