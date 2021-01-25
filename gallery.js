@@ -3,6 +3,8 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import LazyLoad from "vanilla-lazyload";
 import $ from 'jquery'
 
+var lazyLoad = new LazyLoad();
+
 var AWS = require('aws-sdk');
 import {identityPoolId} from './keys.js';
 
@@ -23,7 +25,8 @@ var s3 = new AWS.S3({
 });
 
 viewAlbum('bh6');
-// viewAlbum('bh5');
+viewAlbum('bh5');
+
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');
@@ -46,10 +49,12 @@ function viewAlbum(albumName) {
                 return;
             }
             return getHtml([
-                '<div class="image lazy" style="background-image: url(' + photoUrl + ');" data-bg="' + photoUrl + '"></div>',
+                '<div class="lazy image" data-bg="' + photoUrl + '"></div>',
             ]);
         });
+
         document.getElementById(albumName).innerHTML = getHtml(photos);
+        lazyLoad.update();
     });
 }
 
