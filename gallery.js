@@ -25,7 +25,7 @@ var s3 = new AWS.S3({
 viewAlbum('bh6');
 // viewAlbum('bh5');
 
-$('.image').Lazy();
+$('.image').lazy();
 
 // Used to create HTML for our images
 function getHtml(template) {
@@ -49,7 +49,7 @@ function viewAlbum(albumName) {
                 return;
             }
             return getHtml([
-                '<div class="image" style="background-image: url(' + photoUrl + ');" data-src="' + photoUrl + '"></div>',
+                '<div class="image" style="background-image: url(' + photoUrl + ');" data-url="' + photoUrl + '"></div>',
             ]);
         });
         document.getElementById(albumName).innerHTML = getHtml(photos);
@@ -61,7 +61,7 @@ $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
-        $('#modal-img').attr('src', $(event.target).attr('data-src'));
+        $('#modal-img').attr('src', $(event.target).attr('data-url'));
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
