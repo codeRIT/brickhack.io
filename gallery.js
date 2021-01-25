@@ -24,8 +24,10 @@ var s3 = new AWS.S3({
     params: {Bucket: albumBucketName}
 });
 
-viewAlbum('bh6');
-viewAlbum('bh5');
+var brickhacks = ['bh6', 'bh5', 'bh4', 'bh3', 'bh2', 'bh'];
+for (let name of brickhacks) {
+    viewAlbum(name);
+}
 
 // Used to create HTML for our images
 function getHtml(template) {
