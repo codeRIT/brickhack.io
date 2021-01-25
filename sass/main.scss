@@ -514,6 +514,51 @@ nav {
     }
 }
 
+#prizes {
+    h1 {
+        font-size: $title-size;
+        margin-bottom: 40px;
+    }
+
+    #prizes-wrapper {
+        display: flex;
+
+        #ricky-confetti, #prizes-container {
+            width: 50%;
+        }
+
+        #ricky-confetti {
+
+        }
+
+        #prizes-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .prize {
+                background-color: white;
+                padding: 10px 30px;
+                border-radius: $img-border-radius;
+
+                // Sequentially assign colors to all elements
+                $colors: $red, $orange, $light-gray;
+                @for $i from 1 through 4 {
+                    &:nth-child(#{$i}) {
+                        border-top: 10px solid nth($colors, $i % length($colors) + 1);
+                    }
+                }
+
+                p {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+
+}
+
 #faq {
     background-color: $dark-blue;
     #faq-wrapper {
