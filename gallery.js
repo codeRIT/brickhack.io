@@ -23,7 +23,7 @@ var s3 = new AWS.S3({
 });
 
 viewAlbum('bh6');
-viewAlbum('bh5');
+// viewAlbum('bh5');
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');
@@ -55,7 +55,7 @@ function viewAlbum(albumName) {
 
 // Opening modal
 $(document).on('click', function(event) {
-    if ($(event.target).attr('class') == 'image') {
+    if ($(event.target).hasClass('image')) {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
         $('#modal-img').attr('src', $(event.target).attr('data-bg'));
