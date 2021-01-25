@@ -522,34 +522,52 @@ nav {
 
     #prizes-wrapper {
         display: flex;
+        justify-content: space-between;
+        align-content: center;
+        max-width: 1600px;
+        margin: 0 auto;
+        // border: 3px solid yellow;
 
         #ricky-confetti, #prizes-container {
-            width: 50%;
+            // border: 3px solid yellow;
         }
 
         #ricky-confetti {
-
+            align-self: flex-end;
+            width: 30%;
+            img {
+                max-height: 100%;
+                display: block;
+                margin: 0 auto;
+            }
         }
 
         #prizes-container {
+            width: 70%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding-left: 40px;
 
             .prize {
                 background-color: white;
-                padding: 10px 30px;
+                padding: 35px;
                 border-radius: $img-border-radius;
+                margin-bottom: 30px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
 
                 // Sequentially assign colors to all elements
-                $colors: $red, $orange, $light-gray;
+                $colors: $light-gray, $orange;
                 @for $i from 1 through 4 {
                     &:nth-child(#{$i}) {
                         border-top: 10px solid nth($colors, $i % length($colors) + 1);
                     }
                 }
 
-                p {
+                p, strong {
                     color: $blue;
                 }
             }
@@ -1131,6 +1149,26 @@ footer {
         justify-content: space-between;
     }
 
+    #prizes #prizes-wrapper {
+        #ricky-confetti {
+
+            img {
+            }
+        }
+
+        #prizes-container {
+            .prize {
+                padding: 20px;
+
+                p, strong {
+                    font-size: 1em;
+                }
+            }
+
+        }
+    }
+
+
     #sponsors {
         #sponsor-grid, #partner-grid {
             flex-wrap: wrap;
@@ -1336,6 +1374,25 @@ footer {
                         font-size: 1em;
                     }
                 }
+            }
+        }
+    }
+
+    #prizes #prizes-wrapper {
+        flex-direction: column;
+        max-height: 100%;
+
+        #ricky-confetti {
+            width: 65%;
+            margin: 0 auto;
+        }
+
+        #prizes-container {
+            width: 100%;
+            padding-left: 0;
+            margin-top: 30px;
+            .prize {
+                margin-bottom: 20px;
             }
         }
     }
