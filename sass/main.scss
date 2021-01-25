@@ -526,15 +526,11 @@ nav {
         align-content: center;
         max-width: 1600px;
         margin: 0 auto;
-        // border: 3px solid yellow;
-
-        #ricky-confetti, #prizes-container {
-            // border: 3px solid yellow;
-        }
 
         #ricky-confetti {
             align-self: flex-end;
             width: 30%;
+
             img {
                 max-height: 100%;
                 display: block;
@@ -1150,12 +1146,6 @@ footer {
     }
 
     #prizes #prizes-wrapper {
-        #ricky-confetti {
-
-            img {
-            }
-        }
-
         #prizes-container {
             .prize {
                 padding: 20px;
@@ -1164,10 +1154,8 @@ footer {
                     font-size: 1em;
                 }
             }
-
         }
     }
-
 
     #sponsors {
         #sponsor-grid, #partner-grid {
@@ -1383,7 +1371,7 @@ footer {
         max-height: 100%;
 
         #ricky-confetti {
-            width: 65%;
+            width: 55%;
             margin: 0 auto;
         }
 
@@ -1512,6 +1500,10 @@ footer {
         .contact  {
             text-align: center;
         }
+    }
+
+    #prizes #prizes-wrapper #ricky-confetti {
+        width: 65%;
     }
 
     #leadership #leaders {
