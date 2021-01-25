@@ -1,6 +1,6 @@
 import './sass/gallery.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
-
+import LazyLoad from "vanilla-lazyload";
 import $ from 'jquery'
 
 var AWS = require('aws-sdk');
@@ -46,7 +46,7 @@ function viewAlbum(albumName) {
                 return;
             }
             return getHtml([
-                '<div class="image" style="background-image: url(' + photoUrl + ');" data-url="' + photoUrl + '"></div>',
+                '<div class="image lazy" style="background-image: url(' + photoUrl + ');" data-bg="' + photoUrl + '"></div>',
             ]);
         });
         document.getElementById(albumName).innerHTML = getHtml(photos);
@@ -58,7 +58,7 @@ $(document).on('click', function(event) {
     if ($(event.target).attr('class') == 'image') {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
-        $('#modal-img').attr('src', $(event.target).attr('data-url'));
+        $('#modal-img').attr('src', $(event.target).attr('data-bg'));
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
