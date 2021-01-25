@@ -23,10 +23,7 @@ var s3 = new AWS.S3({
 });
 
 viewAlbum('bh6');
-// viewAlbum('bh5');
-
-$('.image').lazy();
-
+viewAlbum('bh5');
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');

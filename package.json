@@ -32,7 +32,6 @@
     "active-menu-link": "^1.1.8",
     "aws-sdk": "^2.831.0",
     "jquery": "^3.5.1",
-    "jquery-lazy": "^1.7.11",
     "parcel-plugin-metaimage": "^1.2.4",
     "rellax": "^1.12.1",
     "slick-carousel": "^1.8.1"
