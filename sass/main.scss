@@ -719,6 +719,7 @@ nav {
             user-select: none;
             cursor: pointer;
             color: white;
+
             .day {
                 .number {
                     font-size: 6.5em;
@@ -747,7 +748,7 @@ nav {
             $colors: $red, $orange, $light-gray;
             @for $i from 1 through $event-count {
                 .event:nth-child(#{$i}) {
-                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
                 }
             }
 
