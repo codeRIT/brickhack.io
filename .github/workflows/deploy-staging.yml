@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: create keys file with AWS S3 setup
+      run: |
+        touch keys.js
+        echo "var identityPoolId = '${{ secrets.IDENTITY_POOL_ID }}';" >> keys.js
+        echo "export { identityPoolId };" >> keys.js
     - name: Use node 12.x
       uses: actions/setup-node@v1
       with:
