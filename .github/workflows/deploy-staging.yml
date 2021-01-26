@@ -1,20 +1,20 @@
+# Deploys a preview page for each PR on FeaturePeek
+
 name: Deploy - Staging
 
-on:
-  push:
-    branches:
-      - develop
-
+on: push
 jobs:
-  deploy-staging:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Use node 12.x
+      uses: actions/setup-node@v1
       with:
-        ref: develop
-    - name: Push to Staging
-      uses: dokku/github-action@master
-      with:
-        git_push_flags: '--force'
-        git_remote_url: 'ssh://dokku@csh-cloud.oweb.co:22/brickhack-stage'
-        ssh_private_key: ${{ secrets.CODERIT_CLOUD_SSH_PRIVATE_KEY }}
+        node-version: 12.x
+    - name: Install dependencies
+      run: npm install
+    - name: Build
+      run: npm run build
+    - name: Ping FeaturePeek
+      run: bash <(curl -s https://peek.run/ci)

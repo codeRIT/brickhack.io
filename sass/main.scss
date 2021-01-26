@@ -514,6 +514,65 @@ nav {
     }
 }
 
+#prizes {
+    h1 {
+        font-size: $title-size;
+        margin-bottom: 40px;
+    }
+
+    #prizes-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        #ricky-confetti {
+            align-self: flex-end;
+            width: 30%;
+
+            img {
+                max-height: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        #prizes-container {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 40px;
+
+            .prize {
+                background-color: white;
+                padding: 35px;
+                border-radius: $img-border-radius;
+                margin-bottom: 30px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                // Sequentially assign colors to all elements
+                $colors: $light-gray, $orange;
+                @for $i from 1 through 4 {
+                    &:nth-child(#{$i}) {
+                        border-top: 10px solid nth($colors, $i % length($colors) + 1);
+                    }
+                }
+
+                p, strong {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+
+}
+
 #faq {
     background-color: $dark-blue;
     #faq-wrapper {
@@ -660,6 +719,7 @@ nav {
             user-select: none;
             cursor: pointer;
             color: white;
+
             .day {
                 .number {
                     font-size: 6.5em;
@@ -688,7 +748,7 @@ nav {
             $colors: $red, $orange, $light-gray;
             @for $i from 1 through $event-count {
                 .event:nth-child(#{$i}) {
-                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
                 }
             }
 
@@ -892,6 +952,10 @@ footer {
             background-image: url("/assets/sponsors/logos/mtbank.svg");
         }
 
+        .wegmans:hover {
+            background-image: url("/assets/sponsors/logos/wegmans.svg");
+        }
+
         .readme:hover {
             background-image: url("/assets/sponsors/logos/readme.svg");
         }
@@ -902,6 +966,10 @@ footer {
 
         .mlh:hover {
             background-image: url("/assets/sponsors/logos/mlh.svg");
+        }
+
+        .stickermule:hover {
+            background-image: url("/assets/sponsors/logos/stickermule.svg");
         }
     }
 }
@@ -1086,6 +1154,18 @@ footer {
         justify-content: space-between;
     }
 
+    #prizes #prizes-wrapper {
+        #prizes-container {
+            .prize {
+                padding: 20px;
+
+                p, strong {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+
     #sponsors {
         #sponsor-grid, #partner-grid {
             flex-wrap: wrap;
@@ -1117,10 +1197,37 @@ footer {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 955px) {
 
     // Redefine only for mobile
     $nav-height: 60px;
+
+    nav {
+        height: $nav-height;
+        position: absolute;
+
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            width: 90px;
+        }
+
+        .link {
+            display: none;
+        }
+
+        #login {
+            padding: 8px 30px;
+            margin: 0;
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
 
     h1, section > p {
         text-align: center;
@@ -1146,23 +1253,6 @@ footer {
         padding: 20px;
     }
 
-    nav {
-        height: $nav-height;
-        position: absolute;
-
-        #logo img {
-            width: $nav-height;
-            height: $nav-height;
-        }
-
-        #mlh-badge {
-            width: 90px;
-        }
-
-        .link {
-            display: none;
-        }
-    }
 
     #hero {
         #hero-content {
@@ -1295,6 +1385,25 @@ footer {
         }
     }
 
+    #prizes #prizes-wrapper {
+        flex-direction: column;
+        max-height: 100%;
+
+        #ricky-confetti {
+            width: 55%;
+            margin: 0 auto;
+        }
+
+        #prizes-container {
+            width: 100%;
+            padding-left: 0;
+            margin-top: 30px;
+            .prize {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
     #faq #faq-wrapper {
 
         h1 {
@@ -1339,12 +1448,6 @@ footer {
 
     .section-pad {
         padding: 20px;
-    }
-
-    nav #login {
-        padding: 8px 30px;
-        margin: 0;
-        font-size: 0.8em;
     }
 
     #hero {
@@ -1410,6 +1513,10 @@ footer {
         .contact  {
             text-align: center;
         }
+    }
+
+    #prizes #prizes-wrapper #ricky-confetti {
+        width: 65%;
     }
 
     #leadership #leaders {
