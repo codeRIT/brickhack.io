@@ -1,7 +1,9 @@
 import './sass/gallery.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
-
+import LazyLoad from "vanilla-lazyload";
 import $ from 'jquery'
+
+var lazyLoad = new LazyLoad();
 
 var AWS = require('aws-sdk');
 import {identityPoolId} from './keys.js';
@@ -22,8 +24,11 @@ var s3 = new AWS.S3({
     params: {Bucket: albumBucketName}
 });
 
-viewAlbum('bh6');
-viewAlbum('bh5');
+var brickhacks = ['bh6', 'bh5', 'bh4', 'bh3', 'bh2', 'bh'];
+for (let name of brickhacks) {
+    viewAlbum(name);
+}
+
 // Used to create HTML for our images
 function getHtml(template) {
     return template.join('\n');
@@ -46,19 +51,21 @@ function viewAlbum(albumName) {
                 return;
             }
             return getHtml([
-                '<div class="image" style="background-image: url(' + photoUrl + ');" data-url="' + photoUrl + '"></div>',
+                '<div class="lazy image" data-bg="' + photoUrl + '"></div>',
             ]);
         });
+
         document.getElementById(albumName).innerHTML = getHtml(photos);
+        lazyLoad.update();
     });
 }
 
 // Opening modal
 $(document).on('click', function(event) {
-    if ($(event.target).attr('class') == 'image') {
+    if ($(event.target).hasClass('image')) {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
-        $('#modal-img').attr('src', $(event.target).attr('data-url'));
+        $('#modal-img').attr('src', $(event.target).attr('data-bg'));
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
