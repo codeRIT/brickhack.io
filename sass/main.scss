@@ -1197,10 +1197,37 @@ footer {
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 955px) {
 
     // Redefine only for mobile
     $nav-height: 60px;
+
+    nav {
+        height: $nav-height;
+        position: absolute;
+
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            width: 90px;
+        }
+
+        .link {
+            display: none;
+        }
+
+        #login {
+            padding: 8px 30px;
+            margin: 0;
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
 
     h1, section > p {
         text-align: center;
@@ -1226,23 +1253,6 @@ footer {
         padding: 20px;
     }
 
-    nav {
-        height: $nav-height;
-        position: absolute;
-
-        #logo img {
-            width: $nav-height;
-            height: $nav-height;
-        }
-
-        #mlh-badge {
-            width: 90px;
-        }
-
-        .link {
-            display: none;
-        }
-    }
 
     #hero {
         #hero-content {
@@ -1438,12 +1448,6 @@ footer {
 
     .section-pad {
         padding: 20px;
-    }
-
-    nav #login {
-        padding: 8px 30px;
-        margin: 0;
-        font-size: 0.8em;
     }
 
     #hero {
