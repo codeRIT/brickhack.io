@@ -154,26 +154,36 @@ function convertDate(date) {
     return output;
 }
 
-const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-21T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
-events.forEach(event => {
-    let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
+function handleEventData(events) {
+    events.forEach(event => {
+        let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
 
-    let dateString = convertDate(startDate);
-    if (event.finish) {  // finish === null for instantaneous events
-        let finishDate = new Date(event.finish);
-        let finishString = convertDate(finishDate);
-        if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
-            dateString = dateString.slice(0, -2);
+        let dateString = convertDate(startDate);
+        if (event.finish) {  // finish === null for instantaneous events
+            let finishDate = new Date(event.finish);
+            let finishString = convertDate(finishDate);
+            if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
+                dateString = dateString.slice(0, -2);
+            }
+            dateString += "-" + convertDate(finishDate);
         }
-        dateString += "-" + convertDate(finishDate);
-    }
 
-    let eventContainer = $('.day-first-events');
-    if (startDate.getDate() === 21) {
-        eventContainer = $('.day-second-events');
-    }
-    eventContainer.append(`<div class="event"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
-});
+        let eventContainer = $('.day-first-events');
+        if (startDate.getDate() === 21) {
+            eventContainer = $('.day-second-events');
+        }
+        eventContainer.append(`<div class="event"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
+    });
+}
+
+const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-21T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
+handleEventData(events);
+
+// Replace above two lines with this once we figure out the exact endpoint to use:
+// fetch('http://example.com/schedule.json')
+//     .then(res => res.json())
+//     .then(events => handleEventData(events))
+//     .catch(err => console.log(err));
 
 // Schedule toggle code
 $('.day-second-events').hide();
