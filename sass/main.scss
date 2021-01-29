@@ -758,6 +758,10 @@ nav {
                 margin: 10px 0px;
                 padding: 10px;
 
+                &.past {
+                    background-color: darken(white, 25%);
+                }
+
                 .time {
                     color: $light-blue;
                 }

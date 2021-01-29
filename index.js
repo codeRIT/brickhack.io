@@ -157,10 +157,11 @@ function convertDate(date) {
 function handleEventData(events) {
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
+        let finishDate = undefined;
 
         let dateString = convertDate(startDate);
         if (event.finish) {  // finish === null for instantaneous events
-            let finishDate = new Date(event.finish);
+            finishDate = new Date(event.finish);
             let finishString = convertDate(finishDate);
             if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
                 dateString = dateString.slice(0, -2);
@@ -168,15 +169,21 @@ function handleEventData(events) {
             dateString += "-" + convertDate(finishDate);
         }
 
+        // calculate event container classes
+        let divClasses = 'event';
+        if ((finishDate || startDate) < new Date(1613914800 * 1000)) {  // replace second statement w/ "new Date()" after testing
+            divClasses += ' past';
+        }
+
         let eventContainer = $('.day-first-events');
         if (startDate.getDate() === 21) {
             eventContainer = $('.day-second-events');
         }
-        eventContainer.append(`<div class="event"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
+        eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
     });
 }
 
-const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-21T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
+const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-20T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
 handleEventData(events);
 
 // Replace above two lines with this once we figure out the exact endpoint to use:
