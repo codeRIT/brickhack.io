@@ -1,11 +1,8 @@
 import './sass/main.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-// slick-carousel configuration
-import $ from 'jquery'
-import 'slick-carousel'
 
-
+// Hiring message
 const hiringMessage = `Hey, you.
 You’re finally awake.
 You were trying to see the code, right?
@@ -14,10 +11,50 @@ If you’d like to work on this website and other cool projects with hackathons,
 
 console.log(hiringMessage);
 
-// comment generated via js instead of directly in HTML so the hiring message text is only in one place
+// Comment generated via js instead of directly in HTML so the hiring message text is only in one place
 const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
+
+// Nav highlighting on scroll
+import ActiveMenuLink from "active-menu-link";
+
+let options = {
+    itemTag: "",
+    scrollOffset: -90, // nav height
+    scrollDuration: 1000,
+    ease: "out-quart",
+    showHash: false,
+};
+
+new ActiveMenuLink(".navbar-items", options);
+
+
+// Random hero SVG on each page load
+import desk1 from './assets/hero/desk1.svg'
+import desk2 from './assets/hero/desk2.svg'
+import desk3 from './assets/hero/desk3.svg'
+
+$(document).ready(function() {
+    var deskIndex = parseInt(localStorage.getItem('deskIndex'));
+    if (!deskIndex) {
+        deskIndex = 0;
+        localStorage.setItem('deskIndex', 0);
+    }
+    var desks = [desk1, desk2, desk3]
+    $('#desk').css('background-image', 'url(' + desks[deskIndex % desks.length] + ')');
+    localStorage.setItem('deskIndex', deskIndex + 1);
+});
+
+// Parallax functionality
+import Rellax from 'rellax';
+var rellax = new Rellax('.rellax', {
+    breakpoints:[0, 0, 900],
+});
+
+// Slick-carousel
+import $ from 'jquery'
+import 'slick-carousel'
 
 $(document).ready(function() {
     $('.carousel').slick({
@@ -32,7 +69,7 @@ $(document).ready(function() {
         speed: 1000,
         responsive: [
             {
-                breakpoint: 1100,
+                breakpoint: 1500,
                 settings: {
                     centerMode: true
                 }
@@ -41,6 +78,33 @@ $(document).ready(function() {
     });
 });
 
+// Opens modal when img is clicked
+$(document).on('click', '.slide-image', function() {
+    $('#modal').show();
+    $('#modal-content').attr('src', this.src);
+});
+
+// Closes modal when X is clicked
+$(document).on('click', '#close', function() {
+    $('#modal').hide();
+});
+
+// Closes modal when window is clicked
+$(window).on('click', function(event) {
+    if (event.target == modal) {
+        $('#modal').hide();
+    }
+});
+
+// Closes modal when esc key is pressed
+$(document).on('keydown', function(event) {
+    if (event.key == "Escape") {
+        $('#modal').hide();
+    }
+});
+
+
+// FAQ Cards hide/show
 let card = document.getElementsByClassName("card");
 for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("accordion-header")[0];
@@ -94,7 +158,7 @@ const events = [{"title":"Opening Ceremony","description":"","location":"Discord
 events.forEach(event => {
     let startDate = new Date(Number(event.start) * 1000);  // convert timestamp -> milliseconds -> Date object
     let finishDate = new Date(Number(event.finish) * 1000);
-    
+
     let dateString = convertDate(startDate);
     if (startDate.getTime() !== finishDate.getTime()) {  // instantaneous events don't need the second part
         let finishString = convertDate(finishDate);

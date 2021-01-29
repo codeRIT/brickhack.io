@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Standard Meta Tags-->
     <title>BrickHack 7</title>
     <meta charset="utf-8"/>
-    <!-- Disabled, see Issue #1027 -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="hackathons, hackathon, hack-a-thon, programming, hardware, development, design, rit"/>
-    <meta name="theme-color" content="#000000"/>
-
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:url" content="https://brickhack.io" >
-    <!--<meta name="twitter:image" content="">-->
-    <meta name="twitter:title" content="BrickHack 7">
-    <meta name="twitter:description" content="RIT's premiere collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing.">
     <meta name="description" content="RIT's premiere collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing.">
-    <meta name="og:description" content="RIT's premiere collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing."/>
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary"/>
+    <meta property="twitter:title" content="BrickHack 7">
+    <meta property="twitter:url" content="https://brickhack.io" >
+    <meta property="twitter:description" content="RIT's premiere collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing.">
+    <meta name="twitter:image" content="./assets/social_cards.png">
+
+    <!-- Open Graph Cards -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Brickhack 7" />
+    <meta property="og:site_name" content="BrickHack 7" />
+    <meta property="og:url" content="https://brickhack.io" />
+    <meta property="og:description" content="RIT's premiere collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing."/>
+    <meta property="og:image" content="./assets/social_cards.png" />
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
@@ -27,14 +34,16 @@
 </head>
 <body>
     <nav>
-        <div class="left">
-            <a href="https://brickhack.io">
-                <img id="logo" src="assets/logo.svg" alt="BrickHack 7 Logo" />
+        <div class="left navbar-items">
+            <a id="logo" href="https://brickhack.io">
+                <img src="assets/logo.svg" alt="BrickHack 7 Logo" />
             </a>
-            <a class="link" href="#hackathon-content">GENERAL</a>
-            <a class="link" href="#faq">FAQ</a>
+            <a class="link" href="#hackathon">GENERAL</a>
             <a class="link" href="#schedule">SCHEDULE</a>
+            <a class="link" href="#prizes">PRIZES</a>
+            <a class="link" href="#faq">FAQ</a>
             <a class="link" href="#leadership">ABOUT US</a>
+            <a class="link" href="#sponsors">SPONSORS</a>
         </div>
         <div class="right">
             <a id="login" href="https://apply.brickhack.io/">LOGIN</a>
@@ -43,105 +52,119 @@
             </a>
         </div>
     </nav>
-    <section id="hero">
-        <!-- Background images due to easier positioning. -->
-        <div id="desk"></div>
-        <div id="shelf"></div>
-        <div id="hero-text">
-            <p id="bh7">BRICKHACK 7</p>
-            <p id="premiere">RIT's Premiere Hackathon</p>
-            <p id="dates">FEB 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY</p>
-            <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER</a>
+    <section id="hero" class="section-pad-left">
+        <div id="shapes" class="rellax" data-rellax-speed="0" data-rellax-desktop-speed="-10"></div>
+        <div id="hero-content" class="rellax" data-rellax-speed="0" data-rellax-desktop-speed="-8">
+            <!-- Background images due to easier positioning. -->
+            <div id="hero-text">
+                <p id="bh7">BRICKHACK 7</p>
+                <p id="premiere">RIT's Premiere Hackathon</p>
+                <p id="dates">FEB 20-21 | ROCHESTER INSTITUTE OF TECHNOLOGY</p>
+                <a id="register" href="https://apply.brickhack.io/users/sign_up">REGISTER</a>
+            </div>
         </div>
-        <div id="shapes"></div>
+        <div id="desk-container" class="rellax" data-rellax-speed="0" data-rellax-desktop-speed="-8">
+            <div id="desk"></div>
+            <div id="lamp-wire"></div>
+        </div>
+        <div id="shelf"></div>
     </section>
-    <section id="hackathon">
+    <section id="hackathon" class="section-pad-top">
         <div class="carousel">
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/1.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/1.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/2.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/2.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/3.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/3.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/4.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/4.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/5.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/5.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/6.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/6.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/7.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/7.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/8.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/8.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/9.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/9.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/10.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/10.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
             <div class="slide">
                 <div class="wire"></div>
                 <div class="front-clip"></div>
                 <div class="back-clip"></div>
-                <img src="./assets/imgs/11.jpg" alt="BrickHack 6 attendees"/>
+                <img src="./assets/carousel/11.jpg" class="slide-image" alt="BrickHack 6 attendees"/>
             </div>
         </div>
-        <div id="hackathon-content">
+        <div id="modal">
+            <span id="close"><i id="close" class="fas fa-times"></i></span>
+            <img id="modal-content" alt="image from carousel">
+        </div>
+        <div id="hackathon-content" class="section-pad">
             <div id="hackathon-text">
-                <h2>What is a Hackathon?</h2>
+                <h1>What is a Hackathon?</h1>
                 <p>A Hackathon is an invention marathon. Any student can attend! Really, any student... and it's completely free.</p>
                 <p>Students work in teams and mentors are present to offer help. Sponsors attend to help, recruit, and promote their products. Teams compete in different categories and prizes are awarded, but everyone learns and everyone wins!</p>
                 <p>Come spend 24 hours with us at BrickHack and dedicate time to learn, collaborate, build, and innovate.</p>
             </div>
-            <a href="https://mlh.io/" id="mlh" target="_blank" rel="noopener noreferrer">
-                <div>
+            <div id="hackathon-buttons">
+                <a href="https://mlh.io/" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-arrow-right"></i>
-                    <p>Visit Major League Hacking (MLH)</p>
-                </div>
-            </a>
+                    <p>Visit Major League Hacking</p>
+                </a>
+                <a href="javascript:void(0);" rel="noopener noreferrer">
+                    <i class="fas fa-tools"></i>
+                    <p>Gallery (coming soon!)</p>
+                </a>
+            </div>
         </div>
     </section>
-    <section id="schedule">
+    <section id="schedule" class="section-pad">
         <h1>Schedule</h1>
         <p>More events coming soon!</p>
+        <p>All times are in EST.</p>
         <div id="schedule-block">
             <div id="schedule-tapes">
                 <div class="tape"></div>
@@ -163,7 +186,29 @@
             </div>
         </div>
     </section>
-    <section id="faq">
+    <section id="prizes" class="section-pad">
+        <h1>Prizes</h1>
+        <div id="prizes-wrapper">
+            <div id="ricky-confetti">
+                <img src="./assets/prizes/rickyconfetti.svg" alt="Confetti Ricky the Brick" />
+            </div>
+            <div id="prizes-container">
+                <div class="prize">
+                    <p>Despite going digital, you can still win prizes at BrickHack!</p>
+                </div>
+                <div class="prize">
+                    <p>This year, we'll have more than 10 prize categories for you to compete in &mdash; more info to come on Devpost.</p>
+                </div>
+                <div class="prize">
+                    <p>We'll have <strong>physical prizes</strong> shipped out to United States and Canada residents, while <strong>digital prizes</strong> are open game for everybody!</p>
+                </div>
+                <div class="prize">
+                    <p>Check out our FAQ for more details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="faq" class="section-pad">
         <div id="faq-wrapper">
             <h1>Frequently Asked Questions</h1>
             <div id="faq-cards">
@@ -197,6 +242,7 @@
                         </button>
                         <div class="panel">
                             <p>Nope! If you have an existing team, that's great &mdash; otherwise, we'll provide time to form new teams with other hackers at the start of the event.</p>
+                            <p>Please note that you can have up to a total of 4 members in a team.</p>
                         </div>
                     </div>
                     <div class="card">
@@ -210,6 +256,17 @@
                             <p>Maybe next year we'll have AI run the event...</p>
                         </div>
                     </div>
+                    <div class="card">
+                        <button class="accordion-header">
+                            <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
+                            Can I re-use an old project?
+                        </button>
+                        <div class="panel">
+                            <p>No. You can start thinking of ideas beforehand, but no work can be done!</p>
+                            <p>(No designs, no UML diagrams, no code, etc.)</p>
+                        </div>
+                    </div>
+                <p id="contact-desktop" class="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
                 </div>
                 <div id="faq-cards-right">
                     <div class="card">
@@ -230,7 +287,7 @@
                         </button>
                         <div class="panel">
                             <p>Soon!</p>
-                            <p>(We'll send an email out if you are accepted.)</p>
+                            <p>Every application is considered on a first-come, first-serve basis. So register early! We'll send an email out if you're accepted.</p>
                         </div>
                     </div>
                     <div class="card">
@@ -246,6 +303,18 @@
                     <div class="card">
                         <button class="accordion-header">
                             <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
+                            Will there be swag or prizes shipped out?
+                        </button>
+                        <div class="panel">
+                            <p>Everyone is eligible to receive digital swag and digital prizes.</p>
+                            <p>If your shipping address is in the United States, we are shipping physical swag and prizes.</p>
+                            <p>If your shipping address is in Canada, we are shipping physical prizes.</p>
+                            <p>If your shipping address is outside of the United States and Canada, we are unable to ship physical swag and prizes.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <button class="accordion-header">
+                            <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
                             Should I bring my own bricks?
                         </button>
                         <div class="panel">
@@ -254,17 +323,17 @@
                     </div>
                 </div>
             </div>
-            <p id="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
+            <p id="contact-laptop" class="contact">Don't see your question here? <a href="mailto:hello@coderit.org">Contact Us</a></p>
         </div>
     </section>
     <section id="leadership">
-        <div id="leadership-content">
+        <div id="leadership-content" class="section-pad">
             <h1>Leadership Team</h1>
-            <div id="leaders">
+            <div id="leaders" class="section-pad-top">
                 <div class="leader">
                     <div class="leader-tape"></div>
                     <img src="./assets/leadership/michael.jpg" alt="Michael's photo"/>
-                    <p>Michael Van Leeuwen</p>
+                    <p>Michael<br />Van Leeuwen</p>
                     <p>President</p>
                 </div>
                 <div class="leader">
@@ -324,13 +393,48 @@
             </div>
         </div>
     </section>
-    <section id="sponsorship">
+    <section id="sponsors" class="section-pad">
+        <h1>Sponsors</h1>
+        <!-- Brick sponsors -->
+        <div id="sponsor-grid" class="brick">
+            <a href="https://www.cbrands.com/" class="logo cbrands" target="_blank">
+                <img src="./assets/sponsors/logos/cbrands-white.svg" />
+            </a>
+            <a href="https://www.mtb.com" class="logo mtbank" target="_blank">
+                <img src="./assets/sponsors/logos/mtbank-white.svg" />
+            </a>
+            <a href="https://www.wegmans.com" class="logo wegmans" target="_blank">
+                <img src="./assets/sponsors/logos/wegmans-white.svg" />
+            </a>
+        </div>
+        <!-- Gold/Silver sponsors -->
+        <div id="sponsor-grid" class="gold">
+            <a href="https://readme.com/" class="logo readme" target="_blank">
+                <img src="./assets/sponsors/logos/readme-white.svg" />
+            </a>
+        </div>
+        <h2>Partners</h2>
+        <div id="partner-grid" class="partner">
+            <a href="https://pinnacle.us.org/" class="logo pinnacle" target="_blank">
+                <img src="./assets/sponsors/logos/pinnacle-white.svg" />
+            </a>
+            <a href="http://mlh.io" class="logo mlh" target="_blank">
+                <img src="./assets/sponsors/logos/mlh-white.svg" />
+            </a>
+            <a href="http://hackp.ac/mlh-stickermule-hackathons" class="logo stickermule" target="_blank">
+                <img src="./assets/sponsors/logos/stickermule-white.svg" />
+            </a>
+        </div>
+        <div id="prospectus">
+            <p>Interested in sponsoring BrickHack 7?</p>
+            <p>View our <a href="./assets/sponsors/BrickHack 7 Prospectus.pdf" target="_blank">prospectus</a> and email us at <a href="mailto:sponsorship@coderit.org">sponsorship@coderit.org</a></p>
+        </div>
     </section>
     <footer>
         <div id="footer-content">
             <div>
                 <h2>contact us</h2>
-                <p>hello@coderit.org</p>
+                <p><a href="mailto:hello@coderit.org">hello@coderit.org</a></p>
             </div>
             <div>
                 <a href="https://twitter.com/coderit" target="_blank">
