@@ -155,6 +155,11 @@ function convertDate(date) {
 }
 
 function handleEventData(events) {
+    let now = new Date(1613914900 * 1000)  // delete argument after testing
+
+    // needed to handle overlapping events
+    let timeMarkerAdded = false;
+
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
         let finishDate = undefined;
@@ -171,15 +176,27 @@ function handleEventData(events) {
 
         // calculate event container classes
         let divClasses = 'event';
-        if ((finishDate || startDate) < new Date(1613914800 * 1000)) {  // replace second statement w/ "new Date()" after testing
+        if ((finishDate || startDate) < now) {
             divClasses += ' past';
         }
 
+        // add event to DOM
         let eventContainer = $('.day-first-events');
         if (startDate.getDate() === 21) {
             eventContainer = $('.day-second-events');
         }
-        eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
+        const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
+
+        // add time indicator for the current event
+        if (!timeMarkerAdded && startDate < now && finishDate > now) {
+            timeMarkerAdded = true;
+
+            // calculate percent
+            const eventLength = finishDate - startDate;
+            const percent = ((now - startDate) / eventLength) * 100;
+
+            eventDiv.children('div:last-child').append(`<div class="marker" style="bottom: ${100 - percent}%;"></div>`);
+        }
     });
 }
 

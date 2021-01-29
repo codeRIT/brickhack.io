@@ -756,7 +756,9 @@ nav {
                 background-color: white;
                 border-radius: 15px;
                 margin: 10px 0px;
+                overflow: hidden;
                 padding: 10px;
+                position: relative;
 
                 &.past {
                     background-color: darken(white, 25%);
@@ -768,6 +770,14 @@ nav {
                 .title {
                     color: black;
                     font-size: 1.3em;
+                }
+                .marker {
+                    background-color: rgba(black, 25%);
+                    border-bottom: 4px solid $red;
+                    left: 0;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
                 }
             }
         }
