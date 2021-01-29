@@ -154,13 +154,13 @@ function convertDate(date) {
     return output;
 }
 
-const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"1613815200","finish":"1613817000"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"1613822400","finish":"1613822400"},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"1613829600","finish":"1613919600"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"1613840400","finish":"1613844000"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"1613901600","finish":"1613901600"},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"1613912400","finish":"1613916000"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"1613910600","finish":"1613916000"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"1613916000","finish":"1613923200"}];
+const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-21T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
 events.forEach(event => {
-    let startDate = new Date(Number(event.start) * 1000);  // convert timestamp -> milliseconds -> Date object
-    let finishDate = new Date(Number(event.finish) * 1000);
+    let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
 
     let dateString = convertDate(startDate);
-    if (startDate.getTime() !== finishDate.getTime()) {  // instantaneous events don't need the second part
+    if (event.finish) {  // finish === null for instantaneous events
+        let finishDate = new Date(event.finish);
         let finishString = convertDate(finishDate);
         if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
             dateString = dateString.slice(0, -2);
