@@ -753,15 +753,14 @@ nav {
             }
 
             .event {
-                background-color: white;
+                background: white;
                 border-radius: 15px;
                 margin: 10px 0px;
-                overflow: hidden;
                 padding: 10px;
                 position: relative;
 
                 &.past {
-                    background-color: darken(white, 25%);
+                    background-color: #bfbfbf;
                 }
 
                 .time {
@@ -772,12 +771,25 @@ nav {
                     font-size: 1.3em;
                 }
                 .marker {
-                    background-color: rgba(black, 25%);
-                    border-bottom: 4px solid $red;
-                    left: 0;
+                    $marker-radius: 20px;
+
+                    border-bottom: 2px solid $red;
+                    border-top: 2px solid $red;
+                    left: -25px;
                     position: absolute;
                     right: 0;
                     top: 0;
+
+                    &::before {
+                        background-color: $red;
+                        border-radius: 50%;
+                        bottom: $marker-radius / -2;
+                        content: "";  // content must be set for before/after pseudo-elements to be visible
+                        height: $marker-radius;
+                        left: $marker-radius / -2;
+                        position: absolute;
+                        width: $marker-radius;
+                    }
                 }
             }
         }

@@ -195,7 +195,8 @@ function handleEventData(events) {
             const eventLength = finishDate - startDate;
             const percent = ((now - startDate) / eventLength) * 100;
 
-            eventDiv.children('div:last-child').append(`<div class="marker" style="bottom: ${100 - percent}%;"></div>`);
+            eventDiv.children('div:last-child').css('background-image', `linear-gradient(0deg, white, white ${100-percent}%, #bfbfbf 0)`);
+            eventDiv.children('div:last-child').append(`<div class="marker" style="top: ${percent}%;"></div>`);
         }
     });
 }
