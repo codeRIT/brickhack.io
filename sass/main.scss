@@ -228,7 +228,7 @@ nav {
         bottom: 0;
         z-index: 2;
 
-        #desk, #wire {
+        #desk, #lamp-wire {
             position: absolute;
             height: 100%;
             width: 100%;
@@ -236,14 +236,14 @@ nav {
         }
 
         #desk {
-            background-image: url("../assets/desk1.svg");
+            background-image: url("../assets/hero/desk1.svg");
             background-repeat: no-repeat;
             z-index: 3;
         }
 
-        #wire {
+        #lamp-wire {
             background-size: auto;
-            background-image: url("../assets/wire.svg");
+            background-image: url("../assets/hero/lamp-wire.svg");
             background-repeat: repeat-y;
         }
     }
@@ -255,7 +255,7 @@ nav {
         left: 0;
         right: 0;
         bottom: -20px; // Crop SVG slightly
-        background-image: url("../assets/shelf.svg");
+        background-image: url("../assets/hero/shelf.svg");
         background-repeat: no-repeat;
         background-position: bottom center;
         background-size: cover;
@@ -268,7 +268,7 @@ nav {
         height: 110%;
         width: 900px;
         margin-top: -80px;
-        background-image: url("../assets/shapes.svg");
+        background-image: url("../assets/hero/shapes.svg");
         background-repeat: no-repeat;
         background-position: 100% 30%;
         background-size: 900px;
@@ -897,7 +897,7 @@ footer {
     right: 0;
     bottom: 0;
     margin-top: 20px;
-    background-image: url("../assets/footer.svg");
+    background-image: url("../assets/footer/footer.svg");
     background-repeat: repeat no-repeat;
     background-position: bottom center;
     background-size: auto 300px;
@@ -1040,7 +1040,7 @@ footer {
         }
 
         #desk-container {
-            #desk, #wire {
+            #desk, #lamp-wire {
                 background-position: calc(100% + 100px) bottom;
             }
         }
@@ -1143,7 +1143,7 @@ footer {
         #desk-container {
             right: -100px;
 
-            #desk, #wire {
+            #desk, #lamp-wire {
                 background-position: right bottom;
             }
         }
