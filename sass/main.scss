@@ -76,16 +76,12 @@ $event-count: 6;
     font-family: "Poppins", sans-serif;
     color: white;
     // Transition all elements on the screen
-    // (except FAQ panel, which already has a transition,
-    // and the section days, which need no transition.)
-    &:not(nav.link):not(.panel):not(#days):not(.number):not(#desk) {
-        transition: all 1s ease;
+    // (except FAQ panel, which has conflicting transitions)
+    &:not(.panel) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
     }
 
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
@@ -118,7 +114,7 @@ p {
 
 // Nav
 nav {
-    background-color: rgba(#5864a5, 50%);
+    background-color: rgba(#5864a5, 80%);
     display: flex;
     justify-content: space-between;
     font-size: $nav-fontsize;
@@ -127,7 +123,7 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 4;
+    z-index: 5;
 
     .left, .right {
         display: flex;
@@ -139,11 +135,15 @@ nav {
         margin-left: 10px;
     }
 
-    .link:hover {
-        // Top border doesn't push content,
-        // for some reason border-box doesn't work here?
-        border-top: 3px solid transparent;
-        border-bottom: 3px solid white;
+    .link {
+        border: 3px rgba(white, 0);
+        border-style: solid none;
+        transition: all 0.2s;
+
+        &:not(:focus):hover, &.active {
+            // underline upon hover, disable hover upon click
+            border-bottom-color: rgba(white, 1);
+        }
     }
 
     #login {
@@ -181,6 +181,8 @@ nav {
         height: calc(100vh - #{$nav-height});
         margin-top: $nav-height;
         display: flex;
+        z-index: 4;
+        position: relative;
     }
 
     #hero-text {
@@ -217,7 +219,7 @@ nav {
         font-size: 2em;
     }
 
-    // Shelf things!
+    // Hero Graphics
     #desk-container {
         position: absolute;
         height: 100%;
@@ -226,7 +228,7 @@ nav {
         bottom: 0;
         z-index: 2;
 
-        #desk, #wire {
+        #desk, #lamp-wire {
             position: absolute;
             height: 100%;
             width: 100%;
@@ -234,14 +236,14 @@ nav {
         }
 
         #desk {
-            background-image: url("../assets/desk1.svg");
+            background-image: url("../assets/hero/desk1.svg");
             background-repeat: no-repeat;
             z-index: 3;
         }
 
-        #wire {
+        #lamp-wire {
             background-size: auto;
-            background-image: url("../assets/wire.svg");
+            background-image: url("../assets/hero/lamp-wire.svg");
             background-repeat: repeat-y;
         }
     }
@@ -249,26 +251,27 @@ nav {
     #shelf {
         position: absolute;
         width: 100%;
-        height: 250px;
+        height: 25%;
         left: 0;
         right: 0;
         bottom: -20px; // Crop SVG slightly
-        background-image: url("../assets/shelf.svg");
+        background-image: url("../assets/hero/shelf.svg");
         background-repeat: no-repeat;
         background-position: bottom center;
         background-size: cover;
-        z-index: 2;
+        z-index: 4;
     }
 
     #shapes {
         position: absolute;
         right: 0;
-        height: 900px;
+        height: 110%;
         width: 900px;
         margin-top: -80px;
-        background-image: url("../assets/shapes.svg");
+        background-image: url("../assets/hero/shapes.svg");
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: 100% 30%;
+        background-size: 900px;
         z-index: 1;
     }
 }
@@ -356,10 +359,10 @@ nav {
                 cursor: pointer;
                 transition: 0.3s;
                 z-index: 2;
-            }
 
-            img:hover {
-                opacity: 0.7;
+                &:hover {
+                    filter: brightness(125%);
+                }
             }
         }
 
@@ -411,9 +414,17 @@ nav {
 
     }
 
+    // Note that older versions of iOS (<14?)
+    // require `cursor: pointer` to be set
+    // in order for click events to be captured
+    // by our intended HTML (here, #modal).
+    // The cursor is reset on the #modal-content,
+    // as on desktop, no action is possible on the image.
+    // https://stackoverflow.com/a/16006333/1431900
     #modal {
         display: none;
         position: fixed;
+        cursor: pointer;
         z-index: 100;
         padding: 100px;
         left: 0;
@@ -434,6 +445,7 @@ nav {
         display: block;
         width: 80%;
         max-width: 700px;
+        cursor: default;
         animation-name: zoom;
         animation-duration: 0.6s;
     }
@@ -500,6 +512,65 @@ nav {
             padding-right: 10px;
         }
     }
+}
+
+#prizes {
+    h1 {
+        font-size: $title-size;
+        margin-bottom: 40px;
+    }
+
+    #prizes-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        #ricky-confetti {
+            align-self: flex-end;
+            width: 30%;
+
+            img {
+                max-height: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        #prizes-container {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 40px;
+
+            .prize {
+                background-color: white;
+                padding: 35px;
+                border-radius: $img-border-radius;
+                margin-bottom: 30px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                // Sequentially assign colors to all elements
+                $colors: $light-gray, $orange;
+                @for $i from 1 through 4 {
+                    &:nth-child(#{$i}) {
+                        border-top: 10px solid nth($colors, $i % length($colors) + 1);
+                    }
+                }
+
+                p, strong {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+
 }
 
 #faq {
@@ -648,6 +719,7 @@ nav {
             user-select: none;
             cursor: pointer;
             color: white;
+
             .day {
                 .number {
                     font-size: 6.5em;
@@ -676,7 +748,7 @@ nav {
             $colors: $red, $orange, $light-gray;
             @for $i from 1 through $event-count {
                 .event:nth-child(#{$i}) {
-                    border-left: 30px solid nth($colors, $i % length($colors) + 1);
+                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
                 }
             }
 
@@ -701,7 +773,7 @@ nav {
 }
 
 #leadership {
-    background-color: $light-blue;
+    background-color: $blue;
 
     h1 {
         font-size: $title-size;
@@ -742,13 +814,90 @@ nav {
     }
 }
 
+#sponsors {
+    background-color: $light-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 2.5em;
+        color: $red;
+    }
+
+    #sponsor-grid, #partner-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #partner-grid {
+        .logo, .logo img {
+            width: 150px;
+        }
+    }
+
+    .logo {
+        margin: 40px;
+        background-repeat: no-repeat;
+
+        // Hover effect that sets opacity: 0
+        // is applied in the @meida (hover: hover) query
+        // due to mobile devices having a sticky hover
+        // (more details in the @media query)
+        img {
+            transition: opacity 0.1s;
+            opacity: 1;
+        }
+
+    }
+
+    // Different sponsors get different size logos
+    .brick .logo {
+        width: 500px;
+
+        // Their logo is a little too big...
+        &.cbrands {
+            width: 400px;
+        }
+    }
+
+    .gold .logo {
+        width: 300px;
+    }
+
+    // Sponsor logo color version being set on hover
+    // is also done in the @media(hover: hover) query
+    // for the same reason as above.
+
+    #prospectus {
+        margin-top: 20px;
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: $red;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 footer {
     width: 100%;
     height: 300px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../assets/footer.svg");
+    margin-top: 20px;
+    background-image: url("../assets/footer/footer.svg");
     background-repeat: repeat no-repeat;
     background-position: bottom center;
     background-size: auto 300px;
@@ -782,6 +931,74 @@ footer {
 
 // Media queries for mobile
 
+
+// Mobile has sticky hover,
+// so special hover effects need to go in here.
+// https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
+@media (hover: hover) {
+    #sponsors {
+        .logo:hover img {
+            opacity: 0;
+        }
+
+        // Show color version of logo on hover
+        // only possible when done via CSS background-img
+        // to be supported on all browsers.
+        .cbrands:hover {
+            background-image: url("/assets/sponsors/logos/cbrands.svg");
+        }
+
+        .mtbank:hover {
+            background-image: url("/assets/sponsors/logos/mtbank.svg");
+        }
+
+        .wegmans:hover {
+            background-image: url("/assets/sponsors/logos/wegmans.svg");
+        }
+
+        .readme:hover {
+            background-image: url("/assets/sponsors/logos/readme.svg");
+        }
+
+        .pinnacle:hover {
+            background-image: url("/assets/sponsors/logos/pinnacle.svg");
+        }
+
+        .mlh:hover {
+            background-image: url("/assets/sponsors/logos/mlh.svg");
+        }
+
+        .stickermule:hover {
+            background-image: url("/assets/sponsors/logos/stickermule.svg");
+        }
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    nav {
+        #mlh-badge {
+            width: 140px;
+        }
+    }
+
+    #hero {
+        #bh7 {
+            font-size: 6.4em;
+        }
+
+        #premiere {
+            font-size: 3em;
+        }
+
+        #dates {
+            font-size: 1.6em;
+        }
+
+        #register {
+            font-size: 2.3em;
+        }
+    }
+}
 
 @media screen and (max-width: 1630px) {
 
@@ -823,7 +1040,9 @@ footer {
         }
 
         #desk-container {
-            right: -100px;
+            #desk, #lamp-wire {
+                background-position: calc(100% + 100px) bottom;
+            }
         }
 
         #shelf {
@@ -920,16 +1139,95 @@ footer {
         width: 100%;
     }
 
+    #hero {
+        #desk-container {
+            right: -100px;
+
+            #desk, #lamp-wire {
+                background-position: right bottom;
+            }
+        }
+    }
+
     #leadership #leaders {
         grid-template-columns: repeat(4, $leadership-size-mobile);
         justify-content: space-between;
     }
+
+    #prizes #prizes-wrapper {
+        #prizes-container {
+            .prize {
+                padding: 20px;
+
+                p, strong {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+
+    #sponsors {
+        #sponsor-grid, #partner-grid {
+            flex-wrap: wrap;
+        }
+
+        #partner-grid {
+            .logo, .logo img {
+                width: 150px;
+            }
+        }
+
+        // Different sponsors get different size logos
+        .brick .logo {
+            width: 350px;
+
+            // Their logo is a little too big...
+            &.cbrands {
+                width: 300px;
+            }
+        }
+
+        .gold .logo {
+            width: 200px;
+        }
+
+        #prospectus {
+            margin: 0;
+        }
+    }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 955px) {
 
     // Redefine only for mobile
     $nav-height: 60px;
+
+    nav {
+        height: $nav-height;
+        position: absolute;
+
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            width: 90px;
+        }
+
+        .link {
+            display: none;
+        }
+
+        #login {
+            padding: 8px 30px;
+            margin: 0;
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
 
     h1, section > p {
         text-align: center;
@@ -955,23 +1253,6 @@ footer {
         padding: 20px;
     }
 
-    nav {
-        height: $nav-height;
-        position: absolute;
-
-        #logo img {
-            width: $nav-height;
-            height: $nav-height;
-        }
-
-        #mlh-badge {
-            width: 90px;
-        }
-
-        .link {
-            display: none;
-        }
-    }
 
     #hero {
         #hero-content {
@@ -1035,6 +1316,10 @@ footer {
                 img {
                     width: $slide-size;
                     height: $slide-size;
+
+                    &:hover {
+                        filter: none;
+                    }
                 }
             }
 
@@ -1100,6 +1385,25 @@ footer {
         }
     }
 
+    #prizes #prizes-wrapper {
+        flex-direction: column;
+        max-height: 100%;
+
+        #ricky-confetti {
+            width: 55%;
+            margin: 0 auto;
+        }
+
+        #prizes-container {
+            width: 100%;
+            padding-left: 0;
+            margin-top: 30px;
+            .prize {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
     #faq #faq-wrapper {
 
         h1 {
@@ -1144,12 +1448,6 @@ footer {
 
     .section-pad {
         padding: 20px;
-    }
-
-    nav #login {
-        padding: 8px 30px;
-        margin: 0;
-        font-size: 0.8em;
     }
 
     #hero {
@@ -1215,6 +1513,10 @@ footer {
         .contact  {
             text-align: center;
         }
+    }
+
+    #prizes #prizes-wrapper #ricky-confetti {
+        width: 65%;
     }
 
     #leadership #leaders {
