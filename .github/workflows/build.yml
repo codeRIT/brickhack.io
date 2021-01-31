@@ -16,14 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: create keys file with AWS S3 setup
-      run: |
-        touch keys.js
-        echo "var identityPoolId = '${{ secrets.IDENTITY_POOL_ID }}';" >> keys.js
-        echo "export { identityPoolId };" >> keys.js
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
         node-version: '12'
     - run: npm ci
     - run: npm run build --if-present
+      env: IDENTITY_POOL_ID: ${{ secrets.IDENTITY_POOL_ID }}
+
