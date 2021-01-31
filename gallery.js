@@ -6,7 +6,6 @@ import $ from 'jquery'
 var lazyLoad = new LazyLoad();
 
 var AWS = require('aws-sdk');
-import {identityPoolId} from './keys.js';
 
 // Getting images onto the page
 var albumBucketName = 'brickhack-gallery';
@@ -15,7 +14,7 @@ var albumBucketName = 'brickhack-gallery';
 // TODO: Load from env variables so GH pages can access
 AWS.config.region = 'us-east-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: identityPoolId
+    IdentityPoolId: process.env.IDENTITY_POOL_ID
 });
 
 // Service Object

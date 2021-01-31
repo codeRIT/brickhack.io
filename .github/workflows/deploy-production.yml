@@ -20,6 +20,7 @@ jobs:
       run: npm ci
     - name: Builder
       run: npm run build
+      env: IDENTITY_POOL_ID: ${{ secrets.IDENTITY_POOL_ID }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
