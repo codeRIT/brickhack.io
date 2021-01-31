@@ -15,16 +15,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: master
-    - name: create keys file with AWS S3 setup
-      run: |
-        touch keys.js
-        echo "var identityPoolId = '${{ secrets.IDENTITY_POOL_ID }}';" >> keys.js
-        echo "export { identityPoolId };" >> keys.js
     - run: node --version
     - name: Install dependencies
       run: npm ci
     - name: Builder
       run: npm run build
+      env: IDENTITY_POOL_ID: ${{ secrets.IDENTITY_POOL_ID }}
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
