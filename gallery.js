@@ -67,7 +67,7 @@ $(document).on('click', function(event) {
         $('#modal').show();
         var top = 'calc(5% + ' + (window.scrollY) + 'px)';
         var fullUrl = $(event.target).attr('data-bg').replaceAll('/thumb/', '/full/');
-        $('#modal-img').attr('src', );
+        $('#modal-img').attr('src', fullUrl);
         $('#modal').css('top', top);
         $('#modal-background').show();
     }
