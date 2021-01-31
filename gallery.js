@@ -9,9 +9,8 @@ var AWS = require('aws-sdk');
 
 // Getting images onto the page
 var albumBucketName = 'brickhack-gallery';
-// Credentials
 
-// TODO: Load from env variables so GH pages can access
+// Credentials
 AWS.config.region = 'us-east-1'; // Region
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: process.env.IDENTITY_POOL_ID
