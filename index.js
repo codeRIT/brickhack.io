@@ -145,7 +145,7 @@ $('.day-first').click(function() {
     $('.day-second-events').hide();
     $('.day-second').removeClass('day-active');
 });
-$('.day-second').click(showSecondDayEvents());
+$('.day-second').click(showSecondDayEvents);
 
 // Dynamic schedule code (sample API data)
 
