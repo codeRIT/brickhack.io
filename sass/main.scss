@@ -766,12 +766,14 @@ nav {
                 .time {
                     color: $light-blue;
                 }
+
                 .title {
                     color: black;
                     font-size: 1.3em;
                 }
+
                 .marker {
-                    $marker-radius: 20px;
+                    $marker-width: 20px;
 
                     border-bottom: 2px solid $red;
                     border-top: 2px solid $red;
@@ -781,14 +783,14 @@ nav {
                     top: 0;
 
                     &::before {
+                        content: "";
                         background-color: $red;
                         border-radius: 50%;
-                        bottom: $marker-radius / -2;
-                        content: "";  // content must be set for before/after pseudo-elements to be visible
-                        height: $marker-radius;
-                        left: $marker-radius / -2;
+                        bottom: -($marker-width / 2);
+                        height: $marker-width;
+                        left: -($marker-width / 2);
                         position: absolute;
-                        width: $marker-radius;
+                        width: $marker-width;
                     }
                 }
             }
