@@ -31,10 +31,6 @@ $font-regular: 400;
 // Size for all titles on page
 $title-size: 3em;
 
-// MAX events (across either day)
-// TODO: Make this more dynamic via JS?
-$event-count: 6;
-
 // Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
@@ -745,11 +741,14 @@ nav {
             width: 60%;
 
             // Sequentially assign colors to all elements
-            $colors: $red, $orange, $light-gray;
-            @for $i from 1 through $event-count {
-                .event:nth-child(#{$i}) {
-                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
-                }
+            .event:nth-child(3n) {
+                border-top: 10px solid $red;
+            }
+            .event:nth-child(3n + 1) {
+                border-top: 10px solid $orange;
+            }
+            .event:nth-child(3n + 2) {
+                border-top: 10px solid $light-gray;
             }
 
             .event {
@@ -766,10 +765,12 @@ nav {
                 .time {
                     color: $light-blue;
                 }
+
                 .title {
                     color: black;
                     font-size: 1.3em;
                 }
+
                 .marker {
                     $marker-radius: 20px;
 
@@ -781,14 +782,14 @@ nav {
                     top: 0;
 
                     &::before {
+                        content: "";  // content must be set for before/after pseudo-elements to be visible
+                        position: absolute;
                         background-color: $red;
                         border-radius: 50%;
-                        bottom: $marker-radius / -2;
-                        content: "";  // content must be set for before/after pseudo-elements to be visible
-                        height: $marker-radius;
+                        bottom: -($marker-radius / 2);
                         left: $marker-radius / -2;
-                        position: absolute;
                         width: $marker-radius;
+                        height: $marker-radius;
                     }
                 }
             }
