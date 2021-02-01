@@ -776,8 +776,8 @@ nav {
 
                     border-bottom: 2px solid $red;
                     border-top: 2px solid $red;
-                    left: -25px;
                     position: absolute;
+                    left: -25px;
                     right: 0;
                     top: 0;
 
@@ -785,10 +785,10 @@ nav {
                         content: "";
                         background-color: $red;
                         border-radius: 50%;
-                        bottom: -($marker-width / 2);
-                        height: $marker-width;
-                        left: -($marker-width / 2);
                         position: absolute;
+                        bottom: -($marker-width / 2);
+                        left: -($marker-width / 2);
+                        height: $marker-width;
                         width: $marker-width;
                     }
                 }
