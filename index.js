@@ -226,11 +226,7 @@ function handleEventData(events) {
     });
 }
 
-const events = [{"title":"Opening Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-20T10:00:00+00:00","finish":"2021-02-20T10:30:00+00:00"},{"title":"Lunch (on your own!)","description":"","location":"Discord + Zoom","start":"2021-02-20T12:00:00+00:00","finish":null},{"title":"Mystery Workshop","description":"","location":"Discord + Zoom","start":"2021-02-20T14:00:00+00:00","finish":"2021-02-20T15:00:00+00:00"},{"title":"Mystery Event","description":"","location":"Discord + Zoom","start":"2021-02-20T17:00:00+00:00","finish":"2021-02-20T18:00:00+00:00"},{"title":"Devpost submission","description":"","location":"Discord + Zoom","start":"2021-02-21T10:00:00+00:00","finish":null},{"title":"Mystery Workshop 2","description":"","location":"Discord + Zoom","start":"2021-02-21T13:00:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Coding stops / Judging begins","description":"","location":"Discord + Zoom","start":"2021-02-21T12:30:00+00:00","finish":"2021-02-21T14:00:00+00:00"},{"title":"Closing Ceremony","description":"","location":"Discord + Zoom","start":"2021-02-21T14:00:00+00:00","finish":"2021-02-21T16:00:00+00:00"}];
-handleEventData(events);
-
-// Replace above two lines with this once we figure out the exact endpoint to use:
-// fetch('http://example.com/schedule.json')
-//     .then(res => res.json())
-//     .then(events => handleEventData(events))
-//     .catch(err => console.log(err));
+fetch('https://hm.coderit.org/events.json')
+    .then(res => res.json())
+    .then(events => handleEventData(events))
+    .catch(err => console.log(err));
