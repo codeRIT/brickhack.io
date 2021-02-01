@@ -128,7 +128,27 @@ for (let i = 0; i < card.length; i++) {
     });
 }
 
+// Schedule toggle code
+
+// Created as named function so that we can show the correct day
+function showSecondDayEvents() {
+    $('.day-first-events').hide();
+    $('.day-first').removeClass('day-active');
+    $('.day-second-events').show();
+    $('.day-second').addClass('day-active');
+}
+
+$('.day-second-events').hide();
+$('.day-first').click(function() {
+    $('.day-first-events').show();
+    $('.day-first').addClass('day-active');
+    $('.day-second-events').hide();
+    $('.day-second').removeClass('day-active');
+});
+$('.day-second').click(showSecondDayEvents());
+
 // Dynamic schedule code (sample API data)
+
 function convertDate(date) {
     let output = '';
 
@@ -159,6 +179,11 @@ function handleEventData(events) {
 
     // needed to handle overlapping events
     let timeMarkerAdded = false;
+
+    // show second day page
+    if (now > new Date(1613865600 * 1000)) {  // start of Feb 21
+        showSecondDayEvents();
+    }
 
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
@@ -209,18 +234,3 @@ handleEventData(events);
 //     .then(res => res.json())
 //     .then(events => handleEventData(events))
 //     .catch(err => console.log(err));
-
-// Schedule toggle code
-$('.day-second-events').hide();
-$('.day-first').click(function() {
-    $('.day-first-events').show();
-    $('.day-first').addClass('day-active');
-    $('.day-second-events').hide();
-    $('.day-second').removeClass('day-active');
-});
-$('.day-second').click(function() {
-    $('.day-first-events').hide();
-    $('.day-first').removeClass('day-active');
-    $('.day-second-events').show();
-    $('.day-second').addClass('day-active');
-});
