@@ -226,7 +226,7 @@ function handleEventData(events) {
     });
 }
 
-fetch('https://hm.coderit.org/events.json')
+fetch('http://localhost:3000/events.json')
     .then(res => res.json())
     .then(events => handleEventData(events))
     .catch(err => console.log(err));
