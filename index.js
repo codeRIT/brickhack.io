@@ -143,4 +143,3 @@ $('.day-second').click(function() {
     $('.day-second-events').show();
     $('.day-second').addClass('day-active');
 });
- 
