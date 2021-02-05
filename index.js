@@ -192,7 +192,6 @@ function handleEventData(events) {
         // needs to return GMT to us, but it is translating to EST for some reason
         // We want HM to be the canonical time for now, so 12pm in HM
         startDate.setHours(startDate.getHours() - 5);
-
         let finishDate = undefined;
 
         let dateString = convertDate(startDate);
