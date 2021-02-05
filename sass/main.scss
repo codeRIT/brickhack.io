@@ -31,10 +31,6 @@ $font-regular: 400;
 // Size for all titles on page
 $title-size: 3em;
 
-// MAX events (across either day)
-// TODO: Make this more dynamic via JS?
-$event-count: 6;
-
 // Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
@@ -745,25 +741,56 @@ nav {
             width: 60%;
 
             // Sequentially assign colors to all elements
-            $colors: $red, $orange, $light-gray;
-            @for $i from 1 through $event-count {
-                .event:nth-child(#{$i}) {
-                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
-                }
+            .event:nth-child(3n) {
+                border-top: 10px solid $red;
+            }
+            .event:nth-child(3n + 1) {
+                border-top: 10px solid $orange;
+            }
+            .event:nth-child(3n + 2) {
+                border-top: 10px solid $light-gray;
             }
 
             .event {
-                background-color: white;
+                background: white;
                 border-radius: 15px;
                 margin: 10px 0px;
                 padding: 10px;
+                position: relative;
+
+                &.past {
+                    background-color: #bfbfbf;
+                }
 
                 .time {
                     color: $light-blue;
                 }
+
                 .title {
                     color: black;
                     font-size: 1.3em;
+                }
+
+                .marker {
+                    $marker-width: 20px;
+
+                    border-bottom: 2px solid $red;
+                    border-top: 2px solid $red;
+                    position: absolute;
+                    left: -25px;
+                    right: 0;
+                    top: 0;
+
+                    &::before {
+                        content: "";
+                        background-color: $red;
+                        border-radius: 50%;
+                        position: absolute;
+                        bottom: -($marker-width / 2);
+                        left: -($marker-width / 2);
+                        height: $marker-width;
+                        width: $marker-width;
+                    }
                 }
             }
         }
