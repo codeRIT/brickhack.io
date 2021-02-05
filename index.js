@@ -205,7 +205,6 @@ function handleEventData(events) {
             finishDate.setHours(finishDate.getHours() - 5);
 
             let finishString = convertDate(finishDate);
-            let finishString = convertDate(finishDate);
             if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
                 dateString = dateString.slice(0, -2);
             }
