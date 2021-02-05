@@ -175,7 +175,7 @@ function convertDate(date) {
 }
 
 function handleEventData(events) {
-    let now = new Date(1613914900 * 1000)  // delete argument after testing
+    let now = new Date()
 
     // needed to handle overlapping events
     let timeMarkerAdded = false;
@@ -226,7 +226,7 @@ function handleEventData(events) {
     });
 }
 
-fetch('http://localhost:3000/events.json')
+fetch('https://apply.brickhack.io/events.json')
     .then(res => res.json())
     .then(events => handleEventData(events))
     .catch(err => console.log(err));
