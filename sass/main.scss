@@ -630,7 +630,7 @@ nav {
                     // Align w/ header text, not sure if this can be made cleaner.
                     margin-left: 35px;
 
-                    p {
+                    p, em {
                         color: $dark-blue;
                         line-height: 23px;
                         margin-bottom: 10px;
