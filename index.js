@@ -187,11 +187,23 @@ function handleEventData(events) {
 
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
+
+        // FIXME: Hotfix for time zone bug in HM
+        // needs to return GMT to us, but it is translating to EST for some reason
+        // We want HM to be the canonical time for now, so 12pm in HM
+        startDate.setHours(startDate.getHours() - 5);
+
         let finishDate = undefined;
 
         let dateString = convertDate(startDate);
         if (event.finish) {  // finish === null for instantaneous events
             finishDate = new Date(event.finish);
+
+            // FIXME: Hotfix for time zone bug in HM
+            // needs to return GMT to us, but it is translating to EST for some reason
+            // We want HM to be the canonical time for now, so 12pm in HM
+            finishDate.setHours(finishDate.getHours() - 5);
+
             let finishString = convertDate(finishDate);
             if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
                 dateString = dateString.slice(0, -2);
