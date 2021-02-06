@@ -153,19 +153,19 @@ function convertDate(date) {
     let output = '';
 
     // hour
-    if (date.getUTCHours() > 12) {
-        output = String(date.getUTCHours() - 12);
+    if (date.getHours() > 12) {
+        output = String(date.getHours() - 12);
     } else {
-        output = String(date.getUTCHours());
+        output = String(date.getHours());
     }
 
     // minute
     if (date.getMinutes() !== 0) {
-        output += ':' + String(date.getUTCMinutes()).padStart(2, '0');
+        output += ':' + String(date.getMinutes()).padStart(2, '0');
     }
 
     // AM/PM
-    if (date.getUTCHours() >= 12) {
+    if (date.getHours() >= 12) {
         output += 'pm';
     } else {
         output += 'am';
@@ -181,28 +181,18 @@ function handleEventData(events) {
     let timeMarkerAdded = false;
 
     // show second day page
-    if (now > new Date(1613865600 * 1000)) {  // start of Feb 21
+    if (now > new Date("2021-02-21T00:00:00")) {  // start of Feb 21
         showSecondDayEvents();
     }
 
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
 
-        // FIXME: Hotfix for time zone bug in HM
-        // needs to return GMT to us, but it is translating to EST for some reason
-        // We want HM to be the canonical time for now, so 12pm in HM
-        startDate.setHours(startDate.getHours() - 5);
-
         let finishDate = undefined;
 
         let dateString = convertDate(startDate);
         if (event.finish) {  // finish === null for instantaneous events
             finishDate = new Date(event.finish);
-
-            // FIXME: Hotfix for time zone bug in HM
-            // needs to return GMT to us, but it is translating to EST for some reason
-            // We want HM to be the canonical time for now, so 12pm in HM
-            finishDate.setHours(finishDate.getHours() - 5);
 
             let finishString = convertDate(finishDate);
             if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
