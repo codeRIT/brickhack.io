@@ -138,7 +138,7 @@ p {
     text-align: center;
     background-color: $off-white;
     border-radius: 20px;
-    padding: 20px;
+    padding: 50px 0 0;
     top: 10%;
     margin: auto;
     width: auto;
@@ -149,41 +149,27 @@ p {
     z-index: 3;
     display: none;
 
-    i {
-        color: $orange;
-        font-size: 40px;
-    }
-
     img {
         display: block;
         max-width: 100%;
         max-height: calc(90vh - 40px); // 40px from the padding of modal (20 top + 20 bottom)
         width: auto;
         height: auto;
-        padding: 50px 40px;
+        border: 8px solid $off-white;
+        border-top: none;
+        border-radius: 20px;
     }
 }
 
 #close-modal {
+    color: $orange;
+    font-size: 40px;
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 5px;
+    right: 15px;
     z-index: 3;
     cursor: pointer;
 }
-
-// Commenting out modal (carousel) controls for later implementation
-/* #modal-controls {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
 
 @media screen and (max-width: 1800px) {
     .image-container {
@@ -233,12 +219,17 @@ p {
     }
 
     #modal {
-        width: 80%;
+        width: 90%;
         max-height: none;
+        padding: 40px 0 0;
 
         img {
             width: 100%;
             max-height: none;
         }
+    }
+
+    #close-modal {
+        font-size: 30px;
     }
 }
