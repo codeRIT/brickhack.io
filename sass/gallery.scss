@@ -138,7 +138,7 @@ p {
     text-align: center;
     background-color: $off-white;
     border-radius: 20px;
-    padding: 50px 0 0;
+    padding-top: 50px;
     top: 10%;
     margin: auto;
     width: auto;
@@ -187,6 +187,21 @@ p {
     .image-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    #modal {
+        width: 90%;
+        max-height: none;
+        padding-top: 40px;
+
+        img {
+            width: 100%;
+            max-height: none;
+        }
+    }
+
+    #close-modal {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 660px) {
@@ -216,20 +231,5 @@ p {
 
     .image-container {
         grid-template-columns: repeat(1, 1fr);
-    }
-
-    #modal {
-        width: 90%;
-        max-height: none;
-        padding: 40px 0 0;
-
-        img {
-            width: 100%;
-            max-height: none;
-        }
-    }
-
-    #close-modal {
-        font-size: 30px;
     }
 }
