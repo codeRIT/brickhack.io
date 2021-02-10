@@ -128,8 +128,16 @@ for (let i = 0; i < card.length; i++) {
     });
 }
 
-
 // Schedule toggle code
+
+// Created as named function so that we can show the correct day
+function showSecondDayEvents() {
+    $('.day-first-events').hide();
+    $('.day-first').removeClass('day-active');
+    $('.day-second-events').show();
+    $('.day-second').addClass('day-active');
+}
+
 $('.day-second-events').hide();
 $('.day-first').click(function() {
     $('.day-first-events').show();
@@ -137,9 +145,90 @@ $('.day-first').click(function() {
     $('.day-second-events').hide();
     $('.day-second').removeClass('day-active');
 });
-$('.day-second').click(function() {
-    $('.day-first-events').hide();
-    $('.day-first').removeClass('day-active');
-    $('.day-second-events').show();
-    $('.day-second').addClass('day-active');
-});
+$('.day-second').click(showSecondDayEvents);
+
+// Dynamic schedule code (sample API data)
+
+function convertDate(date) {
+    let output = '';
+
+    // hour
+    if (date.getHours() > 12) {
+        output = String(date.getHours() - 12);
+    } else {
+        output = String(date.getHours());
+    }
+
+    // minute
+    if (date.getMinutes() !== 0) {
+        output += ':' + String(date.getMinutes()).padStart(2, '0');
+    }
+
+    // AM/PM
+    if (date.getHours() >= 12) {
+        output += 'pm';
+    } else {
+        output += 'am';
+    }
+
+    return output;
+}
+
+function handleEventData(events) {
+    let now = new Date()
+
+    // needed to handle overlapping events
+    let timeMarkerAdded = false;
+
+    // show second day page
+    if (now > new Date("2021-02-21T00:00:00")) {  // start of Feb 21
+        showSecondDayEvents();
+    }
+
+    events.forEach(event => {
+        let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
+
+        let finishDate = undefined;
+
+        let dateString = convertDate(startDate);
+        if (event.finish) {  // finish === null for instantaneous events
+            finishDate = new Date(event.finish);
+
+            let finishString = convertDate(finishDate);
+            if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
+                dateString = dateString.slice(0, -2);
+            }
+            dateString += "-" + convertDate(finishDate);
+        }
+
+        // calculate event container classes
+        let divClasses = 'event';
+        if ((finishDate || startDate) < now) {
+            divClasses += ' past';
+        }
+
+        // add event to DOM
+        let eventContainer = $('.day-first-events');
+        if (startDate.getDate() === 21) {
+            eventContainer = $('.day-second-events');
+        }
+        const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
+
+        // add time indicator for the current event
+        if (!timeMarkerAdded && startDate < now && finishDate > now) {
+            timeMarkerAdded = true;
+
+            // calculate percent
+            const eventLength = finishDate - startDate;
+            const percent = ((now - startDate) / eventLength) * 100;
+
+            eventDiv.children('div:last-child').css('background-image', `linear-gradient(0deg, white, white ${100-percent}%, #bfbfbf 0)`);
+            eventDiv.children('div:last-child').append(`<div class="marker" style="top: ${percent}%;"></div>`);
+        }
+    });
+}
+
+fetch('https://apply.brickhack.io/events.json')
+    .then(res => res.json())
+    .then(events => handleEventData(events))
+    .catch(err => console.log(err));
