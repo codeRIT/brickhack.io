@@ -147,7 +147,7 @@ $('.day-first').click(function() {
 });
 $('.day-second').click(showSecondDayEvents);
 
-// Dynamic schedule code (sample API data)
+// Dynamic schedule code
 
 function convertDate(date) {
     let output = '';
