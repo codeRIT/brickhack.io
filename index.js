@@ -157,7 +157,27 @@ $('.feb-21').click(function() {
     $('#feb-21-content').css('display', 'flex');
 });
 
-// Dynamic schedule code (sample API data)
+// Dynamic schedule code
+
+function compareEvents(a, b) {
+    // We can sort by start/end here because the ISO 8061
+    // timestamps given by the server are lexicographically
+    // sortable.
+
+    if (a.start < b.start) {         // if a starts before b...
+        return -1;                   //   ...then a goes before b
+    } else if (a.start > b.start) {  // if a starts after b...
+        return 1;                    //   ...then b goes before a
+    } else {
+        if (a.end < b.end) {         // if a ends before b...
+            return -1;               //   ...then a goes before b
+        } else if (a.end > b.end) {  // if a ends after b...
+            return 1;                //   ...then b goes before a
+        } else {
+            return 0;
+        }
+    }
+}
 
 function convertDate(date) {
     let output = '';
@@ -194,6 +214,9 @@ function handleEventData(events) {
     if (now > new Date("2021-02-21T00:00:00")) {  // start of Feb 21
         showSecondDayEvents();
     }
+
+    // need to sort events by start/end times instead of IDs
+    events.sort(compareEvents);
 
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
