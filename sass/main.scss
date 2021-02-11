@@ -687,18 +687,30 @@ nav {
         position: relative;
     }
 
-    #schedule-tapes {
-        display: flex;
-        justify-content: space-around;
+    #binder-container {
+        left: 0;
+        // width: 400px;
+        height: 100%;
         position: absolute;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: -50px; // 1/2 of .binder-ring width
 
-        .tape {
-            // For some reason, margin doesn't work on #schedule-tapes.
-            margin-top: -20px; // Half of tape height
-            height: 40px;
-            width: 25%;
-            background-color: rgba($red, 60%);
+        .binder-rings {
+            display: flex;
+            flex-direction: column;
+
+            .binder-ring {
+                height: 30px;
+                width: 100px;
+                border-radius: $img-border-radius;
+                background-color: $red;
+
+                &:last-child {
+                    margin-top: 30px;
+                }
+            }
         }
     }
 
