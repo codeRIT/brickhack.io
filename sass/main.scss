@@ -689,21 +689,20 @@ nav {
 
     #binder-container {
         left: 0;
-        // width: 400px;
         height: 100%;
         position: absolute;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        margin-left: -50px; // 1/2 of .binder-ring width
+        margin-left: -40px; // 1/2 of .binder-ring width
 
         .binder-rings {
             display: flex;
             flex-direction: column;
 
             .binder-ring {
-                height: 30px;
-                width: 100px;
+                height: 20px;
+                width: 80px;
                 border-radius: $img-border-radius;
                 background-color: $red;
 
@@ -711,6 +710,72 @@ nav {
                     margin-top: 30px;
                 }
             }
+        }
+    }
+
+    #schedule-tabs {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -50px; // -height (without 5px for translateY)
+        position: absolute;
+        width: 95%; // tabs have room on border radius of schedule block
+
+        .schedule-tab {
+            font-weight: bold;
+            padding: 10px 20px;
+            height: 50px;
+            margin-left: 20px;
+            border-top-left-radius: $img-border-radius;
+            border-top-right-radius: $img-border-radius;
+            user-select: none;
+            cursor: pointer;
+            animation: tab-hover-out 0.2s;
+
+            // Separate in/out so transitions happen at exact same time
+            // z-index does not work due to layout
+            @keyframes tab-hover-in {
+                from {
+                    transform: translateY(0px);
+                    height: 50px;
+                }
+                to {
+                    transform: translateY(-5px);
+                    height: 55px;
+                }
+            }
+
+            @keyframes tab-hover-out {
+                from {
+                    transform: translateY(-5px);
+                    height: 55px;
+                }
+                to {
+                    transform: translateY(0px);
+                    height: 50px;
+                }
+            }
+
+            &:hover {
+                animation: tab-hover-in 0.2s;
+                animation-fill-mode: forwards;
+            }
+
+            p {
+                color: $dark-blue;
+            }
+        }
+
+        // Specific tab styling
+        .pre-event {
+            background-color: $red;
+        }
+
+        .feb-20 {
+            background-color: $orange;
+        }
+
+        .feb-21 {
+            background-color: $light-gray;
         }
     }
 
