@@ -218,9 +218,19 @@ function handleEventData(events) {
         }
 
         // add event to DOM
-        let eventContainer = $('.day-first-events');
-        if (startDate.getDate() === 21) {
-            eventContainer = $('.day-second-events');
+
+        // @FIXME: 20th is default
+        var eventContainer = $('.feb-20-events');
+        console.log(startDate.getDate());
+        console.log();
+
+        switch (startDate.getDate()) {
+            case 16: eventContainer = $('.pre-event-16-events');
+            case 17: eventContainer = $('.pre-event-17-events');
+            case 18: eventContainer = $('.pre-event-18-events');
+            case 19: eventContainer = $('.pre-event-19-events');
+            // case 20: eventContainer = $('.feb-20-events');
+            case 21: eventContainer = $('.feb-21-events');
         }
         const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
 
