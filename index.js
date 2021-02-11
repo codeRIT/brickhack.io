@@ -134,18 +134,27 @@ $('.pre-event').click(function() {
     $('.pre-event').addClass('schedule-tab-active');
     $('.feb-20').removeClass('schedule-tab-active');
     $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').show();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').hide();
 });
 
 $('.feb-20').click(function() {
     $('.pre-event').removeClass('schedule-tab-active');
     $('.feb-20').addClass('schedule-tab-active');
     $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').show();
+    $('#feb-21-content').hide();
 });
 
 $('.feb-21').click(function() {
     $('.pre-event').removeClass('schedule-tab-active');
     $('.feb-20').removeClass('schedule-tab-active');
     $('.feb-21').addClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').show();
 });
 
 // Created as named function so that we can show the correct day
