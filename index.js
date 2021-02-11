@@ -157,23 +157,6 @@ $('.feb-21').click(function() {
     $('#feb-21-content').show();
 });
 
-// Created as named function so that we can show the correct day
-function showSecondDayEvents() {
-    $('.day-first-events').hide();
-    $('.day-first').removeClass('day-active');
-    $('.day-second-events').show();
-    $('.day-second').addClass('day-active');
-}
-
-$('.day-second-events').hide();
-$('.day-first').click(function() {
-    $('.day-first-events').show();
-    $('.day-first').addClass('day-active');
-    $('.day-second-events').hide();
-    $('.day-second').removeClass('day-active');
-});
-$('.day-second').click(showSecondDayEvents);
-
 // Dynamic schedule code (sample API data)
 
 function convertDate(date) {
