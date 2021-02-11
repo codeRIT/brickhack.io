@@ -901,6 +901,47 @@ nav {
             display: flex;
             justify-content: space-between;
         }
+
+        // Coordinate color with day on left and event border on top
+        .pre-16 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: $red;
+            }
+        }
+
+        .pre-17 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: $orange;
+            }
+        }
+
+        .pre-18 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: $orange;
+            }
+        }
+
+        .pre-19 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: white;
+            }
+        }
     }
 
 }
