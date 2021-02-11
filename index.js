@@ -149,7 +149,7 @@ $('.day-second').click(showSecondDayEvents);
 
 // Dynamic schedule code
 
-function sortEvents(a, b) {
+function compareEvents(a, b) {
     // We can sort by start/end here because the ISO 8061
     // timestamps given by the server are lexicographically
     // sortable.
@@ -206,7 +206,7 @@ function handleEventData(events) {
     }
 
     // need to sort events by start/end times instead of IDs
-    events.sort(sortEvents);
+    events.sort(compareEvents);
 
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
