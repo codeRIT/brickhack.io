@@ -165,8 +165,8 @@ $('.show-full-schedule').click(function() {
 });
 
 $('.hide-full-schedule').click(function() {
-    $('#feb-20-content .events').css('height', '300px'); // Easier w/o conditional
-    $('#feb-21-content .events').css('height', '300px');
+    $('#feb-20-content .events').css('height', '350px'); // Easier w/o conditional
+    $('#feb-21-content .events').css('height', '350px');
     $('.hide-full-schedule').hide();
     $('.show-full-schedule').css('display', 'flex');
 });
