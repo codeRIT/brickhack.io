@@ -765,6 +765,16 @@ nav {
             }
         }
 
+        .schedule-tab-active {
+            transform: translateY(-5px);
+            height: 55px;
+            animation: none;
+
+            &:hover {
+                animation: none;
+            }
+        }
+
         // Specific tab styling
         .pre-event {
             background-color: $red;

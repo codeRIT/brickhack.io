@@ -130,6 +130,24 @@ for (let i = 0; i < card.length; i++) {
 
 // Schedule toggle code
 
+$('.pre-event').click(function() {
+    $('.pre-event').addClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+});
+
+$('.feb-20').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').addClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+});
+
+$('.feb-21').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').addClass('schedule-tab-active');
+});
+
 // Created as named function so that we can show the correct day
 function showSecondDayEvents() {
     $('.day-first-events').hide();
