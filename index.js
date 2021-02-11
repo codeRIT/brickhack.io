@@ -134,7 +134,7 @@ $('.pre-event').click(function() {
     $('.pre-event').addClass('schedule-tab-active');
     $('.feb-20').removeClass('schedule-tab-active');
     $('.feb-21').removeClass('schedule-tab-active');
-    $('#pre-event-content').show();
+    $('#pre-event-content').css('display', 'flex');
     $('#feb-20-content').hide();
     $('#feb-21-content').hide();
 });
@@ -144,7 +144,7 @@ $('.feb-20').click(function() {
     $('.feb-20').addClass('schedule-tab-active');
     $('.feb-21').removeClass('schedule-tab-active');
     $('#pre-event-content').hide();
-    $('#feb-20-content').show();
+    $('#feb-20-content').css('display', 'flex');
     $('#feb-21-content').hide();
 });
 
@@ -154,7 +154,7 @@ $('.feb-21').click(function() {
     $('.feb-21').addClass('schedule-tab-active');
     $('#pre-event-content').hide();
     $('#feb-20-content').hide();
-    $('#feb-21-content').show();
+    $('#feb-21-content').css('display', 'flex');
 });
 
 // Dynamic schedule code (sample API data)
