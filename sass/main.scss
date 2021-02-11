@@ -790,9 +790,45 @@ nav {
     }
 
     #schedule-content-wrapper {
-        // Hide the two other events by default
         #feb-20-content, #feb-21-content {
-            display: none;
+            display: none; // Hide the two other events by default
+
+            // A little less than the style put just below the #schedule-content-wrapper
+            .schedule-content {
+                padding-bottom: 20px;
+            }
+
+            .show-full-schedule, .hide-full-schedule {
+                bottom: 0;
+                text-align: right;
+                margin-right: 20%; // TODO: make more aligned with right of events
+                padding-bottom: 40px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                cursor: pointer;
+
+                p {
+                    font-size: 1.3em;
+                    user-select: none;
+                }
+
+                i {
+                    color: $red;
+                    font-size: 2em;
+                    margin-left: 10px;
+                }
+            }
+
+            .hide-full-schedule {
+                display: none;
+            }
+
+            .events {
+                height: 350px;
+                padding-bottom: 10px;
+                overflow: clip;
+            }
         }
     }
 
