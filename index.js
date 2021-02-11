@@ -241,19 +241,15 @@ function handleEventData(events) {
         }
 
         // add event to DOM
-
-        // @FIXME: 20th is default
-        var eventContainer = $('.feb-20-events');
-        console.log(startDate.getDate());
-        console.log();
+        var eventContainer;
 
         switch (startDate.getDate()) {
-            case 16: eventContainer = $('.pre-event-16-events');
-            case 17: eventContainer = $('.pre-event-17-events');
-            case 18: eventContainer = $('.pre-event-18-events');
-            case 19: eventContainer = $('.pre-event-19-events');
-            // case 20: eventContainer = $('.feb-20-events');
-            case 21: eventContainer = $('.feb-21-events');
+            case 16: eventContainer = $('.pre-event-16-events'); break;
+            case 17: eventContainer = $('.pre-event-17-events'); break;
+            case 18: eventContainer = $('.pre-event-18-events'); break;
+            case 19: eventContainer = $('.pre-event-19-events'); break;
+            case 20: eventContainer = $('.feb-20-events'); break;
+            case 21: eventContainer = $('.feb-21-events'); break;
         }
         const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
 

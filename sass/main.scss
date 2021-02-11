@@ -800,92 +800,92 @@ nav {
         display: flex;
         justify-content: space-around;
         padding: 60px 100px;
+    }
 
-        // Normal events
-        .days {
-            width: 50%;
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            user-select: none;
-            cursor: pointer;
-            color: white;
+    // Normal events
+    .days {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        user-select: none;
+        cursor: pointer;
+        color: white;
+    }
+
+    .day {
+        .number {
+            font-size: 6.2em;
+            font-weight: $font-bold;
+            line-height: 0.9; // TODO: Can this be done cleaner?
         }
 
-        .day {
-            .number {
-                font-size: 6.2em;
-                font-weight: $font-bold;
-                line-height: 0.9; // TODO: Can this be done cleaner?
-            }
+        .name {
+            font-size: 1.6em;
+            font-weight: $font-regular;
 
+        }
+
+        &:not(:last-child) {
             .name {
-                font-size: 1.6em;
-                font-weight: $font-regular;
-
-            }
-
-            &:not(:last-child) {
-                .name {
-                    margin-bottom: 10px;
-                }
+                margin-bottom: 10px;
             }
         }
+    }
 
-        .events {
-            width: 60%;
+    .events {
+        width: 60%;
 
-            // Sequentially assign colors to all elements
-            .event:nth-child(3n) {
-                border-top: 10px solid $red;
+        // Sequentially assign colors to all elements
+        .event:nth-child(3n) {
+            border-top: 10px solid $red;
+        }
+        .event:nth-child(3n + 1) {
+            border-top: 10px solid $orange;
+        }
+        .event:nth-child(3n + 2) {
+            border-top: 10px solid $light-gray;
+        }
+
+        .event {
+            background: white;
+            border-radius: 15px;
+            margin: 10px 0px;
+            padding: 10px;
+            position: relative;
+
+            &.past {
+                background-color: #bfbfbf;
             }
-            .event:nth-child(3n + 1) {
-                border-top: 10px solid $orange;
-            }
-            .event:nth-child(3n + 2) {
-                border-top: 10px solid $light-gray;
+
+            .time {
+                color: $light-blue;
             }
 
-            .event {
-                background: white;
-                border-radius: 15px;
-                margin: 10px 0px;
-                padding: 10px;
-                position: relative;
+            .title {
+                color: black;
+                font-size: 1.3em;
+            }
 
-                &.past {
-                    background-color: #bfbfbf;
-                }
+            .marker {
+                $marker-width: 20px;
 
-                .time {
-                    color: $light-blue;
-                }
+                border-bottom: 2px solid $red;
+                border-top: 2px solid $red;
+                position: absolute;
+                left: -25px;
+                right: 0;
+                top: 0;
 
-                .title {
-                    color: black;
-                    font-size: 1.3em;
-                }
-
-                .marker {
-                    $marker-width: 20px;
-
-                    border-bottom: 2px solid $red;
-                    border-top: 2px solid $red;
+                &::before {
+                    content: "";
+                    background-color: $red;
+                    border-radius: 50%;
                     position: absolute;
-                    left: -25px;
-                    right: 0;
-                    top: 0;
-
-                    &::before {
-                        content: "";
-                        background-color: $red;
-                        border-radius: 50%;
-                        position: absolute;
-                        bottom: -($marker-width / 2);
-                        left: -($marker-width / 2);
-                        height: $marker-width;
-                        width: $marker-width;
-                    }
+                    bottom: -($marker-width / 2);
+                    left: -($marker-width / 2);
+                    height: $marker-width;
+                    width: $marker-width;
                 }
             }
         }
@@ -896,6 +896,11 @@ nav {
         display: flex;
         flex-direction: column;
         flex-wrap: none;
+
+        .day-row {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 
 }
