@@ -1557,45 +1557,34 @@ footer {
             width: 100%;
         }
 
-        #schedule-tapes {
+        #schedule-tabs {
             justify-content: center;
-
-            .tape {
-                margin-top: -10px; //Half of tape height
-                height: 20px;
-            }
         }
 
-        #schedule-content {
+        .schedule-content {
             flex-direction: column;
             padding: 20px;
+            // align-items: center;
 
-            #days {
-                width: auto;
-                margin-top: 10px;
-                flex-direction: row;
+            .day {
 
-                .day {
-                    .number {
-                        font-size: 5em;
-                        text-align: center;
-                    }
+                .number {
+                    font-size: 4em;
+                    text-align: center;
+                }
+            }
 
-                    .name {
-                        font-size: 1.5em;
-                    }
+            .day-row {
+                flex-direction: column;
+                &:not(:first-child) {
+                    margin-top: 15px;
                 }
             }
 
             .events {
-                width: auto;
-
-                .event {
-                    padding: 5px;
-
-                    .title {
-                        font-size: 1em;
-                    }
+                width: 90%;
+                .event .title {
+                    font-size: 1em;
                 }
             }
         }
