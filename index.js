@@ -130,22 +130,46 @@ for (let i = 0; i < card.length; i++) {
 
 // Schedule toggle code
 
-// Created as named function so that we can show the correct day
-function showSecondDayEvents() {
-    $('.day-first-events').hide();
-    $('.day-first').removeClass('day-active');
-    $('.day-second-events').show();
-    $('.day-second').addClass('day-active');
-}
-
-$('.day-second-events').hide();
-$('.day-first').click(function() {
-    $('.day-first-events').show();
-    $('.day-first').addClass('day-active');
-    $('.day-second-events').hide();
-    $('.day-second').removeClass('day-active');
+$('.pre-event').click(function() {
+    $('.pre-event').addClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').css('display', 'flex');
+    $('#feb-20-content').hide();
+    $('#feb-21-content').hide();
 });
-$('.day-second').click(showSecondDayEvents);
+
+$('.feb-20').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').addClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').show();
+    $('#feb-21-content').hide();
+});
+
+$('.feb-21').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').addClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').show();
+});
+
+$('.show-full-schedule').click(function() {
+    $('#feb-20-content .events').css('height', 'auto'); // Easier w/o conditional
+    $('#feb-21-content .events').css('height', 'auto');
+    $('.hide-full-schedule').css('display', 'flex');
+    $('.show-full-schedule').hide();
+});
+
+$('.hide-full-schedule').click(function() {
+    $('#feb-20-content .events').css('height', '370px'); // Easier w/o conditional
+    $('#feb-21-content .events').css('height', '370px');
+    $('.hide-full-schedule').hide();
+    $('.show-full-schedule').css('display', 'flex');
+});
 
 // Dynamic schedule code
 
@@ -231,10 +255,22 @@ function handleEventData(events) {
         }
 
         // add event to DOM
-        let eventContainer = $('.day-first-events');
-        if (startDate.getDate() === 21) {
-            eventContainer = $('.day-second-events');
+        var eventContainer;
+
+        switch (startDate.getDate()) {
+            case 16: eventContainer = $('.pre-event-16-events'); break;
+            case 17: eventContainer = $('.pre-event-17-events'); break;
+            case 18: eventContainer = $('.pre-event-18-events'); break;
+            case 19: eventContainer = $('.pre-event-19-events'); break;
+            case 20: eventContainer = $('.feb-20-events'); break;
+            case 21: eventContainer = $('.feb-21-events'); break;
         }
+
+        if (!eventContainer) {
+            console.log("Event " + event.title + " date " + startDate + " out of range.");
+            return; // skip current iteration https://stackoverflow.com/a/31399448/1431900
+        }
+
         const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
 
         // add time indicator for the current event
