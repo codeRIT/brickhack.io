@@ -265,6 +265,12 @@ function handleEventData(events) {
             case 20: eventContainer = $('.feb-20-events'); break;
             case 21: eventContainer = $('.feb-21-events'); break;
         }
+
+        if (!eventContainer) {
+            console.log("Event " + event.title + " date " + startDate + " out of range.");
+            return; // skip current iteration https://stackoverflow.com/a/31399448/1431900
+        }
+
         const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
 
         // add time indicator for the current event
