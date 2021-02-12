@@ -859,13 +859,6 @@ nav {
         .name {
             font-size: 1.6em;
             font-weight: $font-regular;
-
-        }
-
-        &:not(:last-child) {
-            .name {
-                margin-bottom: 10px;
-            }
         }
     }
 
@@ -886,9 +879,13 @@ nav {
         .event {
             background: white;
             border-radius: 15px;
-            margin: 10px 0px;
             padding: 10px;
             position: relative;
+            box-shadow: 0px 0px 20px -5px rgba($dark-blue, 1);
+
+            &:not(:first-child) {
+                margin: 10px 0px;
+            }
 
             &.past {
                 background-color: #bfbfbf;
@@ -900,7 +897,7 @@ nav {
 
             .title {
                 color: black;
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
 
             .marker {
@@ -936,6 +933,16 @@ nav {
         .day-row {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        .day .number {
+            margin-bottom: -5px;
+            margin-top: 10px;
+        }
+
+        .event {
+            margin: 0;
         }
 
         // Coordinate color with day on left and event border on top
@@ -951,7 +958,7 @@ nav {
 
         .pre-17 {
             .event {
-                border-top-color: $red;
+                border-top-color: $orange;
             }
 
             h2, h6 {
@@ -961,17 +968,17 @@ nav {
 
         .pre-18 {
             .event {
-                border-top-color: $red;
+                border-top-color: $pink;
             }
 
             h2, h6 {
-                color: $orange;
+                color: $pink;
             }
         }
 
         .pre-19 {
             .event {
-                border-top-color: $red;
+                border-top-color: $light-gray;
             }
 
             h2, h6 {
