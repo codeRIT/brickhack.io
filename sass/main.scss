@@ -739,15 +739,15 @@ nav {
                     height: 50px;
                 }
                 to {
-                    transform: translateY(-5px);
-                    height: 55px;
+                    transform: translateY(-10px);
+                    height: 60px;
                 }
             }
 
             @keyframes tab-hover-out {
                 from {
-                    transform: translateY(-5px);
-                    height: 55px;
+                    transform: translateY(-10px);
+                    height: 60px;
                 }
                 to {
                     transform: translateY(0px);
@@ -766,8 +766,8 @@ nav {
         }
 
         .schedule-tab-active {
-            transform: translateY(-5px);
-            height: 55px;
+            transform: translateY(-10px);
+            height: 60px;
             animation: none;
 
             &:hover {
