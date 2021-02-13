@@ -35,6 +35,18 @@ $ npm run dev
 
 You should then be able to access the site at `localhost:1234`.
 
+### Environment variables
+
+The images in the [gallery](https://brickhack.io/gallery) are hosted on our AWS S3 instance.
+
+GitHub Actions (our CI/CD) uses a repository secret to store the environment variable.
+
+For local development on the gallery:
+- Create a `.env` file in the root of the project
+- Add `IDENTITY_POOL_ID="key"` to the top, where `key` is the AWS IAM key.
+
+**Note: Ask the Engineering team lead (@peterkos) for an AWS key if you do not have one.**
+
 # Development & Deployment
 
 All development work should be done locally in a new branch and/or fork. Then, make a pull request to have the code merged into the develop branch. Once the develop branch gets to a good state, it gets merged into the master branch for a production deployment.
