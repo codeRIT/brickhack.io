@@ -154,34 +154,107 @@
                     <i class="fas fa-arrow-right"></i>
                     <p>Visit Major League Hacking</p>
                 </a>
-                <a href="javascript:void(0);" rel="noopener noreferrer">
-                    <i class="fas fa-tools"></i>
-                    <p>Gallery (coming soon!)</p>
+                <a href="./gallery.html" rel="noopener noreferrer">
+                    <i class="fas fa-images"></i>
+                    <p>BrickHack Gallery</p>
                 </a>
             </div>
         </div>
     </section>
     <section id="schedule" class="section-pad">
         <h1>Schedule</h1>
-        <p>All times are in EST.</p>
+        <p>Times are listed in your local time zone.</p>
         <div id="schedule-block">
-            <div id="schedule-tapes">
-                <div class="tape"></div>
-                <div class="tape"></div>
+
+            <!-- Binder rings -->
+            <div id="binder-container">
+                <div class="binder-rings">
+                    <div class="binder-ring"></div>
+                    <div class="binder-ring"></div>
+                </div>
+                <div class="binder-rings">
+                    <div class="binder-ring"></div>
+                    <div class="binder-ring"></div>
+                </div>
             </div>
-            <div id="schedule-content">
-                <div id="days">
-                    <div class="day day-first day-active">
-                        <h2 class="number">20</h2>
-                        <h6 class="name">SATURDAY</h6>
+
+            <div id="schedule-tabs">
+                <div class="schedule-tab pre-event schedule-tab-active">
+                    <p>Pre-Event</p>
+                </div>
+                <div class="schedule-tab feb-20">
+                    <p>Feb 20th</p>
+                </div>
+                <div class="schedule-tab feb-21">
+                    <p>Feb 21st</p>
+                </div>
+            </div>
+
+            <div id="schedule-content-wrapper">
+                <div id="pre-event-content" class="schedule-content">
+                    <div class="day-row pre-16">
+                        <div class="day">
+                            <h2 class="number">16</h2>
+                            <h6 class="name">TUESDAY</h6>
+                        </div>
+                        <div class="events pre-event-16-events"></div>
                     </div>
-                    <div class="day day-second">
-                        <h2 class="number">21</h2>
-                        <h6 class="name">SUNDAY</h6>
+                    <div class="day-row pre-17">
+                        <div class="day">
+                            <h2 class="number">17</h2>
+                            <h6 class="name">WEDNESDAY</h6>
+                        </div>
+                        <div class="events pre-event-17-events"></div>
+                    </div>
+                    <div class="day-row pre-18">
+                        <div class="day">
+                            <h2 class="number">18</h2>
+                            <h6 class="name">THURSDAY</h6>
+                        </div>
+                        <div class="events pre-event-18-events"></div>
+                    </div>
+                    <div class="day-row pre-19">
+                        <div class="day">
+                            <h2 class="number">19</h2>
+                            <h6 class="name">FRIDAY</h6>
+                        </div>
+                        <div class="events pre-event-19-events"></div>
                     </div>
                 </div>
-                <div class="events day-first-events"></div>
-                <div class="events day-second-events"></div>
+                <div id="feb-20-content">
+                    <div class="schedule-content">
+                        <div class="days">
+                            <div class="day">
+                                <h2 class="number">20</h2>
+                                <h6 class="name">SATURDAY</h6>
+                            </div>
+                        </div>
+                        <div class="events feb-20-events"></div>
+                    </div>
+                    <div class="show-full-schedule">
+                        <p>Show full schedule</p><i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="hide-full-schedule">
+                        <p>Hide full schedule</p><i class="fas fa-minus-circle"></i>
+                    </div>
+                </div>
+                <div id="feb-21-content">
+                    <div class="schedule-content">
+                        <div class="days">
+                            <div class="day">
+                                <h2 class="number">21</h2>
+                                <h6 class="name">SUNDAY</h6>
+                            </div>
+                        </div>
+                        <div class="events feb-21-events"></div>
+                    </div>
+                    <div class="show-full-schedule">
+                        <p>Show full schedule</p><i class="fas fa-plus-circle"></i>
+                    </div>
+                    <div class="hide-full-schedule">
+                        <p>Hide full schedule</p><i class="fas fa-minus-circle"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -412,6 +485,12 @@
             <a href="https://readme.com/" class="logo readme" target="_blank">
                 <img src="./assets/sponsors/logos/readme-white.svg" />
             </a>
+            <a href="https://dolby.io/" class="logo dolbyio" target="_blank">
+                <img src="./assets/sponsors/logos/dolbyio-white.svg" />
+            </a>
+            <a href="https://www.northropgrumman.com/" class="logo northrop" target="_blank">
+                <img src="./assets/sponsors/logos/northrop-white.svg" />
+            </a>
         </div>
         <h2>Partners</h2>
         <div id="partner-grid" class="partner">
@@ -423,6 +502,9 @@
             </a>
             <a href="http://hackp.ac/mlh-stickermule-hackathons" class="logo stickermule" target="_blank">
                 <img src="./assets/sponsors/logos/stickermule-white.svg" />
+            </a>
+            <a href="https://www.rit.edu/research/simonecenter/" class="logo simonecenter" target="_blank">
+                <img src="./assets/sponsors/logos/simonecenter-white.svg" />
             </a>
         </div>
         <div id="prospectus">

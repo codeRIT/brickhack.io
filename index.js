@@ -130,42 +130,86 @@ for (let i = 0; i < card.length; i++) {
 
 // Schedule toggle code
 
-// Created as named function so that we can show the correct day
-function showSecondDayEvents() {
-    $('.day-first-events').hide();
-    $('.day-first').removeClass('day-active');
-    $('.day-second-events').show();
-    $('.day-second').addClass('day-active');
-}
-
-$('.day-second-events').hide();
-$('.day-first').click(function() {
-    $('.day-first-events').show();
-    $('.day-first').addClass('day-active');
-    $('.day-second-events').hide();
-    $('.day-second').removeClass('day-active');
+$('.pre-event').click(function() {
+    $('.pre-event').addClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').css('display', 'flex');
+    $('#feb-20-content').hide();
+    $('#feb-21-content').hide();
 });
-$('.day-second').click(showSecondDayEvents);
 
-// Dynamic schedule code (sample API data)
+$('.feb-20').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').addClass('schedule-tab-active');
+    $('.feb-21').removeClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').show();
+    $('#feb-21-content').hide();
+});
+
+$('.feb-21').click(function() {
+    $('.pre-event').removeClass('schedule-tab-active');
+    $('.feb-20').removeClass('schedule-tab-active');
+    $('.feb-21').addClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').show();
+});
+
+$('.show-full-schedule').click(function() {
+    $('#feb-20-content .events').css('height', 'auto'); // Easier w/o conditional
+    $('#feb-21-content .events').css('height', 'auto');
+    $('.hide-full-schedule').css('display', 'flex');
+    $('.show-full-schedule').hide();
+});
+
+$('.hide-full-schedule').click(function() {
+    $('#feb-20-content .events').css('height', '370px'); // Easier w/o conditional
+    $('#feb-21-content .events').css('height', '370px');
+    $('.hide-full-schedule').hide();
+    $('.show-full-schedule').css('display', 'flex');
+});
+
+// Dynamic schedule code
+
+function compareEvents(a, b) {
+    // We can sort by start/end here because the ISO 8061
+    // timestamps given by the server are lexicographically
+    // sortable.
+
+    if (a.start < b.start) {         // if a starts before b...
+        return -1;                   //   ...then a goes before b
+    } else if (a.start > b.start) {  // if a starts after b...
+        return 1;                    //   ...then b goes before a
+    } else {
+        if (a.end < b.end) {         // if a ends before b...
+            return -1;               //   ...then a goes before b
+        } else if (a.end > b.end) {  // if a ends after b...
+            return 1;                //   ...then b goes before a
+        } else {
+            return 0;
+        }
+    }
+}
 
 function convertDate(date) {
     let output = '';
 
     // hour
-    if (date.getUTCHours() > 12) {
-        output = String(date.getUTCHours() - 12);
+    if (date.getHours() > 12) {
+        output = String(date.getHours() - 12);
     } else {
-        output = String(date.getUTCHours());
+        output = String(date.getHours());
     }
 
     // minute
     if (date.getMinutes() !== 0) {
-        output += ':' + String(date.getUTCMinutes()).padStart(2, '0');
+        output += ':' + String(date.getMinutes()).padStart(2, '0');
     }
 
     // AM/PM
-    if (date.getUTCHours() >= 12) {
+    if (date.getHours() >= 12) {
         output += 'pm';
     } else {
         output += 'am';
@@ -181,28 +225,21 @@ function handleEventData(events) {
     let timeMarkerAdded = false;
 
     // show second day page
-    if (now > new Date(1613865600 * 1000)) {  // start of Feb 21
+    if (now > new Date("2021-02-21T00:00:00")) {  // start of Feb 21
         showSecondDayEvents();
     }
 
+    // need to sort events by start/end times instead of IDs
+    events.sort(compareEvents);
+
     events.forEach(event => {
         let startDate = new Date(event.start);  // convert ISO 8601 -> Date object
-
-        // FIXME: Hotfix for time zone bug in HM
-        // needs to return GMT to us, but it is translating to EST for some reason
-        // We want HM to be the canonical time for now, so 12pm in HM
-        startDate.setHours(startDate.getHours() - 5);
 
         let finishDate = undefined;
 
         let dateString = convertDate(startDate);
         if (event.finish) {  // finish === null for instantaneous events
             finishDate = new Date(event.finish);
-
-            // FIXME: Hotfix for time zone bug in HM
-            // needs to return GMT to us, but it is translating to EST for some reason
-            // We want HM to be the canonical time for now, so 12pm in HM
-            finishDate.setHours(finishDate.getHours() - 5);
 
             let finishString = convertDate(finishDate);
             if (dateString.slice(-2) === finishString.slice(-2)) {  // hide "am/pm" of first time if both are identical
@@ -218,10 +255,22 @@ function handleEventData(events) {
         }
 
         // add event to DOM
-        let eventContainer = $('.day-first-events');
-        if (startDate.getDate() === 21) {
-            eventContainer = $('.day-second-events');
+        var eventContainer;
+
+        switch (startDate.getDate()) {
+            case 16: eventContainer = $('.pre-event-16-events'); break;
+            case 17: eventContainer = $('.pre-event-17-events'); break;
+            case 18: eventContainer = $('.pre-event-18-events'); break;
+            case 19: eventContainer = $('.pre-event-19-events'); break;
+            case 20: eventContainer = $('.feb-20-events'); break;
+            case 21: eventContainer = $('.feb-21-events'); break;
         }
+
+        if (!eventContainer) {
+            console.log("Event " + event.title + " date " + startDate + " out of range.");
+            return; // skip current iteration https://stackoverflow.com/a/31399448/1431900
+        }
+
         const eventDiv = eventContainer.append(`<div class="${divClasses}"><p class="time">${dateString}</p><p class="title">${event.title}</p></div>`);
 
         // add time indicator for the current event
