@@ -1573,24 +1573,28 @@ footer {
             justify-content: center;
         }
 
+        #binder-container {
+            display: none;
+        }
+
         .schedule-content {
             flex-direction: column;
             padding: 20px;
-            // align-items: center;
+            align-items: center;
 
             .day {
+                .number, .name {
+                    text-align: center;
+                }
 
                 .number {
                     font-size: 4em;
-                    text-align: center;
                 }
             }
 
             .day-row {
                 flex-direction: column;
-                &:not(:first-child) {
-                    margin-top: 15px;
-                }
+                width: 100%;
             }
 
             .events {
@@ -1718,6 +1722,13 @@ footer {
             #hackathon-buttons {
                 width: 100%;
             }
+        }
+    }
+
+
+    #schedule {
+        .schedule-tab {
+            font-size: 0.9em;
         }
     }
 
