@@ -718,13 +718,16 @@ nav {
         justify-content: flex-end;
         margin-top: -50px; // -height (without 5px for translateY)
         position: absolute;
-        width: 95%; // tabs have room on border radius of schedule block
+        width: 100%;
+        padding-right: 30px; // tabs have room on border radius of schedule block
 
         .schedule-tab {
             font-weight: bold;
             padding: 10px 20px;
             height: 50px;
-            margin-left: 20px;
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
             border-top-left-radius: $img-border-radius;
             border-top-right-radius: $img-border-radius;
             user-select: none;
@@ -798,38 +801,41 @@ nav {
                 padding-bottom: 20px;
             }
 
-            .show-full-schedule, .hide-full-schedule {
-                bottom: 0;
-                text-align: right;
-                margin-right: 20%; // TODO: make more aligned with right of events
-                padding-bottom: 40px;
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                cursor: pointer;
-
-                p {
-                    font-size: 1.3em;
-                    user-select: none;
-                }
-
-                i {
-                    color: $red;
-                    font-size: 2em;
-                    margin-left: 10px;
-                }
-            }
-
-            .hide-full-schedule {
-                display: none;
-            }
-
             .events {
                 height: 370px;
                 padding-bottom: 10px;
                 overflow: hidden;
             }
         }
+
+        // Part of the above content ids
+        // but specificity is counterproductive to mobile styling
+        .show-full-schedule, .hide-full-schedule {
+            bottom: 0;
+            text-align: right;
+            margin-right: 20%; // TODO: make more aligned with right of events
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            cursor: pointer;
+
+            p {
+                font-size: 1.3em;
+                user-select: none;
+            }
+
+            i {
+                color: $red;
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        }
+
+        .hide-full-schedule {
+            display: none;
+        }
+
     }
 
     .schedule-content {
@@ -1571,6 +1577,18 @@ footer {
 
         #schedule-tabs {
             justify-content: center;
+            padding-right: 0;
+
+            .schedule-tab {
+                // Center tab is now always centered,
+                // prev. first and last tabs offset it
+                // because flex container has no set width
+                width: 120px;
+
+                p {
+                    text-align: center;
+                }
+            }
         }
 
         #binder-container {
@@ -1603,7 +1621,16 @@ footer {
                     font-size: 1em;
                 }
             }
+
         }
+
+        #schedule-content-wrapper {
+            .show-full-schedule, .hide-full-schedule {
+                justify-content: center;
+                margin: 0 auto;
+            }
+        }
+
     }
 
     #prizes #prizes-wrapper {
@@ -1728,7 +1755,7 @@ footer {
 
     #schedule {
         .schedule-tab {
-            font-size: 0.9em;
+            font-size: 0.8em; // <<<<<
         }
     }
 
