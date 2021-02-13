@@ -1583,7 +1583,7 @@ footer {
                 // Center tab is now always centered,
                 // prev. first and last tabs offset it
                 // because flex container has no set width
-                width: 120px;
+                width: 130px;
 
                 p {
                     text-align: center;
@@ -1617,6 +1617,7 @@ footer {
 
             .events {
                 width: 90%;
+
                 .event .title {
                     font-size: 1em;
                 }
@@ -1695,7 +1696,7 @@ footer {
 @media screen and (max-width: 650px) {
 
     .section-pad {
-        padding: 20px;
+        padding: 10px;
     }
 
     #hero {
@@ -1754,8 +1755,18 @@ footer {
 
 
     #schedule {
-        .schedule-tab {
-            font-size: 0.8em; // <<<<<
+
+        #schedule-tabs .schedule-tab {
+            width: 80px;
+            font-size: 0.8em;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        .schedule-content .events {
+            width: 100%;
         }
     }
 
