@@ -72,7 +72,7 @@ $(document).on('click', function(event) {
 // Closing modal with x
 $('#close-modal').on('click', function() {
     $('#modal-container').hide();
-    $('html').css('overflow', 'visible');
+    $('html').css('overflow', '');
 });
 
 $('#modal').on('click', function(event) {
@@ -82,7 +82,7 @@ $('#modal').on('click', function(event) {
 // Closing modal with background
 $('#modal-container').on('click', function(event) {
     $('#modal-container').hide();
-    $('html').css('overflow', 'visible');
+    $('html').css('overflow', '');
 });
 
 // Navbar functionality
