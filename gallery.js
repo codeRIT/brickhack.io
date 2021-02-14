@@ -62,25 +62,27 @@ function viewAlbum(albumName) {
 // Opening modal
 $(document).on('click', function(event) {
     if ($(event.target).hasClass('image')) {
-        $('#modal').show();
-        var top = 'calc(5% + ' + (window.scrollY) + 'px)';
         var fullUrl = $(event.target).attr('data-bg').replaceAll('/thumb/', '/full/');
         $('#modal-img').attr('src', fullUrl);
-        $('#modal').css('top', top);
-        $('#modal-background').show();
+        $('#modal-container').css('display', 'flex');
+        $('html').css('overflow', 'hidden');
     }
 });
 
 // Closing modal with x
 $('#close-modal').on('click', function() {
-    $('#modal').hide();
-    $('#modal-background').hide();
+    $('#modal-container').hide();
+    $('html').css('overflow', '');
+});
+
+$('#modal').on('click', function(event) {
+    event.stopPropagation();
 });
 
 // Closing modal with background
-$('#modal-background').on('click', function() {
-    $('#modal').hide();
-    $('#modal-background').hide();
+$('#modal-container').on('click', function(event) {
+    $('#modal-container').hide();
+    $('html').css('overflow', '');
 });
 
 // Navbar functionality
