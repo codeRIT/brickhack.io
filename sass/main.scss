@@ -902,6 +902,11 @@ nav {
             padding: 10px;
             position: relative;
             box-shadow: 0px 0px 20px -5px rgba($dark-blue, 1);
+            transition: transform 0.25s;
+
+            &:hover {
+                transform: translateY(-4px);
+            }
 
             &:not(:first-child) {
                 margin: 10px 0px;
