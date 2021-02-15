@@ -818,6 +818,22 @@ nav {
             }
         }
 
+        #feb-20-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $orange;
+                }
+            }
+        }
+
+        #feb-21-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $light-gray;
+                }
+            }
+        }
+
         // Part of the above content ids
         // but specificity is counterproductive to mobile styling
         .show-full-schedule, .hide-full-schedule {
@@ -836,7 +852,6 @@ nav {
             }
 
             i {
-                color: $red;
                 font-size: 2em;
                 margin-left: 10px;
             }
