@@ -1177,15 +1177,15 @@ footer {
             display: inline-block;
             transition: 0.2s;
 
-            i {
-                transition: 0.2s;
-            }
             &:hover {
                 color: $red;
 
                 i {
-                    color: $red;
+                    transform: translateY(-4px);
                 }
+            }
+            i {
+                transition: 0.2s;
             }
         }
     }
