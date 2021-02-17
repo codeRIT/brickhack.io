@@ -41,7 +41,7 @@ $title-size: 3em;
     text-decoration: none;
     user-select: none;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 20px;
     display: inline-block;
     color: white;
     cursor: pointer;
@@ -191,28 +191,37 @@ nav {
         // This lets the different h elements
         // appear to be equally spaced.
         line-height: 0.7;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
 
     #bh7 {
-        font-size: 5.4em;
+        font-size: 6em;
         font-weight: $font-extrabold;
     }
 
-    #premiere {
-        font-size: 2.5em;
-        font-weight: $font-medium;
-    }
-
     #dates {
-        font-size: 1.3em;
-        font-weight: $font-regular;
+        font-size: 2em;
+        font-weight: $font-extrabold;
     }
 
-    #register {
-        @include button;
-        padding: 10px 80px;
-        font-size: 2em;
+    #action-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+
+        #register, #discord {
+            @include button;
+            font-size: 2.3em;
+            width: 48%;
+            text-align: center;
+        }
+
+        #discord {
+            background-color: $dark-blue;
+            &:hover {
+                background-color: lighten($dark-blue, 5%);
+            }
+        }
     }
 
     // Hero Graphics
@@ -808,6 +817,31 @@ nav {
             }
         }
 
+        #feb-20-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $orange;
+                }
+            }
+
+            &:hover {
+                animation: tab-hover-in 0.2s;
+                animation-fill-mode: forwards;
+            }
+
+            p {
+                color: $dark-blue;
+            }
+        }
+
+        #feb-21-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $light-gray;
+                }
+            }
+        }
+
         // Part of the above content ids
         // but specificity is counterproductive to mobile styling
         .show-full-schedule, .hide-full-schedule {
@@ -826,7 +860,6 @@ nav {
             }
 
             i {
-                color: $red;
                 font-size: 2em;
                 margin-left: 10px;
             }
@@ -1216,18 +1249,6 @@ footer {
     }
 
     #hero {
-        #bh7 {
-            font-size: 6.4em;
-        }
-
-        #premiere {
-            font-size: 3em;
-        }
-
-        #dates {
-            font-size: 1.6em;
-        }
-
         #register {
             font-size: 2.3em;
         }
@@ -1256,18 +1277,13 @@ footer {
     }
 
     #hero {
-
         #bh7 {
             font-size: 5.0em;
         }
 
-        #premiere {
-            font-size: 2.0em;
-        }
-
-        #dates {
-            font-size: 1.1em;
-        }
+        // #dates {
+        //     font-size: 1.7em;
+        // }
 
         #shapes {
             right: -100px;
@@ -1368,6 +1384,20 @@ footer {
 }
 
 @media screen and (max-width: 1220px) {
+
+    #hero {
+        #dates {
+            font-size: 1.5em;
+        }
+
+        #action-buttons {
+            width: 70%;
+
+            #register, #discord {
+                font-size: 1.7em;
+            }
+        }
+    }
 
     #hackathon #hackathon-content #hackathon-buttons {
         width: 100%;
@@ -1497,16 +1527,20 @@ footer {
             font-size: 4.2em;
         }
 
-        #premiere {
-            font-size: 2.0em;
+        #hero-text {
+            margin-top: 10vh;
         }
 
         #dates {
-            font-size: 1.1em;
+            font-size: 1.5em;
         }
 
-        #hero-text {
-            margin-top: 10vh;
+        #action-buttons {
+            width: 60%;
+
+            #register, #discord {
+                font-size: 1.2em;
+            }
         }
 
         #desk-container {
@@ -1703,18 +1737,23 @@ footer {
 
         p {
             line-height: 0.4;
+            margin-bottom: 25px;
         }
 
         #bh7 {
-            font-size: 2.4em;
-        }
-
-        #premiere {
-            font-size: 1.5em;
+            font-size: 3em;
         }
 
         #dates {
-            font-size: 0.7em;
+            font-size: 1em;
+        }
+
+        #action-buttons {
+            width: 80%;
+
+            #register, #discord {
+                font-size: 1.2em;
+            }
         }
 
         #desk-container {
@@ -1817,7 +1856,7 @@ footer {
 
 @media screen and (max-width: 320px) {
 
-    #hero #premiere {
+    #hero #dates {
         font-size: 1.2em;
     }
 }
