@@ -814,15 +814,6 @@ nav {
                     color: $orange;
                 }
             }
-
-            &:hover {
-                animation: tab-hover-in 0.2s;
-                animation-fill-mode: forwards;
-            }
-
-            p {
-                color: $dark-blue;
-            }
         }
 
         #feb-21-content {
