@@ -889,7 +889,7 @@ nav {
 
         // Prevent event cards from clipping during their hover animation
         padding-top: $hover-translate-magnitude;
-        margin-top: -1 * $hover-translate-magnitude;
+        margin-top: -$hover-translate-magnitude;
 
         // Sequentially assign colors to all elements
         .event:nth-child(3n) {
@@ -911,7 +911,7 @@ nav {
             transition: transform 0.25s;
 
             &:hover {
-                transform: translateY(-1 * $hover-translate-magnitude);
+                transform: translateY(-$hover-translate-magnitude);
             }
 
             &:not(:first-child) {
