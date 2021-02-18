@@ -1,7 +1,7 @@
 
 
 // Variables
-$dark-blue: #1B315E;
+$dark-blue: #1A305F;
 $blue: #2A407D;
 $light-blue: #465395;
 $red: #F1656E;
@@ -30,10 +30,6 @@ $font-regular: 400;
 
 // Size for all titles on page
 $title-size: 3em;
-
-// MAX events (across either day)
-// TODO: Make this more dynamic via JS?
-$event-count: 6;
 
 // Import carousel
 @import '../node_modules/slick-carousel/slick/slick.css';
@@ -506,7 +502,7 @@ nav {
             font-weight: $font-medium;
         }
 
-        i.fa-arrow-right, i.fa-tools {
+        i.fa-arrow-right, i.fa-images {
             font-size: 1.6em;
             color: $red;
             padding-right: 10px;
@@ -634,7 +630,7 @@ nav {
                     // Align w/ header text, not sure if this can be made cleaner.
                     margin-left: 35px;
 
-                    p {
+                    p, em {
                         color: $dark-blue;
                         line-height: 23px;
                         margin-bottom: 10px;
@@ -684,90 +680,340 @@ nav {
 
     #schedule-block {
         // TODO: make margin consistent across other element
-        margin: 40px auto 0px auto;
+        margin: 90px auto 0px auto;
         width: 1000px;
         background-color: $light-blue;
         border-radius: $img-border-radius;
         position: relative;
     }
 
-    #schedule-tapes {
-        display: flex;
-        justify-content: space-around;
+    #binder-container {
+        left: 0;
+        height: 100%;
         position: absolute;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: -40px; // 1/2 of .binder-ring width
 
-        .tape {
-            // For some reason, margin doesn't work on #schedule-tapes.
-            margin-top: -20px; // Half of tape height
-            height: 40px;
-            width: 25%;
-            background-color: rgba($red, 60%);
+        .binder-rings {
+            display: flex;
+            flex-direction: column;
+
+            .binder-ring {
+                height: 20px;
+                width: 80px;
+                border-radius: $img-border-radius;
+                background-color: $red;
+
+                &:last-child {
+                    margin-top: 30px;
+                }
+            }
         }
     }
 
-    #schedule-content {
+    #schedule-tabs {
         display: flex;
-        justify-content: space-around;
-        padding: 60px 100px;
+        justify-content: flex-end;
+        margin-top: -50px; // -height (without 5px for translateY)
+        position: absolute;
+        width: 100%;
+        padding-right: 30px; // tabs have room on border radius of schedule block
 
-        #days {
-            width: 40%;
-            display: flex;
-            justify-content: space-around;
-            flex-direction: column;
+        .schedule-tab {
+            font-weight: bold;
+            padding: 10px 20px;
+            height: 50px;
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
+            border-top-left-radius: $img-border-radius;
+            border-top-right-radius: $img-border-radius;
             user-select: none;
             cursor: pointer;
-            color: white;
+            animation: tab-hover-out 0.2s;
 
-            .day {
-                .number {
-                    font-size: 6.5em;
-                    font-weight: $font-bold;
-                    line-height: 1; // TODO: Can this be done cleaner?
+            // Separate in/out so transitions happen at exact same time
+            // z-index does not work due to layout
+            @keyframes tab-hover-in {
+                from {
+                    transform: translateY(0px);
+                    height: 50px;
                 }
-
-                .name {
-                    font-size: 2em;
-                    font-weight: $font-regular;
+                to {
+                    transform: translateY(-10px);
+                    height: 60px;
                 }
             }
 
-            // Class set by JS in index.js on click
-            .day-active {
-                .number, .name {
+            @keyframes tab-hover-out {
+                from {
+                    transform: translateY(-10px);
+                    height: 60px;
+                }
+                to {
+                    transform: translateY(0px);
+                    height: 50px;
+                }
+            }
+
+            &:hover {
+                animation: tab-hover-in 0.2s;
+                animation-fill-mode: forwards;
+            }
+
+            p {
+                color: $dark-blue;
+            }
+        }
+
+        .schedule-tab-active {
+            transform: translateY(-10px);
+            height: 60px;
+            animation: none;
+
+            &:hover {
+                animation: none;
+            }
+        }
+
+        // Specific tab styling
+        .pre-event {
+            background-color: $red;
+        }
+
+        .feb-20 {
+            background-color: $orange;
+        }
+
+        .feb-21 {
+            background-color: $light-gray;
+        }
+    }
+
+    #schedule-content-wrapper {
+        #feb-20-content, #feb-21-content {
+            display: none; // Hide the two other events by default
+
+            // A little less than the style put just below the #schedule-content-wrapper
+            .schedule-content {
+                padding-bottom: 20px;
+            }
+
+            .events {
+                height: 370px;
+                padding-bottom: 10px;
+                overflow: hidden;
+            }
+        }
+
+        #feb-20-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
                     color: $orange;
                 }
             }
-        }
 
-        .events {
-            width: 60%;
-
-            // Sequentially assign colors to all elements
-            $colors: $red, $orange, $light-gray;
-            @for $i from 1 through $event-count {
-                .event:nth-child(#{$i}) {
-                    border-top: 10px solid nth($colors, $i % length($colors) + 1);
-                }
+            &:hover {
+                animation: tab-hover-in 0.2s;
+                animation-fill-mode: forwards;
             }
 
-            .event {
-                background-color: white;
-                border-radius: 15px;
+            p {
+                color: $dark-blue;
+            }
+        }
+
+        #feb-21-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $light-gray;
+                }
+            }
+        }
+
+        // Part of the above content ids
+        // but specificity is counterproductive to mobile styling
+        .show-full-schedule, .hide-full-schedule {
+            bottom: 0;
+            text-align: right;
+            margin-right: 20%; // TODO: make more aligned with right of events
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            cursor: pointer;
+
+            p {
+                font-size: 1.3em;
+                user-select: none;
+            }
+
+            i {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        }
+
+        .hide-full-schedule {
+            display: none;
+        }
+
+    }
+
+    .schedule-content {
+        display: flex;
+        justify-content: space-around;
+        padding: 60px 100px;
+    }
+
+    // Normal events
+    .days {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        user-select: none;
+        color: white;
+    }
+
+    .day {
+        .number {
+            font-size: 6.2em;
+            font-weight: $font-bold;
+            line-height: 0.9; // TODO: Can this be done cleaner?
+        }
+
+        .name {
+            font-size: 1.6em;
+            font-weight: $font-regular;
+        }
+    }
+
+    .events {
+        width: 60%;
+
+        // Sequentially assign colors to all elements
+        .event:nth-child(3n) {
+            border-top: 10px solid $red;
+        }
+        .event:nth-child(3n + 1) {
+            border-top: 10px solid $orange;
+        }
+        .event:nth-child(3n + 2) {
+            border-top: 10px solid $light-gray;
+        }
+
+        .event {
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0px 0px 20px -5px rgba($dark-blue, 1);
+
+            &:not(:first-child) {
                 margin: 10px 0px;
-                padding: 10px;
+            }
 
-                .time {
-                    color: $light-blue;
-                }
-                .title {
-                    color: black;
-                    font-size: 1.3em;
+            &.past {
+                background-color: #bfbfbf;
+            }
+
+            .time {
+                color: $light-blue;
+            }
+
+            .title {
+                color: black;
+                font-size: 1.2em;
+            }
+
+            .marker {
+                $marker-width: 20px;
+
+                border-bottom: 2px solid $red;
+                border-top: 2px solid $red;
+                position: absolute;
+                left: -25px;
+                right: 0;
+                top: 0;
+
+                &::before {
+                    content: "";
+                    background-color: $red;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: -($marker-width / 2);
+                    left: -($marker-width / 2);
+                    height: $marker-width;
+                    width: $marker-width;
                 }
             }
         }
+    }
 
+    // Note that pre-event style overrides default schedule content styling
+    #pre-event-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+
+        .day-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .day .number {
+            margin-bottom: -5px;
+            margin-top: 10px;
+        }
+
+        .event {
+            margin: 0;
+        }
+
+        // Coordinate color with day on left and event border on top
+        .pre-16 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: $red;
+            }
+        }
+
+        .pre-17 {
+            .event {
+                border-top-color: $orange;
+            }
+
+            h2, h6 {
+                color: $orange;
+            }
+        }
+
+        .pre-18 {
+            .event {
+                border-top-color: $pink;
+            }
+
+            h2, h6 {
+                color: $pink;
+            }
+        }
+
+        .pre-19 {
+            .event {
+                border-top-color: $light-gray;
+            }
+
+            h2, h6 {
+                color: white;
+            }
+        }
     }
 
 }
@@ -948,8 +1194,8 @@ footer {
             background-image: url("/assets/sponsors/logos/cbrands.svg");
         }
 
-        .mtbank:hover {
-            background-image: url("/assets/sponsors/logos/mtbank.svg");
+        .mttech:hover {
+            background-image: url("/assets/sponsors/logos/mttech.svg");
         }
 
         .wegmans:hover {
@@ -958,6 +1204,14 @@ footer {
 
         .readme:hover {
             background-image: url("/assets/sponsors/logos/readme.svg");
+        }
+
+        .dolbyio:hover {
+            background-image: url("/assets/sponsors/logos/dolbyio.svg");
+        }
+
+        .northrop:hover {
+            background-image: url("/assets/sponsors/logos/northrop.svg");
         }
 
         .pinnacle:hover {
@@ -970,6 +1224,10 @@ footer {
 
         .stickermule:hover {
             background-image: url("/assets/sponsors/logos/stickermule.svg");
+        }
+
+        .simonecenter:hover {
+            background-image: url("/assets/sponsors/logos/simonecenter.svg");
         }
     }
 }
@@ -1341,48 +1599,63 @@ footer {
             width: 100%;
         }
 
-        #schedule-tapes {
+        #schedule-tabs {
             justify-content: center;
+            padding-right: 0;
 
-            .tape {
-                margin-top: -10px; //Half of tape height
-                height: 20px;
+            .schedule-tab {
+                // Center tab is now always centered,
+                // prev. first and last tabs offset it
+                // because flex container has no set width
+                width: 130px;
+
+                p {
+                    text-align: center;
+                }
             }
         }
 
-        #schedule-content {
+        #binder-container {
+            display: none;
+        }
+
+        .schedule-content {
             flex-direction: column;
             padding: 20px;
+            align-items: center;
 
-            #days {
-                width: auto;
-                margin-top: 10px;
-                flex-direction: row;
-
-                .day {
-                    .number {
-                        font-size: 5em;
-                        text-align: center;
-                    }
-
-                    .name {
-                        font-size: 1.5em;
-                    }
+            .day {
+                .number, .name {
+                    text-align: center;
                 }
+
+                .number {
+                    font-size: 4em;
+                }
+            }
+
+            .day-row {
+                flex-direction: column;
+                width: 100%;
             }
 
             .events {
-                width: auto;
+                width: 90%;
 
-                .event {
-                    padding: 5px;
-
-                    .title {
-                        font-size: 1em;
-                    }
+                .event .title {
+                    font-size: 1em;
                 }
             }
+
         }
+
+        #schedule-content-wrapper {
+            .show-full-schedule, .hide-full-schedule {
+                justify-content: center;
+                margin: 0 auto;
+            }
+        }
+
     }
 
     #prizes #prizes-wrapper {
@@ -1447,7 +1720,7 @@ footer {
 @media screen and (max-width: 650px) {
 
     .section-pad {
-        padding: 20px;
+        padding: 10px;
     }
 
     #hero {
@@ -1501,6 +1774,22 @@ footer {
             #hackathon-buttons {
                 width: 100%;
             }
+        }
+    }
+
+
+    #schedule {
+        #schedule-tabs .schedule-tab {
+            width: 80px;
+            font-size: 0.8em;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        .schedule-content .events {
+            width: 100%;
         }
     }
 
