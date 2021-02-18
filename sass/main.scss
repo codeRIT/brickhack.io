@@ -859,17 +859,23 @@ nav {
         padding: 60px 100px;
     }
 
-    // Normal events
-    .days {
+    // Normal events commented out for refactoring. 
+    // .days {
+    //     width: 40%;
+    //     display: flex;
+    //     justify-content: flex-start;
+    //     flex-direction: column;
+    //     user-select: none;
+    //     color: white;
+    // }
+
+    .day {
         width: 40%;
         display: flex;
         justify-content: flex-start;
         flex-direction: column;
         user-select: none;
         color: white;
-    }
-
-    .day {
         .number {
             font-size: 6.2em;
             font-weight: $font-bold;
