@@ -1159,6 +1159,7 @@ footer {
         text-align: center;
 
         h2 {
+            margin-top: -5px;
             margin-bottom: -5px;
         }
 
@@ -1170,6 +1171,22 @@ footer {
         i {
             font-size: 3em;
             padding: 0px 5px;
+        }
+
+        a {
+            display: inline-block;
+            transition: 0.2s;
+
+            &:hover {
+                color: $red;
+
+                i {
+                    transform: translateY(-4px);
+                }
+            }
+            i {
+                transition: 0.2s;
+            }
         }
     }
 }
@@ -1832,7 +1849,11 @@ footer {
         background-size: auto 200px;
 
         #footer-content {
-            height: 160px;
+            height: 157px;
+
+            h2 {
+                font-size: 1.2em;
+            }
 
             p {
                 font-size: 0.8em;
