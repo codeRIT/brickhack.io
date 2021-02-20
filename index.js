@@ -178,7 +178,7 @@ if (currentDate < 20) {
     $('#pre-event-content').show();
     $('#feb-20-content').hide();
     $('#feb-21-content').hide();
-} else if (currentDate == 20 ) {
+} else if (currentDate == 20) {
     $('#feb-20-tab').addClass('schedule-tab-active');
     $('#pre-event-content').hide();
     $('#feb-20-content').show();
