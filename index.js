@@ -171,6 +171,25 @@ $('.hide-full-schedule').click(function() {
     $('.show-full-schedule').css('display', 'flex');
 });
 
+// Set schedule tab based on the date
+let currentDate = new Date().getDate()
+if (currentDate < 20) {
+    $('#pre-event-tab').addClass('schedule-tab-active');
+    $('#pre-event-content').show();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').hide();
+} else if (currentDate == 20) {
+    $('#feb-20-tab').addClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').show();
+    $('#feb-21-content').hide();
+} else {
+    $('#feb-21-tab').addClass('schedule-tab-active');
+    $('#pre-event-content').hide();
+    $('#feb-20-content').hide();
+    $('#feb-21-content').show();
+}
+
 // Dynamic schedule code
 
 function compareEvents(a, b) {
