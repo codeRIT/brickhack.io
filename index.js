@@ -171,6 +171,16 @@ $('.hide-full-schedule').click(function() {
     $('.show-full-schedule').css('display', 'flex');
 });
 
+// Set schedule tab based on the date
+let currentDate = new Date().getDate()
+if (currentDate < 20) {
+    $('#pre-event-tab').addClass('schedule-tab-active');
+} else if (currentDate == 20 ) {
+    $('#feb-20-tab').addClass('schedule-tab-active');
+} else {
+    $('#feb-21-tab').addClass('schedule-tab-active');
+}
+
 // Dynamic schedule code
 
 function compareEvents(a, b) {
