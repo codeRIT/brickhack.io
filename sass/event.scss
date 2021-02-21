@@ -1200,14 +1200,15 @@ footer#end-footer {
 #end-main {
     display: flex;
     flex-direction: row;
-    border: 3px solid yellow;
+    // border: 3px solid yellow;
     height: calc(100vh - #{$nav-height});
     margin: 0 auto;
+    margin-top: $nav-height / 2;
     width: 90%;
     bottom: 0;
-    margin-top: -8vh;
 
     #thank-you-container, #ricky-container {
+        // border: 3px solid yellow;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
