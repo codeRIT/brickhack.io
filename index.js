@@ -243,11 +243,6 @@ function handleEventData(events) {
     // needed to handle overlapping events
     let timeMarkerAdded = false;
 
-    // show second day page
-    if (now > new Date("2021-02-21T00:00:00")) {  // start of Feb 21
-        showSecondDayEvents();
-    }
-
     // need to sort events by start/end times instead of IDs
     events.sort(compareEvents);
 
