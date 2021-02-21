@@ -1196,27 +1196,26 @@ footer#end-footer {
     position: absolute;
 }
 
-
-
 // Event things
 #end-main {
     display: flex;
     flex-direction: row;
     border: 3px solid yellow;
     height: calc(100vh - #{$nav-height});
-    width: 100%;
-    position: absolute;
+    margin: 0 auto;
+    width: 90%;
     bottom: 0;
+    margin-top: -8vh;
 
     #thank-you-container, #ricky-container {
-        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
     }
 
     #thank-you-container {
-        border: 3px solid yellow;
+        width: 40%;
+        // border: 3px solid yellow;
 
         h1 {
             font-size: 4em;
@@ -1234,7 +1233,8 @@ footer#end-footer {
     }
 
     #ricky-container {
-        border: 3px solid yellow;
+        width: 60%;
+        // border: 3px solid yellow;
         overflow: hidden; // Beeg gif
     }
 }
