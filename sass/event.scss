@@ -1201,14 +1201,12 @@ footer#end-footer {
     display: flex;
     flex-direction: row;
     // border: 3px solid yellow;
-    height: calc(100vh - #{$nav-height});
     margin: 0 auto;
-    margin-top: $nav-height / 2;
-    width: 90%;
-    bottom: 0;
+    margin-top: $nav-height;
+    top: 0;
+    position: absolute;
 
     #thank-you-container, #ricky-container {
-        // border: 3px solid yellow;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -1216,7 +1214,6 @@ footer#end-footer {
 
     #thank-you-container {
         width: 40%;
-        // border: 3px solid yellow;
 
         h1 {
             font-size: 4em;
@@ -1235,8 +1232,15 @@ footer#end-footer {
 
     #ricky-container {
         width: 60%;
-        // border: 3px solid yellow;
-        overflow: hidden; // Beeg gif
+        // overflow: hidden; // Beeg gif
+        object-fit: scale-down;
+        height: auto;
+        display: flex;
+        align-items: flex-start;
+
+        img {
+            width: 100%;
+        }
     }
 }
 
