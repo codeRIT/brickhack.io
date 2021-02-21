@@ -1191,6 +1191,55 @@ footer {
     }
 }
 
+// idk lol
+footer#end-footer {
+    position: absolute;
+}
+
+// Event things
+#end-main {
+    display: flex;
+    flex-direction: row;
+    // border: 3px solid yellow;
+    height: calc(100vh - #{$nav-height});
+    margin: 0 auto;
+    margin-top: $nav-height / 2;
+    width: 90%;
+    bottom: 0;
+
+    #thank-you-container, #ricky-container {
+        // border: 3px solid yellow;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    #thank-you-container {
+        width: 40%;
+        // border: 3px solid yellow;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        a {
+            color: $red;
+            margin-top: 20px;
+            font-size: 1.3em;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    #ricky-container {
+        width: 60%;
+        // border: 3px solid yellow;
+        overflow: hidden; // Beeg gif
+    }
+}
+
 
 // Media queries for mobile
 
@@ -1385,6 +1434,20 @@ footer {
             }
         }
     }
+    #end-main {
+        flex-direction: column-reverse;
+        width: 100%;
+
+        #thank-you-container {
+            width: 100%;
+        }
+
+        #thank-you-container h1 {
+            width: 100%;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+    }
 }
 
 @media screen and (max-width: 1220px) {
@@ -1497,7 +1560,7 @@ footer {
 
 @media screen and (max-width: 900px) {
 
-    h1, section > p {
+    h1:not(.end-h1), section > p {
         text-align: center;
     }
 
