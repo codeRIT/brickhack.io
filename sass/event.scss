@@ -1434,6 +1434,21 @@ footer#end-footer {
             }
         }
     }
+
+    #end-main {
+        flex-direction: column-reverse;
+        width: 100%;
+
+        #thank-you-container {
+            width: 100%;
+        }
+
+        #thank-you-container h1 {
+            width: 100%;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+    }
 }
 
 @media screen and (max-width: 1220px) {
@@ -1546,7 +1561,7 @@ footer#end-footer {
 
 @media screen and (max-width: 900px) {
 
-    h1, section > p {
+    h1:not(.end-h1), section > p {
         text-align: center;
     }
 
