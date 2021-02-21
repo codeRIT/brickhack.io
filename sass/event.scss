@@ -1200,7 +1200,6 @@ footer#end-footer {
 #end-main {
     display: flex;
     flex-direction: row;
-    // border: 3px solid yellow;
     margin: 0 auto;
     margin-top: $nav-height;
     top: 0;
@@ -1232,11 +1231,10 @@ footer#end-footer {
 
     #ricky-container {
         width: 60%;
-        // overflow: hidden; // Beeg gif
         object-fit: scale-down;
         height: auto;
         display: flex;
-        align-items: flex-start;
+        align-items: d;
 
         img {
             width: 100%;
@@ -1796,6 +1794,10 @@ footer#end-footer {
         grid-template-columns: repeat(3, $leadership-size-mobile);
         justify-content: space-around;
         gap: 20px;
+    }
+
+    #end-main #thank-you-container h1 {
+        font-size: 2em;
     }
 }
 
