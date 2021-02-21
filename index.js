@@ -13,3 +13,4 @@ console.log(hiringMessage);
 // Comment generated via js instead of directly in HTML so the hiring message text is only in one place
 const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
+
