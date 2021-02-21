@@ -1191,6 +1191,53 @@ footer {
     }
 }
 
+// idk lol
+footer#end-footer {
+    position: absolute;
+}
+
+
+
+// Event things
+#end-main {
+    display: flex;
+    flex-direction: row;
+    border: 3px solid yellow;
+    height: calc(100vh - #{$nav-height});
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    #thank-you-container, #ricky-container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    #thank-you-container {
+        border: 3px solid yellow;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        a {
+            color: $red;
+            margin-top: 20px;
+            font-size: 1.3em;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    #ricky-container {
+        border: 3px solid yellow;
+    }
+}
+
 
 // Media queries for mobile
 
