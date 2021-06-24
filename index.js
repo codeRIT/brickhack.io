@@ -1,4 +1,4 @@
-import './sass/club.scss'
+import './sass/index.scss'
 
 // Hiring message
 const hiringMessage = `Hey, you.
