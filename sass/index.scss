@@ -56,7 +56,6 @@ footer {
 }
 
 .field-row-stacked {
-    // width: 200px;
 
     input {
         width: 150px;
@@ -65,7 +64,7 @@ footer {
     button {
         margin: 0;
         margin-left: 10px;
-        height: 21px; // Match the text box, hardcoded :(
+        height: 21px; // Match the text box, hardcoded in the library :(
         min-height: 0px;
     }
 }
@@ -96,52 +95,3 @@ footer {
         gap: 5px;
     }
 }
-
-// * {
-//     font-family: 'Poppins', sans-serif;
-// }
-
-// html {
-//     margin: 0;
-//     padding: 0;
-//     width: 100%;
-//     height: 100%;
-// }
-
-// body {
-//     background-color: #eee;
-//     width: 100%;
-//     height: 100%;
-// }
-
-// h1, h2, h3, h4, h5, h6 {
-//     margin: 0;
-//     padding: 0;
-// }
-
-
-// #main {
-//     width: 50%;
-//     height: 100%;
-//     margin: 0 auto;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     text-align: center;
-// }
-
-// #title {
-//     margin-top: -20%;
-//     font-size: 4rem;
-//     font-weight: 200;
-// }
-
-// #description {
-//     margin-top: 30px;
-// }
-
-// p {
-//     font-size: 1.5rem;
-//     margin: 0;
-//     padding: 0;
-// }
