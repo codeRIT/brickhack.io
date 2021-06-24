@@ -1,0 +1,147 @@
+
+
+// Vars
+$logo-height: 100px;
+
+// Everything else
+
+html {
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #c0c0c0;
+    transform: scale(1.5);
+    transform-origin: center;
+}
+
+p {
+    // Reuse font from the library for p elmeents
+    font-family: "Pixelated MS Sans Serif", Arial;
+}
+
+footer {
+    position: absolute;
+    bottom: 18%; // From webapge scale
+    text-align: center;
+    width: 100%;
+}
+
+
+// Section specific styles
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 30px;
+    margin-top: -$logo-height + 30px;
+}
+
+#logo {
+    width: $logo-height;
+    height: $logo-height;
+}
+
+.window {
+    width: 300px;
+    margin: 0 auto;
+}
+
+.field-row-stacked {
+    // width: 200px;
+
+    input {
+        width: 150px;
+    }
+
+    button {
+        margin: 0;
+        margin-left: 10px;
+        height: 21px; // Match the text box, hardcoded :(
+        min-height: 0px;
+    }
+}
+
+#buttons {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    gap: 30px;
+}
+
+.text-break {
+    display: inline-block;
+}
+
+
+@media screen and (max-width: 500px) {
+    body {
+        transform: scale(1.0);
+        margin-left: -5px;
+    }
+
+    .window {
+        width: 250px;
+    }
+
+    #buttons {
+        gap: 5px;
+    }
+}
+
+// * {
+//     font-family: 'Poppins', sans-serif;
+// }
+
+// html {
+//     margin: 0;
+//     padding: 0;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// body {
+//     background-color: #eee;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// h1, h2, h3, h4, h5, h6 {
+//     margin: 0;
+//     padding: 0;
+// }
+
+
+// #main {
+//     width: 50%;
+//     height: 100%;
+//     margin: 0 auto;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     text-align: center;
+// }
+
+// #title {
+//     margin-top: -20%;
+//     font-size: 4rem;
+//     font-weight: 200;
+// }
+
+// #description {
+//     margin-top: 30px;
+// }
+
+// p {
+//     font-size: 1.5rem;
+//     margin: 0;
+//     padding: 0;
+// }
