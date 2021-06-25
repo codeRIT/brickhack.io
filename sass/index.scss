@@ -2,12 +2,9 @@
 
 // Vars
 $logo-height: 100px;
+$main-margin: 30px; // flex gap not available in Safari :()
 
 // Everything else
-
-html {
-}
-
 html, body {
     overflow: hidden;
     height: 100%;
@@ -32,7 +29,6 @@ footer {
     width: 100%;
 }
 
-
 // Section specific styles
 
 #main {
@@ -41,7 +37,6 @@ footer {
     justify-content: center;
     align-items: center;
     height: 100%;
-    gap: 30px;
     margin-top: -$logo-height + 30px;
 }
 
@@ -52,11 +47,10 @@ footer {
 
 .window {
     width: 300px;
-    margin: 0 auto;
+    margin: $main-margin auto;
 }
 
 .field-row-stacked {
-
     input {
         width: 150px;
     }
@@ -69,17 +63,19 @@ footer {
     }
 }
 
-#buttons {
+#badges {
     width: 100%;
     justify-content: center;
     display: flex;
-    gap: 30px;
+
+    img {
+        margin: 0 ($main-margin / 2);
+    }
 }
 
 .text-break {
     display: inline-block;
 }
-
 
 @media screen and (max-width: 500px) {
     body {
