@@ -1,8 +1,10 @@
 
 
 // Vars
-$logo-height: 100px;
-$main-margin: 30px; // flex gap not available in Safari :()
+:root {
+    --logo-height: 100px;
+    --main-margin: 30px; // flex gap not available in Safari :()
+}
 
 // Everything else
 html, body {
@@ -37,17 +39,18 @@ footer {
     justify-content: center;
     align-items: center;
     height: 100%;
-    margin-top: -$logo-height + 30px;
+    // calc() seems to require var+const in that order
+    margin-top: calc((var(--logo-height) * -1) + var(--main-margin));
 }
 
 #logo {
-    width: $logo-height;
-    height: $logo-height;
+    width: var(--logo-height);
+    height: var(--logo-height);
 }
 
 .window {
     width: 300px;
-    margin: $main-margin auto;
+    margin: var(--main-margin) auto;
 }
 
 .field-row-stacked {
@@ -69,7 +72,7 @@ footer {
     display: flex;
 
     img {
-        margin: 0 ($main-margin / 2);
+        margin: 0 calc(var(--main-margin) / 2);
     }
 }
 
@@ -78,6 +81,11 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+
+    :root {
+        --main-margin: 0;
+    }
+
     body {
         transform: scale(1.0);
         margin-left: -5px;
