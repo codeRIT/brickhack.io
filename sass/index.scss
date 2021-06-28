@@ -3,7 +3,11 @@
 // Vars
 :root {
     --logo-height: 100px;
-    --main-margin: 30px; // flex gap not available in Safari :()
+    --main-margin: 30px; // flex gap not available in Safari :(
+}
+
+* {
+    box-sizing: border-box;
 }
 
 // Everything else
@@ -11,6 +15,8 @@ html, body {
     overflow: hidden;
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -25,10 +31,13 @@ p {
 }
 
 footer {
+    width: 60%;
     position: absolute;
-    bottom: 18%; // From webapge scale
+    bottom: 20%; // From webapge scale
+    right: 0;
+    left: 0;
+    margin: 0 auto;
     text-align: center;
-    width: 100%;
 }
 
 // Section specific styles
@@ -49,7 +58,7 @@ footer {
 }
 
 .window {
-    width: 300px;
+    max-width: 300px;
     margin: var(--main-margin) auto;
 }
 
@@ -67,12 +76,16 @@ footer {
 }
 
 #badges {
-    width: 100%;
-    justify-content: center;
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 
     img {
         margin: 0 calc(var(--main-margin) / 2);
+        background-color: #333;
+        height: 31px;
+        color: #333;
+        width: 88px;
     }
 }
 
@@ -80,19 +93,27 @@ footer {
     display: inline-block;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px),
+       screen and (max-height: 650px) {
 
     :root {
-        --main-margin: 0;
+        --main-margin: 10px;
     }
 
-    body {
-        transform: scale(1.0);
-        margin-left: -5px;
+    #main {
+        margin-top: -50px;
     }
 
     .window {
         width: 250px;
+    }
+
+    #badges {
+        width: 70%;
+
+        img {
+            margin-bottom: var(--main-margin);
+        }
     }
 
     #buttons {
