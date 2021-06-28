@@ -1,16 +1,17 @@
 
-
 // Vars
+
 :root {
     --logo-height: 100px;
     --main-margin: 30px; // flex gap not available in Safari :(
 }
 
+// Element styles
+
 * {
     box-sizing: border-box;
 }
 
-// Everything else
 html, body {
     overflow: hidden;
     height: 100%;
@@ -40,7 +41,7 @@ footer {
     text-align: center;
 }
 
-// Section specific styles
+// Section styles
 
 #main {
     display: flex;
@@ -92,6 +93,8 @@ footer {
 .text-break {
     display: inline-block;
 }
+
+// Meida queries
 
 @media screen and (max-width: 500px),
        screen and (max-height: 650px) {
