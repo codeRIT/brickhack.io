@@ -105,7 +105,7 @@ footer {
     }
 
     .window {
-        width: 250px;
+        max-width: 250px;
     }
 
     #badges {
@@ -118,5 +118,11 @@ footer {
 
     #buttons {
         gap: 5px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .window {
+        max-width: 220px;
     }
 }
