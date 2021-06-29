@@ -13,11 +13,11 @@ You were trying to see the code, right?
 Walked right into that hiring message, same as us.
 If you’d like to work on this website and other cool projects with hackathons, send an email over to engineering@coderit.org!`
 
-console.log(hiringMessage);
+console.log(hiringMessage)
 
 // Comment generated via js instead of directly in HTML so the hiring message text is only in one place
-const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
-document.insertBefore(comment, document.firstChild);
+const comment = document.createComment("\n"+hiringMessage.toString()+"\n")
+document.insertBefore(comment, document.firstChild)
 
 // Secret messages
 const revertDuration = 300
@@ -75,11 +75,11 @@ $(document).ready(function() {
             ui.position.top = Math.round(ui.position.top / 1.5)
             ui.position.left = Math.round(ui.position.left / 1.5)
         }
-    });
+    })
 })
 
 $(".window-control").click(function() {
-    $(".window").css({"visibility":"hidden"});
+    $(".window").css({"visibility":"hidden"})
 })
 
 $(".title-bar").mouseup(function() {
@@ -93,6 +93,10 @@ $(".title-bar").mouseup(function() {
 function updateSecretMessage(offset) {
     // TODO: Make sure the window was dragged enough to see the message
     // so the user has less chance of missing it before we refresh.
+
+    if (messageIndex >= messages.length) {
+        return
+    }
 
     $("#secret-message").text(messages[messageIndex])
     messageIndex++
