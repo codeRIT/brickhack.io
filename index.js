@@ -19,7 +19,6 @@ console.log(hiringMessage);
 const comment = document.createComment("\n"+hiringMessage.toString()+"\n");
 document.insertBefore(comment, document.firstChild);
 
-
 // Secret messages
 const revertDuration = 300
 var messageIndex = 0
@@ -92,16 +91,8 @@ $(".title-bar").mouseup(function() {
 })
 
 function updateSecretMessage(offset) {
-
-    // console.log("top: ", + top + " left: " + left)
-    // Make sure the window was dragged enough to see the message
+    // TODO: Make sure the window was dragged enough to see the message
     // so the user has less chance of missing it before we refresh.
-    console.log(offset)
-    // if (!(Math.abs(offset.top) > 200 &&
-    //       Math.abs(offset.left) > 30)) {
-    //     console.log("NOPE")
-    //     // return
-    // }
 
     $("#secret-message").text(messages[messageIndex])
     messageIndex++
