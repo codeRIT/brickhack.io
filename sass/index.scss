@@ -22,6 +22,10 @@ html, body {
 
 body {
     background-color: #c0c0c0;
+
+}
+
+#main, footer {
     transform: scale(1.5);
     transform-origin: center;
 }
@@ -48,7 +52,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: 100%;
     // calc() seems to require var+const in that order
     margin-top: calc((var(--logo-height) * -1) + var(--main-margin));
 }
@@ -96,16 +100,21 @@ footer {
 
 // Meida queries
 
-@media screen and (max-width: 500px),
-       screen and (max-height: 650px) {
+// Opposite of the one below to target
+// !media query
+@media screen and (min-width: 500px),
+       screen and (min-height: 750px) {
+    #main {
+        height: 100%;
+    }
+}
 
+@media screen and (max-width: 500px),
+       screen and (max-height: 750px) {
     :root {
         --main-margin: 10px;
     }
 
-    #main {
-        margin-top: -50px;
-    }
 
     .window {
         max-width: 250px;
@@ -122,10 +131,25 @@ footer {
     #buttons {
         gap: 5px;
     }
+
+    footer {
+        position: relative;
+        bottom: 0;
+    }
 }
 
 @media screen and (max-width: 400px) {
     .window {
         max-width: 220px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    #main {
+        margin-top: 0;
+    }
+
+    html, body {
+        overflow-y: scroll;
     }
 }
