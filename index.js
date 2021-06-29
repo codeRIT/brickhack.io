@@ -63,7 +63,6 @@ const messages = [
     ""
 ]
 
-
 $(document).ready(function() {
     $(".window").draggable({
         cursor: "grab",
