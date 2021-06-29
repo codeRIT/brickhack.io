@@ -1,0 +1,153 @@
+
+// Vars
+
+:root {
+    --logo-height: 100px;
+    --main-margin: 30px; // flex gap not available in Safari :(
+}
+
+// Element styles
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #c0c0c0;
+}
+
+#main, footer {
+    transform: scale(1.5);
+    transform-origin: center;
+}
+
+p {
+    // Reuse font from the library for p elements
+    font-family: "Pixelated MS Sans Serif", Arial;
+}
+
+footer {
+    width: 60%;
+    position: absolute;
+    bottom: 20%; // From webpage scale
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+// Section styles
+
+#main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    // calc() seems to require var+const in that order
+    margin-top: calc((var(--logo-height) * -1) + var(--main-margin));
+}
+
+#logo {
+    width: var(--logo-height);
+    height: var(--logo-height);
+}
+
+.window {
+    max-width: 300px;
+    margin: var(--main-margin) auto;
+}
+
+.field-row-stacked {
+    input {
+        width: 150px;
+    }
+
+    button {
+        margin: 0;
+        margin-left: 10px;
+        height: 21px; // Match the text box, hardcoded in the library :(
+        min-height: 0px;
+    }
+}
+
+#badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    img {
+        margin: 0 calc(var(--main-margin) / 2);
+        background-color: #333;
+        height: 31px;
+        color: #333;
+        width: 88px;
+    }
+}
+
+.text-break {
+    display: inline-block;
+}
+
+// Media queries
+
+// Opposite of the one below to target
+// !media query
+@media screen and (min-width: 500px),
+       screen and (min-height: 750px) {
+    #main {
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 500px),
+       screen and (max-height: 750px) {
+    :root {
+        --main-margin: 10px;
+    }
+
+    .window {
+        max-width: 250px;
+    }
+
+    #badges {
+        width: 70%;
+
+        img {
+            margin-bottom: var(--main-margin);
+        }
+    }
+
+    #buttons {
+        gap: 5px;
+    }
+
+    footer {
+        position: relative;
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .window {
+        max-width: 220px;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    #main {
+        margin-top: 0;
+    }
+
+    html, body {
+        overflow-y: scroll;
+    }
+}
