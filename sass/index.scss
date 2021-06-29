@@ -22,9 +22,6 @@ html, body {
 
 body {
     background-color: #c0c0c0;
-}
-
-#main, footer {
     transform: scale(1.5);
     transform-origin: center;
 }
@@ -61,9 +58,21 @@ footer {
     height: var(--logo-height);
 }
 
+#secret-message {
+    position: absolute;
+    margin-top: 50px;
+    z-index: 1;
+}
+
 .window {
     max-width: 300px;
     margin: var(--main-margin) auto;
+    position: relative;
+    z-index: 5;
+
+    .title-bar:hover {
+        cursor: grab;
+    }
 }
 
 .field-row-stacked {
@@ -132,7 +141,6 @@ footer {
 
     footer {
         position: relative;
-        bottom: 0;
     }
 }
 
