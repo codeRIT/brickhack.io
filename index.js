@@ -79,7 +79,7 @@ $(document).ready(function() {
 })
 
 $(".window-control").click(function() {
-    $(".window").css({"visibility":"hidden"});
+    $(".window").css({"visibility": "hidden"});
 })
 
 $(".title-bar").mouseup(function() {
