@@ -12,3 +12,23 @@ $off-white: #F3F4F5;
 body {
     background-color: $off-white;
 }
+
+// Navigation
+nav {
+    width: 25%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+// Main Content
+main {
+    margin-left: 25%;
+    // TODO: PUT SOME PADDING HERE OR AROUND SECTIONS OR BOTH
+}
+
+// Desktop Styling
+@media screen and (max-width: 1000px) {
+
+}
