@@ -1,11 +1,38 @@
 // Variables
 $off-white: #F3F4F5;
+$blue: #163FD4;
 
 // CSS Resets
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+// Font
+a {
+    color: $blue;
+    text-decoration: none;
+
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+// Buttons
+a.btn-light {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 600;
+    transition: all 1s;
+
+    &:hover {
+        color: $off-white;
+        background-color: $blue;
+    }
 }
 
 // Body
@@ -20,15 +47,52 @@ nav {
     top: 0;
     left: 0;
     height: 100%;
+    padding: 3.5rem;  // TODO: CHECK UNITS (alternatives: 50px, a percentage)
+    background-color: red;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    overflow: auto; // For handling when a screen is too short
+
+    a {
+        display: block;
+    }
+
+    #logo {
+        width: 75px;
+        max-width: 100%;
+        margin-bottom: 20px; // For handling when a screen is too short
+    }
+
+    .btn-light {
+        font-weight: normal;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .social-link {
+        font-size: 1.125rem;
+        margin: 10px 0;
+    }
 }
 
 // Main Content
 main {
     margin-left: 25%;
-    // TODO: PUT SOME PADDING HERE OR AROUND SECTIONS OR BOTH
+    padding: 3.5rem;
 }
 
 // Desktop Styling
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 750px) {
+    nav {
+        width: 75%;
+        display: none;
+    }
 
+    main {
+        margin-left: 0;
+    }
 }
