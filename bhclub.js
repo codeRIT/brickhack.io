@@ -23,10 +23,3 @@ $(window).on('click', function(event) {
         $('#toggle').addClass('fa-bars');
     }
 });
-
-// TO DO:
-// Figure out padding units
-// Navbar open/close
-// Done?
-// What is the deal with padding? Should it be responsive?
-// How should I handle mobile navbar? Where to put open/close icons? Grey out rest of screen? move it?
