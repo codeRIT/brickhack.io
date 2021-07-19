@@ -43,12 +43,12 @@ body {
 // Navigation
 nav {
     width: 25%;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
     padding: 3.5rem;  // TODO: CHECK UNITS (alternatives: 50px, a percentage)
-    background-color: red;
+    background-color: $off-white;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -58,14 +58,22 @@ nav {
         display: block;
     }
 
+    #toggle {
+        color: $blue;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        display: none;
+    }
+
     #logo {
         width: 75px;
         max-width: 100%;
         margin-bottom: 20px; // For handling when a screen is too short
     }
 
-    .btn-light {
+    a.btn-light {
         font-weight: normal;
+        display: inline-block;
     }
 
     .nav-link {
@@ -88,8 +96,35 @@ main {
 // Desktop Styling
 @media screen and (max-width: 750px) {
     nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding-bottom: 0;
+
+        a, a.btn-light {
+            display: none;
+        }
+
+        #toggle {
+            display: block;
+        }
+    }
+
+    .show-nav {
         width: 75%;
-        display: none;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-bottom: 3.5rem;
+
+        a {
+            display: block;
+        }
+
+        a.btn-light {
+            display: inline-block;
+        }
     }
 
     main {
