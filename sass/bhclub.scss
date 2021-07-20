@@ -19,6 +19,10 @@ a {
     }
 }
 
+h1 {
+    font-size: 4.5rem;
+}
+
 // Buttons
 a.btn-light {
     border: 2px solid $blue;
@@ -32,6 +36,23 @@ a.btn-light {
     &:hover {
         color: $off-white;
         background-color: $blue;
+    }
+}
+
+a.btn-dark {
+    border: 2px solid $blue;
+    color: $off-white;
+    background-color: $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 600;
+    transition: all 1s;
+
+    &:hover {
+        color: $blue;
+        background-color: $off-white;
     }
 }
 
@@ -91,6 +112,10 @@ nav {
 main {
     margin-left: 25%;
     padding: 3.5rem;
+}
+
+section {
+    padding: 5rem 0;
 }
 
 // Desktop Styling
