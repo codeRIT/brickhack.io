@@ -16,10 +16,15 @@ $(document).on('click', '#toggle', function() {
 });
 
 // Closing the navbar when a navigation link is clicked
-$(window).on('click', function(event) {
-    if ($(event.target).hasClass('nav-link')) {
-        $('nav').removeClass('show-nav');
-        $('#toggle').removeClass('fa-times');
-        $('#toggle').addClass('fa-bars');
-    }
+$(document).on('click', '.nav-link', function() {
+    $('nav').removeClass('show-nav');
+    $('#toggle').removeClass('fa-times');
+    $('#toggle').addClass('fa-bars');
+});
+
+// Closing the navbar when outside of the nav is clicked
+$(document).on('click', 'main', function() {
+    $('nav').removeClass('show-nav');
+    $('#toggle').removeClass('fa-times');
+    $('#toggle').addClass('fa-bars');
 });
