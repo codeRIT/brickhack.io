@@ -1,12 +1,15 @@
 // Variables
 $off-white: #F3F4F5;
 $blue: #163FD4;
+$dark-blue: #081646;
 
 // CSS Resets
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    color: $dark-blue;
 }
 
 // Font
@@ -21,6 +24,7 @@ a {
 
 h1 {
     font-size: 4.5rem;
+    font-weight: normal;
 }
 
 // Buttons
@@ -69,7 +73,6 @@ nav {
     top: 0;
     left: 0;
     padding: 3.5rem;
-    background-color: $off-white;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -82,18 +85,18 @@ nav {
     #toggle {
         color: $blue;
         font-size: 2rem;
-        margin-bottom: 20px;
+        margin: 0px 20px 20px 0px;
         display: none;
+        cursor: pointer;
     }
 
     #logo {
         width: 75px;
         max-width: 100%;
-        margin-bottom: 20px; // For handling when a screen is too short
+        margin: 0px 0px 20px;
     }
 
     a.btn-light {
-        font-weight: normal;
         display: inline-block;
     }
 
@@ -110,8 +113,8 @@ nav {
 
 // Main Content
 main {
-    margin-left: 25%;
     padding: 3.5rem;
+    padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
@@ -130,8 +133,12 @@ section {
             display: none;
         }
 
-        #toggle {
+        #toggle, #logo {
             display: block;
+        }
+
+        #navbar-top {
+            display: flex;
         }
     }
 
@@ -139,6 +146,7 @@ section {
         width: 75%;
         height: 100%;
         position: fixed;
+        background-color: $off-white;
         top: 0;
         left: 0;
         padding-bottom: 3.5rem;
@@ -153,6 +161,10 @@ section {
     }
 
     main {
-        margin-left: 0;
+        padding-left: 3.5rem;
+    }
+
+    .main-pointer {
+        cursor: pointer;
     }
 }

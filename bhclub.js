@@ -8,10 +8,12 @@ $(document).on('click', '#toggle', function() {
         $('nav').removeClass('show-nav');
         $('#toggle').removeClass('fa-times');
         $('#toggle').addClass('fa-bars');
+        $('main').removeClass('main-pointer');
     } else {
         $('nav').addClass('show-nav');
         $('#toggle').removeClass('fa-bars');
         $('#toggle').addClass('fa-times');
+        $('main').addClass('main-pointer');
     }
 });
 
@@ -20,6 +22,7 @@ $(document).on('click', '.nav-link', function() {
     $('nav').removeClass('show-nav');
     $('#toggle').removeClass('fa-times');
     $('#toggle').addClass('fa-bars');
+    $('main').removeClass('main-pointer');
 });
 
 // Closing the navbar when outside of the nav is clicked
@@ -27,4 +30,5 @@ $(document).on('click', 'main', function() {
     $('nav').removeClass('show-nav');
     $('#toggle').removeClass('fa-times');
     $('#toggle').addClass('fa-bars');
+    $('main').removeClass('main-pointer');
 });
