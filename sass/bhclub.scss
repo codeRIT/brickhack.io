@@ -1,0 +1,170 @@
+// Variables
+$off-white: #F3F4F5;
+$blue: #163FD4;
+$dark-blue: #081646;
+
+// CSS Resets
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    color: $dark-blue;
+}
+
+// Font
+a {
+    color: $blue;
+    text-decoration: none;
+
+    &:hover {
+        font-weight: bold;
+    }
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-weight: normal;
+}
+
+// Buttons
+a.btn-light {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 600;
+    transition: all 1s;
+
+    &:hover {
+        color: $off-white;
+        background-color: $blue;
+    }
+}
+
+a.btn-dark {
+    border: 2px solid $blue;
+    color: $off-white;
+    background-color: $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    padding: 5px 10px;
+    font-weight: 600;
+    transition: all 1s;
+
+    &:hover {
+        color: $blue;
+        background-color: $off-white;
+    }
+}
+
+// Body
+body {
+    background-color: $off-white;
+}
+
+// Navigation
+nav {
+    width: 25%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    overflow: auto; // For handling when a screen is too short
+
+    a {
+        display: block;
+    }
+
+    #toggle {
+        color: $blue;
+        font-size: 2rem;
+        margin: 0px 20px 20px 0px;
+        display: none;
+        cursor: pointer;
+    }
+
+    #logo {
+        width: 75px;
+        max-width: 100%;
+        margin: 0px 0px 20px;
+    }
+
+    a.btn-light {
+        display: inline-block;
+    }
+
+    .nav-link {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .social-link {
+        font-size: 1.125rem;
+        margin: 10px 0;
+    }
+}
+
+// Main Content
+main {
+    padding: 3.5rem;
+    padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
+}
+
+section {
+    padding: 5rem 0;
+}
+
+// Desktop Styling
+@media screen and (max-width: 750px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding-bottom: 0;
+
+        a, a.btn-light {
+            display: none;
+        }
+
+        #toggle, #logo {
+            display: block;
+        }
+
+        #navbar-top {
+            display: flex;
+        }
+    }
+
+    .show-nav {
+        width: 75%;
+        height: 100%;
+        position: fixed;
+        background-color: $off-white;
+        top: 0;
+        left: 0;
+        padding-bottom: 3.5rem;
+
+        a {
+            display: block;
+        }
+
+        a.btn-light {
+            display: inline-block;
+        }
+    }
+
+    main {
+        padding-left: 3.5rem;
+    }
+
+    .main-pointer {
+        cursor: pointer;
+    }
+}
