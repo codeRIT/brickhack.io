@@ -22,6 +22,11 @@ a {
     }
 }
 
+.social-link {
+    font-size: 1.125rem;
+    margin: 10px 0;
+}
+
 h1 {
     font-size: 4.5rem;
     font-weight: normal;
@@ -104,24 +109,53 @@ nav {
         font-size: 1.5rem;
         margin: 10px 0;
     }
-
-    .social-link {
-        font-size: 1.125rem;
-        margin: 10px 0;
-    }
 }
 
 // Main Content
 main {
-    padding: 3.5rem;
+    padding: 1.75rem 3.5rem;
     padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
-    padding: 5rem 0;
+    padding: 1.75rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
-// Desktop Styling
+// Contact Section / Footer
+#contact > div {
+    margin-top: auto;
+}
+
+#footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+
+    div {
+        padding-left: 2rem;
+    }
+
+    #footer-logo img {
+        width: 100px;
+        max-width: 100%;
+    }
+
+    #socials {
+        display: flex;
+        flex-flow: row wrap;
+        width: 75%;
+
+        .social-link {
+            padding-right: 1rem;
+        }
+    }
+}
+
+// Mobile Styling
 @media screen and (max-width: 750px) {
     nav {
         width: 100%;
@@ -166,5 +200,18 @@ section {
 
     .main-pointer {
         cursor: pointer;
+    }
+
+    #footer {
+        flex-flow: column nowrap;
+
+        div {
+            padding-left: 0rem;
+            padding-top: 1rem;
+        }
+
+        #socials {
+            width: 100%;
+        }
     }
 }
