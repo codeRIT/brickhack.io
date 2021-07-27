@@ -30,10 +30,16 @@ a {
 h1 {
     font-size: 4.5rem;
     font-weight: normal;
+    padding-bottom: 50px;
 }
 
 p {
     font-size: 1.75rem;
+    padding-bottom: 15px;
+}
+
+p:last-child {
+    padding-bottom: 0;
 }
 
 // Buttons
