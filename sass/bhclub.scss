@@ -32,6 +32,10 @@ h1 {
     font-weight: normal;
 }
 
+p {
+    font-size: 1.75rem;
+}
+
 // Buttons
 a.btn-light {
     border: 2px solid $blue;
@@ -134,6 +138,7 @@ section {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+    align-items: flex-start;
 
     div {
         padding-left: 2rem;
@@ -141,13 +146,12 @@ section {
 
     #footer-logo img {
         width: 100px;
-        max-width: 100%;
     }
 
     #socials {
         display: flex;
         flex-flow: row wrap;
-        width: 75%;
+        width: 60%;
 
         .social-link {
             padding-right: 1rem;
@@ -155,8 +159,26 @@ section {
     }
 }
 
+// Tablet Styling
+@media screen and (max-width: 1075px) {
+    // Contact Section / Footer
+    #footer {
+        flex-flow: column nowrap;
+
+        div {
+            padding-left: 0rem;
+            padding-top: 1rem;
+        }
+
+        #socials {
+            width: 100%;
+        }
+    }
+}
+
 // Mobile Styling
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
+    // Navigation
     nav {
         width: 100%;
         height: auto;
@@ -194,24 +216,12 @@ section {
         }
     }
 
+    // Main content
     main {
         padding-left: 3.5rem;
     }
 
     .main-pointer {
         cursor: pointer;
-    }
-
-    #footer {
-        flex-flow: column nowrap;
-
-        div {
-            padding-left: 0rem;
-            padding-top: 1rem;
-        }
-
-        #socials {
-            width: 100%;
-        }
     }
 }
