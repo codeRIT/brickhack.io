@@ -1,7 +1,8 @@
 // Variables
 $off-white: #F3F4F5;
 $blue: #163FD4;
-$dark-blue: #081646;
+$dark-blue: #1B336D;
+$off-black: #081646;
 
 // CSS Resets
 * {
@@ -9,7 +10,7 @@ $dark-blue: #081646;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Work Sans', sans-serif;
-    color: $dark-blue;
+    color: $off-black;
 }
 
 // Font
@@ -25,6 +26,16 @@ a {
 h1 {
     font-size: 4.5rem;
     font-weight: normal;
+    padding-bottom: 3rem;
+}
+
+p {
+    font-size: 1.75rem;
+    padding-bottom: 1rem;
+}
+
+p:last-child {
+    padding-bottom: 0;
 }
 
 // Buttons
@@ -113,12 +124,73 @@ nav {
 
 // Main Content
 main {
-    padding: 3.5rem;
+    padding: 1.75rem 3.5rem;
     padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
-    padding: 5rem 0;
+    padding: 1.75rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+// About Section
+#about p {
+    width: 60%;
+}
+
+.card {
+    border: 2px solid $blue;
+    border-radius: 6px;
+    margin-top: 2rem;
+    width: 75%;
+
+    .card-header {
+        font-weight: 600;
+        color: $blue;
+        text-align: left;
+        font-size: 1.75rem;
+        background-color: $off-white;
+        border: none;
+        width: 100%;
+        padding: 0.625rem 1.25rem;
+        cursor: pointer;
+        transition: all 1s;
+
+        .fa {
+            float: right;
+            color: $blue;
+        }
+
+        &:hover {
+            background-color: $blue;
+            color: $off-white;
+
+            .fa {
+                color: $off-white;
+            }
+        }
+    }
+
+    .card-body {
+        padding: 1.875rem 1.25rem;
+        display: none;
+    }
+}
+
+.card-open {
+    .card-header {
+        background-color: $dark-blue;
+        color: $off-white;
+        border-bottom: 2px solid $blue;
+        border-radius: 0px 0px 6px 6px;
+
+        .fa {
+            color: $off-white;
+        }
+    }
 }
 
 // Desktop Styling
