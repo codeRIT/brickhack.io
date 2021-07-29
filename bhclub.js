@@ -47,9 +47,9 @@ for (let i = 0; i < card.length; i++) {
 
         // Toggle panel and plus/minus on click of header
         if ($(card[i]).hasClass("card-open")) {
-            $(panel).slideDown(200);
+            $(panel).slideDown(100);
         } else {
-            $(panel).slideUp(200);
+            $(panel).slideUp(100);
         }
 
         $(fa).toggleClass("fa-plus");

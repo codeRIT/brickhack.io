@@ -1,5 +1,5 @@
 // Variables
-$off-white: #F3F4F5;
+$off-white: #F6F8FA;
 $blue: #163FD4;
 $dark-blue: #1B336D;
 $off-black: #081646;
@@ -158,10 +158,13 @@ section {
         padding: 0.625rem 1.25rem;
         cursor: pointer;
         transition: all 1s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         .fa {
-            float: right;
             color: $blue;
+            padding-left: 1rem;
         }
 
         &:hover {
