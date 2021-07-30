@@ -27,10 +27,11 @@ h1 {
     font-size: 4.5rem;
     font-weight: normal;
     padding-bottom: 3rem;
+    font-family: 'Sora', sans-serif;
 }
 
 p {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     padding-bottom: 1rem;
 }
 
@@ -42,7 +43,7 @@ p:last-child {
 a.btn-light {
     border: 2px solid $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
@@ -59,7 +60,7 @@ a.btn-dark {
     color: $off-white;
     background-color: $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
@@ -88,6 +89,7 @@ nav {
     flex-flow: column nowrap;
     justify-content: space-between;
     overflow: auto; // For handling when a screen is too short
+    z-index: 3;
 
     a {
         display: block;
@@ -107,19 +109,27 @@ nav {
         margin: 0px 0px 20px;
     }
 
-    a.btn-light {
-        display: inline-block;
-    }
-
     .nav-link {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         margin: 10px 0;
     }
 
-    .social-link {
-        font-size: 1.125rem;
-        margin: 10px 0;
+    #navbar-middle, #navbar-top {
+        margin-bottom: auto;
     }
+}
+
+.mobile-grayout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 25%;
+    z-index: 2;
+    cursor: pointer;
+    display: none;
 }
 
 // Main Content
@@ -137,21 +147,21 @@ section {
 }
 
 // About Section
-#about p {
+#about > p {
     width: 60%;
 }
 
 .card {
     border: 2px solid $blue;
     border-radius: 6px;
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 75%;
 
     .card-header {
         font-weight: 600;
         color: $blue;
         text-align: left;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         background-color: $off-white;
         border: none;
         width: 100%;
@@ -196,6 +206,14 @@ section {
     }
 }
 
+// Tablet Styling
+@media screen and (max-width: 1075px) {
+    #about > p, .card {
+        width: 100%;
+    }
+
+}
+
 // Desktop Styling
 @media screen and (max-width: 750px) {
     nav {
@@ -218,7 +236,8 @@ section {
     }
 
     .show-nav {
-        width: 75%;
+        width: 50%;
+        min-width: auto;
         height: 100%;
         position: fixed;
         background-color: $off-white;
@@ -229,17 +248,13 @@ section {
         a {
             display: block;
         }
+    }
 
-        a.btn-light {
-            display: inline-block;
-        }
+    .show-gray {
+        display: block;
     }
 
     main {
         padding-left: 3.5rem;
-    }
-
-    .main-pointer {
-        cursor: pointer;
     }
 }

@@ -8,12 +8,12 @@ $(document).on('click', '#toggle', function() {
         $('nav').removeClass('show-nav');
         $('#toggle').removeClass('fa-times');
         $('#toggle').addClass('fa-bars');
-        $('main').removeClass('main-pointer');
+        $('.mobile-grayout').removeClass("show-gray");
     } else {
         $('nav').addClass('show-nav');
         $('#toggle').removeClass('fa-bars');
         $('#toggle').addClass('fa-times');
-        $('main').addClass('main-pointer');
+        $('.mobile-grayout').addClass("show-gray");
     }
 });
 
@@ -22,15 +22,15 @@ $(document).on('click', '.nav-link', function() {
     $('nav').removeClass('show-nav');
     $('#toggle').removeClass('fa-times');
     $('#toggle').addClass('fa-bars');
-    $('main').removeClass('main-pointer');
+    $('.mobile-grayout').removeClass("show-gray");
 });
 
 // Closing the navbar when outside of the nav is clicked
-$(document).on('click', 'main', function() {
+$(document).on('click', '.mobile-grayout', function() {
     $('nav').removeClass('show-nav');
     $('#toggle').removeClass('fa-times');
     $('#toggle').addClass('fa-bars');
-    $('main').removeClass('main-pointer');
+    $('.mobile-grayout').removeClass("show-gray");
 });
 
 // FAQ Cards hide/show
