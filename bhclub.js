@@ -39,7 +39,6 @@ for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("card-header")[0];
     // Click should only work on accordion-header of each card
     accordion.addEventListener("click", function() {
-
         card[i].classList.toggle("card-open");
 
         let panel = card[i].getElementsByClassName("card-body")[0];
