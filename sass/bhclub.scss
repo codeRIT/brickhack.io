@@ -1,6 +1,6 @@
 // Variables
 $off-white: #F6F8FA;
-$blue: #163FD4;
+$blue: #1447C8;
 $dark-blue: #1B336D;
 $off-black: #081646;
 
@@ -20,6 +20,7 @@ a {
 
     &:hover {
         font-weight: bold;
+        border-bottom: 4px solid $blue;
     }
 }
 
@@ -48,6 +49,7 @@ a.btn-light {
     padding: 5px 10px;
     font-weight: 600;
     transition: all 1s;
+    background-color: white;
 
     &:hover {
         color: $off-white;
@@ -107,11 +109,17 @@ nav {
         width: 75px;
         max-width: 100%;
         margin: 0px 0px 20px;
+        border: none;
     }
 
     .nav-link {
         font-size: 1.25rem;
-        margin: 10px 0;
+        margin: 10px 0 14px;
+        width: fit-content;
+
+        &:hover {
+            margin-bottom: 10px;
+        }
     }
 
     #navbar-middle, #navbar-top {
@@ -162,7 +170,7 @@ section {
         color: $blue;
         text-align: left;
         font-size: 1.25rem;
-        background-color: $off-white;
+        background-color: white;
         border: none;
         width: 100%;
         padding: 0.625rem 1.25rem;
@@ -190,6 +198,7 @@ section {
     .card-body {
         padding: 1.875rem 1.25rem;
         display: none;
+        background-color: white;
     }
 }
 
