@@ -47,11 +47,12 @@ p:last-child {
 a.btn-light {
     border: 2px solid $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     display: inline-block;
-    padding: 5px 10px;
+    padding: 1rem 1.125rem;
     font-weight: 600;
     transition: all 1s;
+    margin-bottom: 1rem;
 
     &:hover {
         color: $off-white;
@@ -64,7 +65,7 @@ a.btn-dark {
     color: $off-white;
     background-color: $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
@@ -141,6 +142,49 @@ section {
     margin-top: auto;
 }
 
+.field-row-stacked {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: white;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: none;
+        font-size: 1.75rem;
+        padding: 1rem 1.125rem;
+    }
+
+    button {
+        outline: none;
+        border: none;
+        border-left: 2px solid $blue;
+        background-color: white;
+        color: $blue;
+        border-radius: 5px;
+        font-size: 1.75rem;
+        padding: 1rem 1.125rem;
+        font-weight: 600;
+        transition: all 1s;
+
+        &:hover {
+            color: $off-white;
+            background-color: $blue;
+        }
+    }
+}
+
+#line {
+    height: 1px;
+    border-radius: 1px;
+    width: 100%;
+    background-color: black;
+    opacity: 50%;
+    margin: 3rem 0;
+}
+
 #footer {
     display: flex;
     flex-flow: row nowrap;
@@ -148,17 +192,24 @@ section {
     align-items: flex-start;
 
     div {
-        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     #footer-logo img {
-        width: 100px;
+        width: 150px;
     }
 
     #socials {
         display: flex;
         flex-flow: row wrap;
         width: 60%;
+
+        #social-text {
+            font-weight: 600;
+            padding-right: 1rem;
+            font-size: 1.125rem;
+            margin: 10px 0px;
+        }
 
         .social-link {
             padding-right: 1rem;
@@ -169,12 +220,20 @@ section {
 // Tablet Styling
 @media screen and (max-width: 1075px) {
     // Contact Section / Footer
+    #line {
+        margin-bottom: 1rem;
+    }
+
     #footer {
         flex-flow: column nowrap;
 
         div {
             padding-left: 0rem;
             padding-top: 1rem;
+        }
+
+        #footer-logo img {
+            margin-top: 1rem;
         }
 
         #socials {
