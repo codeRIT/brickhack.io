@@ -10,7 +10,7 @@ $off-black: #081646;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Work Sans', sans-serif;
-    color: $dark-blue;
+    color: $off-black;
 }
 
 // Font
@@ -20,12 +20,8 @@ a {
 
     &:hover {
         font-weight: bold;
+        border-bottom: 4px solid $blue;
     }
-}
-
-.social-link {
-    font-size: 1.125rem;
-    margin: 10px 0;
 }
 
 h1 {
@@ -35,7 +31,7 @@ h1 {
 }
 
 p {
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     padding-bottom: 15px;
 }
 
@@ -47,12 +43,13 @@ p:last-child {
 a.btn-light {
     border: 2px solid $blue;
     border-radius: 5px;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     display: inline-block;
     padding: 1rem 1.125rem;
     font-weight: 600;
     transition: all 1s;
     margin-bottom: 1rem;
+    background-color: white;
 
     &:hover {
         color: $off-white;
@@ -65,7 +62,7 @@ a.btn-dark {
     color: $off-white;
     background-color: $blue;
     border-radius: 5px;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
@@ -73,7 +70,7 @@ a.btn-dark {
 
     &:hover {
         color: $blue;
-        background-color: $off-white;
+        background-color: white;
     }
 }
 
@@ -111,15 +108,21 @@ nav {
         width: 75px;
         max-width: 100%;
         margin: 0px 0px 20px;
-    }
-
-    a.btn-light {
-        display: inline-block;
+        border: none;
     }
 
     .nav-link {
-        font-size: 1.5rem;
-        margin: 10px 0;
+        font-size: 1.25rem;
+        margin: 10px 0 14px;
+        width: fit-content;
+
+        &:hover {
+            margin-bottom: 10px;
+        }
+    }
+
+    #navbar-middle, #navbar-top {
+        margin-bottom: auto;
     }
 }
 
@@ -153,7 +156,7 @@ section {
         border: none;
         outline: none;
         background-color: none;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         padding: 1rem 1.125rem;
     }
 
@@ -164,7 +167,7 @@ section {
         background-color: white;
         color: $blue;
         border-radius: 5px;
-        font-size: 1.75rem;
+        font-size: 1.25rem;
         padding: 1rem 1.125rem;
         font-weight: 600;
         transition: all 1s;
@@ -212,6 +215,8 @@ section {
         }
 
         .social-link {
+            font-size: 1.125rem;
+            margin: 10px 0;
             padding-right: 1rem;
         }
     }
@@ -265,7 +270,8 @@ section {
     }
 
     .show-nav {
-        width: 75%;
+        width: 50%;
+        min-width: auto;
         height: 100%;
         position: fixed;
         background-color: $off-white;
