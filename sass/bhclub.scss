@@ -114,7 +114,7 @@ nav {
     .nav-link {
         font-size: 1.25rem;
         margin: 10px 0 14px;
-        width: fit-content;
+        width: min-content;
 
         &:hover {
             margin-bottom: 10px;
@@ -166,7 +166,7 @@ section {
         border-left: 2px solid $blue;
         background-color: white;
         color: $blue;
-        border-radius: 5px;
+        border-radius: 5px 0px 0px 5px;
         font-size: 1.25rem;
         padding: 1rem 1.125rem;
         font-weight: 600;
@@ -225,6 +225,20 @@ section {
 // Tablet Styling
 @media screen and (max-width: 1075px) {
     // Contact Section / Footer
+    .field-row-stacked {
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            border-top: 2px solid $blue;
+            border-radius: 5px 5px 0px 0px;
+            width: 100%;
+        }
+    }
+
     #line {
         margin-bottom: 1rem;
     }
