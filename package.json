@@ -31,10 +31,13 @@
     "staticPath": "resources"
   },
   "dependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
     "active-menu-link": "^1.1.8",
     "aws-sdk": "^2.831.0",
     "jquery": "^3.5.1",
     "jquery-ui-bundle": "^1.12.1-migrate",
+    "parcel": "^2.0.0-rc.0",
     "parcel-plugin-metaimage": "^1.2.4",
     "rellax": "^1.12.1",
     "slick-carousel": "^1.8.1",
