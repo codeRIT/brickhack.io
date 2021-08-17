@@ -46,7 +46,7 @@ a.btn-light {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 5px 10px;
+    padding: 1rem 1.125rem;
     font-weight: 600;
     transition: all 0.5s;
     background-color: white;
@@ -70,7 +70,7 @@ a.btn-dark {
 
     &:hover {
         color: $blue;
-        background-color: $off-white;
+        background-color: white;
     }
 }
 
@@ -115,7 +115,7 @@ nav {
     .nav-link {
         font-size: 1.25rem;
         margin: 10px 0 14px;
-        width: fit-content;
+        width: max-content;
 
         &:hover {
             margin-bottom: 10px;
@@ -216,16 +216,136 @@ section {
     }
 }
 
+// Contact Section / Footer
+#contact > div {
+    margin-top: auto;
+}
+
+.field-row-stacked {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: white;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+    }
+
+    button {
+        outline: none;
+        border: none;
+        border-left: 2px solid $blue;
+        background-color: transparent;
+        color: $blue;
+        border-radius: 5px 0px 0px 5px;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+        font-weight: 600;
+        transition: all 1s;
+
+        &:hover {
+            color: $off-white;
+            background-color: $blue;
+        }
+    }
+}
+
+#line {
+    height: 1px;
+    border-radius: 1px;
+    width: 100%;
+    background-color: black;
+    opacity: 50%;
+    margin: 3rem 0;
+}
+
+#footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    div {
+        padding-left: 2rem;
+    }
+
+    #footer-logo img {
+        width: 150px;
+    }
+
+    #socials {
+        display: flex;
+        flex-flow: row wrap;
+        width: 60%;
+
+        #social-text {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+        }
+
+        .social-link {
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+
+            &:hover {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
 // Tablet Styling
 @media screen and (max-width: 1075px) {
     #about > p, .card {
         width: 100%;
     }
 
+    // Contact Section / Footer
+    .field-row-stacked {
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            border-top: 2px solid $blue;
+            border-radius: 5px 5px 0px 0px;
+            width: 100%;
+        }
+    }
+
+    #line {
+        margin-bottom: 1rem;
+    }
+
+    #footer {
+        flex-flow: column nowrap;
+
+        div {
+            padding-left: 0rem;
+            padding-top: 1rem;
+        }
+
+        #footer-logo img {
+            margin-top: 1rem;
+        }
+
+        #socials {
+            width: 100%;
+        }
+    }
 }
 
-// Desktop Styling
-@media screen and (max-width: 750px) {
+// Mobile Styling
+@media screen and (max-width: 800px) {
+    // Navigation
     nav {
         width: 100%;
         height: auto;
@@ -264,6 +384,7 @@ section {
         display: block;
     }
 
+    // Main content
     main {
         padding-left: 3.5rem;
     }
