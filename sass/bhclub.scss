@@ -1,7 +1,8 @@
 // Variables
-$off-white: #F3F4F5;
-$blue: #163FD4;
-$dark-blue: #081646;
+$off-white: #F6F8FA;
+$blue: #1447C8;
+$dark-blue: #1B336D;
+$off-black: #081646;
 
 // CSS Resets
 * {
@@ -9,7 +10,7 @@ $dark-blue: #081646;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Work Sans', sans-serif;
-    color: $dark-blue;
+    color: $off-black;
 }
 
 // Font
@@ -19,23 +20,36 @@ a {
 
     &:hover {
         font-weight: bold;
+        border-bottom: 4px solid $blue;
     }
 }
 
 h1 {
     font-size: 4.5rem;
     font-weight: normal;
+    padding-bottom: 50px;
+}
+
+p {
+    font-size: 1.25rem;
+    padding-bottom: 15px;
+}
+
+p:last-child {
+    padding-bottom: 0;
 }
 
 // Buttons
 a.btn-light {
     border: 2px solid $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: inline-block;
-    padding: 5px 10px;
+    padding: 1rem 1.125rem;
     font-weight: 600;
     transition: all 1s;
+    margin-bottom: 1rem;
+    background-color: white;
 
     &:hover {
         color: $off-white;
@@ -48,7 +62,7 @@ a.btn-dark {
     color: $off-white;
     background-color: $blue;
     border-radius: 5px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
@@ -56,7 +70,7 @@ a.btn-dark {
 
     &:hover {
         color: $blue;
-        background-color: $off-white;
+        background-color: white;
     }
 }
 
@@ -94,35 +108,164 @@ nav {
         width: 75px;
         max-width: 100%;
         margin: 0px 0px 20px;
-    }
-
-    a.btn-light {
-        display: inline-block;
+        border: none;
     }
 
     .nav-link {
-        font-size: 1.5rem;
-        margin: 10px 0;
+        font-size: 1.25rem;
+        margin: 10px 0 14px;
+        width: max-content;
+
+        &:hover {
+            margin-bottom: 10px;
+        }
     }
 
-    .social-link {
-        font-size: 1.125rem;
-        margin: 10px 0;
+    #navbar-middle, #navbar-top {
+        margin-bottom: auto;
     }
 }
 
 // Main Content
 main {
-    padding: 3.5rem;
+    padding: 1.75rem 3.5rem;
     padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
-    padding: 5rem 0;
+    padding: 1.75rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
-// Desktop Styling
-@media screen and (max-width: 750px) {
+// Contact Section / Footer
+#contact > div {
+    margin-top: auto;
+}
+
+.field-row-stacked {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: white;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+    }
+
+    button {
+        outline: none;
+        border: none;
+        border-left: 2px solid $blue;
+        background-color: transparent;
+        color: $blue;
+        border-radius: 5px 0px 0px 5px;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+        font-weight: 600;
+        transition: all 1s;
+
+        &:hover {
+            color: $off-white;
+            background-color: $blue;
+        }
+    }
+}
+
+#line {
+    height: 1px;
+    border-radius: 1px;
+    width: 100%;
+    background-color: black;
+    opacity: 50%;
+    margin: 3rem 0;
+}
+
+#footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    div {
+        padding-left: 2rem;
+    }
+
+    #footer-logo img {
+        width: 150px;
+    }
+
+    #socials {
+        display: flex;
+        flex-flow: row wrap;
+        width: 60%;
+
+        #social-text {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+        }
+
+        .social-link {
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+
+            &:hover {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+// Tablet Styling
+@media screen and (max-width: 1075px) {
+    // Contact Section / Footer
+    .field-row-stacked {
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            border-top: 2px solid $blue;
+            border-radius: 5px 5px 0px 0px;
+            width: 100%;
+        }
+    }
+
+    #line {
+        margin-bottom: 1rem;
+    }
+
+    #footer {
+        flex-flow: column nowrap;
+
+        div {
+            padding-left: 0rem;
+            padding-top: 1rem;
+        }
+
+        #footer-logo img {
+            margin-top: 1rem;
+        }
+
+        #socials {
+            width: 100%;
+        }
+    }
+}
+
+// Mobile Styling
+@media screen and (max-width: 800px) {
+    // Navigation
     nav {
         width: 100%;
         height: auto;
@@ -143,7 +286,8 @@ section {
     }
 
     .show-nav {
-        width: 75%;
+        width: 50%;
+        min-width: auto;
         height: 100%;
         position: fixed;
         background-color: $off-white;
@@ -160,6 +304,7 @@ section {
         }
     }
 
+    // Main content
     main {
         padding-left: 3.5rem;
     }
