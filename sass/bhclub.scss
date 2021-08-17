@@ -48,7 +48,7 @@ a.btn-light {
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
-    transition: all 1s;
+    transition: all 0.5s;
     background-color: white;
 
     &:hover {
@@ -66,7 +66,7 @@ a.btn-dark {
     display: inline-block;
     padding: 5px 10px;
     font-weight: 600;
-    transition: all 1s;
+    transition: all 0.5s;
 
     &:hover {
         color: $blue;
@@ -162,6 +162,7 @@ section {
 .card {
     border: 2px solid $blue;
     border-radius: 6px;
+    background-color: white;
     margin-top: 1rem;
     width: 75%;
 
@@ -170,12 +171,13 @@ section {
         color: $blue;
         text-align: left;
         font-size: 1.25rem;
-        background-color: white;
         border: none;
+        border-radius: 4px;
+        background-color: transparent;
         width: 100%;
         padding: 0.625rem 1.25rem;
         cursor: pointer;
-        transition: all 1s;
+        transition: all 0.5s, border-radius 0s;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -198,7 +200,6 @@ section {
     .card-body {
         padding: 1.875rem 1.25rem;
         display: none;
-        background-color: white;
     }
 }
 
@@ -207,7 +208,7 @@ section {
         background-color: $dark-blue;
         color: $off-white;
         border-bottom: 2px solid $blue;
-        border-radius: 0px 0px 6px 6px;
+        border-radius: 4px 4px 6px 6px;
 
         .fa {
             color: $off-white;
