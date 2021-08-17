@@ -27,7 +27,14 @@ a {
 h1 {
     font-size: 4.5rem;
     font-weight: normal;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
+    font-family: 'Sora', sans-serif;
+}
+
+h2 {
+    font-size: 2.25rem;
+    font-weight: normal;
+    padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
 }
 
@@ -50,6 +57,7 @@ a.btn-light {
     font-weight: 600;
     transition: all 0.5s;
     background-color: white;
+    text-align: center;
 
     &:hover {
         color: $off-white;
@@ -64,9 +72,10 @@ a.btn-dark {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 5px 10px;
+    padding: 1rem 1.125rem;
     font-weight: 600;
     transition: all 0.5s;
+    text-align: center;
 
     &:hover {
         color: $blue;
@@ -154,9 +163,46 @@ section {
     justify-content: center;
 }
 
+// Landing Section
+#landing > p {
+    width: 65%;
+}
+
+#landing-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    div {
+        padding-right: 2rem;
+
+        #landing-btns {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: start;
+            min-width: min-content;
+            max-width: max-content;
+
+            .btn-light {
+                width: 100%;
+            }
+
+            .btn-dark {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    img {
+        width: 500px;
+        margin-top: -100px;
+        max-width: 100%;
+    }
+}
+
 // About Section
 #about > p {
-    width: 60%;
+    width: 70%;
 }
 
 .card {
@@ -307,9 +353,30 @@ section {
         }
     }
 }
-
 // Tablet Styling
+@media screen and (max-width: 1200px) {
+    // Landing Section
+    #landing-bottom img {
+        width: 400px;
+        margin-top: -75px;
+    }
+}
+
 @media screen and (max-width: 1075px) {
+    // Landing Section
+    #landing-bottom {
+        flex-direction: column;
+
+        div {
+            padding-right: 0rem;
+        }
+
+        img {
+            margin: auto;
+        }
+    }
+
+    // About Section
     #about > p, .card {
         width: 100%;
     }
@@ -353,6 +420,16 @@ section {
 
 // Mobile Styling
 @media screen and (max-width: 800px) {
+    // Landing Section
+    #landing-bottom div #landing-btns {
+        max-width: 100%;
+
+        .btn-dark, .btn-light {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+
     // Navigation
     nav {
         width: 100%;
