@@ -114,7 +114,7 @@ nav {
     .nav-link {
         font-size: 1.25rem;
         margin: 10px 0 14px;
-        width: min-content;
+        width: max-content;
 
         &:hover {
             margin-bottom: 10px;
@@ -195,7 +195,7 @@ section {
     align-items: flex-start;
 
     div {
-        padding-right: 2rem;
+        padding-left: 2rem;
     }
 
     #footer-logo img {
@@ -209,15 +209,17 @@ section {
 
         #social-text {
             font-weight: 600;
-            padding-right: 1rem;
             font-size: 1.125rem;
-            margin: 10px 0px;
+            margin: 10px 1rem 14px 0px;
         }
 
         .social-link {
             font-size: 1.125rem;
-            margin: 10px 0;
-            padding-right: 1rem;
+            margin: 10px 1rem 14px 0px;
+
+            &:hover {
+                margin-bottom: 10px;
+            }
         }
     }
 }
