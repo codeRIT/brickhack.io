@@ -1,7 +1,7 @@
 // Variables
 $off-white: #F6F8FA;
 $blue: #1447C8;
-$dark-blue: #1B336D;
+$dark-blue: #193787;
 $off-black: #081646;
 
 // CSS Resets
@@ -221,6 +221,10 @@ section {
     margin-top: auto;
 }
 
+#contact .btn-light {
+    margin-bottom: 1rem;
+}
+
 .field-row-stacked {
     border: 2px solid $blue;
     border-radius: 5px;
@@ -272,6 +276,10 @@ section {
 
     div {
         padding-left: 2rem;
+    }
+
+    a#footer-logo {
+        border: none;
     }
 
     #footer-logo img {
