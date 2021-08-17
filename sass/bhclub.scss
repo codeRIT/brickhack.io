@@ -155,7 +155,7 @@ section {
     input {
         border: none;
         outline: none;
-        background-color: none;
+        background-color: transparent;
         font-size: 1.25rem;
         padding: 1rem 1.125rem;
     }
@@ -164,7 +164,7 @@ section {
         outline: none;
         border: none;
         border-left: 2px solid $blue;
-        background-color: white;
+        background-color: transparent;
         color: $blue;
         border-radius: 5px 0px 0px 5px;
         font-size: 1.25rem;
