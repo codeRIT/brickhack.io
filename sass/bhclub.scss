@@ -165,7 +165,7 @@ section {
 
 // Landing Section
 #landing > p {
-    width: 65%;
+    width: 60%;
 }
 
 #landing-bottom {
@@ -176,7 +176,7 @@ section {
     div {
         padding-top: 2rem;
         padding-right: 2rem;
-        width: 40%;
+        width: 45%;
 
         #landing-btns {
             display: flex;
@@ -367,11 +367,16 @@ section {
 
 @media screen and (max-width: 1075px) {
     // Landing Section
+    #landing > p {
+        width: 100%;
+    }
+
     #landing-bottom {
         flex-direction: column;
 
         div {
-            padding-right: 0rem;
+            padding-right: 0;
+            width: 100%;
         }
 
         img {
@@ -426,6 +431,7 @@ section {
     // Landing Section
     #landing-bottom div #landing-btns {
         max-width: 100%;
+        padding-bottom: 2rem;
 
         .btn-dark, .btn-light {
             width: 100%;
