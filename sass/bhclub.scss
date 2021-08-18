@@ -170,16 +170,19 @@ section {
 
 #landing-bottom {
     display: flex;
-    justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
+
 
     div {
+        padding-top: 2rem;
         padding-right: 2rem;
+        width: 40%;
 
         #landing-btns {
             display: flex;
             flex-flow: column nowrap;
             align-items: start;
+            width: 100%;
             min-width: min-content;
             max-width: max-content;
 
@@ -195,7 +198,7 @@ section {
 
     img {
         width: 500px;
-        margin-top: -100px;
+        margin-top: -70px; // Match "Join us" roughly
         max-width: 100%;
     }
 }
