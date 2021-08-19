@@ -265,6 +265,65 @@ section {
     }
 }
 
+// Teams Section
+select {
+    appearance: none;
+    outline: none;
+    width: max-content;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    color: $blue;
+    display: inline-block;
+    padding: 1rem calc(1.125rem + 42px) 1rem 1.125rem;
+    font-weight: 600;
+    background-color: white;
+    background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
+
+    &:focus {
+        color: white;
+        background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+        background-color: $dark-blue;
+    }
+
+    option {
+        background-color: white;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $blue;
+        padding: 1rem 1.125rem; // Does not appear to be working as desired
+        border-left: 2px solid $blue; // Does not appear to be working as desired
+        border-right: 2px solid $blue;
+
+        &:first-of-type {
+            border-top: 2px solid $blue; // Does not appear to be working as desired
+            border-radius: 5px 5px 0px 0px; // Does not appear to be working as desired
+        }
+
+        &:last-of-type {
+            border-bottom: 2px solid $blue; // Does not appear to be working as desired
+            border-radius: 0px 0px 5px 5px; // Does not appear to be working as desired
+        }
+    }
+}
+
+
+.team-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+        max-width: 100%;
+        width: 300px;
+    }
+
+    div {
+        margin-left: 2rem;
+        width: 50%;
+    }
+}
+
 // Contact Section / Footer
 #contact > div {
     margin-top: auto;
@@ -387,6 +446,21 @@ section {
     // About Section
     #about > p, .card {
         width: 100%;
+    }
+
+    // Teams Section
+    .team-info {
+        flex-direction: column;
+
+        img {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+
+        div {
+            margin-left: 0;
+            width: 100%;
+        }
     }
 
     // Contact Section / Footer
