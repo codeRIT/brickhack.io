@@ -265,6 +265,27 @@ section {
     }
 }
 
+// Events Section
+#events > div {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        max-width: 100%;
+        width: 450px;
+        margin: auto;
+    }
+
+    div {
+        width: 50%;
+        margin-left: 2rem;
+
+        .btn-dark {
+            width: 100%;
+        }
+    }
+}
+
 // Contact Section / Footer
 #contact > div {
     margin-top: auto;
@@ -362,6 +383,20 @@ section {
     #landing-bottom img {
         width: 400px;
         margin-top: -75px;
+    }
+
+    // Events Section
+    #events > div {
+        flex-direction: column;
+
+        img {
+            margin-bottom: 2rem;
+        }
+
+        div {
+            width: 100%;
+            padding-left: 0;
+        }
     }
 }
 
