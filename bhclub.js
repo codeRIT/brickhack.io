@@ -64,3 +64,18 @@ for (let i = 0; i < card.length; i++) {
 $( function() {
     $("#select-team").selectmenu();
 })
+
+// Changing shown team content based on selected team
+// Initially displayed section
+var selectedID = "#logistics-team";
+
+$("#select-team").on("selectmenuchange", function( event, ui ) {
+    // Hide old selection
+    $(selectedID).toggleClass("show-team");
+
+    // Get the selected item
+    selectedID = ui.item.value;
+
+    // Show the new section
+    $(selectedID).toggleClass("show-team");
+} );

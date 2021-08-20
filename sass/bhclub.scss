@@ -266,6 +266,7 @@ section {
 }
 
 // Teams Section
+// Dropdown button
 .ui-selectmenu-button {
     appearance: none;
     outline: none;
@@ -279,6 +280,7 @@ section {
     cursor: pointer;
 }
 
+// Dropdown button when closed
 .ui-selectmenu-button-closed {
     background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
     background-color: white;
@@ -305,6 +307,7 @@ section {
     }
 }
 
+// Dropdown button when closed
 .ui-selectmenu-button-open {
     background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
     background-color: $dark-blue;
@@ -314,10 +317,12 @@ section {
     }
 }
 
+// Hiding the text for the menu
 .ui-selectmenu-menu .ui-menu-item {
     display: none;
 }
 
+// The dropdown's menu
 .ui-selectmenu-open {
     background-color: white;
     border: 2px solid $blue;
@@ -346,8 +351,9 @@ section {
     }
 }
 
+// Team info sections
 .team-info {
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
 
@@ -360,6 +366,10 @@ section {
         margin-left: 2rem;
         width: 50%;
     }
+}
+
+.show-team {
+    display: flex;
 }
 
 // Contact Section / Footer
