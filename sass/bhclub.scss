@@ -314,6 +314,10 @@ section {
     }
 }
 
+.ui-selectmenu-menu .ui-menu-item {
+    display: none;
+}
+
 .ui-selectmenu-open {
     background-color: white;
     border: 2px solid $blue;
@@ -321,6 +325,7 @@ section {
     width: max-content;
 
     .ui-menu-item {
+        display: block;
         font-size: 1.25rem;
         font-weight: 600;
         padding: 1rem 1.125rem;
