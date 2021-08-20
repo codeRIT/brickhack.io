@@ -266,47 +266,80 @@ section {
 }
 
 // Teams Section
-select {
+.ui-selectmenu-button {
     appearance: none;
     outline: none;
     width: max-content;
     border: 2px solid $blue;
     border-radius: 5px;
     font-size: 1.25rem;
-    color: $blue;
     display: inline-block;
     padding: 1rem calc(1.125rem + 42px) 1rem 1.125rem;
     font-weight: 600;
-    background-color: white;
-    background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
+    cursor: pointer;
+}
 
-    &:focus {
-        color: white;
-        background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
-        background-color: $dark-blue;
+.ui-selectmenu-button-closed {
+    background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
+    background-color: white;
+
+    .ui-selectmenu-text {
+        color: $blue;
     }
 
-    option {
-        background-color: white;
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: $blue;
-        padding: 1rem 1.125rem; // Does not appear to be working as desired
-        border-left: 2px solid $blue; // Does not appear to be working as desired
-        border-right: 2px solid $blue;
+    .ui-selectmenu-icon {
+        background-image: url("../assets/bhclub/select-arrow-blue.svg");
+    }
 
-        &:first-of-type {
-            border-top: 2px solid $blue; // Does not appear to be working as desired
-            border-radius: 5px 5px 0px 0px; // Does not appear to be working as desired
+    &:hover {
+        background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+        background-color: $dark-blue;
+
+        .ui-selectmenu-text {
+            color: white;
         }
 
-        &:last-of-type {
-            border-bottom: 2px solid $blue; // Does not appear to be working as desired
-            border-radius: 0px 0px 5px 5px; // Does not appear to be working as desired
+        .ui-selectmenu-icon {
+            background-image: url("../assets/bhclub/select-arrow-white.svg");
         }
     }
 }
 
+.ui-selectmenu-button-open {
+    background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+    background-color: $dark-blue;
+
+    .ui-selectmenu-text {
+        color: white;
+    }
+}
+
+.ui-selectmenu-open {
+    background-color: white;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    width: max-content;
+
+    .ui-menu-item {
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 1rem 1.125rem;
+        list-style-type: none;
+        cursor: pointer;
+
+        .ui-menu-item-wrapper {
+            color: $blue;
+        }
+
+        &:hover {
+            background-color: $dark-blue;
+
+            .ui-menu-item-wrapper {
+                color: white;
+            }
+        }
+    }
+}
 
 .team-info {
     display: flex;
