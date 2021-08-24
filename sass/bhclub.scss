@@ -275,7 +275,8 @@ section {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem calc(1.125rem + 42px) 1rem 1.125rem;
+    padding: 1rem 1.125rem; // Same as the .btn-light for consistency
+    padding-right: calc(1.125rem + 42px); // Adding the width of the background image arrow to avoid overlap
     font-weight: 600;
     cursor: pointer;
 }

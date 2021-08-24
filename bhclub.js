@@ -69,7 +69,7 @@ $( function() {
 // Initially displayed section
 var selectedID = "#logistics-team";
 
-$("#select-team").on("selectmenuchange", function( event, ui ) {
+$("#select-team").on("selectmenuchange", function(event, ui) {
     // Hide old selection
     $(selectedID).toggleClass("show-team");
 
