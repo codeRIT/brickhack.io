@@ -266,17 +266,17 @@ section {
 }
 
 // Events Section
-#events > div {
+.event {
     display: flex;
     justify-content: space-between;
+    width: 90%;
 
     img {
         max-width: 100%;
         width: 450px;
-        margin: auto;
     }
 
-    div {
+    .event-description {
         width: 50%;
         margin-left: 2rem;
 
@@ -386,16 +386,18 @@ section {
     }
 
     // Events Section
-    #events > div {
+    .event {
         flex-direction: column;
+        width: 100%;
 
         img {
+            margin: auto;
             margin-bottom: 2rem;
         }
 
-        div {
+        .event-description {
             width: 100%;
-            padding-left: 0;
+            margin-left: 0;
         }
     }
 }
