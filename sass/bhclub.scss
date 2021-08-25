@@ -268,6 +268,115 @@ section {
     }
 }
 
+// Teams Section
+// Dropdown button
+.ui-selectmenu-button {
+    appearance: none;
+    outline: none;
+    width: max-content;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 1rem 1.125rem; // Same as the .btn-light for consistency
+    padding-right: calc(1.125rem + 42px); // Adding the width of the background image arrow to avoid overlap
+    font-weight: 600;
+    cursor: pointer;
+}
+
+// Dropdown button when closed
+.ui-selectmenu-button-closed {
+    background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
+    background-color: rgb(100, 89, 89);
+
+    .ui-selectmenu-text {
+        color: $blue;
+    }
+
+    .ui-selectmenu-icon {
+        background-image: url("../assets/bhclub/select-arrow-blue.svg");
+    }
+
+    &:hover {
+        background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+        background-color: $dark-blue;
+
+        .ui-selectmenu-text {
+            color: white;
+        }
+
+        .ui-selectmenu-icon {
+            background-image: url("../assets/bhclub/select-arrow-white.svg");
+        }
+    }
+}
+
+// Dropdown button when closed
+.ui-selectmenu-button-open {
+    background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+    background-color: $dark-blue;
+
+    .ui-selectmenu-text {
+        color: white;
+    }
+}
+
+// Hiding the text for the menu
+.ui-selectmenu-menu .ui-menu-item {
+    display: none;
+}
+
+// The dropdown's menu
+.ui-selectmenu-open {
+    background-color: white;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    width: max-content;
+
+    .ui-menu-item {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 1rem 1.125rem;
+        list-style-type: none;
+        cursor: pointer;
+
+        .ui-menu-item-wrapper {
+            color: $blue;
+        }
+
+        &:hover {
+            background-color: $dark-blue;
+
+            .ui-menu-item-wrapper {
+                color: white;
+            }
+        }
+    }
+}
+
+// Team info sections
+.team-info {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+
+    img {
+        max-width: 100%;
+        width: 300px;
+    }
+
+    div {
+        margin-left: 2rem;
+        width: 50%;
+    }
+}
+
+.show-team {
+    display: flex;
+}
+
 // Events Section
 .event {
     display: flex;
@@ -427,6 +536,21 @@ section {
     // About Section
     #about > p, .card {
         width: 100%;
+    }
+
+    // Teams Section
+    .team-info {
+        flex-direction: column;
+
+        img {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+
+        div {
+            margin-left: 0;
+            width: 100%;
+        }
     }
 
     // Contact Section / Footer
