@@ -284,7 +284,7 @@ section {
 // Dropdown button when closed
 .ui-selectmenu-button-closed {
     background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
-    background-color: white;
+    background-color: rgb(100, 89, 89);
 
     .ui-selectmenu-text {
         color: $blue;
@@ -372,6 +372,27 @@ section {
 
 .show-team {
     display: flex;
+}
+
+// Events Section
+.event {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+
+    img {
+        max-width: 100%;
+        width: 450px;
+    }
+
+    .event-description {
+        width: 50%;
+        margin-left: 2rem;
+
+        .btn-dark {
+            width: 100%;
+        }
+    }
 }
 
 // Contact Section / Footer
@@ -471,6 +492,22 @@ section {
     #landing-bottom img {
         width: 400px;
         margin-top: -75px;
+    }
+
+    // Events Section
+    .event {
+        flex-direction: column;
+        width: 100%;
+
+        img {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+
+        .event-description {
+            width: 100%;
+            margin-left: 0;
+        }
     }
 }
 
