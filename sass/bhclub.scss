@@ -1,0 +1,648 @@
+// Variables
+$off-white: #F6F8FA;
+$blue: #1447C8;
+$dark-blue: #193787;
+$off-black: #081646;
+
+// CSS Resets
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    color: $off-black;
+}
+
+// Font
+a {
+    color: $blue;
+    text-decoration: none;
+
+    &:hover {
+        font-weight: bold;
+        border-bottom: 4px solid $blue;
+    }
+}
+
+h1 {
+    font-size: 4.5rem;
+    font-weight: normal;
+    padding-bottom: 2rem;
+    font-family: 'Sora', sans-serif;
+}
+
+h2 {
+    font-size: 2.25rem;
+    font-weight: normal;
+    padding-bottom: 1rem;
+    font-family: 'Sora', sans-serif;
+}
+
+p {
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+}
+
+p:last-child {
+    padding-bottom: 0;
+}
+
+// Buttons
+a.btn-light {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 1rem 1.125rem;
+    font-weight: 600;
+    transition: all 0.5s;
+    background-color: white;
+    text-align: center;
+
+    &:hover {
+        color: $off-white;
+        background-color: $blue;
+    }
+}
+
+a.btn-dark {
+    border: 2px solid $blue;
+    color: $off-white;
+    background-color: $blue;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 1rem 1.125rem;
+    font-weight: 600;
+    transition: all 0.5s;
+    text-align: center;
+
+    &:hover {
+        color: $blue;
+        background-color: white;
+    }
+}
+
+// Body
+body {
+    background-color: $off-white;
+}
+
+// Navigation
+nav {
+    width: 25%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    overflow: auto; // For handling when a screen is too short
+    z-index: 3;
+
+    a {
+        display: block;
+    }
+
+    #toggle {
+        color: $blue;
+        font-size: 2rem;
+        margin: 0px 20px 20px 0px;
+        display: none;
+        cursor: pointer;
+    }
+
+    #logo {
+        border: none;
+        margin: 0px 0px 20px;
+
+        img {
+            width: 75px;
+            max-width: 100%;
+        }
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+        margin: 10px 0 14px;
+        width: max-content;
+
+        &:hover {
+            margin-bottom: 10px;
+        }
+    }
+
+    #navbar-middle, #navbar-top {
+        margin-bottom: auto;
+    }
+}
+
+.mobile-grayout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 25%;
+    z-index: 2;
+    cursor: pointer;
+    display: none;
+}
+
+// Main Content
+main {
+    padding: 1.75rem 3.5rem;
+    padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
+}
+
+section {
+    padding: 1.75rem 0;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+// Landing Section
+#landing > p {
+    width: 60%;
+}
+
+#landing-bottom {
+    display: flex;
+    align-items: flex-start;
+
+
+    div {
+        padding-top: 2rem;
+        padding-right: 2rem;
+        width: 45%;
+
+        #landing-btns {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: start;
+            width: 100%;
+            min-width: min-content;
+            max-width: max-content;
+
+            .btn-light {
+                width: 100%;
+            }
+
+            .btn-dark {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    img {
+        width: 500px;
+        margin-top: -70px; // Match "Join us" roughly
+        max-width: 100%;
+    }
+}
+
+// About Section
+#about > p {
+    width: 70%;
+}
+
+.card {
+    border: 2px solid $blue;
+    border-radius: 6px;
+    background-color: white;
+    margin-top: 1rem;
+    width: 75%;
+
+    .card-header {
+        font-weight: 600;
+        color: $blue;
+        text-align: left;
+        font-size: 1.25rem;
+        border: none;
+        border-radius: 4px;
+        background-color: transparent;
+        width: 100%;
+        padding: 0.625rem 1.25rem;
+        cursor: pointer;
+        transition: all 0.5s, border-radius 0s;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .fa {
+            color: $blue;
+            padding-left: 1rem;
+        }
+
+        &:hover {
+            background-color: $blue;
+            color: $off-white;
+
+            .fa {
+                color: $off-white;
+            }
+        }
+    }
+
+    .card-body {
+        padding: 1.875rem 1.25rem;
+        display: none;
+    }
+}
+
+.card-open {
+    .card-header {
+        background-color: $dark-blue;
+        color: $off-white;
+        border-bottom: 2px solid $blue;
+        border-radius: 4px 4px 6px 6px;
+
+        .fa {
+            color: $off-white;
+        }
+    }
+}
+
+// Teams Section
+// Dropdown button
+.ui-selectmenu-button {
+    appearance: none;
+    outline: none;
+    width: max-content;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    display: inline-block;
+    padding: 1rem 1.125rem; // Same as the .btn-light for consistency
+    padding-right: calc(1.125rem + 42px); // Adding the width of the background image arrow to avoid overlap
+    font-weight: 600;
+    cursor: pointer;
+}
+
+// Dropdown button when closed
+.ui-selectmenu-button-closed {
+    background: url("../assets/bhclub/select-arrow-blue.svg") no-repeat right;
+
+    .ui-selectmenu-text {
+        color: $blue;
+    }
+
+    .ui-selectmenu-icon {
+        background-image: url("../assets/bhclub/select-arrow-blue.svg");
+    }
+
+    &:hover {
+        background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+        background-color: $dark-blue;
+
+        .ui-selectmenu-text {
+            color: white;
+        }
+
+        .ui-selectmenu-icon {
+            background-image: url("../assets/bhclub/select-arrow-white.svg");
+        }
+    }
+}
+
+// Dropdown button when closed
+.ui-selectmenu-button-open {
+    background: url("../assets/bhclub/select-arrow-white.svg") no-repeat right;
+    background-color: $dark-blue;
+
+    .ui-selectmenu-text {
+        color: white;
+    }
+}
+
+// Hiding the text for the menu
+.ui-selectmenu-menu .ui-menu-item {
+    display: none;
+}
+
+// The dropdown's menu
+.ui-selectmenu-open {
+    background-color: white;
+    border: 2px solid $blue;
+    border-radius: 5px;
+    width: max-content;
+
+    .ui-menu-item {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 600;
+        padding: 1rem 1.125rem;
+        list-style-type: none;
+        cursor: pointer;
+
+        .ui-menu-item-wrapper {
+            color: $blue;
+        }
+
+        &:hover {
+            background-color: $dark-blue;
+
+            .ui-menu-item-wrapper {
+                color: white;
+            }
+        }
+    }
+}
+
+// Team info sections
+.team-info {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+
+    img {
+        max-width: 100%;
+        width: 300px;
+    }
+
+    div {
+        margin-left: 2rem;
+        width: 50%;
+    }
+}
+
+.show-team {
+    display: flex;
+}
+
+// Events Section
+.event {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+
+    img {
+        max-width: 100%;
+        width: 450px;
+    }
+
+    .event-description {
+        width: 50%;
+        margin-left: 2rem;
+
+        .btn-dark {
+            width: 100%;
+        }
+    }
+}
+
+// Contact Section / Footer
+#contact > div {
+    margin-top: auto;
+}
+
+#contact .btn-light {
+    margin-bottom: 1rem;
+}
+
+.field-row-stacked {
+    border: 2px solid $blue;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: white;
+
+    input {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+    }
+
+    button {
+        outline: none;
+        border: none;
+        border-left: 2px solid $blue;
+        background-color: transparent;
+        color: $blue;
+        border-radius: 5px 0px 0px 5px;
+        font-size: 1.25rem;
+        padding: 1rem 1.125rem;
+        font-weight: 600;
+        transition: all 1s;
+
+        &:hover {
+            color: $off-white;
+            background-color: $blue;
+        }
+    }
+}
+
+#line {
+    height: 1px;
+    border-radius: 1px;
+    width: 100%;
+    background-color: black;
+    opacity: 50%;
+    margin: 3rem 0;
+}
+
+#footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    div {
+        padding-left: 2rem;
+    }
+
+    #footer-logo {
+        border: none;
+
+        img {
+            width: 150px;
+        }
+    }
+
+    #socials {
+        display: flex;
+        flex-flow: row wrap;
+        width: 60%;
+
+        #social-text {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+        }
+
+        .social-link {
+            font-size: 1.125rem;
+            margin: 10px 1rem 14px 0px;
+
+            &:hover {
+                margin-bottom: 10px;
+            }
+        }
+    }
+}
+// Tablet Styling
+@media screen and (max-width: 1200px) {
+    // Landing Section
+    #landing-bottom img {
+        width: 400px;
+        margin-top: -75px;
+    }
+
+    // Events Section
+    .event {
+        flex-direction: column;
+        width: 100%;
+
+        img {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+
+        .event-description {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    // Landing Section
+    #landing > p {
+        width: 100%;
+    }
+
+    #landing-bottom {
+        flex-direction: column;
+
+        div {
+            padding-right: 0;
+            width: 100%;
+        }
+
+        img {
+            margin: auto;
+        }
+    }
+
+    // About Section
+    #about > p, .card {
+        width: 100%;
+    }
+
+    // Teams Section
+    .team-info {
+        flex-direction: column;
+
+        img {
+            margin: auto;
+            margin-bottom: 2rem;
+        }
+
+        div {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    // Contact Section / Footer
+    .field-row-stacked {
+
+        input {
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            border-top: 2px solid $blue;
+            border-radius: 5px 5px 0px 0px;
+            width: 100%;
+        }
+    }
+
+    #line {
+        margin-bottom: 1rem;
+    }
+
+    #footer {
+        flex-flow: column nowrap;
+
+        div {
+            padding-left: 0rem;
+            padding-top: 1rem;
+        }
+
+        #footer-logo img {
+            margin-top: 1rem;
+        }
+
+        #socials {
+            width: 100%;
+        }
+    }
+}
+
+// Mobile Styling
+@media screen and (max-width: 800px) {
+    // Landing Section
+    #landing-bottom div #landing-btns {
+        max-width: 100%;
+        padding-bottom: 2rem;
+
+        .btn-dark, .btn-light {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+
+    // Navigation
+    nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding-bottom: 0;
+
+        a, a.btn-light {
+            display: none;
+        }
+
+        #toggle, #logo {
+            display: block;
+        }
+
+        #navbar-top {
+            display: flex;
+        }
+    }
+
+    .show-nav {
+        width: 50%;
+        min-width: auto;
+        height: 100%;
+        position: fixed;
+        background-color: $off-white;
+        top: 0;
+        left: 0;
+        padding-bottom: 3.5rem;
+
+        a {
+            display: block;
+        }
+    }
+
+    .show-gray {
+        display: block;
+    }
+
+    // Main content
+    main {
+        padding-left: 3.5rem;
+    }
+}
