@@ -1,6 +1,10 @@
 import './sass/bhclub.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
-import $ from 'jquery'
+
+// JQuery-UI for dropdown in Teams
+const $ = require('jquery')
+window.$ = window.jQuery = $
+require("jquery-ui-bundle")
 
 // Navbar functionality
 $(document).on('click', '#toggle', function() {
@@ -55,3 +59,23 @@ for (let i = 0; i < card.length; i++) {
         $(fa).toggleClass("fa-minus");
     });
 }
+
+// Teams Dropdown
+$( function() {
+    $("#select-team").selectmenu();
+})
+
+// Changing shown team content based on selected team
+// Initially displayed section
+var selectedID = "#logistics-team";
+
+$("#select-team").on("selectmenuchange", function(event, ui) {
+    // Hide old selection
+    $(selectedID).toggleClass("show-team");
+
+    // Get the selected item
+    selectedID = ui.item.value;
+
+    // Show the new section
+    $(selectedID).toggleClass("show-team");
+} );
