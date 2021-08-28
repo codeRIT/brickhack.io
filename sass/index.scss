@@ -138,10 +138,6 @@ footer {
     #buttons {
         gap: 5px;
     }
-
-    footer {
-        position: relative;
-    }
 }
 
 @media screen and (max-width: 400px) {
@@ -150,12 +146,21 @@ footer {
     }
 }
 
-@media screen and (max-height: 400px) {
-    #main {
-        margin-top: 0;
+@media screen and (max-height: 750px) {
+    html, body {
+        height: auto;
+        overflow-y: auto;
     }
 
-    html, body {
-        overflow-y: scroll;
+    body {
+        transform-origin: top;
+    }
+
+    #main {
+        margin-top: var(--main-margin);
+    }
+
+    footer {
+        position: relative;
     }
 }
