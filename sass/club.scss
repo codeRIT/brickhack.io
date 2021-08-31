@@ -25,10 +25,11 @@ a {
 }
 
 h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: normal;
     padding-bottom: 2rem;
     font-family: 'Sora', sans-serif;
+    margin-left: -5px;
 }
 
 h2 {
@@ -40,6 +41,7 @@ h2 {
 
 p {
     font-size: 1.25rem;
+    line-height: 1.625;
     padding-bottom: 1rem;
 }
 
@@ -130,6 +132,7 @@ nav {
 
     .nav-link {
         font-size: 1.25rem;
+        line-height: 2.5rem;
         margin: 10px 0 14px;
         width: max-content;
 
@@ -598,6 +601,11 @@ section {
 
 // Mobile Styling
 @media screen and (max-width: 800px) {
+    // Font
+    h1 {
+        font-size: 3rem;
+    }
+
     // Landing Section
     #landing-bottom div #landing-btns {
         max-width: 100%;
