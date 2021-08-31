@@ -277,7 +277,7 @@ section {
 .ui-selectmenu-button {
     appearance: none;
     outline: none;
-    width: max-content;
+    width: 18rem; // best approximation of the largest team name
     border: 2px solid $blue;
     border-radius: 5px;
     font-size: 1.25rem;
