@@ -17,10 +17,10 @@ $off-black: #081646;
 a {
     color: $blue;
     text-decoration: none;
+    border-bottom: 4px solid $blue;
 
     &:hover {
         font-weight: bold;
-        border-bottom: 4px solid $blue;
     }
 }
 
@@ -103,6 +103,11 @@ nav {
 
     a {
         display: block;
+        border: none;
+
+        &:hover {
+            border-bottom: 4px solid $blue;
+        }
     }
 
     #toggle {
