@@ -55,7 +55,7 @@ a.btn-light {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
     transition: all 0.25s;
     background-color: white;
@@ -74,7 +74,7 @@ a.btn-dark {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
     transition: all 0.25s;
     text-align: center;
@@ -285,7 +285,7 @@ section {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem; // Same as the .btn-light for consistency
+    padding: 1rem 1.5rem; // Same as the .btn-light for consistency
     padding-right: calc(1.125rem + 42px); // Adding the width of the background image arrow to avoid overlap
     font-weight: 600;
     cursor: pointer;
@@ -345,7 +345,7 @@ section {
         display: block;
         font-size: 1.25rem;
         font-weight: 600;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
         list-style-type: none;
         cursor: pointer;
         transition: all 0.25s;
@@ -428,7 +428,7 @@ section {
         outline: none;
         background-color: transparent;
         font-size: 1.25rem;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
     }
 
     button {
@@ -439,7 +439,7 @@ section {
         color: $blue;
         border-radius: 5px 0px 0px 5px;
         font-size: 1.25rem;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
         font-weight: 600;
         transition: all 0.25s;
 
@@ -485,16 +485,12 @@ section {
         #social-text {
             font-weight: 600;
             font-size: 1.125rem;
-            margin: 10px 1rem 14px 0px;
+            margin: 10px 1rem 10px 0px;
         }
 
         .social-link {
             font-size: 1.125rem;
-            margin: 10px 1rem 14px 0px;
-
-            &:hover {
-                margin-bottom: 10px;
-            }
+            margin: 10px 1rem 10px 0px;
         }
     }
 }
