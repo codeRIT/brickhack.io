@@ -287,6 +287,7 @@ section {
 // Dropdown button when closed
 .ui-selectmenu-button-closed {
     background: url("../assets/club/select-arrow-blue.svg") no-repeat right;
+    background-color: white;
 
     .ui-selectmenu-text {
         color: $blue;
