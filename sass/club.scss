@@ -91,7 +91,7 @@ body {
 
 // Navigation
 nav {
-    width: 25%;
+    width: 20%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -162,7 +162,7 @@ nav {
 // Main Content
 main {
     padding: 1.75rem 3.5rem;
-    padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
+    padding-left: calc(20% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
@@ -369,7 +369,8 @@ section {
     display: none;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    width: 75%;
+    margin-top: 4rem;
 
     img {
         max-width: 100%;
@@ -390,6 +391,7 @@ section {
 .event {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     width: 90%;
 
     img {
@@ -413,7 +415,7 @@ section {
 }
 
 #contact .btn-light {
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
 }
 
 .field-row-stacked {
@@ -471,9 +473,10 @@ section {
 
     #footer-logo {
         border: none;
+        align-self: flex-end;
 
         img {
-            width: 150px;
+            width: 125px;
         }
     }
 
@@ -546,6 +549,7 @@ section {
     // Teams Section
     .team-info {
         flex-direction: column;
+        width: 100%;
 
         img {
             margin: auto;
@@ -585,8 +589,11 @@ section {
             padding-top: 1rem;
         }
 
-        #footer-logo img {
-            margin-top: 1rem;
+        #footer-logo {
+            align-self: flex-start;
+            img {
+                margin-top: 1rem;
+            }
         }
 
         #socials {
