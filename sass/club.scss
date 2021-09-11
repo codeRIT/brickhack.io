@@ -41,7 +41,7 @@ h2 {
 
 p {
     font-size: 1.25rem;
-    line-height: 1.625;
+    line-height: 1.625rem;
     padding-bottom: 1rem;
 }
 
@@ -132,12 +132,11 @@ nav {
 
     .nav-link {
         font-size: 1.25rem;
-        line-height: 2.5rem;
-        margin: 10px 0 14px;
+        margin: 10px 0 19px;
         width: max-content;
 
         &:hover {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
     }
 
@@ -280,7 +279,8 @@ section {
 .ui-selectmenu-button {
     appearance: none;
     outline: none;
-    width: 18rem; // best approximation of the largest team name
+    width: max-content;
+    max-width: calc(100vw - 3.5rem); // Not using 100%
     border: 2px solid $blue;
     border-radius: 5px;
     font-size: 1.25rem;
@@ -370,10 +370,10 @@ section {
     justify-content: space-between;
     align-items: center;
     width: 75%;
-    margin-top: 4rem;
 
     img {
         max-width: 100%;
+        margin-top: 7.5rem;
         width: 300px;
     }
 
@@ -396,6 +396,7 @@ section {
 
     img {
         max-width: 100%;
+        margin-top: 5rem;
         width: 450px;
     }
 
