@@ -17,18 +17,19 @@ $off-black: #081646;
 a {
     color: $blue;
     text-decoration: none;
+    border-bottom: 2px solid $blue;
 
     &:hover {
         font-weight: bold;
-        border-bottom: 4px solid $blue;
     }
 }
 
 h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: normal;
     padding-bottom: 2rem;
     font-family: 'Sora', sans-serif;
+    margin-left: -5px;
 }
 
 h2 {
@@ -40,6 +41,7 @@ h2 {
 
 p {
     font-size: 1.25rem;
+    line-height: 1.625rem;
     padding-bottom: 1rem;
 }
 
@@ -53,15 +55,15 @@ a.btn-light {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
-    transition: all 0.5s;
+    transition: all 0.25s;
     background-color: white;
     text-align: center;
 
     &:hover {
         color: $off-white;
-        background-color: $blue;
+        background-color: $dark-blue;
     }
 }
 
@@ -72,14 +74,13 @@ a.btn-dark {
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem;
+    padding: 1rem 1.5rem;
     font-weight: 600;
-    transition: all 0.5s;
+    transition: all 0.25s;
     text-align: center;
 
     &:hover {
-        color: $blue;
-        background-color: white;
+        background-color: $dark-blue;
     }
 }
 
@@ -90,7 +91,7 @@ body {
 
 // Navigation
 nav {
-    width: 25%;
+    width: 20%;
     height: 100%;
     position: fixed;
     top: 0;
@@ -104,6 +105,11 @@ nav {
 
     a {
         display: block;
+        border: none;
+
+        &:hover {
+            border-bottom: 4px solid $blue;
+        }
     }
 
     #toggle {
@@ -126,11 +132,11 @@ nav {
 
     .nav-link {
         font-size: 1.25rem;
-        margin: 10px 0 14px;
+        margin: 10px 0 19px; // 19 = 15px + the 4px to save space for the hover underline
         width: max-content;
 
         &:hover {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
     }
 
@@ -155,7 +161,7 @@ nav {
 // Main Content
 main {
     padding: 1.75rem 3.5rem;
-    padding-left: calc(25% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
+    padding-left: calc(20% + 3.5rem); // pushes it outside of the nav while allowing for backgrounds to stretch underneath
 }
 
 section {
@@ -216,7 +222,7 @@ section {
     border-radius: 6px;
     background-color: white;
     margin-top: 1rem;
-    width: 75%;
+    width: 80%;
 
     .card-header {
         font-weight: 600;
@@ -227,9 +233,9 @@ section {
         border-radius: 4px;
         background-color: transparent;
         width: 100%;
-        padding: 0.625rem 1.25rem;
+        padding: 1rem 1.5rem;
         cursor: pointer;
-        transition: all 0.5s, border-radius 0s;
+        transition: all 0.25s, border-radius 0s;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -240,7 +246,7 @@ section {
         }
 
         &:hover {
-            background-color: $blue;
+            background-color: $dark-blue;
             color: $off-white;
 
             .fa {
@@ -257,7 +263,7 @@ section {
 
 .card-open {
     .card-header {
-        background-color: $dark-blue;
+        background-color: $blue;
         color: $off-white;
         border-bottom: 2px solid $blue;
         border-radius: 4px 4px 6px 6px;
@@ -274,19 +280,23 @@ section {
     appearance: none;
     outline: none;
     width: max-content;
+    // On mobile, making sure the dropdown is as large as possible without hitting the right screen edge
+    max-width: calc(100vw - 3.5rem);
     border: 2px solid $blue;
     border-radius: 5px;
     font-size: 1.25rem;
     display: inline-block;
-    padding: 1rem 1.125rem; // Same as the .btn-light for consistency
+    padding: 1rem 1.5rem; // Same as the .btn-light for consistency
     padding-right: calc(1.125rem + 42px); // Adding the width of the background image arrow to avoid overlap
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.25s;
 }
 
 // Dropdown button when closed
 .ui-selectmenu-button-closed {
     background: url("../assets/club/select-arrow-blue.svg") no-repeat right;
+    background-color: white;
 
     .ui-selectmenu-text {
         color: $blue;
@@ -325,7 +335,7 @@ section {
     display: none;
 }
 
-// The dropdown's menu
+// Teams dropdown menu
 .ui-selectmenu-open {
     background-color: white;
     border: 2px solid $blue;
@@ -336,9 +346,10 @@ section {
         display: block;
         font-size: 1.25rem;
         font-weight: 600;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
         list-style-type: none;
         cursor: pointer;
+        transition: all 0.25s;
 
         .ui-menu-item-wrapper {
             color: $blue;
@@ -358,16 +369,18 @@ section {
 .team-info {
     display: none;
     justify-content: space-between;
+    flex-flow: row-reverse;
     align-items: center;
-    margin-top: 2rem;
+    width: 90%;
 
     img {
         max-width: 100%;
-        width: 300px;
+        margin-top: 3rem;
+        width: 450px;
     }
 
     div {
-        margin-left: 2rem;
+        margin-right: 2rem;
         width: 50%;
     }
 }
@@ -380,6 +393,7 @@ section {
 .event {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     width: 90%;
 
     img {
@@ -403,7 +417,7 @@ section {
 }
 
 #contact .btn-light {
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
 }
 
 .field-row-stacked {
@@ -418,7 +432,7 @@ section {
         outline: none;
         background-color: transparent;
         font-size: 1.25rem;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
     }
 
     button {
@@ -429,13 +443,13 @@ section {
         color: $blue;
         border-radius: 5px 0px 0px 5px;
         font-size: 1.25rem;
-        padding: 1rem 1.125rem;
+        padding: 1rem 1.5rem;
         font-weight: 600;
-        transition: all 1s;
+        transition: all 0.25s;
 
         &:hover {
             color: $off-white;
-            background-color: $blue;
+            background-color: $dark-blue;
         }
     }
 }
@@ -461,9 +475,10 @@ section {
 
     #footer-logo {
         border: none;
+        align-self: flex-end;
 
         img {
-            width: 150px;
+            width: 125px;
         }
     }
 
@@ -475,16 +490,12 @@ section {
         #social-text {
             font-weight: 600;
             font-size: 1.125rem;
-            margin: 10px 1rem 14px 0px;
+            margin: 10px 1rem 10px 0px;
         }
 
         .social-link {
             font-size: 1.125rem;
-            margin: 10px 1rem 14px 0px;
-
-            &:hover {
-                margin-bottom: 10px;
-            }
+            margin: 10px 1rem 10px 0px;
         }
     }
 }
@@ -540,14 +551,14 @@ section {
     // Teams Section
     .team-info {
         flex-direction: column;
+        width: 100%;
 
         img {
-            margin: auto;
-            margin-bottom: 2rem;
+            margin: 2.5rem auto 2rem;
         }
 
         div {
-            margin-left: 0;
+            margin-right: 0;
             width: 100%;
         }
     }
@@ -579,8 +590,11 @@ section {
             padding-top: 1rem;
         }
 
-        #footer-logo img {
-            margin-top: 1rem;
+        #footer-logo {
+            align-self: flex-start;
+            img {
+                margin-top: 1rem;
+            }
         }
 
         #socials {
@@ -591,6 +605,11 @@ section {
 
 // Mobile Styling
 @media screen and (max-width: 800px) {
+    // Font
+    h1 {
+        font-size: 3rem;
+    }
+
     // Landing Section
     #landing-bottom div #landing-btns {
         max-width: 100%;
@@ -605,9 +624,9 @@ section {
     // Navigation
     nav {
         width: 100%;
-        height: auto;
-        position: static;
         padding-bottom: 0;
+        height: auto;
+        background-color: $off-white;
 
         a, a.btn-light {
             display: none;
@@ -643,6 +662,6 @@ section {
 
     // Main content
     main {
-        padding-left: 3.5rem;
+        padding: 7.5rem 3.5rem 1.75rem;
     }
 }
