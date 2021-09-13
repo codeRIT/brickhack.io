@@ -132,7 +132,7 @@ nav {
 
     .nav-link {
         font-size: 1.25rem;
-        margin: 10px 0 19px;
+        margin: 10px 0 19px; // 19 = 15px + the 4px to save space for the hover underline
         width: max-content;
 
         &:hover {
@@ -280,7 +280,8 @@ section {
     appearance: none;
     outline: none;
     width: max-content;
-    max-width: calc(100vw - 3.5rem); // Not using 100%
+    // On mobile, making sure the dropdown is as large as possible without hitting the right screen edge
+    max-width: calc(100vw - 3.5rem);
     border: 2px solid $blue;
     border-radius: 5px;
     font-size: 1.25rem;
@@ -397,7 +398,6 @@ section {
 
     img {
         max-width: 100%;
-        //margin-top: 5rem;
         width: 450px;
     }
 
