@@ -222,7 +222,7 @@ section {
     border-radius: 6px;
     background-color: white;
     margin-top: 1rem;
-    width: 75%;
+    width: 80%;
 
     .card-header {
         font-weight: 600;
@@ -233,7 +233,7 @@ section {
         border-radius: 4px;
         background-color: transparent;
         width: 100%;
-        padding: 0.625rem 1.25rem;
+        padding: 1rem 1.5rem;
         cursor: pointer;
         transition: all 0.25s, border-radius 0s;
         display: flex;
@@ -368,17 +368,18 @@ section {
 .team-info {
     display: none;
     justify-content: space-between;
+    flex-flow: row-reverse;
     align-items: center;
-    width: 75%;
+    width: 90%;
 
     img {
         max-width: 100%;
-        margin-top: 7.5rem;
-        width: 300px;
+        margin-top: 3rem;
+        width: 450px;
     }
 
     div {
-        margin-left: 2rem;
+        margin-right: 2rem;
         width: 50%;
     }
 }
@@ -396,7 +397,7 @@ section {
 
     img {
         max-width: 100%;
-        margin-top: 5rem;
+        //margin-top: 5rem;
         width: 450px;
     }
 
@@ -553,12 +554,11 @@ section {
         width: 100%;
 
         img {
-            margin: auto;
-            margin-bottom: 2rem;
+            margin: 2.5rem auto 2rem;
         }
 
         div {
-            margin-left: 0;
+            margin-right: 0;
             width: 100%;
         }
     }
