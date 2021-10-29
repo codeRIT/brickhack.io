@@ -1,166 +1,1940 @@
 
-// Vars
 
-:root {
-    --logo-height: 100px;
-    --main-margin: 30px; // flex gap not available in Safari :(
+// Variables
+$dark-blue: #1A305F;
+$blue: #2A407D;
+$light-blue: #465395;
+$red: #F1656E;
+$orange: #F9A56F;
+$pink: #FAC5BF;
+$light-gray: #a2a8cd;
+
+$nav-fontsize: 1.3em;
+$nav-height: 90px;
+
+$img-border-radius: 20px;
+
+// Clip width (here so it can cascade to media queries)
+$front-width: 30px;
+$back-width: 10px;
+
+$leadership-size: 220px;
+$leadership-size-mobile: 180px;
+$leadership-size-mobile-sm: 140px;
+
+// Just to make it more semantic
+$font-extrabold: 700;
+$font-bold: 600;
+$font-medium: 500;
+$font-regular: 400;
+
+// Size for all titles on page
+$title-size: 3em;
+
+// Import carousel
+@import '../node_modules/slick-carousel/slick/slick.css';
+@import '../node_modules/slick-carousel/slick/slick-theme.css';
+
+// Mixins
+@mixin button {
+    background-color: $red;
+    text-decoration: none;
+    user-select: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    @include button-effect($red);
 }
 
-// Element styles
+@mixin button-effect($color) {
+    transition: 0.2s all;
+    &:hover {
+        background-color: lighten($color, 5%);
+    }
+    &:active {
+        transform: translateY(4px);
+    }
+}
 
+// Functions for random color selection (hero)
+@function rand-color($colors...) {
+    @return nth($colors, random(length($colors)))
+}
+
+
+// General
 * {
-    box-sizing: border-box;
-}
-
-html, body {
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    // Transition all elements on the screen
+    // (except FAQ panel, which has conflicting transitions)
+    &:not(.panel) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
+    }
+
 }
 
 body {
-    background-color: #c0c0c0;
-    transform: scale(1.5);
-    transform-origin: center;
+    background-color: $light-blue;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 p {
-    // Reuse font from the library for p elements
-    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: 1.3em;
 }
 
-footer {
-    width: 60%;
-    position: absolute;
-    bottom: 20%; // From webpage scale
-    right: 0;
-    left: 0;
-    margin: 0 auto;
-    text-align: center;
+// Padding for all sections where needed
+// (modified on media queries only)
+.section-pad {
+    padding: 140px;
 }
 
-// Section styles
+.section-pad-top {
+    padding-top: 140px;
+}
 
-#main {
+.section-pad-left {
+    padding-left: 140px;
+}
+
+
+// Nav
+nav {
+    background-color: rgba(#5864a5, 80%);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    // calc() seems to require var+const in that order
-    margin-top: calc((var(--logo-height) * -1) + var(--main-margin));
-}
-
-#logo {
-    width: var(--logo-height);
-    height: var(--logo-height);
-}
-
-#secret-message {
-    position: absolute;
-    margin-top: 50px;
-    z-index: 1;
-}
-
-.window {
-    max-width: 300px;
-    margin: var(--main-margin) auto;
-    position: relative;
+    justify-content: space-between;
+    font-size: $nav-fontsize;
+    height: $nav-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 5;
 
-    .title-bar:hover {
-        cursor: grab;
-    }
-}
-
-.field-row-stacked {
-    input {
-        width: 150px;
+    .left, .right {
+        display: flex;
+        align-items: center;
     }
 
-    button {
-        margin: 0;
+    a {
+        padding: 0px 5px;
         margin-left: 10px;
-        height: 21px; // Match the text box, hardcoded in the library :(
-        min-height: 0px;
-    }
-}
-
-#badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    img {
-        margin: 0 calc(var(--main-margin) / 2);
-        background-color: #333;
-        height: 31px;
-        color: #333;
-        width: 88px;
-    }
-}
-
-.text-break {
-    display: inline-block;
-}
-
-// Media queries
-
-// Opposite of the one below to target
-// !media query
-@media screen and (min-width: 500px),
-       screen and (min-height: 750px) {
-    #main {
-        height: 100%;
-    }
-}
-
-@media screen and (max-width: 500px),
-       screen and (max-height: 750px) {
-    :root {
-        --main-margin: 10px;
     }
 
-    .window {
-        max-width: 250px;
-    }
+    .link {
+        border: 3px rgba(white, 0);
+        border-style: solid none;
+        transition: all 0.2s;
 
-    #badges {
-        width: 70%;
-
-        img {
-            margin-bottom: var(--main-margin);
+        &:not(:focus):hover, &.active {
+            // underline upon hover, disable hover upon click
+            border-bottom-color: rgba(white, 1);
         }
     }
 
-    #buttons {
-        gap: 5px;
+    #login {
+        @include button;
+    }
+
+    #logo {
+        height: $nav-height;
+        align-self: flex-start;
+
+        img {
+            width: $nav-height;
+            height: $nav-height;
+            position: relative;
+            bottom: 0;
+            top: 0;
+        }
+    }
+
+    #mlh-badge {
+        align-self: flex-start;
+        width: 100px;
+        height: 0;
     }
 }
 
-@media screen and (max-width: 400px) {
-    .window {
-        max-width: 220px;
+#hero {
+    // SASS needs to parse variable value inline
+    height: 100vh;
+    background-color: $light-blue;
+    position: relative;
+    overflow: hidden;
+
+    #hero-content {
+        height: calc(100vh - #{$nav-height});
+        margin-top: $nav-height;
+        display: flex;
+        z-index: 4;
+        position: relative;
+    }
+
+    #hero-text {
+        z-index: 2;
+        white-space: nowrap;
+        margin-top: 13%;
+    }
+
+    p {
+        // This lets the different h elements
+        // appear to be equally spaced.
+        line-height: 0.7;
+        margin-bottom: 40px;
+    }
+
+    #bh7 {
+        font-size: 6em;
+        font-weight: $font-extrabold;
+    }
+
+    #dates {
+        font-size: 2em;
+        font-weight: $font-extrabold;
+    }
+
+    #action-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+
+        #register, #discord {
+            @include button;
+            font-size: 2.3em;
+            width: 48%;
+            text-align: center;
+        }
+
+        #discord {
+            background-color: $dark-blue;
+            &:hover {
+                background-color: lighten($dark-blue, 5%);
+            }
+        }
+    }
+
+    // Hero Graphics
+    #desk-container {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+
+        #desk, #lamp-wire {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-position: bottom right;
+        }
+
+        #desk {
+            background-image: url("../assets/hero/desk1.svg");
+            background-repeat: no-repeat;
+            z-index: 3;
+        }
+
+        #lamp-wire {
+            background-size: auto;
+            background-image: url("../assets/hero/lamp-wire.svg");
+            background-repeat: repeat-y;
+        }
+    }
+
+    #shelf {
+        position: absolute;
+        width: 100%;
+        height: 25%;
+        left: 0;
+        right: 0;
+        bottom: -20px; // Crop SVG slightly
+        background-image: url("../assets/hero/shelf.svg");
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: cover;
+        z-index: 4;
+    }
+
+    #shapes {
+        position: absolute;
+        right: 0;
+        height: 110%;
+        width: 900px;
+        margin-top: -80px;
+        background-image: url("../assets/hero/shapes.svg");
+        background-repeat: no-repeat;
+        background-position: 100% 30%;
+        background-size: 900px;
+        z-index: 1;
     }
 }
 
-@media screen and (max-height: 750px) {
-    html, body {
+
+#hackathon {
+    background-color: $dark-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .carousel {
+        width: 100%;
+        margin: 0 auto;
+
+        .slick-list {
+            // Slider depends on having the overflow-x hidden,
+            // CSS (per spec) doesn't allow separate overflow-y and x.
+            // So, we add some padding to cheat it.
+            // (https://css-tricks.com/popping-hidden-overflow/)
+            padding-top: 60px !important; // Overrides slick.css
+            margin-top: -60px;
+            overflow: hidden;
+        }
+
+        .slick-slide {
+            $slide-size: 300px;
+            height: $slide-size;
+            margin-right: 20px; // Same margin as wire top calculation
+
+            &:focus {
+                outline: none;
+            }
+
+            .wire {
+                position: absolute;
+                width: 200%;
+                margin: 0;
+                height: 15px;
+                background: $pink;
+                top: -(15px + 20px); // Emphasize 20px margin on 15px height
+                z-index: 2;
+            }
+
+            // Offset clips above the carousel image
+            // Pos: abs because pos: rel causes the two clips,
+            // despite having different offsets,
+            // to interfere with each other when trying to adjust their offset.
+            .front-clip, .back-clip {
+                position: absolute;
+                top: -60px;
+            }
+
+            .front-clip {
+                // Front clip: center left edge, then center the clip itself.
+                margin-left: ($slide-size / 2) - ($front-width / 2);
+                width: $front-width;
+                height: 80px;
+                background-color: $orange;
+                z-index: 3;
+            }
+
+            .back-clip {
+                width: $back-width;
+                height: 60px;
+                background-color: $red;
+                // Back clip: center left edge, then center the clip itself,
+                // then do left offset from top clip
+                margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
+                margin-top: 10px; // Vertical offset from top clip
+                z-index: 0;
+            }
+
+            img {
+                position: relative;
+                top: 0;
+                width: $slide-size;
+                height: $slide-size;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+                z-index: 2;
+
+                &:hover {
+                    filter: brightness(125%);
+                }
+            }
+        }
+
+        .slick-arrow {
+            width: 60px;
+            height: 60px;
+            background-color: $blue;
+            border: 2px solid #A3A9CA;
+            box-sizing: border-box;
+            border-radius: 50%;
+            // slick-theme has a transform we don't need!
+            transform: none;
+            @include button-effect($blue);
+        }
+
+        // Make sure these appear over the slides!
+        .slick-prev, .slick-next {
+            z-index: 3;
+        }
+
+        // Use FontAwesome as pseudo-element so we don't
+        // have to fork slick-carousel.
+        // (https://fontawesome.com/how-to-use/on-the-web/advanced/css-pseudo-elements)
+        .slick-prev::before, .slick-next::before {
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        .slick-prev {
+            left: 1%;
+
+            &::before {
+                content: "\f060";
+            }
+        }
+
+        .slick-next {
+            right: 1%;
+
+            &::before {
+                content: "\f061";
+            }
+        }
+
+    }
+
+    // Note that older versions of iOS (<14?)
+    // require `cursor: pointer` to be set
+    // in order for click events to be captured
+    // by our intended HTML (here, #modal).
+    // The cursor is reset on the #modal-content,
+    // as on desktop, no action is possible on the image.
+    // https://stackoverflow.com/a/16006333/1431900
+    #modal {
+        display: none;
+        position: fixed;
+        cursor: pointer;
+        z-index: 100;
+        padding: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(black, 0.9);
+    }
+
+    #modal-content {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        cursor: default;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0); }
+        to   { transform: scale(1); }
+    }
+
+    #close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color:white;
+        font-size: 1.5em;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    #close:hover,
+    #close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    #hackathon-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #hackathon-text {
+            width: 60%;
+        }
+    }
+
+    #hackathon-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 0px auto;
+        align-items: flex-start;
+
+        a {
+            @include button;
+            @include button-effect($light-blue);
+            display: flex;
+            align-items: center;
+            background-color: $light-blue;
+            margin: 20px 0px;
+            padding: 30px;
+            border-radius: $img-border-radius;
+            width: 100%;
+        }
+
+        p {
+            margin: 0px;
+            font-size: 1.2em;
+            font-weight: $font-medium;
+        }
+
+        i.fa-arrow-right, i.fa-images {
+            font-size: 1.6em;
+            color: $red;
+            padding-right: 10px;
+        }
+    }
+}
+
+#prizes {
+    h1 {
+        font-size: $title-size;
+        margin-bottom: 40px;
+    }
+
+    #prizes-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        max-width: 1600px;
+        margin: 0 auto;
+
+        #ricky-confetti {
+            align-self: flex-end;
+            width: 30%;
+
+            img {
+                max-height: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        #prizes-container {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-left: 40px;
+
+            .prize {
+                background-color: white;
+                padding: 35px;
+                border-radius: $img-border-radius;
+                margin-bottom: 30px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                // Sequentially assign colors to all elements
+                $colors: $light-gray, $orange;
+                @for $i from 1 through 4 {
+                    &:nth-child(#{$i}) {
+                        border-top: 10px solid nth($colors, $i % length($colors) + 1);
+                    }
+                }
+
+                p, strong {
+                    color: $blue;
+                }
+            }
+        }
+    }
+
+
+}
+
+#faq {
+    background-color: $dark-blue;
+    #faq-wrapper {
+        h1 {
+            font-size: $title-size;
+            margin-bottom: 40px;
+        }
+        #faq-cards {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+
+            // TODO: This can be cleaner.
+            $card-m: 20px;
+            &-left {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-right: $card-m / 2;
+            }
+            &-right {
+                width: calc(50% - (#{$card-m} / 2));
+                margin-left: $card-m / 2;
+            }
+            .card {
+                width: 100%;
+                margin-bottom: $card-m;
+                border-radius: 7px;
+                background-color: $light-blue;
+                @include button-effect($light-blue);
+                &:active {
+                    transform: none;
+                }
+                .accordion-header {
+                    background-color: transparent;
+                    cursor: pointer;
+                    outline: none;
+                    text-align: left;
+                    padding: 20px 30px;
+                    border: none;
+                    width: 100%;
+                    font-size: $nav-fontsize;
+
+                    .fa-plus, .fa-minus {
+                        margin-right: 10px;
+                    }
+                    .fa-plus {
+                        &-red    { color: $red; }
+                        &-pink   { color: $pink; }
+                        &-orange { color: $orange; }
+                    }
+                    .fa-minus {
+                        color: $blue;
+                    }
+                }
+                .panel {
+                    display: none; // Toggled in JS
+                    margin-top: -30px;
+                    padding: 20px 30px;
+                    font-size: 0.8em;
+                    // Align w/ header text, not sure if this can be made cleaner.
+                    margin-left: 35px;
+
+                    p, em {
+                        color: $dark-blue;
+                        line-height: 23px;
+                        margin-bottom: 10px;
+                    }
+                    a {
+                        color: $red;
+                    }
+                }
+            }
+            .active {
+                background-color: white;
+
+                // Need to explicitly set for some reason
+                .accordion-header, .panel {
+                    color: $dark-blue;
+                }
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+        .contact {
+            a {
+                text-transform: uppercase;
+                color: $red;
+                font-weight: $font-bold;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        #contact-desktop {
+            display: block;
+        }
+        #contact-laptop {
+            display: none;
+        }
+    }
+}
+
+#schedule {
+    background-color: $blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #schedule-block {
+        // TODO: make margin consistent across other element
+        margin: 90px auto 0px auto;
+        width: 1000px;
+        background-color: $light-blue;
+        border-radius: $img-border-radius;
+        position: relative;
+    }
+
+    #binder-container {
+        left: 0;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: -40px; // 1/2 of .binder-ring width
+
+        .binder-rings {
+            display: flex;
+            flex-direction: column;
+
+            .binder-ring {
+                height: 20px;
+                width: 80px;
+                border-radius: $img-border-radius;
+                background-color: $red;
+
+                &:last-child {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+    #schedule-tabs {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: -50px; // -height (without 5px for translateY)
+        position: absolute;
+        width: 100%;
+        padding-right: 30px; // tabs have room on border radius of schedule block
+
+        .schedule-tab {
+            font-weight: bold;
+            padding: 10px 20px;
+            height: 50px;
+            &:not(:first-child) {
+                margin-left: 20px;
+            }
+            border-top-left-radius: $img-border-radius;
+            border-top-right-radius: $img-border-radius;
+            user-select: none;
+            cursor: pointer;
+            animation: tab-hover-out 0.2s;
+
+            // Separate in/out so transitions happen at exact same time
+            // z-index does not work due to layout
+            @keyframes tab-hover-in {
+                from {
+                    transform: translateY(0px);
+                    height: 50px;
+                }
+                to {
+                    transform: translateY(-10px);
+                    height: 60px;
+                }
+            }
+
+            @keyframes tab-hover-out {
+                from {
+                    transform: translateY(-10px);
+                    height: 60px;
+                }
+                to {
+                    transform: translateY(0px);
+                    height: 50px;
+                }
+            }
+
+            &:hover {
+                animation: tab-hover-in 0.2s;
+                animation-fill-mode: forwards;
+            }
+
+            p {
+                color: $dark-blue;
+            }
+        }
+
+        .schedule-tab-active {
+            transform: translateY(-10px);
+            height: 60px;
+            animation: none;
+
+            &:hover {
+                animation: none;
+            }
+        }
+
+        // Specific tab styling
+        .pre-event {
+            background-color: $red;
+        }
+
+        .feb-20 {
+            background-color: $orange;
+        }
+
+        .feb-21 {
+            background-color: $light-gray;
+        }
+    }
+
+    #schedule-content-wrapper {
+        #feb-20-content, #feb-21-content {
+            display: none; // Hide the two other events by default
+
+            // A little less than the style put just below the #schedule-content-wrapper
+            .schedule-content {
+                padding-bottom: 20px;
+            }
+
+            .events {
+                height: 370px;
+                padding-bottom: 10px;
+                overflow: hidden;
+            }
+        }
+
+        #feb-20-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $orange;
+                }
+            }
+        }
+
+        #feb-21-content {
+            .show-full-schedule, .hide-full-schedule {
+                i {
+                    color: $light-gray;
+                }
+            }
+        }
+
+        // Part of the above content ids
+        // but specificity is counterproductive to mobile styling
+        .show-full-schedule, .hide-full-schedule {
+            bottom: 0;
+            text-align: right;
+            margin-right: 20%; // TODO: make more aligned with right of events
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            cursor: pointer;
+
+            p {
+                font-size: 1.3em;
+                user-select: none;
+            }
+
+            i {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        }
+
+        .hide-full-schedule {
+            display: none;
+        }
+
+    }
+
+    .schedule-content {
+        display: flex;
+        justify-content: space-around;
+        padding: 60px 100px;
+    }
+
+    // Normal events
+    .days {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        user-select: none;
+        color: white;
+    }
+
+    .day {
+        .number {
+            font-size: 6.2em;
+            font-weight: $font-bold;
+            line-height: 0.9; // TODO: Can this be done cleaner?
+        }
+
+        .name {
+            font-size: 1.6em;
+            font-weight: $font-regular;
+        }
+    }
+
+    .events {
+        width: 60%;
+
+        // Sequentially assign colors to all elements
+        .event:nth-child(3n) {
+            border-top: 10px solid $red;
+        }
+        .event:nth-child(3n + 1) {
+            border-top: 10px solid $orange;
+        }
+        .event:nth-child(3n + 2) {
+            border-top: 10px solid $light-gray;
+        }
+
+        .event {
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            position: relative;
+            box-shadow: 0px 0px 20px -5px rgba($dark-blue, 1);
+
+            &:not(:first-child) {
+                margin: 10px 0px;
+            }
+
+            &.past {
+                background-color: #bfbfbf;
+            }
+
+            .time {
+                color: $light-blue;
+            }
+
+            .title {
+                color: black;
+                font-size: 1.2em;
+            }
+
+            .marker {
+                $marker-width: 20px;
+
+                border-bottom: 2px solid $red;
+                border-top: 2px solid $red;
+                position: absolute;
+                left: -25px;
+                right: 0;
+                top: 0;
+
+                &::before {
+                    content: "";
+                    background-color: $red;
+                    border-radius: 50%;
+                    position: absolute;
+                    bottom: -($marker-width / 2);
+                    left: -($marker-width / 2);
+                    height: $marker-width;
+                    width: $marker-width;
+                }
+            }
+        }
+    }
+
+    // Note that pre-event style overrides default schedule content styling
+    #pre-event-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: none;
+
+        .day-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .day .number {
+            margin-bottom: -5px;
+            margin-top: 10px;
+        }
+
+        .event {
+            margin: 0;
+        }
+
+        // Coordinate color with day on left and event border on top
+        .pre-16 {
+            .event {
+                border-top-color: $red;
+            }
+
+            h2, h6 {
+                color: $red;
+            }
+        }
+
+        .pre-17 {
+            .event {
+                border-top-color: $orange;
+            }
+
+            h2, h6 {
+                color: $orange;
+            }
+        }
+
+        .pre-18 {
+            .event {
+                border-top-color: $pink;
+            }
+
+            h2, h6 {
+                color: $pink;
+            }
+        }
+
+        .pre-19 {
+            .event {
+                border-top-color: $light-gray;
+            }
+
+            h2, h6 {
+                color: white;
+            }
+        }
+    }
+
+}
+
+#leadership {
+    background-color: $blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    #leaders {
+        // Grid is easier than flex here
+        display: grid;
+        grid-template-columns: repeat(5, $leadership-size);
+        gap: 50px;
+        justify-items: center;
+        justify-content: center;
+
+        .leader {
+            width: $leadership-size;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+
+            img {
+                border-radius: $img-border-radius;
+                width: $leadership-size;
+                height: $leadership-size;
+            }
+
+            .leader-tape {
+                position: relative;
+                margin: 0px auto -10px auto;
+                height: 20px;
+                width: 50%;
+                background-color: rgba($red, 60%);
+            }
+
+            .nowrap {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+#sponsors {
+    background-color: $light-blue;
+
+    h1 {
+        font-size: $title-size;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 2.5em;
+        color: $red;
+    }
+
+    #sponsor-grid, #partner-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #partner-grid {
+        .logo, .logo img {
+            width: 150px;
+        }
+    }
+
+    .logo {
+        margin: 40px;
+        background-repeat: no-repeat;
+
+        // Hover effect that sets opacity: 0
+        // is applied in the @meida (hover: hover) query
+        // due to mobile devices having a sticky hover
+        // (more details in the @media query)
+        img {
+            transition: opacity 0.1s;
+            opacity: 1;
+        }
+
+    }
+
+    // Different sponsors get different size logos
+    .brick .logo {
+        width: 500px;
+
+        // Their logo is a little too big...
+        &.cbrands {
+            width: 400px;
+        }
+    }
+
+    .gold .logo {
+        width: 300px;
+    }
+
+    // Sponsor logo color version being set on hover
+    // is also done in the @media(hover: hover) query
+    // for the same reason as above.
+
+    #prospectus {
+        margin-top: 20px;
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            color: $red;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    height: 300px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 20px;
+    background-image: url("../assets/footer/footer.svg");
+    background-repeat: repeat no-repeat;
+    background-position: bottom center;
+    background-size: auto 300px;
+    overflow-x: clip;
+
+    #footer-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 235px;
+        margin: auto;
+        padding: 15px;
+        text-align: center;
+
+        h2 {
+            margin-top: -5px;
+            margin-bottom: -5px;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        // FA brand icons
+        i {
+            font-size: 3em;
+            padding: 0px 5px;
+        }
+
+        a {
+            display: inline-block;
+            transition: 0.2s;
+
+            &:hover {
+                color: $red;
+
+                i {
+                    transform: translateY(-4px);
+                }
+            }
+            i {
+                transition: 0.2s;
+            }
+        }
+    }
+}
+
+// idk lol
+footer#end-footer {
+    position: absolute;
+}
+
+// Event things
+#end-main {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-top: $nav-height;
+    top: 0;
+    position: absolute;
+
+    #thank-you-container, #ricky-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    #thank-you-container {
+        width: 40%;
+
+        h1 {
+            font-size: 4em;
+        }
+
+        a {
+            color: $red;
+            margin-top: 20px;
+            font-size: 1.3em;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    #ricky-container {
+        width: 60%;
+        object-fit: scale-down;
         height: auto;
-        overflow-y: auto;
+        display: flex;
+        align-items: d;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+
+// Media queries for mobile
+
+
+// Mobile has sticky hover,
+// so special hover effects need to go in here.
+// https://css-tricks.com/solving-sticky-hover-states-with-media-hover-hover/
+@media (hover: hover) {
+    #sponsors {
+        .logo:hover img {
+            opacity: 0;
+        }
+
+        // Show color version of logo on hover
+        // only possible when done via CSS background-img
+        // to be supported on all browsers.
+        .cbrands:hover {
+            background-image: url("/assets/sponsors/logos/cbrands.svg");
+        }
+
+        .mttech:hover {
+            background-image: url("/assets/sponsors/logos/mttech.svg");
+        }
+
+        .wegmans:hover {
+            background-image: url("/assets/sponsors/logos/wegmans.svg");
+        }
+
+        .readme:hover {
+            background-image: url("/assets/sponsors/logos/readme.svg");
+        }
+
+        .dolbyio:hover {
+            background-image: url("/assets/sponsors/logos/dolbyio.svg");
+        }
+
+        .northrop:hover {
+            background-image: url("/assets/sponsors/logos/northrop.svg");
+        }
+
+        .pinnacle:hover {
+            background-image: url("/assets/sponsors/logos/pinnacle.svg");
+        }
+
+        .mlh:hover {
+            background-image: url("/assets/sponsors/logos/mlh.svg");
+        }
+
+        .stickermule:hover {
+            background-image: url("/assets/sponsors/logos/stickermule.svg");
+        }
+
+        .simonecenter:hover {
+            background-image: url("/assets/sponsors/logos/simonecenter.svg");
+        }
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    nav {
+        #mlh-badge {
+            width: 140px;
+        }
     }
 
-    body {
-        transform-origin: top;
+    #hero {
+        #register {
+            font-size: 2.3em;
+        }
+    }
+}
+
+@media screen and (max-width: 1630px) {
+
+    #leadership #leaders {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+
+    .section-pad {
+        padding: 80px;
     }
 
-    #main {
-        margin-top: var(--main-margin);
+    .section-pad-top {
+        padding-top: 80px;
+    }
+
+    .section-pad-left {
+        padding-left: 80px;
+    }
+
+    #hero {
+        #bh7 {
+            font-size: 5.0em;
+        }
+
+        #shapes {
+            right: -100px;
+        }
+
+        #desk-container {
+            #desk, #lamp-wire {
+                background-position: calc(100% + 100px) bottom;
+            }
+        }
+
+        #shelf {
+            height: 250px;
+            overflow: hidden;
+        }
+    }
+
+    #hackathon {
+        .carousel {
+            .slick-slide {
+                $slide-size: 250px;
+                height: $slide-size;
+
+                .front-clip {
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
+                }
+
+                .back-clip {
+                    $back-width: 10px;
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width;
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+                }
+            }
+        }
+
+        #hackathon-content {
+            flex-direction: column;
+
+            #hackathon-text {
+                width: 100%;
+            }
+        }
+
+        #hackathon-buttons {
+            flex-direction: row;
+            justify-content: center;
+            width: 70%;
+
+            a {
+                margin: 10px;
+            }
+        }
+    }
+
+    #faq #faq-wrapper {
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+        }
+
+        #contact-desktop {
+            display: none;
+        }
+
+        #contact-laptop {
+            display: block;
+        }
+    }
+
+    #schedule #schedule-block {
+        width: 90%;
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(5, $leadership-size-mobile);
+        justify-content: space-between;
+        width: 100%;
+        gap: 30px;
+
+        .leader {
+            width: $leadership-size-mobile;
+
+            img {
+                width: $leadership-size-mobile;
+                height: $leadership-size-mobile;
+            }
+        }
+    }
+
+    #end-main {
+        flex-direction: column-reverse;
+        width: 100%;
+
+        #thank-you-container {
+            width: 100%;
+        }
+
+        #thank-you-container h1 {
+            width: 100%;
+            font-size: 3em;
+            margin-top: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 1220px) {
+
+    #hero {
+        #dates {
+            font-size: 1.5em;
+        }
+
+        #action-buttons {
+            width: 70%;
+
+            #register, #discord {
+                font-size: 1.7em;
+            }
+        }
+    }
+
+    #hackathon #hackathon-content #hackathon-buttons {
+        width: 100%;
+    }
+
+    #hero {
+        #desk-container {
+            right: -100px;
+
+            #desk, #lamp-wire {
+                background-position: right bottom;
+            }
+        }
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(4, $leadership-size-mobile);
+        justify-content: space-between;
+    }
+
+    #prizes #prizes-wrapper {
+        #prizes-container {
+            .prize {
+                padding: 20px;
+
+                p, strong {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+
+    #sponsors {
+        #sponsor-grid, #partner-grid {
+            flex-wrap: wrap;
+        }
+
+        #partner-grid {
+            .logo, .logo img {
+                width: 150px;
+            }
+        }
+
+        // Different sponsors get different size logos
+        .brick .logo {
+            width: 350px;
+
+            // Their logo is a little too big...
+            &.cbrands {
+                width: 300px;
+            }
+        }
+
+        .gold .logo {
+            width: 200px;
+        }
+
+        #prospectus {
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 955px) {
+
+    // Redefine only for mobile
+    $nav-height: 60px;
+
+    nav {
+        height: $nav-height;
+        position: absolute;
+
+        #logo img {
+            width: $nav-height;
+            height: $nav-height;
+        }
+
+        #mlh-badge {
+            width: 90px;
+        }
+
+        .link {
+            display: none;
+        }
+
+        #login {
+            padding: 8px 30px;
+            margin: 0;
+            font-size: 0.8em;
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    h1:not(.end-h1), section > p {
+        text-align: center;
+    }
+
+    #leadership h1, #faq #faq-wrapper h1, #schedule h1, #hackathon h1 {
+        font-size: 2.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .section-pad {
+        padding: 40px;
+    }
+
+    .section-pad-top {
+        padding-top: 30px;
+    }
+
+    .section-pad-left {
+        padding: 20px;
+    }
+
+
+    #hero {
+        #hero-content {
+            height: calc(100vh - #{$nav-height});
+        }
+
+        #bh7 {
+            font-size: 4.2em;
+        }
+
+        #hero-text {
+            margin-top: 10vh;
+        }
+
+        #dates {
+            font-size: 1.5em;
+        }
+
+        #action-buttons {
+            width: 60%;
+
+            #register, #discord {
+                font-size: 1.2em;
+            }
+        }
+
+        #desk-container {
+            right: -200px;
+            width: 120%;
+        }
+
+        #shelf {
+            height: 200px;
+        }
+    }
+
+    #hackathon {
+        .carousel {
+            .slick-list {
+                margin-top: 0;
+            }
+
+            .slick-slide {
+                $front-width: 25px;
+                $back-width: 10px;
+                $slide-size: 200px;
+                height: $slide-size;
+
+                .front-clip, .back-clip {
+                    top: -50px;
+                }
+
+
+                .front-clip {
+                    margin-left: ($slide-size / 2) - ($front-width / 2);
+                    width: $front-width;
+                    height: 70px;
+                }
+
+                .back-clip {
+                    width: $back-width;
+                    margin-left: ($slide-size / 2) - ($front-width / 2) - $back-width; // Peek out from top clip
+                }
+
+                img {
+                    width: $slide-size;
+                    height: $slide-size;
+
+                    &:hover {
+                        filter: none;
+                    }
+                }
+            }
+
+        }
+
+        #hackathon-content #hackathon-buttons {
+            flex-direction: column;
+            width: 60%;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    #schedule {
+
+        #schedule-block {
+            width: 100%;
+        }
+
+        #schedule-tabs {
+            justify-content: center;
+            padding-right: 0;
+
+            .schedule-tab {
+                // Center tab is now always centered,
+                // prev. first and last tabs offset it
+                // because flex container has no set width
+                width: 130px;
+
+                p {
+                    text-align: center;
+                }
+            }
+        }
+
+        #binder-container {
+            display: none;
+        }
+
+        .schedule-content {
+            flex-direction: column;
+            padding: 20px;
+            align-items: center;
+
+            .day {
+                .number, .name {
+                    text-align: center;
+                }
+
+                .number {
+                    font-size: 4em;
+                }
+            }
+
+            .day-row {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .events {
+                width: 90%;
+
+                .event .title {
+                    font-size: 1em;
+                }
+            }
+
+        }
+
+        #schedule-content-wrapper {
+            .show-full-schedule, .hide-full-schedule {
+                justify-content: center;
+                margin: 0 auto;
+            }
+        }
+
+    }
+
+    #prizes #prizes-wrapper {
+        flex-direction: column;
+        max-height: 100%;
+
+        #ricky-confetti {
+            width: 55%;
+            margin: 0 auto;
+        }
+
+        #prizes-container {
+            width: 100%;
+            padding-left: 0;
+            margin-top: 30px;
+            .prize {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    #faq #faq-wrapper {
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+
+            .card {
+                .accordion-header {
+                    padding: 10px 20px;
+                    font-size: 1em;
+                }
+
+                .panel {
+                    padding: 20px;
+                    margin-left: 30px;
+                    padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
+
+                    p {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(3, $leadership-size-mobile);
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    #end-main #thank-you-container h1 {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .section-pad {
+        padding: 10px;
+    }
+
+    #hero {
+
+        p {
+            line-height: 0.4;
+            margin-bottom: 25px;
+        }
+
+        #bh7 {
+            font-size: 3em;
+        }
+
+        #dates {
+            font-size: 1em;
+        }
+
+        #action-buttons {
+            width: 80%;
+
+            #register, #discord {
+                font-size: 1.2em;
+            }
+        }
+
+        #desk-container {
+            right: -160px;
+            width: 160%;
+        }
+
+        #register {
+            @include button;
+            padding: 10px 40px;
+            font-size: 1.2em;
+        }
+
+    }
+
+    #hackathon {
+        .carousel .slick-arrow {
+            display: none !important; // Overrides slick.css
+        }
+
+        #hackathon-content {
+            margin: 0;
+            padding: 20px;
+
+            i {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            #hackathon-buttons {
+                width: 100%;
+            }
+        }
+    }
+
+
+    #schedule {
+        #schedule-tabs .schedule-tab {
+            width: 80px;
+            font-size: 0.8em;
+
+            &:not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        .schedule-content .events {
+            width: 100%;
+        }
+    }
+
+    #faq #faq-wrapper {
+        // Only center the "contact" string in the FAQ
+        a {
+            white-space: nowrap;
+        }
+
+        .contact  {
+            text-align: center;
+        }
+    }
+
+    #prizes #prizes-wrapper #ricky-confetti {
+        width: 65%;
+    }
+
+    #leadership #leaders {
+        grid-template-columns: repeat(2, $leadership-size-mobile-sm);
+
+        .leader {
+            width: $leadership-size-mobile-sm;
+
+            img {
+                width: $leadership-size-mobile-sm;
+                height: $leadership-size-mobile-sm;
+            }
+        }
     }
 
     footer {
-        position: relative;
+        height: 200px;
+        background-size: auto 200px;
+
+        #footer-content {
+            height: 157px;
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.8em;
+            }
+
+            i {
+                font-size: 2em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+
+    #hero #dates {
+        font-size: 1.2em;
     }
 }
