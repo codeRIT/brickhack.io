@@ -1,17 +1,13 @@
 // Variables
 // Colors
-$dark-blue: #081646;
+$dark-blue: #193787;
 $blue: #1447C8;
 $light-blue: #44C6E6;
 $off-white: #F6F8FA;
+$black: #081646;
 $orange: #FF9C4A;
-// OLD COLORS
-$red: #F1656E;
-$pink: #FAC5BF;
-$light-gray: #a2a8cd;
 
 // Nav Variables
-$nav-fontsize: 1.3em;
 $nav-height: 90px;
 
 // Typography
@@ -29,87 +25,106 @@ $title-size: 3em;
     text-align: center;
     display: inline-block;
     color: $off-white;
+    font-size: 1.25rem;
     cursor: pointer;
-    @include button-effect($blue);
+    @include button-effect;
+
+    &:hover {
+        background-color: $dark-blue;
+    }
+
+    @media screen and (max-width: 900px) {
+        font-size: 1em;
+    }
 }
 
 @mixin button-secondary {
+    @include button-primary;
     background-color: white;
-    text-decoration: none;
-    user-select: none;
-    padding: 1rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    text-align: center;
-    display: inline-block;
     color: $blue;
     border: 2px solid $blue;
-    cursor: pointer;
-    @include button-effect($blue);
+
+    &:hover {
+        color: $off-white;
+    }
 }
 
-@mixin button-effect($color) {
+@mixin button-effect {
     transition: 0.2s all;
-    &:hover {
-        background-color: lighten($color, 5%);
-        border-color: lighten($color, 5%);
-    }
+
     &:active {
         transform: translateY(4px);
     }
 }
 
 
-//HERE
-// General
+// General Styles
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Work Sans', sans-serif;
+
     // Transition all elements on the screen
     // (except FAQ panel, which has conflicting transitions)
     &:not(.panel) {
         transition-duration: 1s;
         transition-property: margin, padding, width, font-size;
     }
-
 }
 
 body {
-    background-color: $light-blue;
+    background-color: $off-white;
 }
 
-a {
-    text-decoration: none;
-    color: white;
+// Typography
+h1 {
+    font-size: 4rem;
+    font-weight: normal;
+    padding-bottom: 2rem;
+    font-family: 'Sora', sans-serif;
+    margin-left: -5px;
+    color: $black;
+}
+
+h2 {
+    font-size: 2.25rem;
+    font-weight: normal;
+    padding-bottom: 1rem;
+    font-family: 'Sora', sans-serif;
+    color: $black;
 }
 
 p {
-    font-size: 1.3em;
-}
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    padding-bottom: 1rem;
+    color: $black;
 
-// Padding for all sections where needed
-// (modified on media queries only)
-.section-pad {
-    padding: 140px;
-}
+    &:last-child {
+        padding-bottom: 0;
+    }
 
-.section-pad-top {
-    padding-top: 140px;
-}
+    a {
+        text-decoration: none;
+        color: $blue;
+        border-bottom: 2px solid $blue;
 
-.section-pad-left {
-    padding-left: 140px;
+        &:hover, &:focus, &:active {
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
 }
 
 
 // Nav
 nav {
-    background-color: rgba(#5864a5, 80%);
+    background-color: white;
+    border-bottom: 2px solid rgba($light-blue, 25%);
     display: flex;
     justify-content: space-between;
-    font-size: $nav-fontsize;
+    font-size: 1.25rem;
     height: $nav-height;
     position: fixed;
     top: 0;
@@ -123,24 +138,26 @@ nav {
     }
 
     a {
-        padding: 0px 5px;
-        margin-left: 10px;
+        margin-left: 2em;
+        text-decoration: none;
+        color: $blue;
+        font-family: 'Sora', sans-serif;
     }
 
     .link {
-        border: 3px rgba(white, 0);
-        border-style: solid none;
+        border-bottom: 2px solid $blue;
         transition: all 0.2s;
 
         &:not(:focus):hover, &.active {
             // underline upon hover, disable hover upon click
-            border-bottom-color: rgba(white, 1);
+            font-weight: bold;
         }
     }
 
     #logo {
         height: $nav-height;
         align-self: flex-start;
+        border: none;
 
         img {
             width: $nav-height;
@@ -158,87 +175,35 @@ nav {
     }
 }
 
-#hero {
-    // SASS needs to parse variable value inline
-    height: 100vh;
-    background-color: $light-blue;
-    position: relative;
-    overflow: hidden;
 
-    #hero-content {
-        height: calc(100vh - #{$nav-height});
-        margin-top: $nav-height;
-        display: flex;
-        z-index: 4;
-        position: relative;
-    }
-
-    #hero-text {
-        z-index: 2;
-        white-space: nowrap;
-        margin-top: 13%;
-    }
-
-    p {
-        // This lets the different h elements
-        // appear to be equally spaced.
-        line-height: 0.7;
-        margin-bottom: 40px;
-    }
-
-    #bh7 {
-        font-size: 6em;
-        font-weight: bold;
-    }
-
-    #dates {
-        font-size: 2em;
-        font-weight: bold;
-    }
-
-    #action-buttons {
-        display: flex;
-        justify-content: space-between;
-        width: 80%;
-
-        #register, #discord {
-            @include button-primary;
-            font-size: 2.3em;
-            width: 48%;
-            text-align: center;
-        }
-
-        #discord {
-            background-color: $dark-blue;
-            &:hover {
-                background-color: lighten($dark-blue, 5%);
-            }
-        }
-    }
+// Section padding
+section {
+    padding: 100px 5rem 0px; // Set up to avoid nav overlap when linked
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
 }
 
+// Hero
+#hero {
+
+}
+
+// HERE
+// About
 #about {
-    background-color: $dark-blue;
-
-    h1 {
-        font-size: $title-size;
-    }
-
-    p {
-        margin-bottom: 20px;
-    }
-
-    #hackathon-content {
+    #about-content {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        #hackathon-text {
+        #about-text {
             width: 60%;
         }
     }
 
-    #hackathon-buttons {
+    #about-buttons {
         display: flex;
         flex-direction: column;
         margin: 0px auto;
@@ -246,132 +211,102 @@ nav {
 
         a {
             @include button-secondary;
-            @include button-effect($blue);
             display: flex;
             align-items: center;
-            /*background-color: $blue;
             margin: 20px 0px;
-            padding: 30px;
-            border-radius: 20px;
-            width: 100%;*/
-        }
-
-        p {
-            margin: 0px;
-            font-size: 1.2em;
-            font-weight: medium;
+            width: 100%;
         }
 
         i.fa-arrow-right, i.fa-images {
             font-size: 1.6em;
-            color: $red;
+            color: $orange;
             padding-right: 10px;
         }
     }
 }
 
+
+// FAQ
 #faq {
-    background-color: $dark-blue;
-    #faq-wrapper {
-        h1 {
-            font-size: $title-size;
-            margin-bottom: 40px;
-        }
-        #faq-cards {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: space-between;
+    #faq-cards {
+        margin-top: 40px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
 
-            // TODO: This can be cleaner.
-            $card-m: 20px;
-            &-left {
-                width: calc(50% - (#{$card-m} / 2));
-                margin-right: $card-m / 2;
+        // TODO: This can be cleaner.
+        $card-m: 20px;
+
+        &-left {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-right: $card-m / 2;
+        }
+
+        &-right {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-left: $card-m / 2;
+        }
+
+        .card {
+            width: 100%;
+            margin-bottom: $card-m;
+            border-radius: 7px;
+            background-color: $light-blue;
+
+            @include button-effect;
+            &:active {
+                transform: none;
             }
-            &-right {
-                width: calc(50% - (#{$card-m} / 2));
-                margin-left: $card-m / 2;
-            }
-            .card {
+
+            .accordion-header {
+                background-color: transparent;
+                cursor: pointer;
+                outline: none;
+                text-align: left;
+                padding: 20px 30px;
+                border: none;
                 width: 100%;
-                margin-bottom: $card-m;
-                border-radius: 7px;
-                background-color: $light-blue;
-                @include button-effect($light-blue);
-                &:active {
-                    transform: none;
-                }
-                .accordion-header {
-                    background-color: transparent;
-                    cursor: pointer;
-                    outline: none;
-                    text-align: left;
-                    padding: 20px 30px;
-                    border: none;
-                    width: 100%;
-                    font-size: $nav-fontsize;
+                font-size: 1.25rem;
 
-                    .fa-plus, .fa-minus {
-                        margin-right: 10px;
-                    }
-                    .fa-plus {
-                        &-red    { color: $red; }
-                        &-pink   { color: $pink; }
-                        &-orange { color: $orange; }
-                    }
-                    .fa-minus {
-                        color: $blue;
-                    }
-                }
-                .panel {
-                    display: none; // Toggled in JS
-                    margin-top: -30px;
-                    padding: 20px 30px;
-                    font-size: 0.8em;
-                    // Align w/ header text, not sure if this can be made cleaner.
-                    margin-left: 35px;
-
-                    p, em {
-                        color: $dark-blue;
-                        line-height: 23px;
-                        margin-bottom: 10px;
-                    }
-                    a {
-                        color: $red;
-                    }
+                .fa-plus, .fa-minus {
+                    margin-right: 10px;
+                    color: $blue;
                 }
             }
-            .active {
-                background-color: white;
 
-                // Need to explicitly set for some reason
-                .accordion-header, .panel {
+            .panel {
+                display: none; // Toggled in JS
+                margin-top: -30px;
+                padding: 20px 30px;
+                font-size: 0.8em;
+                // Align w/ header text, not sure if this can be made cleaner.
+                margin-left: 35px;
+
+                p, em {
                     color: $dark-blue;
-                }
-                &:hover {
-                    background-color: white;
-                }
-            }
-        }
-        .contact {
-            a {
-                text-transform: uppercase;
-                color: $red;
-                font-weight: 600;
-                &:hover {
-                    text-decoration: underline;
+                    line-height: 23px;
+                    margin-bottom: 10px;
                 }
             }
         }
-        #contact-desktop {
-            display: block;
-        }
-        #contact-laptop {
-            display: none;
+
+        .active {
+            background-color: white;
+
+            // Need to explicitly set for some reason
+            .accordion-header, .panel {
+                color: $dark-blue;
+            }
+
+            &:hover {
+                background-color: white;
+            }
         }
     }
 }
 
+
+// Contact
 footer {
     width: 100%;
     height: 300px;
@@ -407,21 +342,19 @@ footer {
         i {
             font-size: 3em;
             padding: 0px 5px;
+            color: $blue;
         }
 
         a {
             display: inline-block;
             transition: 0.2s;
 
-            &:hover {
-                color: $red;
-
-                i {
-                    transform: translateY(-4px);
-                }
-            }
             i {
                 transition: 0.2s;
+            }
+
+            &:hover i {
+                transform: translateY(-4px);
             }
         }
     }
@@ -429,40 +362,25 @@ footer {
 
 
 // Media queries for mobile
-
 @media screen and (min-width: 1700px) {
-    nav {
-        #mlh-badge {
-            width: 140px;
-        }
+    // Nav
+    nav #mlh-badge {
+        width: 140px;
     }
 }
 
 @media screen and (max-width: 1500px) {
-
-    .section-pad {
-        padding: 80px;
-    }
-
-    .section-pad-top {
-        padding-top: 80px;
-    }
-
-    .section-pad-left {
-        padding-left: 80px;
-    }
-
+    // About
     #about {
-
-        #hackathon-content {
+        #about-content {
             flex-direction: column;
 
-            #hackathon-text {
+            #about-text {
                 width: 100%;
             }
         }
 
-        #hackathon-buttons {
+        #about-buttons {
             flex-direction: row;
             justify-content: center;
             width: 70%;
@@ -473,41 +391,31 @@ footer {
         }
     }
 
-    #faq #faq-wrapper {
-        #faq-cards {
-            flex-direction: column;
+    // FAQ
+    #faq #faq-cards {
+        flex-direction: column;
 
-            &-left, &-right {
-                margin: 0;
-                width: 100%;
-            }
-        }
-
-        #contact-desktop {
-            display: none;
-        }
-
-        #contact-laptop {
-            display: block;
+        &-left, &-right {
+            margin: 0;
+            width: 100%;
         }
     }
 }
 
 @media screen and (max-width: 1220px) {
-
-    #about #hackathon-content #hackathon-buttons {
+    // About
+    #about #about-content #about-buttons {
         width: 100%;
     }
 }
 
 @media screen and (max-width: 955px) {
-
-    // Redefine only for mobile
+    // Redefining nav height for mobile
     $nav-height: 60px;
 
+    // Nav
     nav {
         height: $nav-height;
-        position: absolute;
 
         #logo img {
             width: $nav-height;
@@ -522,37 +430,32 @@ footer {
             display: none;
         }
     }
+
+    // Section padding
+    section {
+        padding: 75px 3.5rem 0px; // Set up to avoid nav overlap when linked
+    }
 }
 
 @media screen and (max-width: 900px) {
-
-    h1:not(.end-h1), section > p {
+    // Typography
+    h1 {
         text-align: center;
-    }
-
-    #faq #faq-wrapper h1, #about h1 {
         font-size: 2.5em;
     }
 
-    p {
+    section > p {
+        text-align: center;
         font-size: 1em;
     }
 
-    .section-pad {
-        padding: 40px;
-    }
+    // About
+    #about #about-content {
+        p {
+            font-size: 1em;
+        }
 
-    .section-pad-top {
-        padding-top: 30px;
-    }
-
-    .section-pad-left {
-        padding: 20px;
-    }
-
-    #about {
-
-        #hackathon-content #hackathon-buttons {
+        #about-buttons {
             flex-direction: column;
             width: 60%;
 
@@ -562,34 +465,29 @@ footer {
         }
     }
 
-    #faq #faq-wrapper {
+    #faq #faq-cards {
+        margin-top: 20px;
+        flex-direction: column;
 
-        h1 {
-            margin-bottom: 20px;
+        &-left, &-right {
+            margin: 0;
+            width: 100%;
         }
 
-        #faq-cards {
-            flex-direction: column;
-
-            &-left, &-right {
-                margin: 0;
-                width: 100%;
+        .card {
+            .accordion-header {
+                padding: 10px 20px;
+                font-size: 1em;
             }
 
-            .card {
-                .accordion-header {
-                    padding: 10px 20px;
+            .panel {
+                padding: 20px;
+                margin-left: 30px;
+                padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
+
+                p {
+                    margin-bottom: 0;
                     font-size: 1em;
-                }
-
-                .panel {
-                    padding: 20px;
-                    margin-left: 30px;
-                    padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
-
-                    p {
-                        margin-bottom: 0;
-                    }
                 }
             }
         }
@@ -597,10 +495,6 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-
-    .section-pad {
-        padding: 10px;
-    }
 
     #about {
 
