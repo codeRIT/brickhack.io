@@ -10,10 +10,6 @@ $orange: #FF9C4A;
 // Nav Variables
 $nav-height: 90px;
 
-// Typography
-$title-size: 3em;
-
-
 // Mixins
 @mixin button-primary {
     background-color: $blue;
@@ -21,16 +17,23 @@ $title-size: 3em;
     user-select: none;
     padding: 1rem 1.5rem;
     border-radius: 6px;
-    font-weight: 600;
+    font-weight: bold;
+    text-transform: uppercase;
     text-align: center;
     display: inline-block;
     color: $off-white;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    @include button-effect;
+    transition: 0.2s all;
 
     &:hover {
         background-color: $dark-blue;
+    }
+
+    &:active {
+        transform: translateY(4px);
+        color: $off-white;
+        background-color: $black;
     }
 
     @media screen and (max-width: 900px) {
@@ -49,21 +52,13 @@ $title-size: 3em;
     }
 }
 
-@mixin button-effect {
-    transition: 0.2s all;
-
-    &:active {
-        transform: translateY(4px);
-    }
-}
-
-
 // General Styles
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Work Sans', sans-serif;
+    line-height: 125%;
 
     // Transition all elements on the screen
     // (except FAQ panel, which has conflicting transitions)
@@ -80,7 +75,7 @@ body {
 // Typography
 h1 {
     font-size: 4rem;
-    font-weight: normal;
+    font-weight: 600;
     padding-bottom: 2rem;
     font-family: 'Sora', sans-serif;
     margin-left: -5px;
@@ -88,16 +83,23 @@ h1 {
 }
 
 h2 {
-    font-size: 2.25rem;
-    font-weight: normal;
+    font-size: 3rem;
+    font-weight: 600;
     padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
     color: $black;
 }
 
+h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    color: $black;
+}
+
 p {
-    font-size: 1.25rem;
-    line-height: 1.625rem;
+    font-size: 1.3rem;
+    line-height: 133%;
     padding-bottom: 1rem;
     color: $black;
 
@@ -124,13 +126,13 @@ nav {
     border-bottom: 2px solid rgba($light-blue, 25%);
     display: flex;
     justify-content: space-between;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     height: $nav-height;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 2;
 
     .left, .right {
         display: flex;
@@ -141,16 +143,25 @@ nav {
         margin-left: 2em;
         text-decoration: none;
         color: $blue;
-        font-family: 'Sora', sans-serif;
     }
 
     .link {
-        border-bottom: 2px solid $blue;
+        border-bottom: 2px solid white;
         transition: all 0.2s;
 
-        &:not(:focus):hover, &.active {
+        &.active {
+            font-weight: bold;
+            color: $black;
+
+            &:hover {
+                color: $blue;
+            }
+        }
+
+        &:not(:focus):hover {
             // underline upon hover, disable hover upon click
             font-weight: bold;
+            border-color: $blue;
         }
     }
 
@@ -167,18 +178,23 @@ nav {
             top: 0;
         }
     }
+}
 
-    #mlh-badge {
-        align-self: flex-start;
-        width: 100px;
-        height: 0;
-    }
+// MLH Banner
+#mlh-trust-badge {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 5px;
+    width: 75px;
+    height: 0;
+    z-index: 3;
 }
 
 
 // Section padding
 section {
-    padding: 100px 5rem 0px; // Set up to avoid nav overlap when linked
+    padding: 100px 85px 0px 3.5rem; // Set up to avoid nav overlap when linked
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
@@ -190,7 +206,6 @@ section {
 
 }
 
-// HERE
 // About
 #about {
     #about-content {
@@ -210,7 +225,7 @@ section {
         align-items: flex-start;
 
         a {
-            @include button-secondary;
+            @include button-primary;
             display: flex;
             align-items: center;
             margin: 20px 0px;
@@ -253,7 +268,6 @@ section {
             border-radius: 7px;
             background-color: $light-blue;
 
-            @include button-effect;
             &:active {
                 transform: none;
             }
@@ -360,15 +374,6 @@ footer {
     }
 }
 
-
-// Media queries for mobile
-@media screen and (min-width: 1700px) {
-    // Nav
-    nav #mlh-badge {
-        width: 140px;
-    }
-}
-
 @media screen and (max-width: 1500px) {
     // About
     #about {
@@ -431,22 +436,36 @@ footer {
         }
     }
 
+    #mlh-trust-badge {
+        width: 50px;
+    }
+
     // Section padding
     section {
-        padding: 75px 3.5rem 0px; // Set up to avoid nav overlap when linked
+        padding: 75px 60px 0px 2.5rem; // Set up to avoid nav overlap when linked
     }
 }
 
 @media screen and (max-width: 900px) {
-    // Typography
-    h1 {
-        text-align: center;
-        font-size: 2.5em;
+    @mixin button-primary {
+        font-size: 1rem;
     }
 
-    section > p {
-        text-align: center;
-        font-size: 1em;
+    // Typography
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.3rem;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    p {
+        font-size: 1rem;
     }
 
     // About
