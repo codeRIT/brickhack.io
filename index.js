@@ -29,6 +29,36 @@ let options = {
 
 new ActiveMenuLink(".navbar-items", options);
 
+// Navbar functionality
+$(document).on('click', '#toggle', function() {
+    if ($('nav').hasClass('show-nav')) {
+        $('nav').removeClass('show-nav');
+        $('#toggle').removeClass('fa-times');
+        $('#toggle').addClass('fa-bars');
+        $('.mobile-grayout').removeClass("show-gray");
+    } else {
+        $('nav').addClass('show-nav');
+        $('#toggle').removeClass('fa-bars');
+        $('#toggle').addClass('fa-times');
+        $('.mobile-grayout').addClass("show-gray");
+    }
+});
+
+// Closing the navbar when a navigation link is clicked
+$(document).on('click', '.link', function() {
+    $('nav').removeClass('show-nav');
+    $('#toggle').removeClass('fa-times');
+    $('#toggle').addClass('fa-bars');
+    $('.mobile-grayout').removeClass("show-gray");
+});
+
+// Closing the navbar when outside of the nav is clicked
+$(document).on('click', '.mobile-grayout', function() {
+    $('nav').removeClass('show-nav');
+    $('#toggle').removeClass('fa-times');
+    $('#toggle').addClass('fa-bars');
+    $('.mobile-grayout').removeClass("show-gray");
+});
 
 // FAQ Cards hide/show
 let card = document.getElementsByClassName("card");
