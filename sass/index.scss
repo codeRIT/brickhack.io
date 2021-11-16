@@ -7,9 +7,6 @@ $off-white: #F6F8FA;
 $black: #081646;
 $orange: #FF9C4A;
 
-// Nav Variables
-$nav-height: 90px;
-
 // Mixins
 @mixin button-primary {
     background-color: $blue;
@@ -62,7 +59,8 @@ $nav-height: 90px;
 
     // Transition all elements on the screen
     // (except FAQ panel, which has conflicting transitions)
-    &:not(.panel) {
+    // (and except certian nav stuff, which we don't want)
+    &:not(.panel):not(.show-nav):not(.left):not(.right) {
         transition-duration: 1s;
         transition-property: margin, padding, width, font-size;
     }
@@ -127,13 +125,13 @@ nav {
     display: flex;
     justify-content: space-between;
     font-size: 1.3rem;
-    height: $nav-height;
+    height: 100px;
     position: fixed;
-    padding: 0px 85px 0px 3.5rem;
+    padding: 0px 85px 0px 5rem;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 1;
 
     .top, .left, .right {
         display: flex;
@@ -148,6 +146,7 @@ nav {
         margin-right: 2rem;
         color: $blue;
         font-size: 2rem;
+        width: 2rem;
         display: none;
     }
 
@@ -161,33 +160,29 @@ nav {
         border-bottom: 2px solid white;
         transition: all 0.2s;
 
-        &.active {
-            font-weight: bold;
-            color: $black;
-
-            &:hover {
-                color: $blue;
-            }
-        }
-
         &:not(:focus):hover {
             // underline upon hover, disable hover upon click
             font-weight: bold;
             border-color: $blue;
         }
+
+        &.active {
+            font-weight: bold;
+            color: $black;
+
+            &:hover {
+                border-color: white;
+            }
+        }
     }
 
     #logo {
-        height: $nav-height;
-        align-self: flex-start;
+        width: 80px;
         border: none;
 
         img {
-            width: $nav-height;
-            height: $nav-height;
-            position: relative;
-            bottom: 0;
-            top: 0;
+            width: 100%;
+            height: 100%;
         }
     }
 }
@@ -200,7 +195,7 @@ nav {
     left: 0;
     background-color: black;
     opacity: 25%;
-    z-index: 1;
+    z-index: 3;
     cursor: pointer;
     display: none;
 }
@@ -213,13 +208,13 @@ nav {
     right: 5px;
     width: 75px;
     height: 0;
-    z-index: 3;
+    z-index: 2;
 }
 
 
 // Section padding
 section {
-    padding: 120px 85px 0px 3.5rem; // Set up to avoid nav overlap when linked
+    padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
@@ -440,20 +435,17 @@ footer {
 }
 
 @media screen and (max-width: 955px) {
-    // Redefining nav height for mobile
-    $nav-height: 60px;
-
     // Nav
     nav {
-        height: $nav-height;
+        height: 70px;
+        padding: 0px 3.5rem;
 
         #toggle {
             display: block;
         }
 
-        #logo img {
-            width: $nav-height;
-            height: $nav-height;
+        #logo {
+            width: 60px;
         }
 
         .link {
@@ -466,11 +458,14 @@ footer {
         width: 50vw;
         min-width: max-content;
         padding: 0px 3.5rem;
+        border-bottom: none;
+        border-right: 2px solid rgba($light-blue, 25%);
         flex-direction: column;
         justify-content: flex-start;
+        z-index: 4;
 
         .top {
-            height: $nav-height;
+            height: 68px;
         }
 
         .left, .right {
@@ -509,7 +504,7 @@ footer {
 
     // Section padding
     section {
-        padding: 100px 60px 0px 2.5rem; // Set up to avoid nav overlap when linked
+        padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
     }
 }
 
