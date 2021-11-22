@@ -169,10 +169,7 @@ nav {
         &.active {
             font-weight: bold;
             color: $black;
-
-            &:hover {
-                border-color: white;
-            }
+            border-color: $blue;
         }
     }
 
