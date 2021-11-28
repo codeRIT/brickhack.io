@@ -269,6 +269,15 @@ section {
 
 // FAQ
 #faq {
+    #faq-title {
+        display: flex;
+        flex-wrap: wrap;
+
+        #faq-title-content {
+            margin-right: 15px;
+        }
+    }
+
     #faq-cards {
         margin-top: 40px;
         display: flex;
@@ -291,8 +300,9 @@ section {
         .card {
             width: 100%;
             margin-bottom: $card-m;
-            border-radius: 7px;
-            background-color: $light-blue;
+            border-radius: 6px;
+            background-color: white;
+            border: 2px solid $blue;
 
             &:active {
                 transform: none;
@@ -302,45 +312,52 @@ section {
                 background-color: transparent;
                 cursor: pointer;
                 outline: none;
+                color: $blue;
+                font-weight: bold;
                 text-align: left;
                 padding: 20px 30px;
                 border: none;
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
                 width: 100%;
-                font-size: 1.25rem;
+                font-size: var(--body-font-size);
 
-                .fa-plus, .fa-minus {
+                .fa-plus {
                     margin-right: 10px;
-                    color: $blue;
+
+                    &-blue {
+                        color: $blue;
+                    }
+
+                    &-light-blue {
+                        color: $light-blue;
+                    }
+
+                    &-orange {
+                        color: $orange;
+                    }
+                }
+
+                .fa-minus {
+                    margin-right: 10px;
+                    color: white;
                 }
             }
 
             .panel {
                 display: none; // Toggled in JS
-                margin-top: -30px;
-                padding: 20px 30px;
-                font-size: 0.8em;
-                // Align w/ header text, not sure if this can be made cleaner.
-                margin-left: 35px;
+                padding: 20px 65px; // large side padding aligns with header text
 
                 p, em {
-                    color: $dark-blue;
+                    color: $blue;
                     line-height: 23px;
                     margin-bottom: 10px;
                 }
             }
         }
 
-        .active {
-            background-color: white;
-
-            // Need to explicitly set for some reason
-            .accordion-header, .panel {
-                color: $dark-blue;
-            }
-
-            &:hover {
-                background-color: white;
-            }
+        .active .accordion-header {
+            color: white;
+            background-color: $blue;
         }
     }
 }
