@@ -79,7 +79,7 @@ body {
 h1 {
     font-size: 4rem;
     font-weight: 600;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
     margin-left: -5px;
     color: $darker-blue;
@@ -229,7 +229,60 @@ section {
 
 // Hero
 #hero {
+    display: flex;
+    flex-direction: column;
 
+    #hero-video{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        z-index: -1;
+        margin-top: -200px;
+
+        video {
+            max-width: 100%;
+        }
+    }
+
+    #hero-content {
+
+        p {
+            margin-top: 2rem;
+        }
+
+        .field-row-stacked {
+            border: 2px solid $blue;
+            border-radius: 5px;
+            font-size: var(--body-font-size);
+            display: inline-block;
+            background-color: white;
+
+            input {
+                border: none;
+                outline: none;
+                background-color: transparent;
+                font-size: var(--body-font-size);
+                padding: 1rem 1.5rem;
+            }
+
+            button {
+                outline: none;
+                border: none;
+                border-left: 2px solid $blue;
+                background-color: $blue;
+                color: $off-white;
+                border-radius: 5px 0px 0px 5px;
+                font-size: var(--body-font-size);
+                padding: 1rem 1.5rem;
+                font-weight: 600;
+                transition: all 0.25s;
+
+                &:hover {
+                    background-color: $dark-blue;
+                }
+            }
+        }
+    }
 }
 
 // About
@@ -434,6 +487,12 @@ footer {
 }
 
 @media screen and (max-width: 1220px) {
+    // Hero
+    #hero #hero-video{
+        margin-top: 0px;
+        justify-content: center;
+    }
+
     // About
     #about #about-content #about-buttons {
         width: 100%;
