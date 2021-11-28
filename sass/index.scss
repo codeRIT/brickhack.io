@@ -272,6 +272,7 @@ section {
     #faq-title {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
 
         #faq-title-content {
             margin-right: 15px;
@@ -440,12 +441,19 @@ footer {
     }
 
     // FAQ
-    #faq #faq-cards {
-        flex-direction: column;
+    #faq {
+        #faq-title {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
         }
     }
 }
@@ -566,30 +574,17 @@ footer {
         }
     }
 
+    // FAQ
     #faq #faq-cards {
         margin-top: 20px;
-        flex-direction: column;
-
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
-        }
 
         .card {
             .accordion-header {
                 padding: 10px 20px;
-                font-size: 1em;
             }
 
             .panel {
-                padding: 20px;
-                margin-left: 30px;
-                padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
-
-                p {
-                    margin-bottom: 0;
-                    font-size: 1em;
-                }
+                padding: 20px 50px 10px;
             }
         }
     }
@@ -614,17 +609,6 @@ footer {
             #hackathon-buttons {
                 width: 100%;
             }
-        }
-    }
-
-    #faq #faq-wrapper {
-        // Only center the "contact" string in the FAQ
-        a {
-            white-space: nowrap;
-        }
-
-        .contact  {
-            text-align: center;
         }
     }
 
