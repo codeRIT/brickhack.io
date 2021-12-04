@@ -7,6 +7,8 @@ $light-blue: #44C6E6;
 $off-white: #F6F8FA;
 $darker-blue: #081646;
 $orange: #FF9C4A;
+$grey: #D0D9E2;
+
 // Typography
 :root {
     --body-font-size: 1.3rem;
@@ -347,58 +349,71 @@ section {
 
 
 // Contact
-footer {
-    width: 100%;
-    height: 300px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin-top: 20px;
-    background-image: url("../assets/footer/footer.svg");
-    background-repeat: repeat no-repeat;
-    background-position: bottom center;
-    background-size: auto 300px;
-    overflow-x: clip;
+#contact {
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: auto;
 
-    #footer-content {
+    #contact-content {
+        width: 50%;
+        padding-right: 20px;
+    }
+
+    #contact-socials {
+        align-self: flex-end;
+        background-image: url("../assets/bh8/contact-monitor.svg");
+        width: 430px;
+        max-width: 50%;
+        height: 330px;
+        margin-bottom: -2px; // Gets rid of gap between svg and footer
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        padding: 1rem 2.5rem 5rem;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        height: 235px;
-        margin: auto;
-        padding: 15px;
-        text-align: center;
-
-        h2 {
-            margin-top: -5px;
-            margin-bottom: -5px;
-        }
-
-        p {
-            font-size: 1em;
-        }
-
-        // FA brand icons
-        i {
-            font-size: 3em;
-            padding: 0px 5px;
-            color: $blue;
-        }
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
 
         a {
-            display: inline-block;
-            transition: 0.2s;
+            margin: 1rem;
 
             i {
-                transition: 0.2s;
-            }
+                font-size: 2.5rem;
+                color: $blue;
 
-            &:hover i {
-                transform: translateY(-4px);
+                &:hover {
+                    color: $dark-blue;
+                }
             }
         }
     }
 }
+
+
+// Footer
+footer {
+    background-color: $grey;
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+
+    #footer-left {
+        padding: 0 1rem 1rem 0;
+    }
+
+    #footer-right {
+        display: flex;
+        justify-content: space-between;
+
+        p:not(p:last-of-type) {
+            padding-right: 1rem;
+        }
+    }
+}
+
 
 @media screen and (max-width: 1500px) {
     // About
@@ -437,6 +452,16 @@ footer {
     // About
     #about #about-content #about-buttons {
         width: 100%;
+    }
+
+    // Footer
+    footer #footer-right {
+        flex-direction: column;
+        text-align: right;
+
+        p:not(p:last-of-type) {
+            padding-right: 0;
+        }
     }
 }
 
@@ -576,6 +601,23 @@ footer {
             }
         }
     }
+
+    // Contact
+    #contact {
+        flex-direction: column;
+
+        #contact-content {
+            width: 100%;
+            padding-right: 0px;
+        }
+
+        #contact-socials {
+            margin: 2rem auto -2px;
+            max-width: 75%;
+            width: 75%;
+            height: calc((100vw - 10rem) * 0.56); // should be the same as 75% width
+        }
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -611,24 +653,30 @@ footer {
         }
     }
 
+    // Contact
+    #contact #contact-socials {
+        max-width: 100%;
+        width: 100%;
+        height: calc((100vw - 10rem) * 0.75); // should be the same as 75% width
+    }
+
+    // Footer
     footer {
-        height: 200px;
-        background-size: auto 200px;
+        flex-direction: column;
 
-        #footer-content {
-            height: 157px;
-
-            h2 {
-                font-size: 1.2em;
-            }
-
-            p {
-                font-size: 0.8em;
-            }
-
-            i {
-                font-size: 2em;
-            }
+        #footer-right {
+            text-align: left;
         }
+    }
+}
+
+@media screen and (max-width: 475px) {
+    // Contact
+    #contact #contact-socials {
+        justify-content: flex-start;
+        padding: 0;
+        margin: 2rem 0;
+        background-image: none;
+        height: auto;
     }
 }
