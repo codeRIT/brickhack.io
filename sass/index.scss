@@ -244,13 +244,14 @@ section {
             border: 1px solid $light-blue;
             border-radius: 6px;
             padding: 20px;
-            width: 45%;
+            width: 48%;
         }
     }
 
     #about-stats {
         display: flex;
         justify-content: space-between;
+        align-items: center;
 
         #stats-content {
             width: 50%;
