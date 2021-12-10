@@ -262,7 +262,7 @@ section {
                 flex-wrap: wrap;
 
                 div {
-                    padding: 20px;
+                    padding-right: 20px;
                 }
             }
         }
@@ -573,6 +573,10 @@ footer {
     // About
     #about #stats-content #stats {
         flex-direction: column;
+
+        div {
+            padding: 0px 0px 20px;
+        }
     }
 
     #faq #faq-wrapper {
