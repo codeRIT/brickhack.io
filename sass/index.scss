@@ -373,19 +373,24 @@ section {
         background-position: center bottom;
         padding: 1rem 2.5rem 5rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-wrap: wrap;
 
-        a {
-            margin: 1rem;
+        #social-icons {
+            display: flex;
+            flex-wrap: wrap;
 
-            i {
-                font-size: 2.5rem;
-                color: $blue;
+            a {
+                margin: 1rem;
 
-                &:hover {
-                    color: $dark-blue;
+                i {
+                    font-size: 3rem;
+                    color: $blue;
+
+                    &:hover {
+                        color: $dark-blue;
+                    }
                 }
             }
         }
@@ -401,15 +406,19 @@ footer {
     justify-content: space-between;
 
     #footer-left {
-        padding: 0 1rem 1rem 0;
+        padding-right: 1rem;
     }
 
     #footer-right {
         display: flex;
         justify-content: space-between;
 
-        p:not(p:last-of-type) {
-            padding-right: 1rem;
+        p {
+            padding-bottom: 0;
+
+            &:not(p:last-of-type) {
+                padding-right: 1rem;
+            }
         }
     }
 }
@@ -657,7 +666,11 @@ footer {
     #contact #contact-socials {
         max-width: 100%;
         width: 100%;
-        height: calc((100vw - 10rem) * 0.75); // should be the same as 75% width
+        justify-content: flex-start;
+        padding: 0;
+        margin: 2rem 0;
+        background-image: none;
+        height: auto;
     }
 
     // Footer
@@ -667,16 +680,5 @@ footer {
         #footer-right {
             text-align: left;
         }
-    }
-}
-
-@media screen and (max-width: 475px) {
-    // Contact
-    #contact #contact-socials {
-        justify-content: flex-start;
-        padding: 0;
-        margin: 2rem 0;
-        background-image: none;
-        height: auto;
     }
 }
