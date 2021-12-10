@@ -230,56 +230,35 @@ section {
 // Hero
 #hero {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
 
-    #hero-video{
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        z-index: -1;
-        margin-top: -200px;
-
-        video {
-            max-width: 100%;
-        }
+    #hero-video video {
+        max-width: 100%;
     }
 
     #hero-content {
+        width: max-content;
+        margin-right: 2rem;
 
         p {
             margin-top: 2rem;
         }
 
-        .field-row-stacked {
-            border: 2px solid $blue;
-            border-radius: 5px;
-            font-size: var(--body-font-size);
-            display: inline-block;
-            background-color: white;
+        #hero-buttons {
+            display: flex;
+            justify-content: space-between;
 
-            input {
-                border: none;
-                outline: none;
-                background-color: transparent;
-                font-size: var(--body-font-size);
-                padding: 1rem 1.5rem;
+            #login {
+                @include button-primary;
+                margin-right: 2rem;
+                width: 50%;
             }
 
-            button {
-                outline: none;
-                border: none;
-                border-left: 2px solid $blue;
-                background-color: $blue;
-                color: $off-white;
-                border-radius: 5px 0px 0px 5px;
-                font-size: var(--body-font-size);
-                padding: 1rem 1.5rem;
-                font-weight: 600;
-                transition: all 0.25s;
-
-                &:hover {
-                    background-color: $dark-blue;
-                }
+            #register {
+                @include button-secondary;
+                width: 50%;
             }
         }
     }
@@ -488,9 +467,19 @@ footer {
 
 @media screen and (max-width: 1220px) {
     // Hero
-    #hero #hero-video{
-        margin-top: 0px;
-        justify-content: center;
+    #hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        #hero-video {
+            align-self: center;
+        }
+
+        #hero-content {
+            width: auto;
+            margin-right: 0;
+            flex-basis: auto;
+        }
     }
 
     // About
@@ -638,6 +627,20 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
+    // Hero
+    #hero #hero-content #hero-buttons {
+        flex-direction: column;
+
+        #login {
+            margin: 0rem 0rem 1rem;
+            width: 100%;
+        }
+
+        #register {
+            width: 100%;
+        }
+    }
+
 
     #about {
 
