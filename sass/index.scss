@@ -472,7 +472,7 @@ footer {
         align-items: flex-start;
 
         #hero-video {
-            align-self: center;
+            align-self: flex-end;
         }
 
         #hero-content {
@@ -560,6 +560,21 @@ footer {
     section {
         padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
     }
+
+
+    // Hero
+    #hero #hero-content #hero-buttons {
+        flex-direction: column;
+
+        #login {
+            margin: 0rem 0rem 1rem;
+            width: 100%;
+        }
+
+        #register {
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -627,21 +642,6 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-    // Hero
-    #hero #hero-content #hero-buttons {
-        flex-direction: column;
-
-        #login {
-            margin: 0rem 0rem 1rem;
-            width: 100%;
-        }
-
-        #register {
-            width: 100%;
-        }
-    }
-
-
     #about {
 
         #hackathon-content {
