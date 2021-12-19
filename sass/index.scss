@@ -624,7 +624,8 @@ footer {
             margin: 2rem auto -2px;
             max-width: 75%;
             width: 75%;
-            height: calc((100vw - 10rem) * 0.56); // should be the same as 75% width
+            height: calc((100vw - 7rem) * 0.56); // should be the same as 75% of the current width
+            // Essentially: (100vw - section padding to get 100% width) * 0.75 to get the 75% width * 0.75 for 75% of 75% width
         }
     }
 }
