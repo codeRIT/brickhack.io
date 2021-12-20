@@ -271,7 +271,7 @@ section {
         justify-content: space-between;
         margin: 3rem 0rem;
 
-        .card {
+        .about-card {
             background-color: white;
             border: 1px solid $light-blue;
             border-radius: 6px;
@@ -308,6 +308,16 @@ section {
 
 // FAQ
 #faq {
+    #faq-title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        #faq-title-content {
+            margin-right: 3rem;
+        }
+    }
+
     #faq-cards {
         margin-top: 40px;
         display: flex;
@@ -330,8 +340,9 @@ section {
         .card {
             width: 100%;
             margin-bottom: $card-m;
-            border-radius: 7px;
-            background-color: $light-blue;
+            border-radius: 6px;
+            background-color: white;
+            border: 2px solid $blue;
 
             &:active {
                 transform: none;
@@ -341,45 +352,52 @@ section {
                 background-color: transparent;
                 cursor: pointer;
                 outline: none;
+                color: $blue;
+                font-weight: bold;
                 text-align: left;
                 padding: 20px 30px;
                 border: none;
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
                 width: 100%;
-                font-size: 1.25rem;
+                font-size: var(--body-font-size);
 
-                .fa-plus, .fa-minus {
+                .fa-plus {
                     margin-right: 10px;
-                    color: $blue;
+
+                    &-blue {
+                        color: $blue;
+                    }
+
+                    &-light-blue {
+                        color: $light-blue;
+                    }
+
+                    &-orange {
+                        color: $orange;
+                    }
+                }
+
+                .fa-minus {
+                    margin-right: 10px;
+                    color: white;
                 }
             }
 
             .panel {
                 display: none; // Toggled in JS
-                margin-top: -30px;
-                padding: 20px 30px;
-                font-size: 0.8em;
-                // Align w/ header text, not sure if this can be made cleaner.
-                margin-left: 35px;
+                padding: 20px 65px; // large side padding aligns with header text
 
                 p, em {
-                    color: $dark-blue;
+                    color: $blue;
                     line-height: 23px;
                     margin-bottom: 10px;
                 }
             }
         }
 
-        .active {
-            background-color: white;
-
-            // Need to explicitly set for some reason
-            .accordion-header, .panel {
-                color: $dark-blue;
-            }
-
-            &:hover {
-                background-color: white;
-            }
+        .active .accordion-header {
+            color: white;
+            background-color: $blue;
         }
     }
 }
@@ -441,12 +459,19 @@ footer {
 
 @media screen and (max-width: 1500px) {
     // FAQ
-    #faq #faq-cards {
-        flex-direction: column;
+    #faq {
+        #faq-title {
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
         }
     }
 }
@@ -566,10 +591,10 @@ footer {
         #about-cards {
             flex-direction: column;
 
-            .card {
+            .about-card {
                 width: 100%;
 
-                &:not(.card:last-of-type) {
+                &:not(.about-card:last-of-type) {
                     margin-bottom: 2rem;
                 }
             }
@@ -609,30 +634,33 @@ footer {
         font-size: 1.35rem;
     }
 
+    // About
+    #about #about-content {
+        p {
+            font-size: 1em;
+        }
+
+        #about-buttons {
+            flex-direction: column;
+            width: 60%;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    // FAQ
     #faq #faq-cards {
         margin-top: 20px;
-        flex-direction: column;
-
-        &-left, &-right {
-            margin: 0;
-            width: 100%;
-        }
 
         .card {
             .accordion-header {
                 padding: 10px 20px;
-                font-size: 1em;
             }
 
             .panel {
-                padding: 20px;
-                margin-left: 30px;
-                padding-bottom: 10px; // TODO: Why does padding: 10px not look good?
-
-                p {
-                    margin-bottom: 0;
-                    font-size: 1em;
-                }
+                padding: 20px 50px 10px;
             }
         }
     }
@@ -645,17 +673,6 @@ footer {
 
         div {
             padding: 0px 0px 20px;
-        }
-    }
-
-    #faq #faq-wrapper {
-        // Only center the "contact" string in the FAQ
-        a {
-            white-space: nowrap;
-        }
-
-        .contact  {
-            text-align: center;
         }
     }
 

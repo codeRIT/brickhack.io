@@ -86,13 +86,13 @@
             <p>Apply to come spend March 5th and 6th, 2022 with us to learn, collaborate, build, and innovate!</p>
         </div>
         <div id="about-cards">
-            <div class="card">
+            <div class="about-card">
                 <h3>Applying</h3>
                 <p>When applications open, you will apply to BrickHack via the HackEngine system. Applications will be open until the event opens on March 5th.</p>
                 <p>If your application is accepted, you will receive an email from our team with more information.</p>
                 <p>You must be 18+ and a current university student to apply. Applications and event attendance are completely free.</p>
             </div>
-            <div class="card">
+            <div class="about-card">
                 <h3>Participating</h3>
                 <p>At BrickHack, students compete individually or in teams of 2-4 to build anything they want. You could make an app, a website, a game, a design, or any other form of interactive media. No experience is required; we provide mentors to help you along the way!</p>
             </div>
@@ -122,57 +122,21 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="section-pad">
-        <h2>Frequently Asked Questions</h2>
-        <p>Don't see your question here? <a href="mailto:hello@brickhack.io">Contact Us</a></p>
+    <section id="faq">
+        <div id="faq-title">
+            <div id="faq-title-content">
+                <h2>Frequently Asked Questions</h2>
+                <p>Don't see your question here? Feel free to <a href="mailto:hello@brickhack.io">contact us</a></p>
+            </div>
+            <video width="150" height="200" autoplay muted loop>
+                <source src="./assets/bh8/videos/FAQLoop.mp4" type="video/mp4">
+            </video>
+        </div>
         <div id="faq-cards">
             <div id="faq-cards-left">
                 <div class="card">
                     <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Is this event digital or in-person?
-                    </button>
-                    <div class="panel">
-                        <p>BrickHack 8 will be run entirely digitally, via Discord and Zoom.</p>
-                        <p>More details will be sent out as the event draws closer, including the server link.</p>
-                        <p>For now, make sure to <a id="register" href="https://apply.brickhack.io/users/sign_up">register</a> for updates!
-                    </div>
-                </div>
-                <div class="card">
-                    <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Who can participate in BrickHack?
-                    </button>
-                    <div class="panel">
-                        <p>Anyone currently enrolled as a student can attend!</p>
-                        <p>If you don't fit that description, you're
-                        absolutely welcome to attend as a mentor or volunteer. All attendees must be 18 years or older.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Do I need a team to join?
-                    </button>
-                    <div class="panel">
-                        <p>Nope! If you have an existing team, that's great &mdash; otherwise, we'll provide time to form new teams with other hackers at the start of the event.</p>
-                        <p>Please note that you can have up to a total of 4 members in a team.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Do RIT students need to apply?
-                    </button>
-                    <div class="panel">
-                        <p>Yes. All students, RIT or not, need to apply to the event.</p>
-                        <p>Our main limitation is space. Even though we're a digital event, we need to provide judging, chat moderation, interpreting services, and more. All of these require staff, and we only have so many resources to run the event.</p>
-                        <p>Maybe next year we'll have AI run the event...</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-plus fa-plus-light-blue" aria-hidden="true"></i>
                         Can I re-use an old project?
                     </button>
                     <div class="panel">
@@ -180,11 +144,9 @@
                         <p>(No designs, no UML diagrams, no code, etc.)</p>
                     </div>
                 </div>
-            </div>
-            <div id="faq-cards-right">
                 <div class="card">
                     <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
                         How accessible is the digital event?
                     </button>
                     <div class="panel">
@@ -195,7 +157,7 @@
                 </div>
                 <div class="card">
                     <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-plus fa-plus-blue" aria-hidden="true"></i>
                         When will I know if I got in?
                     </button>
                     <div class="panel">
@@ -203,9 +165,11 @@
                         <p>Every application is considered on a first-come, first-serve basis. So register early! We'll send an email out if you're accepted.</p>
                     </div>
                 </div>
+            </div>
+            <div id="faq-cards-right">
                 <div class="card">
                     <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-plus fa-plus-light-blue" aria-hidden="true"></i>
                         I'm new to coding. What if I have questions while I hack?
                     </button>
                     <div class="panel">
@@ -215,20 +179,7 @@
                 </div>
                 <div class="card">
                     <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        Will there be swag or prizes shipped out?
-                    </button>
-                    <div class="panel">
-                        <p>Everyone is eligible to receive digital swag and digital prizes.</p>
-                        <p>If your shipping address is in the United States, we are shipping physical swag and prizes.</p>
-                        <p>If your shipping address is in Canada, we are shipping physical prizes.</p>
-                        <p>If your shipping address is outside of the United States and Canada, we are unable to ship physical swag and prizes.</p>
-                        <p><em>We have a limited amount of swag, make sure that you check in and turn in a project to be eligible to receive swag.</em></p>
-                    </div>
-                </div>
-                <div class="card">
-                    <button class="accordion-header">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <i class="fa fa-plus fa-plus-orange" aria-hidden="true"></i>
                         Should I bring my own bricks?
                     </button>
                     <div class="panel">

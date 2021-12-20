@@ -62,8 +62,10 @@ $(document).on('click', '.mobile-grayout', function() {
 
 // FAQ Cards hide/show
 let card = document.getElementsByClassName("card");
+console.log(card);
 for (let i = 0; i < card.length; i++) {
     let accordion = card[i].getElementsByClassName("accordion-header")[0];
+    console.log(accordion);
     // Click should only work on accordion-header of each card
     accordion.addEventListener("click", function() {
 
