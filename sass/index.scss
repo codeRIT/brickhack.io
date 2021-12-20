@@ -96,7 +96,7 @@ h2 {
 h3 {
     font-size: 1.75rem;
     font-weight: 600;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     color: $darker-blue;
 }
 
@@ -266,34 +266,41 @@ section {
 
 // About
 #about {
-    #about-content {
+    #about-cards {
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem 0rem;
+
+        .card {
+            background-color: white;
+            border: 1px solid $light-blue;
+            border-radius: 6px;
+            padding: 20px;
+            width: 48%;
+        }
+    }
+
+    #about-stats {
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        #about-text {
-            width: 60%;
-        }
-    }
+        #stats-content {
+            width: 50%;
 
-    #about-buttons {
-        display: flex;
-        flex-direction: column;
-        margin: 0px auto;
-        align-items: flex-start;
+            #stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
 
-        a {
-            @include button-primary;
-            display: flex;
-            align-items: center;
-            margin: 20px 0px;
-            width: 100%;
+                div {
+                    padding-right: 20px;
+                }
+            }
         }
 
-        i.fa-arrow-right, i.fa-images {
-            font-size: 1.6em;
-            color: $orange;
-            padding-right: 10px;
+        video {
+            max-width: 50%;
         }
     }
 }
@@ -433,27 +440,6 @@ footer {
 }
 
 @media screen and (max-width: 1500px) {
-    // About
-    #about {
-        #about-content {
-            flex-direction: column;
-
-            #about-text {
-                width: 100%;
-            }
-        }
-
-        #about-buttons {
-            flex-direction: row;
-            justify-content: center;
-            width: 70%;
-
-            a {
-                margin: 10px;
-            }
-        }
-    }
-
     // FAQ
     #faq #faq-cards {
         flex-direction: column;
@@ -574,6 +560,34 @@ footer {
             width: 100%;
         }
     }
+
+    // About
+    #about {
+        #about-cards {
+            flex-direction: column;
+
+            .card {
+                width: 100%;
+
+                &:not(.card:last-of-type) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
+        #about-stats {
+            flex-direction: column;
+
+            #stats-content {
+                width: 100%;
+            }
+
+            video {
+                max-width: 100%;
+                padding-top: 2rem;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -593,22 +607,6 @@ footer {
 
     h3 {
         font-size: 1.35rem;
-    }
-
-    // About
-    #about #about-content {
-        p {
-            font-size: 1em;
-        }
-
-        #about-buttons {
-            flex-direction: column;
-            width: 60%;
-
-            a {
-                margin-left: 0;
-            }
-        }
     }
 
     #faq #faq-cards {
@@ -641,23 +639,12 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-    #about {
+    // About
+    #about #stats-content #stats {
+        flex-direction: column;
 
-        #hackathon-content {
-            margin: 0;
-            padding: 20px;
-
-            i {
-                font-size: 1.5em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-
-            #hackathon-buttons {
-                width: 100%;
-            }
+        div {
+            padding: 0px 0px 20px;
         }
     }
 
