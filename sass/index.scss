@@ -271,7 +271,7 @@ section {
         justify-content: space-between;
         margin: 3rem 0rem;
 
-        .card {
+        .about-card {
             background-color: white;
             border: 1px solid $light-blue;
             border-radius: 6px;
@@ -591,10 +591,10 @@ footer {
         #about-cards {
             flex-direction: column;
 
-            .card {
+            .about-card {
                 width: 100%;
 
-                &:not(.card:last-of-type) {
+                &:not(.about-card:last-of-type) {
                     margin-bottom: 2rem;
                 }
             }
