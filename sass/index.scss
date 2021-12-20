@@ -79,7 +79,7 @@ body {
 h1 {
     font-size: 4rem;
     font-weight: 600;
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
     margin-left: -5px;
     color: $darker-blue;
@@ -229,7 +229,39 @@ section {
 
 // Hero
 #hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
 
+    #hero-video video {
+        max-width: 100%;
+    }
+
+    #hero-content {
+        width: max-content;
+        margin-right: 2rem;
+
+        p {
+            margin-top: 2rem;
+        }
+
+        #hero-buttons {
+            display: flex;
+            justify-content: space-between;
+
+            #login {
+                @include button-primary;
+                margin-right: 2rem;
+                width: 50%;
+            }
+
+            #register {
+                @include button-secondary;
+                width: 50%;
+            }
+        }
+    }
 }
 
 // About
@@ -434,6 +466,22 @@ footer {
 }
 
 @media screen and (max-width: 1220px) {
+    // Hero
+    #hero {
+        flex-direction: column;
+        align-items: flex-start;
+
+        #hero-video {
+            align-self: flex-end;
+        }
+
+        #hero-content {
+            width: auto;
+            margin-right: 0;
+            flex-basis: auto;
+        }
+    }
+
     // About
     #about #about-content #about-buttons {
         width: 100%;
@@ -512,6 +560,20 @@ footer {
     section {
         padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
     }
+
+    // Hero
+    #hero #hero-content #hero-buttons {
+        flex-direction: column;
+
+        #login {
+            margin: 0rem 0rem 1rem;
+            width: 100%;
+        }
+
+        #register {
+            width: 100%;
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -579,7 +641,6 @@ footer {
 }
 
 @media screen and (max-width: 650px) {
-
     #about {
 
         #hackathon-content {
