@@ -134,7 +134,7 @@ nav {
     font-size: var(--body-font-size);
     height: 100px;
     position: fixed;
-    padding: 0px 85px 0px 5rem;
+    padding: 0px 85px 0px 8rem;
     top: 0;
     left: 0;
     right: 0;
@@ -222,12 +222,12 @@ nav {
 
 // Section padding
 section {
-    padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
-    min-height: 100vh;
+    padding: 120px 8rem 0px; // Set up to avoid nav overlap when linked
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
 }
+
 
 // Hero
 #hero {
@@ -243,6 +243,10 @@ section {
     #hero-content {
         width: max-content;
         margin-right: 2rem;
+
+        h3:first-of-type {
+            padding-bottom: 0;
+        }
 
         p {
             margin-top: 2rem;
@@ -297,6 +301,10 @@ section {
 
                 div {
                     padding-right: 20px;
+
+                    p:first-of-type {
+                        padding-bottom: 0;
+                    }
                 }
             }
         }
@@ -462,6 +470,10 @@ footer {
     display: flex;
     justify-content: space-between;
 
+    p {
+        line-height: 2.5rem;
+    }
+
     #footer-left {
         padding-right: 1rem;
     }
@@ -501,6 +513,16 @@ footer {
 }
 
 @media screen and (max-width: 1220px) {
+    // Nav
+    nav {
+        padding: 0px 85px 0px 5rem;
+    }
+
+    // Section padding
+    section {
+        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+    }
+
     // Hero
     #hero {
         flex-direction: column;
@@ -715,6 +737,11 @@ footer {
             height: calc((100vw - 7rem) * 0.56); // should be the same as 75% of the current width
             // Essentially: (100vw - section padding to get 100% width) * 0.75 to get the 75% width * 0.75 for 75% of 75% width
         }
+    }
+
+    // Footer
+    footer p {
+        line-height: 2rem;
     }
 }
 
