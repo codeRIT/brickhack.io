@@ -230,7 +230,7 @@ section {
 
 
 // Videos - hiding controls
-video::-webkit-media-controls-start-playback-button {
+video::-webkit-media-controls {
     display: none !important;
 }
 
