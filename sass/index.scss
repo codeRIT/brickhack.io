@@ -231,7 +231,7 @@ section {
 
 // Videos - hiding controls
 video::-webkit-media-controls {
-    display: none !important;
+    opacity: 0;
 }
 
 
