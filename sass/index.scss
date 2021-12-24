@@ -229,6 +229,12 @@ section {
 }
 
 
+// Videos - hiding controls
+video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+
 // Hero
 #hero {
     display: flex;
