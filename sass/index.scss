@@ -79,7 +79,7 @@ body {
 
 // Typography
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 600;
     padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
@@ -88,7 +88,7 @@ h1 {
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 600;
     padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
@@ -363,7 +363,7 @@ section {
                 cursor: pointer;
                 outline: none;
                 color: $blue;
-                font-weight: bold;
+                font-weight: 600;
                 text-align: left;
                 padding: 20px 30px;
                 border: none;
@@ -391,6 +391,16 @@ section {
                     margin-right: 10px;
                     color: white;
                 }
+
+                &:hover {
+                    background-color: $dark-blue;
+                    border-radius: 0;
+                    color: white;
+
+                    .fa-plus {
+                        color: white;
+                    }
+                }
             }
 
             .panel {
@@ -408,6 +418,10 @@ section {
         .active .accordion-header {
             color: white;
             background-color: $blue;
+
+            &:hover {
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+            }
         }
     }
 }
@@ -679,11 +693,11 @@ footer {
 
     // Typography
     h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     h2 {
-        font-size: 2.3rem;
+        font-size: 1.75rem;
     }
 
     h3 {
@@ -764,6 +778,10 @@ footer {
         margin: 2rem 0;
         background-image: none;
         height: auto;
+
+        #social-icons a i {
+            font-size: 2rem;
+        }
     }
 
     // Footer
