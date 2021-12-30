@@ -21,7 +21,7 @@ $grey: #D0D9E2;
     user-select: none;
     padding: 1rem 1.5rem;
     border-radius: 6px;
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     display: inline-block;
@@ -182,6 +182,10 @@ nav {
                 border-color: $darker-blue;
             }
         }
+    }
+
+    #login {
+        @include button-primary;
     }
 
     #logo {
@@ -589,7 +593,7 @@ footer {
             width: 60px;
         }
 
-        .link {
+        .link, #login {
             display: none;
         }
     }
@@ -610,7 +614,6 @@ footer {
         }
 
         .left, .right {
-            flex-direction: column;
             align-items: flex-start;
             margin-top: 2rem;
 
@@ -621,15 +624,17 @@ footer {
         }
 
         .left {
+            flex-direction: column;
             flex-grow: 0;
             order: 2;
         }
 
         .right {
+            flex-direction: column-reverse;
             order: 1;
         }
 
-        .link {
+        .link, #login {
             display: block;
         }
     }
