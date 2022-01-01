@@ -254,7 +254,7 @@ video::-webkit-media-controls {
         width: max-content;
         margin-right: 2rem;
 
-        h3:first-of-type {
+        h3:not(.h3:last-of-type) {
             padding-bottom: 0;
         }
 
