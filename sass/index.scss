@@ -549,17 +549,12 @@ footer {
     // Hero
     #hero {
         flex-direction: column;
-        align-items: flex-start;
-
-        #hero-video {
-            align-self: flex-end;
-        }
+        align-items: center;
 
         #hero-content {
             width: auto;
             margin-right: 0;
             flex-basis: auto;
-            align-self: center;
             text-align: center;
         }
     }
