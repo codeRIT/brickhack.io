@@ -81,7 +81,6 @@ body {
 h1 {
     font-size: 3rem;
     font-weight: 600;
-    padding-bottom: 1rem;
     font-family: 'Sora', sans-serif;
     margin-left: -5px;
     color: $darker-blue;
@@ -258,7 +257,7 @@ video::-webkit-media-controls {
             padding-bottom: 0;
         }
 
-        p {
+        p:last-of-type {
             margin-top: 2rem;
         }
 
@@ -560,6 +559,8 @@ footer {
             width: auto;
             margin-right: 0;
             flex-basis: auto;
+            align-self: center;
+            text-align: center;
         }
     }
 
