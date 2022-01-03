@@ -1,102 +1,85 @@
-import './sass/index.scss'
-
-import { AniX } from 'anix'
-
-const $ = require('jquery')
-window.$ = window.jQuery = $
-require("jquery-ui-bundle")
+import "./sass/index.scss"
+import "@fortawesome/fontawesome-free/css/all.css"
+import $ from "jquery"
 
 // Hiring message
 const hiringMessage = `Hey, you.
 You’re finally awake.
 You were trying to see the code, right?
 Walked right into that hiring message, same as us.
-If you’d like to work on this website and other cool projects with hackathons, send an email over to engineering@coderit.org!`
+If you’d like to work on hackathon-related projects, check out https://brickhack.io/club!`
 
-console.log(hiringMessage)
+console.log(hiringMessage);
 
 // Comment generated via js instead of directly in HTML so the hiring message text is only in one place
-const comment = document.createComment("\n"+hiringMessage.toString()+"\n")
-document.insertBefore(comment, document.firstChild)
+const comment = document.createComment("\n" + hiringMessage + "\n");
+document.insertBefore(comment, document.firstChild);
 
-// Secret messages
-const revertDuration = 300
-var messageIndex = 0
-const messages = [
-    "Like, really, nothing to see here.",
-    "Hey. Stop looking.",
-    "Hey. Stop looking.",
-    "...",
-    "I'm warning you...",
-    "There's really nothing.",
-    "There's really nothing.",
-    "There's really nothing.",
-    "...",
-    "Wow, you just don't want to believe me.",
-    "What have I ever done to you?!",
-    "...",
-    "Oh, right...",
-    "...the bricks...",
-    "...",
-    "Yeah, that was... my bad.",
-    "Life's hard as a rockstar, you know?",
-    "I'm really a brickstar, actually.",
-    "... leader of ThunderClan? I don't get the reference.",
-    "Have you heard my new song?",
-    "It goes like,",
-    "I'm bringin' Ricky Back! (yeah)",
-    "(barrrw) Them other boys don't know--",
-    "I'M BRINGIN' RICKY BACK (yeah)",
-    "It's a bop, if I do say so myself.",
-    "Oh, by the way Dave,",
-    "We're contacting you about your car's extended warrany...",
-    "Haha, just kidding.",
-    "I have some brick business to get back to.",
-    "You know how it is.",
-    "I do have a tip for you though.",
-    "When you sign up for BrickHack...",
-    "...make sure to ask if you need your own bricks.",
-    "Heh. Gets them every year.",
-    "Well, see ya!",
-    "(the wall is quiet.)",
-    "(it fills you with determination.)",
-    ""
-]
 
-$(document).ready(function() {
-    $(".window").draggable({
-        cursor: "grab",
-        revert: true,
-        revertDuration: revertDuration,
-        handle: ".title-bar",
-        // Adjust scale factor of page to match mouse dragging position
-        drag: function(event, ui) {
-            ui.position.top = Math.round(ui.position.top / 1.5)
-            ui.position.left = Math.round(ui.position.left / 1.5)
-        }
-    })
-})
+// Nav highlighting on scroll
+import ActiveMenuLink from "active-menu-link";
 
-$(".window-control").click(function() {
-    $(".window").css({"visibility":"hidden"})
-})
+let options = {
+    itemTag: "",
+    scrollOffset: -90, // nav height
+    scrollDuration: 1000,
+    ease: "out-quart",
+    showHash: false,
+};
 
-$(".title-bar").mouseup(function() {
-    // Don't show the message before the window returns to its original position
-    setTimeout(function() {
-        const offset = $(".window").position()
-        updateSecretMessage(offset)
-    }, revertDuration)
-})
+new ActiveMenuLink(".navbar-items", options);
 
-function updateSecretMessage(offset) {
-    // TODO: Make sure the window was dragged enough to see the message
-    // so the user has less chance of missing it before we refresh.
-
-    if (messageIndex >= messages.length) {
-        return
+// Navbar functionality
+$(document).on("click", "#toggle", function() {
+    if ($("nav").hasClass("show-nav")) {
+        $("nav").removeClass("show-nav");
+        $("#toggle").removeClass("fa-times");
+        $("#toggle").addClass("fa-bars");
+        $(".mobile-grayout").removeClass("show-gray");
+    } else {
+        $("nav").addClass("show-nav");
+        $("#toggle").removeClass("fa-bars");
+        $("#toggle").addClass("fa-times");
+        $(".mobile-grayout").addClass("show-gray");
     }
+});
 
-    $("#secret-message").text(messages[messageIndex])
-    messageIndex++
+// Closing the navbar when a navigation link is clicked
+$(document).on("click", ".link", function() {
+    $("nav").removeClass("show-nav");
+    $("#toggle").removeClass("fa-times");
+    $("#toggle").addClass("fa-bars");
+    $(".mobile-grayout").removeClass("show-gray");
+});
+
+// Closing the navbar when outside of the nav is clicked
+$(document).on("click", ".mobile-grayout", function() {
+    $("nav").removeClass("show-nav");
+    $("#toggle").removeClass("fa-times");
+    $("#toggle").addClass("fa-bars");
+    $(".mobile-grayout").removeClass("show-gray");
+});
+
+// FAQ Cards hide/show
+let card = document.getElementsByClassName("card");
+for (let i = 0; i < card.length; i++) {
+    let accordion = card[i].getElementsByClassName("accordion-header")[0];
+    // Click should only work on accordion-header of each card
+    accordion.addEventListener("click", function() {
+
+        card[i].classList.toggle("active");
+
+        let panel = card[i].getElementsByClassName("panel")[0];
+        let fa = this.getElementsByTagName("i")[0];
+
+        // Toggle panel and plus/minus on click of header
+        if ($(card[i]).hasClass("active")) {
+            $(panel).slideDown(200);
+        } else {
+            $(panel).slideUp(200);
+        }
+
+        $(fa).toggleClass("fa-plus");
+        $(fa).toggleClass("fa-minus");
+    });
 }

@@ -1,166 +1,802 @@
+// Variables
+// Using a mix of SASS for easier readability and CSS for easier changability
+// Colors
+$dark-blue: #193787;
+$blue: #1447C8;
+$light-blue: #44C6E6;
+$off-white: #F6F8FA;
+$darker-blue: #081646;
+$orange: #FF9C4A;
+$grey: #D0D9E2;
 
-// Vars
-
+// Typography
 :root {
-    --logo-height: 100px;
-    --main-margin: 30px; // flex gap not available in Safari :(
+    --body-font-size: 1.3rem;
 }
 
-// Element styles
+// Mixins
+@mixin button-primary {
+    background-color: $blue;
+    text-decoration: none;
+    user-select: none;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+    color: $off-white;
+    font-size: var(--body-font-size);
+    cursor: pointer;
+    transition: 0.2s all;
 
+    &:hover {
+        background-color: $dark-blue;
+    }
+
+    &:active {
+        transform: translateY(4px);
+        color: $off-white;
+        background-color: $darker-blue;
+    }
+
+    @media screen and (max-width: 900px) {
+        font-size: 1em;
+    }
+}
+
+@mixin button-secondary {
+    @include button-primary;
+    background-color: white;
+    color: $blue;
+    border: 2px solid $blue;
+
+    &:hover {
+        color: $off-white;
+    }
+}
+
+// General Styles
 * {
-    box-sizing: border-box;
-}
-
-html, body {
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 125%;
+
+    // Transition all elements on the screen
+    // (except FAQ panel, which has conflicting transitions)
+    // (and except certian nav stuff, which we don't want)
+    &:not(.panel):not(.show-nav):not(.left):not(.right) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
+    }
 }
 
 body {
-    background-color: #c0c0c0;
-    transform: scale(1.5);
-    transform-origin: center;
+    background-color: $off-white;
+}
+
+// Typography
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: 'Sora', sans-serif;
+    margin-left: -5px;
+    color: $darker-blue;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    font-family: 'Sora', sans-serif;
+    color: $darker-blue;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 2rem;
+    color: $darker-blue;
 }
 
 p {
-    // Reuse font from the library for p elements
-    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: var(--body-font-size);
+    line-height: 133%;
+    padding-bottom: 1rem;
+    color: $darker-blue;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $blue;
+        border-bottom: 2px solid $blue;
+
+        &:hover, &:focus, &:active {
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
 }
 
-footer {
-    width: 60%;
-    position: absolute;
-    bottom: 20%; // From webpage scale
-    right: 0;
+
+// Nav
+nav {
+    background-color: white;
+    border-bottom: 2px solid rgba($light-blue, 25%);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--body-font-size);
+    height: 100px;
+    position: fixed;
+    padding: 0px 85px 0px 8rem;
+    top: 0;
     left: 0;
-    margin: 0 auto;
-    text-align: center;
-}
-
-// Section styles
-
-#main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100%;
-    // calc() seems to require var+const in that order
-    margin-top: calc((var(--logo-height) * -1) + var(--main-margin));
-}
-
-#logo {
-    width: var(--logo-height);
-    height: var(--logo-height);
-}
-
-#secret-message {
-    position: absolute;
-    margin-top: 50px;
+    right: 0;
     z-index: 1;
-}
 
-.window {
-    max-width: 300px;
-    margin: var(--main-margin) auto;
-    position: relative;
-    z-index: 5;
-
-    .title-bar:hover {
-        cursor: grab;
-    }
-}
-
-.field-row-stacked {
-    input {
-        width: 150px;
+    .top, .left, .right {
+        display: flex;
+        align-items: center;
     }
 
-    button {
-        margin: 0;
-        margin-left: 10px;
-        height: 21px; // Match the text box, hardcoded in the library :(
-        min-height: 0px;
-    }
-}
-
-#badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    img {
-        margin: 0 calc(var(--main-margin) / 2);
-        background-color: #333;
-        height: 31px;
-        color: #333;
-        width: 88px;
-    }
-}
-
-.text-break {
-    display: inline-block;
-}
-
-// Media queries
-
-// Opposite of the one below to target
-// !media query
-@media screen and (min-width: 500px),
-       screen and (min-height: 750px) {
-    #main {
-        height: 100%;
-    }
-}
-
-@media screen and (max-width: 500px),
-       screen and (max-height: 750px) {
-    :root {
-        --main-margin: 10px;
+    .left {
+        flex-grow: 1;
     }
 
-    .window {
-        max-width: 250px;
+    #toggle {
+        margin-right: 2rem;
+        color: $blue;
+        font-size: 2rem;
+        width: 2rem;
+        display: none;
     }
 
-    #badges {
-        width: 70%;
+    a {
+        margin-right: 2rem;
+        text-decoration: none;
+        color: $blue;
+    }
 
-        img {
-            margin-bottom: var(--main-margin);
+    .link {
+        border-bottom: 2px solid white;
+        transition: all 0.2s;
+
+        &:not(:focus):hover {
+            // underline upon hover, disable hover upon click
+            font-weight: bold;
+            border-color: $blue;
+        }
+
+        &.active {
+            font-weight: bold;
+            color: $darker-blue;
+            border-color: $darker-blue;
+
+            &:hover {
+                border-color: $darker-blue;
+            }
         }
     }
 
-    #buttons {
-        gap: 5px;
+    #login {
+        @include button-primary;
+    }
+
+    #logo {
+        width: 80px;
+        border: none;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 
-@media screen and (max-width: 400px) {
-    .window {
-        max-width: 220px;
+.mobile-grayout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.25;
+    z-index: 3;
+    cursor: pointer;
+    display: none;
+}
+
+// MLH Banner
+#mlh-trust-badge {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 5px;
+    width: 75px;
+    height: 0;
+    z-index: 2;
+}
+
+
+// Section padding
+section {
+    padding: 120px 8rem 0px; // Set up to avoid nav overlap when linked
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+
+// Videos - hiding controls
+video::-webkit-media-controls {
+    opacity: 0;
+}
+
+
+// Hero
+#hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+
+    #hero-video video {
+        max-width: 100%;
+    }
+
+    #hero-content {
+        width: max-content;
+        margin-right: 2rem;
+
+        h3:not(.h3:last-of-type) {
+            padding-bottom: 0;
+        }
+
+        p:last-of-type {
+            margin-top: 2rem;
+        }
+
+        #hero-buttons {
+            display: flex;
+            justify-content: space-between;
+
+            #login {
+                @include button-primary;
+                margin-right: 2rem;
+                width: 50%;
+            }
+
+            #register {
+                @include button-secondary;
+                width: 50%;
+            }
+        }
     }
 }
 
-@media screen and (max-height: 750px) {
-    html, body {
+// About
+#about {
+    #about-cards {
+        display: flex;
+        justify-content: space-between;
+        margin: 3rem 0rem;
+
+        .about-card {
+            background-color: white;
+            border: 1px solid $light-blue;
+            border-radius: 6px;
+            padding: 20px;
+            width: 48%;
+        }
+    }
+
+    #about-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        #stats-content {
+            width: 50%;
+
+            #stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                div {
+                    padding-right: 20px;
+
+                    p:first-of-type {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        video {
+            max-width: 50%;
+        }
+    }
+}
+
+
+// FAQ
+#faq {
+    #faq-title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        #faq-title-content {
+            margin-right: 3rem;
+        }
+    }
+
+    #faq-cards {
+        margin-top: 40px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        // TODO: This can be cleaner.
+        $card-m: 20px;
+
+        &-left {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-right: $card-m / 2;
+        }
+
+        &-right {
+            width: calc(50% - (#{$card-m} / 2));
+            margin-left: $card-m / 2;
+        }
+
+        .card {
+            width: 100%;
+            margin-bottom: $card-m;
+            border-radius: 6px;
+            background-color: white;
+            border: 2px solid $blue;
+
+            &:active {
+                transform: none;
+            }
+
+            .accordion-header {
+                background-color: transparent;
+                cursor: pointer;
+                outline: none;
+                color: $blue;
+                font-weight: 600;
+                text-align: left;
+                padding: 20px 30px;
+                border: none;
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+                width: 100%;
+                font-size: var(--body-font-size);
+
+                .fa-plus {
+                    margin-right: 10px;
+
+                    &-blue {
+                        color: $blue;
+                    }
+
+                    &-light-blue {
+                        color: $light-blue;
+                    }
+
+                    &-orange {
+                        color: $orange;
+                    }
+                }
+
+                .fa-minus {
+                    margin-right: 10px;
+                    color: white;
+                }
+
+                &:hover {
+                    background-color: $dark-blue;
+                    border-radius: 0;
+                    color: white;
+
+                    .fa-plus {
+                        color: white;
+                    }
+                }
+            }
+
+            .panel {
+                display: none; // Toggled in JS
+                padding: 20px 65px; // large side padding aligns with header text
+
+                p, em {
+                    color: $blue;
+                    line-height: 23px;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+
+        .active .accordion-header {
+            color: white;
+            background-color: $blue;
+
+            &:hover {
+                border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+            }
+        }
+    }
+}
+
+
+// Contact
+#contact {
+    padding-bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    min-height: auto;
+
+    #contact-content {
+        width: 50%;
+        padding-right: 20px;
+    }
+
+    #contact-socials {
+        align-self: flex-end;
+        background-image: url("../assets/bh8/contact-monitor.svg");
+        width: 430px;
+        max-width: 50%;
+        height: 330px;
+        margin-bottom: -2px; // Gets rid of gap between svg and footer
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        padding: 1rem 2.5rem 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        #social-icons {
+            display: flex;
+            flex-wrap: wrap;
+
+            a {
+                margin: 1rem;
+
+                i {
+                    font-size: 3rem;
+                    color: $blue;
+
+                    &:hover {
+                        color: $dark-blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Footer
+footer {
+    background-color: $grey;
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        line-height: 2.5rem;
+    }
+
+    #footer-left {
+        padding-right: 1rem;
+    }
+
+    #footer-right {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            padding-bottom: 0;
+
+            &:not(p:last-of-type) {
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1500px) {
+    // FAQ
+    #faq {
+        #faq-title {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #faq-cards {
+            flex-direction: column;
+
+            &-left, &-right {
+                margin: 0;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    // Nav
+    nav {
+        padding: 0px 85px 0px 5rem;
+    }
+
+    // Section padding
+    section {
+        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+    }
+
+    // Hero
+    #hero {
+        flex-direction: column;
+        align-items: center;
+
+        #hero-content {
+            width: auto;
+            margin-right: 0;
+            flex-basis: auto;
+            text-align: center;
+        }
+    }
+
+    // About
+    #about #about-content #about-buttons {
+        width: 100%;
+    }
+
+    // Footer
+    footer #footer-right {
+        flex-direction: column;
+        text-align: right;
+
+        p:not(p:last-of-type) {
+            padding-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 955px) {
+    // Nav
+    nav {
+        height: 70px;
+        padding: 0px 3.5rem;
+
+        #toggle {
+            display: block;
+        }
+
+        #logo {
+            width: 60px;
+        }
+
+        .link, #login {
+            display: none;
+        }
+    }
+
+    .show-nav {
+        height: 100vh;
+        width: 50vw;
+        min-width: max-content;
+        padding: 0px 3.5rem;
+        border-bottom: none;
+        border-right: 2px solid rgba($light-blue, 25%);
+        flex-direction: column;
+        justify-content: flex-start;
+        z-index: 4;
+
+        .top {
+            height: 68px;
+        }
+
+        .left, .right {
+            align-items: flex-start;
+            margin-top: 2rem;
+
+            a {
+                margin-right: 0rem;
+                margin-top: 2rem;
+            }
+        }
+
+        .left {
+            flex-direction: column;
+            flex-grow: 0;
+            order: 2;
+        }
+
+        .right {
+            flex-direction: column-reverse;
+            order: 1;
+        }
+
+        .link, #login {
+            display: block;
+        }
+    }
+
+    .show-gray {
+        display: block;
+    }
+
+    // MLH Banner
+    #mlh-trust-badge {
+        width: 50px;
+    }
+
+    // Section padding
+    section {
+        padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
+    }
+
+    // Hero
+    #hero #hero-content #hero-buttons {
+        flex-direction: column;
+
+        #login {
+            margin: 0rem 0rem 1rem;
+            width: 100%;
+        }
+
+        #register {
+            width: 100%;
+        }
+    }
+
+    // About
+    #about {
+        #about-cards {
+            flex-direction: column;
+
+            .about-card {
+                width: 100%;
+
+                &:not(.about-card:last-of-type) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+
+        #about-stats {
+            flex-direction: column;
+
+            #stats-content {
+                width: 100%;
+            }
+
+            video {
+                max-width: 100%;
+                padding-top: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    // Variables
+    :root {
+        --body-font-size: 1rem;
+    }
+
+    // Typography
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    // About
+    #about #about-content {
+        p {
+            font-size: 1em;
+        }
+
+        #about-buttons {
+            flex-direction: column;
+            width: 60%;
+
+            a {
+                margin-left: 0;
+            }
+        }
+    }
+
+    // FAQ
+    #faq #faq-cards {
+        margin-top: 20px;
+
+        .card {
+            .accordion-header {
+                padding: 10px 20px;
+            }
+
+            .panel {
+                padding: 20px 20px 10px;
+            }
+        }
+    }
+
+    // Contact
+    #contact {
+        flex-direction: column;
+
+        #contact-content {
+            width: 100%;
+            padding-right: 0px;
+        }
+
+        #contact-socials {
+            margin: 2rem auto -2px;
+            max-width: 75%;
+            width: 75%;
+            height: calc((100vw - 7rem) * 0.56); // should be the same as 75% of the current width
+            // Essentially: (100vw - section padding to get 100% width) * 0.75 to get the 75% width * 0.75 for 75% of 75% width
+        }
+    }
+
+    // Footer
+    footer p {
+        line-height: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    // About
+    #about #stats-content #stats {
+        flex-direction: column;
+
+        div {
+            padding: 0px 0px 20px;
+        }
+    }
+
+    // Contact
+    #contact #contact-socials {
+        max-width: 100%;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0;
+        margin: 2rem 0;
+        background-image: none;
         height: auto;
-        overflow-y: auto;
+
+        #social-icons a i {
+            font-size: 2rem;
+        }
     }
 
-    body {
-        transform-origin: top;
-    }
-
-    #main {
-        margin-top: var(--main-margin);
-    }
-
+    // Footer
     footer {
-        position: relative;
+        flex-direction: column;
+
+        #footer-right {
+            text-align: left;
+        }
     }
 }
