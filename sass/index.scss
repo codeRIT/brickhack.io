@@ -435,6 +435,22 @@ video::-webkit-media-controls {
     }
 }
 
+// Sponsors
+#sponsors {
+    #sponsor-btns {
+        margin-top: 1rem;
+        display: flex;
+
+        #prospectus {
+            @include button-secondary();
+            margin-right: 2rem;
+        }
+
+        #email {
+            @include button-primary();
+        }
+    }
+}
 
 // Contact
 #contact {
@@ -738,6 +754,20 @@ footer {
 
             .panel {
                 padding: 20px 20px 10px;
+            }
+        }
+    }
+
+
+    // Sponsors
+    #sponsors {
+        #sponsor-btns {
+            flex-flow: column;
+            width: max-content;
+            margin: auto;
+
+            #prospectus {
+                margin: 0rem 0rem 1rem;
             }
         }
     }
