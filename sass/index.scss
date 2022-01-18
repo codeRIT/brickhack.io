@@ -442,12 +442,12 @@ video::-webkit-media-controls {
         display: flex;
 
         #prospectus {
-            @include button-secondary();
+            @include button-primary();
             margin-right: 2rem;
         }
 
         #email {
-            @include button-primary();
+            @include button-secondary();
         }
     }
 }
@@ -768,6 +768,7 @@ footer {
 
             #prospectus {
                 margin: 0rem 0rem 1rem;
+                padding: 1rem 3rem;
             }
         }
     }
