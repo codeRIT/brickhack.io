@@ -453,52 +453,51 @@ video::-webkit-media-controls {
 }
 
 // Leadership
-#leadership {
-    #team {
-        display: flex;
-        //justify-content: space-between;
-        flex-wrap: wrap;
-        column-gap: 5rem;
-        row-gap: 2.5rem;
+#leadership #team {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    column-gap: 5rem;
+    row-gap: 2.5rem;
 
-        .leader {
-            .leader-img {
-                margin-bottom: 0.75rem;
+    .leader {
+        .leader-img {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-bottom: 0.75rem;
 
-                .tape {
-                    opacity: 0.5;
-                    width: 50%;
-                    height: 30px;
-                    border-radius: 2px;
-                    transform: translateY(15px);
-                    margin: auto;
+            .tape {
+                opacity: 0.5;
+                width: 50%;
+                height: 30px;
+                border-radius: 2px;
+                transform: translateY(15px);
+                margin: auto;
 
-                    &-orange {
-                        background-color: $orange;
-                    }
-
-                    &-blue {
-                        background-color: $light-blue;
-                    }
+                &-orange {
+                    background-color: $orange;
                 }
 
-                img {
-                    border-radius: 6px;
-                    width: 250px;
-                    max-width: 250px;
+                &-blue {
+                    background-color: $light-blue;
                 }
             }
 
-            .leader-role {
-                font-size: 1.2rem;
-                opacity: 0.7;
-                font-weight: 500;
-                padding-bottom: 0px;
+            img {
+                border-radius: 6px;
+                width: 100%;
             }
+        }
 
-            .leader-name {
-                font-weight: bold;
-            }
+        .leader-role {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            font-weight: 500;
+            padding-bottom: 0px;
+        }
+
+        .leader-name {
+            font-weight: bold;
         }
     }
 }
@@ -629,6 +628,13 @@ footer {
     // About
     #about #about-content #about-buttons {
         width: 100%;
+    }
+
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: auto auto auto;
     }
 
     // Footer
@@ -824,6 +830,12 @@ footer {
         }
     }
 
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
     // Contact
     #contact {
         flex-direction: column;
@@ -856,6 +868,12 @@ footer {
         div {
             padding: 0px 0px 20px;
         }
+    }
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: auto;
     }
 
     // Contact
