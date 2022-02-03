@@ -834,6 +834,10 @@ footer {
     #leadership #team {
         display: grid;
         grid-template-columns: auto auto;
+
+        .leader .leader-role {
+            font-size: 0.9rem;
+        }
     }
 
     // Contact
