@@ -450,6 +450,52 @@ video::-webkit-media-controls {
             @include button-secondary();
         }
     }
+
+    .logo-group {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 2rem;
+        padding: 2rem 0;
+
+        img {
+            opacity: 0.75;
+
+            &:hover {
+                transform: translateY(-10px);
+                opacity: 1;
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    #brick-tier img {
+        width: 500px;
+    }
+
+    #platinum-tier {
+        grid-template-columns: auto auto;
+
+        img {
+            width: 400px;
+        }
+    }
+
+    #gold-tier {
+        grid-template-columns: auto auto auto;
+
+        img {
+            width: 300px;
+        }
+    }
+
+    #bronze-silver-tier {
+        grid-template-columns: auto auto auto auto;
+
+        img {
+            width: 200px;
+        }
+    }
 }
 
 // Contact
@@ -578,6 +624,37 @@ footer {
     // About
     #about #about-content #about-buttons {
         width: 100%;
+    }
+
+    // Sponsors
+    #sponsors {
+        #brick-tier img {
+            width: 450px;
+        }
+
+        #platinum-tier {
+            grid-template-columns: auto auto;
+
+            img {
+                width: 350px;
+            }
+        }
+
+        #gold-tier {
+            grid-template-columns: auto auto auto;
+
+            img {
+                width: 250px;
+            }
+        }
+
+        #bronze-silver-tier {
+            grid-template-columns: auto auto auto auto;
+
+            img {
+                width: 150px;
+            }
+        }
     }
 
     // Footer
@@ -771,6 +848,34 @@ footer {
                 padding: 1rem 3rem;
             }
         }
+
+        #brick-tier img {
+            width: 400px;
+        }
+
+        #platinum-tier {
+            grid-template-columns: auto auto;
+
+            img {
+                width: 300px;
+            }
+        }
+
+        #gold-tier {
+            grid-template-columns: auto auto auto;
+
+            img {
+                width: 200px;
+            }
+        }
+
+        #bronze-silver-tier {
+            grid-template-columns: auto auto auto auto;
+
+            img {
+                width: 100px;
+            }
+        }
     }
 
     // Contact
@@ -819,6 +924,39 @@ footer {
 
         #social-icons a i {
             font-size: 2rem;
+        }
+    }
+
+    // Sponsors
+    #sponsors {
+        #brick-tier img {
+            width: 300px;
+            max-width: 100%;
+        }
+
+        #platinum-tier {
+            grid-template-columns: auto auto;
+
+            img {
+                width: 200px;
+                max-width: 100%;
+            }
+        }
+
+        #gold-tier {
+            grid-template-columns: auto auto auto;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        #bronze-silver-tier {
+            grid-template-columns: auto auto auto auto;
+
+            img {
+                width: 50px;
+            }
         }
     }
 
