@@ -461,7 +461,8 @@ video::-webkit-media-controls {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        gap: 3rem;
+        row-gap: 3rem;
+        column-gap: 3rem;
         padding: 2rem 0;
 
         img {
