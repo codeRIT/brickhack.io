@@ -479,28 +479,16 @@ video::-webkit-media-controls {
         width: 500px;
     }
 
-    #platinum-tier {
-        grid-template-columns: auto auto;
-
-        img {
-            width: 400px;
-        }
+    #platinum-tier img {
+        width: 400px;
     }
 
-    #gold-tier {
-        grid-template-columns: auto auto auto;
-
-        img {
-            width: 300px;
-        }
+    #gold-tier img {
+        width: 300px;
     }
 
-    #bronze-silver-tier {
-        grid-template-columns: auto auto auto auto;
-
-        img {
-            width: 200px;
-        }
+    #bronze-silver-tier img {
+        width: 200px;
     }
 }
 
@@ -638,28 +626,16 @@ footer {
             width: 450px;
         }
 
-        #platinum-tier {
-            grid-template-columns: auto auto;
-
-            img {
-                width: 350px;
-            }
+        #platinum-tier img {
+            width: 350px;
         }
 
-        #gold-tier {
-            grid-template-columns: auto auto auto;
-
-            img {
-                width: 250px;
-            }
+        #gold-tier img {
+            width: 250px;
         }
 
-        #bronze-silver-tier {
-            grid-template-columns: auto auto auto auto;
-
-            img {
-                width: 150px;
-            }
+        #bronze-silver-tier img {
+            width: 150px;
         }
     }
 
@@ -859,28 +835,16 @@ footer {
             width: 400px;
         }
 
-        #platinum-tier {
-            grid-template-columns: auto auto;
-
-            img {
-                width: 300px;
-            }
+        #platinum-tier img {
+            width: 300px;
         }
 
-        #gold-tier {
-            grid-template-columns: auto auto auto;
-
-            img {
-                width: 200px;
-            }
+        #gold-tier img {
+            width: 200px;
         }
 
-        #bronze-silver-tier {
-            grid-template-columns: auto auto auto auto;
-
-            img {
-                width: 100px;
-            }
+        #bronze-silver-tier img {
+            width: 100px;
         }
     }
 
@@ -940,29 +904,17 @@ footer {
             max-width: 100%;
         }
 
-        #platinum-tier {
-            grid-template-columns: auto auto;
-
-            img {
-                width: 200px;
-                max-width: 100%;
-            }
+        #platinum-tier img {
+            width: 200px;
+            max-width: 100%;
         }
 
-        #gold-tier {
-            grid-template-columns: auto auto auto;
-
-            img {
-                width: 100px;
-            }
+        #gold-tier img {
+            width: 100px;
         }
 
-        #bronze-silver-tier {
-            grid-template-columns: auto auto auto auto;
-
-            img {
-                width: 50px;
-            }
+        #bronze-silver-tier img {
+            width: 50px;
         }
     }
 
