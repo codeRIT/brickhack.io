@@ -455,7 +455,7 @@ video::-webkit-media-controls {
 // Leadership
 #leadership #team {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 5rem;
     row-gap: 2.5rem;
 
@@ -634,7 +634,7 @@ footer {
     // Leadership
     #leadership #team {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     // Footer
@@ -833,7 +833,7 @@ footer {
     // Leadership
     #leadership #team {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
 
         .leader .leader-role {
             font-size: 0.9rem;
@@ -877,7 +877,7 @@ footer {
     // Leadership
     #leadership #team {
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
     }
 
     // Contact
