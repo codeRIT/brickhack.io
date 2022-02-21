@@ -438,9 +438,9 @@ video::-webkit-media-controls {
 
 // Prizes
 #prizes {
-    $overflow-size: 35px;             // how far does the outer card go into the section margins?
-    $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
-    $tape-offset: 10px;               // how far into the card is the tape placed?
+    // $overflow-size: 35px;             // how far does the outer card go into the section margins?
+    //$inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+    $tape-offset: 35px;               // how far into the card is the tape placed?
     
     @mixin tape-transform($rotation) {
         transform: translate(-50%, -50%) rotate($rotation);
@@ -452,17 +452,19 @@ video::-webkit-media-controls {
         background-color: white;
         border: 1px solid $light-blue;
         border-radius: 6px;
-        margin-left: -$overflow-size;
-        padding: $overflow-size;
+        //margin-left: -$overflow-size;
+        //padding: $overflow-size;
+        padding: 75px 95px;
         position: relative;
-        width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
+        // width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
+        width: 100%;
 
         .tape {
             background-color: $beige;
-            height: 12px;
+            height: 40px;
             opacity: 25%;
             position: absolute;
-            width: 50px;
+            width: 165px;
 
             &.top-left {
                 @include tape-transform(-45deg);
@@ -472,20 +474,48 @@ video::-webkit-media-controls {
 
             &.top-right {
                 @include tape-transform(45deg);
-                right: -$overflow-size - $tape-offset;
+                right: $tape-offset - 165px;
                 top: $tape-offset;
             }
 
             &.bottom-left {
                 @include tape-transform(45deg);
                 left: $tape-offset;
-                bottom: -$tape-offset;
+                bottom: $tape-offset - 40px;
             }
 
             &.bottom-right {
                 @include tape-transform(-45deg);
-                right: -$overflow-size - $tape-offset;
-                bottom: -$tape-offset;
+                right: $tape-offset - 165px;
+                bottom: $tape-offset - 40px;
+            }
+        }
+
+        & > .content {
+            align-items: flex-end;
+            column-gap: 50px;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 100px;
+
+            .graphic {
+                flex: 0 0 auto;
+
+                // placeholder content/sizing
+                width: 240px;
+                height: 100px;
+                background-color: blue;
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+
+                .title {
+                    letter-spacing: 1.75rem;
+                    opacity: 50%;
+                }
             }
         }
 
@@ -493,20 +523,31 @@ video::-webkit-media-controls {
             background-color: white;
             border: 1px solid $light-blue;
             border-radius: 6px;
-            margin-left: -$inner-card-overflow-size;
-            padding: $inner-card-overflow-size;
-            width: calc(100% + (2 * #{$inner-card-overflow-size}));
+            //margin-left: -$inner-card-overflow-size;
+            //padding: $inner-card-overflow-size;
+            padding: 35px;
+            // width: calc(100% + (2 * #{$inner-card-overflow-size}));
+            width: 100%;
 
             .title {
                 padding-bottom: 20px;
             }
 
-            .horizontal-group {
+            .content {
                 align-items: flex-start;
                 display: flex;
-                flex-direction: column;
-                row-gap: 20px;
+                flex-direction: row;
+                column-gap: 30px;
             }
+        }
+
+        #prizes-corner-text {
+            font-size: 1.125rem;
+            position: absolute;
+            bottom: calc(75px / 2);
+            right: 95px;
+            opacity: 50%;
+            transform: translateY(50%);  // easy way to perfectly vertical center the text
         }
     }
 }
@@ -834,6 +875,17 @@ footer {
         }
     }
 
+    // Prizes
+    #prizes {
+        #prizes-card {
+            #inner-prizes-card {
+                .content {
+                    flex-direction: column;
+                    row-gap: 20px;
+                }
+            }
+        }
+    }
 
     // Sponsors
     #sponsors {
