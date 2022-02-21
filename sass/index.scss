@@ -8,6 +8,7 @@ $off-white: #F6F8FA;
 $darker-blue: #081646;
 $orange: #FF9C4A;
 $grey: #D0D9E2;
+$beige: #F8953A;
 
 // Typography
 :root {
@@ -430,6 +431,81 @@ video::-webkit-media-controls {
 
             &:hover {
                 border-radius: 0px 0px 6px 6px; // making bottom corners round and top corners filled
+            }
+        }
+    }
+}
+
+// Prizes
+#prizes {
+    $overflow-size: 35px;             // how far does the outer card go into the section margins?
+    $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+    $tape-offset: 10px;               // how far into the card is the tape placed?
+    
+    @mixin tape-transform($rotation) {
+        transform: translate(-50%, -50%) rotate($rotation);
+        // this makes it so that we're positioning the tape by its center instead of its top-left, pre-rotation
+        // corner, which is significantly easier
+    }
+
+    #prizes-card {
+        background-color: white;
+        border: 1px solid $light-blue;
+        border-radius: 6px;
+        margin-left: -$overflow-size;
+        padding: $overflow-size;
+        position: relative;
+        width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
+
+        .tape {
+            background-color: $beige;
+            height: 12px;
+            opacity: 15%;
+            position: absolute;
+            width: 50px;
+
+            &.top-left {
+                @include tape-transform(-45deg);
+                left: $tape-offset;
+                top: $tape-offset;
+            }
+
+            &.top-right {
+                @include tape-transform(45deg);
+                right: -$overflow-size - $tape-offset;
+                top: $tape-offset;
+            }
+
+            &.bottom-left {
+                @include tape-transform(45deg);
+                left: $tape-offset;
+                bottom: -$tape-offset;
+            }
+
+            &.bottom-right {
+                @include tape-transform(-45deg);
+                right: -$overflow-size - $tape-offset;
+                bottom: -$tape-offset;
+            }
+        }
+
+        #inner-prizes-card {
+            background-color: white;
+            border: 1px solid $light-blue;
+            border-radius: 6px;
+            margin-left: -$inner-card-overflow-size;
+            padding: $inner-card-overflow-size;
+            width: calc(100% + (2 * #{$inner-card-overflow-size}));
+
+            .title {
+                padding-bottom: 20px;
+            }
+
+            .horizontal-group {
+                align-items: flex-start;
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
             }
         }
     }
