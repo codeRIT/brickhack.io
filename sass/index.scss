@@ -448,12 +448,21 @@ video::-webkit-media-controls {
         // corner, which is significantly easier
     }
 
+    #prizes-ricky {
+        // placeholder
+        width: 980px;
+        height: 712px;
+        background-color: blue;
+        margin: 0 auto;
+    }
+
     #prizes-card {
         background-color: white;
         border: 1px solid $light-blue;
         border-radius: 6px;
         //margin-left: -$overflow-size;
         //padding: $overflow-size;
+        margin-top: -195px;  // need to overlap prizes ricky
         padding: 75px 95px;
         position: relative;
         // width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
