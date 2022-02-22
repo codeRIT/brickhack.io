@@ -827,15 +827,11 @@ footer {
     }
 
     // Prizes
-    #prizes {
-        #prizes-card {
-            & > .content {
-                .text {
-                    .title {
-                        letter-spacing: 0.5rem;
-                    }
-                }
-            }
+    #prizes #prizes-card {
+        margin-top: -110px;
+
+        & > .content .text .title {
+            letter-spacing: 0.5rem;
         }
     }
 }
@@ -895,6 +891,8 @@ footer {
         $tape-offset: 12px;               // how far into the card is the tape placed?
         $overflow-size: 35px;             // how far does the outer card go into the section margins?
         $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+
+        margin-top: -60px;
 
         #prizes-card {
             margin-left: -$overflow-size;
@@ -1001,6 +999,11 @@ footer {
         div {
             padding: 0px 0px 20px;
         }
+    }
+
+    // Prizes
+    #prizes #prizes-card {
+        margin-top: -25px;  // looks decent on most modern devices
     }
 
     // Contact
