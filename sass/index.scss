@@ -438,9 +438,7 @@ video::-webkit-media-controls {
 
 // Prizes
 #prizes {
-    // $overflow-size: 35px;             // how far does the outer card go into the section margins?
-    //$inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
-    $tape-offset: 35px;               // how far into the card is the tape placed?
+    $tape-offset: 35px;  // how far into the card is the tape placed?
     
     @mixin tape-transform($rotation) {
         transform: translate(-50%, -50%) rotate($rotation);
@@ -451,6 +449,7 @@ video::-webkit-media-controls {
     #prizes-ricky {
         // placeholder
         width: 85%;
+        max-width: 980px;
         height: auto;
         background-color: blue;
         margin: 0 auto;
@@ -460,12 +459,9 @@ video::-webkit-media-controls {
         background-color: white;
         border: 1px solid $light-blue;
         border-radius: 6px;
-        //margin-left: -$overflow-size;
-        //padding: $overflow-size;
         margin-top: -195px;  // need to overlap prizes ricky
         padding: 75px 95px;
         position: relative;
-        // width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
         width: 100%;
 
         .tape {
@@ -522,7 +518,7 @@ video::-webkit-media-controls {
                 row-gap: 20px;
 
                 .title {
-                    letter-spacing: 1.75rem;
+                    letter-spacing: 1.5rem;
                     opacity: 50%;
                 }
             }
@@ -532,10 +528,7 @@ video::-webkit-media-controls {
             background-color: white;
             border: 1px solid $light-blue;
             border-radius: 6px;
-            //margin-left: -$inner-card-overflow-size;
-            //padding: $inner-card-overflow-size;
             padding: 35px;
-            // width: calc(100% + (2 * #{$inner-card-overflow-size}));
             width: 100%;
 
             .title {
@@ -832,6 +825,19 @@ footer {
             }
         }
     }
+
+    // Prizes
+    #prizes {
+        #prizes-card {
+            & > .content {
+                .text {
+                    .title {
+                        letter-spacing: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -886,12 +892,65 @@ footer {
 
     // Prizes
     #prizes {
+        $tape-offset: 12px;               // how far into the card is the tape placed?
+        $overflow-size: 35px;             // how far does the outer card go into the section margins?
+        $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+
         #prizes-card {
+            margin-left: -$overflow-size;
+            padding: $overflow-size $overflow-size ($overflow-size + 40px) $overflow-size;
+            width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
+
+            & > .content {
+                margin-bottom: 30px;
+
+                .graphic {
+                    display: none;
+                }
+
+                .text {
+                    row-gap: 15px;
+                }
+            }
+
+            .tape {
+                height: 12px;
+                width: 50px;
+    
+                &.top-left {
+                    left: $tape-offset;
+                    top: $tape-offset;
+                }
+    
+                &.top-right {
+                    right: $tape-offset - 50px;
+                    top: $tape-offset;
+                }
+    
+                &.bottom-left {
+                    left: $tape-offset;
+                    bottom: $tape-offset - 12px;
+                }
+    
+                &.bottom-right {
+                    right: $tape-offset - 50px;
+                    bottom: $tape-offset - 12px;
+                }
+            }
+
             #inner-prizes-card {
+                margin-left: -$inner-card-overflow-size;
+                padding: $inner-card-overflow-size;
+                width: calc(100% + (2 * #{$inner-card-overflow-size}));
+
                 .content {
                     flex-direction: column;
                     row-gap: 20px;
                 }
+            }
+
+            #prizes-corner-text {
+                font-size: 0.75rem;
             }
         }
     }
