@@ -452,6 +452,7 @@ video::-webkit-media-controls {
     }
 
     .logo-group {
+        align-items: center;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
