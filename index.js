@@ -15,6 +15,16 @@ console.log(hiringMessage);
 const comment = document.createComment("\n" + hiringMessage + "\n");
 document.insertBefore(comment, document.firstChild);
 
+// Leadership easter egg
+/*$(document).ready(function() {
+    var randomNum = Math.floor(Math.random() * 50);
+    console.log(randomNum);
+    if (randomNum === 7) {
+        console.log("Lucky Ricky");
+        var ricky = $(".leader:first").clone();
+        ricky.appendTo($("#team"));
+    }
+});*/
 
 // Nav highlighting on scroll
 import ActiveMenuLink from "active-menu-link";

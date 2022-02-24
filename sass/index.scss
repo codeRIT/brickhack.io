@@ -487,6 +487,56 @@ video::-webkit-media-controls {
     }
 }
 
+// Leadership
+#leadership #team {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 5rem;
+    row-gap: 2.5rem;
+
+    .leader {
+        .leader-img {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-bottom: 0.75rem;
+
+            .tape {
+                opacity: 0.5;
+                width: 50%;
+                height: 30px;
+                border-radius: 2px;
+                transform: translateY(15px);
+                margin: auto;
+
+                &-orange {
+                    background-color: $orange;
+                }
+
+                &-blue {
+                    background-color: $light-blue;
+                }
+            }
+
+            img {
+                border-radius: 6px;
+                width: 100%;
+            }
+        }
+
+        .leader-role {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            font-weight: 500;
+            padding-bottom: 0px;
+        }
+
+        .leader-name {
+            font-weight: bold;
+        }
+    }
+}
+
 // Contact
 #contact {
     padding-bottom: 0;
@@ -632,6 +682,12 @@ footer {
         #bronze-silver-tier img {
             width: 150px;
         }
+    }
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     // Footer
@@ -843,6 +899,16 @@ footer {
         }
     }
 
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .leader .leader-role {
+            font-size: 0.9rem;
+        }
+    }
+
     // Contact
     #contact {
         flex-direction: column;
@@ -875,6 +941,12 @@ footer {
         div {
             padding: 0px 0px 20px;
         }
+    }
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     // Contact
