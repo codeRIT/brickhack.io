@@ -438,7 +438,7 @@ video::-webkit-media-controls {
 // Sponsors
 #sponsors {
     #sponsor-btns {
-        margin-top: 1rem;
+        margin: 1rem 0 2rem;
         display: flex;
 
         #prospectus {
@@ -471,19 +471,27 @@ video::-webkit-media-controls {
     }
 
     #brick-tier img {
-        width: 475px;
+        height: 475px;
     }
 
     #platinum-tier img {
-        width: 400px;
+        height: 425px;
     }
 
     #gold-tier img {
-        width: 300px;
+        height: 375px;
     }
 
     #bronze-silver-tier img {
-        width: 200px;
+        height: 300px;
+    }
+    
+    #partners {
+        padding-top: 1rem;
+
+        img {
+            height: 275px;
+        }
     }
 }
 
@@ -668,19 +676,27 @@ footer {
     // Sponsors
     #sponsors {
         #brick-tier img {
-            width: 425px;
+            height: 425px;
         }
 
         #platinum-tier img {
-            width: 350px;
+            height: 375px;
         }
 
         #gold-tier img {
-            width: 250px;
+            height: 325px;
         }
 
         #bronze-silver-tier img {
-            width: 150px;
+            height: 250px;
+        }
+    
+        #partners {
+            padding-top: 1rem;
+    
+            img {
+                height: 225px;
+            }
         }
     }
 
@@ -883,19 +899,27 @@ footer {
         }
 
         #brick-tier img {
-            width: 375px;
+            height: 375px;
         }
 
         #platinum-tier img {
-            width: 300px;
+            height: 325px;
         }
 
         #gold-tier img {
-            width: 200px;
+            height: 275px;
         }
 
         #bronze-silver-tier img {
-            width: 100px;
+            height: 200px;
+        }
+    
+        #partners {
+            padding-top: 1rem;
+    
+            img {
+                height: 175px;
+            }
         }
     }
 
@@ -967,21 +991,29 @@ footer {
     // Sponsors
     #sponsors {
         #brick-tier img {
-            width: 275px;
+            height: 275px;
             max-width: 100%;
         }
 
         #platinum-tier img {
-            width: 200px;
+            height: 225px;
             max-width: 100%;
         }
 
         #gold-tier img {
-            width: 100px;
+            height: 175px;
         }
 
         #bronze-silver-tier img {
-            width: 50px;
+            height: 100px;
+        }
+    
+        #partners {
+            padding-top: 1rem;
+    
+            img {
+                height: 75px;
+            }
         }
     }
 
