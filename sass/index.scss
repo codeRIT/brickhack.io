@@ -459,7 +459,6 @@ video::-webkit-media-controls {
         background-color: white;
         border: 1px solid $light-blue;
         border-radius: 6px;
-        margin-top: -195px;  // need to overlap prizes ricky
         padding: 75px 95px;
         position: relative;
         width: 100%;
@@ -467,7 +466,7 @@ video::-webkit-media-controls {
         .tape {
             background-color: $beige;
             height: 40px;
-            opacity: 25%;
+            opacity: 0.25;
             position: absolute;
             width: 165px;
 
@@ -514,7 +513,7 @@ video::-webkit-media-controls {
 
                 .title {
                     letter-spacing: 1.5rem;
-                    opacity: 50%;
+                    opacity: 0.50;
                 }
             }
         }
@@ -543,7 +542,7 @@ video::-webkit-media-controls {
             position: absolute;
             bottom: calc(75px / 2);
             right: 95px;
-            opacity: 50%;
+            opacity: 0.50;
             transform: translateY(50%);  // easy way to perfectly vertical center the text
         }
     }
@@ -879,12 +878,8 @@ footer {
     }
 
     // Prizes
-    #prizes #prizes-card {
-        margin-top: -110px;
-
-        & > .content .text .title {
-            letter-spacing: 0.5rem;
-        }
+    #prizes #prizes-card > .content .text .title {
+        letter-spacing: 0.5rem;
     }
 }
 
@@ -944,12 +939,8 @@ footer {
         $overflow-size: 35px;             // how far does the outer card go into the section margins?
         $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
 
-        margin-top: -60px;
-
         #prizes-card {
-            margin-left: -$overflow-size;
-            padding: $overflow-size $overflow-size ($overflow-size + 40px) $overflow-size;
-            width: calc(100% + (2 * #{$overflow-size}));  // #{...} is Sass interpolation
+            padding: $overflow-size $overflow-size ($overflow-size + 40px);
 
             & > .content {
                 margin-bottom: 30px;
@@ -1065,7 +1056,12 @@ footer {
 
     // Prizes
     #prizes #prizes-card {
-        margin-top: -25px;  // looks decent on most modern devices
+        padding: 20px 20px 60px;
+
+        #inner-prizes-card {
+            margin-left: 0;
+            width: 100%;
+        }
     }
 
     // Leadership
