@@ -471,26 +471,26 @@ video::-webkit-media-controls {
     }
 
     #brick-tier img {
-        height: 475px;
-    }
-
-    #platinum-tier img {
         height: 425px;
     }
 
-    #gold-tier img {
+    #platinum-tier img {
         height: 375px;
     }
 
+    #gold-tier img {
+        height: 325px;
+    }
+
     #bronze-silver-tier img {
-        height: 300px;
+        height: 250px;
     }
     
     #partners {
         padding-top: 1rem;
 
         img {
-            height: 275px;
+            height: 225px;
         }
     }
 }
@@ -671,33 +671,6 @@ footer {
     // About
     #about #about-content #about-buttons {
         width: 100%;
-    }
-
-    // Sponsors
-    #sponsors {
-        #brick-tier img {
-            height: 425px;
-        }
-
-        #platinum-tier img {
-            height: 375px;
-        }
-
-        #gold-tier img {
-            height: 325px;
-        }
-
-        #bronze-silver-tier img {
-            height: 250px;
-        }
-    
-        #partners {
-            padding-top: 1rem;
-    
-            img {
-                height: 225px;
-            }
-        }
     }
 
     // Leadership
@@ -896,6 +869,10 @@ footer {
                 margin: 0rem 0rem 1rem;
                 padding: 1rem 3rem;
             }
+        }
+
+        .logo-group {
+            padding: 1rem 0rem;
         }
 
         #brick-tier img {
