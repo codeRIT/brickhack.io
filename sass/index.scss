@@ -457,7 +457,7 @@ video::-webkit-media-controls {
         justify-content: space-evenly;
         flex-wrap: wrap;
         row-gap: 3rem;
-        column-gap: 3rem;
+        column-gap: 5rem;
         padding: 2rem 0;
 
         img {
@@ -471,26 +471,32 @@ video::-webkit-media-controls {
     }
 
     #brick-tier img {
-        height: 425px;
+        height: 275px;
+        max-width: 100%;
     }
 
     #platinum-tier img {
-        height: 375px;
+        height: 255px;
+        max-width: 100%;
     }
 
     #gold-tier img {
-        height: 325px;
+        height: 175px;
     }
 
     #bronze-silver-tier img {
-        height: 250px;
+        height: 100px;
     }
     
     #partners {
         padding-top: 1rem;
 
         img {
-            height: 225px;
+            height: 75px;
+        }
+
+        #stickermule { // their brand's padding messes with size consistancy
+            height: 100px;
         }
     }
 }
@@ -874,30 +880,6 @@ footer {
         .logo-group {
             padding: 1rem 0rem;
         }
-
-        #brick-tier img {
-            height: 375px;
-        }
-
-        #platinum-tier img {
-            height: 325px;
-        }
-
-        #gold-tier img {
-            height: 275px;
-        }
-
-        #bronze-silver-tier img {
-            height: 200px;
-        }
-    
-        #partners {
-            padding-top: 1rem;
-    
-            img {
-                height: 175px;
-            }
-        }
     }
 
     // Leadership
@@ -962,35 +944,6 @@ footer {
 
         #social-icons a i {
             font-size: 2rem;
-        }
-    }
-
-    // Sponsors
-    #sponsors {
-        #brick-tier img {
-            height: 275px;
-            max-width: 100%;
-        }
-
-        #platinum-tier img {
-            height: 225px;
-            max-width: 100%;
-        }
-
-        #gold-tier img {
-            height: 175px;
-        }
-
-        #bronze-silver-tier img {
-            height: 100px;
-        }
-    
-        #partners {
-            padding-top: 1rem;
-    
-            img {
-                height: 75px;
-            }
         }
     }
 
