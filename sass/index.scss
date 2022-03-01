@@ -8,6 +8,7 @@ $off-white: #F6F8FA;
 $darker-blue: #081646;
 $orange: #FF9C4A;
 $grey: #D0D9E2;
+$beige: #F8953A;
 
 // Typography
 :root {
@@ -266,7 +267,7 @@ video::-webkit-media-controls {
             justify-content: space-between;
 
             #login {
-                @include button-primary;
+                @include button-secondary();
                 margin-right: 2rem;
                 width: 50%;
             }
@@ -275,6 +276,12 @@ video::-webkit-media-controls {
                 @include button-secondary;
                 width: 50%;
             }
+        }
+        
+        #discord {
+            @include button-primary();
+            width: 100%;
+            margin-top: 1rem;
         }
     }
 }
@@ -435,10 +442,122 @@ video::-webkit-media-controls {
     }
 }
 
+// Prizes
+#prizes {
+    $tape-offset: 35px;  // how far into the card is the tape placed?
+    
+    @mixin tape-transform($rotation) {
+        transform: translate(-50%, -50%) rotate($rotation);
+        // this makes it so that we're positioning the tape by its center instead of its top-left, pre-rotation
+        // corner, which is significantly easier
+    }
+
+    #prizes-ricky {
+        // placeholder
+        width: 85%;
+        max-width: 980px;
+        height: auto;
+        background-color: blue;
+        margin: 0 auto;
+    }
+
+    #prizes-card {
+        background-color: white;
+        border: 1px solid $light-blue;
+        border-radius: 6px;
+        padding: 75px 95px;
+        position: relative;
+        width: 100%;
+
+        .tape {
+            background-color: $beige;
+            height: 40px;
+            opacity: 0.25;
+            position: absolute;
+            width: 165px;
+
+            &.top-left {
+                @include tape-transform(-45deg);
+                left: $tape-offset;
+                top: $tape-offset;
+            }
+
+            &.top-right {
+                @include tape-transform(45deg);
+                right: $tape-offset - 165px;
+                top: $tape-offset;
+            }
+
+            &.bottom-left {
+                @include tape-transform(45deg);
+                left: $tape-offset;
+                bottom: $tape-offset - 40px;
+            }
+
+            &.bottom-right {
+                @include tape-transform(-45deg);
+                right: $tape-offset - 165px;
+                bottom: $tape-offset - 40px;
+            }
+        }
+
+        & > .content {
+            align-items: flex-end;
+            column-gap: 50px;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 100px;
+
+            .graphic {
+                flex: 0 0 auto;
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                row-gap: 20px;
+
+                .title {
+                    letter-spacing: 1.5rem;
+                    opacity: 0.50;
+                }
+            }
+        }
+
+        #inner-prizes-card {
+            background-color: white;
+            border: 1px solid $light-blue;
+            border-radius: 6px;
+            padding: 35px;
+            width: 100%;
+
+            .title {
+                padding-bottom: 20px;
+            }
+
+            .content {
+                align-items: flex-start;
+                display: flex;
+                flex-direction: row;
+                column-gap: 30px;
+            }
+        }
+
+        #prizes-corner-text {
+            font-size: 1.125rem;
+            position: absolute;
+            bottom: calc(75px / 2);
+            right: 95px;
+            opacity: 0.50;
+            transform: translateY(50%);  // easy way to perfectly vertical center the text
+        }
+    }
+}
+
 // Sponsors
 #sponsors {
     #sponsor-btns {
-        margin-top: 1rem;
+        margin: 1rem 0 2rem;
         display: flex;
 
         #prospectus {
@@ -448,6 +567,105 @@ video::-webkit-media-controls {
 
         #email {
             @include button-secondary();
+        }
+    }
+
+    .logo-group {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        row-gap: 3rem;
+        column-gap: 5rem;
+        padding: 2rem 0;
+
+        img {
+            transition: all 0.2s;
+
+            &:hover {
+                transform: translateY(-10px);
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    #brick-tier img {
+        height: 275px;
+        max-width: 100%;
+    }
+
+    #platinum-tier img {
+        height: 255px;
+        max-width: 100%;
+    }
+
+    #gold-tier img {
+        height: 175px;
+    }
+
+    #bronze-silver-tier img {
+        height: 150px;
+    }
+    
+    #partners {
+        padding-top: 1rem;
+
+        img {
+            height: 75px;
+        }
+
+        #stickermule { // their brand's padding messes with size consistancy
+            height: 100px;
+        }
+    }
+}
+
+// Leadership
+#leadership #team {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 5rem;
+    row-gap: 2.5rem;
+
+    .leader {
+        .leader-img {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            margin-bottom: 0.75rem;
+
+            .tape {
+                opacity: 0.5;
+                width: 50%;
+                height: 30px;
+                border-radius: 2px;
+                transform: translateY(15px);
+                margin: auto;
+
+                &-orange {
+                    background-color: $orange;
+                }
+
+                &-blue {
+                    background-color: $light-blue;
+                }
+            }
+
+            img {
+                border-radius: 6px;
+                width: 100%;
+            }
+        }
+
+        .leader-role {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            font-weight: 500;
+            padding-bottom: 0px;
+        }
+
+        .leader-name {
+            font-weight: bold;
         }
     }
 }
@@ -580,6 +798,12 @@ footer {
         width: 100%;
     }
 
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
     // Footer
     footer #footer-right {
         flex-direction: column;
@@ -706,6 +930,11 @@ footer {
             }
         }
     }
+
+    // Prizes
+    #prizes #prizes-card > .content .text .title {
+        letter-spacing: 0.5rem;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -758,6 +987,69 @@ footer {
         }
     }
 
+    // Prizes
+    #prizes {
+        $tape-offset: 12px;               // how far into the card is the tape placed?
+        $overflow-size: 35px;             // how far does the outer card go into the section margins?
+        $inner-card-overflow-size: 20px;  // how far does the inner card go into the outer card's margins?
+
+        #prizes-card {
+            padding: $overflow-size $overflow-size ($overflow-size + 40px);
+
+            & > .content {
+                margin-bottom: 30px;
+
+                .graphic {
+                    display: none;
+                }
+
+                .text {
+                    row-gap: 15px;
+                }
+            }
+
+            .tape {
+                height: 12px;
+                width: 50px;
+    
+                &.top-left {
+                    left: $tape-offset;
+                    top: $tape-offset;
+                }
+    
+                &.top-right {
+                    right: $tape-offset - 50px;
+                    top: $tape-offset;
+                }
+    
+                &.bottom-left {
+                    left: $tape-offset;
+                    bottom: $tape-offset - 12px;
+                }
+    
+                &.bottom-right {
+                    right: $tape-offset - 50px;
+                    bottom: $tape-offset - 12px;
+                }
+            }
+
+            #inner-prizes-card {
+                margin-left: -$inner-card-overflow-size;
+                padding: $inner-card-overflow-size;
+                width: calc(100% + (2 * #{$inner-card-overflow-size}));
+
+                .content {
+                    flex-direction: column;
+                    row-gap: 20px;
+                }
+            }
+
+            #prizes-corner-text {
+                font-size: 0.75rem;
+                right: 20px;
+            }
+        }
+    }
 
     // Sponsors
     #sponsors {
@@ -770,6 +1062,20 @@ footer {
                 margin: 0rem 0rem 1rem;
                 padding: 1rem 3rem;
             }
+        }
+
+        .logo-group {
+            padding: 1rem 0rem;
+        }
+    }
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .leader .leader-role {
+            font-size: 0.9rem;
         }
     }
 
@@ -805,6 +1111,22 @@ footer {
         div {
             padding: 0px 0px 20px;
         }
+    }
+
+    // Prizes
+    #prizes #prizes-card {
+        padding: 20px 20px 60px;
+
+        #inner-prizes-card {
+            margin-left: 0;
+            width: 100%;
+        }
+    }
+
+    // Leadership
+    #leadership #team {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     // Contact
