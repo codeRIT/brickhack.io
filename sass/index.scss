@@ -557,7 +557,7 @@ video::-webkit-media-controls {
 // Sponsors
 #sponsors {
     #sponsor-btns {
-        margin-top: 1rem;
+        margin: 1rem 0 2rem;
         display: flex;
 
         #prospectus {
@@ -567,6 +567,55 @@ video::-webkit-media-controls {
 
         #email {
             @include button-secondary();
+        }
+    }
+
+    .logo-group {
+        align-items: center;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        row-gap: 3rem;
+        column-gap: 5rem;
+        padding: 2rem 0;
+
+        img {
+            transition: all 0.2s;
+
+            &:hover {
+                transform: translateY(-10px);
+                transition: all 0.2s;
+            }
+        }
+    }
+
+    #brick-tier img {
+        height: 275px;
+        max-width: 100%;
+    }
+
+    #platinum-tier img {
+        height: 255px;
+        max-width: 100%;
+    }
+
+    #gold-tier img {
+        height: 175px;
+    }
+
+    #bronze-silver-tier img {
+        height: 150px;
+    }
+    
+    #partners {
+        padding-top: 1rem;
+
+        img {
+            height: 75px;
+        }
+
+        #stickermule { // their brand's padding messes with size consistancy
+            height: 100px;
         }
     }
 }
@@ -748,7 +797,6 @@ footer {
     #about #about-content #about-buttons {
         width: 100%;
     }
-
 
     // Leadership
     #leadership #team {
@@ -1014,6 +1062,10 @@ footer {
                 margin: 0rem 0rem 1rem;
                 padding: 1rem 3rem;
             }
+        }
+
+        .logo-group {
+            padding: 1rem 0rem;
         }
     }
 
