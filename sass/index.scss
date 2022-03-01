@@ -267,7 +267,7 @@ video::-webkit-media-controls {
             justify-content: space-between;
 
             #login {
-                @include button-primary;
+                @include button-secondary();
                 margin-right: 2rem;
                 width: 50%;
             }
@@ -276,6 +276,12 @@ video::-webkit-media-controls {
                 @include button-secondary;
                 width: 50%;
             }
+        }
+        
+        #discord {
+            @include button-primary();
+            width: 100%;
+            margin-top: 1rem;
         }
     }
 }
