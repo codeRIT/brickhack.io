@@ -103,6 +103,8 @@ $('#saturday').click(function() {
     $('#sunday').removeClass('day-active');
     $('#mar-5-content').show();
     $('#mar-6-content').hide();
+    $('#date-indicator-saturday').show();
+    $('#date-indicator-sunday').hide();
 });
 // Sunday button
 $('#sunday').click(function() {
@@ -110,6 +112,8 @@ $('#sunday').click(function() {
     $('#saturday').removeClass('day-active');
     $('#mar-6-content').show();
     $('#mar-5-content').hide();
+    $('#date-indicator-sunday').show();
+    $('#date-indicator-saturday').hide();
 });
 
 
@@ -121,6 +125,8 @@ if (currentDate <= 5) {
     $('#sunday').removeClass('day-active');
     $('#mar-5-content').show();
     $('#mar-6-content').hide();
+    $('#date-indicator-saturday').show();
+    $('#date-indicator-sunday').hide();
 }
 // Sunday 
 else  {
@@ -128,6 +134,8 @@ else  {
     $('#saturday').removeClass('day-active');
     $('#mar-6-content').show();
     $('#mar-5-content').hide();
+    $('#date-indicator-sunday').show();
+    $('#date-indicator-saturday').hide();
 }
 
 
