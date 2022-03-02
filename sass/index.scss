@@ -390,7 +390,11 @@ video::-webkit-media-controls {
             }
         }
 
-        #schedule-events .event {
+        #mar-6-content {
+            display: none;
+        }
+
+        .schedule-events .event {
             display: flex;
             flex-wrap: wrap;
             column-gap: 1rem;
@@ -422,7 +426,7 @@ video::-webkit-media-controls {
             .time {
                 opacity: 0.75;
                 font-size: 1rem;
-                margin: auto 0;
+                margin: auto 0; // because it's smaller, centering it vertically
             }
 
             .live {
