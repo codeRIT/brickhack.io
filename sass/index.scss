@@ -331,6 +331,107 @@ video::-webkit-media-controls {
     }
 }
 
+// Schedule
+#schedule {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    row-gap: 1rem;
+
+    #schedule-left {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        .day {
+            width: 100%;
+            margin-bottom: 1rem;
+
+            @include button-primary;
+
+            &-active {
+                @include button-secondary;
+            }
+        }
+    }
+
+    #schedule-calendar {
+        background-color: #FFFFFF;
+        border: 1px solid $light-blue;
+        border-radius: 6px;
+        padding: 0rem 3rem calc(1rem + 15px);
+        width: 55%;
+        align-self: flex-start;
+
+        #schedule-tape {
+            display: flex;
+            justify-content: space-between;
+            height: 30px;
+            position: relative;
+            top: -15px;
+            margin-bottom: 1rem;
+
+            &-left {
+                width: 35%;
+                height: 100%;
+                background-color: $orange;
+                opacity: 0.25;
+            }
+
+            &-right {
+                width: 35%;
+                height: 100%;
+                background-color: $light-blue;
+                opacity: 0.25;
+            }
+        }
+
+        #schedule-events .event {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            background-color: #FFFFFF;
+            border: 1px solid $light-blue;
+
+            p {
+                padding-bottom: 0rem;
+            }
+
+            &-complete {
+                opacity: 0.5;
+                background-color: $light-blue;
+                border: none;
+            }
+
+            &-live {
+                background-color: $blue;
+                border: none;
+
+                p {
+                    color: #FFFFFF;
+                }
+            }
+
+            .time {
+                opacity: 0.75;
+                font-size: 1rem;
+                margin: auto 0;
+            }
+
+            .live {
+                font-weight: bold;
+                color: $orange;
+            }
+        }
+    }
+}
 
 // FAQ
 #faq {
@@ -972,6 +1073,25 @@ footer {
         }
     }
 
+    // Schedule
+    #schedule {
+        display: flex;
+        flex-flow: column;
+
+        #schedule-left .day {
+            width: calc(50% - 0.75rem);
+
+            &:first-of-type {
+                margin-right: 1rem;
+            }
+        }
+
+        #schedule-calendar {
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
+
     // FAQ
     #faq #faq-cards {
         margin-top: 20px;
@@ -1110,6 +1230,15 @@ footer {
 
         div {
             padding: 0px 0px 20px;
+        }
+    }
+
+    // Schedule
+    #schedule #schedule-left .day {
+        width: 100%;
+
+        &:first-of-type {
+            margin-right: 0rem;
         }
     }
 
