@@ -352,12 +352,14 @@ video::-webkit-media-controls {
             display: flex;
             row-gap: 0;
             margin-bottom: 1rem;
+            overflow: hidden;
             width: max-content;
 
             .day {
                 @include button-secondary();
                 margin: 0;
                 border-radius: 0px;
+                border: 0;
                 width: max-content;
 
                 &:active {
