@@ -341,20 +341,33 @@ video::-webkit-media-controls {
     #schedule-left {
         display: flex;
         flex-flow: column;
-        justify-content: space-around;
 
         h2 {
             margin-bottom: 1rem;
         }
 
-        .day {
-            width: 100%;
+        #schedule-days {
+            border: 2px solid $blue;
+            border-radius: 6px;
+            display: flex;
+            row-gap: 0;
             margin-bottom: 1rem;
+            width: max-content;
 
-            @include button-primary;
+            .day {
+                @include button-secondary();
+                margin: 0;
+                border-radius: 0px;
+                width: max-content;
 
-            &-active {
-                @include button-secondary;
+                &:active {
+                    transform: translateY(0px);
+                }
+
+                &-active {
+                    background-color: $blue;
+                    color: $off-white;
+                }
             }
         }
     }
@@ -409,7 +422,7 @@ video::-webkit-media-controls {
             }
 
             &-complete {
-                opacity: 0.5;
+                opacity: 0.3;
                 background-color: $light-blue;
                 border: none;
             }
