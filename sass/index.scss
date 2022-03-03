@@ -359,7 +359,7 @@ video::-webkit-media-controls {
                 @include button-secondary();
                 margin: 0;
                 border-radius: 0px;
-                border: 0;
+                border: none;
                 width: max-content;
 
                 &:active {
