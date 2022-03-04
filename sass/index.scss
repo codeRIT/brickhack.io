@@ -353,7 +353,7 @@ video::-webkit-media-controls {
             row-gap: 0;
             margin-bottom: 1rem;
             overflow: hidden;
-            width: max-content;
+            width: 100%;
 
             .day {
                 @include button-secondary();
