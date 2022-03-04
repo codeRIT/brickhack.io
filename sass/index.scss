@@ -737,6 +737,10 @@ video::-webkit-media-controls {
         #stickermule { // their brand's padding messes with size consistancy
             height: 100px;
         }
+
+        #simone { // their logo's shape messes with size consistancy
+            height: 50px;
+        }
     }
 }
 
