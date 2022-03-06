@@ -238,6 +238,25 @@ video::-webkit-media-controls {
     opacity: 0;
 }
 
+// Post Event
+#post {
+    text-align: center;
+
+    #devpost {
+        @include button-primary();
+        width: max-content;
+        margin: 1rem auto 0rem;
+    }
+
+    p {
+        margin-top: 1rem;
+    }
+
+    #prizes-ricky {
+        width: 50%;
+        margin: auto;
+    }
+}
 
 // Hero
 #hero {
@@ -1074,6 +1093,11 @@ footer {
 
     h3 {
         font-size: 1.35rem;
+    }
+
+    // Post
+    #post #prizes-ricky {
+        width: 90%;
     }
 
     // About
