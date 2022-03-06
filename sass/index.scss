@@ -75,7 +75,7 @@ $beige: #F8953A;
 }
 
 body {
-    background-color: $off-white;
+    background-color: $grey;
 }
 
 // Typography
@@ -241,6 +241,7 @@ video::-webkit-media-controls {
 // Post Event
 #post {
     text-align: center;
+    background-color: $off-white;
 
     #devpost {
         @include button-primary();
