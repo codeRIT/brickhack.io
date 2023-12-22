@@ -171,24 +171,24 @@ $('.hide-full-schedule').click(function() {
     $('.show-full-schedule').css('display', 'flex');
 });
 
-// Set schedule tab based on the date
-let currentDate = new Date().getDate()
-if (currentDate < 20) {
+// Always default to first for demo purposes
+// let currentDate = new Date().getDate()
+// if (currentDate < 20) {
     $('#pre-event-tab').addClass('schedule-tab-active');
     $('#pre-event-content').show();
     $('#feb-20-content').hide();
     $('#feb-21-content').hide();
-} else if (currentDate == 20) {
-    $('#feb-20-tab').addClass('schedule-tab-active');
-    $('#pre-event-content').hide();
-    $('#feb-20-content').show();
-    $('#feb-21-content').hide();
-} else {
-    $('#feb-21-tab').addClass('schedule-tab-active');
-    $('#pre-event-content').hide();
-    $('#feb-20-content').hide();
-    $('#feb-21-content').show();
-}
+// } else if (currentDate == 20) {
+//     $('#feb-20-tab').addClass('schedule-tab-active');
+//     $('#pre-event-content').hide();
+//     $('#feb-20-content').show();
+//     $('#feb-21-content').hide();
+// } else {
+//     $('#feb-21-tab').addClass('schedule-tab-active');
+//     $('#pre-event-content').hide();
+//     $('#feb-20-content').hide();
+//     $('#feb-21-content').show();
+// }
 
 // Dynamic schedule code
 
@@ -265,7 +265,8 @@ function handleEventData(events) {
         // calculate event container classes
         let divClasses = 'event';
         if ((finishDate || startDate) < now) {
-            divClasses += ' past';
+            // Disabled to look a bit nicer in demo
+            // divClasses += ' past';
         }
 
         // add event to DOM
@@ -301,7 +302,87 @@ function handleEventData(events) {
     });
 }
 
-fetch('https://apply.brickhack.io/events.json')
-    .then(res => res.json())
-    .then(events => handleEventData(events))
-    .catch(err => console.log(err));
+
+
+
+// fetch('https://apply.brickhack.io/events.json')
+//     .then(res => res.json())
+//     .then(events => handleEventData(events))
+//     .catch(err => console.log(err));
+
+// ref: https://github.com/codeRIT/brickhack.io/pull/1139/commits/9b601a86357354b78b0c8d6db5d9faa08aef6f76
+
+const events = [
+{"title":"A cool pre-event",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-16T10:00:00+00:00",
+    "finish":"2021-02-16T10:30:00+00:00"
+},
+{"title":"Another one",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-17T10:00:00+00:00",
+    "finish":"2021-02-17T10:30:00+00:00"
+},
+{"title":"Woah!",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-18T10:00:00+00:00",
+    "finish":"2021-02-18T10:30:00+00:00"
+},
+{"title":"Fun fact, these show in the local timezone. Who knew!",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-19T10:00:00+00:00",
+    "finish":"2021-02-19T10:30:00+00:00"
+},
+{"title":"Opening Ceremony",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-20T10:00:00+00:00",
+    "finish":"2021-02-20T10:30:00+00:00"
+},
+{"title":"Lunch (on your own!)",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-20T12:00:00+00:00",
+    "finish":null
+},
+{"title":"Mystery Workshop",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-20T14:00:00+00:00",
+    "finish":"2021-02-20T15:00:00+00:00"
+},
+{"title":"Mystery Event",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-20T17:00:00+00:00",
+    "finish":"2021-02-20T18:00:00+00:00"
+},
+{"title":"Devpost submission",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-21T10:00:00+00:00",
+    "finish":null
+},
+{"title":"Mystery Workshop 2",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-21T13:00:00+00:00",
+    "finish":"2021-02-21T14:00:00+00:00"
+},
+{"title":"Coding stops / Judging begins",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-21T12:30:00+00:00",
+    "finish":"2021-02-21T14:00:00+00:00"
+},
+{"title":"Closing Ceremony",
+    "description":"",
+    "location":"Discord + Zoom",
+    "start":"2021-02-21T14:00:00+00:00",
+    "finish":"2021-02-21T16:00:00+00:00"}
+];
+handleEventData(events);
