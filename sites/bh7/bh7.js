@@ -1,4 +1,4 @@
-import './sass/event.scss'
+import './bh7.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 
@@ -31,9 +31,9 @@ new ActiveMenuLink(".navbar-items", options);
 
 
 // Random hero SVG on each page load
-import desk1 from './assets/hero/desk1.svg'
-import desk2 from './assets/hero/desk2.svg'
-import desk3 from './assets/hero/desk3.svg'
+import desk1 from '/assets/hero/desk1.svg'
+import desk2 from '/assets/hero/desk2.svg'
+import desk3 from '/assets/hero/desk3.svg'
 
 $(document).ready(function() {
     var deskIndex = parseInt(localStorage.getItem('deskIndex'));

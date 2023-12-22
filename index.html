@@ -13,7 +13,7 @@
     <meta property="twitter:title" content="BrickHack 8">
     <meta property="twitter:url" content="https://brickhack.io" >
     <meta property="twitter:description" content="RIT's premier collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing.">
-    <meta name="twitter:image" content="./assets/social_cards.png">
+    <meta name="twitter:image" content="/assets/social_cards.png">
 
     <!-- Open Graph Cards -->
     <meta property="og:type" content="website" />
@@ -21,12 +21,12 @@
     <meta property="og:site_name" content="BrickHack 8" />
     <meta property="og:url" content="https://brickhack.io" />
     <meta property="og:description" content="RIT's premier collegiate hackathon devoted to bringing designers, developers, and all sorts of makers together for 24 hours to create something from nothing."/>
-    <meta property="og:image" content="./assets/social_cards.png" />
+    <meta property="og:image" content="/assets/social_cards.png" />
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="resources/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="resources/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="resources/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon/favicon-16x16.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -38,39 +38,37 @@
     <nav>
         <div class="top">
             <a id="logo" href="https://brickhack.io">
-                <img src="assets/bh8/logo.svg" alt="BrickHack 8 Logo" />
+                <img src="/assets/bh8/logo.svg" alt="BrickHack 8 Logo" />
             </a>
         </div>
     </nav>
     <div class="mobile-grayout"></div>
 
-    <!-- MLH Banner -->
-    <a id="mlh-trust-badge" href="https://mlh.io/seasons/2022/events?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2022-season&utm_content=gray" target="_blank">
-        <img src="https://s3.amazonaws.com/logged-assets/trust-badge/2022/mlh-trust-badge-2022-gray.svg" alt="Major League Hacking 2022 Hackathon Season" style="width:100%">
-    </a>
+    <div id="content">
+        <section id="sites">
+            <a href="./sites/bh7/bh7.html">
+                <h2>BrickHack 7</h2>
+            </a>
+            <a href="./sites/bh8/bh8.html">
+                <h2>BrickHack 8</h2>
+            </a>
+            <a href="./sites/club/club.html">
+                <h2>Club Site</h2>
+            </a>
+        </section>
 
-    <!-- Post-Event -->
-    <section id="post">
-        <h1>Thanks for a great BrickHack 8!</h1>
-        <p>See you next year!</p>
-        <a id="devpost" href="https://brickhack8.devpost.com/" target="_blank">VIEW PROJECTS</a>
-        <p><a href="./club.html">Check out our club</a></p>
-        <video id="prizes-ricky" autoplay muted loop playsinline>
-            <source src="./assets/bh8/videos/Prize-Ricky.mp4" type="video/mp4">
-        </video>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div id="footer-left">
-            <p><a href="mailto:hello@brickhack.io">hello@brickhack.io</a></p>
-        </div>
-        <div id="footer-right">
-            <p><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></p>
-            <p><a href="https://www.rit.edu/academicaffairs/policiesmanual/c070" target="_blank">Privacy Policy</a></p>
-            <p>Copyright &copy; 2022 BrickHack Club</p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <div id="footer-left">
+                <p><a href="mailto:hello@brickhack.io">hello@brickhack.io</a></p>
+            </div>
+            <div id="footer-right">
+                <p><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf" target="_blank">MLH Code of Conduct</a></p>
+                <p><a href="https://www.rit.edu/academicaffairs/policiesmanual/c070" target="_blank">Privacy Policy</a></p>
+                <p>Copyright &copy; 2022 BrickHack Club</p>
+            </div>
+        </footer>
+    </div>
 
     <!-- This is where Parcel imports are located! (SASS, etc.) -->
     <script src="./index.js"></script>

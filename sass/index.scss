@@ -1,0 +1,347 @@
+// Variables
+// Using a mix of SASS for easier readability and CSS for easier changability
+// Colors
+$dark-blue: #193787;
+$blue: #1447C8;
+$light-blue: #44C6E6;
+$off-white: #F6F8FA;
+$darker-blue: #081646;
+$orange: #FF9C4A;
+$grey: #D0D9E2;
+$beige: #F8953A;
+
+// Typography
+:root {
+    --body-font-size: 1.3rem;
+}
+
+
+// General Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    line-height: 125%;
+
+    // Transition all elements on the screen
+    // (except FAQ panel, which has conflicting transitions)
+    // (and except certian nav stuff, which we don't want)
+    &:not(.panel):not(.show-nav):not(.left):not(.right) {
+        transition-duration: 1s;
+        transition-property: margin, padding, width, font-size;
+    }
+}
+
+html {
+    height: 100;
+}
+
+body {
+    background-color: $grey;
+}
+
+#content {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+// Typography
+h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: 'Sora', sans-serif;
+    margin-left: -5px;
+    color: $darker-blue;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding-bottom: 1rem;
+    font-family: 'Sora', sans-serif;
+    color: $darker-blue;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    padding-bottom: 2rem;
+    color: $darker-blue;
+}
+
+p {
+    font-size: var(--body-font-size);
+    line-height: 133%;
+    padding-bottom: 1rem;
+    color: $darker-blue;
+
+    &:last-child {
+        padding-bottom: 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $blue;
+        border-bottom: 2px solid $blue;
+
+        &:hover, &:focus, &:active {
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+}
+
+
+// Nav
+nav {
+    background-color: white;
+    border-bottom: 2px solid rgba($light-blue, 25%);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--body-font-size);
+    height: 100px;
+    position: fixed;
+    padding: 0px 85px 0px 8rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    .top, .left, .right {
+        display: flex;
+        align-items: center;
+    }
+
+    .left {
+        flex-grow: 1;
+    }
+
+    a {
+        margin-right: 2rem;
+        text-decoration: none;
+        color: $blue;
+    }
+
+    .link {
+        border-bottom: 2px solid white;
+        transition: all 0.2s;
+
+        &:not(:focus):hover {
+            // underline upon hover, disable hover upon click
+            font-weight: bold;
+            border-color: $blue;
+        }
+
+        &.active {
+            font-weight: bold;
+            color: $darker-blue;
+            border-color: $darker-blue;
+
+            &:hover {
+                border-color: $darker-blue;
+            }
+        }
+    }
+
+    #logo {
+        width: 80px;
+        border: none;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.mobile-grayout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.25;
+    z-index: 3;
+    cursor: pointer;
+    display: none;
+}
+
+// Section padding
+section {
+    padding: 120px 8rem 0px; // Set up to avoid nav overlap when linked
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
+
+// Videos - hiding controls
+video::-webkit-media-controls {
+    opacity: 0;
+}
+
+// All past sites
+#sites {
+    background-color: $off-white;
+    flex: 3;
+
+    p {
+        margin-top: 1rem;
+    }
+
+}
+
+
+// Footer
+footer {
+    background-color: $grey;
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+        line-height: 2.5rem;
+    }
+
+    #footer-left {
+        padding-right: 1rem;
+    }
+
+    #footer-right {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            padding-bottom: 0;
+
+            &:not(p:last-of-type) {
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 1220px) {
+    // Nav
+    nav {
+        padding: 0px 85px 0px 5rem;
+    }
+
+    // Section padding
+    section {
+        padding: 120px 5rem 0px; // Set up to avoid nav overlap when linked
+    }
+
+    // Footer
+    footer #footer-right {
+        flex-direction: column;
+        text-align: right;
+
+        p:not(p:last-of-type) {
+            padding-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 955px) {
+    // Nav
+    nav {
+        height: 70px;
+        padding: 0px 3.5rem;
+
+        #logo {
+            width: 60px;
+        }
+    }
+
+    .show-nav {
+        height: 100vh;
+        width: 50vw;
+        min-width: max-content;
+        padding: 0px 3.5rem;
+        border-bottom: none;
+        border-right: 2px solid rgba($light-blue, 25%);
+        flex-direction: column;
+        justify-content: flex-start;
+        z-index: 4;
+
+        .top {
+            height: 68px;
+        }
+
+        .left, .right {
+            align-items: flex-start;
+            margin-top: 2rem;
+
+            a {
+                margin-right: 0rem;
+                margin-top: 2rem;
+            }
+        }
+
+        .left {
+            flex-direction: column;
+            flex-grow: 0;
+            order: 2;
+        }
+
+        .right {
+            flex-direction: column-reverse;
+            order: 1;
+        }
+
+        .link, #login {
+            display: block;
+        }
+    }
+
+    .show-gray {
+        display: block;
+    }
+
+    // Section padding
+    section {
+        padding: 100px 3.5rem 0px; // Set up to avoid nav overlap when linked
+    }
+}
+
+@media screen and (max-width: 900px) {
+    // Variables
+    :root {
+        --body-font-size: 1rem;
+    }
+
+    // Typography
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+    }
+
+    // Footer
+    footer p {
+        line-height: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    footer {
+        flex-direction: column;
+
+        #footer-right {
+            text-align: left;
+        }
+    }
+}

@@ -295,7 +295,7 @@ section {
 
 // Dropdown button when closed
 .ui-selectmenu-button-closed {
-    background: url("../assets/club/select-arrow-blue.svg") no-repeat right;
+    background: url("/assets/club/select-arrow-blue.svg") no-repeat right;
     background-color: white;
 
     .ui-selectmenu-text {
@@ -303,11 +303,11 @@ section {
     }
 
     .ui-selectmenu-icon {
-        background-image: url("../assets/club/select-arrow-blue.svg");
+        background-image: url("/assets/club/select-arrow-blue.svg");
     }
 
     &:hover {
-        background: url("../assets/club/select-arrow-white.svg") no-repeat right;
+        background: url("/assets/club/select-arrow-white.svg") no-repeat right;
         background-color: $dark-blue;
 
         .ui-selectmenu-text {
@@ -315,14 +315,14 @@ section {
         }
 
         .ui-selectmenu-icon {
-            background-image: url("../assets/club/select-arrow-white.svg");
+            background-image: url("/assets/club/select-arrow-white.svg");
         }
     }
 }
 
 // Dropdown button when closed
 .ui-selectmenu-button-open {
-    background: url("../assets/club/select-arrow-white.svg") no-repeat right;
+    background: url("/assets/club/select-arrow-white.svg") no-repeat right;
     background-color: $dark-blue;
 
     .ui-selectmenu-text {

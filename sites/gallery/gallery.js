@@ -1,4 +1,4 @@
-import './sass/gallery.scss'
+import '/sass/gallery.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 import LazyLoad from "vanilla-lazyload";
 import $ from 'jquery'

@@ -1,4 +1,4 @@
-import "./sass/index.scss"
+import "./bh8.scss"
 import "@fortawesome/fontawesome-free/css/all.css"
 import $ from "jquery"
 
