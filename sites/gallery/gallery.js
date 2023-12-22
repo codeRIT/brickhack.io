@@ -1,4 +1,4 @@
-import './sass/gallery.scss'
+import './gallery.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 import LazyLoad from "vanilla-lazyload";
 import $ from 'jquery'
@@ -22,7 +22,10 @@ var s3 = new AWS.S3({
     params: {Bucket: albumBucketName}
 });
 
-var brickhacks = ['bh6', 'bh5', 'bh4', 'bh3', 'bh2', 'bh'];
+// Ignore the rest to prevent error spam,
+// but we want to show *an* error just in case
+// someone wants to actually fix this at some point.
+var brickhacks = ['bh6']; // 'bh5', 'bh4', 'bh3', 'bh2', 'bh'];
 for (let name of brickhacks) {
     viewAlbum(name);
 }

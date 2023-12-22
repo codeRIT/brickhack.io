@@ -1,4 +1,4 @@
-import './sass/club.scss'
+import './club.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
 // JQuery-UI for dropdown in Teams
